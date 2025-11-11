@@ -65,16 +65,18 @@ class TimeTracker:
             light_source.turns_remaining -= 1
 
             if light_source.turns_remaining <= 0:
-                # Light goes out - try to auto-equip a new one
+                # Light goes out - remove depleted torch from inventory
+                depleted_name = light_source.name
                 player.equipment.light_source = None
+                player.inventory.remove_item(depleted_name)  # Remove the burned out torch
 
                 # Look for another light source in inventory
                 new_light = self._find_light_source(player)
                 if new_light:
                     player.equip_light(new_light)
-                    return f"⚠️  Your {light_source.name} burns out! Automatically lighting a new {new_light.name}."
+                    return f"⚠️  Your {depleted_name} burns out! Automatically lighting a new {new_light.name}."
                 else:
-                    return "⚠️  Your light source sputters and dies! You are in darkness. (No spare light sources!)"
+                    return f"⚠️  Your {depleted_name} sputters and dies! You are in darkness. (No spare light sources!)"
             elif light_source.turns_remaining == 1:
                 return "⚠️  Your light source is almost exhausted!"
             elif light_source.turns_remaining == 3:
