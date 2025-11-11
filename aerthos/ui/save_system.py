@@ -123,4 +123,14 @@ class SaveSystem:
             'equipped_armor': player.equipment.armor.name if player.equipment.armor else None,
             'equipped_shield': player.equipment.shield.name if player.equipment.shield else None,
             'equipped_light': player.equipment.light_source.name if player.equipment.light_source else None,
+            # Spells
+            'spells_known': [spell.name for spell in player.spells_known],
+            'spells_memorized': [
+                {
+                    'level': slot.level,
+                    'spell': slot.spell.name if slot.spell else None,
+                    'is_used': slot.is_used
+                }
+                for slot in player.spells_memorized
+            ]
         }

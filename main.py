@@ -156,6 +156,46 @@ def restore_game_from_save(save_data: dict, game_data: GameData) -> tuple:
         if player_data.get('thief_skills'):
             player.thief_skills = player_data['thief_skills']
 
+        # Restore spells if applicable
+        from aerthos.entities.player import Spell, SpellSlot
+
+        if player_data.get('spells_known'):
+            for spell_name in player_data['spells_known']:
+                # Find spell in game data by name
+                for spell_id, spell_data in game_data.spells.items():
+                    if spell_data['name'] == spell_name:
+                        spell = Spell(
+                            name=spell_data['name'],
+                            level=spell_data['level'],
+                            school=spell_data['school'],
+                            casting_time=spell_data['casting_time'],
+                            range=spell_data['range'],
+                            duration=spell_data['duration'],
+                            area_of_effect=spell_data['area'],
+                            saving_throw=spell_data['saving_throw'],
+                            components=spell_data['components'],
+                            description=spell_data['description'],
+                            class_availability=spell_data['class_availability']
+                        )
+                        player.spells_known.append(spell)
+                        break
+
+        if player_data.get('spells_memorized'):
+            for slot_data in player_data['spells_memorized']:
+                slot = SpellSlot(level=slot_data['level'])
+
+                # Restore the memorized spell if there was one
+                if slot_data.get('spell'):
+                    spell_name = slot_data['spell']
+                    # Find the spell in spells_known
+                    for spell in player.spells_known:
+                        if spell.name == spell_name:
+                            slot.spell = spell
+                            slot.is_used = slot_data.get('is_used', False)
+                            break
+
+                player.spells_memorized.append(slot)
+
         # Restore inventory
         from aerthos.entities.player import Weapon, Armor, LightSource, Item
 
@@ -195,6 +235,33 @@ def restore_game_from_save(save_data: dict, game_data: GameData) -> tuple:
                 if isinstance(item, LightSource) and item.name == equipped_light_name:
                     player.equip_light(item)
                     break
+
+        # Check if spellcaster needs starting spells and slots (for backwards compatibility)
+        if player.char_class in ['Magic-User', 'Cleric']:
+            needs_update = False
+
+            # Check if missing spells
+            if not player.spells_known:
+                needs_update = True
+                print(f"\n⚠️  Your {player.char_class} doesn't have any spells!")
+                print("Adding starting spells to your character...")
+                from aerthos.ui.character_creation import CharacterCreator
+                creator = CharacterCreator(game_data)
+                creator._add_starting_spells(player, player.char_class)
+                print("✓ Starting spells added!")
+
+            # Check if missing spell slots
+            if not player.spells_memorized:
+                needs_update = True
+                print(f"Adding spell slots for level {player.level} {player.char_class}...")
+                # Add appropriate number of spell slots for level
+                num_slots = 1  # Level 1 spellcasters get 1 slot
+                for _ in range(num_slots):
+                    player.add_spell_slot(1)
+                print(f"✓ Added {num_slots} level 1 spell slot(s)!")
+
+            if needs_update:
+                print("Use 'spells' to see your spells, 'memorize <spell>' to prepare them.\n")
 
         # Load dungeon
         dungeon = Dungeon.load_from_file('aerthos/data/dungeons/starter_dungeon.json')
