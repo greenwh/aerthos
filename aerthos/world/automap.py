@@ -72,10 +72,14 @@ class AutoMap:
         Args:
             room: Current room
             x: X coordinate
-            y: Y coordinate
+            y: Y coordinate (north = negative, south = positive)
             dungeon: Dungeon instance
             visited: Set of visited room IDs
         """
+
+        # If room already has position, don't override it
+        if room.id in self.room_positions:
+            return
 
         if room.id in visited:
             return
@@ -83,25 +87,35 @@ class AutoMap:
         visited.add(room.id)
         self.room_positions[room.id] = (x, y)
 
-        # Direction offsets
+        # Direction offsets (north is up = negative y)
         direction_offsets = {
-            'north': (0, -1),
-            'south': (0, 1),
-            'east': (1, 0),
-            'west': (-1, 0),
-            'up': (0, 0),      # Show in same position
-            'down': (0, 0)     # Show in same position
+            'north': (0, -1),   # Up
+            'south': (0, 1),    # Down
+            'east': (1, 0),     # Right
+            'west': (-1, 0),    # Left
+            'up': (0, 0),       # Same position (different level)
+            'down': (0, 0)      # Same position (different level)
         }
 
         # Assign connected rooms
         for direction, next_room_id in room.exits.items():
             next_room = dungeon.get_room(next_room_id)
-            if next_room:
+            if next_room and next_room_id not in self.room_positions:
                 dx, dy = direction_offsets.get(direction, (0, 0))
-                # Check if position already assigned (avoid overlaps)
                 target_pos = (x + dx, y + dy)
-                if target_pos not in [pos for pos in self.room_positions.values()]:
+
+                # Check if position is already occupied
+                occupied = any(pos == target_pos for pos in self.room_positions.values())
+
+                if not occupied:
                     self._assign_position(next_room, x + dx, y + dy, dungeon, visited)
+                else:
+                    # If position occupied, try to place in nearest free spot
+                    for offset in [(0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)]:
+                        alt_pos = (target_pos[0] + offset[0], target_pos[1] + offset[1])
+                        if not any(pos == alt_pos for pos in self.room_positions.values()):
+                            self._assign_position(next_room, alt_pos[0], alt_pos[1], dungeon, visited)
+                            break
 
     def _build_grid(self, current_room_id: str,
                    dungeon: Dungeon) -> Dict[Tuple[int, int], str]:
@@ -199,4 +213,4 @@ class AutoMap:
                 lines.append(connector_line)
 
         map_str = "\n".join(lines)
-        return f"\n═══ AUTO-MAP ═══\n\n{map_str}\n\n[X] = Your Location\n[ ] = Explored Room\n"
+        return f"\n═══ AUTO-MAP ═══\n         N\n         ↑\n     W ← · → E\n         ↓\n         S\n\n{map_str}\n\n[X] = Your Location\n[ ] = Explored Room\n"
