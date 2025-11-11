@@ -289,6 +289,14 @@ class GameState:
         elif isinstance(item, LightSource):
             self.player.equip_light(item)
             return {'success': True, 'message': f"You light the {item.name}."}
+        elif item.item_type == 'light_source':
+            # Fallback for generic Item objects that are light sources
+            # Convert to proper LightSource object
+            light = LightSource(name=item.name, weight=item.weight, burn_time_turns=6, light_radius=30)
+            self.player.inventory.remove_item(item.name)
+            self.player.inventory.add_item(light)
+            self.player.equip_light(light)
+            return {'success': True, 'message': f"You light the {item.name}."}
         else:
             return {'success': False, 'message': f"You can't equip the {item.name}."}
 

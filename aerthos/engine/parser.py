@@ -257,8 +257,8 @@ COMBAT:
 INTERACTION:
   take <item>       - Pick up an item
   drop <item>       - Drop an item
-  use <item>        - Use/consume an item
-  equip <item>      - Equip a weapon or armor
+  use <item>        - Use/consume an item (potions, scrolls)
+  equip <item>      - Equip a weapon, armor, or light a torch/lantern
   search            - Search for traps or hidden items
 
 INFORMATION:
@@ -278,9 +278,10 @@ EXAMPLES:
   attack orc
   go north
   take sword
+  equip longsword
+  equip torch        (to light a torch when in darkness)
   cast magic missile
   search carefully
-  equip longsword
 
 ═══════════════════════════════════════════════════════════════
 """

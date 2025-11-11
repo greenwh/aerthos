@@ -195,11 +195,16 @@ class CharacterCreator:
     def _add_starting_equipment(self, player: PlayerCharacter, char_class: str):
         """Add starting equipment based on class"""
 
-        # Everyone gets basic supplies
-        player.inventory.add_item(Item(name="Torch", item_type="light_source", weight=1))
-        player.inventory.add_item(Item(name="Torch", item_type="light_source", weight=1))
-        player.inventory.add_item(Item(name="Rations (1 day)", item_type="consumable", weight=1))
-        player.inventory.add_item(Item(name="Rations (1 day)", item_type="consumable", weight=1))
+        # Everyone gets basic supplies (use proper item types!)
+        torch1 = LightSource(name="Torch", weight=1, burn_time_turns=6, light_radius=30)
+        torch2 = LightSource(name="Torch", weight=1, burn_time_turns=6, light_radius=30)
+        ration1 = Item(name="Rations (1 day)", item_type="consumable", weight=1, properties={'healing': '0'})
+        ration2 = Item(name="Rations (1 day)", item_type="consumable", weight=1, properties={'healing': '0'})
+
+        player.inventory.add_item(torch1)
+        player.inventory.add_item(torch2)
+        player.inventory.add_item(ration1)
+        player.inventory.add_item(ration2)
         player.gold = 10  # Starting gold
 
         # Class-specific equipment
