@@ -46,6 +46,63 @@ class CharacterCreator:
         print(f"CHA: {charisma}")
         print()
 
+        # Optional rerolls
+        while True:
+            reroll_choice = input("Reroll these ability scores? (y/n): ").strip().lower()
+
+            if reroll_choice not in ['y', 'yes']:
+                break
+
+            # Save current scores
+            old_str, old_dex, old_con = strength, dexterity, constitution
+            old_int, old_wis, old_cha = intelligence, wisdom, charisma
+
+            # Roll new scores
+            new_str = DiceRoller.roll_3d6()
+            new_dex = DiceRoller.roll_3d6()
+            new_con = DiceRoller.roll_3d6()
+            new_int = DiceRoller.roll_3d6()
+            new_wis = DiceRoller.roll_3d6()
+            new_cha = DiceRoller.roll_3d6()
+
+            print("\n--- NEW ROLLS ---")
+            print(f"STR: {new_str}")
+            print(f"DEX: {new_dex}")
+            print(f"CON: {new_con}")
+            print(f"INT: {new_int}")
+            print(f"WIS: {new_wis}")
+            print(f"CHA: {new_cha}")
+            print("\n--- PREVIOUS ROLLS ---")
+            print(f"STR: {old_str}")
+            print(f"DEX: {old_dex}")
+            print(f"CON: {old_con}")
+            print(f"INT: {old_int}")
+            print(f"WIS: {old_wis}")
+            print(f"CHA: {old_cha}")
+            print()
+
+            keep_choice = input("Keep NEW rolls? (y/n): ").strip().lower()
+
+            if keep_choice in ['y', 'yes']:
+                strength = new_str
+                dexterity = new_dex
+                constitution = new_con
+                intelligence = new_int
+                wisdom = new_wis
+                charisma = new_cha
+                print("✓ Keeping new rolls!\n")
+            else:
+                print("✓ Keeping previous rolls!\n")
+
+        print("Final ability scores:")
+        print(f"STR: {strength}")
+        print(f"DEX: {dexterity}")
+        print(f"CON: {constitution}")
+        print(f"INT: {intelligence}")
+        print(f"WIS: {wisdom}")
+        print(f"CHA: {charisma}")
+        print()
+
         # Roll exceptional strength if Fighter with 18 STR
         strength_percentile = 0
 
