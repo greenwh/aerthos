@@ -328,7 +328,15 @@ class GameState:
         if not command.target:
             return {'success': False, 'message': "Cast what spell?"}
 
-        result = self.magic_system.cast_spell(self.player, command.target, self.active_monsters)
+        # Build targets list - include player for healing spells
+        targets = []
+        if self.active_monsters:
+            targets = self.active_monsters
+        else:
+            # If no monsters (out of combat), allow casting on self
+            targets = [self.player]
+
+        result = self.magic_system.cast_spell(self.player, command.target, targets)
         return {'success': result['success'], 'message': result['narrative']}
 
     def _handle_search(self, command: Command) -> Dict:

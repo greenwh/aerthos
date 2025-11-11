@@ -284,9 +284,6 @@ class CharacterCreator:
             player.equip_armor(chain)
             player.equipment.shield = shield
 
-            player.ac = 5  # Chain mail
-            player.ac -= 1  # Shield
-
         elif char_class == 'Cleric':
             mace = Weapon(name="Mace", weight=8, damage_sm="1d6", damage_l="1d6", speed_factor=7)
             chain = Armor(name="Chain Mail", weight=30, ac_bonus=5)
@@ -299,9 +296,6 @@ class CharacterCreator:
             player.equip_weapon(mace)
             player.equip_armor(chain)
             player.equipment.shield = shield
-
-            player.ac = 5
-            player.ac -= 1
 
         elif char_class == 'Magic-User':
             staff = Weapon(name="Staff", weight=4, damage_sm="1d6", damage_l="1d6", speed_factor=4)
@@ -321,8 +315,6 @@ class CharacterCreator:
 
             player.equip_weapon(shortsword)
             player.equip_armor(leather)
-
-            player.ac = 8  # Leather armor
 
         # Equip a torch
         torch = LightSource(name="Torch", weight=1, burn_time_turns=6)
