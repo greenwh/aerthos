@@ -33,13 +33,13 @@ class DiceRoller:
                 return eval(dice_string)
             return int(dice_string)
 
-        # Parse dice notation: XdY+Z or XdY-Z or XdY
-        match = re.match(r'(\d+)d(\d+)([+\-]\d+)?', dice_string)
+        # Parse dice notation: XdY+Z or XdY-Z or XdY or dY (assumes 1d if no number before d)
+        match = re.match(r'(\d*)d(\d+)([+\-]\d+)?', dice_string)
 
         if not match:
             raise ValueError(f"Invalid dice notation: {dice_string}")
 
-        num_dice = int(match.group(1))
+        num_dice = int(match.group(1)) if match.group(1) else 1  # Default to 1 die
         die_size = int(match.group(2))
         modifier = int(match.group(3)) if match.group(3) else 0
 
