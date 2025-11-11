@@ -11,8 +11,8 @@ from .character import Character
 class Item:
     """Base item class"""
     name: str
-    item_type: str
-    weight: float
+    item_type: str = "generic"  # Default item type
+    weight: float = 0.0
     properties: Dict = field(default_factory=dict)
     description: str = ""
 
