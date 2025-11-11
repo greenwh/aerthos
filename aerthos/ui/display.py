@@ -40,8 +40,9 @@ class Display:
 
         for para in paragraphs:
             if para.strip():
-                # Preserve lines that start with special characters
-                if para.startswith(('═', '─', ' ')):
+                # Preserve lines that start with special characters or contain ASCII art
+                if para.startswith(('═', '─', ' ', '[', '│')) or any(c in para for c in ['│', '─', '↑', '↓', '←', '→']):
+                    # This is formatted content (ASCII art, maps, tables) - print as-is
                     print(para)
                 else:
                     wrapped = textwrap.fill(para, width=width)
