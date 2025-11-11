@@ -517,16 +517,25 @@ class GameState:
     def _check_encounters(self, trigger_type: str) -> Optional[str]:
         """Check for and trigger encounters"""
 
+        # Get encounter data from dungeon
+        room_encounter_data = self.dungeon.get_room_encounters(self.current_room.id)
+
         # Load encounters from room
         encounters = self.encounter_manager.load_room_encounters(
-            {'id': self.current_room.id, 'encounters': []}
+            {'id': self.current_room.id, 'encounters': room_encounter_data}
         )
 
         # Get triggered encounters
         triggered = self.encounter_manager.get_triggered_encounters(encounters, trigger_type)
 
         for encounter in triggered:
+            # Check if already completed
+            if encounter.encounter_id in self.current_room.encounters_completed:
+                continue
+
             if isinstance(encounter, CombatEncounter):
+                # Mark as completed so it doesn't trigger again
+                self.current_room.encounters_completed.append(encounter.encounter_id)
                 return self._start_combat(encounter)
 
         return None
