@@ -107,11 +107,21 @@ class Inventory:
         return True
 
     def remove_item(self, item_name: str) -> Optional[Item]:
-        """Remove and return item by name"""
+        """Remove and return item by name (supports partial matching)"""
+        search_lower = item_name.lower()
+
+        # First try exact match
         for item in self.items:
-            if item.name.lower() == item_name.lower():
+            if item.name.lower() == search_lower:
                 self.items.remove(item)
                 return item
+
+        # Then try partial match (search term is in item name)
+        for item in self.items:
+            if search_lower in item.name.lower():
+                self.items.remove(item)
+                return item
+
         return None
 
     def has_item(self, item_name: str) -> bool:
@@ -119,10 +129,19 @@ class Inventory:
         return any(item.name.lower() == item_name.lower() for item in self.items)
 
     def get_item(self, item_name: str) -> Optional[Item]:
-        """Get item by name without removing"""
+        """Get item by name without removing (supports partial matching)"""
+        search_lower = item_name.lower()
+
+        # First try exact match
         for item in self.items:
-            if item.name.lower() == item_name.lower():
+            if item.name.lower() == search_lower:
                 return item
+
+        # Then try partial match (search term is in item name)
+        for item in self.items:
+            if search_lower in item.name.lower():
+                return item
+
         return None
 
     def get_items_by_type(self, item_type: str) -> List[Item]:
