@@ -110,6 +110,8 @@ class GameState:
             'rest': self._handle_rest,
             'inventory': self._handle_inventory,
             'status': self._handle_status,
+            'spells': self._handle_spells,
+            'memorize': self._handle_memorize,
             'map': self._handle_map,
             'directions': self._handle_directions,
             'help': self._handle_help,
@@ -473,6 +475,69 @@ class GameState:
         from ..ui.character_sheet import CharacterSheet
         sheet = CharacterSheet.format_character(self.player)
         return {'success': True, 'message': sheet}
+
+    def _handle_spells(self, command: Command) -> Dict:
+        """Show known spells and memorized spells"""
+
+        if not self.player.spells_known and not self.player.spells_memorized:
+            return {'success': True, 'message': "You don't know any spells."}
+
+        lines = []
+        lines.append("═══ SPELLBOOK ═══\n")
+
+        # Show known spells
+        if self.player.spells_known:
+            lines.append("KNOWN SPELLS:")
+            for spell in self.player.spells_known:
+                lines.append(f"  {spell.name} (Level {spell.level}): {spell.description}")
+            lines.append("")
+
+        # Show memorized spells
+        if self.player.spells_memorized:
+            lines.append("MEMORIZED SPELLS:")
+            for slot in self.player.spells_memorized:
+                if slot.spell:
+                    status = "USED" if slot.is_used else "READY"
+                    lines.append(f"  [{status}] {slot.spell.name}")
+                else:
+                    lines.append(f"  [EMPTY] Level {slot.level} slot")
+            lines.append("")
+
+        return {'success': True, 'message': '\n'.join(lines)}
+
+    def _handle_memorize(self, command: Command) -> Dict:
+        """Memorize a spell into an empty slot"""
+
+        if not command.target:
+            return {'success': False, 'message': "Memorize what spell? Use: memorize <spell name>"}
+
+        # Find the spell in known spells
+        spell_name = command.target
+        found_spell = None
+
+        for spell in self.player.spells_known:
+            if spell_name.lower() in spell.name.lower():
+                found_spell = spell
+                break
+
+        if not found_spell:
+            return {'success': False, 'message': f"You don't know a spell called '{spell_name}'."}
+
+        # Find an empty slot of the correct level
+        empty_slot = None
+        for slot in self.player.spells_memorized:
+            if slot.level == found_spell.level and slot.spell is None:
+                empty_slot = slot
+                break
+
+        if not empty_slot:
+            return {'success': False, 'message': f"You don't have any empty level {found_spell.level} spell slots!"}
+
+        # Memorize the spell
+        empty_slot.spell = found_spell
+        empty_slot.is_used = False
+
+        return {'success': True, 'message': f"You memorize {found_spell.name}."}
 
     def _handle_map(self, command: Command) -> Dict:
         """Show auto-map"""

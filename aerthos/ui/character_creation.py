@@ -214,6 +214,9 @@ class CharacterCreator:
             for _ in range(num_slots):
                 player.add_spell_slot(1)
 
+            # Give starting spells
+            self._add_starting_spells(player, char_class)
+
         print("\n═══════════════════════════════════════════════════════════════")
         print(f"Character created: {name} the {race} {char_class}")
         print("═══════════════════════════════════════════════════════════════")
@@ -324,3 +327,55 @@ class CharacterCreator:
         # Equip a torch
         torch = LightSource(name="Torch", weight=1, burn_time_turns=6)
         player.equip_light(torch)
+
+    def _add_starting_spells(self, player: PlayerCharacter, char_class: str):
+        """Add starting spells for spellcasters"""
+
+        if char_class == 'Magic-User':
+            # Magic-Users start with 2-4 level 1 spells
+            # Give them a curated starting set
+            starting_spell_ids = ['magic_missile', 'sleep', 'detect_magic']
+
+            print("\nStarting Spells:")
+            for spell_id in starting_spell_ids:
+                if spell_id in self.game_data.spells:
+                    spell_data = self.game_data.spells[spell_id]
+                    spell = Spell(
+                        name=spell_data['name'],
+                        level=spell_data['level'],
+                        school=spell_data['school'],
+                        casting_time=spell_data['casting_time'],
+                        range=spell_data['range'],
+                        duration=spell_data['duration'],
+                        area_of_effect=spell_data['area'],
+                        saving_throw=spell_data['saving_throw'],
+                        components=spell_data['components'],
+                        description=spell_data['description'],
+                        class_availability=spell_data['class_availability']
+                    )
+                    player.spells_known.append(spell)
+                    print(f"  - {spell.name}: {spell.description}")
+
+        elif char_class == 'Cleric':
+            # Clerics know all cleric spells of their level
+            # They don't need to learn them, they just pray
+            print("\nAs a Cleric, you have access to all level 1 Cleric spells.")
+            print("Use 'spells' to see available spells, 'memorize <spell>' to prepare them.")
+
+            for spell_id, spell_data in self.game_data.spells.items():
+                if 'Cleric' in spell_data['class_availability'] and spell_data['level'] == 1:
+                    spell = Spell(
+                        name=spell_data['name'],
+                        level=spell_data['level'],
+                        school=spell_data['school'],
+                        casting_time=spell_data['casting_time'],
+                        range=spell_data['range'],
+                        duration=spell_data['duration'],
+                        area_of_effect=spell_data['area'],
+                        saving_throw=spell_data['saving_throw'],
+                        components=spell_data['components'],
+                        description=spell_data['description'],
+                        class_availability=spell_data['class_availability']
+                    )
+                    player.spells_known.append(spell)
+                    print(f"  - {spell.name}")

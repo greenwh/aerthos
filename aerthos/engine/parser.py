@@ -42,6 +42,8 @@ class CommandParser:
         'rest': ['rest', 'sleep', 'camp'],
         'inventory': ['inventory', 'inv', 'i', 'items'],
         'status': ['status', 'stats', 'character', 'sheet', 'char'],
+        'spells': ['spells', 'spell', 'spellbook'],
+        'memorize': ['memorize', 'prepare', 'pray'],
         'map': ['map', 'm', 'automap'],
         'directions': ['directions', 'dirs', 'exits'],
         'save': ['save'],
@@ -94,8 +96,8 @@ class CommandParser:
             direction = self._extract_direction(tokens)
             return Command('move', target=direction)
 
-        # Handle inventory/status/map/directions commands (no target needed)
-        if action in ['inventory', 'status', 'map', 'directions', 'help', 'save', 'load', 'quit']:
+        # Handle inventory/status/map/directions/spells commands (no target needed)
+        if action in ['inventory', 'status', 'map', 'directions', 'spells', 'help', 'save', 'load', 'quit']:
             return Command(action)
 
         # Extract target
@@ -270,6 +272,11 @@ INFORMATION:
   status            - Show character status
   map / m           - Show auto-map
   look / examine    - Look around current room
+
+MAGIC (Spellcasters):
+  spells            - Show known spells and memorized spells
+  memorize <spell>  - Memorize a spell into an empty slot
+  cast <spell>      - Cast a memorized spell
 
 GAME MANAGEMENT:
   rest              - Rest for 8 hours (restore HP and spells)
