@@ -266,6 +266,11 @@ class GameState:
                 self.player.heal(healing)
                 self.player.inventory.remove_item(item.name)
                 return {'success': True, 'message': f"You drink the potion and heal {healing} HP!"}
+            elif item.name.lower().find('ration') != -1:
+                # Rations should be eaten during rest, not used directly
+                return {'success': False, 'message': "Rations are food for resting. Use the 'rest' command to eat and recover."}
+            else:
+                return {'success': False, 'message': f"You can't use the {item.name} like that."}
 
         return {'success': False, 'message': f"You can't use the {item.name} like that."}
 
