@@ -109,6 +109,7 @@ class GameState:
             'inventory': self._handle_inventory,
             'status': self._handle_status,
             'map': self._handle_map,
+            'directions': self._handle_directions,
             'help': self._handle_help,
             'save': self._handle_save,
             'load': self._handle_load,
@@ -392,6 +393,25 @@ class GameState:
         automap = AutoMap()
         map_str = automap.generate_map(self.current_room.id, self.dungeon)
         return {'success': True, 'message': map_str}
+
+    def _handle_directions(self, command: Command) -> Dict:
+        """Show available directions/exits"""
+
+        if not self.current_room.exits:
+            return {'success': True, 'message': "There are no obvious exits from here. You may be trapped!"}
+
+        # Build formatted list of exits
+        exits_list = []
+        for direction in ['north', 'south', 'east', 'west', 'up', 'down']:
+            if direction in self.current_room.exits:
+                exits_list.append(direction.capitalize())
+
+        if exits_list:
+            msg = "Available exits: " + ", ".join(exits_list)
+        else:
+            msg = "There are no obvious exits from here."
+
+        return {'success': True, 'message': msg}
 
     def _handle_help(self, command: Command) -> Dict:
         """Show help"""

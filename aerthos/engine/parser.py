@@ -42,6 +42,7 @@ class CommandParser:
         'inventory': ['inventory', 'inv', 'i', 'items'],
         'status': ['status', 'stats', 'character', 'sheet', 'char'],
         'map': ['map', 'm', 'automap'],
+        'directions': ['directions', 'dirs', 'exits'],
         'save': ['save'],
         'load': ['load'],
         'help': ['help', '?', 'commands'],
@@ -92,8 +93,8 @@ class CommandParser:
             direction = self._extract_direction(tokens)
             return Command('move', target=direction)
 
-        # Handle inventory/status/map commands (no target needed)
-        if action in ['inventory', 'status', 'map', 'help', 'save', 'load', 'quit']:
+        # Handle inventory/status/map/directions commands (no target needed)
+        if action in ['inventory', 'status', 'map', 'directions', 'help', 'save', 'load', 'quit']:
             return Command(action)
 
         # Extract target
@@ -249,6 +250,7 @@ AERTHOS - COMMAND REFERENCE
 MOVEMENT:
   go <direction>    - Move in a direction (north, south, east, west, up, down)
   n, s, e, w        - Short forms for directions
+  directions / dirs - Show available exits from current room
 
 COMBAT:
   attack <target>   - Attack an enemy
