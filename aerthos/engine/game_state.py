@@ -105,6 +105,7 @@ class GameState:
             'equip': self._handle_equip,
             'cast': self._handle_cast,
             'search': self._handle_search,
+            'open': self._handle_open,
             'rest': self._handle_rest,
             'inventory': self._handle_inventory,
             'status': self._handle_status,
@@ -333,6 +334,80 @@ class GameState:
             messages.append("You don't find anything interesting.")
 
         return {'success': True, 'message': '\n'.join(messages)}
+
+    def _handle_open(self, command: Command) -> Dict:
+        """Handle opening locked containers"""
+
+        # Get encounters for this room
+        room_encounters = self.dungeon.get_room_encounters(self.current_room.id)
+
+        # Look for puzzle encounters (locked chests)
+        locked_chest = None
+        encounter_id = None
+        for i, enc_data in enumerate(room_encounters):
+            if enc_data.get('type') == 'puzzle' and enc_data.get('puzzle_type') == 'locked_chest':
+                encounter_id = f"{self.current_room.id}_puzzle_{i}"
+                # Check if already completed
+                if encounter_id not in self.current_room.encounters_completed:
+                    locked_chest = enc_data
+                    break
+
+        if not locked_chest:
+            # Check if already opened
+            if encounter_id and encounter_id in self.current_room.encounters_completed:
+                return {'success': False, 'message': "The chest is already open and empty."}
+            else:
+                return {'success': False, 'message': "There's nothing here to open."}
+
+        # Get difficulty
+        difficulty = locked_chest.get('difficulty', 30)
+
+        # Check if player is a thief with lockpicking skills
+        if self.player.char_class == 'Thief' and hasattr(self.player, 'thief_skills'):
+            # Thief can attempt to pick the lock
+            open_locks_skill = self.player.thief_skills.get('open_locks', 0)
+
+            # Roll percentile dice
+            roll = DiceRoller.roll('1d100')
+
+            # Adjust roll by difficulty
+            success_chance = open_locks_skill - (difficulty - 30)  # Base 30 difficulty = no modifier
+
+            messages = []
+            messages.append(f"You carefully examine the lock and work your picks...")
+            messages.append(f"[Open Locks: {success_chance}% | Rolled: {roll}]")
+
+            if roll <= success_chance:
+                # Success!
+                messages.append("\n🔓 Click! The lock opens!")
+
+                # Mark encounter as completed
+                self.current_room.encounters_completed.append(encounter_id)
+
+                # Give reward
+                reward_id = locked_chest.get('reward')
+                if reward_id == 'treasure_chest_1':
+                    # Treasure chest reward
+                    gold_found = 100 + DiceRoller.roll('3d20')
+                    self.player.gold += gold_found
+                    messages.append(f"\nInside the chest you find {gold_found} gold pieces!")
+
+                    # Maybe add a random item
+                    if DiceRoller.roll('1d6') >= 4:
+                        from ..entities.player import Item
+                        potion = Item(name="Potion of Healing", item_type="potion", weight=0.5,
+                                    properties={'healing': '2d4+2'})
+                        self.player.inventory.add_item(potion)
+                        messages.append("You also find a Potion of Healing!")
+
+                return {'success': True, 'message': '\n'.join(messages)}
+            else:
+                # Failed
+                messages.append("\n❌ Try as you might, you can't pick the lock. Perhaps with more experience...")
+                return {'success': False, 'message': '\n'.join(messages)}
+        else:
+            # Not a thief
+            return {'success': False, 'message': "The chest is locked tight. You'd need a thief's skills to pick this lock."}
 
     def _handle_rest(self, command: Command) -> Dict:
         """Handle resting"""

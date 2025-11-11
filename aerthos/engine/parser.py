@@ -38,6 +38,7 @@ class CommandParser:
         'equip': ['equip', 'wear', 'wield', 'don'],
         'cast': ['cast'],
         'search': ['search', 'look', 'examine', 'inspect', 'check'],
+        'open': ['open', 'unlock', 'pick'],
         'rest': ['rest', 'sleep', 'camp'],
         'inventory': ['inventory', 'inv', 'i', 'items'],
         'status': ['status', 'stats', 'character', 'sheet', 'char'],
@@ -262,6 +263,7 @@ INTERACTION:
   use <item>        - Use/consume an item (potions, scrolls)
   equip <item>      - Equip a weapon, armor, or light a torch/lantern
   search            - Search for traps or hidden items
+  open <target>     - Open/unlock a chest or door (thieves can pick locks)
 
 INFORMATION:
   inventory / i     - Show your inventory

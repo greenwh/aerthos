@@ -11,10 +11,11 @@ from .room import Room
 class Dungeon:
     """Manages the dungeon layout and navigation"""
 
-    def __init__(self, name: str, start_room_id: str, rooms: Dict[str, Room]):
+    def __init__(self, name: str, start_room_id: str, rooms: Dict[str, Room], room_data: Dict = None):
         self.name = name
         self.start_room_id = start_room_id
         self.rooms = rooms
+        self.room_data = room_data or {}  # Store raw room data for encounter info
 
     @classmethod
     def load_from_file(cls, filepath: str) -> 'Dungeon':
@@ -48,7 +49,7 @@ class Dungeon:
             )
             rooms[room_id] = room
 
-        return cls(name, start_room_id, rooms)
+        return cls(name, start_room_id, rooms, data['rooms'])
 
     def get_room(self, room_id: str) -> Optional[Room]:
         """Get a room by ID"""
@@ -83,6 +84,12 @@ class Dungeon:
     def get_explored_rooms(self) -> List[Room]:
         """Get all explored rooms"""
         return [room for room in self.rooms.values() if room.is_explored]
+
+    def get_room_encounters(self, room_id: str) -> List[Dict]:
+        """Get encounter data for a room"""
+        if room_id in self.room_data:
+            return self.room_data[room_id].get('encounters', [])
+        return []
 
     def serialize(self) -> Dict:
         """Serialize dungeon state for saving"""
