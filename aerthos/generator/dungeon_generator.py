@@ -312,20 +312,21 @@ class DungeonGenerator:
         rooms = {}
         theme = config.dungeon_theme
 
-        for room_id, connections in room_graph.items():
-            # Convert connections to directional exits
-            exits = self._assign_directions(room_id, connections, room_graph)
-
+        # Initialize all rooms with empty exits
+        for room_id in room_graph.keys():
             rooms[room_id] = {
                 'id': room_id,
                 'title': 'Unexplored Chamber',  # Will be replaced
                 'description': '',  # Will be filled in later
                 'light_level': 'dark',
-                'exits': exits,
+                'exits': {},
                 'encounters': [],
                 'items': [],
                 'safe_rest': False
             }
+
+        # Assign bidirectional exits
+        self._assign_bidirectional_exits(rooms, room_graph)
 
         # Add starting items to first room
         if config.starting_items:
@@ -334,43 +335,80 @@ class DungeonGenerator:
 
         return rooms
 
-    def _assign_directions(self, room_id: str, connections: Set[str],
-                          full_graph: Dict[str, Set[str]]) -> Dict[str, str]:
+    def _assign_bidirectional_exits(self, rooms: Dict, room_graph: Dict[str, Set[str]]):
         """
-        Assign cardinal directions to connections
+        Assign bidirectional exits ensuring spatial consistency
 
-        Uses room numbering to prefer logical directions
-        (lower numbers = south/west, higher = north/east)
+        If room A has "east -> room B", then room B has "west -> room A"
         """
-        exits = {}
-        current_num = int(room_id.split('_')[1])
+        # Track which room pairs we've already processed
+        processed_pairs = set()
 
-        # Sort connections by room number
-        sorted_connections = sorted(connections, key=lambda r: int(r.split('_')[1]))
+        # Track available directions for each room
+        available_dirs = {room_id: ['north', 'south', 'east', 'west']
+                         for room_id in room_graph.keys()}
 
-        available_dirs = ['north', 'south', 'east', 'west']
+        # Direction opposites
+        opposites = {
+            'north': 'south',
+            'south': 'north',
+            'east': 'west',
+            'west': 'east'
+        }
 
-        for conn in sorted_connections:
-            conn_num = int(conn.split('_')[1])
+        # Sort rooms by number for consistent ordering
+        sorted_rooms = sorted(room_graph.keys(), key=lambda r: int(r.split('_')[1]))
 
-            if conn_num < current_num:
-                # Previous room - prefer south or west
-                direction = 'south' if 'south' in available_dirs else (
-                    'west' if 'west' in available_dirs else available_dirs[0]
-                )
-            else:
-                # Next room - prefer north or east
-                direction = 'north' if 'north' in available_dirs else (
-                    'east' if 'east' in available_dirs else available_dirs[0]
-                )
+        for room_id in sorted_rooms:
+            room_num = int(room_id.split('_')[1])
 
-            exits[direction] = conn
-            available_dirs.remove(direction)
+            for connected_id in room_graph[room_id]:
+                # Create a canonical pair identifier (always smaller room first)
+                pair = tuple(sorted([room_id, connected_id],
+                                   key=lambda r: int(r.split('_')[1])))
 
-            if not available_dirs:
-                break
+                if pair in processed_pairs:
+                    continue
 
-        return exits
+                processed_pairs.add(pair)
+
+                # Determine direction based on room numbering
+                conn_num = int(connected_id.split('_')[1])
+
+                # Choose direction for the connection
+                direction = None
+
+                if conn_num < room_num:
+                    # Connected room has lower number - prefer south or west from current
+                    if 'south' in available_dirs[room_id] and 'north' in available_dirs[connected_id]:
+                        direction = 'south'
+                    elif 'west' in available_dirs[room_id] and 'east' in available_dirs[connected_id]:
+                        direction = 'west'
+                else:
+                    # Connected room has higher number - prefer north or east from current
+                    if 'north' in available_dirs[room_id] and 'south' in available_dirs[connected_id]:
+                        direction = 'north'
+                    elif 'east' in available_dirs[room_id] and 'west' in available_dirs[connected_id]:
+                        direction = 'east'
+
+                # If preferred direction not available, use any available pair
+                if not direction:
+                    for dir1 in available_dirs[room_id]:
+                        dir2 = opposites[dir1]
+                        if dir2 in available_dirs[connected_id]:
+                            direction = dir1
+                            break
+
+                if direction:
+                    opposite_dir = opposites[direction]
+
+                    # Assign bidirectional exits
+                    rooms[room_id]['exits'][direction] = connected_id
+                    rooms[connected_id]['exits'][opposite_dir] = room_id
+
+                    # Mark directions as used
+                    available_dirs[room_id].remove(direction)
+                    available_dirs[connected_id].remove(opposite_dir)
 
     def _populate_encounters(self, rooms: Dict, config: DungeonConfig):
         """Add encounters (combat, traps) to rooms"""
