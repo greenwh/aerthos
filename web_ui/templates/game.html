@@ -72,11 +72,25 @@
             padding: 8px;
             border: 1px solid #0a0;
             background-color: #002200;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .party-member:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .party-member.active {
+            background-color: #004400;
+            border: 2px solid #ff0;
+            box-shadow: 0 0 10px #ff0;
         }
 
         .party-member.dead {
             color: #f00;
             border-color: #f00;
+            cursor: not-allowed;
         }
 
         .member-name {
@@ -122,14 +136,34 @@
             background-color: #001a00;
             border: 2px solid #0f0;
             padding: 10px;
-            height: 250px;
+            height: 300px;
             overflow: auto;
         }
 
         .map-canvas {
-            font-size: 12px;
-            line-height: 1.2;
+            font-size: 14px;
+            line-height: 1.5;
+            display: inline-block;
             white-space: pre;
+        }
+
+        .map-room {
+            display: inline-block;
+            width: 60px;
+            height: 40px;
+            border: 1px solid #0a0;
+            background-color: #002200;
+            text-align: center;
+            padding: 5px;
+            font-size: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .map-room.current {
+            background-color: #004400;
+            border: 2px solid #ff0;
+            font-weight: bold;
         }
 
         .text-output {
@@ -175,11 +209,16 @@
             margin-bottom: 5px;
             border-bottom: 1px solid #0f0;
             padding-bottom: 3px;
+            color: #ff0;
         }
 
         .section-content {
             font-size: 12px;
             line-height: 1.5;
+        }
+
+        .stat-line {
+            margin: 2px 0;
         }
 
         .exit {
@@ -259,7 +298,7 @@
 
         <!-- Left: Party Panel -->
         <div class="party-panel">
-            <div class="party-title">PARTY ROSTER</div>
+            <div class="party-title">PARTY ROSTER (Click to Select)</div>
             <div id="party-roster">
                 <div class="party-member">
                     <div class="member-name">Starting new game...</div>
@@ -270,9 +309,9 @@
         <!-- Center: Map + Text Output -->
         <div class="main-display">
             <div class="map-view">
-                <div class="section-title">MAP</div>
+                <div class="section-title">MAP (2D Layout)</div>
                 <div class="map-canvas" id="map-canvas">
-                    [Map will appear here]
+                    <div style="text-align: center; padding: 20px;">[Map will appear here]</div>
                 </div>
             </div>
             <div class="text-output" id="text-output">
@@ -282,17 +321,29 @@
                     <br><br>
                     Click "New Game" to begin your adventure!
                     <br><br>
+                    <strong>Controls:</strong><br>
+                    - <strong>Select Character:</strong> Click on party member in left panel<br>
+                    - <strong>Commands apply to selected character</strong><br>
+                    <br>
                     <strong>Commands:</strong><br>
                     - Movement: north, south, east, west (or n, s, e, w)<br>
                     - Combat: attack [monster]<br>
-                    - Actions: take [item], search, rest<br>
-                    - Info: status, inventory, map, help
+                    - Magic: cast [spell], memorize [spell]<br>
+                    - Actions: take [item], equip [item], search, rest<br>
+                    - Info: status, inventory, spells, map, help
                 </div>
             </div>
         </div>
 
         <!-- Right: Stats & Info Panel -->
         <div class="stats-panel">
+            <div class="panel-section">
+                <div class="section-title">ACTIVE CHARACTER</div>
+                <div class="section-content" id="active-char-info">
+                    <div>No character selected</div>
+                </div>
+            </div>
+
             <div class="panel-section">
                 <div class="section-title">CURRENT ROOM</div>
                 <div class="section-content" id="room-info">
@@ -308,16 +359,16 @@
             </div>
 
             <div class="panel-section">
-                <div class="section-title">STATUS</div>
-                <div class="section-content" id="status-info">
-                    <div>Ready to start</div>
+                <div class="section-title">INVENTORY (Selected Character)</div>
+                <div class="section-content" id="inventory-info">
+                    <div>---</div>
                 </div>
             </div>
         </div>
 
         <!-- Command Input -->
         <div class="command-input">
-            <div class="input-label">&gt; Enter Command:</div>
+            <div class="input-label">&gt; Enter Command (for selected character):</div>
             <div style="display: flex;">
                 <input type="text" id="command-box" class="command-box" placeholder="Type command here..." onkeypress="handleKeyPress(event)">
                 <button class="button" onclick="newGame()">New Game</button>
@@ -328,6 +379,8 @@
     <script>
         let sessionId = 'session_' + Date.now();
         let gameActive = false;
+        let activeCharacterIndex = 0;
+        let currentParty = [];
 
         function newGame() {
             fetch('/api/new_game', {
@@ -339,6 +392,7 @@
             .then(data => {
                 if (data.success) {
                     gameActive = true;
+                    activeCharacterIndex = 0;
                     updateDisplay(data.state, data.message);
                 } else {
                     alert('Error starting game: ' + data.error);
@@ -355,19 +409,37 @@
             fetch('/api/command', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({session_id: sessionId, command: command})
+                body: JSON.stringify({
+                    session_id: sessionId,
+                    command: command,
+                    active_character: activeCharacterIndex
+                })
             })
             .then(r => r.json())
             .then(data => {
                 if (data.success) {
                     updateDisplay(data.state, data.message);
+                    if (data.active_character !== undefined) {
+                        activeCharacterIndex = data.active_character;
+                    }
                 } else {
                     appendMessage('Error: ' + data.error);
                 }
             });
         }
 
+        function selectCharacter(index) {
+            if (!gameActive || index < 0 || index >= currentParty.length) return;
+
+            activeCharacterIndex = index;
+            updatePartyDisplay();
+            updateActiveCharacterPanel();
+            updateInventoryPanel();
+        }
+
         function updateDisplay(state, message) {
+            currentParty = state.party;
+
             // Update room info
             document.getElementById('text-output').innerHTML = `
                 <div class="room-title">${state.room.title}</div>
@@ -376,26 +448,10 @@
             `;
 
             // Update party roster
-            let partyHTML = '';
-            state.party.forEach(member => {
-                let hpPercent = (member.hp / member.hp_max) * 100;
-                let hpClass = hpPercent > 50 ? '' : (hpPercent > 25 ? 'low' : 'critical');
-                let deadClass = member.is_alive ? '' : 'dead';
+            updatePartyDisplay();
 
-                partyHTML += `
-                    <div class="party-member ${deadClass}">
-                        <div class="member-name">${member.name} [${member.formation.toUpperCase()}]</div>
-                        <div class="member-stats">
-                            ${member.race} ${member.class} (Lvl ${member.level})<br>
-                            HP: ${member.hp}/${member.hp_max}<br>
-                            AC: ${member.ac} | THAC0: ${member.thac0}<br>
-                            Gold: ${member.gold} gp
-                        </div>
-                        <div class="hp-bar"><div class="hp-fill ${hpClass}" style="width: ${hpPercent}%"></div></div>
-                    </div>
-                `;
-            });
-            document.getElementById('party-roster').innerHTML = partyHTML;
+            // Update active character panel
+            updateActiveCharacterPanel();
 
             // Update room info panel
             document.getElementById('room-info').innerHTML = `
@@ -410,20 +466,110 @@
             }
             document.getElementById('exits-info').innerHTML = exitsHTML || '<div>No exits</div>';
 
-            // Update status
-            let statusHTML = state.in_combat ? '<div style="color: #f00;">IN COMBAT!</div>' : '<div>Exploring</div>';
-            document.getElementById('status-info').innerHTML = statusHTML;
+            // Update inventory panel
+            updateInventoryPanel();
 
             // Update time
             document.getElementById('time-info').innerHTML = `Turn: ${state.time.turns} | Time: ${state.time.hours}:00`;
 
-            // Update map (simple text representation)
-            let mapHTML = '';
-            state.map.explored_rooms.forEach(room => {
-                let marker = room.is_current ? '[@]' : '[ ]';
-                mapHTML += `${marker} ${room.id}: ${room.title}\n`;
+            // Update 2D map
+            render2DMap(state.map);
+        }
+
+        function updatePartyDisplay() {
+            let partyHTML = '';
+            currentParty.forEach((member, index) => {
+                let hpPercent = (member.hp / member.hp_max) * 100;
+                let hpClass = hpPercent > 50 ? '' : (hpPercent > 25 ? 'low' : 'critical');
+                let deadClass = member.is_alive ? '' : 'dead';
+                let activeClass = index === activeCharacterIndex ? 'active' : '';
+
+                partyHTML += `
+                    <div class="party-member ${deadClass} ${activeClass}" onclick="selectCharacter(${index})">
+                        <div class="member-name">${index + 1}. ${member.name} [${member.formation.toUpperCase()}]</div>
+                        <div class="member-stats">
+                            ${member.race} ${member.class} (Lvl ${member.level})<br>
+                            HP: ${member.hp}/${member.hp_max}<br>
+                            AC: ${member.ac} | THAC0: ${member.thac0}<br>
+                            Gold: ${member.gold} gp
+                        </div>
+                        <div class="hp-bar"><div class="hp-fill ${hpClass}" style="width: ${hpPercent}%"></div></div>
+                    </div>
+                `;
             });
-            document.getElementById('map-canvas').textContent = mapHTML || '[No map data]';
+            document.getElementById('party-roster').innerHTML = partyHTML;
+        }
+
+        function updateActiveCharacterPanel() {
+            if (!currentParty || currentParty.length === 0) return;
+
+            let char = currentParty[activeCharacterIndex];
+            let html = `
+                <div class="stat-line"><strong>${char.name}</strong> the ${char.race} ${char.class}</div>
+                <div class="stat-line">Level ${char.level} | XP: ${char.xp}</div>
+                <div class="stat-line">HP: ${char.hp}/${char.hp_max}</div>
+                <div class="stat-line">AC: ${char.ac} | THAC0: ${char.thac0}</div>
+                <div class="stat-line">Gold: ${char.gold} gp</div>
+            `;
+            document.getElementById('active-char-info').innerHTML = html;
+        }
+
+        function updateInventoryPanel() {
+            if (!currentParty || currentParty.length === 0) return;
+
+            let char = currentParty[activeCharacterIndex];
+            let html = '<div style="font-size: 11px;">View full inventory: type "inventory" or "i"</div>';
+            document.getElementById('inventory-info').innerHTML = html;
+        }
+
+        function render2DMap(mapData) {
+            if (!mapData || !mapData.rooms) {
+                document.getElementById('map-canvas').innerHTML = '<div style="text-align: center; padding: 20px;">[No map data]</div>';
+                return;
+            }
+
+            // Find grid dimensions
+            let maxX = 0, maxY = 0;
+            for (let roomId in mapData.rooms) {
+                let room = mapData.rooms[roomId];
+                maxX = Math.max(maxX, room.x);
+                maxY = Math.max(maxY, room.y);
+            }
+
+            // Create grid
+            let grid = [];
+            for (let y = 0; y <= maxY; y++) {
+                grid[y] = [];
+                for (let x = 0; x <= maxX; x++) {
+                    grid[y][x] = null;
+                }
+            }
+
+            // Place rooms in grid
+            for (let roomId in mapData.rooms) {
+                let room = mapData.rooms[roomId];
+                grid[room.y][room.x] = room;
+            }
+
+            // Render as HTML table
+            let html = '<table style="border-collapse: separate; border-spacing: 5px;">';
+            for (let y = 0; y <= maxY; y++) {
+                html += '<tr>';
+                for (let x = 0; x <= maxX; x++) {
+                    let room = grid[y][x];
+                    if (room) {
+                        let currentClass = room.is_current ? 'current' : '';
+                        let marker = room.is_current ? '[@]' : '[ ]';
+                        html += `<td><div class="map-room ${currentClass}" title="${room.title}">${marker}<br>${room.id}</div></td>`;
+                    } else {
+                        html += '<td style="width: 60px; height: 40px;"></td>';
+                    }
+                }
+                html += '</tr>';
+            }
+            html += '</table>';
+
+            document.getElementById('map-canvas').innerHTML = html;
         }
 
         function appendMessage(msg) {

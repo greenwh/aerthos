@@ -91,10 +91,16 @@ def execute_command():
         data = request.json
         session_id = data.get('session_id', 'default')
         command_text = data.get('command', '')
+        active_character_index = data.get('active_character', 0)
 
         game_state = active_games.get(session_id)
         if not game_state:
             return jsonify({'success': False, 'error': 'No active game'})
+
+        # Switch to the active character if party exists
+        if hasattr(game_state, 'party') and game_state.party:
+            if 0 <= active_character_index < len(game_state.party.members):
+                game_state.player = game_state.party.members[active_character_index]
 
         # Parse and execute command
         from aerthos.engine.parser import CommandParser
@@ -106,7 +112,8 @@ def execute_command():
         return jsonify({
             'success': True,
             'message': result.get('message', ''),
-            'state': get_game_state_json(game_state)
+            'state': get_game_state_json(game_state),
+            'active_character': active_character_index
         })
 
     except Exception as e:
@@ -158,21 +165,66 @@ def get_game_state_json(game_state):
 
 
 def build_map_data(game_state):
-    """Build map data for visualization"""
+    """Build map data for 2D visualization"""
 
-    explored = []
-    for room_id, room in game_state.dungeon.rooms.items():
-        if room.is_explored:
-            explored.append({
+    # Build a graph of room connections and calculate positions
+    explored = {}
+    current_id = game_state.current_room.id
+
+    # Start with current room at center
+    room_positions = {}
+    visited = set()
+
+    def calculate_positions(room_id, x=0, y=0):
+        """Recursively calculate room positions based on exits"""
+        if room_id in visited or room_id not in game_state.dungeon.rooms:
+            return
+
+        visited.add(room_id)
+        room = game_state.dungeon.rooms[room_id]
+
+        if not room.is_explored:
+            return
+
+        # Store position
+        room_positions[room_id] = {'x': x, 'y': y, 'room': room}
+
+        # Calculate neighbor positions based on cardinal directions
+        direction_offsets = {
+            'north': (0, -1),
+            'south': (0, 1),
+            'east': (1, 0),
+            'west': (-1, 0),
+            'up': (0, -1),
+            'down': (0, 1)
+        }
+
+        for direction, next_room_id in room.exits.items():
+            if next_room_id not in visited:
+                offset = direction_offsets.get(direction, (0, 0))
+                calculate_positions(next_room_id, x + offset[0], y + offset[1])
+
+    # Calculate positions starting from current room
+    calculate_positions(current_id, 0, 0)
+
+    # Convert to list format with normalized positions
+    if room_positions:
+        min_x = min(pos['x'] for pos in room_positions.values())
+        min_y = min(pos['y'] for pos in room_positions.values())
+
+        for room_id, pos_data in room_positions.items():
+            explored[room_id] = {
                 'id': room_id,
-                'title': room.title,
-                'exits': room.exits,
-                'is_current': room_id == game_state.current_room.id
-            })
+                'title': pos_data['room'].title,
+                'x': pos_data['x'] - min_x,
+                'y': pos_data['y'] - min_y,
+                'exits': pos_data['room'].exits,
+                'is_current': room_id == current_id
+            }
 
     return {
-        'explored_rooms': explored,
-        'current_room_id': game_state.current_room.id
+        'rooms': explored,
+        'current_room_id': current_id
     }
 
 
