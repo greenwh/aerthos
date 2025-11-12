@@ -43,8 +43,7 @@ def new_game():
 
         # For demo, create a simple party
         # In production, this would go through character creation
-        game_data = GameData()
-        game_data.load_all()
+        game_data = GameData.load_all()
 
         # Create demo party
         from aerthos.ui.character_creation import CharacterCreator

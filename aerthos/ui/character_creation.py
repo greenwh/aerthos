@@ -386,57 +386,96 @@ class CharacterCreator:
         """
 
         # Generate decent stats
-        strength = random.randint(12, 16)
-        dexterity = random.randint(12, 16)
-        constitution = random.randint(12, 16)
-        intelligence = random.randint(12, 16)
-        wisdom = random.randint(12, 16)
+        strength = random.randint(13, 16)
+        dexterity = random.randint(13, 16)
+        constitution = random.randint(13, 16)
+        intelligence = random.randint(13, 16)
+        wisdom = random.randint(13, 16)
         charisma = random.randint(10, 14)
 
-        # Optimize for class
+        # Optimize primary stat for class
         if char_class == 'Fighter':
-            strength = max(strength, 15)
+            strength = 16
         elif char_class == 'Cleric':
-            wisdom = max(wisdom, 15)
+            wisdom = 16
         elif char_class == 'Magic-User':
-            intelligence = max(intelligence, 15)
+            intelligence = 16
         elif char_class == 'Thief':
-            dexterity = max(dexterity, 15)
+            dexterity = 16
 
-        # Check class requirements
-        if not self._check_class_requirements(char_class, strength, dexterity, constitution,
-                                              intelligence, wisdom, charisma):
-            # Adjust stats to meet requirements
-            if char_class == 'Fighter':
-                strength = max(strength, 9)
-            elif char_class == 'Cleric':
-                wisdom = max(wisdom, 9)
-            elif char_class == 'Magic-User':
-                intelligence = max(intelligence, 9)
-            elif char_class == 'Thief':
-                dexterity = max(dexterity, 9)
+        strength_percentile = 0
 
-        # Apply racial modifiers
-        race_mods = self._get_race_modifiers(race)
-        strength += race_mods.get('strength', 0)
-        dexterity += race_mods.get('dexterity', 0)
-        constitution += race_mods.get('constitution', 0)
-        intelligence += race_mods.get('intelligence', 0)
-        wisdom += race_mods.get('wisdom', 0)
-        charisma += race_mods.get('charisma', 0)
+        # Apply racial modifiers (same as main character creation)
+        if race == 'Elf':
+            dexterity += 1
+            constitution -= 1
+        elif race == 'Dwarf':
+            constitution += 1
+            charisma -= 1
+        elif race == 'Halfling':
+            dexterity += 1
+            strength -= 1
 
-        # Create character
-        player = self._create_character_instance(
-            name, race, char_class, strength, dexterity,
-            constitution, intelligence, wisdom, charisma, strength_percentile=50
+        # Handle exceptional strength for Fighters
+        if char_class == 'Fighter' and strength == 18:
+            strength_percentile = 50
+
+        # Roll HP
+        class_data = self.game_data.classes[char_class]
+        hit_die = class_data['hit_die']
+        hp = max(1, DiceRoller.roll(hit_die))
+
+        # Apply CON bonus
+        con_bonus = self._get_con_bonus(constitution)
+        hp = max(1, hp + con_bonus)
+
+        # Get class-specific data
+        saves = class_data['saves']
+        thac0 = class_data['thac0_base']
+
+        # Get XP needed for level 2
+        xp_to_level_2 = XP_TABLES.get(char_class, [0, 2000])[1]
+
+        # Create character (same as main method)
+        player = PlayerCharacter(
+            name=name,
+            race=race,
+            char_class=char_class,
+            level=1,
+            strength=strength,
+            dexterity=dexterity,
+            constitution=constitution,
+            intelligence=intelligence,
+            wisdom=wisdom,
+            charisma=charisma,
+            strength_percentile=strength_percentile,
+            hp_current=hp,
+            hp_max=hp,
+            ac=10,
+            thac0=thac0,
+            save_poison=saves['poison'],
+            save_rod_staff_wand=saves['rod_staff_wand'],
+            save_petrify_paralyze=saves['petrify_paralyze'],
+            save_breath=saves['breath'],
+            save_spell=saves['spell'],
+            xp=0,
+            xp_to_next_level=xp_to_level_2
         )
 
         # Add starting equipment
         self._add_starting_equipment(player, char_class)
 
-        # Add starting spells
+        # Add thief skills if thief
+        if char_class == 'Thief':
+            player.thief_skills = class_data['skills'].copy()
+
+        # Add spell slots if spellcaster
         if char_class in ['Magic-User', 'Cleric']:
-            # Silently add spells for quick creation
+            num_slots = class_data['spell_slots_level_1'][0]
+            for _ in range(num_slots):
+                player.add_spell_slot(1)
+
+            # Add starting spells (silently for quick creation)
             if char_class == 'Magic-User':
                 for spell_id in ['magic_missile', 'sleep']:
                     if spell_id in self.game_data.spells:
