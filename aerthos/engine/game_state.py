@@ -805,6 +805,7 @@ class GameState:
                 damage_sm=item_data['damage_sm'],
                 damage_l=item_data['damage_l'],
                 speed_factor=item_data['speed_factor'],
+                magic_bonus=item_data.get('magic_bonus', 0),
                 properties={'cost_gp': item_data.get('cost_gp', 0)},
                 description=item_data.get('description', '')
             )
@@ -813,6 +814,7 @@ class GameState:
                 name=item_data['name'],
                 weight=item_data['weight'],
                 ac_bonus=item_data['ac_bonus'],
+                magic_bonus=item_data.get('magic_bonus', 0),
                 properties={'cost_gp': item_data.get('cost_gp', 0)},
                 description=item_data.get('description', '')
             )

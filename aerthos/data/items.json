@@ -120,5 +120,134 @@
     "healing": "2d4+2",
     "cost_gp": 200,
     "description": "A red liquid that heals 2d4+2 hit points when drunk."
+  },
+  "longsword_plus1": {
+    "name": "Longsword +1",
+    "type": "weapon",
+    "weight": 4,
+    "damage_sm": "1d8",
+    "damage_l": "1d12",
+    "speed_factor": 5,
+    "magic_bonus": 1,
+    "cost_gp": 1000,
+    "description": "A finely crafted longsword with magical enchantments. +1 to hit and damage."
+  },
+  "longsword_plus2": {
+    "name": "Longsword +2",
+    "type": "weapon",
+    "weight": 4,
+    "damage_sm": "1d8",
+    "damage_l": "1d12",
+    "speed_factor": 5,
+    "magic_bonus": 2,
+    "cost_gp": 3000,
+    "description": "An exceptional longsword glowing with powerful enchantments. +2 to hit and damage."
+  },
+  "shortsword_plus1": {
+    "name": "Shortsword +1",
+    "type": "weapon",
+    "weight": 3,
+    "damage_sm": "1d6",
+    "damage_l": "1d8",
+    "speed_factor": 3,
+    "magic_bonus": 1,
+    "cost_gp": 800,
+    "description": "A magical shortsword that never dulls. +1 to hit and damage."
+  },
+  "dagger_plus1": {
+    "name": "Dagger +1",
+    "type": "weapon",
+    "weight": 1,
+    "damage_sm": "1d4",
+    "damage_l": "1d3",
+    "speed_factor": 2,
+    "magic_bonus": 1,
+    "cost_gp": 600,
+    "description": "A perfectly balanced magical dagger. +1 to hit and damage."
+  },
+  "dagger_plus2": {
+    "name": "Dagger +2",
+    "type": "weapon",
+    "weight": 1,
+    "damage_sm": "1d4",
+    "damage_l": "1d3",
+    "speed_factor": 2,
+    "magic_bonus": 2,
+    "cost_gp": 2000,
+    "description": "A wickedly sharp dagger humming with magical power. +2 to hit and damage."
+  },
+  "mace_plus1": {
+    "name": "Mace +1",
+    "type": "weapon",
+    "weight": 8,
+    "damage_sm": "1d6",
+    "damage_l": "1d6",
+    "speed_factor": 7,
+    "magic_bonus": 1,
+    "cost_gp": 900,
+    "description": "A holy mace blessed by divine power. +1 to hit and damage."
+  },
+  "leather_armor_plus1": {
+    "name": "Leather Armor +1",
+    "type": "armor",
+    "weight": 15,
+    "ac_bonus": 2,
+    "magic_bonus": 1,
+    "cost_gp": 1200,
+    "description": "Soft leather armor enchanted for extra protection. AC 7 (8 -1 magic)."
+  },
+  "chain_mail_plus1": {
+    "name": "Chain Mail +1",
+    "type": "armor",
+    "weight": 30,
+    "ac_bonus": 5,
+    "magic_bonus": 1,
+    "cost_gp": 2500,
+    "description": "Enchanted chain mail that moves like silk. AC 4 (5 -1 magic)."
+  },
+  "chain_mail_plus2": {
+    "name": "Chain Mail +2",
+    "type": "armor",
+    "weight": 30,
+    "ac_bonus": 5,
+    "magic_bonus": 2,
+    "cost_gp": 5000,
+    "description": "Masterwork chain mail glowing with protective magic. AC 3 (5 -2 magic)."
+  },
+  "plate_mail_plus1": {
+    "name": "Plate Mail +1",
+    "type": "armor",
+    "weight": 45,
+    "ac_bonus": 7,
+    "magic_bonus": 1,
+    "cost_gp": 6000,
+    "description": "Full plate armor forged by master smiths and enchanted. AC 2 (3 -1 magic)."
+  },
+  "plate_mail_plus2": {
+    "name": "Plate Mail +2",
+    "type": "armor",
+    "weight": 45,
+    "ac_bonus": 7,
+    "magic_bonus": 2,
+    "cost_gp": 12000,
+    "description": "Legendary plate armor that has turned aside countless blows. AC 1 (3 -2 magic)."
+  },
+  "shield_plus1": {
+    "name": "Shield +1",
+    "type": "armor",
+    "weight": 10,
+    "ac_bonus": 1,
+    "magic_bonus": 1,
+    "cost_gp": 800,
+    "description": "An enchanted shield that deflects blows. -2 AC total (shield -1, magic -1)."
+  },
+  "shield_plus2": {
+    "name": "Shield +2",
+    "type": "armor",
+    "weight": 10,
+    "ac_bonus": 1,
+    "magic_bonus": 2,
+    "cost_gp": 2500,
+    "description": "A powerful magical shield crackling with energy. -3 AC total (shield -1, magic -2)."
   }
 }

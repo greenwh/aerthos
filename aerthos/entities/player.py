@@ -34,6 +34,7 @@ class Weapon(Item):
     damage_sm: str = "1d4"  # vs Small/Medium
     damage_l: str = "1d4"   # vs Large
     speed_factor: int = 5
+    magic_bonus: int = 0    # +1, +2, etc. for magic weapons
 
     def __post_init__(self):
         self.item_type = 'weapon'
@@ -43,6 +44,7 @@ class Weapon(Item):
 class Armor(Item):
     """Armor with AC bonus"""
     ac_bonus: int = 0  # How much it improves AC
+    magic_bonus: int = 0  # +1, +2, etc. for magic armor (improves AC further)
 
     def __post_init__(self):
         self.item_type = 'armor'
@@ -163,12 +165,18 @@ class Equipment:
         self.light_source: Optional[LightSource] = None
 
     def get_total_ac(self, base_ac: int = 10) -> int:
-        """Calculate total AC from equipment"""
+        """Calculate total AC from equipment (including magic bonuses)"""
         ac = base_ac
         if self.armor:
             ac -= self.armor.ac_bonus
+            # Magic bonus further improves AC (lower is better)
+            if hasattr(self.armor, 'magic_bonus'):
+                ac -= self.armor.magic_bonus
         if self.shield:
             ac -= self.shield.ac_bonus
+            # Magic bonus further improves AC
+            if hasattr(self.shield, 'magic_bonus'):
+                ac -= self.shield.magic_bonus
         return ac
 
 
