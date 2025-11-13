@@ -618,8 +618,9 @@ def manage_character_roster(game_data: GameData):
                 print(f"{'Name':<20} {'Race':<10} {'Class':<12} {'Level':<6} {'HP':<10} {'ID':<10}")
                 print("─" * 70)
                 for char in characters:
-                    print(f"{char['name']:<20} {char['race']:<10} {char['class']:<12} "
-                          f"{char['level']:<6} {char['hp']:<10} {char['id']:<10}")
+                    hp_display = f"{char['hp_current']}/{char['hp_max']}"
+                    print(f"{char['name']:<20} {char['race']:<10} {char['char_class']:<12} "
+                          f"{char['level']:<6} {hp_display:<10} {char['id']:<10}")
                 print("═" * 70)
 
         elif choice == '3':
@@ -684,7 +685,7 @@ def manage_parties(game_data: GameData):
 
             print("\nAvailable Characters:")
             for i, char in enumerate(characters, 1):
-                print(f"{i}. {char['name']} ({char['race']} {char['class']} Level {char['level']})")
+                print(f"{i}. {char['name']} ({char['race']} {char['char_class']} Level {char['level']})")
 
             char_ids = []
             formation = []
