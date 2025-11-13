@@ -131,6 +131,11 @@
                 <span class="menu-item-title">New Game</span>
                 <span class="menu-item-desc">Quick Play - Random Party & Dungeon</span>
             </div>
+            <div class="menu-item" onclick="goToModernUI()">
+                <span class="menu-item-number">2.</span>
+                <span class="menu-item-title">Modern UI</span>
+                <span class="menu-item-desc">✨ New! 2D Interface with AD&D Styling</span>
+            </div>
         </div>
 
         <div class="menu-section">
@@ -206,6 +211,10 @@
 
         function goToSessionManager() {
             window.location.href = '/session_manager';
+        }
+
+        function goToModernUI() {
+            window.location.href = '/modern';
         }
     </script>
 </body>

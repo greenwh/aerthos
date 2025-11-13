@@ -39,6 +39,12 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/modern')
+def modern():
+    """Modern 2D interface with AD&D styling"""
+    return render_template('modern.html')
+
+
 @app.route('/game')
 def game():
     """Game interface"""
