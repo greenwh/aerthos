@@ -1159,7 +1159,7 @@ def run_game_with_party(party: Party, dungeon: Dungeon, game_data: GameData,
             result = game_state.execute_command(command)
 
             if result and result.get('message'):
-                display.print_message(result['message'])
+                display.show_message(result['message'])
 
             # Check for death
             if not player.is_alive:
