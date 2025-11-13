@@ -314,6 +314,10 @@
             <h2>Choose Your Race</h2>
             <p>Select a race. Some races require minimum ability scores.</p>
 
+            <div style="background-color: #003300; border: 2px solid #0a0; padding: 10px; margin-bottom: 20px; text-align: center;">
+                <strong>Your Rolled Stats:</strong> <span id="race-stats-display"></span>
+            </div>
+
             <div class="option-list" id="race-list">
                 <!-- Races will be populated here -->
             </div>
@@ -328,6 +332,10 @@
         <div class="creation-panel" id="panel-class">
             <h2>Choose Your Class</h2>
             <p>Select a class. Some classes require minimum ability scores and are restricted by race.</p>
+
+            <div style="background-color: #003300; border: 2px solid #0a0; padding: 10px; margin-bottom: 20px; text-align: center;">
+                <strong>Your Stats (after racial modifiers):</strong> <span id="class-stats-display"></span>
+            </div>
 
             <div class="option-list" id="class-list">
                 <!-- Classes will be populated here -->
@@ -457,6 +465,10 @@
 
         // Load available races
         async function loadRaces() {
+            // Update stats display
+            document.getElementById('race-stats-display').textContent =
+                `STR: ${charState.stats.str} DEX: ${charState.stats.dex} CON: ${charState.stats.con} INT: ${charState.stats.int} WIS: ${charState.stats.wis} CHA: ${charState.stats.cha}`;
+
             const response = await fetch('/api/character/get_races', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -505,6 +517,11 @@
 
             const data = await response.json();
             charState.statsAfterRace = data.stats_after_race || charState.stats;
+
+            // Update stats display with modified stats
+            const modStats = charState.statsAfterRace;
+            document.getElementById('class-stats-display').textContent =
+                `STR: ${modStats.str} DEX: ${modStats.dex} CON: ${modStats.con} INT: ${modStats.int} WIS: ${modStats.wis} CHA: ${modStats.cha}`;
 
             const classList = document.getElementById('class-list');
             classList.innerHTML = '';
