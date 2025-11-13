@@ -1065,7 +1065,7 @@ def manage_sessions(game_data: GameData):
                                   'turns_elapsed': session_data.get('turns_elapsed', 0),
                                   'total_hours': session_data.get('total_hours', 0)
                               },
-                              name)  # Pass session_id
+                              session_id)  # Pass session_id
             return  # Exit to main menu after game
 
         elif choice == '5':
