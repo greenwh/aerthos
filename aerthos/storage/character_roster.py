@@ -143,7 +143,7 @@ class CharacterRoster:
                         'intelligence': data.get('intelligence', 10),
                         'wisdom': data.get('wisdom', 10),
                         'charisma': data.get('charisma', 10),
-                        'inventory': data.get('inventory', []),
+                        'inventory': self._extract_item_names(data.get('inventory', [])),
                         'spells': data.get('spells', []),
                         'experience_points': data.get('xp', 0)
                     })
@@ -151,6 +151,30 @@ class CharacterRoster:
                 print(f"Error loading {filepath}: {e}")
 
         return sorted(characters, key=lambda c: c['name'])
+
+    def _extract_item_names(self, inventory) -> List[str]:
+        """
+        Extract item names from inventory data
+
+        Inventory can be either:
+        - List of strings (item names)
+        - List of dicts with 'name' key
+        """
+        if not inventory:
+            return []
+
+        item_names = []
+        for item in inventory:
+            if isinstance(item, str):
+                item_names.append(item)
+            elif isinstance(item, dict):
+                # Get name from dict
+                name = item.get('name', str(item))
+                item_names.append(name)
+            else:
+                item_names.append(str(item))
+
+        return item_names
 
     def delete_character(self, character_id: str) -> bool:
         """

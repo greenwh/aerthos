@@ -802,13 +802,16 @@ def create_scenario():
         if party_id:
             try:
                 party_mgr = PartyManager()
-                party_data = party_mgr.get_party(party_id)
+                party_data = party_mgr.load_party(party_id=party_id)
                 if party_data:
+                    # Get party object
+                    party = party_data['party']
                     # Calculate average level from party members
                     from aerthos.generator.monster_scaling import MonsterScaler
                     scaler = MonsterScaler()
-                    party_level = scaler.calculate_party_level(party_data.get('members', []))
-                    party_size = len(party_data.get('members', []))
+                    members_data = [{'level': m.level} for m in party.members]
+                    party_level = scaler.calculate_party_level(members_data)
+                    party_size = len(party.members)
             except Exception as e:
                 print(f"Warning: Could not load party {party_id}: {e}")
 
@@ -1181,15 +1184,20 @@ def move_in_dungeon(session_id):
         target_room_id = current_room.exits[direction]
         target_room = dungeon.rooms.get(target_room_id)
 
-        # Update session
+        # Update session data
         session_data['current_room'] = target_room_id
         explored = session_data.get('explored_rooms', [current_room_id])
         if target_room_id not in explored:
             explored.append(target_room_id)
         session_data['explored_rooms'] = explored
 
-        # Save session
-        session_mgr.sessions[session_id] = session_data
+        # Save updated session data back to file
+        from pathlib import Path
+        sessions_dir = Path.home() / '.aerthos' / 'sessions'
+        filepath = sessions_dir / f"session_{session_id}.json"
+        with open(filepath, 'w') as f:
+            import json
+            json.dump(session_data, f, indent=2)
 
         # Check for encounters
         encounter = None
