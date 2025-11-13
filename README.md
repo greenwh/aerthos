@@ -42,8 +42,8 @@ Requires Python 3.10 or higher.
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd Placeholder5
+git clone https://github.com/greenwh/aerthos.git
+cd aerthos
 
 # No additional dependencies needed - uses only Python standard library!
 ```

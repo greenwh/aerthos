@@ -13,7 +13,7 @@ Aerthos is a faithful recreation of AD&D 1e mechanics as a single-player text ad
 
 **Project Status:** Active development - core systems complete, recent work on session management and party systems
 
-**Project Location:** `/mnt/c/Users/tofm4/OneDrive/Development/Placeholder5`
+**Project Location:** `/mnt/c/Users/tofm4/OneDrive/Development/aerthos`
 
 ---
 
@@ -610,7 +610,7 @@ c0729ea - Fix solo session creation - show actual errors
 ```
 requirements.txt                    # Flask only (optional)
 .gitignore                         # Excludes save files, __pycache__
-Placeholder5-MS_Client_ID.txt     # MS client ID (gitignored)
+aerthos-MS_Client_ID.txt          # MS client ID (gitignored)
 ```
 
 ### Documentation Files
@@ -656,8 +656,8 @@ python --version  # Need 3.10+
 **Game won't start**
 ```bash
 # Ensure correct directory
-pwd  # Should end in Placeholder5
-cd /mnt/c/Users/tofm4/OneDrive/Development/Placeholder5
+pwd  # Should end in aerthos
+cd /mnt/c/Users/tofm4/OneDrive/Development/aerthos
 
 # Check file exists
 ls main.py

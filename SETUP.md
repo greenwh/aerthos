@@ -95,7 +95,7 @@ pip install Flask
 - Try `python` instead of `python3`
 
 **Game won't start**
-- Ensure you're in the Placeholder5 directory
+- Ensure you're in the aerthos directory
 - Check Python version: `python3 --version`
 
 ## Game Commands
