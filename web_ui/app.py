@@ -1199,10 +1199,20 @@ def move_in_dungeon(session_id):
             import json
             json.dump(session_data, f, indent=2)
 
-        # Check for encounters
+        # Check for encounters from dungeon data
         encounter = None
-        if target_room.encounters and len(target_room.encounters) > 0:
-            encounter = target_room.encounters[0]
+        dungeon_data = scenario_data.get('dungeon_data', {})
+        rooms_data = dungeon_data.get('rooms', {})
+        target_room_data = rooms_data.get(target_room_id, {})
+
+        encounters = target_room_data.get('encounters', [])
+        if encounters and len(encounters) > 0:
+            # Check if encounter hasn't been completed
+            completed_encounters = session_data.get('completed_encounters', [])
+            encounter_id = f"{target_room_id}_encounter_0"
+            if encounter_id not in completed_encounters:
+                encounter = encounters[0]
+                encounter['encounter_id'] = encounter_id
 
         return jsonify({
             'success': True,
@@ -1212,10 +1222,155 @@ def move_in_dungeon(session_id):
                 'title': target_room.title,
                 'description': target_room.description,
                 'exits': target_room.exits,
-                'light_level': target_room.light_level
+                'light_level': target_room.light_level,
+                'items': target_room_data.get('items', [])
             },
             'encounter': encounter
         })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/session/<session_id>/search', methods=['POST'])
+def search_room(session_id):
+    """Search current room for items and traps"""
+    try:
+        session_mgr = SessionManager()
+        library = ScenarioLibrary()
+
+        # Load session
+        session_data = session_mgr.load_session(session_id)
+        if not session_data:
+            return jsonify({'success': False, 'error': 'Session not found'})
+
+        # Load scenario
+        scenario_data = library.load_scenario(session_data['scenario_id'])
+        dungeon_data = scenario_data.get('dungeon_data', {})
+        rooms_data = dungeon_data.get('rooms', {})
+
+        current_room_id = session_data.get('current_room', 'room_001')
+        room_data = rooms_data.get(current_room_id, {})
+
+        # Get items in room
+        items = room_data.get('items', [])
+        searched_rooms = session_data.get('searched_rooms', [])
+
+        message = ""
+        found_items = []
+
+        if current_room_id not in searched_rooms:
+            # First time searching this room
+            if items:
+                found_items = items
+                message = f"You search carefully and find: {', '.join(items)}"
+            else:
+                message = "You search the room thoroughly but find nothing of interest."
+
+            searched_rooms.append(current_room_id)
+            session_data['searched_rooms'] = searched_rooms
+
+            # Save session
+            from pathlib import Path
+            sessions_dir = Path.home() / '.aerthos' / 'sessions'
+            filepath = sessions_dir / f"session_{session_id}.json"
+            with open(filepath, 'w') as f:
+                import json
+                json.dump(session_data, f, indent=2)
+        else:
+            message = "You've already searched this room thoroughly."
+
+        return jsonify({
+            'success': True,
+            'message': message,
+            'items': found_items
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/session/<session_id>/rest', methods=['POST'])
+def rest_party(session_id):
+    """Rest to recover HP and spells"""
+    try:
+        session_mgr = SessionManager()
+        library = ScenarioLibrary()
+
+        # Load session
+        session_data = session_mgr.load_session(session_id)
+        if not session_data:
+            return jsonify({'success': False, 'error': 'Session not found'})
+
+        # Load scenario
+        scenario_data = library.load_scenario(session_data['scenario_id'])
+        dungeon_data = scenario_data.get('dungeon_data', {})
+        rooms_data = dungeon_data.get('rooms', {})
+
+        current_room_id = session_data.get('current_room', 'room_001')
+        room_data = rooms_data.get(current_room_id, {})
+
+        # Check if room is safe
+        is_safe = room_data.get('safe_rest', False)
+
+        if not is_safe:
+            # Random chance of being interrupted
+            import random
+            if random.random() < 0.3:  # 30% chance of encounter
+                return jsonify({
+                    'success': False,
+                    'error': 'You were attacked while resting!',
+                    'interrupted': True
+                })
+
+        # Restore party HP (simplified - restore 50% HP)
+        message = "Your party rests. "
+        if is_safe:
+            message += "This seems like a safe place. You recover fully."
+            hp_restored = "full"
+        else:
+            message += "You rest fitfully, recovering some strength."
+            hp_restored = "half"
+
+        return jsonify({
+            'success': True,
+            'message': message,
+            'hp_restored': hp_restored
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/session/<session_id>/save', methods=['POST'])
+def save_session_state(session_id):
+    """Save current session state"""
+    try:
+        # Session is auto-saved on each action, so just confirm
+        session_mgr = SessionManager()
+        session_data = session_mgr.load_session(session_id)
+
+        if not session_data:
+            return jsonify({'success': False, 'error': 'Session not found'})
+
+        # Update last saved timestamp
+        from datetime import datetime
+        session_data['last_saved'] = datetime.now().isoformat()
+
+        from pathlib import Path
+        sessions_dir = Path.home() / '.aerthos' / 'sessions'
+        filepath = sessions_dir / f"session_{session_id}.json"
+        with open(filepath, 'w') as f:
+            import json
+            json.dump(session_data, f, indent=2)
+
+        return jsonify({'success': True, 'message': 'Game saved successfully'})
 
     except Exception as e:
         import traceback

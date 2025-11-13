@@ -557,14 +557,126 @@ function handleEncounter(encounter) {
     }
 }
 
-// Placeholder functions for actions
-function searchRoom() { alert('Search functionality coming soon!'); }
-function rest() { alert('Rest functionality coming soon!'); }
-function useItem() { alert('Item use coming soon!'); }
-function castSpell() { alert('Spell casting coming soon!'); }
-function viewInventory() { alert('Inventory view coming soon!'); }
-function viewCharacterSheets() { alert('Character sheets coming soon!'); }
-function saveGameSession() { alert('Save functionality coming soon!'); }
+// Action functions
+async function searchRoom() {
+    if (!AppState.activeSession) return;
+
+    try {
+        const response = await fetch(`/api/session/${AppState.activeSession.id}/search`, {
+            method: 'POST'
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            showMessage(data.message, 'info');
+            if (data.items && data.items.length > 0) {
+                // Items found - could add to party inventory
+                showMessage(`Found items: ${data.items.join(', ')}`, 'success');
+            }
+        } else {
+            showMessage(data.error || 'Search failed', 'error');
+        }
+    } catch (error) {
+        console.error('Error searching:', error);
+        showMessage('Error searching room', 'error');
+    }
+}
+
+async function rest() {
+    if (!AppState.activeSession) return;
+
+    if (!confirm('Rest your party? This may attract monsters if the room is not safe.')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/session/${AppState.activeSession.id}/rest`, {
+            method: 'POST'
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            showMessage(data.message, 'success');
+            // Reload session to get updated HP
+            await loadSession(AppState.activeSession.id);
+        } else {
+            if (data.interrupted) {
+                showMessage('Your rest was interrupted by monsters!', 'error');
+                // Could trigger combat here
+            } else {
+                showMessage(data.error || 'Rest failed', 'error');
+            }
+        }
+    } catch (error) {
+        console.error('Error resting:', error);
+        showMessage('Error resting', 'error');
+    }
+}
+
+function useItem() {
+    showMessage('Select an item from your inventory (feature coming soon)', 'info');
+}
+
+function castSpell() {
+    showMessage('Select a spell to cast (feature coming soon)', 'info');
+}
+
+function viewInventory() {
+    showMessage('Inventory management (feature coming soon)', 'info');
+}
+
+function viewCharacterSheets() {
+    showMessage('Character sheet view (feature coming soon)', 'info');
+}
+
+async function saveGameSession() {
+    if (!AppState.activeSession) return;
+
+    try {
+        const response = await fetch(`/api/session/${AppState.activeSession.id}/save`, {
+            method: 'POST'
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            showMessage(data.message || 'Game saved successfully!', 'success');
+        } else {
+            showMessage(data.error || 'Save failed', 'error');
+        }
+    } catch (error) {
+        console.error('Error saving:', error);
+        showMessage('Error saving game', 'error');
+    }
+}
+
+// Helper function to show messages to user
+function showMessage(message, type = 'info') {
+    // Create message element
+    const messageEl = document.createElement('div');
+    messageEl.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#4caf50' : type === 'error' ? '#f44336' : '#2196f3'};
+        color: white;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 10000;
+        font-family: 'Crimson Text', serif;
+        max-width: 400px;
+        animation: slideIn 0.3s ease;
+    `;
+    messageEl.textContent = message;
+
+    document.body.appendChild(messageEl);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        messageEl.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => messageEl.remove(), 300);
+    }, 3000);
+}
 function endSession() {
     if (confirm('Exit this session?')) {
         AppState.activeSession = null;
