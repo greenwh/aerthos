@@ -668,13 +668,8 @@ def load_session(session_id):
         web_session_id = 'session_' + session_id
         active_games[web_session_id] = game_state
 
-        # Update session last played time
-        session_mgr.save_session_state(
-            session_id,
-            session_data.get('current_room_id'),
-            session_data.get('turns_elapsed', 0),
-            session_data.get('total_hours', 0)
-        )
+        # Update session last played time (save_session_state expects game_state object)
+        session_mgr.save_session_state(session_id, game_state)
 
         return jsonify({
             'success': True,
