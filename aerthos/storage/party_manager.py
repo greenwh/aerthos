@@ -134,20 +134,37 @@ class PartyManager:
                 with open(filepath, 'r') as f:
                     data = json.load(f)
 
-                    # Get character names
-                    char_names = []
+                    # Get character info
+                    members = []
                     for char_id in data['character_ids']:
-                        char = self.character_roster.load_character(character_id=char_id)
-                        if char:
-                            char_names.append(char.name)
-                        else:
-                            char_names.append(f"Unknown ({char_id})")
+                        try:
+                            char = self.character_roster.load_character(character_id=char_id)
+                            if char:
+                                members.append({
+                                    'name': char.name,
+                                    'class': char.char_class,
+                                    'level': char.level
+                                })
+                            else:
+                                members.append({
+                                    'name': f"Unknown ({char_id[:6]})",
+                                    'class': 'Unknown',
+                                    'level': 0
+                                })
+                        except Exception as char_error:
+                            print(f"Error loading character {char_id}: {char_error}")
+                            members.append({
+                                'name': f"Error ({char_id[:6]})",
+                                'class': 'Error',
+                                'level': 0
+                            })
 
                     parties.append({
                         'id': data['id'],
                         'name': data['name'],
                         'size': data['size'],
-                        'members': char_names,
+                        'members': members,
+                        'formation': data.get('formation', ['front'] * data['size']),
                         'created': data['created']
                     })
             except Exception as e:

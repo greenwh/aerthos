@@ -487,29 +487,38 @@ def create_scenario():
         difficulty = data.get('difficulty', 'medium')
         if difficulty == 'easy':
             config = DungeonConfig(
-                min_rooms=5, max_rooms=8,
-                min_encounters=3, max_encounters=5,
-                treasure_chance=0.4
+                num_rooms=7,
+                combat_frequency=0.4,
+                trap_frequency=0.1,
+                party_level=1,
+                treasure_level='low'
             )
         elif difficulty == 'hard':
             config = DungeonConfig(
-                min_rooms=12, max_rooms=20,
-                min_encounters=8, max_encounters=15,
-                treasure_chance=0.5
+                num_rooms=18,
+                layout_type='network',
+                combat_frequency=0.7,
+                trap_frequency=0.3,
+                party_level=3,
+                treasure_level='high',
+                magic_item_chance=0.2
             )
         else:  # medium
             config = STANDARD_DUNGEON
 
-        # Generate dungeon
+        # Generate dungeon (returns dict)
         dungeon_data = generator.generate(config)
+
+        # Create Dungeon object to get metadata
         dungeon = Dungeon.load_from_generator(dungeon_data)
 
-        # Save to library
+        # Save scenario with the generated data
         library = ScenarioLibrary()
-        scenario_id = library.save_scenario(
+        scenario_id = library.save_scenario_from_data(
             data.get('name'),
             data.get('description', ''),
-            dungeon,
+            dungeon_data,
+            dungeon.name,
             difficulty
         )
 

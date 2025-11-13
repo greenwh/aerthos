@@ -64,6 +64,51 @@ class ScenarioLibrary:
 
         return scenario_id
 
+    def save_scenario_from_data(self, scenario_name: str, description: str, dungeon_data: dict,
+                                 dungeon_name: str, difficulty: str = 'medium', scenario_id: str = None) -> str:
+        """
+        Save a scenario from dungeon data dict (from generator)
+
+        Args:
+            scenario_name: Name for the scenario
+            description: Scenario description
+            dungeon_data: Dungeon data dict from generator
+            dungeon_name: Name of the dungeon
+            difficulty: Difficulty level (easy, medium, hard)
+            scenario_id: Optional ID (generates UUID if not provided)
+
+        Returns:
+            Scenario ID
+        """
+        if scenario_id is None:
+            scenario_id = str(uuid.uuid4())[:8]
+
+        if not scenario_name:
+            scenario_name = dungeon_name
+
+        # Count rooms from dungeon_data
+        num_rooms = len(dungeon_data.get('rooms', {}))
+        start_room = dungeon_data.get('start_room_id', 'room_0')
+
+        scenario_data = {
+            'id': scenario_id,
+            'name': scenario_name,
+            'description': description,
+            'difficulty': difficulty,
+            'created': datetime.now().isoformat(),
+            'dungeon_data': dungeon_data,
+            'num_rooms': num_rooms,
+            'start_room': start_room
+        }
+
+        filename = f"{scenario_name.lower().replace(' ', '_')}_{scenario_id}.json"
+        filepath = self.scenarios_dir / filename
+
+        with open(filepath, 'w') as f:
+            json.dump(scenario_data, f, indent=2)
+
+        return scenario_id
+
     def load_scenario(self, scenario_id: str = None, scenario_name: str = None) -> Optional[Dict]:
         """
         Load a scenario
