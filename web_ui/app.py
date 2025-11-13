@@ -18,8 +18,13 @@ from aerthos.engine.game_state import GameState, GameData
 from aerthos.entities.player import PlayerCharacter
 from aerthos.entities.party import Party
 from aerthos.ui.party_creation import PartyCreator
+from aerthos.ui.character_creation import CharacterCreator
 from aerthos.generator.dungeon_generator import DungeonGenerator
 from aerthos.generator.config import DungeonConfig, STANDARD_DUNGEON
+from aerthos.storage.character_roster import CharacterRoster
+from aerthos.storage.party_manager import PartyManager
+from aerthos.storage.scenario_library import ScenarioLibrary
+from aerthos.storage.session_manager import SessionManager
 
 app = Flask(__name__)
 app.secret_key = 'aerthos_secret_key_change_in_production'
@@ -30,8 +35,38 @@ active_games = {}
 
 @app.route('/')
 def index():
-    """Main game interface"""
+    """Main menu"""
+    return render_template('index.html')
+
+
+@app.route('/game')
+def game():
+    """Game interface"""
     return render_template('game.html')
+
+
+@app.route('/character_roster')
+def character_roster():
+    """Character roster management"""
+    return render_template('character_roster.html')
+
+
+@app.route('/party_manager')
+def party_manager():
+    """Party manager"""
+    return render_template('party_builder.html')
+
+
+@app.route('/scenario_library')
+def scenario_library():
+    """Scenario library"""
+    return render_template('scenario_library.html')
+
+
+@app.route('/session_manager')
+def session_manager():
+    """Session manager"""
+    return render_template('session_manager.html')
 
 
 @app.route('/api/new_game', methods=['POST'])
@@ -274,6 +309,346 @@ def build_map_data(game_state):
         'rooms': explored,
         'current_room_id': current_id
     }
+
+
+# ============================================================================
+# Character Roster API Endpoints
+# ============================================================================
+
+@app.route('/api/characters', methods=['GET'])
+def get_characters():
+    """Get all characters from roster"""
+    try:
+        roster = CharacterRoster()
+        characters = roster.list_characters()
+        return jsonify({'success': True, 'characters': characters})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/characters', methods=['POST'])
+def create_character():
+    """Create a new character"""
+    try:
+        data = request.json
+        game_data = GameData.load_all()
+        creator = CharacterCreator(game_data)
+
+        # Quick create character
+        character = creator.quick_create(
+            data.get('name'),
+            data.get('race'),
+            data.get('char_class')
+        )
+
+        # Save to roster
+        roster = CharacterRoster()
+        char_id = roster.save_character(character)
+
+        return jsonify({'success': True, 'character_id': char_id})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/characters/<char_id>', methods=['GET'])
+def get_character(char_id):
+    """Get a specific character"""
+    try:
+        roster = CharacterRoster()
+        character = roster.load_character(char_id)
+
+        if not character:
+            return jsonify({'success': False, 'error': 'Character not found'})
+
+        # Convert character to dict for JSON
+        char_data = {
+            'id': char_id,
+            'name': character.name,
+            'race': character.race,
+            'class': character.char_class,
+            'level': character.level,
+            'xp': character.xp,
+            'hp': f"{character.hp_current}/{character.hp_max}",
+            'ac': character.get_effective_ac(),
+            'thac0': character.thac0,
+            'gold': character.gold,
+            'weight': character.inventory.current_weight,
+            'weight_max': character.inventory.max_weight
+        }
+
+        return jsonify({'success': True, 'character': char_data})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/characters/<char_id>', methods=['DELETE'])
+def delete_character(char_id):
+    """Delete a character"""
+    try:
+        roster = CharacterRoster()
+        success = roster.delete_character(char_id)
+
+        if success:
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': 'Character not found'})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+# ============================================================================
+# Party Manager API Endpoints
+# ============================================================================
+
+@app.route('/api/parties', methods=['GET'])
+def get_parties():
+    """Get all parties"""
+    try:
+        party_mgr = PartyManager()
+        parties = party_mgr.list_parties()
+        return jsonify({'success': True, 'parties': parties})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/parties', methods=['POST'])
+def create_party():
+    """Create a new party"""
+    try:
+        data = request.json
+        party_mgr = PartyManager()
+
+        party_id = party_mgr.save_party(
+            data.get('name'),
+            data.get('character_ids'),
+            data.get('formation')
+        )
+
+        return jsonify({'success': True, 'party_id': party_id})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/parties/<party_id>', methods=['DELETE'])
+def delete_party(party_id):
+    """Delete a party"""
+    try:
+        party_mgr = PartyManager()
+        success = party_mgr.delete_party(party_id)
+
+        if success:
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': 'Party not found'})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+# ============================================================================
+# Scenario Library API Endpoints
+# ============================================================================
+
+@app.route('/api/scenarios', methods=['GET'])
+def get_scenarios():
+    """Get all scenarios"""
+    try:
+        library = ScenarioLibrary()
+        scenarios = library.list_scenarios()
+        return jsonify({'success': True, 'scenarios': scenarios})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/scenarios', methods=['POST'])
+def create_scenario():
+    """Generate and save a new scenario"""
+    try:
+        data = request.json
+        game_data = GameData.load_all()
+        generator = DungeonGenerator(game_data)
+
+        # Determine config based on difficulty
+        difficulty = data.get('difficulty', 'medium')
+        if difficulty == 'easy':
+            config = DungeonConfig(
+                min_rooms=5, max_rooms=8,
+                min_encounters=3, max_encounters=5,
+                treasure_chance=0.4
+            )
+        elif difficulty == 'hard':
+            config = DungeonConfig(
+                min_rooms=12, max_rooms=20,
+                min_encounters=8, max_encounters=15,
+                treasure_chance=0.5
+            )
+        else:  # medium
+            config = STANDARD_DUNGEON
+
+        # Generate dungeon
+        dungeon_data = generator.generate(config)
+        dungeon = Dungeon.load_from_generator(dungeon_data)
+
+        # Save to library
+        library = ScenarioLibrary()
+        scenario_id = library.save_scenario(
+            data.get('name'),
+            data.get('description', ''),
+            dungeon,
+            difficulty
+        )
+
+        return jsonify({'success': True, 'scenario_id': scenario_id})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/scenarios/<scenario_id>', methods=['DELETE'])
+def delete_scenario(scenario_id):
+    """Delete a scenario"""
+    try:
+        library = ScenarioLibrary()
+        success = library.delete_scenario(scenario_id)
+
+        if success:
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': 'Scenario not found'})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+# ============================================================================
+# Session Manager API Endpoints
+# ============================================================================
+
+@app.route('/api/sessions', methods=['GET'])
+def get_sessions():
+    """Get all sessions"""
+    try:
+        session_mgr = SessionManager()
+        sessions = session_mgr.list_sessions()
+        return jsonify({'success': True, 'sessions': sessions})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/sessions', methods=['POST'])
+def create_session():
+    """Create a new session"""
+    try:
+        data = request.json
+        session_mgr = SessionManager()
+
+        session_id = session_mgr.create_session(
+            data.get('name'),
+            data.get('party_id'),
+            data.get('scenario_id')
+        )
+
+        return jsonify({'success': True, 'session_id': session_id})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/sessions/<session_id>', methods=['DELETE'])
+def delete_session(session_id):
+    """Delete a session"""
+    try:
+        session_mgr = SessionManager()
+        success = session_mgr.delete_session(session_id)
+
+        if success:
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': 'Session not found'})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/sessions/<session_id>/load', methods=['POST'])
+def load_session(session_id):
+    """Load a game session for playing"""
+    try:
+        session_mgr = SessionManager()
+        party_mgr = PartyManager()
+        library = ScenarioLibrary()
+
+        # Load session data
+        session_data = session_mgr.load_session(session_id)
+        if not session_data:
+            return jsonify({'success': False, 'error': 'Session not found'})
+
+        # Load party
+        party = party_mgr.load_party(session_data['party_id'])
+        if not party:
+            return jsonify({'success': False, 'error': 'Party not found'})
+
+        # Load scenario
+        scenario_data = library.load_scenario(session_data['scenario_id'])
+        if not scenario_data:
+            return jsonify({'success': False, 'error': 'Scenario not found'})
+
+        # Create dungeon from scenario
+        dungeon = library.create_dungeon_from_scenario(scenario_data)
+
+        # Create game state
+        game_state = GameState(party.members[0], dungeon)
+        game_state.party = party
+        game_state.load_game_data()
+
+        # Restore session state if it exists
+        if session_data.get('current_room_id'):
+            game_state.current_room = dungeon.rooms.get(session_data['current_room_id'])
+
+        # Store in active games
+        web_session_id = 'session_' + session_id
+        active_games[web_session_id] = game_state
+
+        # Update session last played time
+        session_mgr.save_session_state(
+            session_id,
+            session_data.get('current_room_id'),
+            session_data.get('turns_elapsed', 0),
+            session_data.get('total_hours', 0)
+        )
+
+        return jsonify({
+            'success': True,
+            'message': f"Resuming {session_data['name']}...",
+            'state': get_game_state_json(game_state),
+            'web_session_id': web_session_id
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
 
 
 if __name__ == '__main__':

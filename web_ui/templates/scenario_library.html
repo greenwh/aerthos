@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenario Library - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f0;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .toolbar {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #002200;
+            border: 2px solid #0a0;
+        }
+
+        .create-btn {
+            background-color: #004400;
+            border: 2px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .create-btn:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .scenario-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 15px;
+        }
+
+        .scenario-card {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            transition: all 0.2s;
+        }
+
+        .scenario-card:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .scenario-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0f0;
+        }
+
+        .scenario-desc {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #0a0;
+            font-style: italic;
+        }
+
+        .scenario-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+            font-size: 12px;
+        }
+
+        .difficulty {
+            padding: 3px 8px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .difficulty.easy {
+            background-color: #004400;
+            color: #0f0;
+        }
+
+        .difficulty.medium {
+            background-color: #444400;
+            color: #ff0;
+        }
+
+        .difficulty.hard {
+            background-color: #440000;
+            color: #f00;
+        }
+
+        .scenario-actions {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            color: #0f0;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .action-btn:hover {
+            background-color: #002200;
+            border-color: #0f0;
+        }
+
+        .action-btn.delete {
+            color: #f00;
+            border-color: #a00;
+        }
+
+        .action-btn.delete:hover {
+            background-color: #330000;
+            border-color: #f00;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #0a0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0f0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0f0;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .form-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #0f0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #0a0;
+            background-color: #002200;
+            color: #0f0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .modal-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .modal-btn.primary {
+            background-color: #004400;
+            border-color: #0f0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #ff0;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        .generating {
+            text-align: center;
+            padding: 20px;
+            color: #ff0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">SCENARIO LIBRARY</div>
+            <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+        </div>
+
+        <div class="toolbar">
+            <button class="create-btn" onclick="showCreateModal()">⚔ Generate New Scenario</button>
+        </div>
+
+        <div id="scenarioList" class="scenario-list">
+            <div class="loading"><span class="blink">Loading scenarios...</span></div>
+        </div>
+    </div>
+
+    <!-- Create Scenario Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Generate New Scenario</div>
+            <form id="createForm">
+                <div class="form-group">
+                    <label class="form-label">Scenario Name:</label>
+                    <input type="text" id="scenarioName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description:</label>
+                    <textarea id="scenarioDesc" class="form-textarea" placeholder="Enter a description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Difficulty:</label>
+                    <select id="scenarioDifficulty" class="form-select" required>
+                        <option value="easy">Easy (5-8 rooms)</option>
+                        <option value="medium" selected>Medium (8-12 rooms)</option>
+                        <option value="hard">Hard (12-20 rooms)</option>
+                    </select>
+                </div>
+                <div id="generatingMessage" class="generating" style="display: none;">
+                    <span class="blink">⚔ Generating dungeon... ⚔</span>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn" onclick="closeCreateModal()">Cancel</button>
+                    <button type="submit" class="modal-btn primary">Generate & Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let scenarios = [];
+
+        function loadScenarios() {
+            fetch('/api/scenarios')
+                .then(response => response.json())
+                .then(data => {
+                    scenarios = data.scenarios || [];
+                    renderScenarios();
+                })
+                .catch(error => {
+                    console.error('Error loading scenarios:', error);
+                    document.getElementById('scenarioList').innerHTML =
+                        '<div class="empty-state">Error loading scenarios</div>';
+                });
+        }
+
+        function renderScenarios() {
+            const listEl = document.getElementById('scenarioList');
+
+            if (scenarios.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No scenarios yet. Generate one to begin!</div>';
+                return;
+            }
+
+            listEl.innerHTML = scenarios.map(scenario => `
+                <div class="scenario-card">
+                    <div class="scenario-name">${scenario.name}</div>
+                    <div class="scenario-desc">${scenario.description || 'No description'}</div>
+                    <div class="scenario-info">
+                        <div>
+                            <span class="difficulty ${scenario.difficulty}">${scenario.difficulty.toUpperCase()}</span>
+                        </div>
+                        <div>Rooms: ${scenario.num_rooms}</div>
+                        <div style="font-size: 11px; color: #0a0;">Created: ${new Date(scenario.created).toLocaleDateString()}</div>
+                    </div>
+                    <div class="scenario-actions">
+                        <button class="action-btn delete" onclick="deleteScenario('${scenario.id}', '${scenario.name}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showCreateModal() {
+            document.getElementById('createModal').style.display = 'flex';
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').style.display = 'none';
+            document.getElementById('createForm').reset();
+            document.getElementById('generatingMessage').style.display = 'none';
+        }
+
+        document.getElementById('createForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('scenarioName').value,
+                description: document.getElementById('scenarioDesc').value,
+                difficulty: document.getElementById('scenarioDifficulty').value
+            };
+
+            document.getElementById('generatingMessage').style.display = 'block';
+
+            fetch('/api/scenarios', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    closeCreateModal();
+                    loadScenarios();
+                } else {
+                    alert('Error: ' + result.error);
+                    document.getElementById('generatingMessage').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                alert('Error generating scenario: ' + error);
+                document.getElementById('generatingMessage').style.display = 'none';
+            });
+        });
+
+        function deleteScenario(scenarioId, scenarioName) {
+            if (!confirm(`Delete scenario "${scenarioName}"? This cannot be undone.`)) {
+                return;
+            }
+
+            fetch('/api/scenarios/' + scenarioId, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    loadScenarios();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error deleting scenario: ' + error);
+            });
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
+
+        // Load scenarios on page load
+        loadScenarios();
+    </script>
+</body>
+</html>
