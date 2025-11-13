@@ -223,6 +223,10 @@ class GameState:
                     self.is_active = False
                     return {'success': False, 'message': '\n'.join(messages)}
 
+        # Advance time (combat takes time)
+        time_messages = self.time_tracker.advance_turn(self.player)
+        messages.extend(time_messages)
+
         return {'success': True, 'message': '\n'.join(messages)}
 
     def _handle_take(self, command: Command) -> Dict:
@@ -328,15 +332,42 @@ class GameState:
         if not command.target:
             return {'success': False, 'message': "Cast what spell?"}
 
+        # Parse spell name and optional target from command
+        # Examples: "cast cure" or "cast cure bob" or "cast cure light wounds alice"
+        parts = command.target.split()
+        spell_name = parts[0]
+        target_name = parts[-1] if len(parts) > 1 else None
+
+        # Check if target_name is actually part of spell name or a character name
+        # If it's a spell keyword, it's part of spell name, otherwise it's a character
+        spell_keywords = ['light', 'wounds', 'missile', 'hands', 'evil', 'magic', 'from', 'person']
+        if target_name and target_name.lower() in spell_keywords:
+            # It's part of the spell name
+            spell_name = command.target
+            target_name = None
+
         # Determine if this is a beneficial spell (healing/buff) or harmful spell
-        spell_name_lower = command.target.lower()
+        spell_name_lower = spell_name.lower()
         beneficial_spells = ['cure', 'heal', 'bless', 'protection', 'shield', 'aid']
         is_beneficial = any(keyword in spell_name_lower for keyword in beneficial_spells)
 
         # Build targets list
         if is_beneficial:
-            # Beneficial spells target the caster or party members
-            targets = [self.player]
+            # Check if a specific party member was targeted
+            if target_name and hasattr(self, 'party') and self.party:
+                # Find party member by name
+                target_char = None
+                for member in self.party.members:
+                    if target_name.lower() in member.name.lower():
+                        target_char = member
+                        break
+                if target_char:
+                    targets = [target_char]
+                else:
+                    return {'success': False, 'message': f"No party member named '{target_name}' found."}
+            else:
+                # No specific target, use caster
+                targets = [self.player]
         else:
             # Harmful spells target monsters, or caster if no monsters (for non-combat spells)
             if self.active_monsters:
@@ -344,8 +375,16 @@ class GameState:
             else:
                 targets = [self.player]
 
-        result = self.magic_system.cast_spell(self.player, command.target, targets)
-        return {'success': result['success'], 'message': result['narrative']}
+        result = self.magic_system.cast_spell(self.player, spell_name, targets)
+
+        # Advance time (spell casting takes time)
+        time_messages = self.time_tracker.advance_turn(self.player)
+        if time_messages:
+            full_message = result['narrative'] + '\n' + '\n'.join(time_messages)
+        else:
+            full_message = result['narrative']
+
+        return {'success': result['success'], 'message': full_message}
 
     def _handle_search(self, command: Command) -> Dict:
         """Handle searching"""
@@ -363,6 +402,10 @@ class GameState:
             messages.append(f"You find: {items_list}")
         else:
             messages.append("You don't find anything interesting.")
+
+        # Advance time (searching takes time)
+        time_messages = self.time_tracker.advance_turn(self.player)
+        messages.extend(time_messages)
 
         return {'success': True, 'message': '\n'.join(messages)}
 
@@ -444,6 +487,18 @@ class GameState:
         """Handle resting"""
 
         result = self.rest_system.attempt_rest(self.player, self.current_room.is_safe_for_rest)
+
+        # If rest is successful, advance time by 8 hours (48 turns)
+        if result['success']:
+            messages = [result['narrative']]
+            # Advance 48 turns (8 hours)
+            for _ in range(48):
+                time_messages = self.time_tracker.advance_turn(self.player)
+                # Only show final time message, not all 48
+                if time_messages and _ == 47:
+                    messages.extend(time_messages)
+            return {'success': True, 'message': '\n'.join(messages)}
+
         return {'success': result['success'], 'message': result['narrative']}
 
     def _handle_inventory(self, command: Command) -> Dict:

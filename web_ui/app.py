@@ -229,7 +229,7 @@ def build_map_data(game_state):
     # Calculate positions starting from START room (for consistency)
     calculate_positions(start_room_id, 0, 0)
 
-    # Only return explored rooms
+    # Collect explored rooms and unexplored adjacent rooms
     for room_id, pos_data in room_positions.items():
         if pos_data['room'].is_explored:
             explored[room_id] = {
@@ -238,8 +238,35 @@ def build_map_data(game_state):
                 'x': pos_data['x'],
                 'y': pos_data['y'],
                 'exits': pos_data['room'].exits,
-                'is_current': room_id == current_id
+                'is_current': room_id == current_id,
+                'is_explored': True
             }
+
+    # Add unexplored but known rooms (exits from explored rooms)
+    direction_offsets = {
+        'north': (0, -1),
+        'south': (0, 1),
+        'east': (1, 0),
+        'west': (-1, 0),
+        'up': (0, -1),
+        'down': (0, 1)
+    }
+
+    for room_id, room_data in list(explored.items()):
+        room = game_state.dungeon.rooms[room_id]
+        for direction, next_room_id in room.exits.items():
+            # If the connected room exists but is not explored, add it as unknown
+            if next_room_id in room_positions and next_room_id not in explored:
+                offset = direction_offsets.get(direction, (0, 0))
+                explored[next_room_id] = {
+                    'id': next_room_id,
+                    'title': '???',
+                    'x': room_data['x'] + offset[0],
+                    'y': room_data['y'] + offset[1],
+                    'exits': {},
+                    'is_current': False,
+                    'is_explored': False
+                }
 
     return {
         'rooms': explored,

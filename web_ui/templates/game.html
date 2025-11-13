@@ -174,6 +174,11 @@
             font-weight: bold;
         }
 
+        .map-room.unexplored {
+            color: #888;
+            opacity: 0.6;
+        }
+
         .text-output {
             background-color: #001a00;
             border: 2px solid #0f0;
@@ -403,6 +408,7 @@
                 <button class="button" onclick="quickCommand('search')">Search</button>
                 <button class="button" onclick="promptTake()">Take</button>
                 <button class="button" onclick="quickCommand('open')">Open</button>
+                <button class="button" onclick="quickCommand('rest')">Rest</button>
                 <button class="button" onclick="quickCommand('north')">North</button>
                 <button class="button" onclick="quickCommand('south')">South</button>
                 <button class="button" onclick="quickCommand('east')">East</button>
@@ -678,7 +684,16 @@
                     let room = grid[y][x];
                     if (room) {
                         let currentClass = room.is_current ? 'current' : '';
-                        let marker = room.is_current ? '[@]' : '[ ]';
+                        let marker;
+                        if (!room.is_explored) {
+                            // Unexplored but known room
+                            marker = '[#]';
+                            currentClass += ' unexplored';
+                        } else if (room.is_current) {
+                            marker = '[@]';
+                        } else {
+                            marker = '[ ]';
+                        }
                         html += `<td><div class="map-room ${currentClass}" title="${room.title}">${marker}</div></td>`;
                     } else {
                         html += '<td style="width: 40px; height: 30px;"></td>';
