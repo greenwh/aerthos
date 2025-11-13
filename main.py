@@ -1136,7 +1136,14 @@ def run_game_with_party(party: Party, dungeon: Dungeon, game_data: GameData,
 
     # Enter starting room
     room_desc = game_state.current_room.on_enter(player.has_light(), player)
-    print(room_desc)
+    display.show_message(room_desc)
+
+    # Check for encounters in the room
+    encounter_msg = game_state._check_encounters('on_enter')
+    if encounter_msg:
+        display.show_message(encounter_msg)
+
+    print("Type 'help' for a list of commands.")
     print()
 
     # Standard game loop (similar to run_game function)
@@ -1147,13 +1154,18 @@ def run_game_with_party(party: Party, dungeon: Dungeon, game_data: GameData,
             # Show active character
             print(f"\n[Active: {player.name}]")
 
-            user_input = input("> ").strip()
+            user_input = display.prompt_input("> ")
 
             if not user_input:
                 continue
 
             # Parse command
             command = parser.parse(user_input)
+
+            if command.action == 'invalid':
+                print("I don't understand that command. Type 'help' for options.")
+                print()
+                continue
 
             # Execute command
             result = game_state.execute_command(command)
@@ -1163,9 +1175,7 @@ def run_game_with_party(party: Party, dungeon: Dungeon, game_data: GameData,
 
             # Check for death
             if not player.is_alive:
-                print("\n═══ GAME OVER ═══")
-                print(f"{player.name} has fallen in battle!")
-                print("The adventure ends here...")
+                display.show_death_screen(player.name)
                 break
 
             # Save session state periodically
