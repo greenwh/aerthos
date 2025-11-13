@@ -967,7 +967,7 @@ def manage_sessions(game_data: GameData):
 
                     # Create a temporary solo party using the session manager's party manager
                     solo_party_name = f"Solo: {characters[char_idx]['name']}"
-                    party_id = session_mgr.party_manager.save_party([char_id], ['front'], solo_party_name)
+                    party_id = session_mgr.party_manager.save_party(solo_party_name, [char_id], ['front'])
                     print(f"\n✓ Created solo party: {solo_party_name}")
 
                 except Exception as e:
