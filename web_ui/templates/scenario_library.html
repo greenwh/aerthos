@@ -323,9 +323,40 @@
                 <div class="form-group">
                     <label class="form-label">Difficulty:</label>
                     <select id="scenarioDifficulty" class="form-select" required>
-                        <option value="easy">Easy (5-8 rooms)</option>
-                        <option value="medium" selected>Medium (8-12 rooms)</option>
-                        <option value="hard">Hard (12-20 rooms)</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Layout Type:</label>
+                    <select id="scenarioLayout" class="form-select" required>
+                        <option value="linear">Linear (straight path)</option>
+                        <option value="branching" selected>Branching (multiple paths)</option>
+                        <option value="network">Network (interconnected, loops)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Number of Rooms:</label>
+                    <input type="number" id="scenarioRooms" class="form-input" min="5" max="25" value="12">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Combat Frequency:</label>
+                    <select id="scenarioCombat" class="form-select" required>
+                        <option value="0.3">Low (30%)</option>
+                        <option value="0.5">Medium (50%)</option>
+                        <option value="0.6" selected>Standard (60%)</option>
+                        <option value="0.7">High (70%)</option>
+                        <option value="0.8">Very High (80%)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Trap Frequency:</label>
+                    <select id="scenarioTraps" class="form-select" required>
+                        <option value="0.1">Low (10%)</option>
+                        <option value="0.2" selected>Standard (20%)</option>
+                        <option value="0.3">High (30%)</option>
+                        <option value="0.4">Very High (40%)</option>
                     </select>
                 </div>
                 <div id="generatingMessage" class="generating" style="display: none;">
@@ -398,7 +429,11 @@
             const data = {
                 name: document.getElementById('scenarioName').value,
                 description: document.getElementById('scenarioDesc').value,
-                difficulty: document.getElementById('scenarioDifficulty').value
+                difficulty: document.getElementById('scenarioDifficulty').value,
+                layout_type: document.getElementById('scenarioLayout').value,
+                num_rooms: parseInt(document.getElementById('scenarioRooms').value),
+                combat_frequency: parseFloat(document.getElementById('scenarioCombat').value),
+                trap_frequency: parseFloat(document.getElementById('scenarioTraps').value)
             };
 
             document.getElementById('generatingMessage').style.display = 'block';

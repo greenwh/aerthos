@@ -483,28 +483,37 @@ def create_scenario():
         game_data = GameData.load_all()
         generator = DungeonGenerator(game_data)
 
-        # Determine config based on difficulty
+        # Get parameters from request (with defaults)
         difficulty = data.get('difficulty', 'medium')
+        layout_type = data.get('layout_type', 'branching')
+        num_rooms = data.get('num_rooms', 12)
+        combat_frequency = data.get('combat_frequency', 0.6)
+        trap_frequency = data.get('trap_frequency', 0.2)
+
+        # Determine party level and treasure based on difficulty
         if difficulty == 'easy':
-            config = DungeonConfig(
-                num_rooms=7,
-                combat_frequency=0.4,
-                trap_frequency=0.1,
-                party_level=1,
-                treasure_level='low'
-            )
+            party_level = 1
+            treasure_level = 'low'
+            magic_item_chance = 0.05
         elif difficulty == 'hard':
-            config = DungeonConfig(
-                num_rooms=18,
-                layout_type='network',
-                combat_frequency=0.7,
-                trap_frequency=0.3,
-                party_level=3,
-                treasure_level='high',
-                magic_item_chance=0.2
-            )
+            party_level = 3
+            treasure_level = 'high'
+            magic_item_chance = 0.2
         else:  # medium
-            config = STANDARD_DUNGEON
+            party_level = 2
+            treasure_level = 'medium'
+            magic_item_chance = 0.1
+
+        # Create config with custom parameters
+        config = DungeonConfig(
+            num_rooms=num_rooms,
+            layout_type=layout_type,
+            combat_frequency=combat_frequency,
+            trap_frequency=trap_frequency,
+            party_level=party_level,
+            treasure_level=treasure_level,
+            magic_item_chance=magic_item_chance
+        )
 
         # Generate dungeon (returns dict)
         dungeon_data = generator.generate(config)
