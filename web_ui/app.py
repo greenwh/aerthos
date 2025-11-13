@@ -995,6 +995,217 @@ def load_session(session_id):
         return jsonify({'success': False, 'error': str(e)})
 
 
+# ============================================================================
+# Modern UI API Endpoint Aliases
+# ============================================================================
+
+@app.route('/api/character/list', methods=['GET'])
+def list_characters_modern():
+    """Alias for /api/characters - used by modern UI"""
+    return get_characters()
+
+
+@app.route('/api/party/list', methods=['GET'])
+def list_parties_modern():
+    """Alias for /api/parties - used by modern UI"""
+    return get_parties()
+
+
+@app.route('/api/scenario/list', methods=['GET'])
+def list_scenarios_modern():
+    """Alias for /api/scenarios - used by modern UI"""
+    return get_scenarios()
+
+
+@app.route('/api/session/list', methods=['GET'])
+def list_sessions_modern():
+    """Alias for /api/sessions - used by modern UI"""
+    return get_sessions()
+
+
+@app.route('/api/party/create', methods=['POST'])
+def create_party_modern():
+    """Alias for /api/parties POST - used by modern UI"""
+    return create_party()
+
+
+@app.route('/api/scenario/create', methods=['POST'])
+def create_scenario_modern():
+    """Alias for /api/scenarios POST - used by modern UI"""
+    return create_scenario()
+
+
+@app.route('/api/session/create', methods=['POST'])
+def create_session_modern():
+    """Alias for /api/sessions POST - used by modern UI"""
+    return create_session()
+
+
+@app.route('/api/character/delete/<char_id>', methods=['POST'])
+def delete_character_modern(char_id):
+    """Alias for /api/characters/<char_id> DELETE - used by modern UI"""
+    return delete_character(char_id)
+
+
+@app.route('/api/session/<session_id>', methods=['GET'])
+def get_session_state(session_id):
+    """Get session state for gameplay - used by modern UI"""
+    try:
+        session_mgr = SessionManager()
+        party_mgr = PartyManager()
+        library = ScenarioLibrary()
+
+        # Load session data
+        session_data = session_mgr.load_session(session_id)
+        if not session_data:
+            return jsonify({'success': False, 'error': 'Session not found'})
+
+        # Load party
+        party_data = party_mgr.load_party(party_id=session_data['party_id'])
+        if not party_data:
+            return jsonify({'success': False, 'error': 'Party not found'})
+
+        # Load scenario
+        scenario_data = library.load_scenario(session_data['scenario_id'])
+        if not scenario_data:
+            return jsonify({'success': False, 'error': 'Scenario not found'})
+
+        # Get party object
+        party = party_data['party']
+
+        # Convert party members to dict format
+        members = []
+        for member in party.members:
+            members.append({
+                'id': getattr(member, 'id', member.name),
+                'name': member.name,
+                'char_class': member.char_class,
+                'level': member.level,
+                'hp_current': member.hp_current,
+                'hp_max': member.hp_max,
+                'ac': member.ac,
+                'thac0': member.thac0
+            })
+
+        # Create dungeon from scenario
+        dungeon = library.create_dungeon_from_scenario(scenario_data)
+
+        # Get current room ID
+        current_room_id = session_data.get('current_room', 'room_001')
+        current_room = dungeon.rooms.get(current_room_id)
+
+        # Build room dict
+        room_dict = {
+            'id': current_room_id,
+            'title': current_room.title,
+            'description': current_room.description,
+            'exits': current_room.exits,
+            'light_level': current_room.light_level,
+            'safe_rest': current_room.safe_rest
+        }
+
+        # Build dungeon dict for map renderer
+        dungeon_dict = {
+            'name': dungeon.name,
+            'start_room': 'room_001',
+            'rooms': {}
+        }
+
+        for room_id, room in dungeon.rooms.items():
+            dungeon_dict['rooms'][room_id] = {
+                'id': room_id,
+                'title': room.title,
+                'description': room.description,
+                'exits': room.exits,
+                'light_level': room.light_level
+            }
+
+        return jsonify({
+            'success': True,
+            'session': {
+                'id': session_id,
+                'name': session_data.get('name', 'Adventure'),
+                'party': {
+                    'name': party_data.get('name', 'Adventurers'),
+                    'members': members
+                },
+                'scenario_name': scenario_data.get('name', 'Dungeon'),
+                'current_room_id': current_room_id,
+                'current_room': room_dict,
+                'dungeon': dungeon_dict,
+                'explored_rooms': session_data.get('explored_rooms', [current_room_id])
+            }
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/session/<session_id>/move', methods=['POST'])
+def move_in_dungeon(session_id):
+    """Move to a new room in the dungeon - used by modern UI"""
+    try:
+        data = request.json
+        direction = data.get('direction')
+
+        session_mgr = SessionManager()
+        library = ScenarioLibrary()
+
+        # Load session
+        session_data = session_mgr.load_session(session_id)
+        if not session_data:
+            return jsonify({'success': False, 'error': 'Session not found'})
+
+        # Load scenario
+        scenario_data = library.load_scenario(session_data['scenario_id'])
+        dungeon = library.create_dungeon_from_scenario(scenario_data)
+
+        # Get current and target rooms
+        current_room_id = session_data.get('current_room', 'room_001')
+        current_room = dungeon.rooms.get(current_room_id)
+
+        if direction not in current_room.exits:
+            return jsonify({'success': False, 'error': 'No exit in that direction'})
+
+        target_room_id = current_room.exits[direction]
+        target_room = dungeon.rooms.get(target_room_id)
+
+        # Update session
+        session_data['current_room'] = target_room_id
+        explored = session_data.get('explored_rooms', [current_room_id])
+        if target_room_id not in explored:
+            explored.append(target_room_id)
+        session_data['explored_rooms'] = explored
+
+        # Save session
+        session_mgr.sessions[session_id] = session_data
+
+        # Check for encounters
+        encounter = None
+        if target_room.encounters and len(target_room.encounters) > 0:
+            encounter = target_room.encounters[0]
+
+        return jsonify({
+            'success': True,
+            'room_id': target_room_id,
+            'room': {
+                'id': target_room_id,
+                'title': target_room.title,
+                'description': target_room.description,
+                'exits': target_room.exits,
+                'light_level': target_room.light_level
+            },
+            'encounter': encounter
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
 if __name__ == '__main__':
     print("=" * 70)
     print("AERTHOS - Web Interface")
