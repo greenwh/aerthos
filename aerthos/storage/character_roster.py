@@ -127,13 +127,25 @@ class CharacterRoster:
                         'id': data['id'],
                         'name': data['name'],
                         'race': data['race'],
-                        'class': data['class'],
+                        'char_class': data['class'],  # Use char_class for consistency
                         'level': data['level'],
                         'xp': data['xp'],
-                        'hp': f"{data['hp_current']}/{data['hp_max']}",
+                        'hp_current': data['hp_current'],  # Separate current/max
+                        'hp_max': data['hp_max'],
                         'ac': data.get('ac', 10),
+                        'thac0': data.get('thac0', 20),
                         'gold': data.get('gold', 0),
-                        'created': data['created']
+                        'created': data['created'],
+                        # Also include full stats for detail view
+                        'strength': data.get('strength', 10),
+                        'dexterity': data.get('dexterity', 10),
+                        'constitution': data.get('constitution', 10),
+                        'intelligence': data.get('intelligence', 10),
+                        'wisdom': data.get('wisdom', 10),
+                        'charisma': data.get('charisma', 10),
+                        'inventory': data.get('inventory', []),
+                        'spells': data.get('spells', []),
+                        'experience_points': data.get('xp', 0)
                     })
             except Exception as e:
                 print(f"Error loading {filepath}: {e}")

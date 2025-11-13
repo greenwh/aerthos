@@ -720,10 +720,19 @@ def create_party():
         data = request.json
         party_mgr = PartyManager()
 
+        character_ids = data.get('character_ids', [])
+
+        # Create default formation if not provided (2 rows)
+        formation = data.get('formation')
+        if not formation:
+            # Default: put half in front row, half in back row
+            mid = len(character_ids) // 2
+            formation = ['front'] * mid + ['back'] * (len(character_ids) - mid)
+
         party_id = party_mgr.save_party(
             data.get('name'),
-            data.get('character_ids'),
-            data.get('formation')
+            character_ids,
+            formation
         )
 
         return jsonify({'success': True, 'party_id': party_id})
@@ -1101,7 +1110,7 @@ def get_session_state(session_id):
             'description': current_room.description,
             'exits': current_room.exits,
             'light_level': current_room.light_level,
-            'safe_rest': current_room.safe_rest
+            'safe_rest': getattr(current_room, 'is_safe_for_rest', False)
         }
 
         # Build dungeon dict for map renderer
