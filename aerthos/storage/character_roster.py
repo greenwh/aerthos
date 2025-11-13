@@ -230,12 +230,28 @@ class CharacterRoster:
 
         return equipped
 
+    def _is_complete_spell_data(self, spell_data: Dict) -> bool:
+        """Check if spell data has all required fields"""
+        required_fields = [
+            'name', 'level', 'school', 'casting_time', 'range',
+            'duration', 'area_of_effect', 'saving_throw', 'components', 'description'
+        ]
+        return all(field in spell_data for field in required_fields)
+
     def _serialize_spell(self, spell: Spell) -> Dict:
         """Serialize a spell"""
         return {
             'name': spell.name,
             'level': spell.level,
-            'school': spell.school
+            'school': spell.school,
+            'casting_time': spell.casting_time,
+            'range': spell.range,
+            'duration': spell.duration,
+            'area_of_effect': spell.area_of_effect,
+            'saving_throw': spell.saving_throw,
+            'components': spell.components,
+            'description': spell.description,
+            'class_availability': spell.class_availability if hasattr(spell, 'class_availability') else []
         }
 
     def _serialize_spell_slots(self, spell_slots) -> List[Dict]:
@@ -324,12 +340,17 @@ class CharacterRoster:
                 )
 
         # Restore spells
-        character.spells_known = [Spell(**s) for s in data.get('spells_known', [])]
+        character.spells_known = []
+        for spell_data in data.get('spells_known', []):
+            # Handle both old and new format
+            if self._is_complete_spell_data(spell_data):
+                character.spells_known.append(Spell(**spell_data))
+            # Skip incomplete spell data (old format)
 
         character.spells_memorized = []
         for slot_data in data.get('spells_memorized', []):
             slot = SpellSlot(level=slot_data['level'], is_used=slot_data['is_used'])
-            if 'spell' in slot_data:
+            if 'spell' in slot_data and self._is_complete_spell_data(slot_data['spell']):
                 slot.spell = Spell(**slot_data['spell'])
             character.spells_memorized.append(slot)
 
