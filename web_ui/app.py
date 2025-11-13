@@ -157,6 +157,28 @@ def execute_command():
         return jsonify({'success': False, 'error': str(e)})
 
 
+@app.route('/api/game_state', methods=['POST'])
+def get_game_state():
+    """Get current game state for an active session"""
+    try:
+        data = request.json
+        session_id = data.get('session_id', 'default')
+
+        game_state = active_games.get(session_id)
+        if not game_state:
+            return jsonify({'success': False, 'error': 'No active game session found'})
+
+        return jsonify({
+            'success': True,
+            'state': get_game_state_json(game_state)
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
 def get_game_state_json(game_state):
     """Convert game state to JSON for frontend"""
 

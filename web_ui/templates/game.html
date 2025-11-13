@@ -436,6 +436,35 @@
         let activeCharacterIndex = 0;
         let currentParty = [];
 
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function loadExistingSession(webSessionId) {
+            // Session was already loaded server-side, just fetch the state
+            sessionId = webSessionId;
+            fetch('/api/game_state', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({session_id: sessionId})
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    gameActive = true;
+                    activeCharacterIndex = 0;
+                    updateDisplay(data.state, "Loaded session. Your adventure continues...");
+                } else {
+                    alert('Error loading session: ' + data.error);
+                }
+            })
+            .catch(err => {
+                console.error('Error loading session:', err);
+                alert('Failed to load session');
+            });
+        }
+
         function newGame() {
             fetch('/api/new_game', {
                 method: 'POST',
@@ -735,9 +764,16 @@
             }
         }
 
-        // Focus input on load
+        // Focus input on load and check for existing session
         window.onload = function() {
             document.getElementById('command-box').focus();
+
+            // Check if we have a session_id in the URL
+            const urlSessionId = getUrlParameter('session_id');
+            if (urlSessionId) {
+                // Load the existing session
+                loadExistingSession(urlSessionId);
+            }
         };
     </script>
 </body>
