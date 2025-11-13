@@ -122,8 +122,13 @@ class CombatResolver:
         # (Lower AC is better, so subtracting a low AC makes target number higher)
         target_number = attacker.thac0 - defender.ac
 
-        # Apply to-hit bonuses
+        # Apply to-hit bonuses (STR modifier + weapon magic bonus)
         to_hit_bonus = attacker.get_to_hit_bonus()
+
+        # Add weapon magic bonus if present
+        if weapon and hasattr(weapon, 'magic_bonus'):
+            to_hit_bonus += weapon.magic_bonus
+
         adjusted_roll = roll + to_hit_bonus
 
         hit = adjusted_roll >= target_number
@@ -191,6 +196,11 @@ class CombatResolver:
 
         # Add strength bonus
         damage_bonus = attacker.get_damage_bonus()
+
+        # Add weapon magic bonus to damage
+        if weapon and hasattr(weapon, 'magic_bonus'):
+            damage_bonus += weapon.magic_bonus
+
         total_damage = base_damage + damage_bonus
 
         # Critical hit doubles the total

@@ -13,6 +13,13 @@ from aerthos.ui.character_creation import CharacterCreator
 from aerthos.ui.character_sheet import CharacterSheet
 from aerthos.ui.save_system import SaveSystem
 from aerthos.entities.player import PlayerCharacter
+from aerthos.entities.party import Party
+from aerthos.generator.dungeon_generator import DungeonGenerator
+from aerthos.generator.config import DungeonConfig, EASY_DUNGEON, STANDARD_DUNGEON, HARD_DUNGEON
+from aerthos.storage.character_roster import CharacterRoster
+from aerthos.storage.party_manager import PartyManager
+from aerthos.storage.scenario_library import ScenarioLibrary
+from aerthos.storage.session_manager import SessionManager
 
 
 def show_main_menu(display: Display) -> str:
@@ -28,16 +35,45 @@ def show_main_menu(display: Display) -> str:
     print()
     print("═" * 70)
     print()
-    print("1. New Game")
-    print("2. Load Game")
-    print("3. Quit")
+    print("QUICK PLAY")
+    print("  1. New Game (Quick Play - create temp character & dungeon)")
+    print("  2. Load Game (Quick Save)")
+    print()
+    print("PERSISTENT MANAGEMENT")
+    print("  3. Character Roster (create, view, delete characters)")
+    print("  4. Party Manager (create, view, delete parties)")
+    print("  5. Scenario Library (save, view, delete dungeons)")
+    print("  6. Session Manager (create, load, delete game sessions)")
+    print()
+    print("  9. Quit")
     print()
 
     while True:
-        choice = input("Choose an option (1-3): ").strip()
-        if choice in ['1', '2', '3']:
+        choice = input("Choose an option (1-6, 9): ").strip()
+        if choice in ['1', '2', '3', '4', '5', '6', '9']:
             return choice
-        print("Invalid choice. Please enter 1, 2, or 3.")
+        print("Invalid choice. Please enter 1-6 or 9.")
+
+
+def choose_dungeon_type() -> str:
+    """Ask player to choose between fixed or generated dungeon"""
+
+    print("\n" + "═" * 70)
+    print("DUNGEON SELECTION")
+    print("═" * 70)
+    print()
+    print("1. The Abandoned Mine (Fixed - 10 rooms, recommended for first game)")
+    print("2. Generate Random Dungeon (Easy - 8 rooms)")
+    print("3. Generate Random Dungeon (Standard - 12 rooms)")
+    print("4. Generate Random Dungeon (Hard - 15 rooms)")
+    print("5. Custom Generated Dungeon (Advanced)")
+    print()
+
+    while True:
+        choice = input("Choose dungeon (1-5): ").strip()
+        if choice in ['1', '2', '3', '4', '5']:
+            return choice
+        print("Invalid choice. Please enter 1-5.")
 
 
 def start_new_game(game_data: GameData) -> tuple:
@@ -49,21 +85,118 @@ def start_new_game(game_data: GameData) -> tuple:
 
     # Show character sheet
     print("\n" + CharacterSheet.format_character(player))
-    input("Press Enter to enter the dungeon...")
+    input("Press Enter to continue...")
     print()
 
-    # Load dungeon
-    print("Loading the dungeon...")
+    # Choose dungeon
+    dungeon_choice = choose_dungeon_type()
+
+    print("\nLoading the dungeon...")
+
     try:
-        dungeon = Dungeon.load_from_file('aerthos/data/dungeons/starter_dungeon.json')
-        print(f"✓ Loaded: {dungeon.name}")
+        if dungeon_choice == '1':
+            # Fixed starter dungeon
+            dungeon = Dungeon.load_from_file('aerthos/data/dungeons/starter_dungeon.json')
+            print(f"✓ Loaded: {dungeon.name}")
+
+        else:
+            # Generate dungeon
+            generator = DungeonGenerator(game_data)
+
+            if dungeon_choice == '2':
+                config = EASY_DUNGEON
+                print("✓ Generating Easy Dungeon...")
+            elif dungeon_choice == '3':
+                config = STANDARD_DUNGEON
+                print("✓ Generating Standard Dungeon...")
+            elif dungeon_choice == '4':
+                config = HARD_DUNGEON
+                print("✓ Generating Hard Dungeon...")
+            else:  # '5' - Custom
+                config = create_custom_config()
+                print("✓ Generating Custom Dungeon...")
+
+            dungeon_data = generator.generate(config)
+            dungeon = Dungeon.load_from_generator(dungeon_data)
+            print(f"✓ Generated: {dungeon.name}")
+
+            if config.seed:
+                print(f"  Seed: {config.seed} (use this seed to replay this exact dungeon)")
+
     except Exception as e:
-        print(f"✗ Error loading dungeon: {e}")
+        print(f"✗ Error loading/generating dungeon: {e}")
+        import traceback
+        traceback.print_exc()
         return None, None
 
     print()
 
     return player, dungeon
+
+
+def create_custom_config() -> DungeonConfig:
+    """Create a custom dungeon configuration"""
+
+    print("\n" + "═" * 70)
+    print("CUSTOM DUNGEON GENERATOR")
+    print("═" * 70)
+    print()
+
+    # Number of rooms
+    while True:
+        try:
+            num_rooms = int(input("Number of rooms (5-30, default 12): ") or "12")
+            if 5 <= num_rooms <= 30:
+                break
+            print("Please enter a number between 5 and 30.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+    # Layout type
+    print("\nLayout style:")
+    print("1. Linear (straight path)")
+    print("2. Branching (main path with side branches)")
+    print("3. Network (complex with loops)")
+    layout_choice = input("Choose layout (1-3, default 2): ").strip() or "2"
+    layout_map = {'1': 'linear', '2': 'branching', '3': 'network'}
+    layout_type = layout_map.get(layout_choice, 'branching')
+
+    # Theme
+    print("\nDungeon theme:")
+    print("1. Mine")
+    print("2. Crypt")
+    print("3. Cave")
+    print("4. Ruins")
+    print("5. Sewer")
+    theme_choice = input("Choose theme (1-5, default 1): ").strip() or "1"
+    theme_map = {'1': 'mine', '2': 'crypt', '3': 'cave', '4': 'ruins', '5': 'sewer'}
+    theme = theme_map.get(theme_choice, 'mine')
+
+    # Seed (optional)
+    seed_input = input("\nEnter seed for fixed dungeon (leave blank for random): ").strip()
+    seed = int(seed_input) if seed_input else None
+
+    # Difficulty
+    print("\nDifficulty:")
+    print("1. Easy (lethality 0.8)")
+    print("2. Normal (lethality 1.0)")
+    print("3. Hard (lethality 1.3)")
+    diff_choice = input("Choose difficulty (1-3, default 2): ").strip() or "2"
+    diff_map = {'1': 0.8, '2': 1.0, '3': 1.3}
+    lethality = diff_map.get(diff_choice, 1.0)
+
+    return DungeonConfig(
+        seed=seed,
+        num_rooms=num_rooms,
+        layout_type=layout_type,
+        dungeon_theme=theme,
+        party_level=1,
+        lethality_factor=lethality,
+        combat_frequency=0.6,
+        trap_frequency=0.2,
+        treasure_frequency=0.4,
+        magic_item_chance=0.1
+    )
 
 
 def load_saved_game(game_data: GameData) -> tuple:
@@ -443,6 +576,553 @@ def run_game(player: PlayerCharacter, dungeon: Dungeon, game_data: GameData,
         print("May your dice always roll high!")
 
 
+def manage_character_roster(game_data: GameData):
+    """Character Roster management menu"""
+    roster = CharacterRoster()
+
+    while True:
+        print("\n" + "═" * 70)
+        print("CHARACTER ROSTER")
+        print("═" * 70)
+        print()
+        print("1. Create New Character")
+        print("2. List All Characters")
+        print("3. View Character Details")
+        print("4. Delete Character")
+        print("5. Back to Main Menu")
+        print()
+
+        choice = input("Choose an option (1-5): ").strip()
+
+        if choice == '1':
+            # Create new character
+            creator = CharacterCreator(game_data)
+            character = creator.create_character()
+
+            print("\n" + CharacterSheet.format_character(character))
+
+            save = input("\nSave this character to roster? (y/n): ").strip().lower()
+            if save == 'y':
+                char_id = roster.save_character(character)
+                print(f"✓ Character saved! ID: {char_id}")
+            else:
+                print("Character discarded.")
+
+        elif choice == '2':
+            # List all characters
+            characters = roster.list_characters()
+            if not characters:
+                print("\nNo characters in roster.")
+            else:
+                print("\n" + "═" * 70)
+                print(f"{'Name':<20} {'Race':<10} {'Class':<12} {'Level':<6} {'HP':<10} {'ID':<10}")
+                print("─" * 70)
+                for char in characters:
+                    print(f"{char['name']:<20} {char['race']:<10} {char['class']:<12} "
+                          f"{char['level']:<6} {char['hp']:<10} {char['id']:<10}")
+                print("═" * 70)
+
+        elif choice == '3':
+            # View character details
+            name = input("\nEnter character name or ID: ").strip()
+            character = roster.load_character(character_name=name)
+            if not character:
+                character = roster.load_character(character_id=name)
+
+            if character:
+                print("\n" + CharacterSheet.format_character(character))
+                input("\nPress Enter to continue...")
+            else:
+                print(f"Character '{name}' not found.")
+
+        elif choice == '4':
+            # Delete character
+            name = input("\nEnter character ID to delete: ").strip()
+            confirm = input(f"Delete character {name}? (y/n): ").strip().lower()
+            if confirm == 'y':
+                if roster.delete_character(name):
+                    print("✓ Character deleted.")
+                else:
+                    print("Character not found.")
+
+        elif choice == '5':
+            break
+
+        input("\nPress Enter to continue...")
+
+
+def manage_parties(game_data: GameData):
+    """Party Manager menu"""
+    party_mgr = PartyManager()
+    roster = CharacterRoster()
+
+    while True:
+        print("\n" + "═" * 70)
+        print("PARTY MANAGER")
+        print("═" * 70)
+        print()
+        print("1. Create New Party")
+        print("2. List All Parties")
+        print("3. View Party Details")
+        print("4. Delete Party")
+        print("5. Back to Main Menu")
+        print()
+
+        choice = input("Choose an option (1-5): ").strip()
+
+        if choice == '1':
+            # Create new party
+            characters = roster.list_characters()
+            if not characters:
+                print("\nNo characters in roster! Create characters first.")
+                continue
+
+            party_name = input("\nEnter party name: ").strip()
+            if not party_name:
+                print("Party name required.")
+                continue
+
+            print("\nAvailable Characters:")
+            for i, char in enumerate(characters, 1):
+                print(f"{i}. {char['name']} ({char['race']} {char['class']} Level {char['level']})")
+
+            char_ids = []
+            formation = []
+
+            print("\nSelect 1-6 characters (enter number, 'done' when finished):")
+            while len(char_ids) < 6:
+                choice_str = input(f"Character {len(char_ids)+1} (or 'done'): ").strip()
+                if choice_str.lower() == 'done':
+                    if len(char_ids) == 0:
+                        print("Need at least 1 character!")
+                        continue
+                    break
+
+                try:
+                    idx = int(choice_str) - 1
+                    if 0 <= idx < len(characters):
+                        char_ids.append(characters[idx]['id'])
+
+                        pos = input("  Formation (front/back): ").strip().lower()
+                        formation.append(pos if pos in ['front', 'back'] else 'front')
+                    else:
+                        print("Invalid number.")
+                except ValueError:
+                    print("Invalid input.")
+
+            if char_ids:
+                party_id = party_mgr.save_party(party_name, char_ids, formation)
+                print(f"\n✓ Party '{party_name}' created! ID: {party_id}")
+
+        elif choice == '2':
+            # List all parties
+            parties = party_mgr.list_parties()
+            if not parties:
+                print("\nNo saved parties.")
+            else:
+                print("\n" + "═" * 70)
+                print(f"{'Name':<25} {'Size':<6} {'Members':<30} {'ID':<10}")
+                print("─" * 70)
+                for party in parties:
+                    members_str = ', '.join(party['members'][:3])
+                    if len(party['members']) > 3:
+                        members_str += '...'
+                    print(f"{party['name']:<25} {party['size']:<6} {members_str:<30} {party['id']:<10}")
+                print("═" * 70)
+
+        elif choice == '3':
+            # View party details
+            name = input("\nEnter party name or ID: ").strip()
+            party_data = party_mgr.load_party(party_name=name)
+            if not party_data:
+                party_data = party_mgr.load_party(party_id=name)
+
+            if party_data:
+                print(f"\n{'═' * 70}")
+                print(f"Party: {party_data['name']}")
+                print(f"ID: {party_data['id']}")
+                print(f"Created: {party_data['created']}")
+                print(f"{'─' * 70}")
+                for i, member in enumerate(party_data['party'].members):
+                    formation = party_data['party'].formation[i] if i < len(party_data['party'].formation) else '?'
+                    print(f"{i+1}. {member.name} ({member.race} {member.char_class} Lvl {member.level}) [{formation.upper()}]")
+                    print(f"   HP: {member.hp_current}/{member.hp_max} | AC: {member.get_effective_ac()} | Gold: {member.gold}")
+                print(f"{'═' * 70}")
+            else:
+                print(f"Party '{name}' not found.")
+
+        elif choice == '4':
+            # Delete party
+            name = input("\nEnter party ID to delete: ").strip()
+            confirm = input(f"Delete party {name}? (y/n): ").strip().lower()
+            if confirm == 'y':
+                if party_mgr.delete_party(name):
+                    print("✓ Party deleted.")
+                else:
+                    print("Party not found.")
+
+        elif choice == '5':
+            break
+
+        input("\nPress Enter to continue...")
+
+
+def manage_scenarios(game_data: GameData):
+    """Scenario Library menu"""
+    library = ScenarioLibrary()
+
+    while True:
+        print("\n" + "═" * 70)
+        print("SCENARIO LIBRARY")
+        print("═" * 70)
+        print()
+        print("1. Generate & Save New Scenario")
+        print("2. List All Scenarios")
+        print("3. View Scenario Details")
+        print("4. Delete Scenario")
+        print("5. Back to Main Menu")
+        print()
+
+        choice = input("Choose an option (1-5): ").strip()
+
+        if choice == '1':
+            # Generate and save new scenario
+            dungeon_choice = choose_dungeon_type()
+
+            generator = DungeonGenerator(game_data)
+
+            if dungeon_choice == '1':
+                print("\nCannot save fixed starter dungeon. Use options 2-5 for procedural dungeons.")
+                continue
+            elif dungeon_choice == '2':
+                config = EASY_DUNGEON
+            elif dungeon_choice == '3':
+                config = STANDARD_DUNGEON
+            elif dungeon_choice == '4':
+                config = HARD_DUNGEON
+            else:  # '5'
+                config = create_custom_config()
+
+            print("\nGenerating dungeon...")
+            dungeon_data = generator.generate(config)
+            dungeon = Dungeon.load_from_generator(dungeon_data)
+
+            print(f"✓ Generated: {dungeon.name}")
+            print(f"  Rooms: {len(dungeon.rooms)}")
+            if config.seed:
+                print(f"  Seed: {config.seed}")
+
+            scenario_name = input("\nEnter scenario name (or press Enter to use default): ").strip()
+            if not scenario_name:
+                scenario_name = dungeon.name
+
+            description = input("Enter description (optional): ").strip()
+
+            difficulty_map = {2: 'easy', 3: 'medium', 4: 'hard', 5: 'custom'}
+            difficulty = difficulty_map.get(int(dungeon_choice), 'medium')
+
+            scenario_id = library.save_scenario(dungeon, scenario_name, description, difficulty)
+            print(f"\n✓ Scenario saved! ID: {scenario_id}")
+
+        elif choice == '2':
+            # List all scenarios
+            scenarios = library.list_scenarios()
+            if not scenarios:
+                print("\nNo saved scenarios.")
+            else:
+                print("\n" + "═" * 70)
+                print(f"{'Name':<25} {'Rooms':<7} {'Difficulty':<12} {'ID':<10}")
+                print("─" * 70)
+                for scenario in scenarios:
+                    print(f"{scenario['name']:<25} {scenario['num_rooms']:<7} "
+                          f"{scenario['difficulty']:<12} {scenario['id']:<10}")
+                print("═" * 70)
+
+        elif choice == '3':
+            # View scenario details
+            name = input("\nEnter scenario name or ID: ").strip()
+            scenario_data = library.load_scenario(scenario_name=name)
+            if not scenario_data:
+                scenario_data = library.load_scenario(scenario_id=name)
+
+            if scenario_data:
+                print(f"\n{'═' * 70}")
+                print(f"Scenario: {scenario_data['name']}")
+                print(f"ID: {scenario_data['id']}")
+                print(f"Difficulty: {scenario_data['difficulty']}")
+                print(f"Rooms: {scenario_data['num_rooms']}")
+                print(f"Description: {scenario_data.get('description', 'None')}")
+                print(f"Created: {scenario_data['created']}")
+                print(f"{'═' * 70}")
+            else:
+                print(f"Scenario '{name}' not found.")
+
+        elif choice == '4':
+            # Delete scenario
+            name = input("\nEnter scenario ID to delete: ").strip()
+            confirm = input(f"Delete scenario {name}? (y/n): ").strip().lower()
+            if confirm == 'y':
+                if library.delete_scenario(name):
+                    print("✓ Scenario deleted.")
+                else:
+                    print("Scenario not found.")
+
+        elif choice == '5':
+            break
+
+        input("\nPress Enter to continue...")
+
+
+def manage_sessions(game_data: GameData):
+    """Session Manager menu"""
+    session_mgr = SessionManager()
+
+    while True:
+        print("\n" + "═" * 70)
+        print("SESSION MANAGER")
+        print("═" * 70)
+        print()
+        print("1. Create New Session (Party + Scenario)")
+        print("2. List All Sessions")
+        print("3. View Session Details")
+        print("4. Load & Play Session")
+        print("5. Delete Session")
+        print("6. Back to Main Menu")
+        print()
+
+        choice = input("Choose an option (1-6): ").strip()
+
+        if choice == '1':
+            # Create new session
+            parties = session_mgr.party_manager.list_parties()
+            scenarios = session_mgr.scenario_library.list_scenarios()
+
+            if not parties:
+                print("\nNo saved parties! Create a party first.")
+                continue
+            if not scenarios:
+                print("\nNo saved scenarios! Create a scenario first.")
+                continue
+
+            print("\nAvailable Parties:")
+            for i, party in enumerate(parties, 1):
+                members_str = ', '.join(party['members'][:3])
+                print(f"{i}. {party['name']} ({members_str}) [ID: {party['id']}]")
+
+            party_choice = input(f"\nSelect party (1-{len(parties)}): ").strip()
+            try:
+                party_idx = int(party_choice) - 1
+                party_id = parties[party_idx]['id']
+            except (ValueError, IndexError):
+                print("Invalid selection.")
+                continue
+
+            print("\nAvailable Scenarios:")
+            for i, scenario in enumerate(scenarios, 1):
+                print(f"{i}. {scenario['name']} ({scenario['difficulty']}, {scenario['num_rooms']} rooms) [ID: {scenario['id']}]")
+
+            scenario_choice = input(f"\nSelect scenario (1-{len(scenarios)}): ").strip()
+            try:
+                scenario_idx = int(scenario_choice) - 1
+                scenario_id = scenarios[scenario_idx]['id']
+            except (ValueError, IndexError):
+                print("Invalid selection.")
+                continue
+
+            session_name = input("\nEnter session name (or press Enter for default): ").strip()
+
+            try:
+                session_id = session_mgr.create_session(party_id, scenario_id, session_name or None)
+                print(f"\n✓ Session created! ID: {session_id}")
+                print("Use 'Load & Play Session' to start playing.")
+            except Exception as e:
+                print(f"Error creating session: {e}")
+
+        elif choice == '2':
+            # List all sessions
+            sessions = session_mgr.list_sessions()
+            if not sessions:
+                print("\nNo saved sessions.")
+            else:
+                print("\n" + "═" * 70)
+                print(f"{'Name':<30} {'Party':<20} {'Scenario':<15} {'ID':<10}")
+                print("─" * 70)
+                for session in sessions:
+                    print(f"{session['name']:<30} {session['party_name']:<20} "
+                          f"{session['scenario_name']:<15} {session['id']:<10}")
+                print("═" * 70)
+
+        elif choice == '3':
+            # View session details
+            name = input("\nEnter session ID: ").strip()
+            session_data = session_mgr.load_session(name)
+
+            if session_data:
+                print(f"\n{'═' * 70}")
+                print(f"Session: {session_data['name']}")
+                print(f"ID: {session_data['id']}")
+                print(f"Party ID: {session_data['party_id']}")
+                print(f"Scenario ID: {session_data['scenario_id']}")
+                print(f"Created: {session_data['created']}")
+                print(f"Last Played: {session_data['last_played']}")
+                print(f"Progress: {session_data.get('turns_elapsed', 0)} turns, {session_data.get('total_hours', 0)} hours")
+                print(f"{'═' * 70}")
+            else:
+                print(f"Session '{name}' not found.")
+
+        elif choice == '4':
+            # Load and play session
+            name = input("\nEnter session ID to load: ").strip()
+            session_data = session_mgr.load_session(name)
+
+            if not session_data:
+                print(f"Session '{name}' not found.")
+                continue
+
+            # Load party
+            party_data = session_mgr.party_manager.load_party(party_id=session_data['party_id'])
+            if not party_data:
+                print("Error: Party not found!")
+                continue
+
+            # Load scenario
+            scenario_data = session_mgr.scenario_library.load_scenario(scenario_id=session_data['scenario_id'])
+            if not scenario_data:
+                print("Error: Scenario not found!")
+                continue
+
+            # Create dungeon from scenario
+            dungeon = session_mgr.scenario_library.create_dungeon_from_scenario(scenario_data)
+
+            print(f"\n✓ Loaded session: {session_data['name']}")
+            print(f"  Party: {party_data['name']}")
+            print(f"  Scenario: {scenario_data['name']}")
+
+            # Run game with party
+            run_game_with_party(party_data['party'], dungeon, game_data,
+                              session_data.get('current_room_id'),
+                              {
+                                  'turns_elapsed': session_data.get('turns_elapsed', 0),
+                                  'total_hours': session_data.get('total_hours', 0)
+                              },
+                              name)  # Pass session_id
+            return  # Exit to main menu after game
+
+        elif choice == '5':
+            # Delete session
+            name = input("\nEnter session ID to delete: ").strip()
+            confirm = input(f"Delete session {name}? (y/n): ").strip().lower()
+            if confirm == 'y':
+                if session_mgr.delete_session(name):
+                    print("✓ Session deleted.")
+                else:
+                    print("Session not found.")
+
+        elif choice == '6':
+            break
+
+        input("\nPress Enter to continue...")
+
+
+def run_game_with_party(party: Party, dungeon: Dungeon, game_data: GameData,
+                        starting_room_id: str = None, time_data: dict = None,
+                        session_id: str = None):
+    """Run game with a party instead of single character"""
+    # Set active player to first party member
+    player = party.members[0] if party.members else None
+    if not player:
+        print("Error: Party has no members!")
+        return
+
+    # Create game state with party
+    game_state = GameState(player, dungeon, game_data)
+    game_state.party = party  # Add party to game state
+
+    # Restore time tracking if provided
+    if time_data:
+        game_state.time_tracker.turns_elapsed = time_data.get('turns_elapsed', 0)
+        game_state.time_tracker.total_hours = time_data.get('total_hours', 0)
+
+    # Set starting room if provided
+    if starting_room_id and starting_room_id in dungeon.rooms:
+        game_state.current_room = dungeon.rooms[starting_room_id]
+
+    # Run the game (use existing run_game logic)
+    parser = CommandParser()
+    display = Display()
+
+    print("\n" + "═" * 70)
+    print("ADVENTURE BEGINS!")
+    print("═" * 70)
+    print()
+
+    # Show party roster
+    print("YOUR PARTY:")
+    for i, member in enumerate(party.members):
+        formation = party.formation[i] if i < len(party.formation) else 'front'
+        print(f"  {i+1}. {member.name} ({member.race} {member.char_class}) [{formation.upper()}]")
+    print()
+
+    # Enter starting room
+    room_desc = game_state.current_room.on_enter(player.has_light(), player)
+    print(room_desc)
+    print()
+
+    # Standard game loop (similar to run_game function)
+    session_mgr = SessionManager() if session_id else None
+
+    while game_state.is_active and player.is_alive:
+        try:
+            # Show active character
+            print(f"\n[Active: {player.name}]")
+
+            user_input = input("> ").strip()
+
+            if not user_input:
+                continue
+
+            # Parse command
+            command = parser.parse(user_input)
+
+            # Execute command
+            result = game_state.execute_command(command)
+
+            if result and result.get('message'):
+                display.print_message(result['message'])
+
+            # Check for death
+            if not player.is_alive:
+                print("\n═══ GAME OVER ═══")
+                print(f"{player.name} has fallen in battle!")
+                print("The adventure ends here...")
+                break
+
+            # Save session state periodically
+            if session_id and session_mgr and game_state.time_tracker.turns_elapsed % 10 == 0:
+                session_mgr.save_session_state(session_id, game_state)
+
+        except KeyboardInterrupt:
+            print("\n\nGame interrupted!")
+
+            if session_id and session_mgr:
+                save = input("Save session before quitting? (y/n): ").strip().lower()
+                if save == 'y':
+                    session_mgr.save_session_state(session_id, game_state)
+                    print("Session saved!")
+
+            print("\nThanks for playing Aerthos!")
+            break
+
+        except Exception as e:
+            print(f"\nAn error occurred: {e}")
+            import traceback
+            traceback.print_exc()
+
+    if player.is_alive and not game_state.is_active:
+        print("\nThanks for playing Aerthos!")
+        print("May your dice always roll high!")
+
+
 def main():
     """Main game function"""
 
@@ -495,6 +1175,22 @@ def main():
             # If load was cancelled or failed, loop back to menu
 
         elif choice == '3':
+            # Character Roster
+            manage_character_roster(game_data)
+
+        elif choice == '4':
+            # Party Manager
+            manage_parties(game_data)
+
+        elif choice == '5':
+            # Scenario Library
+            manage_scenarios(game_data)
+
+        elif choice == '6':
+            # Session Manager
+            manage_sessions(game_data)
+
+        elif choice == '9':
             # Quit
             print("\nFarewell, adventurer!")
             break

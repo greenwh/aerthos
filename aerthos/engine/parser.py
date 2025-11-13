@@ -37,7 +37,8 @@ class CommandParser:
         'use': ['use', 'drink', 'eat', 'read', 'apply', 'consume'],
         'equip': ['equip', 'wear', 'wield', 'don'],
         'cast': ['cast'],
-        'search': ['search', 'look', 'examine', 'inspect', 'check'],
+        'search': ['search'],
+        'look': ['look', 'examine', 'inspect', 'check'],
         'open': ['open', 'unlock', 'pick'],
         'rest': ['rest', 'sleep', 'camp'],
         'inventory': ['inventory', 'inv', 'i', 'items'],
@@ -96,8 +97,8 @@ class CommandParser:
             direction = self._extract_direction(tokens)
             return Command('move', target=direction)
 
-        # Handle inventory/status/map/directions/spells commands (no target needed)
-        if action in ['inventory', 'status', 'map', 'directions', 'spells', 'help', 'save', 'load', 'quit']:
+        # Handle inventory/status/map/directions/spells/look commands (no target needed)
+        if action in ['inventory', 'status', 'map', 'directions', 'spells', 'look', 'help', 'save', 'load', 'quit']:
             return Command(action)
 
         # Extract target

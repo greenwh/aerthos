@@ -105,6 +105,7 @@ class GameState:
             'use': self._handle_use,
             'equip': self._handle_equip,
             'cast': self._handle_cast,
+            'look': self._handle_look,
             'search': self._handle_search,
             'open': self._handle_open,
             'rest': self._handle_rest,
@@ -184,19 +185,50 @@ class GameState:
 
         # Player attacks
         weapon = self.player.equipment.weapon
+
+        # Check for weapon restrictions
+        weapon_penalty = 0
+        if weapon:
+            can_use, restriction_msg = self.player.can_use_weapon(weapon)
+            if not can_use:
+                weapon_penalty = -4  # Severe penalty for using improper weapon
+                messages = [f"⚠️  {restriction_msg}"]
+                messages.append(f"You struggle with the unfamiliar weapon! (-4 to hit)")
+            else:
+                messages = []
+        else:
+            messages = []
+
+        # Temporarily modify THAC0 for weapon restriction penalty
+        original_thac0 = self.player.thac0
+        if weapon_penalty:
+            self.player.thac0 -= weapon_penalty  # Lower THAC0 = worse to-hit
+
         result = self.combat_resolver.attack_roll(self.player, target, weapon)
 
-        messages = [result['narrative']]
+        # Restore original THAC0
+        if weapon_penalty:
+            self.player.thac0 = original_thac0
+
+        messages.append(result['narrative'])
 
         # Check if target died
         if result['defender_died']:
             self.active_monsters.remove(target)
-            level_up_msg = self.player.gain_xp(target.xp_value)
-            messages.append(f"You gain {target.xp_value} XP!")
 
-            # Check for level up
-            if level_up_msg:
-                messages.append(level_up_msg)
+            # Award XP to party or player
+            if hasattr(self, 'party') and self.party:
+                xp_per_member = target.xp_value // len(self.party.get_living_members())
+                for member in self.party.get_living_members():
+                    level_up_msg = member.gain_xp(xp_per_member)
+                    if level_up_msg:
+                        messages.append(f"{member.name}: {level_up_msg}")
+                messages.append(f"Party gains {target.xp_value} XP! ({xp_per_member} each)")
+            else:
+                level_up_msg = self.player.gain_xp(target.xp_value)
+                messages.append(f"You gain {target.xp_value} XP!")
+                if level_up_msg:
+                    messages.append(level_up_msg)
 
             # Check if combat over
             if not any(m.is_alive for m in self.active_monsters):
@@ -223,6 +255,14 @@ class GameState:
                     self.is_active = False
                     return {'success': False, 'message': '\n'.join(messages)}
 
+        # Show monster status after combat round
+        if self.in_combat and self.active_monsters:
+            messages.append(self._format_monster_status())
+
+        # Advance time (combat takes time)
+        time_messages = self.time_tracker.advance_turn(self.player)
+        messages.extend(time_messages)
+
         return {'success': True, 'message': '\n'.join(messages)}
 
     def _handle_take(self, command: Command) -> Dict:
@@ -233,6 +273,41 @@ class GameState:
 
         search_term = command.target
 
+        # Handle "take all" - pick up everything in the room
+        if search_term.lower() == 'all':
+            if not self.current_room.items:
+                return {'success': False, 'message': "There's nothing here to take."}
+
+            taken_items = []
+            failed_items = []
+
+            # Try to take each item
+            for item_name in list(self.current_room.items):  # Copy list since we'll modify it
+                item = self._create_item_from_name(item_name)
+
+                if item:
+                    # Check encumbrance
+                    if self.player.inventory.current_weight + item.weight <= self.player.inventory.max_weight:
+                        self.player.inventory.add_item(item)
+                        self.current_room.remove_item(item_name)
+                        taken_items.append(item.name)
+                    else:
+                        failed_items.append(f"{item.name} (too heavy)")
+                else:
+                    failed_items.append(f"{item_name} (not found in database)")
+
+            messages = []
+            if taken_items:
+                messages.append(f"You take: {', '.join(taken_items)}")
+            if failed_items:
+                messages.append(f"Could not take: {', '.join(failed_items)}")
+
+            if not messages:
+                return {'success': False, 'message': "Failed to take any items."}
+
+            return {'success': True, 'message': '\n'.join(messages)}
+
+        # Handle single item
         # Find item in room using flexible matching
         item_name = self.current_room.find_item(search_term)
 
@@ -244,6 +319,10 @@ class GameState:
 
         if not item:
             return {'success': False, 'message': f"Can't find {item_name} in item database."}
+
+        # Check encumbrance
+        if self.player.inventory.current_weight + item.weight > self.player.inventory.max_weight:
+            return {'success': False, 'message': f"The {item.name} is too heavy! You're carrying {self.player.inventory.current_weight}/{self.player.inventory.max_weight} lbs."}
 
         # Add to inventory
         self.player.inventory.add_item(item)
@@ -303,6 +382,11 @@ class GameState:
             return {'success': False, 'message': f"You don't have {command.target}."}
 
         if isinstance(item, Weapon):
+            # Check class weapon restrictions
+            can_use, restriction_msg = self.player.can_use_weapon(item)
+            if not can_use:
+                return {'success': False, 'message': restriction_msg}
+
             self.player.equip_weapon(item)
             return {'success': True, 'message': f"You equip the {item.name}."}
         elif isinstance(item, Armor):
@@ -328,23 +412,122 @@ class GameState:
         if not command.target:
             return {'success': False, 'message': "Cast what spell?"}
 
-        # Build targets list - include player for healing spells
-        targets = []
-        if self.active_monsters:
-            targets = self.active_monsters
+        # Parse spell name and optional target from command
+        # Examples: "cast cure" or "cast cure thorin" or "cast cure light wounds" or "cast magic missile goblin"
+        full_command = command.target
+        spell_name = full_command
+        target_name = None
+
+        # Check if last word is a party member name (for beneficial spells)
+        parts = full_command.split()
+        if len(parts) > 1 and hasattr(self, 'party') and self.party:
+            potential_target = parts[-1]
+            # Check if it matches a party member
+            for member in self.party.members:
+                if potential_target.lower() in member.name.lower():
+                    target_name = potential_target
+                    spell_name = ' '.join(parts[:-1])
+                    break
+
+        # Determine if this is a beneficial spell (healing/buff) or harmful spell
+        spell_name_lower = spell_name.lower()
+        beneficial_spells = ['cure', 'heal', 'bless', 'protection', 'shield', 'aid']
+        is_beneficial = any(keyword in spell_name_lower for keyword in beneficial_spells)
+
+        # Build targets list
+        if is_beneficial:
+            # Check if a specific party member was targeted
+            if target_name and hasattr(self, 'party') and self.party:
+                # Find party member by name
+                target_char = None
+                for member in self.party.members:
+                    if target_name.lower() in member.name.lower():
+                        target_char = member
+                        break
+                if target_char:
+                    targets = [target_char]
+                else:
+                    return {'success': False, 'message': f"No party member named '{target_name}' found."}
+            else:
+                # No specific target, use caster
+                targets = [self.player]
         else:
-            # If no monsters (out of combat), allow casting on self
-            targets = [self.player]
+            # Harmful spells target monsters, or caster if no monsters (for non-combat spells)
+            if self.active_monsters:
+                targets = self.active_monsters
+            else:
+                targets = [self.player]
 
-        result = self.magic_system.cast_spell(self.player, command.target, targets)
-        return {'success': result['success'], 'message': result['narrative']}
+        result = self.magic_system.cast_spell(self.player, spell_name, targets)
 
-    def _handle_search(self, command: Command) -> Dict:
-        """Handle searching"""
+        messages = [result['narrative']]
+
+        # Check if any monsters died from the spell
+        if not is_beneficial and self.active_monsters:
+            dead_monsters = [m for m in self.active_monsters if not m.is_alive]
+            for monster in dead_monsters:
+                self.active_monsters.remove(monster)
+
+                # Award XP to party or player
+                if hasattr(self, 'party') and self.party:
+                    xp_per_member = monster.xp_value // len(self.party.get_living_members())
+                    for member in self.party.get_living_members():
+                        level_up_msg = member.gain_xp(xp_per_member)
+                        if level_up_msg:
+                            messages.append(f"{member.name}: {level_up_msg}")
+                    messages.append(f"Party gains {monster.xp_value} XP! ({xp_per_member} each)")
+                else:
+                    level_up_msg = self.player.gain_xp(monster.xp_value)
+                    messages.append(f"You gain {monster.xp_value} XP!")
+                    if level_up_msg:
+                        messages.append(level_up_msg)
+
+            # Check if combat is over
+            if not any(m.is_alive for m in self.active_monsters):
+                self.in_combat = False
+                messages.append("\n═══ VICTORY ═══")
+
+                # Award boss treasure if applicable
+                if self.current_encounter and self.current_encounter.is_boss:
+                    treasure_msg = self._award_boss_treasure()
+                    if treasure_msg:
+                        messages.append(treasure_msg)
+
+                self.current_encounter = None
+
+        # Show monster status after spell if still in combat
+        if self.in_combat and self.active_monsters:
+            messages.append(self._format_monster_status())
+
+        # Advance time (spell casting takes time)
+        time_messages = self.time_tracker.advance_turn(self.player)
+        messages.extend(time_messages)
+
+        return {'success': result['success'], 'message': '\n'.join(messages)}
+
+    def _handle_look(self, command: Command) -> Dict:
+        """Handle looking around (quick glance, no time cost)"""
 
         messages = []
 
-        # Check for traps
+        # Show room description
+        room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
+        messages.append(room_desc)
+
+        # Show obvious items (no searching required)
+        if self.current_room.items:
+            items_list = ', '.join(self.current_room.items)
+            messages.append(f"You see: {items_list}")
+
+        # No time advancement - this is just a quick look
+        return {'success': True, 'message': '\n'.join(messages)}
+
+    def _handle_search(self, command: Command) -> Dict:
+        """Handle searching (deliberate, time-consuming search for hidden items/traps)"""
+
+        messages = []
+
+        # Check for traps (deliberate searching can trigger them)
         encounter_msg = self._check_encounters('on_search')
         if encounter_msg:
             messages.append(encounter_msg)
@@ -355,6 +538,10 @@ class GameState:
             messages.append(f"You find: {items_list}")
         else:
             messages.append("You don't find anything interesting.")
+
+        # Advance time (searching takes time)
+        time_messages = self.time_tracker.advance_turn(self.player)
+        messages.extend(time_messages)
 
         return {'success': True, 'message': '\n'.join(messages)}
 
@@ -436,6 +623,18 @@ class GameState:
         """Handle resting"""
 
         result = self.rest_system.attempt_rest(self.player, self.current_room.is_safe_for_rest)
+
+        # If rest is successful, advance time by 8 hours (48 turns)
+        if result['success']:
+            messages = [result['narrative']]
+            # Advance 48 turns (8 hours)
+            for _ in range(48):
+                time_messages = self.time_tracker.advance_turn(self.player)
+                # Only show final time message, not all 48
+                if time_messages and _ == 47:
+                    messages.extend(time_messages)
+            return {'success': True, 'message': '\n'.join(messages)}
+
         return {'success': result['success'], 'message': result['narrative']}
 
     def _handle_inventory(self, command: Command) -> Dict:
@@ -689,7 +888,30 @@ class GameState:
         self.current_encounter = encounter  # Track current encounter
 
         monster_names = ', '.join(m.name for m in self.active_monsters)
-        return f"\n═══ COMBAT ═══\nYou encounter: {monster_names}!\n"
+        return f"\n═══ COMBAT ═══\nYou encounter: {monster_names}!\n{self._format_monster_status()}"
+
+    def _format_monster_status(self) -> str:
+        """Format current monster HP/status for display"""
+        if not self.active_monsters:
+            return ""
+
+        lines = ["\n--- Enemies ---"]
+        for i, monster in enumerate(self.active_monsters, 1):
+            if monster.is_alive:
+                hp_percent = (monster.hp_current / monster.hp_max) * 100
+                if hp_percent > 75:
+                    status = "Healthy"
+                elif hp_percent > 50:
+                    status = "Injured"
+                elif hp_percent > 25:
+                    status = "Badly Wounded"
+                else:
+                    status = "Near Death"
+                lines.append(f"{i}. {monster.name}: {monster.hp_current}/{monster.hp_max} HP ({status})")
+            else:
+                lines.append(f"{i}. {monster.name}: DEAD")
+
+        return '\n'.join(lines)
 
     def _award_boss_treasure(self) -> Optional[str]:
         """Award treasure for defeating a boss"""
@@ -805,6 +1027,7 @@ class GameState:
                 damage_sm=item_data['damage_sm'],
                 damage_l=item_data['damage_l'],
                 speed_factor=item_data['speed_factor'],
+                magic_bonus=item_data.get('magic_bonus', 0),
                 properties={'cost_gp': item_data.get('cost_gp', 0)},
                 description=item_data.get('description', '')
             )
@@ -813,6 +1036,7 @@ class GameState:
                 name=item_data['name'],
                 weight=item_data['weight'],
                 ac_bonus=item_data['ac_bonus'],
+                magic_bonus=item_data.get('magic_bonus', 0),
                 properties={'cost_gp': item_data.get('cost_gp', 0)},
                 description=item_data.get('description', '')
             )

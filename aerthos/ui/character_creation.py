@@ -371,3 +371,146 @@ class CharacterCreator:
                     )
                     player.spells_known.append(spell)
                     print(f"  - {spell.name}")
+
+    def quick_create(self, name: str, race: str, char_class: str) -> PlayerCharacter:
+        """
+        Quick character creation for demos/testing
+
+        Args:
+            name: Character name
+            race: Race (Human, Elf, Dwarf, Halfling)
+            char_class: Class (Fighter, Cleric, Magic-User, Thief)
+
+        Returns:
+            PlayerCharacter with reasonable stats
+        """
+
+        # Generate decent stats
+        strength = random.randint(13, 16)
+        dexterity = random.randint(13, 16)
+        constitution = random.randint(13, 16)
+        intelligence = random.randint(13, 16)
+        wisdom = random.randint(13, 16)
+        charisma = random.randint(10, 14)
+
+        # Optimize primary stat for class
+        if char_class == 'Fighter':
+            strength = 16
+        elif char_class == 'Cleric':
+            wisdom = 16
+        elif char_class == 'Magic-User':
+            intelligence = 16
+        elif char_class == 'Thief':
+            dexterity = 16
+
+        strength_percentile = 0
+
+        # Apply racial modifiers (same as main character creation)
+        if race == 'Elf':
+            dexterity += 1
+            constitution -= 1
+        elif race == 'Dwarf':
+            constitution += 1
+            charisma -= 1
+        elif race == 'Halfling':
+            dexterity += 1
+            strength -= 1
+
+        # Handle exceptional strength for Fighters
+        if char_class == 'Fighter' and strength == 18:
+            strength_percentile = 50
+
+        # Roll HP
+        class_data = self.game_data.classes[char_class]
+        hit_die = class_data['hit_die']
+        hp = max(1, DiceRoller.roll(hit_die))
+
+        # Apply CON bonus
+        con_bonus = self._get_con_bonus(constitution)
+        hp = max(1, hp + con_bonus)
+
+        # Get class-specific data
+        saves = class_data['saves']
+        thac0 = class_data['thac0_base']
+
+        # Get XP needed for level 2
+        xp_to_level_2 = XP_TABLES.get(char_class, [0, 2000])[1]
+
+        # Create character (same as main method)
+        player = PlayerCharacter(
+            name=name,
+            race=race,
+            char_class=char_class,
+            level=1,
+            strength=strength,
+            dexterity=dexterity,
+            constitution=constitution,
+            intelligence=intelligence,
+            wisdom=wisdom,
+            charisma=charisma,
+            strength_percentile=strength_percentile,
+            hp_current=hp,
+            hp_max=hp,
+            ac=10,
+            thac0=thac0,
+            save_poison=saves['poison'],
+            save_rod_staff_wand=saves['rod_staff_wand'],
+            save_petrify_paralyze=saves['petrify_paralyze'],
+            save_breath=saves['breath'],
+            save_spell=saves['spell'],
+            xp=0,
+            xp_to_next_level=xp_to_level_2
+        )
+
+        # Add starting equipment
+        self._add_starting_equipment(player, char_class)
+
+        # Add thief skills if thief
+        if char_class == 'Thief':
+            player.thief_skills = class_data['skills'].copy()
+
+        # Add spell slots if spellcaster
+        if char_class in ['Magic-User', 'Cleric']:
+            num_slots = class_data['spell_slots_level_1'][0]
+            for _ in range(num_slots):
+                player.add_spell_slot(1)
+
+            # Add starting spells (silently for quick creation)
+            if char_class == 'Magic-User':
+                for spell_id in ['magic_missile', 'sleep']:
+                    if spell_id in self.game_data.spells:
+                        spell_data = self.game_data.spells[spell_id]
+                        spell = Spell(
+                            name=spell_data['name'],
+                            level=spell_data['level'],
+                            school=spell_data['school'],
+                            casting_time=spell_data['casting_time'],
+                            range=spell_data['range'],
+                            duration=spell_data['duration'],
+                            area_of_effect=spell_data['area'],
+                            saving_throw=spell_data['saving_throw'],
+                            components=spell_data['components'],
+                            description=spell_data['description'],
+                            class_availability=spell_data['class_availability']
+                        )
+                        player.spells_known.append(spell)
+
+            elif char_class == 'Cleric':
+                for spell_id, spell_data in self.game_data.spells.items():
+                    if 'Cleric' in spell_data['class_availability'] and spell_data['level'] == 1:
+                        spell = Spell(
+                            name=spell_data['name'],
+                            level=spell_data['level'],
+                            school=spell_data['school'],
+                            casting_time=spell_data['casting_time'],
+                            range=spell_data['range'],
+                            duration=spell_data['duration'],
+                            area_of_effect=spell_data['area'],
+                            saving_throw=spell_data['saving_throw'],
+                            components=spell_data['components'],
+                            description=spell_data['description'],
+                            class_availability=spell_data['class_availability']
+                        )
+                        player.spells_known.append(spell)
+
+        return player

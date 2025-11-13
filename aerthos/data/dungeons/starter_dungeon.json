@@ -102,7 +102,7 @@
           "trigger": "on_enter"
         }
       ],
-      "items": ["longsword", "shield"],
+      "items": ["longsword", "shield", "shortsword_plus1"],
       "safe_rest": false
     },
     "room_007": {
@@ -134,7 +134,7 @@
           "trigger": "on_enter"
         }
       ],
-      "items": ["mace"],
+      "items": ["mace", "chain_mail_plus1"],
       "safe_rest": false
     },
     "room_009": {
@@ -154,7 +154,7 @@
           "reward": "treasure_chest_1"
         }
       ],
-      "items": ["lantern"],
+      "items": ["lantern", "dagger_plus2", "shield_plus1"],
       "safe_rest": true
     },
     "room_010": {
@@ -178,7 +178,7 @@
       "treasure": {
         "gold": 250,
         "gems": 3,
-        "magic_items": ["potion_healing"]
+        "magic_items": ["potion_healing", "longsword_plus2", "plate_mail_plus1"]
       }
     }
   }

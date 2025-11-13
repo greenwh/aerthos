@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Manager - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f0;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .toolbar {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #002200;
+            border: 2px solid #0a0;
+        }
+
+        .create-btn {
+            background-color: #004400;
+            border: 2px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .create-btn:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .session-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 15px;
+        }
+
+        .session-card {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            transition: all 0.2s;
+        }
+
+        .session-card:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .session-card.active {
+            border-color: #ff0;
+            box-shadow: 0 0 10px #ff0;
+        }
+
+        .session-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0f0;
+        }
+
+        .session-status {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .session-status.active {
+            background-color: #004400;
+            color: #0f0;
+        }
+
+        .session-status.paused {
+            background-color: #444400;
+            color: #ff0;
+        }
+
+        .session-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+            font-size: 13px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: #0a0;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            color: #0f0;
+        }
+
+        .session-actions {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            color: #0f0;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .action-btn:hover {
+            background-color: #002200;
+            border-color: #0f0;
+        }
+
+        .action-btn.play {
+            background-color: #004400;
+            border-color: #0f0;
+        }
+
+        .action-btn.play:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .action-btn.delete {
+            color: #f00;
+            border-color: #a00;
+        }
+
+        .action-btn.delete:hover {
+            background-color: #330000;
+            border-color: #f00;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #0a0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0f0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0f0;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #0f0;
+        }
+
+        .preview-section {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .preview-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0f0;
+        }
+
+        .preview-info {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #0a0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #0a0;
+            background-color: #002200;
+            color: #0f0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .modal-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .modal-btn.primary {
+            background-color: #004400;
+            border-color: #0f0;
+        }
+
+        .modal-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #ff0;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">SESSION MANAGER</div>
+            <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+        </div>
+
+        <div class="toolbar">
+            <button class="create-btn" onclick="showCreateModal()">⚔ Create New Session</button>
+        </div>
+
+        <div id="sessionList" class="session-list">
+            <div class="loading"><span class="blink">Loading sessions...</span></div>
+        </div>
+    </div>
+
+    <!-- Create Session Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Create New Session</div>
+            <form id="createForm">
+                <div class="form-group">
+                    <label class="form-label">Session Name:</label>
+                    <input type="text" id="sessionName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Select Party:</label>
+                    <select id="partySelect" class="form-select" required onchange="updatePartyPreview()">
+                        <option value="">Loading parties...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Select Scenario:</label>
+                    <select id="scenarioSelect" class="form-select" required onchange="updateScenarioPreview()">
+                        <option value="">Loading scenarios...</option>
+                    </select>
+                </div>
+
+                <div id="partyPreview" class="preview-section" style="display: none;">
+                    <div class="preview-title">Party Preview</div>
+                    <div id="partyPreviewContent" class="preview-info"></div>
+                </div>
+
+                <div id="scenarioPreview" class="preview-section" style="display: none;">
+                    <div class="preview-title">Scenario Preview</div>
+                    <div id="scenarioPreviewContent" class="preview-info"></div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn" onclick="closeCreateModal()">Cancel</button>
+                    <button type="submit" class="modal-btn primary" id="createSessionBtn">Create & Play</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let sessions = [];
+        let parties = [];
+        let scenarios = [];
+
+        function loadSessions() {
+            fetch('/api/sessions')
+                .then(response => response.json())
+                .then(data => {
+                    sessions = data.sessions || [];
+                    renderSessions();
+                })
+                .catch(error => {
+                    console.error('Error loading sessions:', error);
+                    document.getElementById('sessionList').innerHTML =
+                        '<div class="empty-state">Error loading sessions</div>';
+                });
+        }
+
+        function renderSessions() {
+            const listEl = document.getElementById('sessionList');
+
+            if (sessions.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No sessions yet. Create one to begin!</div>';
+                return;
+            }
+
+            listEl.innerHTML = sessions.map(session => `
+                <div class="session-card ${session.is_active ? 'active' : ''}">
+                    <div class="session-name">
+                        ${session.name}
+                        <span class="session-status ${session.is_active ? 'active' : 'paused'}">
+                            ${session.is_active ? 'ACTIVE' : 'PAUSED'}
+                        </span>
+                    </div>
+                    <div class="session-info">
+                        <div class="info-item">
+                            <div class="info-label">Party</div>
+                            <div class="info-value">${session.party_name}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Scenario</div>
+                            <div class="info-value">${session.scenario_name}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Progress</div>
+                            <div class="info-value">${session.turns_elapsed} turns / ${session.total_hours.toFixed(1)} hrs</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Last Played</div>
+                            <div class="info-value">${new Date(session.last_played).toLocaleDateString()}</div>
+                        </div>
+                    </div>
+                    <div class="session-actions">
+                        <button class="action-btn play" onclick="playSession('${session.id}')">▶ Play</button>
+                        <button class="action-btn delete" onclick="deleteSession('${session.id}', '${session.name}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showCreateModal() {
+            document.getElementById('createModal').style.display = 'flex';
+            loadPartiesAndScenarios();
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').style.display = 'none';
+            document.getElementById('createForm').reset();
+            document.getElementById('partyPreview').style.display = 'none';
+            document.getElementById('scenarioPreview').style.display = 'none';
+        }
+
+        function loadPartiesAndScenarios() {
+            // Load parties
+            fetch('/api/parties')
+                .then(response => response.json())
+                .then(data => {
+                    parties = data.parties || [];
+                    const select = document.getElementById('partySelect');
+                    if (parties.length === 0) {
+                        select.innerHTML = '<option value="">No parties available - create one first!</option>';
+                    } else {
+                        select.innerHTML = '<option value="">Select a party...</option>' +
+                            parties.map(p => `<option value="${p.id}">${p.name} (${p.size} members)</option>`).join('');
+                    }
+                })
+                .catch(error => console.error('Error loading parties:', error));
+
+            // Load scenarios
+            fetch('/api/scenarios')
+                .then(response => response.json())
+                .then(data => {
+                    scenarios = data.scenarios || [];
+                    const select = document.getElementById('scenarioSelect');
+                    if (scenarios.length === 0) {
+                        select.innerHTML = '<option value="">No scenarios available - create one first!</option>';
+                    } else {
+                        select.innerHTML = '<option value="">Select a scenario...</option>' +
+                            scenarios.map(s => `<option value="${s.id}">${s.name} (${s.difficulty})</option>`).join('');
+                    }
+                })
+                .catch(error => console.error('Error loading scenarios:', error));
+        }
+
+        function updatePartyPreview() {
+            const partyId = document.getElementById('partySelect').value;
+            const previewDiv = document.getElementById('partyPreview');
+            const contentDiv = document.getElementById('partyPreviewContent');
+
+            if (!partyId) {
+                previewDiv.style.display = 'none';
+                return;
+            }
+
+            const party = parties.find(p => p.id === partyId);
+            if (party) {
+                contentDiv.innerHTML = `
+                    <strong>${party.name}</strong><br>
+                    Members: ${party.size}<br>
+                    ${party.members.map((m, idx) => `${m.name} (${m.class}) - ${party.formation[idx]}`).join('<br>')}
+                `;
+                previewDiv.style.display = 'block';
+            }
+        }
+
+        function updateScenarioPreview() {
+            const scenarioId = document.getElementById('scenarioSelect').value;
+            const previewDiv = document.getElementById('scenarioPreview');
+            const contentDiv = document.getElementById('scenarioPreviewContent');
+
+            if (!scenarioId) {
+                previewDiv.style.display = 'none';
+                return;
+            }
+
+            const scenario = scenarios.find(s => s.id === scenarioId);
+            if (scenario) {
+                contentDiv.innerHTML = `
+                    <strong>${scenario.name}</strong><br>
+                    Difficulty: ${scenario.difficulty.toUpperCase()}<br>
+                    Rooms: ${scenario.num_rooms}<br>
+                    ${scenario.description ? scenario.description : ''}
+                `;
+                previewDiv.style.display = 'block';
+            }
+        }
+
+        document.getElementById('createForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('sessionName').value,
+                party_id: document.getElementById('partySelect').value,
+                scenario_id: document.getElementById('scenarioSelect').value
+            };
+
+            if (!data.party_id || !data.scenario_id) {
+                alert('Please select both a party and a scenario.');
+                return;
+            }
+
+            fetch('/api/sessions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Now load the session and start playing
+                    return fetch('/api/sessions/' + result.session_id + '/load', {
+                        method: 'POST'
+                    });
+                } else {
+                    throw new Error(result.error);
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Redirect to game with the web session ID
+                    window.location.href = '/game?session_id=' + result.web_session_id;
+                } else {
+                    alert('Error loading session: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error creating session: ' + error);
+            });
+        });
+
+        function playSession(sessionId) {
+            // Load the session and redirect to game
+            fetch('/api/sessions/' + sessionId + '/load', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Redirect to game with the web session ID
+                    window.location.href = '/game?session_id=' + result.web_session_id;
+                } else {
+                    alert('Error loading session: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error: ' + error);
+            });
+        }
+
+        function deleteSession(sessionId, sessionName) {
+            if (!confirm(`Delete session "${sessionName}"? This cannot be undone.`)) {
+                return;
+            }
+
+            fetch('/api/sessions/' + sessionId, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    loadSessions();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error deleting session: ' + error);
+            });
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
+
+        // Load sessions on page load
+        loadSessions();
+    </script>
+</body>
+</html>

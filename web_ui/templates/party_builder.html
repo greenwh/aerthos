@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Manager - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f0;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .toolbar {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #002200;
+            border: 2px solid #0a0;
+        }
+
+        .create-btn {
+            background-color: #004400;
+            border: 2px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .create-btn:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .party-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 15px;
+        }
+
+        .party-card {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+        }
+
+        .party-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0f0;
+        }
+
+        .party-info {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #0a0;
+        }
+
+        .party-members {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+        }
+
+        .member-item {
+            font-size: 12px;
+            padding: 3px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .member-formation {
+            color: #ff0;
+            font-weight: bold;
+        }
+
+        .party-actions {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            color: #0f0;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .action-btn:hover {
+            background-color: #002200;
+            border-color: #0f0;
+        }
+
+        .action-btn.delete {
+            color: #f00;
+            border-color: #a00;
+        }
+
+        .action-btn.delete:hover {
+            background-color: #330000;
+            border-color: #f00;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #0a0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0f0;
+        }
+
+        .builder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .character-pool, .party-composition {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #0a0;
+        }
+
+        .char-select-item {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            padding: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .char-select-item:hover {
+            background-color: #002200;
+            border-color: #0f0;
+        }
+
+        .char-select-item.selected {
+            background-color: #003300;
+            border-color: #0f0;
+            font-weight: bold;
+        }
+
+        .char-select-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .formation-selector {
+            margin-top: 10px;
+        }
+
+        .formation-label {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #0a0;
+        }
+
+        .formation-radio {
+            margin-right: 15px;
+        }
+
+        .party-slot {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            padding: 8px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-btn {
+            background-color: #330000;
+            border: 1px solid #a00;
+            color: #f00;
+            padding: 2px 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+        }
+
+        .remove-btn:hover {
+            background-color: #440000;
+            border-color: #f00;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0f0;
+        }
+
+        .form-input {
+            width: 100%;
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0f0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #0a0;
+            background-color: #002200;
+            color: #0f0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .modal-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .modal-btn.primary {
+            background-color: #004400;
+            border-color: #0f0;
+        }
+
+        .modal-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #ff0;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">PARTY MANAGER</div>
+            <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+        </div>
+
+        <div class="toolbar">
+            <button class="create-btn" onclick="showCreateModal()">⚔ Create New Party</button>
+        </div>
+
+        <div id="partyList" class="party-list">
+            <div class="loading"><span class="blink">Loading parties...</span></div>
+        </div>
+    </div>
+
+    <!-- Create Party Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Create New Party</div>
+
+            <div class="form-group">
+                <label class="form-label">Party Name:</label>
+                <input type="text" id="partyName" class="form-input" placeholder="Enter party name..." required>
+            </div>
+
+            <div class="builder-container">
+                <div class="character-pool">
+                    <div class="section-title">Available Characters</div>
+                    <div id="characterPool">
+                        <div class="loading"><span class="blink">Loading...</span></div>
+                    </div>
+                </div>
+
+                <div class="party-composition">
+                    <div class="section-title">Party Members (Max 6)</div>
+                    <div id="partySlots">
+                        <div class="empty-state" style="padding: 20px;">No members yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="modal-btn" onclick="closeCreateModal()">Cancel</button>
+                <button type="button" class="modal-btn primary" id="savePartyBtn" onclick="saveParty()" disabled>Create Party</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let parties = [];
+        let availableCharacters = [];
+        let selectedCharacters = [];
+
+        function loadParties() {
+            fetch('/api/parties')
+                .then(response => response.json())
+                .then(data => {
+                    parties = data.parties || [];
+                    renderParties();
+                })
+                .catch(error => {
+                    console.error('Error loading parties:', error);
+                    document.getElementById('partyList').innerHTML =
+                        '<div class="empty-state">Error loading parties</div>';
+                });
+        }
+
+        function renderParties() {
+            const listEl = document.getElementById('partyList');
+
+            if (parties.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No parties yet. Create one to begin!</div>';
+                return;
+            }
+
+            listEl.innerHTML = parties.map(party => `
+                <div class="party-card">
+                    <div class="party-name">${party.name}</div>
+                    <div class="party-info">Size: ${party.size} members</div>
+                    <div class="party-members">
+                        ${party.members.map((member, idx) => `
+                            <div class="member-item">
+                                <span>${member.name} (${member.class})</span>
+                                <span class="member-formation">[${party.formation[idx].toUpperCase()}]</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="party-actions">
+                        <button class="action-btn delete" onclick="deleteParty('${party.id}', '${party.name}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showCreateModal() {
+            selectedCharacters = [];
+            document.getElementById('partyName').value = '';
+            document.getElementById('createModal').style.display = 'flex';
+            loadAvailableCharacters();
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').style.display = 'none';
+            selectedCharacters = [];
+        }
+
+        function loadAvailableCharacters() {
+            fetch('/api/characters')
+                .then(response => response.json())
+                .then(data => {
+                    availableCharacters = data.characters || [];
+                    renderCharacterPool();
+                    renderPartySlots();
+                })
+                .catch(error => {
+                    console.error('Error loading characters:', error);
+                    document.getElementById('characterPool').innerHTML =
+                        '<div style="padding: 20px; text-align: center;">Error loading characters</div>';
+                });
+        }
+
+        function renderCharacterPool() {
+            const poolEl = document.getElementById('characterPool');
+
+            if (availableCharacters.length === 0) {
+                poolEl.innerHTML = '<div style="padding: 20px; text-align: center;">No characters available. Create some first!</div>';
+                return;
+            }
+
+            poolEl.innerHTML = availableCharacters.map(char => {
+                const isSelected = selectedCharacters.some(sc => sc.id === char.id);
+                const isDisabled = selectedCharacters.length >= 6 && !isSelected;
+                const classes = ['char-select-item'];
+                if (isSelected) classes.push('selected');
+                if (isDisabled) classes.push('disabled');
+
+                return `
+                    <div class="${classes.join(' ')}" onclick="${isDisabled ? '' : `toggleCharacter('${char.id}')`}">
+                        <div>${char.name}</div>
+                        <div style="font-size: 11px; color: #0a0;">${char.race} ${char.class} - Level ${char.level}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleCharacter(charId) {
+            const index = selectedCharacters.findIndex(sc => sc.id === charId);
+
+            if (index >= 0) {
+                // Remove from party
+                selectedCharacters.splice(index, 1);
+            } else {
+                // Add to party (max 6)
+                if (selectedCharacters.length < 6) {
+                    const char = availableCharacters.find(c => c.id === charId);
+                    selectedCharacters.push({
+                        id: char.id,
+                        name: char.name,
+                        class: char.class,
+                        formation: 'front'
+                    });
+                }
+            }
+
+            renderCharacterPool();
+            renderPartySlots();
+            updateSaveButton();
+        }
+
+        function renderPartySlots() {
+            const slotsEl = document.getElementById('partySlots');
+
+            if (selectedCharacters.length === 0) {
+                slotsEl.innerHTML = '<div class="empty-state" style="padding: 20px;">No members yet</div>';
+                return;
+            }
+
+            slotsEl.innerHTML = selectedCharacters.map((char, idx) => `
+                <div class="party-slot">
+                    <div>
+                        <div style="font-weight: bold;">${char.name}</div>
+                        <div style="font-size: 11px; color: #0a0;">${char.class}</div>
+                        <div class="formation-selector" style="margin-top: 5px;">
+                            <label class="formation-label">
+                                <input type="radio" name="formation_${idx}" value="front"
+                                    ${char.formation === 'front' ? 'checked' : ''}
+                                    onchange="updateFormation(${idx}, 'front')"
+                                    class="formation-radio"> Front
+                            </label>
+                            <label class="formation-label">
+                                <input type="radio" name="formation_${idx}" value="back"
+                                    ${char.formation === 'back' ? 'checked' : ''}
+                                    onchange="updateFormation(${idx}, 'back')"
+                                    class="formation-radio"> Back
+                            </label>
+                        </div>
+                    </div>
+                    <button class="remove-btn" onclick="toggleCharacter('${char.id}')">✕</button>
+                </div>
+            `).join('');
+        }
+
+        function updateFormation(idx, formation) {
+            selectedCharacters[idx].formation = formation;
+        }
+
+        function updateSaveButton() {
+            const btn = document.getElementById('savePartyBtn');
+            const partyName = document.getElementById('partyName').value.trim();
+            btn.disabled = selectedCharacters.length === 0 || !partyName;
+        }
+
+        document.getElementById('partyName').addEventListener('input', updateSaveButton);
+
+        function saveParty() {
+            const partyName = document.getElementById('partyName').value.trim();
+            if (!partyName || selectedCharacters.length === 0) {
+                alert('Please enter a party name and select at least one character.');
+                return;
+            }
+
+            const data = {
+                name: partyName,
+                character_ids: selectedCharacters.map(sc => sc.id),
+                formation: selectedCharacters.map(sc => sc.formation)
+            };
+
+            fetch('/api/parties', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    closeCreateModal();
+                    loadParties();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error creating party: ' + error);
+            });
+        }
+
+        function deleteParty(partyId, partyName) {
+            if (!confirm(`Delete party "${partyName}"? This cannot be undone.`)) {
+                return;
+            }
+
+            fetch('/api/parties/' + partyId, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    loadParties();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error deleting party: ' + error);
+            });
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
+
+        // Load parties on page load
+        loadParties();
+    </script>
+</body>
+</html>

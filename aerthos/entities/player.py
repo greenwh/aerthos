@@ -34,6 +34,7 @@ class Weapon(Item):
     damage_sm: str = "1d4"  # vs Small/Medium
     damage_l: str = "1d4"   # vs Large
     speed_factor: int = 5
+    magic_bonus: int = 0    # +1, +2, etc. for magic weapons
 
     def __post_init__(self):
         self.item_type = 'weapon'
@@ -43,6 +44,7 @@ class Weapon(Item):
 class Armor(Item):
     """Armor with AC bonus"""
     ac_bonus: int = 0  # How much it improves AC
+    magic_bonus: int = 0  # +1, +2, etc. for magic armor (improves AC further)
 
     def __post_init__(self):
         self.item_type = 'armor'
@@ -108,17 +110,19 @@ class Inventory:
 
     def remove_item(self, item_name: str) -> Optional[Item]:
         """Remove and return item by name (supports partial matching)"""
-        search_lower = item_name.lower()
+        search_lower = item_name.lower().replace('_', ' ')
 
         # First try exact match
         for item in self.items:
-            if item.name.lower() == search_lower:
+            item_name_normalized = item.name.lower().replace('_', ' ')
+            if item_name_normalized == search_lower:
                 self.items.remove(item)
                 return item
 
         # Then try partial match (search term is in item name)
         for item in self.items:
-            if search_lower in item.name.lower():
+            item_name_normalized = item.name.lower().replace('_', ' ')
+            if search_lower in item_name_normalized:
                 self.items.remove(item)
                 return item
 
@@ -130,16 +134,18 @@ class Inventory:
 
     def get_item(self, item_name: str) -> Optional[Item]:
         """Get item by name without removing (supports partial matching)"""
-        search_lower = item_name.lower()
+        search_lower = item_name.lower().replace('_', ' ')
 
         # First try exact match
         for item in self.items:
-            if item.name.lower() == search_lower:
+            item_name_normalized = item.name.lower().replace('_', ' ')
+            if item_name_normalized == search_lower:
                 return item
 
         # Then try partial match (search term is in item name)
         for item in self.items:
-            if search_lower in item.name.lower():
+            item_name_normalized = item.name.lower().replace('_', ' ')
+            if search_lower in item_name_normalized:
                 return item
 
         return None
@@ -163,12 +169,18 @@ class Equipment:
         self.light_source: Optional[LightSource] = None
 
     def get_total_ac(self, base_ac: int = 10) -> int:
-        """Calculate total AC from equipment"""
+        """Calculate total AC from equipment (including magic bonuses)"""
         ac = base_ac
         if self.armor:
             ac -= self.armor.ac_bonus
+            # Magic bonus further improves AC (lower is better)
+            if hasattr(self.armor, 'magic_bonus'):
+                ac -= self.armor.magic_bonus
         if self.shield:
             ac -= self.shield.ac_bonus
+            # Magic bonus further improves AC
+            if hasattr(self.shield, 'magic_bonus'):
+                ac -= self.shield.magic_bonus
         return ac
 
 
@@ -223,6 +235,51 @@ class PlayerCharacter(Character):
         equipment_ac = self.equipment.get_total_ac(base_ac)
         dex_bonus = self.get_ac_bonus()
         return equipment_ac + dex_bonus
+
+    def can_use_weapon(self, weapon: Weapon) -> tuple[bool, str]:
+        """
+        Check if character's class allows them to use this weapon
+
+        Returns:
+            (can_use: bool, message: str)
+        """
+        weapon_name_lower = weapon.name.lower()
+
+        # AD&D 1e weapon restrictions by class
+        if self.char_class == 'Fighter':
+            return (True, "")  # Fighters can use all weapons
+
+        elif self.char_class == 'Cleric':
+            # Clerics can only use bludgeoning weapons (no bladed)
+            allowed = ['mace', 'flail', 'hammer', 'staff', 'club', 'sling']
+            if any(w in weapon_name_lower for w in allowed):
+                return (True, "")
+            return (False, f"Clerics cannot use bladed weapons like {weapon.name}! Religious restrictions forbid shedding blood.")
+
+        elif self.char_class == 'Magic-User':
+            # Magic-Users very limited - dagger, staff, dart, sling
+            allowed = ['dagger', 'staff', 'dart', 'sling']
+            if any(w in weapon_name_lower for w in allowed):
+                return (True, "")
+            return (False, f"Magic-Users cannot use {weapon.name}! They lack martial training and can only use daggers, staves, darts, and slings.")
+
+        elif self.char_class == 'Thief':
+            # Thieves limited selection - no two-handed weapons or heavy weapons
+            # Can use: dagger, shortsword, club, hand axe, short bow, light crossbow
+            allowed = ['dagger', 'shortsword', 'short sword', 'club', 'hand axe', 'short bow', 'crossbow']
+            disallowed = ['longsword', 'long sword', 'greatsword', 'great sword', 'battle axe',
+                         'two-handed', 'polearm', 'pike', 'halberd']
+
+            if any(w in weapon_name_lower for w in disallowed):
+                return (False, f"Thieves cannot use heavy weapons like {weapon.name}! Too cumbersome for their fighting style.")
+            if any(w in weapon_name_lower for w in allowed):
+                return (True, "")
+
+            # Default for thieves - be permissive for light weapons
+            return (True, "")
+
+        # Unknown class - allow by default
+        return (True, "")
 
     def equip_weapon(self, weapon: Weapon):
         """Equip a weapon"""

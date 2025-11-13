@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Roster - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f0;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .toolbar {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #002200;
+            border: 2px solid #0a0;
+        }
+
+        .create-btn {
+            background-color: #004400;
+            border: 2px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .create-btn:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .character-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .character-card {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .character-card:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .char-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0f0;
+        }
+
+        .char-info {
+            font-size: 14px;
+            margin-bottom: 3px;
+            color: #0a0;
+        }
+
+        .char-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+        }
+
+        .stat {
+            font-size: 12px;
+        }
+
+        .char-actions {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #0a0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            color: #0f0;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .action-btn:hover {
+            background-color: #002200;
+            border-color: #0f0;
+        }
+
+        .action-btn.delete {
+            color: #f00;
+            border-color: #a00;
+        }
+
+        .action-btn.delete:hover {
+            background-color: #330000;
+            border-color: #f00;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #0a0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0f0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0f0;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #0f0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #0a0;
+            background-color: #002200;
+            color: #0f0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .modal-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .modal-btn.primary {
+            background-color: #004400;
+            border-color: #0f0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #ff0;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">CHARACTER ROSTER</div>
+            <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+        </div>
+
+        <div class="toolbar">
+            <button class="create-btn" onclick="showCreateModal()">⚔ Create New Character</button>
+        </div>
+
+        <div id="characterList" class="character-list">
+            <div class="loading"><span class="blink">Loading characters...</span></div>
+        </div>
+    </div>
+
+    <!-- Create Character Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Create New Character</div>
+            <form id="createForm">
+                <div class="form-group">
+                    <label class="form-label">Name:</label>
+                    <input type="text" id="charName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Race:</label>
+                    <select id="charRace" class="form-select" required>
+                        <option value="">Select Race...</option>
+                        <option value="Human">Human</option>
+                        <option value="Elf">Elf</option>
+                        <option value="Dwarf">Dwarf</option>
+                        <option value="Halfling">Halfling</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Class:</label>
+                    <select id="charClass" class="form-select" required>
+                        <option value="">Select Class...</option>
+                        <option value="Fighter">Fighter</option>
+                        <option value="Cleric">Cleric</option>
+                        <option value="Magic-User">Magic-User</option>
+                        <option value="Thief">Thief</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn" onclick="closeCreateModal()">Cancel</button>
+                    <button type="submit" class="modal-btn primary">Create Character</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Character Modal -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title" id="viewCharName">Character Details</div>
+            <div id="viewCharDetails"></div>
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="closeViewModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let characters = [];
+
+        function loadCharacters() {
+            fetch('/api/characters')
+                .then(response => response.json())
+                .then(data => {
+                    characters = data.characters || [];
+                    renderCharacters();
+                })
+                .catch(error => {
+                    console.error('Error loading characters:', error);
+                    document.getElementById('characterList').innerHTML =
+                        '<div class="empty-state">Error loading characters</div>';
+                });
+        }
+
+        function renderCharacters() {
+            const listEl = document.getElementById('characterList');
+
+            if (characters.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No characters yet. Create one to begin!</div>';
+                return;
+            }
+
+            listEl.innerHTML = characters.map(char => `
+                <div class="character-card">
+                    <div class="char-name">${char.name}</div>
+                    <div class="char-info">${char.race} ${char.class}</div>
+                    <div class="char-info">Level ${char.level} | XP: ${char.xp}</div>
+                    <div class="char-stats">
+                        <div class="stat">HP: ${char.hp}</div>
+                        <div class="stat">AC: ${char.ac}</div>
+                        <div class="stat">Gold: ${char.gold}</div>
+                    </div>
+                    <div class="char-actions">
+                        <button class="action-btn" onclick="viewCharacter('${char.id}')">View</button>
+                        <button class="action-btn delete" onclick="deleteCharacter('${char.id}', '${char.name}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showCreateModal() {
+            document.getElementById('createModal').style.display = 'flex';
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').style.display = 'none';
+            document.getElementById('createForm').reset();
+        }
+
+        function closeViewModal() {
+            document.getElementById('viewModal').style.display = 'none';
+        }
+
+        document.getElementById('createForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('charName').value,
+                race: document.getElementById('charRace').value,
+                char_class: document.getElementById('charClass').value
+            };
+
+            fetch('/api/characters', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    closeCreateModal();
+                    loadCharacters();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error creating character: ' + error);
+            });
+        });
+
+        function viewCharacter(charId) {
+            fetch('/api/characters/' + charId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const char = data.character;
+                        document.getElementById('viewCharName').textContent = char.name;
+                        document.getElementById('viewCharDetails').innerHTML = `
+                            <div style="line-height: 1.6;">
+                                <p><strong>Race:</strong> ${char.race}</p>
+                                <p><strong>Class:</strong> ${char.class}</p>
+                                <p><strong>Level:</strong> ${char.level}</p>
+                                <p><strong>XP:</strong> ${char.xp}</p>
+                                <p><strong>HP:</strong> ${char.hp}</p>
+                                <p><strong>AC:</strong> ${char.ac}</p>
+                                <p><strong>THAC0:</strong> ${char.thac0}</p>
+                                <p><strong>Gold:</strong> ${char.gold}</p>
+                                <p><strong>Weight:</strong> ${char.weight} / ${char.weight_max}</p>
+                            </div>
+                        `;
+                        document.getElementById('viewModal').style.display = 'flex';
+                    } else {
+                        alert('Error loading character: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    alert('Error: ' + error);
+                });
+        }
+
+        function deleteCharacter(charId, charName) {
+            if (!confirm(`Delete ${charName}? This cannot be undone.`)) {
+                return;
+            }
+
+            fetch('/api/characters/' + charId, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    loadCharacters();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            })
+            .catch(error => {
+                alert('Error deleting character: ' + error);
+            });
+        }
+
+        function goBack() {
+            window.location.href = '/';
+        }
+
+        // Load characters on page load
+        loadCharacters();
+    </script>
+</body>
+</html>
