@@ -45,6 +45,12 @@ def game():
     return render_template('game.html')
 
 
+@app.route('/character_creation')
+def character_creation():
+    """Character creation interface"""
+    return render_template('character_creation.html')
+
+
 @app.route('/character_roster')
 def character_roster():
     """Character roster management"""
@@ -439,6 +445,245 @@ def delete_character(char_id):
             return jsonify({'success': True})
         else:
             return jsonify({'success': False, 'error': 'Character not found'})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/character/get_races', methods=['POST'])
+def get_available_races():
+    """Get available races based on ability scores"""
+    try:
+        data = request.json
+        stats = data.get('stats', {})
+
+        game_data = GameData.load_all()
+        from aerthos.ui.character_creation import CharacterCreator
+        creator = CharacterCreator(game_data)
+
+        races_info = []
+        for race_name in ['Human', 'Elf', 'Dwarf', 'Halfling', 'Half-Elf', 'Half-Orc', 'Gnome']:
+            if race_name not in game_data.races:
+                continue
+
+            race_data = game_data.races[race_name]
+            is_available, reason = creator._check_race_requirements(
+                race_name,
+                stats.get('str', 0),
+                stats.get('dex', 0),
+                stats.get('con', 0),
+                stats.get('int', 0),
+                stats.get('wis', 0),
+                stats.get('cha', 0)
+            )
+
+            mods = race_data.get('ability_modifiers', {})
+            mod_str = creator._format_ability_modifiers(mods)
+
+            races_info.append({
+                'name': race_name,
+                'description': race_data.get('description', ''),
+                'modifiers': mod_str,
+                'available': is_available,
+                'reason': reason
+            })
+
+        return jsonify({'success': True, 'races': races_info})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/character/get_classes', methods=['POST'])
+def get_available_classes():
+    """Get available classes based on race and ability scores"""
+    try:
+        data = request.json
+        stats = data.get('stats', {})
+        race = data.get('race', 'Human')
+
+        game_data = GameData.load_all()
+        from aerthos.ui.character_creation import CharacterCreator
+        creator = CharacterCreator(game_data)
+
+        # Apply racial modifiers to stats
+        race_data = game_data.races[race]
+        modified_stats = stats.copy()
+        for ability, modifier in race_data.get('ability_modifiers', {}).items():
+            stat_key = ability[:3]  # str, dex, con, etc.
+            if stat_key in modified_stats:
+                modified_stats[stat_key] += modifier
+
+        # Apply racial maximums
+        maximums = race_data.get('ability_maximums', {})
+        for ability, max_val in maximums.items():
+            stat_key = ability[:3]
+            if stat_key in modified_stats:
+                modified_stats[stat_key] = min(modified_stats[stat_key], max_val)
+
+        classes_info = []
+        all_classes = ['Fighter', 'Ranger', 'Paladin', 'Cleric', 'Druid', 'Magic-User', 'Illusionist', 'Thief', 'Assassin', 'Monk', 'Bard']
+
+        for class_name in all_classes:
+            if class_name not in game_data.classes:
+                continue
+
+            is_available, reason = creator._check_class_requirements(
+                class_name,
+                race,
+                modified_stats.get('str', 0),
+                modified_stats.get('dex', 0),
+                modified_stats.get('con', 0),
+                modified_stats.get('int', 0),
+                modified_stats.get('wis', 0),
+                modified_stats.get('cha', 0)
+            )
+
+            class_data = game_data.classes[class_name]
+            classes_info.append({
+                'name': class_name,
+                'description': class_data.get('description', ''),
+                'available': is_available,
+                'reason': reason
+            })
+
+        return jsonify({
+            'success': True,
+            'classes': classes_info,
+            'stats_after_race': modified_stats
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/character/create', methods=['POST'])
+def create_character_full():
+    """Create a character with full stat rolling"""
+    try:
+        data = request.json
+        name = data.get('name', 'Adventurer')
+        race = data.get('race', 'Human')
+        char_class = data.get('char_class', 'Fighter')
+        base_stats = data.get('stats', {})
+
+        game_data = GameData.load_all()
+        from aerthos.ui.character_creation import CharacterCreator
+        from aerthos.engine.combat import DiceRoller
+        creator = CharacterCreator(game_data)
+
+        # Get base stats
+        strength = base_stats.get('str', 10)
+        dexterity = base_stats.get('dex', 10)
+        constitution = base_stats.get('con', 10)
+        intelligence = base_stats.get('int', 10)
+        wisdom = base_stats.get('wis', 10)
+        charisma = base_stats.get('cha', 10)
+
+        # Apply racial modifiers
+        race_data = game_data.races[race]
+        for ability, modifier in race_data.get('ability_modifiers', {}).items():
+            if ability == 'strength':
+                strength += modifier
+            elif ability == 'dexterity':
+                dexterity += modifier
+            elif ability == 'constitution':
+                constitution += modifier
+            elif ability == 'intelligence':
+                intelligence += modifier
+            elif ability == 'wisdom':
+                wisdom += modifier
+            elif ability == 'charisma':
+                charisma += modifier
+
+        # Apply racial maximums
+        maximums = race_data.get('ability_maximums', {})
+        if 'strength' in maximums:
+            strength = min(strength, maximums['strength'])
+        if 'dexterity' in maximums:
+            dexterity = min(dexterity, maximums['dexterity'])
+        if 'constitution' in maximums:
+            constitution = min(constitution, maximums['constitution'])
+        if 'intelligence' in maximums:
+            intelligence = min(intelligence, maximums['intelligence'])
+        if 'wisdom' in maximums:
+            wisdom = min(wisdom, maximums['wisdom'])
+        if 'charisma' in maximums:
+            charisma = min(charisma, maximums['charisma'])
+
+        # Handle exceptional strength for Fighters
+        strength_percentile = 0
+        if char_class == 'Fighter' and strength == 18:
+            import random
+            strength_percentile = random.randint(1, 100)
+
+        # Roll HP
+        class_data = game_data.classes[char_class]
+        hit_die = class_data['hit_die']
+        hp = max(1, DiceRoller.roll(hit_die))
+
+        # Apply CON bonus
+        con_bonus = creator._get_con_bonus(constitution)
+        hp = max(1, hp + con_bonus)
+
+        # Get class-specific data
+        saves = class_data['saves']
+        thac0 = class_data['thac0_base']
+
+        # Get XP needed for level 2
+        from aerthos.entities.player import XP_TABLES
+        xp_to_level_2 = XP_TABLES.get(char_class, [0, 2000])[1]
+
+        # Create character
+        player = PlayerCharacter(
+            name=name,
+            race=race,
+            char_class=char_class,
+            level=1,
+            strength=strength,
+            dexterity=dexterity,
+            constitution=constitution,
+            intelligence=intelligence,
+            wisdom=wisdom,
+            charisma=charisma,
+            strength_percentile=strength_percentile,
+            hp_current=hp,
+            hp_max=hp,
+            ac=10,
+            thac0=thac0,
+            save_poison=saves['poison'],
+            save_rod_staff_wand=saves['rod_staff_wand'],
+            save_petrify_paralyze=saves['petrify_paralyze'],
+            save_breath=saves['breath'],
+            save_spell=saves['spell'],
+            xp=0,
+            xp_to_next_level=xp_to_level_2
+        )
+
+        # Add starting equipment
+        creator._add_starting_equipment(player, char_class)
+
+        # Add skills for skill-based classes
+        if char_class in ['Thief', 'Assassin', 'Bard']:
+            player.thief_skills = class_data.get('skills', {}).copy()
+
+        # Add spell slots if spellcaster
+        if char_class in ['Magic-User', 'Illusionist', 'Cleric', 'Druid', 'Ranger', 'Paladin', 'Bard']:
+            spell_slots_key = 'spell_slots_level_1'
+            if spell_slots_key in class_data:
+                num_slots = class_data[spell_slots_key][0]
+                if num_slots > 0:
+                    for _ in range(num_slots):
+                        player.add_spell_slot(1)
+
+        # Save character
+        roster = CharacterRoster()
+        char_id = roster.save_character(player)
+
+        return jsonify({'success': True, 'character_id': char_id, 'name': name})
     except Exception as e:
         import traceback
         traceback.print_exc()

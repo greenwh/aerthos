@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #0f0;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #0a0;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #002200;
+            border: 2px solid #0a0;
+        }
+
+        .step {
+            text-align: center;
+            padding: 5px 10px;
+            opacity: 0.5;
+        }
+
+        .step.active {
+            opacity: 1;
+            background-color: #003300;
+            border: 1px solid #0f0;
+        }
+
+        .step.completed {
+            opacity: 0.8;
+            color: #0a0;
+        }
+
+        .creation-panel {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .creation-panel.active {
+            display: block;
+        }
+
+        .stat-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background-color: #001a00;
+            border: 2px solid #0a0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #0a0;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0f0;
+        }
+
+        .option-list {
+            margin: 20px 0;
+        }
+
+        .option-item {
+            background-color: #001a00;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover:not(.unavailable) {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .option-item.selected {
+            background-color: #004400;
+            border-color: #0f0;
+            box-shadow: 0 0 15px #0a0;
+        }
+
+        .option-item.unavailable {
+            opacity: 0.4;
+            cursor: not-allowed;
+            border-color: #555;
+        }
+
+        .option-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .option-desc {
+            font-size: 12px;
+            color: #0a0;
+            margin-bottom: 5px;
+        }
+
+        .option-reason {
+            font-size: 11px;
+            color: #ff6666;
+            font-style: italic;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #001a00;
+            border: 2px solid #0a0;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn {
+            background-color: #004400;
+            border: 2px solid #0f0;
+            color: #0f0;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: #002200;
+            border-color: #0a0;
+        }
+
+        .btn-secondary:hover {
+            background-color: #003300;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .message {
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #0a0;
+            background-color: #003300;
+        }
+
+        .char-summary {
+            background-color: #001a00;
+            border: 2px solid #0a0;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .char-summary h3 {
+            margin-bottom: 15px;
+            color: #0f0;
+        }
+
+        .char-summary-line {
+            margin: 8px 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #0a0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">CHARACTER CREATION</div>
+            <div class="subtitle">Advanced Dungeons & Dragons 1st Edition</div>
+        </div>
+
+        <div class="step-indicator">
+            <div class="step active" id="step-1">1. ROLL STATS</div>
+            <div class="step" id="step-2">2. NAME</div>
+            <div class="step" id="step-3">3. RACE</div>
+            <div class="step" id="step-4">4. CLASS</div>
+            <div class="step" id="step-5">5. FINISH</div>
+        </div>
+
+        <!-- STEP 1: Roll Stats -->
+        <div class="creation-panel active" id="panel-stats">
+            <h2>Roll Ability Scores</h2>
+            <p>Rolling 3d6 in order for each ability score...</p>
+
+            <div class="stat-display">
+                <div class="stat-box">
+                    <div class="stat-label">STRENGTH</div>
+                    <div class="stat-value" id="stat-str">--</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">DEXTERITY</div>
+                    <div class="stat-value" id="stat-dex">--</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">CONSTITUTION</div>
+                    <div class="stat-value" id="stat-con">--</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">INTELLIGENCE</div>
+                    <div class="stat-value" id="stat-int">--</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">WISDOM</div>
+                    <div class="stat-value" id="stat-wis">--</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">CHARISMA</div>
+                    <div class="stat-value" id="stat-cha">--</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="rollStats()">Reroll Stats</button>
+                <button class="btn" onclick="nextStep()">Accept & Continue</button>
+            </div>
+        </div>
+
+        <!-- STEP 2: Name -->
+        <div class="creation-panel" id="panel-name">
+            <h2>Enter Character Name</h2>
+            <input type="text" id="char-name" placeholder="Enter character name..." maxlength="30">
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn" onclick="nextStep()">Continue</button>
+            </div>
+        </div>
+
+        <!-- STEP 3: Choose Race -->
+        <div class="creation-panel" id="panel-race">
+            <h2>Choose Your Race</h2>
+            <p>Select a race. Some races require minimum ability scores.</p>
+
+            <div class="option-list" id="race-list">
+                <!-- Races will be populated here -->
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn" id="btn-race-next" onclick="nextStep()" disabled>Continue</button>
+            </div>
+        </div>
+
+        <!-- STEP 4: Choose Class -->
+        <div class="creation-panel" id="panel-class">
+            <h2>Choose Your Class</h2>
+            <p>Select a class. Some classes require minimum ability scores and are restricted by race.</p>
+
+            <div class="option-list" id="class-list">
+                <!-- Classes will be populated here -->
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn" id="btn-class-next" onclick="nextStep()" disabled>Continue</button>
+            </div>
+        </div>
+
+        <!-- STEP 5: Review & Create -->
+        <div class="creation-panel" id="panel-finish">
+            <h2>Review Your Character</h2>
+
+            <div class="char-summary" id="char-summary">
+                <!-- Character summary will be displayed here -->
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn" onclick="createCharacter()">Create Character</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Character creation state
+        let charState = {
+            step: 1,
+            stats: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
+            statsAfterRace: {},
+            name: '',
+            race: '',
+            charClass: ''
+        };
+
+        // Roll 3d6
+        function roll3d6() {
+            return Math.floor(Math.random() * 6) + 1 +
+                   Math.floor(Math.random() * 6) + 1 +
+                   Math.floor(Math.random() * 6) + 1;
+        }
+
+        // Roll all stats
+        function rollStats() {
+            charState.stats.str = roll3d6();
+            charState.stats.dex = roll3d6();
+            charState.stats.con = roll3d6();
+            charState.stats.int = roll3d6();
+            charState.stats.wis = roll3d6();
+            charState.stats.cha = roll3d6();
+
+            document.getElementById('stat-str').textContent = charState.stats.str;
+            document.getElementById('stat-dex').textContent = charState.stats.dex;
+            document.getElementById('stat-con').textContent = charState.stats.con;
+            document.getElementById('stat-int').textContent = charState.stats.int;
+            document.getElementById('stat-wis').textContent = charState.stats.wis;
+            document.getElementById('stat-cha').textContent = charState.stats.cha;
+        }
+
+        // Update step indicator
+        function updateStepIndicator() {
+            for (let i = 1; i <= 5; i++) {
+                const stepEl = document.getElementById(`step-${i}`);
+                stepEl.classList.remove('active', 'completed');
+                if (i < charState.step) {
+                    stepEl.classList.add('completed');
+                } else if (i === charState.step) {
+                    stepEl.classList.add('active');
+                }
+            }
+        }
+
+        // Show panel
+        function showPanel(panelName) {
+            document.querySelectorAll('.creation-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(panelName).classList.add('active');
+        }
+
+        // Next step
+        function nextStep() {
+            if (charState.step === 1) {
+                // Moving from stats to name
+                charState.step = 2;
+                showPanel('panel-name');
+                updateStepIndicator();
+            } else if (charState.step === 2) {
+                // Moving from name to race
+                charState.name = document.getElementById('char-name').value || 'Adventurer';
+                charState.step = 3;
+                showPanel('panel-race');
+                updateStepIndicator();
+                loadRaces();
+            } else if (charState.step === 3) {
+                // Moving from race to class
+                if (!charState.race) {
+                    alert('Please select a race');
+                    return;
+                }
+                charState.step = 4;
+                showPanel('panel-class');
+                updateStepIndicator();
+                loadClasses();
+            } else if (charState.step === 4) {
+                // Moving from class to finish
+                if (!charState.charClass) {
+                    alert('Please select a class');
+                    return;
+                }
+                charState.step = 5;
+                showPanel('panel-finish');
+                updateStepIndicator();
+                showSummary();
+            }
+        }
+
+        // Previous step
+        function prevStep() {
+            if (charState.step > 1) {
+                charState.step--;
+                const panels = ['', 'panel-stats', 'panel-name', 'panel-race', 'panel-class', 'panel-finish'];
+                showPanel(panels[charState.step]);
+                updateStepIndicator();
+            }
+        }
+
+        // Load available races
+        async function loadRaces() {
+            const response = await fetch('/api/character/get_races', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ stats: charState.stats })
+            });
+
+            const data = await response.json();
+            const raceList = document.getElementById('race-list');
+            raceList.innerHTML = '';
+
+            data.races.forEach(race => {
+                const div = document.createElement('div');
+                div.className = 'option-item' + (race.available ? '' : ' unavailable');
+                div.innerHTML = `
+                    <div class="option-name">${race.name} ${race.modifiers || ''}</div>
+                    <div class="option-desc">${race.description}</div>
+                    ${!race.available ? `<div class="option-reason">Unavailable: ${race.reason}</div>` : ''}
+                `;
+
+                if (race.available) {
+                    div.onclick = () => selectRace(race.name, div);
+                }
+
+                raceList.appendChild(div);
+            });
+        }
+
+        // Select race
+        function selectRace(raceName, element) {
+            charState.race = raceName;
+            document.querySelectorAll('#race-list .option-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('btn-race-next').disabled = false;
+        }
+
+        // Load available classes
+        async function loadClasses() {
+            const response = await fetch('/api/character/get_classes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    stats: charState.stats,
+                    race: charState.race
+                })
+            });
+
+            const data = await response.json();
+            charState.statsAfterRace = data.stats_after_race || charState.stats;
+
+            const classList = document.getElementById('class-list');
+            classList.innerHTML = '';
+
+            data.classes.forEach(cls => {
+                const div = document.createElement('div');
+                div.className = 'option-item' + (cls.available ? '' : ' unavailable');
+                div.innerHTML = `
+                    <div class="option-name">${cls.name}</div>
+                    <div class="option-desc">${cls.description}</div>
+                    ${!cls.available ? `<div class="option-reason">Unavailable: ${cls.reason}</div>` : ''}
+                `;
+
+                if (cls.available) {
+                    div.onclick = () => selectClass(cls.name, div);
+                }
+
+                classList.appendChild(div);
+            });
+        }
+
+        // Select class
+        function selectClass(className, element) {
+            charState.charClass = className;
+            document.querySelectorAll('#class-list .option-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('btn-class-next').disabled = false;
+        }
+
+        // Show character summary
+        function showSummary() {
+            const summary = document.getElementById('char-summary');
+            const stats = charState.statsAfterRace;
+
+            summary.innerHTML = `
+                <h3>Character Summary</h3>
+                <div class="char-summary-line"><strong>Name:</strong> ${charState.name}</div>
+                <div class="char-summary-line"><strong>Race:</strong> ${charState.race}</div>
+                <div class="char-summary-line"><strong>Class:</strong> ${charState.charClass}</div>
+                <div class="char-summary-line"><strong>STR:</strong> ${stats.str || charState.stats.str} <strong>DEX:</strong> ${stats.dex || charState.stats.dex} <strong>CON:</strong> ${stats.con || charState.stats.con}</div>
+                <div class="char-summary-line"><strong>INT:</strong> ${stats.int || charState.stats.int} <strong>WIS:</strong> ${stats.wis || charState.stats.wis} <strong>CHA:</strong> ${stats.cha || charState.stats.cha}</div>
+            `;
+        }
+
+        // Create character
+        async function createCharacter() {
+            const response = await fetch('/api/character/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: charState.name,
+                    race: charState.race,
+                    char_class: charState.charClass,
+                    stats: charState.stats
+                })
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert('Character created successfully!');
+                window.location.href = '/character_roster';
+            } else {
+                alert('Error creating character: ' + data.error);
+            }
+        }
+
+        // Initialize
+        window.onload = function() {
+            rollStats();
+        };
+    </script>
+</body>
+</html>

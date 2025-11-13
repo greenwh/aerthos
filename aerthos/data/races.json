@@ -8,6 +8,8 @@
       "wisdom": 0,
       "charisma": 0
     },
+    "ability_minimums": {},
+    "ability_maximums": {},
     "class_restrictions": [],
     "size": "M",
     "movement": 12,
@@ -23,10 +25,19 @@
       "wisdom": 0,
       "charisma": 0
     },
-    "class_restrictions": ["Cleric"],
+    "ability_minimums": {
+      "intelligence": 8,
+      "dexterity": 7
+    },
+    "ability_maximums": {
+      "strength": 18,
+      "constitution": 17
+    },
+    "class_restrictions": ["Cleric", "Druid", "Monk", "Paladin"],
+    "multi_class_options": ["Fighter/Magic-User", "Fighter/Thief", "Magic-User/Thief", "Fighter/Magic-User/Thief"],
     "size": "M",
     "movement": 12,
-    "special_abilities": ["infravision_60", "resist_sleep_charm", "detect_secret_doors"],
+    "special_abilities": ["infravision_60", "resist_sleep_charm", "detect_secret_doors", "bonus_longsword_bow"],
     "description": "Graceful and long-lived, elves are skilled with magic and bow"
   },
   "Dwarf": {
@@ -38,10 +49,17 @@
       "wisdom": 0,
       "charisma": -1
     },
-    "class_restrictions": ["Magic-User"],
+    "ability_minimums": {
+      "constitution": 11
+    },
+    "ability_maximums": {
+      "dexterity": 17
+    },
+    "class_restrictions": ["Magic-User", "Illusionist", "Ranger", "Paladin", "Druid", "Monk", "Bard"],
+    "multi_class_options": ["Fighter/Thief"],
     "size": "M",
     "movement": 9,
-    "special_abilities": ["infravision_60", "resist_poison", "resist_magic", "detect_stone_traps"],
+    "special_abilities": ["infravision_60", "resist_poison", "resist_magic", "detect_stone_traps", "bonus_vs_giants"],
     "description": "Stout and sturdy, dwarves are master craftsmen and warriors"
   },
   "Halfling": {
@@ -53,10 +71,89 @@
       "wisdom": 0,
       "charisma": 0
     },
-    "class_restrictions": ["Magic-User", "Cleric"],
+    "ability_minimums": {
+      "dexterity": 9,
+      "constitution": 10
+    },
+    "ability_maximums": {
+      "strength": 17
+    },
+    "class_restrictions": ["Magic-User", "Illusionist", "Cleric", "Druid", "Ranger", "Paladin", "Monk", "Bard"],
+    "multi_class_options": ["Fighter/Thief"],
     "size": "S",
     "movement": 9,
     "special_abilities": ["resist_magic", "bonus_missile_attack", "hard_to_spot"],
     "description": "Small and nimble, halflings are peaceful folk who avoid danger"
+  },
+  "Half-Elf": {
+    "ability_modifiers": {
+      "strength": 0,
+      "dexterity": 0,
+      "constitution": 0,
+      "intelligence": 0,
+      "wisdom": 0,
+      "charisma": 0
+    },
+    "ability_minimums": {
+      "intelligence": 6,
+      "dexterity": 6
+    },
+    "ability_maximums": {
+      "strength": 18,
+      "constitution": 18
+    },
+    "class_restrictions": ["Monk", "Paladin"],
+    "multi_class_options": ["Cleric/Fighter", "Cleric/Ranger", "Cleric/Magic-User", "Fighter/Magic-User", "Fighter/Thief", "Magic-User/Thief", "Cleric/Fighter/Magic-User", "Fighter/Magic-User/Thief"],
+    "size": "M",
+    "movement": 12,
+    "special_abilities": ["infravision_60", "resist_sleep_charm", "detect_secret_doors"],
+    "description": "Children of both human and elven heritage, combining traits of both races"
+  },
+  "Half-Orc": {
+    "ability_modifiers": {
+      "strength": 1,
+      "dexterity": 0,
+      "constitution": 1,
+      "intelligence": 0,
+      "wisdom": 0,
+      "charisma": -2
+    },
+    "ability_minimums": {
+      "strength": 6,
+      "constitution": 13
+    },
+    "ability_maximums": {
+      "intelligence": 17,
+      "charisma": 12
+    },
+    "class_restrictions": ["Magic-User", "Illusionist", "Ranger", "Paladin", "Druid", "Monk", "Bard"],
+    "multi_class_options": ["Cleric/Fighter", "Cleric/Thief", "Cleric/Assassin", "Fighter/Thief", "Fighter/Assassin"],
+    "size": "M",
+    "movement": 12,
+    "special_abilities": ["infravision_60"],
+    "description": "Strong and hardy, half-orcs combine orcish strength with human adaptability"
+  },
+  "Gnome": {
+    "ability_modifiers": {
+      "strength": 0,
+      "dexterity": 0,
+      "constitution": 0,
+      "intelligence": 0,
+      "wisdom": 0,
+      "charisma": 0
+    },
+    "ability_minimums": {
+      "intelligence": 7,
+      "constitution": 8
+    },
+    "ability_maximums": {
+      "strength": 18
+    },
+    "class_restrictions": ["Cleric", "Druid", "Magic-User", "Ranger", "Paladin", "Monk", "Bard"],
+    "multi_class_options": ["Fighter/Illusionist", "Illusionist/Thief"],
+    "size": "S",
+    "movement": 6,
+    "special_abilities": ["infravision_60", "detect_slope", "detect_unsafe_walls", "determine_depth", "speak_with_burrowing_animals"],
+    "description": "Clever and curious, gnomes are skilled tinkers and illusionists"
   }
 }

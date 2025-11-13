@@ -10,10 +10,61 @@
       "breath": 17,
       "spell": 17
     },
+    "ability_minimums": {
+      "strength": 9
+    },
     "prime_requisite": "STR",
     "weapons": "all",
     "armor": "all",
     "description": "A warrior skilled in combat and the use of arms"
+  },
+  "Ranger": {
+    "hit_die": "d8",
+    "thac0_base": 20,
+    "thac0_progression": -1,
+    "saves": {
+      "poison": 14,
+      "rod_staff_wand": 16,
+      "petrify_paralyze": 15,
+      "breath": 17,
+      "spell": 17
+    },
+    "ability_minimums": {
+      "strength": 13,
+      "intelligence": 13,
+      "wisdom": 14,
+      "constitution": 14
+    },
+    "prime_requisite": "STR",
+    "spell_slots_level_1": [0, 0, 0, 0, 0, 0, 0, 1, 2, 2],
+    "weapons": "all",
+    "armor": "all",
+    "special_abilities": ["tracking", "surprise_bonus", "bonus_vs_giants", "druid_spells_at_8"],
+    "description": "A skilled woodsman and tracker, protector of good"
+  },
+  "Paladin": {
+    "hit_die": "d10",
+    "thac0_base": 20,
+    "thac0_progression": -1,
+    "saves": {
+      "poison": 12,
+      "rod_staff_wand": 14,
+      "petrify_paralyze": 13,
+      "breath": 15,
+      "spell": 15
+    },
+    "ability_minimums": {
+      "strength": 12,
+      "intelligence": 9,
+      "wisdom": 13,
+      "charisma": 17
+    },
+    "prime_requisite": "STR",
+    "spell_slots_level_1": [0, 0, 0, 0, 0, 0, 0, 0, 1, 2],
+    "weapons": "all",
+    "armor": "all",
+    "special_abilities": ["detect_evil", "lay_on_hands", "turn_undead", "disease_immunity", "cleric_spells_at_9"],
+    "description": "A holy warrior dedicated to law and good, champion of justice"
   },
   "Cleric": {
     "hit_die": "d8",
@@ -26,11 +77,36 @@
       "breath": 16,
       "spell": 15
     },
+    "ability_minimums": {
+      "wisdom": 9
+    },
     "prime_requisite": "WIS",
     "spell_slots_level_1": [1, 2, 2, 3, 3, 3, 4, 4, 4, 5],
     "weapons": "blunt_only",
     "armor": "all",
     "description": "A holy warrior who channels divine power"
+  },
+  "Druid": {
+    "hit_die": "d8",
+    "thac0_base": 20,
+    "thac0_progression": -0.67,
+    "saves": {
+      "poison": 10,
+      "rod_staff_wand": 14,
+      "petrify_paralyze": 13,
+      "breath": 16,
+      "spell": 15
+    },
+    "ability_minimums": {
+      "wisdom": 12,
+      "charisma": 15
+    },
+    "prime_requisite": "WIS",
+    "spell_slots_level_1": [2, 2, 3, 4, 4, 4, 4, 4, 4, 4],
+    "weapons": "druid_only",
+    "armor": "leather_only",
+    "special_abilities": ["speak_with_animals", "identify_plants", "pass_without_trace", "immunity_to_fey_charm"],
+    "description": "A priest of nature who protects the balance of the natural world"
   },
   "Magic-User": {
     "hit_die": "d4",
@@ -43,11 +119,35 @@
       "breath": 15,
       "spell": 12
     },
+    "ability_minimums": {
+      "intelligence": 9
+    },
     "prime_requisite": "INT",
     "spell_slots_level_1": [1, 2, 2, 3, 4, 4, 4, 5, 5, 6],
     "weapons": "dagger_staff_only",
     "armor": "none",
     "description": "A scholar of arcane magic"
+  },
+  "Illusionist": {
+    "hit_die": "d4",
+    "thac0_base": 20,
+    "thac0_progression": -0.33,
+    "saves": {
+      "poison": 14,
+      "rod_staff_wand": 11,
+      "petrify_paralyze": 13,
+      "breath": 15,
+      "spell": 12
+    },
+    "ability_minimums": {
+      "dexterity": 16,
+      "intelligence": 15
+    },
+    "prime_requisite": "INT",
+    "spell_slots_level_1": [1, 2, 2, 3, 4, 4, 4, 5, 5, 6],
+    "weapons": "dagger_staff_only",
+    "armor": "none",
+    "description": "A specialist in illusion and phantasm magic"
   },
   "Thief": {
     "hit_die": "d6",
@@ -59,6 +159,9 @@
       "petrify_paralyze": 12,
       "breath": 16,
       "spell": 15
+    },
+    "ability_minimums": {
+      "dexterity": 9
     },
     "prime_requisite": "DEX",
     "skills": {
@@ -84,5 +187,99 @@
     "weapons": "limited",
     "armor": "leather_only",
     "description": "A cunning rogue skilled in stealth and deception"
+  },
+  "Assassin": {
+    "hit_die": "d6",
+    "thac0_base": 20,
+    "thac0_progression": -0.5,
+    "saves": {
+      "poison": 12,
+      "rod_staff_wand": 13,
+      "petrify_paralyze": 11,
+      "breath": 15,
+      "spell": 14
+    },
+    "ability_minimums": {
+      "strength": 12,
+      "intelligence": 11,
+      "dexterity": 12
+    },
+    "prime_requisite": "DEX",
+    "skills": {
+      "pick_pockets": 25,
+      "open_locks": 20,
+      "find_traps": 15,
+      "move_silently": 20,
+      "hide_in_shadows": 15,
+      "hear_noise": 10,
+      "climb_walls": 85,
+      "read_languages": 0
+    },
+    "skill_progression_per_level": {
+      "pick_pockets": 5,
+      "open_locks": 5,
+      "find_traps": 5,
+      "move_silently": 5,
+      "hide_in_shadows": 5,
+      "hear_noise": 5,
+      "climb_walls": 1,
+      "read_languages": 5
+    },
+    "weapons": "all",
+    "armor": "all",
+    "special_abilities": ["assassination", "disguise", "poison_use"],
+    "description": "A deadly killer who strikes from the shadows"
+  },
+  "Monk": {
+    "hit_die": "d4",
+    "thac0_base": 20,
+    "thac0_progression": -0.5,
+    "saves": {
+      "poison": 11,
+      "rod_staff_wand": 13,
+      "petrify_paralyze": 12,
+      "breath": 14,
+      "spell": 13
+    },
+    "ability_minimums": {
+      "strength": 15,
+      "wisdom": 15,
+      "dexterity": 15,
+      "constitution": 11
+    },
+    "prime_requisite": "STR",
+    "weapons": "monk_weapons",
+    "armor": "none",
+    "special_abilities": ["open_hand_damage", "deflect_missiles", "ac_bonus", "magic_resistance", "speak_with_animals", "quivering_palm_at_13"],
+    "description": "A martial artist who achieves perfection through discipline"
+  },
+  "Bard": {
+    "hit_die": "d6",
+    "thac0_base": 20,
+    "thac0_progression": -0.67,
+    "saves": {
+      "poison": 13,
+      "rod_staff_wand": 14,
+      "petrify_paralyze": 12,
+      "breath": 16,
+      "spell": 15
+    },
+    "ability_minimums": {
+      "dexterity": 12,
+      "intelligence": 13,
+      "charisma": 15
+    },
+    "prime_requisite": "CHA",
+    "spell_slots_level_1": [0, 1, 2, 2, 3, 3, 3, 3, 3, 3],
+    "skills": {
+      "pick_pockets": 10,
+      "climb_walls": 50,
+      "hear_noise": 20,
+      "read_languages": 5
+    },
+    "weapons": "all",
+    "armor": "chain_and_lighter",
+    "special_abilities": ["charm_person", "legend_lore", "bardic_knowledge", "inspire_courage"],
+    "description": "A wandering minstrel with magical abilities and legendary knowledge"
   }
 }
