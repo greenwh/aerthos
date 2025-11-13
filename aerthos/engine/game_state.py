@@ -105,6 +105,7 @@ class GameState:
             'use': self._handle_use,
             'equip': self._handle_equip,
             'cast': self._handle_cast,
+            'look': self._handle_look,
             'search': self._handle_search,
             'open': self._handle_open,
             'rest': self._handle_rest,
@@ -437,12 +438,29 @@ class GameState:
 
         return {'success': result['success'], 'message': '\n'.join(messages)}
 
-    def _handle_search(self, command: Command) -> Dict:
-        """Handle searching"""
+    def _handle_look(self, command: Command) -> Dict:
+        """Handle looking around (quick glance, no time cost)"""
 
         messages = []
 
-        # Check for traps
+        # Show room description
+        room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
+        messages.append(room_desc)
+
+        # Show obvious items (no searching required)
+        if self.current_room.items:
+            items_list = ', '.join(self.current_room.items)
+            messages.append(f"You see: {items_list}")
+
+        # No time advancement - this is just a quick look
+        return {'success': True, 'message': '\n'.join(messages)}
+
+    def _handle_search(self, command: Command) -> Dict:
+        """Handle searching (deliberate, time-consuming search for hidden items/traps)"""
+
+        messages = []
+
+        # Check for traps (deliberate searching can trigger them)
         encounter_msg = self._check_encounters('on_search')
         if encounter_msg:
             messages.append(encounter_msg)
