@@ -418,21 +418,36 @@ class GameState:
             return {'success': False, 'message': "Cast what spell?"}
 
         # Parse spell name and optional target from command
-        # Examples: "cast cure" or "cast cure thorin" or "cast cure light wounds" or "cast magic missile goblin"
+        # Examples: "cast cure" or "cast cure thorin" or "cast cure light wounds on thorin" or "cast magic missile goblin"
         full_command = command.target
         spell_name = full_command
         target_name = None
 
-        # Check if last word is a party member name (for beneficial spells)
-        parts = full_command.split()
-        if len(parts) > 1 and hasattr(self, 'party') and self.party:
-            potential_target = parts[-1]
-            # Check if it matches a party member
-            for member in self.party.members:
-                if potential_target.lower() in member.name.lower():
-                    target_name = potential_target
-                    spell_name = ' '.join(parts[:-1])
-                    break
+        # Check for prepositions that separate spell from target
+        # This is more reliable than just checking the last word
+        prepositions = [' on ', ' at ', ' to ']
+        for prep in prepositions:
+            if prep in full_command.lower():
+                parts = full_command.lower().split(prep, 1)
+                spell_name = parts[0].strip()
+                target_name = parts[1].strip() if len(parts) > 1 else None
+                break
+
+        # If no preposition found, check if last word is a party member name (for beneficial spells)
+        if not target_name:
+            parts = full_command.split()
+            if len(parts) > 1 and hasattr(self, 'party') and self.party:
+                potential_target = parts[-1]
+                # Check if it matches a party member - but be careful not to match spell words
+                # Only match if the name is reasonably unique (at least 3 chars and not a common spell word)
+                if len(potential_target) >= 3:
+                    spell_words = ['cure', 'light', 'wounds', 'magic', 'missile', 'protection', 'evil', 'bless']
+                    if potential_target.lower() not in spell_words:
+                        for member in self.party.members:
+                            if potential_target.lower() in member.name.lower():
+                                target_name = potential_target
+                                spell_name = ' '.join(parts[:-1])
+                                break
 
         # Determine if this is a beneficial spell (healing/buff) or harmful spell
         spell_name_lower = spell_name.lower()
@@ -441,7 +456,8 @@ class GameState:
 
         # Build targets list
         if is_beneficial:
-            # Check if a specific party member was targeted
+            # Beneficial spells should ONLY target party members (or caster if no target specified)
+            # They should NEVER target monsters, even in combat
             if target_name and hasattr(self, 'party') and self.party:
                 # Find party member by name
                 target_char = None
@@ -454,14 +470,14 @@ class GameState:
                 else:
                     return {'success': False, 'message': f"No party member named '{target_name}' found."}
             else:
-                # No specific target, use caster
+                # No specific target, use caster (self.player is the active character who is casting)
                 targets = [self.player]
         else:
-            # Harmful spells target monsters, or caster if no monsters (for non-combat spells)
+            # Harmful spells target monsters, or fail if no monsters in combat
             if self.active_monsters:
                 targets = self.active_monsters
             else:
-                targets = [self.player]
+                return {'success': False, 'message': "There are no enemies to target!"}
 
         result = self.magic_system.cast_spell(self.player, spell_name, targets)
 
