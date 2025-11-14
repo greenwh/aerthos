@@ -417,6 +417,8 @@ class GameState:
         if not command.target:
             return {'success': False, 'message': "Cast what spell?"}
 
+        print(f"[DEBUG] _handle_cast received command.target: '{command.target}'")
+
         # Parse spell name and optional target from command
         # Examples: "cast cure" or "cast cure thorin" or "cast cure light wounds on thorin" or "cast magic missile goblin"
         full_command = command.target
@@ -431,6 +433,7 @@ class GameState:
                 parts = full_command.lower().split(prep, 1)
                 spell_name = parts[0].strip()
                 target_name = parts[1].strip() if len(parts) > 1 else None
+                print(f"[DEBUG] Preposition '{prep}' found - spell_name: '{spell_name}', target_name: '{target_name}'")
                 break
 
         # If no preposition found, check if last word is a party member name (for beneficial spells)
@@ -469,10 +472,13 @@ class GameState:
             # They should NEVER target monsters, even in combat
             if target_name and hasattr(self, 'party') and self.party:
                 # Find party member by name
+                print(f"[DEBUG] Looking for party member matching '{target_name}'")
+                print(f"[DEBUG] Party members: {[m.name for m in self.party.members]}")
                 target_char = None
                 for member in self.party.members:
                     if target_name.lower() in member.name.lower():
                         target_char = member
+                        print(f"[DEBUG] Found match: {member.name}")
                         break
                 if target_char:
                     targets = [target_char]
