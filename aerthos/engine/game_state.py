@@ -454,6 +454,9 @@ class GameState:
         beneficial_spells = ['cure', 'heal', 'bless', 'protection', 'shield', 'aid']
         is_beneficial = any(keyword in spell_name_lower for keyword in beneficial_spells)
 
+        # DEBUG: Log spell detection
+        print(f"[DEBUG] Spell: '{spell_name}', Target: '{target_name}', Beneficial: {is_beneficial}")
+
         # Build targets list
         if is_beneficial:
             # Beneficial spells should ONLY target party members (or caster if no target specified)
