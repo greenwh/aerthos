@@ -915,6 +915,112 @@ cProfile.run('start_game()')
 - Real-time updates
 - Demo party included
 
+**UI Enhancements (2025):**
+- Comprehensive keyboard shortcuts (arrows, WASD, letter keys)
+- Smart autocomplete for commands
+- Context-aware dynamic action buttons
+- See "Web UI Enhancements" section below for details
+
+### ⚠️ Web UI Enhancement System - CRITICAL DEVELOPER NOTES
+
+**IMPLEMENTED FEATURES:**
+
+1. **Keyboard Shortcuts** (`game.html` lines 767-910)
+   - Arrow keys / WASD for movement
+   - Number keys 1-9 for party selection
+   - Letter shortcuts: L=Look, X=Search, R=Rest, I=Inventory, M=Map, C=Status, P=Spells
+   - Combat shortcuts: K=Attack, T=Take, E=Equip, Z=Cast
+   - Smart detection (doesn't capture when typing in input field)
+   - Implementation: Pure JavaScript, no backend changes
+
+2. **Auto-Complete** (`game.html` lines 435-437, 769-893)
+   - HTML5 datalist for command suggestions
+   - Context-aware based on game state and current input
+   - Suggests commands, items, monsters, spells dynamically
+   - Implementation: Pure JavaScript, no backend changes
+
+3. **Context-Aware Action Bar** (`app.py` lines 246-298, `game.html` lines 704-793)
+   - Dynamic buttons that adapt to game situation
+   - "ITEMS:" section - Take [item] buttons for room items
+   - "ATTACK:" section - Attack [monster] buttons when in combat
+   - "SPELLS:" section - Cast [spell] buttons for available spells
+   - Implementation: Backend + Frontend
+
+**⚠️ CRITICAL: Backend API Dependencies**
+
+The file `web_ui/app.py` contains `get_game_state_json()` which returns JSON to the frontend.
+The web UI (`game.html`) JavaScript depends on this structure.
+
+**SAFE OPERATIONS:**
+- ✅ Adding NEW fields to the JSON - web UI will ignore unknown fields
+- ✅ Adding NEW optional fields - web UI handles missing data gracefully
+- ✅ Changing field VALUES (as long as type stays same)
+
+**DANGEROUS OPERATIONS:**
+- ❌ Removing fields - will break web UI
+- ❌ Renaming fields - will break web UI
+- ❌ Changing field types - will break web UI (e.g., string → array)
+
+**If you must modify `get_game_state_json()`:**
+1. Read the WARNING comment at the top of the function
+2. Check what fields `game.html` JavaScript uses (search for `state.fieldname`)
+3. If removing/renaming a field, update ALL references in `game.html`
+4. Run manual web UI testing (start game, move around, combat, spells)
+5. Consider running `tests/test_web_api.py` if Flask is installed
+
+**Current JSON Structure (DO NOT BREAK):**
+```python
+{
+    'room': {
+        'id': str,
+        'title': str,
+        'description': str,
+        'exits': dict,
+        'light_level': str,
+        'items': list  # NEW: Added for context actions
+    },
+    'party': list[{
+        'name': str,
+        'class': str,
+        'race': str,
+        'level': int,
+        'hp': int,
+        'hp_max': int,
+        'ac': int,
+        'thac0': int,
+        'xp': int,
+        'gold': int,
+        'is_alive': bool,
+        'weight': float,
+        'weight_max': float,
+        'formation': str,
+        'inventory': list,
+        'equipped': dict
+    }],
+    'in_combat': bool,
+    'active_monsters': list,  # NEW: Added for context actions
+    'available_spells': list,  # NEW: Added for context actions
+    'time': {
+        'turns': int,
+        'hours': int
+    },
+    'map': {
+        'rooms': dict
+    }
+}
+```
+
+**Testing After Backend Changes:**
+```bash
+# 1. Always run core tests first
+python3 run_tests.py --no-web
+
+# 2. If you modified get_game_state_json(), manually test web UI:
+python web_ui/app.py
+# Then open browser to http://localhost:5000
+# Test: new game, movement, combat, spells, inventory
+```
+
 ### Future Integration Possibilities
 
 **Discord Bot:**
