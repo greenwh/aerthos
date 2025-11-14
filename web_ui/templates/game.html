@@ -74,28 +74,421 @@
             background-color: #002200;
             cursor: pointer;
             transition: all 0.2s;
+            position: relative;
         }
 
         .party-member:hover {
             background-color: #003300;
             border-color: #0f0;
+            transform: translateX(2px);
         }
 
         .party-member.active {
             background-color: #004400;
             border: 2px solid #ff0;
-            box-shadow: 0 0 10px #ff0;
+            box-shadow: 0 0 10px #ff0, inset 0 0 5px #ff0;
+            transform: translateX(4px);
+        }
+
+        .party-member.active::before {
+            content: '➤';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff0;
+            font-size: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .party-member.dead {
             color: #f00;
             border-color: #f00;
             cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .party-member.dead:hover {
+            transform: none;
         }
 
         .member-name {
             font-weight: bold;
             margin-bottom: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .member-number {
+            display: inline-block;
+            background-color: #0a0;
+            color: #000;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .party-member.active .member-number {
+            background-color: #ff0;
+        }
+
+        .formation-badge {
+            font-size: 9px;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .formation-front {
+            background-color: #a00;
+            color: #fff;
+        }
+
+        .formation-back {
+            background-color: #00a;
+            color: #fff;
+        }
+
+        /* Spell Quick-Cast Bar - PRIORITY 5 */
+        .spell-cast-bar {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #001a33;
+            border: 2px solid #00a;
+            border-radius: 3px;
+        }
+
+        .spell-bar-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #aaf;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .spell-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .spell-slot {
+            width: 70px;
+            height: 70px;
+            background-color: #002244;
+            border: 2px solid #004488;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            padding: 5px;
+        }
+
+        .spell-slot:hover {
+            background-color: #003366;
+            border-color: #0066cc;
+            transform: translateY(-2px);
+        }
+
+        .spell-slot.empty {
+            background-color: #111;
+            border-color: #333;
+            border-style: dashed;
+            cursor: default;
+            opacity: 0.5;
+        }
+
+        .spell-slot.empty:hover {
+            transform: none;
+        }
+
+        .spell-slot.used {
+            opacity: 0.3;
+            background-color: #222;
+            border-color: #444;
+            cursor: not-allowed;
+        }
+
+        .spell-slot.used:hover {
+            transform: none;
+        }
+
+        .spell-name {
+            font-size: 9px;
+            font-weight: bold;
+            color: #aaf;
+            text-align: center;
+            line-height: 1.1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .spell-level {
+            font-size: 8px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+        .spell-slot.available .spell-name {
+            color: #0ff;
+        }
+
+        .spell-slot.used::after {
+            content: '✗';
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            color: #f00;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .spell-slot-empty-text {
+            font-size: 9px;
+            color: #555;
+        }
+
+        /* Interactive Inventory Panel - PRIORITY 2 */
+        .inventory-item {
+            background-color: #002200;
+            border: 1px solid #0a0;
+            padding: 6px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inventory-item.equipped {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .item-icon {
+            font-size: 14px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .item-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-name {
+            font-size: 11px;
+            font-weight: bold;
+            color: #0f0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .item-stats {
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 3px;
+            flex-shrink: 0;
+        }
+
+        .item-btn {
+            padding: 3px 6px;
+            font-size: 9px;
+            background-color: #004400;
+            border: 1px solid #0a0;
+            color: #0f0;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .item-btn:hover {
+            background-color: #006600;
+            border-color: #0f0;
+        }
+
+        .item-btn.danger {
+            background-color: #440000;
+            border-color: #a00;
+            color: #f88;
+        }
+
+        .item-btn.danger:hover {
+            background-color: #660000;
+            border-color: #f00;
+        }
+
+        .inventory-section-title {
+            font-weight: bold;
+            font-size: 11px;
+            color: #ff0;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #0a0;
+        }
+
+        .inventory-section-title:first-child {
+            margin-top: 0;
+        }
+
+        /* Combat Quick Actions Panel - PRIORITY 4 */
+        .combat-panel {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a0000;
+            border: 3px solid #f00;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 500px;
+            max-width: 700px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .combat-header {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f00;
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #800;
+        }
+
+        .combat-enemies {
+            margin-bottom: 12px;
+        }
+
+        .combat-enemy {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #220000;
+            border: 1px solid #600;
+            padding: 6px 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+
+        .enemy-info {
+            flex: 1;
+        }
+
+        .enemy-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #f88;
+        }
+
+        .enemy-status {
+            font-size: 10px;
+            color: #888;
+        }
+
+        .enemy-status.healthy {
+            color: #f00;
+        }
+
+        .enemy-status.wounded {
+            color: #fa0;
+        }
+
+        .enemy-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .combat-btn {
+            padding: 4px 8px;
+            font-size: 10px;
+            background-color: #440000;
+            border: 1px solid #a00;
+            color: #f88;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .combat-btn:hover {
+            background-color: #660000;
+            border-color: #f00;
+            color: #fff;
+        }
+
+        .combat-quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding-top: 10px;
+            border-top: 1px solid #600;
+        }
+
+        .combat-action-btn {
+            padding: 6px 12px;
+            font-size: 11px;
+            background-color: #440000;
+            border: 1px solid #a00;
+            color: #f88;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+
+        .combat-action-btn:hover {
+            background-color: #660000;
+            border-color: #f00;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .combat-action-btn.secondary {
+            background-color: #333;
+            border-color: #666;
+            color: #aaa;
+        }
+
+        .combat-action-btn.secondary:hover {
+            background-color: #444;
+            border-color: #888;
         }
 
         .member-stats {
@@ -402,11 +795,16 @@
 
         <!-- Left: Party Panel -->
         <div class="party-panel">
-            <div class="party-title">PARTY ROSTER (Click to Select)</div>
+            <div class="party-title">PARTY ROSTER <span style="font-size: 11px; font-weight: normal;">(Click or press 1-9)</span></div>
             <div id="party-roster">
                 <div class="party-member">
                     <div class="member-name">Starting new game...</div>
                 </div>
+            </div>
+
+            <!-- PRIORITY 5: Spell Quick-Cast Bar -->
+            <div id="spell-cast-bar" style="display: none;">
+                <!-- Populated dynamically -->
             </div>
         </div>
 
@@ -655,6 +1053,7 @@
 
             activeCharacterIndex = index;
             updatePartyDisplay();
+            updateSpellCastBar();  // PRIORITY 5: Update spell bar when character changes
             updateActiveCharacterPanel();
             updateInventoryPanel();
         }
@@ -671,6 +1070,9 @@
 
             // Update party roster
             updatePartyDisplay();
+
+            // PRIORITY 5: Update spell quick-cast bar
+            updateSpellCastBar();
 
             // Update active character panel
             updateActiveCharacterPanel();
@@ -699,6 +1101,9 @@
 
             // PRIORITY 1: Update context-aware dynamic actions
             updateDynamicActions(state);
+
+            // PRIORITY 4: Update combat quick actions panel
+            updateCombatPanel(state);
         }
 
         // PRIORITY 1: Context-Aware Action Bar
@@ -792,6 +1197,76 @@
             container.style.display = hasActions ? 'flex' : 'none';
         }
 
+        // PRIORITY 4: Combat Quick Actions Panel
+        function updateCombatPanel(state) {
+            const panel = document.getElementById('combat-panel');
+
+            // Only show during combat
+            if (!state.in_combat || !state.active_monsters || state.active_monsters.length === 0) {
+                panel.style.display = 'none';
+                return;
+            }
+
+            const activeChar = currentParty[activeCharacterIndex];
+
+            let html = '<div class="combat-panel">';
+            html += '<div class="combat-header">⚔️ COMBAT ⚔️</div>';
+
+            // Enemies section
+            html += '<div class="combat-enemies">';
+            state.active_monsters.forEach(monster => {
+                const statusClass = monster.status === 'healthy' ? 'healthy' : 'wounded';
+                html += `
+                    <div class="combat-enemy">
+                        <div class="enemy-info">
+                            <div class="enemy-name">👹 ${monster.name}</div>
+                            <div class="enemy-status ${statusClass}">${monster.status}</div>
+                        </div>
+                        <div class="enemy-actions">
+                            <button class="combat-btn" onclick="sendCommand('attack ${monster.name}')">Attack</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            // Quick actions
+            html += '<div class="combat-quick-actions">';
+            html += '<button class="combat-action-btn" onclick="quickCombatAction(\'attack\')">⚔️ Attack</button>';
+
+            // Show cast button if character has spells
+            if (activeChar.spell_slots && activeChar.spell_slots.some(slot => slot.spell && !slot.is_used)) {
+                html += '<button class="combat-action-btn" onclick="quickCombatAction(\'cast\')">✨ Cast Spell</button>';
+            }
+
+            html += '<button class="combat-action-btn secondary" onclick="quickCombatAction(\'defend\')">🛡️ Defend</button>';
+            html += '<button class="combat-action-btn secondary" onclick="quickCombatAction(\'wait\')">⏸️ Pass Turn</button>';
+            html += '</div>';
+
+            html += '</div>';
+            panel.innerHTML = html;
+            panel.style.display = 'block';
+        }
+
+        function quickCombatAction(action) {
+            if (action === 'attack') {
+                // Prompt for target
+                const input = document.getElementById('command-box');
+                input.value = 'attack ';
+                input.focus();
+                input.setSelectionRange(input.value.length, input.value.length);
+            } else if (action === 'cast') {
+                const input = document.getElementById('command-box');
+                input.value = 'cast ';
+                input.focus();
+                input.setSelectionRange(input.value.length, input.value.length);
+            } else if (action === 'defend') {
+                sendCommand('defend');
+            } else if (action === 'wait') {
+                sendCommand('wait');
+            }
+        }
+
         function updatePartyDisplay() {
             let partyHTML = '';
             currentParty.forEach((member, index) => {
@@ -804,8 +1279,13 @@
                 let weightClass = weightPercent > 80 ? 'encumbered' : '';
 
                 partyHTML += `
-                    <div class="party-member ${deadClass} ${activeClass}" onclick="selectCharacter(${index})">
-                        <div class="member-name">${index + 1}. ${member.name} [${member.formation.toUpperCase()}]</div>
+                    <div class="party-member ${deadClass} ${activeClass}" onclick="selectCharacter(${index})" title="Click or press ${index + 1} to select">
+                        <div class="member-name">
+                            <span>
+                                <span class="member-number">${index + 1}</span>${member.name}
+                            </span>
+                            <span class="formation-badge formation-${member.formation}">${member.formation.toUpperCase()}</span>
+                        </div>
                         <div class="member-stats">
                             ${member.race} ${member.class} (Lvl ${member.level})<br>
                             HP: ${member.hp}/${member.hp_max}<br>
@@ -818,6 +1298,79 @@
                 `;
             });
             document.getElementById('party-roster').innerHTML = partyHTML;
+        }
+
+        // PRIORITY 5: Spell Quick-Cast Bar
+        function updateSpellCastBar() {
+            const container = document.getElementById('spell-cast-bar');
+
+            if (!currentParty || currentParty.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+
+            const activeChar = currentParty[activeCharacterIndex];
+
+            // Only show for spellcasters with spell slots
+            if (!activeChar.spell_slots || activeChar.spell_slots.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+
+            // Build spell slot display
+            let slotsHTML = '<div class="spell-cast-bar"><div class="spell-bar-title">⚡ MEMORIZED SPELLS (Click to Cast)</div><div class="spell-slots">';
+
+            activeChar.spell_slots.forEach((slot, index) => {
+                let slotClass = 'spell-slot';
+                let content = '';
+                let onclick = '';
+                let title = '';
+
+                if (!slot.spell) {
+                    // Empty slot
+                    slotClass += ' empty';
+                    content = `<div class="spell-slot-empty-text">[Empty]</div><div class="spell-level">Level ${slot.level}</div>`;
+                    title = `Empty spell slot (Level ${slot.level})`;
+                } else if (slot.is_used) {
+                    // Used slot
+                    slotClass += ' used';
+                    content = `<div class="spell-name">${slot.spell.name}</div><div class="spell-level">Level ${slot.spell.level}</div>`;
+                    title = `${slot.spell.name} (Already cast)\\n${slot.spell.description}`;
+                } else {
+                    // Available slot
+                    slotClass += ' available';
+                    content = `<div class="spell-name">${slot.spell.name}</div><div class="spell-level">Level ${slot.spell.level}</div>`;
+                    onclick = `onclick="castSpellFromSlot('${slot.spell.name}')"`;
+                    title = `Cast ${slot.spell.name}\\n${slot.spell.school} (${slot.spell.range})\\n${slot.spell.description}`;
+                }
+
+                slotsHTML += `<div class="${slotClass}" ${onclick} title="${title}">${content}</div>`;
+            });
+
+            slotsHTML += '</div></div>';
+            container.innerHTML = slotsHTML;
+            container.style.display = 'block';
+        }
+
+        function castSpellFromSlot(spellName) {
+            // Prompt for target if needed (beneficial spells)
+            const beneficialSpells = ['cure', 'heal', 'bless', 'protection', 'shield', 'aid'];
+            const isBeneficial = beneficialSpells.some(keyword => spellName.toLowerCase().includes(keyword));
+
+            if (isBeneficial) {
+                // For beneficial spells, ask if they want to target someone specific
+                const targetChoice = prompt(`Cast "${spellName}" on:\n- Press Enter for self\n- Or type party member name`);
+                if (targetChoice === null) return; // Cancelled
+
+                if (targetChoice.trim()) {
+                    sendCommand(`cast ${spellName} on ${targetChoice.trim()}`);
+                } else {
+                    sendCommand(`cast ${spellName}`);
+                }
+            } else {
+                // Harmful spell - just cast it
+                sendCommand(`cast ${spellName}`);
+            }
         }
 
         function updateActiveCharacterPanel() {
@@ -838,31 +1391,103 @@
             document.getElementById('active-char-info').innerHTML = html;
         }
 
+        // PRIORITY 2: Interactive Inventory Panel
         function updateInventoryPanel() {
             if (!currentParty || currentParty.length === 0) return;
 
-            let char = currentParty[activeCharacterIndex];
+            const char = currentParty[activeCharacterIndex];
             let html = '';
 
             // Show equipped items
             if (char.equipped && Object.keys(char.equipped).length > 0) {
-                html += '<div style="font-weight: bold; margin-bottom: 5px;">Equipped:</div>';
+                html += '<div class="inventory-section-title">⚔️ EQUIPPED</div>';
                 for (let slot in char.equipped) {
-                    html += `<div style="margin-left: 10px; font-size: 11px;">• ${char.equipped[slot]}</div>`;
+                    html += createInventoryItemHTML(char.equipped[slot], slot, true);
                 }
             }
 
             // Show inventory items
             if (char.inventory && char.inventory.length > 0) {
-                html += '<div style="font-weight: bold; margin-top: 8px; margin-bottom: 5px;">Carrying:</div>';
+                html += '<div class="inventory-section-title">🎒 CARRYING</div>';
                 char.inventory.forEach(item => {
-                    html += `<div style="margin-left: 10px; font-size: 11px;">• ${item.name}</div>`;
+                    html += createInventoryItemHTML(item.name, item.type, false);
                 });
             } else if (!char.equipped || Object.keys(char.equipped).length === 0) {
-                html = '<div style="font-size: 11px;">Empty inventory</div>';
+                html = '<div style="font-size: 11px; text-align: center; padding: 10px;">Empty inventory</div>';
             }
 
             document.getElementById('inventory-info').innerHTML = html;
+        }
+
+        function createInventoryItemHTML(itemName, itemType, isEquipped) {
+            const icon = getItemIcon(itemType);
+            const actions = getItemActions(itemType, isEquipped);
+
+            let actionsHTML = '';
+            actions.forEach(action => {
+                const isDanger = action === 'drop';
+                const actionClass = isDanger ? 'item-btn danger' : 'item-btn';
+                actionsHTML += `<button class="${actionClass}" onclick="itemAction('${action}', '${itemName}')">${action}</button>`;
+            });
+
+            return `
+                <div class="inventory-item ${isEquipped ? 'equipped' : ''}">
+                    <div class="item-icon">${icon}</div>
+                    <div class="item-details">
+                        <div class="item-name">${itemName}</div>
+                    </div>
+                    <div class="item-actions">
+                        ${actionsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function getItemIcon(itemType) {
+            const icons = {
+                'weapon': '⚔️',
+                'armor': '🛡️',
+                'shield': '🛡️',
+                'light': '💡',
+                'potion': '🧪',
+                'consumable': '🧃',
+                'key': '🔑',
+                'tool': '🔧',
+                'treasure': '💎',
+                'scroll': '📜',
+                'wand': '🪄',
+                'ring': '💍',
+                'unknown': '📦'
+            };
+            return icons[itemType] || icons['unknown'];
+        }
+
+        function getItemActions(itemType, isEquipped) {
+            if (isEquipped) {
+                return ['unequip', 'drop'];
+            }
+
+            const actions = [];
+
+            // Determine what actions make sense for this item type
+            const equipableTypes = ['weapon', 'armor', 'shield'];
+            const usableTypes = ['potion', 'consumable', 'light', 'scroll', 'wand', 'key', 'tool'];
+
+            if (equipableTypes.includes(itemType)) {
+                actions.push('equip');
+            }
+
+            if (usableTypes.includes(itemType)) {
+                actions.push('use');
+            }
+
+            actions.push('drop');
+
+            return actions;
+        }
+
+        function itemAction(action, itemName) {
+            sendCommand(`${action} ${itemName}`);
         }
 
         function render2DMap(mapData) {
@@ -1229,5 +1854,10 @@
             }
         };
     </script>
+
+    <!-- PRIORITY 4: Combat Quick Actions Panel (shown only during combat) -->
+    <div id="combat-panel" style="display: none;">
+        <!-- Populated dynamically -->
+    </div>
 </body>
 </html>

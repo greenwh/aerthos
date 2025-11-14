@@ -221,6 +221,25 @@ def get_game_state_json(game_state):
                 if member.equipment.light_source:
                     equipped['light'] = member.equipment.light_source.name
 
+            # PRIORITY 5: Get spell slots for spellcasters
+            spell_slots = []
+            if hasattr(member, 'spells_memorized'):
+                for slot in member.spells_memorized:
+                    spell_slot_data = {
+                        'level': slot.level,
+                        'is_used': slot.is_used,
+                        'spell': None
+                    }
+                    if slot.spell:
+                        spell_slot_data['spell'] = {
+                            'name': slot.spell.name,
+                            'level': slot.spell.level,
+                            'school': getattr(slot.spell, 'school', 'unknown'),
+                            'range': getattr(slot.spell, 'range', 'self'),
+                            'description': getattr(slot.spell, 'description', '')
+                        }
+                    spell_slots.append(spell_slot_data)
+
             party_data.append({
                 'name': member.name,
                 'class': member.char_class,
@@ -237,7 +256,8 @@ def get_game_state_json(game_state):
                 'weight_max': member.inventory.max_weight,
                 'formation': game_state.party.formation[i] if i < len(game_state.party.formation) else 'front',
                 'inventory': inventory_items,
-                'equipped': equipped
+                'equipped': equipped,
+                'spell_slots': spell_slots  # NEW: For spell quick-cast bar
             })
 
     # Get map data
