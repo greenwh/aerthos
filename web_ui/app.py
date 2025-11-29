@@ -18,7 +18,7 @@ from aerthos.engine.game_state import GameState, GameData
 from aerthos.entities.player import PlayerCharacter
 from aerthos.entities.party import Party
 from aerthos.ui.party_creation import PartyCreator
-from aerthos.ui.character_creation import CharacterCreator
+from aerthos.ui.character_creation import CharacterCreator, ManualCharacterCreator
 from aerthos.generator.dungeon_generator import DungeonGenerator
 from aerthos.generator.config import DungeonConfig, STANDARD_DUNGEON
 from aerthos.storage.character_roster import CharacterRoster
@@ -55,6 +55,12 @@ def character_creation():
 def character_roster():
     """Character roster management"""
     return render_template('character_roster.html')
+
+
+@app.route('/manual_import')
+def manual_import():
+    """Manual character import interface"""
+    return render_template('manual_import.html')
 
 
 @app.route('/party_manager')
@@ -675,8 +681,16 @@ def get_available_alignments():
         data = request.json
         char_class = data.get('char_class')
 
+        # Import alignments
+        from aerthos.entities.character import ALIGNMENTS
+        from aerthos.systems.alignment import get_allowed_alignments_for_class
+
+        # If no class specified, return all alignments
         if not char_class:
-            return jsonify({'success': False, 'error': 'Class required'})
+            return jsonify({
+                'success': True,
+                'alignments': ALIGNMENTS
+            })
 
         # Load class data
         game_data = load_game_data()
@@ -685,13 +699,12 @@ def get_available_alignments():
         if not class_data:
             return jsonify({'success': False, 'error': 'Invalid class'})
 
-        # Get allowed alignments
-        from aerthos.systems.alignment import get_allowed_alignments_for_class
+        # Get allowed alignments for the specific class
         allowed_alignments = get_allowed_alignments_for_class(char_class, class_data)
 
         return jsonify({
             'success': True,
-            'allowed_alignments': allowed_alignments
+            'alignments': allowed_alignments
         })
 
     except Exception as e:
@@ -844,8 +857,364 @@ def create_character_full():
 
 
 # ============================================================================
+# Item Selection API Endpoints
+# ============================================================================
+
+@app.route('/api/items/weapons', methods=['GET'])
+def get_weapons():
+    """Get all available weapons"""
+    try:
+        import json
+        from pathlib import Path
+
+        weapons_path = Path("aerthos/data/weapons.json")
+        with open(weapons_path) as f:
+            weapons_data = json.load(f)
+
+        weapons_list = []
+        for weapon_id, weapon_info in weapons_data.items():
+            weapons_list.append({
+                'id': weapon_id,
+                'name': weapon_info.get('name', weapon_id),
+                'damage_sm': weapon_info.get('damage_sm', ''),
+                'damage_l': weapon_info.get('damage_l', ''),
+                'cost': weapon_info.get('cost_gp', weapon_info.get('cost_sp', 0))
+            })
+
+        return jsonify({'success': True, 'weapons': weapons_list})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/items/armor', methods=['GET'])
+def get_armor():
+    """Get all available armor"""
+    try:
+        import json
+        from pathlib import Path
+
+        armor_path = Path("aerthos/data/armor.json")
+        with open(armor_path) as f:
+            armor_data = json.load(f)
+
+        armor_list = []
+        for armor_id, armor_info in armor_data.get('armor', {}).items():
+            armor_list.append({
+                'id': armor_id,
+                'name': armor_info.get('name', armor_id),
+                'ac': armor_info.get('ac', 10),
+                'cost': armor_info.get('cost_gp', 0)
+            })
+
+        return jsonify({'success': True, 'armor': armor_list})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/items/shields', methods=['GET'])
+def get_shields():
+    """Get all available shields"""
+    try:
+        import json
+        from pathlib import Path
+
+        armor_path = Path("aerthos/data/armor.json")
+        with open(armor_path) as f:
+            armor_data = json.load(f)
+
+        shields_list = []
+        for shield_id, shield_info in armor_data.get('shields', {}).items():
+            shields_list.append({
+                'id': shield_id,
+                'name': shield_info.get('name', shield_id),
+                'ac_bonus': shield_info.get('ac_bonus', 1),
+                'cost': shield_info.get('cost_gp', 0)
+            })
+
+        return jsonify({'success': True, 'shields': shields_list})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/items/equipment', methods=['GET'])
+def get_equipment():
+    """Get all available equipment"""
+    try:
+        import json
+        from pathlib import Path
+
+        equipment_path = Path("aerthos/data/equipment.json")
+        with open(equipment_path) as f:
+            equipment_data = json.load(f)
+
+        equipment_list = []
+        for item_id, item_info in equipment_data.items():
+            equipment_list.append({
+                'id': item_id,
+                'name': item_info.get('name', item_id),
+                'cost': item_info.get('cost_gp', item_info.get('cost_sp', item_info.get('cost_cp', 0)))
+            })
+
+        return jsonify({'success': True, 'equipment': equipment_list})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/items/spells', methods=['POST'])
+def get_spells():
+    """Get available spells for a class"""
+    try:
+        data = request.json
+        char_class = data.get('char_class', '')
+
+        game_data = GameData.load_all()
+
+        spells_list = []
+        for spell_id, spell_info in game_data.spells.items():
+            # Check if spell is available for this class
+            spell_class = spell_info.get('class', '')
+            if char_class and spell_class and char_class not in spell_class:
+                continue
+
+            spells_list.append({
+                'id': spell_id,
+                'name': spell_info.get('name', spell_id),
+                'level': spell_info.get('level', 1),
+                'class': spell_class,
+                'school': spell_info.get('school', '')
+            })
+
+        return jsonify({'success': True, 'spells': spells_list})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
 # Party Manager API Endpoints
 # ============================================================================
+
+@app.route('/api/character/import_manual', methods=['POST'])
+def import_manual_character():
+    """
+    Import a manually created character with custom stats
+    Accepts comprehensive character data including abilities, level, XP, items, spells
+    """
+    try:
+        data = request.json
+        game_data = GameData.load_all()
+
+        # Extract character data
+        name = data.get('name', 'Adventurer')
+        race = data.get('race', 'Human')
+        char_class = data.get('char_class', 'Fighter')
+        alignment = data.get('alignment', 'True Neutral')
+        level = data.get('level', 1)
+        xp = data.get('xp', 0)
+
+        # Ability scores
+        strength = data.get('strength', 10)
+        dexterity = data.get('dexterity', 10)
+        constitution = data.get('constitution', 10)
+        intelligence = data.get('intelligence', 10)
+        wisdom = data.get('wisdom', 10)
+        charisma = data.get('charisma', 10)
+        strength_percentile = data.get('strength_percentile', 0)
+
+        # HP options: 'manual', 'max', 'auto'
+        hp_option = data.get('hp_option', 'manual')
+        hp_manual = data.get('hp_manual', 0)
+
+        # Validate alignment for class
+        class_data = game_data.classes[char_class]
+        from aerthos.systems.alignment import validate_class_alignment
+        if not validate_class_alignment(char_class, alignment, class_data):
+            return jsonify({
+                'success': False,
+                'error': f'{alignment} is not a valid alignment for {char_class}'
+            })
+
+        # Calculate HP based on option
+        from aerthos.engine.combat import DiceRoller
+        from aerthos.ui.character_creation import CharacterCreator
+
+        creator = CharacterCreator(game_data)
+        con_bonus = creator._get_con_bonus(constitution)
+        hit_die = class_data['hit_die']
+
+        if hp_option == 'manual':
+            hp = hp_manual
+        elif hp_option == 'max':
+            # Max possible for level
+            die_size = int(hit_die.strip('d'))
+            hp = (die_size + con_bonus) * level
+        else:  # 'auto' - roll
+            hp = 0
+            for _ in range(level):
+                roll = DiceRoller.roll(hit_die)
+                hp += max(1, roll + con_bonus)
+
+        hp = max(1, hp)
+
+        # Calculate THAC0 and saves for level
+        manual_creator = ManualCharacterCreator(game_data)
+        thac0 = manual_creator._calculate_thac0(class_data, level)
+        saves = manual_creator._calculate_saves(class_data, level)
+
+        # Get XP requirements
+        from aerthos.entities.player import XP_TABLES
+        xp_table = XP_TABLES.get(char_class, [0] * 21)
+        xp_to_next = xp_table[level] if level < len(xp_table) else xp_table[-1]
+
+        # Create character
+        player = PlayerCharacter(
+            name=name,
+            race=race,
+            char_class=char_class,
+            alignment=alignment,
+            level=level,
+            strength=strength,
+            dexterity=dexterity,
+            constitution=constitution,
+            intelligence=intelligence,
+            wisdom=wisdom,
+            charisma=charisma,
+            strength_percentile=strength_percentile,
+            hp_current=hp,
+            hp_max=hp,
+            ac=10,  # Base AC, will be recalculated with equipment
+            thac0=thac0,
+            xp=xp,
+            xp_to_next_level=xp_to_next,
+            save_poison=saves['poison'],
+            save_rod_staff_wand=saves['rod_staff_wand'],
+            save_petrify_paralyze=saves['petrify_paralyze'],
+            save_breath=saves['breath'],
+            save_spell=saves['spell']
+        )
+
+        # Add starting equipment from data
+        equipment_ids = data.get('equipment', [])
+        print(f"DEBUG: Equipment IDs from request: {equipment_ids}")
+
+        if equipment_ids:
+            # User provided specific equipment
+            for item_id in equipment_ids:
+                print(f"DEBUG: Processing item_id: '{item_id}'")
+                # Try to find item in separate databases (weapons, armor, shields, equipment)
+                item_data = None
+                item = None
+
+                # Check weapons
+                if item_id in manual_creator.weapons:
+                    print(f"DEBUG: Found '{item_id}' in weapons")
+                    item_data = manual_creator.weapons[item_id]
+                    item = manual_creator._create_weapon_from_data(item_id, item_data)
+                    if item:
+                        player.inventory.add_item(item)
+                        # Equip first weapon
+                        if not player.equipment.weapon:
+                            player.equip_weapon(item)
+                            print(f"DEBUG: Equipped weapon: {item.name}")
+
+                # Check armor
+                elif item_id in manual_creator.armor:
+                    print(f"DEBUG: Found '{item_id}' in armor")
+                    item_data = manual_creator.armor[item_id]
+                    item = manual_creator._create_armor_from_data(item_id, item_data)
+                    if item:
+                        player.inventory.add_item(item)
+                        # Equip first armor
+                        if not player.equipment.armor:
+                            player.equipment.armor = item
+                            print(f"DEBUG: Equipped armor: {item.name}")
+
+                # Check shields
+                elif item_id in manual_creator.shields:
+                    print(f"DEBUG: Found '{item_id}' in shields")
+                    item_data = manual_creator.shields[item_id]
+                    item = manual_creator._create_shield_from_data(item_id, item_data)
+                    if item:
+                        player.inventory.add_item(item)
+                        # Equip first shield
+                        if not player.equipment.shield:
+                            player.equipment.shield = item
+                            print(f"DEBUG: Equipped shield: {item.name}")
+
+                # Check equipment
+                elif item_id in manual_creator.equipment:
+                    print(f"DEBUG: Found '{item_id}' in equipment")
+                    item_data = manual_creator.equipment[item_id]
+                    item = manual_creator._create_item_from_data(item_id, item_data)
+                    if item:
+                        player.inventory.add_item(item)
+                else:
+                    print(f"DEBUG: Item '{item_id}' not found in any database")
+
+                if item:
+                    print(f"DEBUG: Added to inventory: {item.name}")
+                    print(f"DEBUG: Inventory count: {len(player.inventory.items)}")
+        else:
+            # Auto-generate starting equipment based on class
+            print(f"DEBUG: Auto-generating equipment for {char_class}")
+            creator._add_starting_equipment(player, char_class)
+            print(f"DEBUG: After auto-gen, inventory count: {len(player.inventory.items)}")
+
+        # Add spells for casters
+        spell_ids = data.get('spells', [])
+        if spell_ids:
+            # User provided specific spells
+            for spell_id in spell_ids:
+                if spell_id in game_data.spells:
+                    spell = manual_creator._create_spell_from_data(game_data.spells[spell_id])
+                    player.spells_known.append(spell)
+        else:
+            # Auto-assign spells for caster classes
+            manual_creator._auto_assign_spells(player, char_class, level)
+
+        # Add thief skills if thief
+        if 'Thief' in char_class or char_class in ['Assassin', 'Acrobat']:
+            player.thief_skills = data.get('thief_skills', creator._get_thief_skills(level))
+
+        # Save to roster
+        print(f"DEBUG: Before saving - inventory count: {len(player.inventory.items)}")
+        print(f"DEBUG: Before saving - spells known: {len(player.spells_known)}")
+        roster = CharacterRoster()
+        char_id = roster.save_character(player)
+        print(f"DEBUG: Character saved with ID: {char_id}")
+
+        # Verify saved character has items
+        loaded_char = roster.load_character(char_id)
+        print(f"DEBUG: After loading - inventory count: {len(loaded_char.inventory.items)}")
+        print(f"DEBUG: After loading - spells known: {len(loaded_char.spells_known)}")
+
+        # Return character data
+        char_data = {
+            'id': char_id,
+            'name': player.name,
+            'race': player.race,
+            'char_class': player.char_class,
+            'alignment': player.alignment,
+            'level': player.level,
+            'hp_current': player.hp_current,
+            'hp_max': player.hp_max,
+            'ac': player.get_effective_ac(),
+            'thac0': player.thac0,
+            'xp': player.xp,
+            'strength': player.strength,
+            'dexterity': player.dexterity,
+            'constitution': player.constitution,
+            'intelligence': player.intelligence,
+            'wisdom': player.wisdom,
+            'charisma': player.charisma,
+            'strength_percentile': player.strength_percentile
+        }
+
+        return jsonify({'success': True, 'character': char_data})
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
 
 @app.route('/api/parties', methods=['GET'])
 def get_parties():

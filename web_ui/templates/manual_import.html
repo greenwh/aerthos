@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Character - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f0;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .form-section {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ff0;
+            border-bottom: 1px solid #0a0;
+            padding-bottom: 5px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0f0;
+            font-size: 14px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            background-color: #001a00;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #0f0;
+            box-shadow: 0 0 5px #0a0;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: #004400;
+            border: 2px solid #0f0;
+            color: #0f0;
+            padding: 15px 40px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .submit-btn:hover {
+            background-color: #005500;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .submit-btn:disabled {
+            background-color: #002200;
+            border-color: #0a0;
+            color: #0a0;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .info-text {
+            color: #ff0;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .error {
+            color: #f00;
+            font-size: 14px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #f00;
+            background-color: #200000;
+        }
+
+        .success {
+            color: #0f0;
+            font-size: 14px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #0f0;
+            background-color: #002200;
+        }
+
+        .multiselect-container {
+            border: 2px solid #0a0;
+            background-color: #001a00;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .multiselect-item {
+            padding: 5px;
+            cursor: pointer;
+            border-bottom: 1px solid #003300;
+        }
+
+        .multiselect-item:hover {
+            background-color: #002200;
+        }
+
+        .multiselect-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .selected-items {
+            margin-top: 10px;
+            padding: 10px;
+            border: 2px solid #0a0;
+            background-color: #002200;
+            min-height: 40px;
+        }
+
+        .selected-tag {
+            display: inline-block;
+            background-color: #004400;
+            border: 1px solid #0f0;
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        .selected-tag:hover {
+            background-color: #005500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">IMPORT EXISTING CHARACTER</div>
+            <button class="back-btn" onclick="goBack()">← Back to Roster</button>
+        </div>
+
+        <div id="errorMessage" class="error" style="display: none;"></div>
+        <div id="successMessage" class="success" style="display: none;"></div>
+
+        <form id="importForm">
+            <!-- Basic Information -->
+            <div class="form-section">
+                <div class="section-title">Basic Information</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Character Name:</label>
+                        <input type="text" id="charName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Race:</label>
+                        <select id="charRace" class="form-select" required>
+                            <option value="">Select Race...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Class:</label>
+                        <select id="charClass" class="form-select" required>
+                            <option value="">Select Class...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Alignment:</label>
+                        <select id="charAlignment" class="form-select" required>
+                            <option value="">Select Alignment...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Level (1-20):</label>
+                        <input type="number" id="charLevel" class="form-input" min="1" max="20" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Experience Points:</label>
+                        <input type="number" id="charXP" class="form-input" min="0" value="0" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ability Scores -->
+            <div class="form-section">
+                <div class="section-title">Ability Scores (3-18)</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Strength:</label>
+                        <input type="number" id="abilityStr" class="form-input" min="3" max="18" value="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Dexterity:</label>
+                        <input type="number" id="abilityDex" class="form-input" min="3" max="18" value="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Constitution:</label>
+                        <input type="number" id="abilityCon" class="form-input" min="3" max="18" value="10" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Intelligence:</label>
+                        <input type="number" id="abilityInt" class="form-input" min="3" max="18" value="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Wisdom:</label>
+                        <input type="number" id="abilityWis" class="form-input" min="3" max="18" value="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Charisma:</label>
+                        <input type="number" id="abilityCha" class="form-input" min="3" max="18" value="10" required>
+                    </div>
+                </div>
+                <div class="form-group" id="exceptionalStrGroup" style="display: none;">
+                    <label class="form-label">Exceptional Strength (Fighter with STR 18):</label>
+                    <input type="number" id="strPercentile" class="form-input" min="0" max="100" value="0">
+                    <div class="info-text">For 18/00, enter 100</div>
+                </div>
+            </div>
+
+            <!-- Hit Points -->
+            <div class="form-section">
+                <div class="section-title">Hit Points</div>
+                <div class="form-group">
+                    <label class="form-label">HP Calculation Method:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="hpOption" value="manual" checked>
+                            Manual Entry
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="hpOption" value="max">
+                            Maximum for Level/Class
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="hpOption" value="auto">
+                            Auto-Calculate (Roll)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" id="manualHPGroup">
+                    <label class="form-label">Hit Points:</label>
+                    <input type="number" id="charHP" class="form-input" min="1" value="10" required>
+                </div>
+            </div>
+
+            <!-- Equipment -->
+            <div class="form-section">
+                <div class="section-title">Equipment (Optional)</div>
+                <div class="info-text">Hold Ctrl/Cmd to select multiple items. Leave blank to auto-generate starting equipment.</div>
+
+                <div class="form-group">
+                    <label class="form-label">Weapons:</label>
+                    <select id="weaponSelect" class="form-select" multiple size="8">
+                        <option value="">Loading weapons...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Armor:</label>
+                    <select id="armorSelect" class="form-select" multiple size="6">
+                        <option value="">Loading armor...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Shields:</label>
+                    <select id="shieldSelect" class="form-select" multiple size="4">
+                        <option value="">Loading shields...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Other Equipment:</label>
+                    <select id="equipmentSelect" class="form-select" multiple size="8">
+                        <option value="">Loading equipment...</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Spells -->
+            <div class="form-section">
+                <div class="section-title">Spells (For Casters Only)</div>
+                <div class="info-text">Hold Ctrl/Cmd to select multiple spells. Leave blank to auto-assign spells.</div>
+                <div class="form-group">
+                    <label class="form-label">Available Spells:</label>
+                    <select id="spellSelect" class="form-select" multiple size="10">
+                        <option value="">Select a caster class to see spells...</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">⚔ IMPORT CHARACTER ⚔</button>
+        </form>
+    </div>
+
+    <script>
+        let gameData = null;
+
+        // Load game data on page load
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadGameData();
+            populateDropdowns();
+            setupEventListeners();
+        });
+
+        async function loadGameData() {
+            try {
+                // Load races
+                const racesResponse = await fetch('/api/character/get_races', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const racesData = await racesResponse.json();
+
+                // Load classes
+                const classesResponse = await fetch('/api/character/get_classes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const classesData = await classesResponse.json();
+
+                // Load alignments
+                const alignmentsResponse = await fetch('/api/character/get_alignments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const alignmentsData = await alignmentsResponse.json();
+
+                // Load items
+                const weaponsResponse = await fetch('/api/items/weapons');
+                const weaponsData = await weaponsResponse.json();
+
+                const armorResponse = await fetch('/api/items/armor');
+                const armorData = await armorResponse.json();
+
+                const shieldsResponse = await fetch('/api/items/shields');
+                const shieldsData = await shieldsResponse.json();
+
+                const equipmentResponse = await fetch('/api/items/equipment');
+                const equipmentData = await equipmentResponse.json();
+
+                gameData = {
+                    races: racesData.races || {},
+                    classes: classesData.classes || {},
+                    alignments: alignmentsData.alignments || [],
+                    weapons: weaponsData.weapons || [],
+                    armor: armorData.armor || [],
+                    shields: shieldsData.shields || [],
+                    equipment: equipmentData.equipment || []
+                };
+            } catch (error) {
+                showError('Failed to load game data: ' + error.message);
+            }
+        }
+
+        function populateDropdowns() {
+            if (!gameData) return;
+
+            // Populate races
+            const raceSelect = document.getElementById('charRace');
+            // races is an array of {name, description, modifiers, available, reason}
+            if (Array.isArray(gameData.races)) {
+                gameData.races.forEach(raceInfo => {
+                    const option = document.createElement('option');
+                    option.value = raceInfo.name;
+                    option.textContent = raceInfo.name;
+                    // Don't disable races in manual import
+                    raceSelect.appendChild(option);
+                });
+            } else {
+                // Fallback for object format
+                Object.keys(gameData.races).forEach(raceId => {
+                    const option = document.createElement('option');
+                    option.value = raceId;
+                    option.textContent = gameData.races[raceId].name || raceId;
+                    raceSelect.appendChild(option);
+                });
+            }
+
+            // Populate classes
+            const classSelect = document.getElementById('charClass');
+            // classes is an array of {name, description, available, reason}
+            if (Array.isArray(gameData.classes)) {
+                gameData.classes.forEach(classInfo => {
+                    const option = document.createElement('option');
+                    option.value = classInfo.name;
+                    option.textContent = classInfo.name;
+                    // Don't disable classes in manual import - user is entering custom stats
+                    // Backend will validate when they submit
+                    classSelect.appendChild(option);
+                });
+            } else {
+                // Fallback for object format
+                Object.keys(gameData.classes).forEach(classId => {
+                    const option = document.createElement('option');
+                    option.value = classId;
+                    option.textContent = gameData.classes[classId].name || classId;
+                    classSelect.appendChild(option);
+                });
+            }
+
+            // Populate alignments
+            const alignmentSelect = document.getElementById('charAlignment');
+            gameData.alignments.forEach(alignment => {
+                const option = document.createElement('option');
+                option.value = alignment;
+                option.textContent = alignment;
+                alignmentSelect.appendChild(option);
+            });
+
+            // Populate weapons (sorted alphabetically)
+            const weaponSelect = document.getElementById('weaponSelect');
+            weaponSelect.innerHTML = ''; // Clear loading message
+            gameData.weapons.sort((a, b) => a.name.localeCompare(b.name)).forEach(weapon => {
+                const option = document.createElement('option');
+                option.value = weapon.id;
+                option.textContent = `${weapon.name} (${weapon.damage_sm}/${weapon.damage_l})`;
+                weaponSelect.appendChild(option);
+            });
+
+            // Populate armor (sorted alphabetically)
+            const armorSelect = document.getElementById('armorSelect');
+            armorSelect.innerHTML = '';
+            gameData.armor.sort((a, b) => a.name.localeCompare(b.name)).forEach(armor => {
+                const option = document.createElement('option');
+                option.value = armor.id;
+                option.textContent = `${armor.name} (AC ${armor.ac})`;
+                armorSelect.appendChild(option);
+            });
+
+            // Populate shields (sorted alphabetically)
+            const shieldSelect = document.getElementById('shieldSelect');
+            shieldSelect.innerHTML = '';
+            gameData.shields.sort((a, b) => a.name.localeCompare(b.name)).forEach(shield => {
+                const option = document.createElement('option');
+                option.value = shield.id;
+                option.textContent = `${shield.name} (AC +${shield.ac_bonus})`;
+                shieldSelect.appendChild(option);
+            });
+
+            // Populate equipment (sorted alphabetically)
+            const equipmentSelect = document.getElementById('equipmentSelect');
+            equipmentSelect.innerHTML = '';
+            gameData.equipment.sort((a, b) => a.name.localeCompare(b.name)).forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.name;
+                equipmentSelect.appendChild(option);
+            });
+        }
+
+        async function loadSpellsForClass(charClass) {
+            try {
+                const response = await fetch('/api/items/spells', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ char_class: charClass })
+                });
+                const data = await response.json();
+
+                const spellSelect = document.getElementById('spellSelect');
+                spellSelect.innerHTML = '';
+
+                if (data.spells && data.spells.length > 0) {
+                    // Sort by level first, then alphabetically by name
+                    data.spells.sort((a, b) => {
+                        if (a.level !== b.level) {
+                            return a.level - b.level;
+                        }
+                        return a.name.localeCompare(b.name);
+                    }).forEach(spell => {
+                        const option = document.createElement('option');
+                        option.value = spell.id;
+                        option.textContent = `${spell.name} (Lvl ${spell.level})`;
+                        spellSelect.appendChild(option);
+                    });
+                } else {
+                    spellSelect.innerHTML = '<option value="">No spells available for this class</option>';
+                }
+            } catch (error) {
+                console.error('Error loading spells:', error);
+            }
+        }
+
+        function setupEventListeners() {
+            // Show exceptional strength field for Fighter with STR 18
+            const strInput = document.getElementById('abilityStr');
+            const classSelect = document.getElementById('charClass');
+            const exceptionalGroup = document.getElementById('exceptionalStrGroup');
+
+            function checkExceptionalStr() {
+                const str = parseInt(strInput.value);
+                const charClass = classSelect.value;
+                if (charClass === 'Fighter' && str === 18) {
+                    exceptionalGroup.style.display = 'block';
+                } else {
+                    exceptionalGroup.style.display = 'none';
+                    document.getElementById('strPercentile').value = 0;
+                }
+            }
+
+            // Listen for both input and change events to be more responsive
+            strInput.addEventListener('input', checkExceptionalStr);
+            strInput.addEventListener('change', checkExceptionalStr);
+            classSelect.addEventListener('change', checkExceptionalStr);
+
+            // Check initially in case fields are pre-filled
+            checkExceptionalStr();
+
+            // Load spells when class changes
+            classSelect.addEventListener('change', async () => {
+                const charClass = classSelect.value;
+                if (charClass) {
+                    await loadSpellsForClass(charClass);
+                }
+            });
+
+            // Show/hide manual HP input based on selection
+            const hpRadios = document.querySelectorAll('input[name="hpOption"]');
+            const manualHPGroup = document.getElementById('manualHPGroup');
+
+            hpRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'manual') {
+                        manualHPGroup.style.display = 'block';
+                    } else {
+                        manualHPGroup.style.display = 'none';
+                    }
+                });
+            });
+
+            // Form submission
+            document.getElementById('importForm').addEventListener('submit', handleSubmit);
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'IMPORTING...';
+
+            try {
+                // Gather form data
+                const formData = {
+                    name: document.getElementById('charName').value,
+                    race: document.getElementById('charRace').value,
+                    char_class: document.getElementById('charClass').value,
+                    alignment: document.getElementById('charAlignment').value,
+                    level: parseInt(document.getElementById('charLevel').value),
+                    xp: parseInt(document.getElementById('charXP').value),
+                    strength: parseInt(document.getElementById('abilityStr').value),
+                    dexterity: parseInt(document.getElementById('abilityDex').value),
+                    constitution: parseInt(document.getElementById('abilityCon').value),
+                    intelligence: parseInt(document.getElementById('abilityInt').value),
+                    wisdom: parseInt(document.getElementById('abilityWis').value),
+                    charisma: parseInt(document.getElementById('abilityCha').value),
+                    strength_percentile: parseInt(document.getElementById('strPercentile').value) || 0,
+                    hp_option: document.querySelector('input[name="hpOption"]:checked').value,
+                    hp_manual: parseInt(document.getElementById('charHP').value) || 0
+                };
+
+                // Gather selected equipment from all selects
+                const selectedEquipment = [];
+
+                // Get selected weapons
+                const weaponOptions = document.getElementById('weaponSelect').selectedOptions;
+                for (let option of weaponOptions) {
+                    if (option.value) selectedEquipment.push(option.value);
+                }
+
+                // Get selected armor
+                const armorOptions = document.getElementById('armorSelect').selectedOptions;
+                for (let option of armorOptions) {
+                    if (option.value) selectedEquipment.push(option.value);
+                }
+
+                // Get selected shields
+                const shieldOptions = document.getElementById('shieldSelect').selectedOptions;
+                for (let option of shieldOptions) {
+                    if (option.value) selectedEquipment.push(option.value);
+                }
+
+                // Get selected equipment
+                const equipmentOptions = document.getElementById('equipmentSelect').selectedOptions;
+                for (let option of equipmentOptions) {
+                    if (option.value) selectedEquipment.push(option.value);
+                }
+
+                if (selectedEquipment.length > 0) {
+                    formData.equipment = selectedEquipment;
+                }
+
+                // Gather selected spells
+                const spellOptions = document.getElementById('spellSelect').selectedOptions;
+                const selectedSpells = [];
+                for (let option of spellOptions) {
+                    if (option.value) selectedSpells.push(option.value);
+                }
+
+                if (selectedSpells.length > 0) {
+                    formData.spells = selectedSpells;
+                }
+
+                // Submit to backend
+                const response = await fetch('/api/character/import_manual', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccess('Character imported successfully!');
+                    setTimeout(() => {
+                        window.location.href = '/character_roster';
+                    }, 2000);
+                } else {
+                    showError(result.error || 'Failed to import character');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '⚔ IMPORT CHARACTER ⚔';
+                }
+            } catch (error) {
+                showError('Error: ' + error.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = '⚔ IMPORT CHARACTER ⚔';
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function goBack() {
+            window.location.href = '/character_roster';
+        }
+    </script>
+</body>
+</html>

@@ -273,6 +273,7 @@
 
         <div class="toolbar">
             <button class="create-btn" onclick="goToCharacterCreation()">⚔ Create New Character</button>
+            <button class="create-btn" onclick="goToManualImport()" style="margin-left: 10px;">📥 Import Existing Character</button>
         </div>
 
         <div id="characterList" class="character-list">
@@ -476,6 +477,10 @@
 
         function goToCharacterCreation() {
             window.location.href = '/character_creation';
+        }
+
+        function goToManualImport() {
+            window.location.href = '/manual_import';
         }
 
         // Load characters on page load

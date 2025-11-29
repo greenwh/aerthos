@@ -17,6 +17,55 @@ Aerthos is a faithful recreation of AD&D 1e mechanics as a single-player text ad
 
 ---
 
+## ⚠️ CARDINAL DEVELOPMENT RULES ⚠️
+
+**These rules are MANDATORY and must be followed for ALL code changes:**
+
+### 1. 🚫 NEVER Hardcode User-Defined Data
+- **ALL user-defined paths, directories, and configuration MUST be in `aerthos/constants.py`**
+- This includes: save directories, data directories, file paths, user preferences
+- If a value might need to change, it goes in constants or config
+- **Violation of this rule shakes confidence and causes maintenance nightmares**
+
+**Examples:**
+```python
+# ❌ WRONG - Hardcoded path
+self.save_dir = Path.home() / '.aerthos' / 'saves'
+
+# ✅ CORRECT - Use constant
+from ..constants import SAVE_DIR
+self.save_dir = Path(SAVE_DIR)
+```
+
+### 2. ✅ Complete Feature Implementation Required
+- When implementing a feature, implement **ALL** of it, not partial implementations
+- This means:
+  - ✅ Backend API endpoints
+  - ✅ Frontend HTML/UI if applicable
+  - ✅ CLI interface if applicable
+  - ✅ Both Web UI and CLI must work (see synchronization rules below)
+  - ✅ Tests for the feature
+- **Do NOT leave "frontend to be done later" or "tests coming soon"**
+- If you can't complete it fully, ask first before starting
+
+### 3. 🧪 Testing is Mandatory
+- **ALWAYS run tests BEFORE making changes** (establish baseline)
+- **ALWAYS run tests AFTER making changes** (verify no regressions)
+- **ALWAYS write tests for new features**
+- Test command: `python3 run_tests.py --no-web`
+- See `TESTING.md` for comprehensive testing guide
+
+### 4. 🔄 CLI and Web UI Must Stay in Sync
+- Both interfaces use the same core engine (`aerthos/` modules)
+- Changes to core game logic affect BOTH interfaces
+- When modifying game mechanics, update BOTH `main.py` (CLI) and `web_ui/app.py` (Web UI)
+- Test BOTH interfaces after core changes
+- See "CLI and Web UI Synchronization Rule" section below for details
+
+**Violation of ANY of these rules is unacceptable.**
+
+---
+
 ## Quick Start Commands
 
 ### CLI Game (No Dependencies)

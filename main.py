@@ -9,7 +9,7 @@ from aerthos.world.dungeon import Dungeon
 from aerthos.engine.game_state import GameState, GameData
 from aerthos.engine.parser import CommandParser
 from aerthos.ui.display import Display
-from aerthos.ui.character_creation import CharacterCreator
+from aerthos.ui.character_creation import CharacterCreator, ManualCharacterCreator
 from aerthos.ui.character_sheet import CharacterSheet
 from aerthos.ui.save_system import SaveSystem
 from aerthos.entities.player import PlayerCharacter
@@ -591,13 +591,14 @@ def manage_character_roster(game_data: GameData):
         print("═" * 70)
         print()
         print("1. Create New Character")
-        print("2. List All Characters")
-        print("3. View Character Details")
-        print("4. Delete Character")
-        print("5. Back to Main Menu")
+        print("2. Import Existing Character")
+        print("3. List All Characters")
+        print("4. View Character Details")
+        print("5. Delete Character")
+        print("6. Back to Main Menu")
         print()
 
-        choice = input("Choose an option (1-5): ").strip()
+        choice = input("Choose an option (1-6): ").strip()
 
         if choice == '1':
             # Create new character
@@ -614,6 +615,21 @@ def manage_character_roster(game_data: GameData):
                 print("Character discarded.")
 
         elif choice == '2':
+            # Import existing character
+            manual_creator = ManualCharacterCreator(game_data)
+            character = manual_creator.create_manual_character()
+
+            if character:
+                print("\n" + CharacterSheet.format_character(character))
+
+                save = input("\nSave this character to roster? (y/n): ").strip().lower()
+                if save == 'y':
+                    char_id = roster.save_character(character)
+                    print(f"✓ Character saved! ID: {char_id}")
+                else:
+                    print("Character discarded.")
+
+        elif choice == '3':
             # List all characters
             characters = roster.list_characters()
             if not characters:
@@ -628,7 +644,7 @@ def manage_character_roster(game_data: GameData):
                           f"{char['level']:<6} {hp_display:<10} {char['id']:<10}")
                 print("═" * 70)
 
-        elif choice == '3':
+        elif choice == '4':
             # View character details
             name = input("\nEnter character name or ID: ").strip()
             character = roster.load_character(character_name=name)
@@ -641,7 +657,7 @@ def manage_character_roster(game_data: GameData):
             else:
                 print(f"Character '{name}' not found.")
 
-        elif choice == '4':
+        elif choice == '5':
             # Delete character
             name_or_id = input("\nEnter character name or ID to delete: ").strip()
 
@@ -665,7 +681,7 @@ def manage_character_roster(game_data: GameData):
             else:
                 print(f"Character '{name_or_id}' not found.")
 
-        elif choice == '5':
+        elif choice == '6':
             break
 
         input("\nPress Enter to continue...")

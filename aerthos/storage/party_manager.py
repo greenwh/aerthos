@@ -10,6 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Dict
 from .character_roster import CharacterRoster
+from ..constants import PARTY_DIR
 
 
 class PartyManager:
@@ -17,7 +18,7 @@ class PartyManager:
 
     def __init__(self, parties_dir: str = None, character_roster: 'CharacterRoster' = None):
         if parties_dir is None:
-            self.parties_dir = Path.home() / '.aerthos' / 'parties'
+            self.parties_dir = Path(PARTY_DIR)
         else:
             self.parties_dir = Path(parties_dir)
 

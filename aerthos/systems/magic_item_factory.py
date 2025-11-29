@@ -27,19 +27,38 @@ class MagicItemFactory:
         Initialize factory with item data
 
         Args:
-            items_path: Path to items.json (base items)
+            items_path: Deprecated - no longer used (kept for API compatibility)
             magic_items_path: Path to magic_items.json (treasure tables)
         """
-        if items_path is None:
-            base_dir = Path(__file__).parent.parent
-            items_path = base_dir / "data" / "items.json"
+        base_dir = Path(__file__).parent.parent
+
+        # Load from correct data files (not deprecated items.json)
+        weapons_path = base_dir / "data" / "weapons.json"
+        armor_path = base_dir / "data" / "armor.json"
+        equipment_path = base_dir / "data" / "equipment.json"
 
         if magic_items_path is None:
-            base_dir = Path(__file__).parent.parent
             magic_items_path = base_dir / "data" / "magic_items.json"
 
-        with open(items_path, 'r') as f:
-            self.base_items = json.load(f)
+        # Load weapons, armor, and equipment
+        with open(weapons_path, 'r') as f:
+            self.base_weapons = json.load(f)
+
+        with open(armor_path, 'r') as f:
+            armor_data = json.load(f)
+            # armor.json has sections: armor, shields, helmets
+            self.base_armor = armor_data.get('armor', {})
+            self.base_shields = armor_data.get('shields', {})
+
+        with open(equipment_path, 'r') as f:
+            self.base_equipment = json.load(f)
+
+        # Combine all base items for backwards compatibility
+        self.base_items = {}
+        self.base_items.update(self.base_weapons)
+        self.base_items.update(self.base_armor)
+        self.base_items.update(self.base_shields)
+        self.base_items.update(self.base_equipment)
 
         with open(magic_items_path, 'r') as f:
             self.magic_items = json.load(f)
@@ -181,24 +200,27 @@ class MagicItemFactory:
         bonus_match = re.search(r'\+(\d+)', name)
         magic_bonus = int(bonus_match.group(1)) if bonus_match else 1
 
-        # Determine base weapon type
-        base_weapon = "longsword"
+        # Determine base weapon type (use correct IDs from weapons.json)
+        base_weapon = "long_sword"
         if "Sword" in name:
-            base_weapon = "longsword"
+            base_weapon = "long_sword"
         elif "Dagger" in name:
             base_weapon = "dagger"
         elif "Mace" in name:
-            base_weapon = "mace"
+            base_weapon = "footmans_mace"
         elif "Axe" in name:
-            base_weapon = "battleaxe"
+            base_weapon = "battle_axe"
 
-        # Get base weapon stats
+        # Get base weapon stats from weapons.json structure
         base_stats = self.base_items.get(base_weapon, {
             "damage_sm": "1d8",
             "damage_l": "1d12",
             "speed_factor": 5,
-            "weight": 4
+            "weight_gp": 60
         })
+
+        # Convert weight from coin weight to pounds
+        weight = base_stats.get("weight_gp", 60) / 10.0
 
         # Determine special properties
         properties = {"xp_value": xp_value, "gp_value": gp_value}
@@ -229,7 +251,7 @@ class MagicItemFactory:
             damage_l=base_stats.get("damage_l", "1d12"),
             speed_factor=base_stats.get("speed_factor", 5),
             magic_bonus=magic_bonus,
-            weight=base_stats.get("weight", 4),
+            weight=weight,
             properties=properties,
             description=properties.get("description", f"A magical {base_weapon} +{magic_bonus}")
         )

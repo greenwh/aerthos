@@ -13,6 +13,7 @@ from typing import Optional, Dict, List
 from .character_roster import CharacterRoster
 from .party_manager import PartyManager
 from .scenario_library import ScenarioLibrary
+from ..constants import SESSION_DIR
 
 
 class SessionManager:
@@ -21,7 +22,7 @@ class SessionManager:
     def __init__(self, sessions_dir: str = None, character_roster_dir: str = None,
                  party_manager_dir: str = None, scenario_library_dir: str = None):
         if sessions_dir is None:
-            self.sessions_dir = Path.home() / '.aerthos' / 'sessions'
+            self.sessions_dir = Path(SESSION_DIR)
         else:
             self.sessions_dir = Path(sessions_dir)
 

@@ -10,6 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Dict
 from ..entities.player import PlayerCharacter, Weapon, Armor, Shield, LightSource, Item, Spell
+from ..constants import CHARACTER_DIR
 
 
 class CharacterRoster:
@@ -17,7 +18,7 @@ class CharacterRoster:
 
     def __init__(self, roster_dir: str = None):
         if roster_dir is None:
-            self.roster_dir = Path.home() / '.aerthos' / 'characters'
+            self.roster_dir = Path(CHARACTER_DIR)
         else:
             self.roster_dir = Path(roster_dir)
 

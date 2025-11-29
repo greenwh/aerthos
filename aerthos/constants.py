@@ -274,11 +274,11 @@ REST_INTERRUPTION_CHANCE = 0.15  # 15% chance of encounter during rest
 # ============================================================================
 
 DATA_DIR = "aerthos/data"
-SAVE_DIR = "~/.aerthos/saves"
-CHARACTER_DIR = "~/.aerthos/characters"
-PARTY_DIR = "~/.aerthos/parties"
-SCENARIO_DIR = "~/.aerthos/scenarios"
-SESSION_DIR = "~/.aerthos/sessions"
+SAVE_DIR = ".aerthos/saves"
+CHARACTER_DIR = ".aerthos/characters"
+PARTY_DIR = ".aerthos/parties"
+SCENARIO_DIR = ".aerthos/scenarios"
+SESSION_DIR = ".aerthos/sessions"
 
 # ============================================================================
 # DISPLAY & UI

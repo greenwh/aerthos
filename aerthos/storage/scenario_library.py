@@ -9,6 +9,7 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Dict
+from ..constants import SCENARIO_DIR
 
 
 class ScenarioLibrary:
@@ -16,7 +17,7 @@ class ScenarioLibrary:
 
     def __init__(self, scenarios_dir: str = None):
         if scenarios_dir is None:
-            self.scenarios_dir = Path.home() / '.aerthos' / 'scenarios'
+            self.scenarios_dir = Path(SCENARIO_DIR)
         else:
             self.scenarios_dir = Path(scenarios_dir)
 
