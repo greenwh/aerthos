@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Manager - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 30px;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0a0;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #0a0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #0a0;
+            color: #0f0;
+        }
+
+        .btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 12px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn-primary {
+            background-color: #003300;
+            font-weight: bold;
+        }
+
+        .campaign-list {
+            margin-top: 20px;
+        }
+
+        .campaign-item {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .campaign-item:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .campaign-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .campaign-desc {
+            font-size: 12px;
+            color: #0a0;
+            margin-bottom: 10px;
+        }
+
+        .campaign-progress {
+            font-size: 11px;
+            color: #0f0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 30px #0f0;
+        }
+
+        .modal-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0a0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-select {
+            width: 100%;
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .form-select option {
+            background-color: #002200;
+            color: #0f0;
+        }
+
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            display: none;
+        }
+
+        .message.success {
+            border-color: #0f0;
+            background-color: #003300;
+        }
+
+        .message.error {
+            border-color: #f00;
+            background-color: #330000;
+            color: #f00;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0a0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #0f0;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #0a0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">CAMPAIGN MANAGER</div>
+            <div class="subtitle">Story-Driven Episodic Adventures</div>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="section">
+            <div class="section-title">ACTIONS</div>
+            <button class="btn btn-primary" onclick="showCreateModal()">Start New Campaign</button>
+            <button class="btn" onclick="loadCampaigns()">Refresh List</button>
+            <a href="/" class="back-link">← Back to Main Menu</a>
+        </div>
+
+        <div class="section">
+            <div class="section-title">YOUR CAMPAIGNS</div>
+            <div id="campaign-list" class="campaign-list">
+                <div class="empty-state">Loading campaigns...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Campaign Modal -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Create New Campaign</div>
+
+            <form id="createForm" onsubmit="createCampaign(event)">
+                <div class="form-group">
+                    <label class="form-label">Campaign Template:</label>
+                    <select class="form-select" id="template_id" required>
+                        <option value="serpents_shadow">The Serpent's Shadow (10 episodes, Level 1-5)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Select Party:</label>
+                    <select class="form-select" id="party_id" required>
+                        <option value="">-- Loading parties --</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary">Create Campaign</button>
+                    <button type="button" class="btn" onclick="closeCreateModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Load campaigns on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCampaigns();
+        });
+
+        function showMessage(text, type = 'success') {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type} active`;
+            setTimeout(() => {
+                msg.className = 'message';
+            }, 5000);
+        }
+
+        async function loadCampaigns() {
+            try {
+                const response = await fetch('/api/campaigns/list');
+                const data = await response.json();
+
+                const listEl = document.getElementById('campaign-list');
+
+                if (data.success && data.campaigns.length > 0) {
+                    listEl.innerHTML = data.campaigns.map(camp => `
+                        <div class="campaign-item" onclick="loadCampaign('${camp.id}')">
+                            <div class="campaign-name">${camp.name}</div>
+                            <div class="campaign-desc">${camp.description}</div>
+                            <div class="campaign-progress">
+                                Progress: ${camp.completed_episodes.length}/${camp.unlocked_episodes.length} episodes completed |
+                                Current Hub: ${camp.current_hub_id}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    listEl.innerHTML = '<div class="empty-state">No campaigns yet. Create your first campaign!</div>';
+                }
+            } catch (error) {
+                console.error('Error loading campaigns:', error);
+                showMessage('Error loading campaigns: ' + error.message, 'error');
+            }
+        }
+
+        async function showCreateModal() {
+            // Load parties first
+            try {
+                const response = await fetch('/api/party/list');
+                const data = await response.json();
+
+                const select = document.getElementById('party_id');
+
+                if (data.success && data.parties.length > 0) {
+                    select.innerHTML = '<option value="">-- Select a party --</option>' +
+                        data.parties.map(party => `
+                            <option value="${party.id}">
+                                ${party.name} (${party.members.length} members)
+                            </option>
+                        `).join('');
+
+                    document.getElementById('createModal').classList.add('active');
+                } else {
+                    showMessage('No parties available! Create a party first.', 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading parties: ' + error.message, 'error');
+            }
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').classList.remove('active');
+        }
+
+        async function createCampaign(event) {
+            event.preventDefault();
+
+            const template_id = document.getElementById('template_id').value;
+            const party_id = document.getElementById('party_id').value;
+
+            if (!party_id) {
+                showMessage('Please select a party', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/campaigns/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        template_id,
+                        party_id
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    closeCreateModal();
+                    loadCampaigns();
+
+                    // Redirect to campaign after brief delay
+                    setTimeout(() => {
+                        loadCampaign(data.campaign_id);
+                    }, 1500);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error creating campaign:', error);
+                showMessage('Error creating campaign: ' + error.message, 'error');
+            }
+        }
+
+        function loadCampaign(campaignId) {
+            // For now, show message. Full implementation would load hub menu
+            showMessage('Campaign loaded! (Full hub menu interface coming soon)', 'success');
+
+            // In full implementation, would redirect to hub menu page
+            // window.location.href = `/campaign/${campaignId}/hub`;
+        }
+    </script>
+</body>
+</html>

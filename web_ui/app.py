@@ -25,6 +25,11 @@ from aerthos.storage.character_roster import CharacterRoster
 from aerthos.storage.party_manager import PartyManager
 from aerthos.storage.scenario_library import ScenarioLibrary
 from aerthos.storage.session_manager import SessionManager
+from aerthos.campaign.campaign_manager import CampaignManager
+from aerthos.campaign.campaign import Campaign
+from aerthos.campaign.episode import Episode
+from aerthos.campaign.episode_runner import EpisodeRunner
+from aerthos.campaign.hub_menu import HubMenuSystem
 
 app = Flask(__name__)
 app.secret_key = 'aerthos_secret_key_change_in_production'
@@ -79,6 +84,360 @@ def scenario_library():
 def session_manager():
     """Session manager"""
     return render_template('session_manager.html')
+
+
+@app.route('/campaign_manager')
+def campaign_manager():
+    """Campaign manager"""
+    return render_template('campaign_manager.html')
+
+
+# ============================================================================
+# CAMPAIGN API ROUTES
+# ============================================================================
+
+@app.route('/api/campaigns/list', methods=['GET'])
+def list_campaigns():
+    """List all campaigns"""
+    try:
+        campaign_mgr = CampaignManager()
+        campaigns = campaign_mgr.list_campaigns()
+
+        # Convert Campaign objects to JSON-serializable dicts
+        campaigns_data = []
+        for camp in campaigns:
+            campaigns_data.append({
+                'id': camp.id,
+                'name': camp.name,
+                'description': camp.description,
+                'party_id': camp.party_id,
+                'current_hub_id': camp.current_hub_id,
+                'current_episode_id': camp.current_episode_id,
+                'completed_episodes': camp.completed_episodes,
+                'unlocked_episodes': camp.unlocked_episodes,
+                'unlocked_hubs': camp.unlocked_hubs,
+                'story_flags': camp.story_flags,
+                'reputation': camp.reputation
+            })
+
+        return jsonify({
+            'success': True,
+            'campaigns': campaigns_data
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/create', methods=['POST'])
+def create_campaign():
+    """Create a new campaign - IDENTICAL to CLI"""
+    try:
+        data = request.json
+        template_id = data.get('template_id', 'serpents_shadow')
+        party_id = data.get('party_id')
+
+        if not party_id:
+            return jsonify({
+                'success': False,
+                'error': 'Party ID required'
+            }), 400
+
+        # IDENTICAL call as CLI: campaign_mgr.create_campaign()
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.create_campaign(template_id, party_id)
+        campaign_mgr.save_campaign(campaign)
+
+        return jsonify({
+            'success': True,
+            'message': f"Campaign '{campaign.name}' created!",
+            'campaign_id': campaign.id,
+            'campaign': {
+                'id': campaign.id,
+                'name': campaign.name,
+                'description': campaign.description,
+                'current_hub_id': campaign.current_hub_id
+            }
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/load', methods=['GET'])
+def load_campaign(campaign_id):
+    """Load campaign details"""
+    try:
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        if not campaign:
+            return jsonify({
+                'success': False,
+                'error': 'Campaign not found'
+            }), 404
+
+        return jsonify({
+            'success': True,
+            'campaign': {
+                'id': campaign.id,
+                'name': campaign.name,
+                'description': campaign.description,
+                'party_id': campaign.party_id,
+                'current_hub_id': campaign.current_hub_id,
+                'current_episode_id': campaign.current_episode_id,
+                'completed_episodes': campaign.completed_episodes,
+                'unlocked_episodes': campaign.unlocked_episodes,
+                'unlocked_hubs': campaign.unlocked_hubs,
+                'story_flags': campaign.story_flags,
+                'reputation': campaign.reputation
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/delete', methods=['DELETE'])
+def delete_campaign(campaign_id):
+    """Delete a campaign"""
+    try:
+        campaign_mgr = CampaignManager()
+        campaign_mgr.delete_campaign(campaign_id)
+
+        return jsonify({
+            'success': True,
+            'message': 'Campaign deleted'
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/hub_menu', methods=['GET'])
+def get_hub_menu(campaign_id):
+    """Get hub menu for campaign - IDENTICAL to CLI"""
+    try:
+        # Load campaign
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        if not campaign:
+            return jsonify({
+                'success': False,
+                'error': 'Campaign not found'
+            }), 404
+
+        # Load party
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        if not party_data:
+            return jsonify({
+                'success': False,
+                'error': 'Party not found'
+            }), 404
+
+        # Create Party object from party data
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # IDENTICAL call as CLI: HubMenuSystem()
+        hub_menu = HubMenuSystem(campaign, party)
+        menu_text = hub_menu.display_hub_menu()
+        options = hub_menu.get_menu_options()
+
+        # Convert options to JSON
+        options_data = []
+        for i, opt in enumerate(options, 1):
+            options_data.append({
+                'number': i,
+                'id': opt.id,
+                'name': opt.name,
+                'description': opt.description,
+                'action': opt.action,
+                'data': opt.data if opt.data else {}
+            })
+
+        return jsonify({
+            'success': True,
+            'menu_text': menu_text,
+            'options': options_data,
+            'campaign': {
+                'id': campaign.id,
+                'name': campaign.name,
+                'current_hub_id': campaign.current_hub_id
+            }
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/episodes/list', methods=['GET'])
+def list_episodes(campaign_id):
+    """Get available episodes for campaign - IDENTICAL to CLI"""
+    try:
+        # Load campaign and party (same as CLI)
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # IDENTICAL call as CLI: hub_menu.get_travel_destinations()
+        hub_menu = HubMenuSystem(campaign, party)
+        destinations = hub_menu.get_travel_destinations()
+
+        return jsonify({
+            'success': True,
+            'episodes': destinations
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/episodes/<episode_id>/start', methods=['POST'])
+def start_episode(campaign_id, episode_id):
+    """Start an episode - IDENTICAL to CLI"""
+    try:
+        # Load campaign and party (same pattern as CLI)
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # IDENTICAL calls as CLI: Episode.load(), EpisodeRunner()
+        episode = Episode.load(episode_id)
+        runner = EpisodeRunner(episode, campaign, party)
+
+        # Get intro and briefing
+        intro_text = runner.get_intro_text()
+        briefing_text = runner.get_briefing_text()
+
+        # Load dungeon
+        success, message = runner.load_dungeon()
+
+        if not success:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 500
+
+        return jsonify({
+            'success': True,
+            'episode': {
+                'id': episode.id,
+                'title': episode.title,
+                'intro_text': intro_text,
+                'briefing_text': briefing_text,
+                'dungeon_name': runner.dungeon.name
+            },
+            'message': 'Episode ready to start'
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/episodes/<episode_id>/complete', methods=['POST'])
+def complete_episode(campaign_id, episode_id):
+    """Complete an episode - IDENTICAL to CLI"""
+    try:
+        # Load campaign and party
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # IDENTICAL calls as CLI
+        episode = Episode.load(episode_id)
+        runner = EpisodeRunner(episode, campaign, party)
+
+        # Complete episode
+        success, completion_message = runner.complete_episode()
+
+        if success:
+            # Save campaign (same as CLI)
+            campaign_mgr.save_campaign(campaign)
+
+            return jsonify({
+                'success': True,
+                'message': completion_message,
+                'campaign': {
+                    'completed_episodes': campaign.completed_episodes,
+                    'unlocked_episodes': campaign.unlocked_episodes
+                }
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': completion_message
+            }), 400
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 
 @app.route('/api/new_game', methods=['POST'])

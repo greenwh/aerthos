@@ -157,6 +157,15 @@
             </div>
         </div>
 
+        <div class="menu-section">
+            <div class="section-title">CAMPAIGN MODE</div>
+            <div class="menu-item" onclick="goToCampaignManager()">
+                <span class="menu-item-number">6.</span>
+                <span class="menu-item-title">Campaign Manager</span>
+                <span class="menu-item-desc">Story-driven episodic adventures</span>
+            </div>
+        </div>
+
         <div class="loading" id="loading">
             <span class="blink">⚔ Loading... ⚔</span>
         </div>
@@ -206,6 +215,10 @@
 
         function goToSessionManager() {
             window.location.href = '/session_manager';
+        }
+
+        function goToCampaignManager() {
+            window.location.href = '/campaign_manager';
         }
     </script>
 </body>
