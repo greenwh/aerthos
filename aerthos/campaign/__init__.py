@@ -14,6 +14,7 @@ from .city_hub import CityHub, MenuOption, ShopConfig, InnConfig, TempleConfig, 
 from .campaign_manager import CampaignManager, CampaignSummary
 from .hub_interfaces import ShopInterface, InnInterface, TempleInterface
 from .hub_menu import HubMenuSystem, HubMenuResult
+from .episode_runner import EpisodeRunner, EpisodeState
 
 __all__ = [
     'Campaign',
@@ -36,4 +37,6 @@ __all__ = [
     'TempleInterface',
     'HubMenuSystem',
     'HubMenuResult',
+    'EpisodeRunner',
+    'EpisodeState',
 ]

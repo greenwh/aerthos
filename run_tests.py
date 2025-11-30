@@ -188,7 +188,8 @@ def main():
             ('Episode System Tests', 'test_episode.py'),
             ('City Hub System Tests', 'test_city_hub.py'),
             ('Campaign Manager Tests', 'test_campaign_manager.py'),
-            ('Hub Menu System Tests', 'test_hub_menu.py')
+            ('Hub Menu System Tests', 'test_hub_menu.py'),
+            ('Episode Runner Tests', 'test_episode_runner.py')
         ]
 
         for suite_name, pattern in unit_tests:

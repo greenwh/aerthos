@@ -1,0 +1,185 @@
+{
+  "name": "Keep of Kaldor",
+  "description": "An abandoned keep now overrun by desperate goblin refugees, led by the hobgoblin chief Grukk.",
+  "theme": "ruins",
+  "levels": 2,
+  "start_room": "entrance",
+  "rooms": {
+    "entrance": {
+      "id": "entrance",
+      "title": "Ruined Gatehouse",
+      "description": "The massive oak doors hang broken on their hinges. Arrow slits in the walls stare down like empty eyes. Fresh goblin tracks mar the dusty floor.",
+      "light_level": "dim",
+      "exits": {
+        "north": "courtyard",
+        "east": "guard_room"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "guard_room": {
+      "id": "guard_room",
+      "title": "Guard Post",
+      "description": "Rusty weapons and rotting leather armor hang on the walls. A wooden table lies overturned. Signs of recent use—someone has been camping here.",
+      "light_level": "dark",
+      "exits": {
+        "west": "entrance"
+      },
+      "items": ["torch", "rations"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["goblin", "goblin"],
+          "description": "Two goblins leap out from behind the overturned table!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "courtyard": {
+      "id": "courtyard",
+      "title": "Overgrown Courtyard",
+      "description": "Weeds push through cracked flagstones. A dry fountain stands in the center, its statue worn beyond recognition. The keep's main hall looms to the north.",
+      "light_level": "bright",
+      "exits": {
+        "south": "entrance",
+        "north": "great_hall",
+        "west": "armory"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Ruined Armory",
+      "description": "Weapon racks stand empty, their contents long since looted. Rust stains and cobwebs are all that remain. A trap door in the floor leads down.",
+      "light_level": "dark",
+      "exits": {
+        "east": "courtyard",
+        "down": "storage_cellar"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["goblin", "goblin", "goblin"],
+          "description": "Three goblins stand guard, crude spears at the ready!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "great_hall": {
+      "id": "great_hall",
+      "title": "Great Hall",
+      "description": "A vast hall with a vaulted ceiling. Tattered banners hang from the walls. Long tables lie scattered about, now serving as crude goblin bedding.",
+      "light_level": "dim",
+      "exits": {
+        "south": "courtyard",
+        "north": "throne_room",
+        "east": "chapel"
+      },
+      "items": ["dagger"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["goblin", "goblin", "goblin", "goblin"],
+          "description": "Four goblins scramble to grab their weapons as you enter!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "chapel": {
+      "id": "chapel",
+      "title": "Defiled Chapel",
+      "description": "Broken pews and shattered holy symbols litter the floor. The altar has been defaced. A strange serpent symbol is painted on the wall in what looks like blood.",
+      "light_level": "dark",
+      "exits": {
+        "west": "great_hall"
+      },
+      "items": ["holy_water", "silver_dagger"],
+      "encounters": [],
+      "safe_rest": true,
+      "special": "The desecration is recent. Someone wanted to send a message."
+    },
+    "throne_room": {
+      "id": "throne_room",
+      "title": "Throne Room",
+      "description": "A stone throne sits on a raised dais. The hobgoblin chief Grukk lounges on it, a cruel grin on his scarred face. Around his neck hangs a serpent medallion.",
+      "light_level": "dim",
+      "exits": {
+        "south": "great_hall"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["grukk_hobgoblin_chief", "goblin", "goblin"],
+          "description": "Grukk stands, drawing his battle axe. 'More fools come to die!' he bellows. Two goblin guards flank him.",
+          "boss_fight": true
+        }
+      ],
+      "safe_rest": false,
+      "special": "This is the final confrontation. Grukk wears the serpent medallion—proof of a darker conspiracy."
+    },
+    "storage_cellar": {
+      "id": "storage_cellar",
+      "title": "Storage Cellar",
+      "description": "Moldy crates and barrels fill this damp cellar. Most are empty or rotten, but some contain stolen goods from the caravan raids.",
+      "light_level": "dark",
+      "exits": {
+        "up": "armory",
+        "east": "wine_cellar"
+      },
+      "items": ["rope", "lantern", "rations", "rations"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "wine_cellar": {
+      "id": "wine_cellar",
+      "title": "Wine Cellar",
+      "description": "Broken wine racks and shattered bottles cover the floor. The smell of sour wine mingles with something worse—something dead.",
+      "light_level": "dark",
+      "exits": {
+        "west": "storage_cellar",
+        "north": "plague_room"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_rat", "giant_rat", "giant_rat"],
+          "description": "Bloated giant rats swarm from the shadows, their eyes glowing with hunger!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "plague_room": {
+      "id": "plague_room",
+      "title": "Sealed Chamber",
+      "description": "This room was sealed with planks and warnings of plague. The goblins broke it open in desperation. Bodies lie inside—not goblins, but humans in ancient armor. Something killed them long ago.",
+      "light_level": "dark",
+      "exits": {
+        "south": "wine_cellar"
+      },
+      "items": ["gold_pieces_50", "longsword", "chain_mail"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["skeleton", "skeleton"],
+          "description": "The corpses stir! Two skeletal warriors rise, their armor clattering as they attack!"
+        }
+      ],
+      "safe_rest": false,
+      "special": "These soldiers died defending the keep. The plague that killed them may have been no natural disease."
+    }
+  },
+  "bosses": {
+    "grukk_hobgoblin_chief": {
+      "name": "Grukk the Hobgoblin Chief",
+      "description": "A massive hobgoblin with scarred grey skin and cruel yellow eyes. He wields a notched battle axe with practiced ease.",
+      "treasure": ["serpent_medallion", "dagger_plus_1", "gold_pieces_100"]
+    }
+  },
+  "completion_notes": "Defeating Grukk and recovering the serpent medallion completes the quest. The medallion is proof of a larger conspiracy involving the Serpent's Shadow cult."
+}
