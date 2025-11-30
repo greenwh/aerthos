@@ -440,6 +440,340 @@ def complete_episode(campaign_id, episode_id):
         }), 500
 
 
+@app.route('/api/campaigns/<campaign_id>/inn/rest', methods=['POST'])
+def inn_rest(campaign_id):
+    """Rest party at inn - IDENTICAL to CLI"""
+    try:
+        # Get request data
+        data = request.json
+        nights = data.get('nights', 1)
+
+        # Load campaign and party
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # Get inn config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+        inn_config = hub.inn
+
+        if not inn_config:
+            return jsonify({
+                'success': False,
+                'error': 'No inn available in this hub'
+            }), 400
+
+        # IDENTICAL calls as CLI
+        from aerthos.campaign.hub_interfaces import InnInterface
+        from aerthos.world.inn import Inn
+
+        inn = Inn(name=inn_config.name, rate_per_night=inn_config.rate_per_night)
+        inn_interface = InnInterface(inn, party, rate_per_night=inn_config.rate_per_night)
+
+        success, message = inn_interface.rest(nights)
+
+        if success:
+            # Save campaign (same as CLI)
+            campaign_mgr.save_campaign(campaign)
+
+            return jsonify({
+                'success': True,
+                'message': message
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 400
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/shop/buy', methods=['POST'])
+def shop_buy(campaign_id):
+    """Buy item from shop - IDENTICAL to CLI"""
+    try:
+        # Get request data
+        data = request.json
+        item_id = data.get('item_id')
+        shop_id = data.get('shop_id')
+        character_index = data.get('character_index', 0)
+
+        # Load campaign and party
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # Get shop config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+
+        shop_config = None
+        for shop in hub.shops:
+            if shop.id == shop_id:
+                shop_config = shop
+                break
+
+        if not shop_config:
+            return jsonify({
+                'success': False,
+                'error': 'Shop not found'
+            }), 404
+
+        # IDENTICAL calls as CLI
+        from aerthos.campaign.hub_interfaces import ShopInterface
+        from aerthos.world.shop import Shop
+
+        # Build shop data dict from shop_config
+        game_data = GameData.load_all()
+        shop_data = {
+            'name': shop_config.name,
+            'type': shop_config.type,
+            'description': shop_config.specialty,
+            'items': []
+        }
+
+        # Add items from inventory with prices from game_data
+        for item_id_in_inv in shop_config.inventory:
+            if item_id_in_inv in game_data.items:
+                item_data = game_data.items[item_id_in_inv]
+                shop_data['items'].append({
+                    'id': item_id_in_inv,
+                    'price': item_data.get('cost', 10),
+                    'stock': 10  # Default stock
+                })
+
+        shop = Shop(shop_config.id, shop_data)
+        shop_interface = ShopInterface(shop, party,
+                                      price_modifier=shop_config.price_modifier,
+                                      buy_rate=shop_config.buy_rate)
+
+        shop_interface.set_active_character(character_index)
+        success, message = shop_interface.buy_item(item_id, game_data)
+
+        if success:
+            # Save campaign (same as CLI)
+            campaign_mgr.save_campaign(campaign)
+
+            return jsonify({
+                'success': True,
+                'message': message
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 400
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/shop/sell', methods=['POST'])
+def shop_sell(campaign_id):
+    """Sell item to shop - IDENTICAL to CLI"""
+    try:
+        # Get request data
+        data = request.json
+        item_id = data.get('item_id')
+        shop_id = data.get('shop_id')
+        character_index = data.get('character_index', 0)
+
+        # Load campaign and party
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # Get shop config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+
+        shop_config = None
+        for shop in hub.shops:
+            if shop.id == shop_id:
+                shop_config = shop
+                break
+
+        if not shop_config:
+            return jsonify({
+                'success': False,
+                'error': 'Shop not found'
+            }), 404
+
+        # IDENTICAL calls as CLI
+        from aerthos.campaign.hub_interfaces import ShopInterface
+        from aerthos.world.shop import Shop
+
+        # Build shop data dict from shop_config
+        game_data = GameData.load_all()
+        shop_data = {
+            'name': shop_config.name,
+            'type': shop_config.type,
+            'description': shop_config.specialty,
+            'items': []
+        }
+
+        # Add items from inventory with prices from game_data
+        for item_id_in_inv in shop_config.inventory:
+            if item_id_in_inv in game_data.items:
+                item_data = game_data.items[item_id_in_inv]
+                shop_data['items'].append({
+                    'id': item_id_in_inv,
+                    'price': item_data.get('cost', 10),
+                    'stock': 10  # Default stock
+                })
+
+        shop = Shop(shop_config.id, shop_data)
+        shop_interface = ShopInterface(shop, party,
+                                      price_modifier=shop_config.price_modifier,
+                                      buy_rate=shop_config.buy_rate)
+
+        shop_interface.set_active_character(character_index)
+        success, message = shop_interface.sell_item(item_id)
+
+        if success:
+            # Save campaign (same as CLI)
+            campaign_mgr.save_campaign(campaign)
+
+            return jsonify({
+                'success': True,
+                'message': message
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 400
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/temple/service', methods=['POST'])
+def temple_service(campaign_id):
+    """Purchase temple service - IDENTICAL to CLI"""
+    try:
+        # Get request data
+        data = request.json
+        service_name = data.get('service_name')
+        target_character_index = data.get('target_character_index')
+        paid_amount = data.get('paid_amount')
+
+        # Load campaign and party
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # Get temple config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+        temple_config = hub.temple
+
+        if not temple_config:
+            return jsonify({
+                'success': False,
+                'error': 'No temple available in this hub'
+            }), 400
+
+        # IDENTICAL calls as CLI
+        from aerthos.campaign.hub_interfaces import TempleInterface
+
+        temple_interface = TempleInterface(
+            party,
+            available_services=temple_config.services,
+            donation_based=False
+        )
+
+        success, message = temple_interface.purchase_service(
+            service_name,
+            target_character_index,
+            paid_amount
+        )
+
+        if success:
+            # Save campaign (same as CLI)
+            campaign_mgr.save_campaign(campaign)
+
+            return jsonify({
+                'success': True,
+                'message': message
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 400
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/new_game', methods=['POST'])
 def new_game():
     """Start a new game"""

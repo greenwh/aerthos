@@ -1608,6 +1608,245 @@ def campaign_mode(game_data: GameData):
             print("Invalid choice. Please enter 1-5.")
 
 
+def run_inn(inn_interface, party: Party, campaign_mgr, campaign: Campaign):
+    """Inn interface for resting and recovery
+
+    Args:
+        inn_interface: InnInterface instance
+        party: Party resting at the inn
+        campaign_mgr: CampaignManager instance
+        campaign: Current campaign
+    """
+    from aerthos.campaign.hub_interfaces import InnInterface
+
+    while True:
+        print("\n" + "═" * 70)
+        print(f"{inn_interface.inn.name} - INN")
+        print("═" * 70)
+        print(f"\nRate: {inn_interface.rate_per_night}gp per person per night")
+
+        living_count = sum(1 for m in party.members if m.is_alive)
+        party_gold = sum(m.gold for m in party.members)
+
+        print(f"Living party members: {living_count}")
+        print(f"Party gold: {party_gold}gp")
+        print(f"Cost for 1 night: {inn_interface.get_cost_for_party(1)}gp")
+
+        print("\nOPTIONS:")
+        print("  1. Rest for 1 night")
+        print("  2. Rest for multiple nights")
+        print("  3. Check prices")
+        print("  4. Leave inn")
+
+        choice = input("\nYour choice: ").strip()
+
+        if choice == '1':
+            success, message = inn_interface.rest(1)
+            print(f"\n{message}")
+            if success:
+                # Save campaign after party changes
+                campaign_mgr.save_campaign(campaign)
+            input("\nPress Enter to continue...")
+
+        elif choice == '2':
+            try:
+                nights = int(input("How many nights? ").strip())
+                if nights < 1:
+                    print("Must rest at least 1 night.")
+                    continue
+
+                success, message = inn_interface.rest(nights)
+                print(f"\n{message}")
+                if success:
+                    # Save campaign after party changes
+                    campaign_mgr.save_campaign(campaign)
+                input("\nPress Enter to continue...")
+
+            except ValueError:
+                print("Invalid input.")
+
+        elif choice == '3':
+            print("\n" + "═" * 70)
+            print("PRICING")
+            print("═" * 70)
+            for nights in [1, 3, 7]:
+                cost = inn_interface.get_cost_for_party(nights)
+                print(f"{nights} night(s): {cost}gp")
+            input("\nPress Enter to continue...")
+
+        elif choice == '4':
+            break
+
+        else:
+            print("Invalid choice.")
+
+
+def run_shop(shop_interface, party: Party, game_data, campaign_mgr, campaign: Campaign):
+    """Shop interface for buying and selling items
+
+    Args:
+        shop_interface: ShopInterface instance
+        party: Party doing the shopping
+        game_data: GameData instance
+        campaign_mgr: CampaignManager instance
+        campaign: Current campaign
+    """
+    from aerthos.campaign.hub_interfaces import ShopInterface
+
+    while True:
+        print("\n" + "═" * 70)
+        print(f"{shop_interface.shop.name} - SHOP")
+        print("═" * 70)
+        print(f"\nActive shopper: {shop_interface.active_character.name}")
+        print(f"Gold: {shop_interface.active_character.gold}gp")
+
+        print("\nOPTIONS:")
+        print("  1. Browse shop inventory")
+        print("  2. Buy item")
+        print("  3. Sell item")
+        print("  4. Change active character")
+        print("  5. Leave shop")
+
+        choice = input("\nYour choice: ").strip()
+
+        if choice == '1':
+            # Browse inventory
+            items = shop_interface.list_shop_inventory()
+            print("\n" + "═" * 70)
+            print("SHOP INVENTORY")
+            print("═" * 70)
+            for item_data in items:
+                item_id = item_data['id']
+                if item_id in game_data.items:
+                    item_name = game_data.items[item_id]['name']
+                    price = item_data['price']
+                    stock = item_data['stock']
+                    in_stock = "In Stock" if item_data['in_stock'] else "Out of Stock"
+                    print(f"  {item_name} - {price}gp (Stock: {stock}) [{in_stock}]")
+            input("\nPress Enter to continue...")
+
+        elif choice == '2':
+            # Buy item
+            item_id = input("Enter item ID to buy: ").strip().lower()
+            success, message = shop_interface.buy_item(item_id, game_data)
+            print(f"\n{message}")
+            if success:
+                campaign_mgr.save_campaign(campaign)
+            input("\nPress Enter to continue...")
+
+        elif choice == '3':
+            # Sell item
+            print("\nYour inventory:")
+            for item_id, item_data in shop_interface.active_character.inventory.items.items():
+                print(f"  {item_data['name']} ({item_id})")
+
+            item_id = input("\nEnter item ID to sell: ").strip().lower()
+            success, message = shop_interface.sell_item(item_id)
+            print(f"\n{message}")
+            if success:
+                campaign_mgr.save_campaign(campaign)
+            input("\nPress Enter to continue...")
+
+        elif choice == '4':
+            # Change active character
+            print("\nParty members:")
+            for i, member in enumerate(party.members, 1):
+                print(f"  {i}. {member.name} ({member.gold}gp)")
+
+            try:
+                idx = int(input("Select character (number): ").strip()) - 1
+                if shop_interface.set_active_character(idx):
+                    print(f"\nNow shopping as {shop_interface.active_character.name}")
+                else:
+                    print("Invalid selection.")
+            except ValueError:
+                print("Invalid input.")
+            input("\nPress Enter to continue...")
+
+        elif choice == '5':
+            break
+
+        else:
+            print("Invalid choice.")
+
+
+def run_temple(temple_interface, party: Party, campaign_mgr, campaign: Campaign):
+    """Temple interface for divine services
+
+    Args:
+        temple_interface: TempleInterface instance
+        party: Party receiving services
+        campaign_mgr: CampaignManager instance
+        campaign: Current campaign
+    """
+    from aerthos.campaign.hub_interfaces import TempleInterface
+
+    while True:
+        print("\n" + "═" * 70)
+        print("TEMPLE - DIVINE SERVICES")
+        print("═" * 70)
+
+        party_gold = sum(m.gold for m in party.members)
+        print(f"\nParty gold: {party_gold}gp")
+
+        services = temple_interface.get_available_services()
+
+        print("\nAVAILABLE SERVICES:")
+        for i, service in enumerate(services, 1):
+            cost_str = f"(Suggested donation: {service['cost']}gp)" if temple_interface.donation_based else f"({service['cost']}gp)"
+            print(f"  {i}. {service['description']} {cost_str}")
+
+        print(f"\n  {len(services) + 1}. Leave temple")
+
+        choice = input("\nYour choice: ").strip()
+
+        try:
+            choice_num = int(choice)
+
+            if choice_num == len(services) + 1:
+                break
+
+            if choice_num < 1 or choice_num > len(services):
+                print("Invalid selection.")
+                continue
+
+            # Select service
+            service = services[choice_num - 1]
+            service_name = service['name']
+
+            # Select target character
+            print("\nSelect party member to receive service:")
+            for i, member in enumerate(party.members, 1):
+                status = "ALIVE" if member.is_alive else "DEAD"
+                hp_str = f"({member.hp_current}/{member.hp_max} HP)" if member.is_alive else ""
+                print(f"  {i}. {member.name} [{status}] {hp_str}")
+
+            target_choice = input("Select character (number): ").strip()
+            target_idx = int(target_choice) - 1
+
+            if target_idx < 0 or target_idx >= len(party.members):
+                print("Invalid selection.")
+                continue
+
+            # Purchase service
+            paid_amount = None
+            if temple_interface.donation_based:
+                donation = input(f"Enter donation amount (suggested {service['cost']}gp): ").strip()
+                if donation:
+                    paid_amount = int(donation)
+
+            success, message = temple_interface.purchase_service(service_name, target_idx, paid_amount)
+            print(f"\n{message}")
+
+            if success:
+                campaign_mgr.save_campaign(campaign)
+
+            input("\nPress Enter to continue...")
+
+        except ValueError:
+            print("Invalid input.")
+
+
 def run_campaign(campaign: Campaign, campaign_mgr: CampaignManager,
                 party_mgr: PartyManager, game_data: GameData, display: Display):
     """Run campaign gameplay loop - hub menu and episodes"""
@@ -1711,10 +1950,66 @@ def run_campaign(campaign: Campaign, campaign_mgr: CampaignManager,
             except ValueError:
                 print("Invalid input.")
 
-        elif result.next_state in ['inn', 'shop', 'temple', 'guild']:
-            # TODO: Implement these interfaces in future phases
+        elif result.next_state == 'inn':
+            # Run inn interface - IDENTICAL to what Web UI will call
+            from aerthos.campaign.hub_interfaces import InnInterface
+            from aerthos.world.inn import Inn
+
+            inn_config = result.data.get('inn_config')
+            inn = Inn(name=inn_config.name, rate_per_night=inn_config.rate_per_night)
+            inn_interface = InnInterface(inn, party, rate_per_night=inn_config.rate_per_night)
+
+            run_inn(inn_interface, party, campaign_mgr, campaign)
+
+        elif result.next_state == 'shop':
+            # Run shop interface - IDENTICAL to what Web UI will call
+            from aerthos.campaign.hub_interfaces import ShopInterface
+            from aerthos.world.shop import Shop
+
+            shop_config = result.data.get('shop_config')
+
+            # Build shop data dict from shop_config
+            shop_data = {
+                'name': shop_config.name,
+                'type': shop_config.type,
+                'description': shop_config.specialty,
+                'items': []
+            }
+
+            # Add items from inventory with prices from game_data
+            for item_id in shop_config.inventory:
+                if item_id in game_data.items:
+                    item_data = game_data.items[item_id]
+                    shop_data['items'].append({
+                        'id': item_id,
+                        'price': item_data.get('cost', 10),
+                        'stock': 10  # Default stock
+                    })
+
+            shop = Shop(shop_config.id, shop_data)
+            shop_interface = ShopInterface(shop, party,
+                                          price_modifier=shop_config.price_modifier,
+                                          buy_rate=shop_config.buy_rate)
+
+            run_shop(shop_interface, party, game_data, campaign_mgr, campaign)
+
+        elif result.next_state == 'temple':
+            # Run temple interface - IDENTICAL to what Web UI will call
+            from aerthos.campaign.hub_interfaces import TempleInterface
+
+            temple_config = result.data.get('temple_config')
+            temple_interface = TempleInterface(
+                party,
+                available_services=temple_config.services,
+                donation_based=False
+            )
+
+            run_temple(temple_interface, party, campaign_mgr, campaign)
+
+        elif result.next_state == 'guild':
+            # Guild interface (basic for now)
             print(f"\n{result.message}")
-            print(f"[{result.next_state.upper()} interface coming in Phase 5]")
+            print("[Guild services coming soon]")
             input("\nPress Enter to continue...")
 
         elif result.next_state == 'party_management':
