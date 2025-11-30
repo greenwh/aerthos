@@ -92,6 +92,18 @@ def campaign_manager():
     return render_template('campaign_manager.html')
 
 
+@app.route('/campaign/<campaign_id>/hub')
+def campaign_hub(campaign_id):
+    """Campaign hub page"""
+    return render_template('campaign_hub.html')
+
+
+@app.route('/campaign/<campaign_id>/episodes')
+def campaign_episodes(campaign_id):
+    """Campaign episodes page"""
+    return render_template('campaign_episodes.html')
+
+
 # ============================================================================
 # CAMPAIGN API ROUTES
 # ============================================================================

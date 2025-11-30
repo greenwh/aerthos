@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Board - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 30px;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0a0;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #0a0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #0a0;
+            color: #0f0;
+        }
+
+        .episode-item {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .episode-item:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .episode-item.completed {
+            border-color: #0a0;
+            background-color: #001100;
+        }
+
+        .episode-item.current {
+            border-color: #ff0;
+            box-shadow: 0 0 15px #ff0;
+        }
+
+        .episode-status {
+            display: inline-block;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .episode-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .episode-dungeon {
+            font-size: 14px;
+            color: #0a0;
+            margin-bottom: 5px;
+        }
+
+        .episode-level {
+            font-size: 12px;
+            color: #0a0;
+        }
+
+        .episode-status-text {
+            font-size: 12px;
+            color: #ff0;
+            font-weight: bold;
+        }
+
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            display: none;
+        }
+
+        .message.success {
+            border-color: #0f0;
+            background-color: #003300;
+        }
+
+        .message.error {
+            border-color: #f00;
+            background-color: #330000;
+            color: #f00;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0a0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #0f0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #ff0;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #0a0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">QUEST BOARD</div>
+            <div class="subtitle" id="campaign-name">Campaign</div>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="section">
+            <div class="section-title">AVAILABLE QUESTS</div>
+            <div id="episode-list">
+                <div class="loading">Loading quests...</div>
+            </div>
+        </div>
+
+        <a href="#" onclick="goBackToHub(); return false;" class="back-link">← Back to Hub</a>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const campaignId = urlParams.get('campaign_id');
+
+        if (!campaignId) {
+            showMessage('No campaign ID provided', 'error');
+        } else {
+            loadEpisodes();
+        }
+
+        function showMessage(text, type = 'success') {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type} active`;
+            setTimeout(() => {
+                msg.className = 'message';
+            }, 5000);
+        }
+
+        async function loadEpisodes() {
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/list`);
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('campaign-name').textContent = data.campaign_name;
+                    displayEpisodes(data.episodes);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error loading episodes:', error);
+                showMessage('Error loading episodes: ' + error.message, 'error');
+            }
+        }
+
+        function displayEpisodes(episodes) {
+            const listEl = document.getElementById('episode-list');
+
+            if (!episodes || episodes.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No quests available at this time.</div>';
+                return;
+            }
+
+            listEl.innerHTML = episodes.map(ep => {
+                const statusIcon = {
+                    'AVAILABLE': '●',
+                    'CURRENT': '▶',
+                    'COMPLETED': '✓'
+                }[ep.status] || '?';
+
+                const itemClass = ep.status === 'COMPLETED' ? 'completed' :
+                                ep.status === 'CURRENT' ? 'current' : '';
+
+                return `
+                    <div class="episode-item ${itemClass}" onclick="startEpisode('${ep.episode_id}')">
+                        <div>
+                            <span class="episode-status">${statusIcon}</span>
+                            <span class="episode-title">${ep.title}</span>
+                        </div>
+                        <div class="episode-dungeon">${ep.dungeon_name}</div>
+                        <div class="episode-level">Recommended Level: ${ep.recommended_level}</div>
+                        <div class="episode-status-text">${ep.status}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function startEpisode(episodeId) {
+            if (!confirm('Start this quest? You will need to complete it in the CLI for now.')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/start`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show intro and briefing
+                    let message = 'QUEST STARTED\n\n';
+                    message += data.intro + '\n\n';
+                    message += data.briefing;
+
+                    alert(message);
+
+                    showMessage('Quest started! Complete it in the CLI by running: python main.py → Campaign Manager', 'success');
+
+                    // Reload episodes to update status
+                    setTimeout(() => {
+                        loadEpisodes();
+                    }, 2000);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error starting episode:', error);
+                showMessage('Error starting episode: ' + error.message, 'error');
+            }
+        }
+
+        function goBackToHub() {
+            window.location.href = `/campaign/${campaignId}/hub`;
+        }
+    </script>
+</body>
+</html>

@@ -388,11 +388,8 @@
         }
 
         function loadCampaign(campaignId) {
-            // For now, show message. Full implementation would load hub menu
-            showMessage('Campaign loaded! (Full hub menu interface coming soon)', 'success');
-
-            // In full implementation, would redirect to hub menu page
-            // window.location.href = `/campaign/${campaignId}/hub`;
+            // Redirect to hub page
+            window.location.href = `/campaign/${campaignId}/hub`;
         }
     </script>
 </body>
