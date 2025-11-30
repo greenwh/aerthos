@@ -179,6 +179,7 @@ def main():
             ('Narrator Integration Tests', 'test_narrator_integration.py'),
             ('Monster Abilities Integration Tests', 'test_monster_abilities_integration.py'),
             ('Treasure Generation Tests', 'test_treasure_generation.py'),
+            ('Money System Tests', 'test_money_system.py'),
             ('Magic Functionality Tests', 'test_magic_functionality.py'),
             ('Phase 3 Integration Tests', 'test_phase3_integration.py'),
             ('Village System Tests', 'test_village_system.py'),

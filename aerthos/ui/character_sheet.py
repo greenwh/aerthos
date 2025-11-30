@@ -62,7 +62,27 @@ class CharacterSheet:
         lines.append(f"  Armor: {armor_name}")
         lines.append(f"  Shield: {shield_name}")
         lines.append(f"  Light: {light_name}")
-        lines.append(f"  Gold: {player.gold} gp")
+
+        # Display money breakdown (new system) or fall back to old gold field
+        money_parts = []
+        cp = getattr(player, 'copper_pieces', 0)
+        sp = getattr(player, 'silver_pieces', 0)
+        ep = getattr(player, 'electrum_pieces', 0)
+        gp = getattr(player, 'gold_pieces', 0)
+        pp = getattr(player, 'platinum_pieces', 0)
+
+        if cp > 0 or sp > 0 or ep > 0 or gp > 0 or pp > 0:
+            if pp > 0: money_parts.append(f"{pp} pp")
+            if gp > 0: money_parts.append(f"{gp} gp")
+            if ep > 0: money_parts.append(f"{ep} ep")
+            if sp > 0: money_parts.append(f"{sp} sp")
+            if cp > 0: money_parts.append(f"{cp} cp")
+            lines.append(f"  Money: {', '.join(money_parts)}")
+        elif player.gold > 0:
+            # Fallback for old characters
+            lines.append(f"  Gold: {player.gold} gp")
+        else:
+            lines.append(f"  Money: 0 gp")
         lines.append("")
 
         # Spells (if applicable)
@@ -104,8 +124,28 @@ class CharacterSheet:
             Single-line status
         """
 
+        # Display money breakdown or fall back to old gold
+        cp = getattr(player, 'copper_pieces', 0)
+        sp = getattr(player, 'silver_pieces', 0)
+        ep = getattr(player, 'electrum_pieces', 0)
+        gp = getattr(player, 'gold_pieces', 0)
+        pp = getattr(player, 'platinum_pieces', 0)
+
+        if cp > 0 or sp > 0 or ep > 0 or gp > 0 or pp > 0:
+            money_parts = []
+            if pp > 0: money_parts.append(f"{pp}pp")
+            if gp > 0: money_parts.append(f"{gp}gp")
+            if ep > 0: money_parts.append(f"{ep}ep")
+            if sp > 0: money_parts.append(f"{sp}sp")
+            if cp > 0: money_parts.append(f"{cp}cp")
+            money_display = ' '.join(money_parts)
+        elif player.gold > 0:
+            money_display = f"{player.gold} gp"
+        else:
+            money_display = "0 gp"
+
         return (f"{player.name} | HP: {player.hp_current}/{player.hp_max} | "
-                f"AC: {player.get_effective_ac()} | Gold: {player.gold} gp")
+                f"AC: {player.get_effective_ac()} | Money: {money_display}")
 
     @staticmethod
     def format_party_roster(party) -> str:

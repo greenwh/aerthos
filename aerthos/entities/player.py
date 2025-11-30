@@ -257,7 +257,14 @@ class PlayerCharacter(Character):
     # Inventory
     inventory: Inventory = field(default_factory=Inventory)
     equipment: Equipment = field(default_factory=Equipment)
-    gold: int = 0
+    gold: int = 0  # Deprecated - kept for backward compatibility, use money breakdown instead
+
+    # Money breakdown (AD&D 1e standard coinage)
+    copper_pieces: int = 0  # cp (1 cp = 0.01 gp)
+    silver_pieces: int = 0  # sp (1 sp = 0.1 gp)
+    electrum_pieces: int = 0  # ep (1 ep = 0.5 gp)
+    gold_pieces: int = 0  # gp (1 gp = 1 gp)
+    platinum_pieces: int = 0  # pp (1 pp = 5 gp)
 
     # Spells (for spellcasters)
     spells_known: List[Spell] = field(default_factory=list)
@@ -565,3 +572,97 @@ class PlayerCharacter(Character):
         if skill_name == 'find_traps':
             skill_name = 'find_remove_traps'
         return self.thief_skills.get(skill_name, 0)
+
+    def get_total_gold_value(self) -> float:
+        """
+        Calculate total wealth in gold piece equivalent
+
+        AD&D 1e conversion rates:
+        - 1 cp = 0.01 gp
+        - 1 sp = 0.1 gp
+        - 1 ep = 0.5 gp
+        - 1 gp = 1 gp
+        - 1 pp = 5 gp
+
+        Returns:
+            Total value in gold pieces
+        """
+        total = 0.0
+        total += self.copper_pieces * 0.01
+        total += self.silver_pieces * 0.1
+        total += self.electrum_pieces * 0.5
+        total += self.gold_pieces * 1.0
+        total += self.platinum_pieces * 5.0
+
+        # Add deprecated gold field for backward compatibility
+        total += self.gold * 1.0
+
+        return total
+
+    def add_money(self, cp: int = 0, sp: int = 0, ep: int = 0, gp: int = 0, pp: int = 0) -> None:
+        """
+        Add coins to character's money
+
+        Args:
+            cp: Copper pieces to add
+            sp: Silver pieces to add
+            ep: Electrum pieces to add
+            gp: Gold pieces to add
+            pp: Platinum pieces to add
+        """
+        self.copper_pieces += cp
+        self.silver_pieces += sp
+        self.electrum_pieces += ep
+        self.gold_pieces += gp
+        self.platinum_pieces += pp
+
+    def subtract_money(self, cp: int = 0, sp: int = 0, ep: int = 0, gp: int = 0, pp: int = 0) -> bool:
+        """
+        Subtract coins from character's money
+
+        Args:
+            cp: Copper pieces to subtract
+            sp: Silver pieces to subtract
+            ep: Electrum pieces to subtract
+            gp: Gold pieces to subtract
+            pp: Platinum pieces to subtract
+
+        Returns:
+            True if successful, False if insufficient funds
+        """
+        # Check if character has enough of each coin type
+        if (self.copper_pieces < cp or
+            self.silver_pieces < sp or
+            self.electrum_pieces < ep or
+            self.gold_pieces < gp or
+            self.platinum_pieces < pp):
+            return False
+
+        # Subtract coins
+        self.copper_pieces -= cp
+        self.silver_pieces -= sp
+        self.electrum_pieces -= ep
+        self.gold_pieces -= gp
+        self.platinum_pieces -= pp
+
+        return True
+
+    def has_money(self, cp: int = 0, sp: int = 0, ep: int = 0, gp: int = 0, pp: int = 0) -> bool:
+        """
+        Check if character has at least the specified amount of money
+
+        Args:
+            cp: Copper pieces required
+            sp: Silver pieces required
+            ep: Electrum pieces required
+            gp: Gold pieces required
+            pp: Platinum pieces required
+
+        Returns:
+            True if character has enough of each coin type
+        """
+        return (self.copper_pieces >= cp and
+                self.silver_pieces >= sp and
+                self.electrum_pieces >= ep and
+                self.gold_pieces >= gp and
+                self.platinum_pieces >= pp)

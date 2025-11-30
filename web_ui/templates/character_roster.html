@@ -426,20 +426,155 @@
                     if (data.success) {
                         const char = data.character;
                         document.getElementById('viewCharName').textContent = char.name;
-                        document.getElementById('viewCharDetails').innerHTML = `
-                            <div style="line-height: 1.6;">
-                                <p><strong>Race:</strong> ${char.race}</p>
-                                <p><strong>Class:</strong> ${char.char_class}</p>
-                                <p><strong>Alignment:</strong> ${char.alignment}</p>
-                                <p><strong>Level:</strong> ${char.level}</p>
-                                <p><strong>XP:</strong> ${char.xp}</p>
-                                <p><strong>HP:</strong> ${char.hp_current}/${char.hp_max}</p>
-                                <p><strong>AC:</strong> ${char.ac}</p>
-                                <p><strong>THAC0:</strong> ${char.thac0}</p>
-                                <p><strong>Gold:</strong> ${char.gold}</p>
-                                <p><strong>Weight:</strong> ${char.weight} / ${char.weight_max}</p>
-                            </div>
-                        `;
+
+                        let html = '<div style="line-height: 1.6;">';
+
+                        // === BASIC INFO ===
+                        html += '<div style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #0a0;">';
+                        html += `<p><strong>Race:</strong> ${char.race} | <strong>Class:</strong> ${char.char_class} | <strong>Alignment:</strong> ${char.alignment}</p>`;
+                        html += `<p><strong>Level:</strong> ${char.level} | <strong>XP:</strong> ${char.xp} / ${char.xp_to_next_level}</p>`;
+                        html += `<p><strong>HP:</strong> ${char.hp_current}/${char.hp_max} | <strong>AC:</strong> ${char.ac} | <strong>THAC0:</strong> ${char.thac0}</p>`;
+
+                        // Money breakdown
+                        if (char.money && (char.money.cp > 0 || char.money.sp > 0 || char.money.ep > 0 || char.money.gp > 0 || char.money.pp > 0)) {
+                            let moneyParts = [];
+                            if (char.money.pp > 0) moneyParts.push(`${char.money.pp} pp`);
+                            if (char.money.gp > 0) moneyParts.push(`${char.money.gp} gp`);
+                            if (char.money.ep > 0) moneyParts.push(`${char.money.ep} ep`);
+                            if (char.money.sp > 0) moneyParts.push(`${char.money.sp} sp`);
+                            if (char.money.cp > 0) moneyParts.push(`${char.money.cp} cp`);
+                            html += `<p><strong>Money:</strong> ${moneyParts.join(', ')} | <strong>Weight:</strong> ${char.weight.toFixed(1)} / ${char.weight_max} lbs</p>`;
+                        } else if (char.gold > 0) {
+                            // Fallback for old characters without money breakdown
+                            html += `<p><strong>Gold:</strong> ${char.gold} gp | <strong>Weight:</strong> ${char.weight.toFixed(1)} / ${char.weight_max} lbs</p>`;
+                        } else {
+                            html += `<p><strong>Money:</strong> 0 gp | <strong>Weight:</strong> ${char.weight.toFixed(1)} / ${char.weight_max} lbs</p>`;
+                        }
+                        html += '</div>';
+
+                        // === ABILITY SCORES ===
+                        html += '<div style="margin-bottom: 15px;">';
+                        html += '<p style="color: #ff0; font-weight: bold; margin-bottom: 5px;">■ ABILITY SCORES</p>';
+                        html += '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">';
+                        html += `<span>STR: ${char.abilities.strength}${char.abilities.strength_percentile > 0 ? '/' + char.abilities.strength_percentile : ''}</span>`;
+                        html += `<span>DEX: ${char.abilities.dexterity}</span>`;
+                        html += `<span>CON: ${char.abilities.constitution}</span>`;
+                        html += `<span>INT: ${char.abilities.intelligence}</span>`;
+                        html += `<span>WIS: ${char.abilities.wisdom}</span>`;
+                        html += `<span>CHA: ${char.abilities.charisma}</span>`;
+                        html += '</div></div>';
+
+                        // === SAVING THROWS ===
+                        html += '<div style="margin-bottom: 15px;">';
+                        html += '<p style="color: #ff0; font-weight: bold; margin-bottom: 5px;">■ SAVING THROWS</p>';
+                        html += '<div style="font-size: 13px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px;">';
+                        html += `<span>Poison/Death: ${char.saving_throws.poison}</span>`;
+                        html += `<span>Rod/Staff/Wand: ${char.saving_throws.rod_staff_wand}</span>`;
+                        html += `<span>Petrify/Paralyze: ${char.saving_throws.petrify_paralyze}</span>`;
+                        html += `<span>Breath Weapon: ${char.saving_throws.breath}</span>`;
+                        html += `<span>Spell: ${char.saving_throws.spell}</span>`;
+                        html += '</div></div>';
+
+                        // === EQUIPMENT (What's Equipped) ===
+                        html += '<div style="margin-bottom: 15px;">';
+                        html += '<p style="color: #ff0; font-weight: bold; margin-bottom: 5px;">■ EQUIPPED</p>';
+                        if (Object.keys(char.equipment).length > 0) {
+                            if (char.equipment.weapon) {
+                                const weapon = char.equipment.weapon;
+                                const bonus = weapon.magic_bonus > 0 ? ` +${weapon.magic_bonus}` : '';
+                                html += `<p style="margin-left: 10px;">⚔ Weapon: ${weapon.name}${bonus} (${weapon.damage_sm}/${weapon.damage_l})</p>`;
+                            }
+                            if (char.equipment.armor) {
+                                const armor = char.equipment.armor;
+                                const bonus = armor.magic_bonus > 0 ? ` +${armor.magic_bonus}` : '';
+                                html += `<p style="margin-left: 10px;">🛡 Armor: ${armor.name}${bonus} (AC ${armor.ac})</p>`;
+                            }
+                            if (char.equipment.shield) {
+                                const shield = char.equipment.shield;
+                                const bonus = shield.magic_bonus > 0 ? ` +${shield.magic_bonus}` : '';
+                                html += `<p style="margin-left: 10px;">🛡 Shield: ${shield.name}${bonus} (AC +${shield.ac_bonus})</p>`;
+                            }
+                            if (char.equipment.light_source) {
+                                const light = char.equipment.light_source;
+                                html += `<p style="margin-left: 10px;">🔦 Light: ${light.name} (${light.turns_remaining} turns)</p>`;
+                            }
+                        } else {
+                            html += '<p style="margin-left: 10px; color: #0a0;">Nothing equipped</p>';
+                        }
+                        html += '</div>';
+
+                        // === INVENTORY ===
+                        html += '<div style="margin-bottom: 15px;">';
+                        html += '<p style="color: #ff0; font-weight: bold; margin-bottom: 5px;">■ INVENTORY</p>';
+                        if (char.inventory.length > 0) {
+                            html += '<div style="max-height: 200px; overflow-y: auto; border: 1px solid #0a0; padding: 5px; background-color: #001100;">';
+                            char.inventory.forEach(item => {
+                                let itemDesc = item.name;
+                                if (item.magic_bonus > 0) {
+                                    itemDesc += ` +${item.magic_bonus}`;
+                                }
+                                if (item.damage_sm) {
+                                    itemDesc += ` (${item.damage_sm}/${item.damage_l})`;
+                                } else if (item.ac) {
+                                    itemDesc += ` (AC ${item.ac})`;
+                                }
+                                itemDesc += ` [${item.weight} lbs]`;
+                                html += `<p style="margin: 2px 0; padding-left: 10px;">• ${itemDesc}</p>`;
+                            });
+                            html += '</div>';
+                        } else {
+                            html += '<p style="margin-left: 10px; color: #0a0;">Empty</p>';
+                        }
+                        html += '</div>';
+
+                        // === SPELLS (for casters) ===
+                        if (char.spells_known.length > 0 || char.spells_memorized.length > 0) {
+                            html += '<div style="margin-bottom: 15px;">';
+                            html += '<p style="color: #ff0; font-weight: bold; margin-bottom: 5px;">■ SPELLS</p>';
+
+                            // Spells Known
+                            if (char.spells_known.length > 0) {
+                                html += '<p style="margin-left: 10px; color: #0f0; font-weight: bold;">Spells Known:</p>';
+                                html += '<div style="margin-left: 20px; font-size: 13px;">';
+                                char.spells_known.forEach(spell => {
+                                    html += `<p style="margin: 2px 0;">• ${spell.name} (Lvl ${spell.level}, ${spell.school})</p>`;
+                                });
+                                html += '</div>';
+                            }
+
+                            // Spell Slots
+                            if (char.spells_memorized.length > 0) {
+                                html += '<p style="margin-left: 10px; margin-top: 10px; color: #0f0; font-weight: bold;">Memorized Spells:</p>';
+                                html += '<div style="margin-left: 20px; font-size: 13px;">';
+                                char.spells_memorized.forEach((slot, idx) => {
+                                    const status = slot.is_used ? '[USED]' : '[READY]';
+                                    const color = slot.is_used ? '#666' : '#0f0';
+                                    if (slot.spell) {
+                                        html += `<p style="margin: 2px 0; color: ${color};">${status} ${slot.spell.name} (Lvl ${slot.spell.level})</p>`;
+                                    } else {
+                                        html += `<p style="margin: 2px 0; color: ${color};">${status} Level ${slot.level} [Empty]</p>`;
+                                    }
+                                });
+                                html += '</div>';
+                            }
+                            html += '</div>';
+                        }
+
+                        // === THIEF SKILLS ===
+                        if (char.thief_skills) {
+                            html += '<div style="margin-bottom: 15px;">';
+                            html += '<p style="color: #ff0; font-weight: bold; margin-bottom: 5px;">■ THIEF SKILLS</p>';
+                            html += '<div style="margin-left: 10px; font-size: 13px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px;">';
+                            for (const [skill, value] of Object.entries(char.thief_skills)) {
+                                const skillName = skill.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                                html += `<span>${skillName}: ${value}%</span>`;
+                            }
+                            html += '</div></div>';
+                        }
+
+                        html += '</div>';
+
+                        document.getElementById('viewCharDetails').innerHTML = html;
                         document.getElementById('viewModal').style.display = 'flex';
                     } else {
                         alert('Error loading character: ' + data.error);

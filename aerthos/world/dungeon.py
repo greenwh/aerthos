@@ -63,7 +63,8 @@ class Dungeon:
             Dungeon instance
         """
         name = dungeon_data.get('name', 'Generated Dungeon')
-        start_room_id = dungeon_data['start_room']
+        # Handle both old and new key names for backward compatibility
+        start_room_id = dungeon_data.get('start_room_id') or dungeon_data.get('start_room')
 
         # Load all rooms
         rooms = {}

@@ -233,6 +233,12 @@ class SessionManager:
             'hp_current': character.hp_current,
             'xp': character.xp,
             'level': character.level,
-            'gold': character.gold,
+            'gold': character.gold,  # Deprecated - kept for backward compatibility
+            # Money breakdown (AD&D 1e standard coinage)
+            'copper_pieces': getattr(character, 'copper_pieces', 0),
+            'silver_pieces': getattr(character, 'silver_pieces', 0),
+            'electrum_pieces': getattr(character, 'electrum_pieces', 0),
+            'gold_pieces': getattr(character, 'gold_pieces', 0),
+            'platinum_pieces': getattr(character, 'platinum_pieces', 0),
             'conditions': list(character.conditions)
         }

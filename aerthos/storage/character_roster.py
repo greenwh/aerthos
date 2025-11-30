@@ -52,7 +52,14 @@ class CharacterRoster:
             'hp_current': character.hp_current,
             'ac': character.ac,
             'thac0': character.thac0,
-            'gold': character.gold,
+            'gold': character.gold,  # Kept for backward compatibility
+
+            # Money breakdown (new system)
+            'copper_pieces': getattr(character, 'copper_pieces', 0),
+            'silver_pieces': getattr(character, 'silver_pieces', 0),
+            'electrum_pieces': getattr(character, 'electrum_pieces', 0),
+            'gold_pieces': getattr(character, 'gold_pieces', 0),
+            'platinum_pieces': getattr(character, 'platinum_pieces', 0),
 
             # Abilities
             'strength': character.strength,
@@ -352,6 +359,19 @@ class CharacterRoster:
         """Deserialize character data into PlayerCharacter instance"""
         from ..entities.player import PlayerCharacter, Inventory, Equipment, SpellSlot
 
+        # Load money - migrate old gold to new system if needed
+        old_gold = data.get('gold', 0)
+        cp = data.get('copper_pieces', 0)
+        sp = data.get('silver_pieces', 0)
+        ep = data.get('electrum_pieces', 0)
+        gp = data.get('gold_pieces', 0)
+        pp = data.get('platinum_pieces', 0)
+
+        # Migration: if no money breakdown but has old gold, migrate it
+        if (cp == 0 and sp == 0 and ep == 0 and gp == 0 and pp == 0) and old_gold > 0:
+            gp = old_gold
+            old_gold = 0  # Clear old field after migration
+
         # Create character
         character = PlayerCharacter(
             name=data['name'],
@@ -371,7 +391,13 @@ class CharacterRoster:
             thac0=data['thac0'],
             level=data['level'],
             xp=data['xp'],
-            gold=data['gold']
+            gold=old_gold,  # Will be 0 after migration
+            # Money breakdown (new system)
+            copper_pieces=cp,
+            silver_pieces=sp,
+            electrum_pieces=ep,
+            gold_pieces=gp,
+            platinum_pieces=pp
         )
 
         # Restore inventory

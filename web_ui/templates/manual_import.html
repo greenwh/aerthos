@@ -331,6 +331,36 @@
                 </div>
             </div>
 
+            <!-- Money -->
+            <div class="form-section">
+                <div class="section-title">Money (Optional)</div>
+                <div class="info-text">Enter starting wealth in each coin type (AD&D 1e standard coinage)</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Copper Pieces (cp):</label>
+                        <input type="number" id="moneyCp" class="form-input" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Silver Pieces (sp):</label>
+                        <input type="number" id="moneySp" class="form-input" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Electrum Pieces (ep):</label>
+                        <input type="number" id="moneyEp" class="form-input" min="0" value="0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Gold Pieces (gp):</label>
+                        <input type="number" id="moneyGp" class="form-input" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Platinum Pieces (pp):</label>
+                        <input type="number" id="moneyPp" class="form-input" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+
             <!-- Equipment -->
             <div class="form-section">
                 <div class="section-title">Equipment (Optional)</div>
@@ -373,6 +403,18 @@
                     <label class="form-label">Available Spells:</label>
                     <select id="spellSelect" class="form-select" multiple size="10">
                         <option value="">Select a caster class to see spells...</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Magic Items -->
+            <div class="form-section">
+                <div class="section-title">Magic Items (Optional)</div>
+                <div class="info-text">Hold Ctrl/Cmd to select multiple magic items. Potions, scrolls, magic weapons/armor, rings, wands, etc.</div>
+                <div class="form-group">
+                    <label class="form-label">Magic Items:</label>
+                    <select id="magicItemsSelect" class="form-select" multiple size="12">
+                        <option value="">Loading magic items...</option>
                     </select>
                 </div>
             </div>
@@ -430,6 +472,9 @@
                 const equipmentResponse = await fetch('/api/items/equipment');
                 const equipmentData = await equipmentResponse.json();
 
+                const magicItemsResponse = await fetch('/api/items/magic_items');
+                const magicItemsData = await magicItemsResponse.json();
+
                 gameData = {
                     races: racesData.races || {},
                     classes: classesData.classes || {},
@@ -437,7 +482,8 @@
                     weapons: weaponsData.weapons || [],
                     armor: armorData.armor || [],
                     shields: shieldsData.shields || [],
-                    equipment: equipmentData.equipment || []
+                    equipment: equipmentData.equipment || [],
+                    magic_items: magicItemsData.magic_items || []
                 };
             } catch (error) {
                 showError('Failed to load game data: ' + error.message);
@@ -537,6 +583,21 @@
                 option.value = item.id;
                 option.textContent = item.name;
                 equipmentSelect.appendChild(option);
+            });
+
+            // Populate magic items (sorted by category then name)
+            const magicItemsSelect = document.getElementById('magicItemsSelect');
+            magicItemsSelect.innerHTML = '';
+            gameData.magic_items.sort((a, b) => {
+                if (a.category !== b.category) {
+                    return a.category.localeCompare(b.category);
+                }
+                return a.name.localeCompare(b.name);
+            }).forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = `[${item.category}] ${item.name}`;
+                magicItemsSelect.appendChild(option);
             });
         }
 
@@ -648,7 +709,14 @@
                     charisma: parseInt(document.getElementById('abilityCha').value),
                     strength_percentile: parseInt(document.getElementById('strPercentile').value) || 0,
                     hp_option: document.querySelector('input[name="hpOption"]:checked').value,
-                    hp_manual: parseInt(document.getElementById('charHP').value) || 0
+                    hp_manual: parseInt(document.getElementById('charHP').value) || 0,
+                    money: {
+                        cp: parseInt(document.getElementById('moneyCp').value) || 0,
+                        sp: parseInt(document.getElementById('moneySp').value) || 0,
+                        ep: parseInt(document.getElementById('moneyEp').value) || 0,
+                        gp: parseInt(document.getElementById('moneyGp').value) || 0,
+                        pp: parseInt(document.getElementById('moneyPp').value) || 0
+                    }
                 };
 
                 // Gather selected equipment from all selects
@@ -691,6 +759,17 @@
 
                 if (selectedSpells.length > 0) {
                     formData.spells = selectedSpells;
+                }
+
+                // Gather selected magic items
+                const magicItemOptions = document.getElementById('magicItemsSelect').selectedOptions;
+                const selectedMagicItems = [];
+                for (let option of magicItemOptions) {
+                    if (option.value) selectedMagicItems.push(option.value);
+                }
+
+                if (selectedMagicItems.length > 0) {
+                    formData.magic_items = selectedMagicItems;
                 }
 
                 // Submit to backend

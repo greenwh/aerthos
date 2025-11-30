@@ -268,12 +268,13 @@ class ScenarioLibrary:
 
         return dungeon
 
-    def restore_dungeon_from_state(self, dungeon_state: dict):
+    def restore_dungeon_from_state(self, dungeon_state: dict, scenario_data: dict = None):
         """
         Restore a Dungeon or MultiLevelDungeon from saved state
 
         Args:
             dungeon_state: Serialized dungeon state from session
+            scenario_data: Original scenario data (optional, for generated dungeons)
 
         Returns:
             Dungeon or MultiLevelDungeon instance
@@ -287,4 +288,24 @@ class ScenarioLibrary:
             return MultiLevelDungeon.deserialize(dungeon_state)
         else:
             # Regular single-level dungeon
-            return Dungeon.load_from_generator(dungeon_state)
+            # Check if we have full dungeon data (old format with 'rooms' key)
+            # or just state data (new format with 'room_states' key)
+            if 'rooms' in dungeon_state:
+                # Old format - has full dungeon structure
+                return Dungeon.load_from_generator(dungeon_state)
+            elif scenario_data:
+                # New format - rebuild from scenario and apply state
+                base_dungeon = self.create_dungeon_from_scenario(scenario_data)
+
+                # Apply saved state
+                room_states = dungeon_state.get('room_states', {})
+                for room_id, state in room_states.items():
+                    if room_id in base_dungeon.rooms:
+                        room = base_dungeon.rooms[room_id]
+                        room.is_explored = state.get('is_explored', False)
+                        room.items = state.get('items', [])
+                        room.encounters_completed = state.get('encounters_completed', [])
+
+                return base_dungeon
+            else:
+                raise ValueError("Cannot restore dungeon: missing scenario data")

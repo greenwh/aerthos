@@ -102,6 +102,86 @@ class SaveSystem:
 
         return saves
 
+    def _serialize_inventory(self, inventory) -> list:
+        """Serialize inventory items"""
+        from aerthos.entities.player import Weapon, Armor, LightSource
+
+        items = []
+        for item in inventory.items:
+            item_data = {
+                'name': item.name,
+                'type': item.item_type,
+                'weight': item.weight
+            }
+
+            if isinstance(item, Weapon):
+                item_data.update({
+                    'damage_sm': item.damage_sm,
+                    'damage_l': item.damage_l,
+                    'speed_factor': item.speed_factor,
+                    'magic_bonus': item.magic_bonus
+                })
+            elif isinstance(item, Armor):
+                item_data.update({
+                    'ac': item.ac,
+                    'armor_type': item.armor_type,
+                    'movement_rate': item.movement_rate,
+                    'magic_bonus': getattr(item, 'magic_bonus', 0)
+                })
+            elif isinstance(item, LightSource):
+                item_data.update({
+                    'burn_time_turns': item.burn_time_turns,
+                    'light_radius': item.light_radius,
+                    'turns_remaining': item.turns_remaining
+                })
+
+            items.append(item_data)
+
+        return items
+
+    def _serialize_equipment(self, equipment) -> dict:
+        """Serialize equipped items"""
+        equipped = {}
+
+        if equipment.weapon:
+            equipped['weapon'] = {
+                'name': equipment.weapon.name,
+                'damage_sm': equipment.weapon.damage_sm,
+                'damage_l': equipment.weapon.damage_l,
+                'speed_factor': equipment.weapon.speed_factor,
+                'magic_bonus': equipment.weapon.magic_bonus,
+                'weight': equipment.weapon.weight
+            }
+
+        if equipment.armor:
+            equipped['armor'] = {
+                'name': equipment.armor.name,
+                'ac': equipment.armor.ac,
+                'armor_type': equipment.armor.armor_type,
+                'movement_rate': equipment.armor.movement_rate,
+                'magic_bonus': getattr(equipment.armor, 'magic_bonus', 0),
+                'weight': equipment.armor.weight
+            }
+
+        if equipment.shield:
+            equipped['shield'] = {
+                'name': equipment.shield.name,
+                'ac_bonus': equipment.shield.ac_bonus,
+                'magic_bonus': getattr(equipment.shield, 'magic_bonus', 0),
+                'weight': equipment.shield.weight
+            }
+
+        if equipment.light_source:
+            equipped['light'] = {
+                'name': equipment.light_source.name,
+                'burn_time_turns': equipment.light_source.burn_time_turns,
+                'turns_remaining': equipment.light_source.turns_remaining,
+                'light_radius': getattr(equipment.light_source, 'light_radius', 30),
+                'weight': equipment.light_source.weight
+            }
+
+        return equipped
+
     def _serialize_player(self, player) -> dict:
         """Serialize player character"""
 
@@ -123,15 +203,17 @@ class SaveSystem:
             'thac0': player.thac0,
             'xp': player.xp,
             'xp_to_next_level': player.xp_to_next_level,
-            'gold': player.gold,
+            'gold': player.gold,  # Deprecated - kept for backward compatibility
+            # Money breakdown (AD&D 1e standard coinage)
+            'copper_pieces': getattr(player, 'copper_pieces', 0),
+            'silver_pieces': getattr(player, 'silver_pieces', 0),
+            'electrum_pieces': getattr(player, 'electrum_pieces', 0),
+            'gold_pieces': getattr(player, 'gold_pieces', 0),
+            'platinum_pieces': getattr(player, 'platinum_pieces', 0),
             'conditions': list(player.conditions),  # Convert set to list for JSON
-            'inventory': [item.name for item in player.inventory.items],
+            'inventory': self._serialize_inventory(player.inventory),
+            'equipment': self._serialize_equipment(player.equipment),
             'thief_skills': player.thief_skills,
-            # Equipment
-            'equipped_weapon': player.equipment.weapon.name if player.equipment.weapon else None,
-            'equipped_armor': player.equipment.armor.name if player.equipment.armor else None,
-            'equipped_shield': player.equipment.shield.name if player.equipment.shield else None,
-            'equipped_light': player.equipment.light_source.name if player.equipment.light_source else None,
             # Spells
             'spells_known': [spell.name for spell in player.spells_known],
             'spells_memorized': [

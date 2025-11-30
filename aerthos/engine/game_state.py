@@ -888,7 +888,7 @@ class GameState:
                 if reward_id == 'treasure_chest_1':
                     # Treasure chest reward
                     gold_found = 100 + DiceRoller.roll('3d20')
-                    self.player.gold += gold_found
+                    self.player.add_money(gp=gold_found)
                     messages.append(f"\nInside the chest you find {gold_found} gold pieces!")
 
                     # Maybe add a random item
@@ -1387,14 +1387,14 @@ class GameState:
         # Award gold
         gold = treasure.get('gold', 0)
         if gold > 0:
-            self.player.gold += gold
+            self.player.add_money(gp=gold)
             messages.append(f"   Gold: {gold} gp")
 
         # Award gems (convert to gold value, 10gp each on average)
         gems = treasure.get('gems', 0)
         if gems > 0:
             gem_value = gems * DiceRoller.roll('2d10')  # Random gem value
-            self.player.gold += gem_value
+            self.player.add_money(gp=gem_value)
             messages.append(f"   Gems: {gems} gems worth {gem_value} gp")
 
         # Award magic items (add to room items so player can pick them up)

@@ -316,6 +316,53 @@ def load_saved_game(game_data: GameData) -> tuple:
             print("Please enter a valid number.")
 
 
+def _deserialize_item(item_data: dict):
+    """Deserialize item data into Item instance"""
+    from aerthos.entities.player import Item, Weapon, Armor, LightSource, Shield
+
+    item_type = item_data['type']
+
+    if item_type == 'weapon':
+        return Weapon(
+            name=item_data['name'],
+            weight=item_data['weight'],
+            damage_sm=item_data['damage_sm'],
+            damage_l=item_data['damage_l'],
+            speed_factor=item_data['speed_factor'],
+            magic_bonus=item_data.get('magic_bonus', 0)
+        )
+    elif item_type == 'armor':
+        return Armor(
+            name=item_data['name'],
+            weight=item_data['weight'],
+            ac=item_data['ac'],
+            armor_type=item_data.get('armor_type', 'light'),
+            movement_rate=item_data.get('movement_rate', 12),
+            magic_bonus=item_data.get('magic_bonus', 0)
+        )
+    elif item_type == 'shield':
+        return Shield(
+            name=item_data['name'],
+            weight=item_data['weight'],
+            ac_bonus=item_data.get('ac_bonus', 1),
+            magic_bonus=item_data.get('magic_bonus', 0)
+        )
+    elif item_type == 'light_source':
+        return LightSource(
+            name=item_data['name'],
+            weight=item_data['weight'],
+            burn_time_turns=item_data['burn_time_turns'],
+            light_radius=item_data.get('light_radius', 30),
+            turns_remaining=item_data.get('turns_remaining', item_data['burn_time_turns'])
+        )
+    else:
+        return Item(
+            name=item_data['name'],
+            item_type=item_type,
+            weight=item_data['weight']
+        )
+
+
 def restore_game_from_save(save_data: dict, game_data: GameData) -> tuple:
     """Restore player and dungeon from save data"""
 
@@ -344,7 +391,21 @@ def restore_game_from_save(save_data: dict, game_data: GameData) -> tuple:
             xp_to_next_level=player_data['xp_to_next_level']
         )
 
-        player.gold = player_data['gold']
+        # Load money - support both old and new formats
+        player.gold = player_data.get('gold', 0)
+        player.copper_pieces = player_data.get('copper_pieces', 0)
+        player.silver_pieces = player_data.get('silver_pieces', 0)
+        player.electrum_pieces = player_data.get('electrum_pieces', 0)
+        player.gold_pieces = player_data.get('gold_pieces', 0)
+        player.platinum_pieces = player_data.get('platinum_pieces', 0)
+
+        # Migration: if no money breakdown but has old gold, migrate it
+        if (player.copper_pieces == 0 and player.silver_pieces == 0 and
+            player.electrum_pieces == 0 and player.gold_pieces == 0 and
+            player.platinum_pieces == 0) and player.gold > 0:
+            player.gold_pieces = player.gold
+            player.gold = 0  # Clear old field after migration
+
         player.conditions = player_data.get('conditions', [])
 
         # Restore thief skills if applicable
@@ -392,45 +453,62 @@ def restore_game_from_save(save_data: dict, game_data: GameData) -> tuple:
                 player.spells_memorized.append(slot)
 
         # Restore inventory
-        # Note: Old save format with item names is no longer supported
-        # Items must be recreated through CharacterRoster system
-        from aerthos.entities.player import Weapon, Armor, LightSource, Item
+        from aerthos.entities.player import Weapon, Armor, LightSource, Item, Shield
 
-        # Skip inventory restoration from old saves - not supported
-        # inventory_names = player_data.get('inventory', [])
-        print("\n⚠ Warning: Old save format detected. Inventory not restored.")
-        print("Please use Character Roster for persistent character storage.")
+        inventory_data = player_data.get('inventory', [])
+        for item_data in inventory_data:
+            # Check if this is new format (dict) or old format (string)
+            if isinstance(item_data, dict):
+                item = _deserialize_item(item_data)
+                if item:
+                    player.inventory.add_item(item)
+            else:
+                # Old format - just item name (skip with warning)
+                print(f"\n⚠ Warning: Old save format for item '{item_data}' - skipped")
 
-        # Restore equipped items
-        equipped_weapon_name = player_data.get('equipped_weapon')
-        equipped_armor_name = player_data.get('equipped_armor')
-        equipped_shield_name = player_data.get('equipped_shield')
-        equipped_light_name = player_data.get('equipped_light')
+        # Restore equipment
+        equipment_data = player_data.get('equipment', {})
 
-        # Find and equip items from inventory
-        if equipped_weapon_name:
-            for item in player.inventory.items:
-                if isinstance(item, Weapon) and item.name == equipped_weapon_name:
-                    player.equip_weapon(item)
-                    break
+        if 'weapon' in equipment_data:
+            weapon_data = equipment_data['weapon']
+            player.equipment.weapon = Weapon(
+                name=weapon_data['name'],
+                weight=weapon_data['weight'],
+                damage_sm=weapon_data['damage_sm'],
+                damage_l=weapon_data['damage_l'],
+                speed_factor=weapon_data['speed_factor'],
+                magic_bonus=weapon_data.get('magic_bonus', 0)
+            )
 
-        if equipped_armor_name:
-            for item in player.inventory.items:
-                if isinstance(item, Armor) and item.name == equipped_armor_name:
-                    player.equip_armor(item)
-                    break
+        if 'armor' in equipment_data:
+            armor_data = equipment_data['armor']
+            player.equipment.armor = Armor(
+                name=armor_data['name'],
+                weight=armor_data['weight'],
+                ac=armor_data['ac'],
+                armor_type=armor_data.get('armor_type', 'light'),
+                movement_rate=armor_data.get('movement_rate', 12),
+                magic_bonus=armor_data.get('magic_bonus', 0)
+            )
 
-        if equipped_shield_name:
-            for item in player.inventory.items:
-                if isinstance(item, Armor) and item.name == equipped_shield_name:
-                    player.equipment.shield = item
-                    break
+        if 'shield' in equipment_data:
+            shield_data = equipment_data['shield']
+            player.equipment.shield = Shield(
+                name=shield_data['name'],
+                weight=shield_data['weight'],
+                ac_bonus=shield_data['ac_bonus'],
+                magic_bonus=shield_data.get('magic_bonus', 0)
+            )
 
-        if equipped_light_name:
-            for item in player.inventory.items:
-                if isinstance(item, LightSource) and item.name == equipped_light_name:
-                    player.equip_light(item)
-                    break
+        if 'light' in equipment_data:
+            light_data = equipment_data['light']
+            player.equipment.light_source = LightSource(
+                name=light_data['name'],
+                weight=light_data['weight'],
+                burn_time_turns=light_data['burn_time_turns'],
+                light_radius=light_data.get('light_radius', 30),
+                turns_remaining=light_data['turns_remaining']
+            )
 
         # Check if spellcaster needs starting spells and slots (for backwards compatibility)
         if player.char_class in ['Magic-User', 'Cleric']:
@@ -784,7 +862,28 @@ def manage_parties(game_data: GameData):
                 for i, member in enumerate(party_data['party'].members):
                     formation = party_data['party'].formation[i] if i < len(party_data['party'].formation) else '?'
                     print(f"{i+1}. {member.name} ({member.race} {member.char_class} Lvl {member.level}) [{formation.upper()}]")
-                    print(f"   HP: {member.hp_current}/{member.hp_max} | AC: {member.get_effective_ac()} | Gold: {member.gold}")
+
+                    # Display money breakdown or fall back to old gold
+                    cp = getattr(member, 'copper_pieces', 0)
+                    sp = getattr(member, 'silver_pieces', 0)
+                    ep = getattr(member, 'electrum_pieces', 0)
+                    gp = getattr(member, 'gold_pieces', 0)
+                    pp = getattr(member, 'platinum_pieces', 0)
+
+                    if cp > 0 or sp > 0 or ep > 0 or gp > 0 or pp > 0:
+                        money_parts = []
+                        if pp > 0: money_parts.append(f"{pp}pp")
+                        if gp > 0: money_parts.append(f"{gp}gp")
+                        if ep > 0: money_parts.append(f"{ep}ep")
+                        if sp > 0: money_parts.append(f"{sp}sp")
+                        if cp > 0: money_parts.append(f"{cp}cp")
+                        money_display = ' '.join(money_parts)
+                    elif member.gold > 0:
+                        money_display = f"{member.gold} gp"
+                    else:
+                        money_display = "0 gp"
+
+                    print(f"   HP: {member.hp_current}/{member.hp_max} | AC: {member.get_effective_ac()} | Money: {money_display}")
                 print(f"{'═' * 70}")
             else:
                 print(f"Party '{name}' not found.")
@@ -1171,7 +1270,10 @@ def manage_sessions(game_data: GameData):
             # Restore dungeon from saved state (preserves exploration, defeated monsters, etc.)
             # If no dungeon_state, fall back to creating fresh from scenario
             if 'dungeon_state' in session_data:
-                dungeon = session_mgr.scenario_library.restore_dungeon_from_state(session_data['dungeon_state'])
+                dungeon = session_mgr.scenario_library.restore_dungeon_from_state(
+                    session_data['dungeon_state'],
+                    scenario_data  # Pass scenario data to rebuild dungeon structure
+                )
             else:
                 # Legacy support: create fresh from scenario
                 dungeon = session_mgr.scenario_library.create_dungeon_from_scenario(scenario_data)

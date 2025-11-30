@@ -279,6 +279,15 @@ def get_game_state_json(game_state):
                         'school': spell.school
                     })
 
+            # Get money breakdown
+            member_money = {
+                'cp': getattr(member, 'copper_pieces', 0),
+                'sp': getattr(member, 'silver_pieces', 0),
+                'ep': getattr(member, 'electrum_pieces', 0),
+                'gp': getattr(member, 'gold_pieces', 0),
+                'pp': getattr(member, 'platinum_pieces', 0)
+            }
+
             party_data.append({
                 'name': member.name,
                 'class': member.char_class,
@@ -289,7 +298,8 @@ def get_game_state_json(game_state):
                 'ac': member.get_effective_ac(),
                 'thac0': member.thac0,
                 'xp': member.xp,
-                'gold': member.gold,
+                'gold': member.gold,  # Deprecated - kept for backward compat
+                'money': member_money,  # New money breakdown
                 'is_alive': member.is_alive,
                 'weight': member.inventory.current_weight,
                 'weight_max': member.inventory.max_weight,
@@ -515,13 +525,119 @@ def create_character():
 
 @app.route('/api/characters/<char_id>', methods=['GET'])
 def get_character(char_id):
-    """Get a specific character"""
+    """Get a specific character with full details"""
     try:
         roster = CharacterRoster()
         character = roster.load_character(char_id)
 
         if not character:
             return jsonify({'success': False, 'error': 'Character not found'})
+
+        # Ability scores
+        abilities = {
+            'strength': character.strength,
+            'dexterity': character.dexterity,
+            'constitution': character.constitution,
+            'intelligence': character.intelligence,
+            'wisdom': character.wisdom,
+            'charisma': character.charisma,
+            'strength_percentile': character.strength_percentile
+        }
+
+        # Inventory items
+        inventory_items = []
+        for item in character.inventory.items:
+            item_info = {
+                'name': item.name,
+                'type': item.item_type,
+                'weight': item.weight
+            }
+            # Add weapon-specific info
+            if hasattr(item, 'damage_sm'):
+                item_info['damage_sm'] = item.damage_sm
+                item_info['damage_l'] = item.damage_l
+                if hasattr(item, 'magic_bonus') and item.magic_bonus > 0:
+                    item_info['magic_bonus'] = item.magic_bonus
+            # Add armor-specific info
+            if hasattr(item, 'ac'):
+                item_info['ac'] = item.ac
+                if hasattr(item, 'magic_bonus') and item.magic_bonus > 0:
+                    item_info['magic_bonus'] = item.magic_bonus
+            inventory_items.append(item_info)
+
+        # Equipped items
+        equipment = {}
+        if character.equipment.weapon:
+            equipment['weapon'] = {
+                'name': character.equipment.weapon.name,
+                'damage_sm': character.equipment.weapon.damage_sm,
+                'damage_l': character.equipment.weapon.damage_l,
+                'magic_bonus': character.equipment.weapon.magic_bonus if hasattr(character.equipment.weapon, 'magic_bonus') else 0
+            }
+        if character.equipment.armor:
+            equipment['armor'] = {
+                'name': character.equipment.armor.name,
+                'ac': character.equipment.armor.ac,
+                'magic_bonus': character.equipment.armor.magic_bonus if hasattr(character.equipment.armor, 'magic_bonus') else 0
+            }
+        if character.equipment.shield:
+            equipment['shield'] = {
+                'name': character.equipment.shield.name,
+                'ac_bonus': character.equipment.shield.ac_bonus,
+                'magic_bonus': character.equipment.shield.magic_bonus if hasattr(character.equipment.shield, 'magic_bonus') else 0
+            }
+        if character.equipment.light_source:
+            equipment['light_source'] = {
+                'name': character.equipment.light_source.name,
+                'turns_remaining': character.equipment.light_source.turns_remaining
+            }
+
+        # Spells
+        spells_known = []
+        for spell in character.spells_known:
+            spells_known.append({
+                'name': spell.name,
+                'level': spell.level,
+                'school': spell.school,
+                'description': spell.description
+            })
+
+        spells_memorized = []
+        for slot in character.spells_memorized:
+            slot_info = {
+                'level': slot.level,
+                'is_used': slot.is_used
+            }
+            if slot.spell:
+                slot_info['spell'] = {
+                    'name': slot.spell.name,
+                    'level': slot.spell.level
+                }
+            spells_memorized.append(slot_info)
+
+        # Saving throws
+        saving_throws = {
+            'poison': character.save_poison,
+            'rod_staff_wand': character.save_rod_staff_wand,
+            'petrify_paralyze': character.save_petrify_paralyze,
+            'breath': character.save_breath,
+            'spell': character.save_spell
+        }
+
+        # Thief skills (if applicable)
+        thief_skills = None
+        if character.thief_skills:
+            thief_skills = character.thief_skills
+
+        # Money breakdown
+        money = {
+            'cp': getattr(character, 'copper_pieces', 0),
+            'sp': getattr(character, 'silver_pieces', 0),
+            'ep': getattr(character, 'electrum_pieces', 0),
+            'gp': getattr(character, 'gold_pieces', 0),
+            'pp': getattr(character, 'platinum_pieces', 0),
+            'gold_old': character.gold  # Keep for backward compat
+        }
 
         # Convert character to dict for JSON
         char_data = {
@@ -532,13 +648,22 @@ def get_character(char_id):
             'alignment': character.alignment,
             'level': character.level,
             'xp': character.xp,
+            'xp_to_next_level': character.xp_to_next_level,
             'hp_current': character.hp_current,
             'hp_max': character.hp_max,
             'ac': character.get_effective_ac(),
             'thac0': character.thac0,
-            'gold': character.gold,
+            'gold': character.gold,  # Deprecated but kept for backward compat
+            'money': money,
             'weight': character.inventory.current_weight,
-            'weight_max': character.inventory.max_weight
+            'weight_max': character.inventory.max_weight,
+            'abilities': abilities,
+            'inventory': inventory_items,
+            'equipment': equipment,
+            'spells_known': spells_known,
+            'spells_memorized': spells_memorized,
+            'saving_throws': saving_throws,
+            'thief_skills': thief_skills
         }
 
         return jsonify({'success': True, 'character': char_data})
@@ -989,6 +1114,107 @@ def get_spells():
         return jsonify({'success': False, 'error': str(e)})
 
 
+@app.route('/api/items/magic_items', methods=['GET'])
+def get_magic_items():
+    """Get all available magic items from magic_items.json"""
+    try:
+        import json
+        from pathlib import Path
+
+        magic_items_path = Path("aerthos/data/magic_items.json")
+        with open(magic_items_path) as f:
+            magic_data = json.load(f)
+
+        magic_items_list = []
+
+        # Add potions
+        for potion in magic_data.get('potions', []):
+            magic_items_list.append({
+                'id': f"potion_{potion['name'].lower().replace(' ', '_')}",
+                'name': f"Potion of {potion['name']}",
+                'category': 'Potion',
+                'xp': potion.get('xp', 0),
+                'gp': potion.get('gp', 0)
+            })
+
+        # Add protection scrolls
+        for scroll in magic_data.get('scrolls', {}).get('protection_scrolls', []):
+            magic_items_list.append({
+                'id': f"scroll_{scroll['name'].lower().replace(' ', '_').replace('protection_from_', 'prot_')}",
+                'name': scroll['name'],
+                'category': 'Scroll',
+                'xp': scroll.get('xp', 0),
+                'gp': scroll.get('gp', 0)
+            })
+
+        # Add magic weapons
+        for weapon in magic_data.get('weapons', {}).get('swords', []):
+            magic_items_list.append({
+                'id': f"weapon_sword_{weapon['name'].lower().replace(' ', '_').replace(',', '').replace('+', 'plus')}",
+                'name': weapon['name'],
+                'category': 'Weapon (Sword)',
+                'xp': weapon.get('xp', 0),
+                'gp': weapon.get('gp', 0)
+            })
+
+        for weapon in magic_data.get('weapons', {}).get('misc_weapons', []):
+            magic_items_list.append({
+                'id': f"weapon_{weapon['name'].lower().replace(' ', '_').replace('+', 'plus').replace('(', '').replace(')', '')}",
+                'name': weapon['name'],
+                'category': 'Weapon',
+                'xp': weapon.get('xp', 0),
+                'gp': weapon.get('gp', 0)
+            })
+
+        # Add magic armor/shields
+        for armor in magic_data.get('armor', []):
+            magic_items_list.append({
+                'id': f"armor_{armor['name'].lower().replace(' ', '_').replace('+', 'plus').replace(',', '')}",
+                'name': armor['name'],
+                'category': 'Armor/Shield',
+                'xp': armor.get('xp', 0),
+                'gp': armor.get('gp', 0)
+            })
+
+        # Add rings
+        for ring in magic_data.get('rings', []):
+            magic_items_list.append({
+                'id': f"ring_{ring['name'].lower().replace(' ', '_').replace('+', 'plus').replace('(', '').replace(')', '')}",
+                'name': ring['name'],
+                'category': 'Ring',
+                'xp': ring.get('xp', 0),
+                'gp': ring.get('gp', 0)
+            })
+
+        # Add wands/staves/rods
+        for item in magic_data.get('wands_staves_rods', []):
+            category = item.get('type', 'wand').title()
+            magic_items_list.append({
+                'id': f"{item.get('type', 'wand')}_{item['name'].lower().replace(' ', '_')}",
+                'name': item['name'],
+                'category': category,
+                'xp': item.get('xp', 0),
+                'gp': item.get('gp', 0),
+                'charges': item.get('charges', '')
+            })
+
+        # Add misc magic items
+        for item in magic_data.get('misc_magic', []):
+            magic_items_list.append({
+                'id': f"misc_{item['name'].lower().replace(' ', '_')}",
+                'name': item['name'],
+                'category': 'Misc Magic',
+                'xp': item.get('xp', 0),
+                'gp': item.get('gp', 0)
+            })
+
+        return jsonify({'success': True, 'magic_items': magic_items_list})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
 # Party Manager API Endpoints
 # ============================================================================
 
@@ -1022,6 +1248,14 @@ def import_manual_character():
         # HP options: 'manual', 'max', 'auto'
         hp_option = data.get('hp_option', 'manual')
         hp_manual = data.get('hp_manual', 0)
+
+        # Money
+        money = data.get('money', {})
+        copper_pieces = money.get('cp', 0)
+        silver_pieces = money.get('sp', 0)
+        electrum_pieces = money.get('ep', 0)
+        gold_pieces = money.get('gp', 0)
+        platinum_pieces = money.get('pp', 0)
 
         # Validate alignment for class
         class_data = game_data.classes[char_class]
@@ -1088,7 +1322,12 @@ def import_manual_character():
             save_rod_staff_wand=saves['rod_staff_wand'],
             save_petrify_paralyze=saves['petrify_paralyze'],
             save_breath=saves['breath'],
-            save_spell=saves['spell']
+            save_spell=saves['spell'],
+            copper_pieces=copper_pieces,
+            silver_pieces=silver_pieces,
+            electrum_pieces=electrum_pieces,
+            gold_pieces=gold_pieces,
+            platinum_pieces=platinum_pieces
         )
 
         # Add starting equipment from data
@@ -1155,7 +1394,25 @@ def import_manual_character():
         else:
             # Auto-generate starting equipment based on class
             print(f"DEBUG: Auto-generating equipment for {char_class}")
+
+            # Save user's money values before auto-equipment overwrites them
+            saved_cp = player.copper_pieces
+            saved_sp = player.silver_pieces
+            saved_ep = player.electrum_pieces
+            saved_gp = player.gold_pieces
+            saved_pp = player.platinum_pieces
+
             creator._add_starting_equipment(player, char_class)
+
+            # Restore user's money values if they were set (non-zero)
+            if saved_cp > 0 or saved_sp > 0 or saved_ep > 0 or saved_gp > 0 or saved_pp > 0:
+                player.copper_pieces = saved_cp
+                player.silver_pieces = saved_sp
+                player.electrum_pieces = saved_ep
+                player.gold_pieces = saved_gp
+                player.platinum_pieces = saved_pp
+                player.gold = 0  # Clear the old gold field
+
             print(f"DEBUG: After auto-gen, inventory count: {len(player.inventory.items)}")
 
         # Add spells for casters
@@ -1169,6 +1426,79 @@ def import_manual_character():
         else:
             # Auto-assign spells for caster classes
             manual_creator._auto_assign_spells(player, char_class, level)
+
+        # Add magic items
+        magic_item_ids = data.get('magic_items', [])
+        if magic_item_ids:
+            import json
+            from pathlib import Path
+            from aerthos.entities.player import Item, Weapon, Armor
+
+            magic_items_path = Path("aerthos/data/magic_items.json")
+            with open(magic_items_path) as f:
+                magic_data = json.load(f)
+
+            for magic_id in magic_item_ids:
+                # Parse magic item ID to find in correct category
+                # Format: "category_name" (e.g., "potion_healing", "weapon_sword_plus1")
+                magic_item = None
+                item_name = ""
+
+                # Potions
+                if magic_id.startswith('potion_'):
+                    for potion in magic_data.get('potions', []):
+                        potion_id = f"potion_{potion['name'].lower().replace(' ', '_')}"
+                        if potion_id == magic_id:
+                            item_name = f"Potion of {potion['name']}"
+                            magic_item = Item(name=item_name, item_type='potion', weight=0.1)
+                            break
+
+                # Scrolls
+                elif magic_id.startswith('scroll_'):
+                    for scroll in magic_data.get('scrolls', {}).get('protection_scrolls', []):
+                        scroll_id = f"scroll_{scroll['name'].lower().replace(' ', '_').replace('protection_from_', 'prot_')}"
+                        if scroll_id == magic_id:
+                            item_name = scroll['name']
+                            magic_item = Item(name=item_name, item_type='scroll', weight=0.1)
+                            break
+
+                # Rings
+                elif magic_id.startswith('ring_'):
+                    for ring in magic_data.get('rings', []):
+                        ring_id = f"ring_{ring['name'].lower().replace(' ', '_').replace('+', 'plus').replace('(', '').replace(')', '')}"
+                        if ring_id == magic_id:
+                            item_name = ring['name']
+                            magic_item = Item(name=item_name, item_type='ring', weight=0.1)
+                            break
+
+                # Wands/Staves/Rods
+                elif magic_id.startswith('wand_') or magic_id.startswith('staff_') or magic_id.startswith('rod_'):
+                    for item in magic_data.get('wands_staves_rods', []):
+                        item_id = f"{item.get('type', 'wand')}_{item['name'].lower().replace(' ', '_')}"
+                        if item_id == magic_id:
+                            item_name = item['name']
+                            magic_item = Item(name=item_name, item_type=item.get('type', 'wand'), weight=1.0)
+                            break
+
+                # Misc magic items
+                elif magic_id.startswith('misc_'):
+                    for item in magic_data.get('misc_magic', []):
+                        item_id = f"misc_{item['name'].lower().replace(' ', '_')}"
+                        if item_id == magic_id:
+                            item_name = item['name']
+                            magic_item = Item(name=item_name, item_type='misc_magic', weight=1.0)
+                            break
+
+                # Magic weapons and armor are more complex - add as generic magic items for now
+                # In a full implementation, these would be created as Weapon/Armor with magic_bonus
+                elif magic_id.startswith('weapon_') or magic_id.startswith('armor_'):
+                    # Extract name from ID (simplified)
+                    item_name = magic_id.replace('_', ' ').replace('plus', '+').title()
+                    magic_item = Item(name=item_name, item_type='magic_item', weight=1.0)
+
+                if magic_item:
+                    player.inventory.add_item(magic_item)
+                    print(f"DEBUG: Added magic item to inventory: {magic_item.name}")
 
         # Add thief skills if thief
         if 'Thief' in char_class or char_class in ['Assassin', 'Acrobat']:

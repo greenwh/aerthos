@@ -887,11 +887,17 @@ class ManualCharacterCreator:
         # Step 9: Equipment selection
         self._select_equipment(player)
 
-        # Step 10: Spells (if spellcaster)
+        # Step 10: Magic Items (optional)
+        self._select_magic_items(player)
+
+        # Step 11: Money (optional)
+        self._set_money(player)
+
+        # Step 12: Spells (if spellcaster)
         if char_class in ['Magic-User', 'Illusionist', 'Cleric', 'Druid', 'Ranger', 'Paladin', 'Bard']:
             self._select_spells(player, char_class, level)
 
-        # Step 11: Thief skills (if thief)
+        # Step 13: Thief skills (if thief)
         if char_class in ['Thief', 'Assassin', 'Bard']:
             player.thief_skills = class_data.get('skills', {}).copy()
             # Apply level bonuses
@@ -1519,3 +1525,130 @@ class ManualCharacterCreator:
             description=spell_data.get('description', ''),
             class_availability=spell_data.get('class_availability', [])
         )
+
+    def _select_magic_items(self, player: PlayerCharacter):
+        """Let user select magic items (optional)"""
+        print("\n--- Magic Items (Optional) ---")
+        print("Select magic items to add to character inventory")
+        print("1. Select magic items")
+        print("2. Skip magic items")
+
+        choice = input("Choose option (1-2): ").strip()
+
+        if choice != '1':
+            print("Skipping magic items.")
+            return
+
+        # Load magic items
+        import json
+        from pathlib import Path
+
+        magic_items_path = Path("aerthos/data/magic_items.json")
+        if not magic_items_path.exists():
+            print("Magic items database not found.")
+            return
+
+        with open(magic_items_path) as f:
+            magic_data = json.load(f)
+
+        # Build simple list of all magic items
+        magic_items_list = []
+
+        # Add potions
+        for potion in magic_data.get('potions', []):
+            magic_items_list.append(('potion', f"Potion of {potion['name']}", 0.1))
+
+        # Add scrolls
+        for scroll in magic_data.get('scrolls', {}).get('protection_scrolls', []):
+            magic_items_list.append(('scroll', scroll['name'], 0.1))
+
+        # Add rings
+        for ring in magic_data.get('rings', []):
+            magic_items_list.append(('ring', ring['name'], 0.1))
+
+        # Add wands/staves/rods
+        for item in magic_data.get('wands_staves_rods', []):
+            magic_items_list.append((item.get('type', 'wand'), item['name'], 1.0))
+
+        # Add misc magic
+        for item in magic_data.get('misc_magic', []):
+            magic_items_list.append(('misc', item['name'], 1.0))
+
+        # Display and select
+        print("\nAvailable magic items:")
+        for idx, (item_type, name, weight) in enumerate(magic_items_list, 1):
+            print(f"{idx}. [{item_type.upper()}] {name}")
+
+        print("0. Done selecting")
+
+        while True:
+            choice = input("\nSelect magic item number (or 0 when done): ").strip()
+            try:
+                idx = int(choice)
+                if idx == 0:
+                    break
+                if 1 <= idx <= len(magic_items_list):
+                    item_type, name, weight = magic_items_list[idx - 1]
+                    magic_item = Item(name=name, item_type=item_type, weight=weight)
+                    player.inventory.add_item(magic_item)
+                    print(f"✓ Added {name}")
+                else:
+                    print("Invalid selection.")
+            except ValueError:
+                print("Invalid input.")
+
+    def _set_money(self, player: PlayerCharacter):
+        """Set character's starting money (optional)"""
+        print("\n--- Starting Money (Optional) ---")
+        print("Enter starting wealth in each coin type (AD&D 1e coinage)")
+
+        # Check if player already has gold from auto-equipment
+        existing_gold = player.gold
+        if existing_gold > 0:
+            print(f"(Auto-equipment gave you {existing_gold} gp - enter values to override, or leave blank to keep it)")
+        else:
+            print("Leave blank or enter 0 to skip")
+
+        try:
+            cp = input("Copper pieces (cp): ").strip()
+            entered_cp = int(cp) if cp else 0
+
+            sp = input("Silver pieces (sp): ").strip()
+            entered_sp = int(sp) if sp else 0
+
+            ep = input("Electrum pieces (ep): ").strip()
+            entered_ep = int(ep) if ep else 0
+
+            gp = input("Gold pieces (gp): ").strip()
+            entered_gp = int(gp) if gp else 0
+
+            pp = input("Platinum pieces (pp): ").strip()
+            entered_pp = int(pp) if pp else 0
+
+            # Check if user entered any money
+            entered_total = entered_cp + entered_sp + entered_ep + entered_gp + entered_pp
+
+            if entered_total > 0:
+                # User entered money values - use those and clear old gold
+                player.copper_pieces = entered_cp
+                player.silver_pieces = entered_sp
+                player.electrum_pieces = entered_ep
+                player.gold_pieces = entered_gp
+                player.platinum_pieces = entered_pp
+                player.gold = 0  # Clear old gold field
+                print(f"\n✓ Money set: {player.copper_pieces} cp, {player.silver_pieces} sp, {player.electrum_pieces} ep, {player.gold_pieces} gp, {player.platinum_pieces} pp")
+            elif existing_gold > 0:
+                # User didn't enter money, but has gold from auto-equipment - convert it
+                player.gold_pieces = existing_gold
+                player.gold = 0  # Clear old gold field
+                print(f"\n✓ Kept {existing_gold} gp from auto-equipment")
+            else:
+                # No money entered and no existing gold
+                print("\nNo starting money added.")
+
+        except ValueError:
+            print("Invalid input. Keeping existing money if any.")
+            # Don't zero out existing gold on error
+            if existing_gold > 0:
+                player.gold_pieces = existing_gold
+                player.gold = 0

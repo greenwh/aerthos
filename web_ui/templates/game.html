@@ -1609,6 +1609,20 @@
             }
         }
 
+        function formatMoney(money) {
+            // Format money breakdown for display
+            if (!money) return '0 gp';
+
+            let parts = [];
+            if (money.pp > 0) parts.push(`${money.pp} pp`);
+            if (money.gp > 0) parts.push(`${money.gp} gp`);
+            if (money.ep > 0) parts.push(`${money.ep} ep`);
+            if (money.sp > 0) parts.push(`${money.sp} sp`);
+            if (money.cp > 0) parts.push(`${money.cp} cp`);
+
+            return parts.length > 0 ? parts.join(', ') : '0 gp';
+        }
+
         function updateActiveCharacterPanel() {
             if (!currentParty || currentParty.length === 0) return;
 
@@ -1621,7 +1635,7 @@
                 <div class="stat-line">Level ${char.level} | XP: ${char.xp}</div>
                 <div class="stat-line">HP: ${char.hp}/${char.hp_max}</div>
                 <div class="stat-line">AC: ${char.ac} | THAC0: ${char.thac0}</div>
-                <div class="stat-line">Gold: ${char.gold} gp</div>
+                <div class="stat-line">Money: ${formatMoney(char.money)}</div>
                 <div class="stat-line"><span class="${weightClass}">Weight: ${char.weight}/${char.weight_max} lbs</span></div>
             `;
             document.getElementById('active-char-info').innerHTML = html;
