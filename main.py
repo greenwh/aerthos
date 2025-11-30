@@ -20,6 +20,11 @@ from aerthos.storage.character_roster import CharacterRoster
 from aerthos.storage.party_manager import PartyManager
 from aerthos.storage.scenario_library import ScenarioLibrary
 from aerthos.storage.session_manager import SessionManager
+from aerthos.campaign.campaign_manager import CampaignManager
+from aerthos.campaign.campaign import Campaign
+from aerthos.campaign.episode import Episode
+from aerthos.campaign.episode_runner import EpisodeRunner
+from aerthos.campaign.hub_menu import HubMenuSystem
 
 
 def show_main_menu(display: Display) -> str:
@@ -45,14 +50,17 @@ def show_main_menu(display: Display) -> str:
     print("  5. Scenario Library (save, view, delete dungeons)")
     print("  6. Session Manager (create, load, delete game sessions)")
     print()
+    print("CAMPAIGN MODE")
+    print("  7. Campaign Manager (story-driven episodic adventures)")
+    print()
     print("  9. Quit")
     print()
 
     while True:
-        choice = input("Choose an option (1-6, 9): ").strip()
-        if choice in ['1', '2', '3', '4', '5', '6', '9']:
+        choice = input("Choose an option (1-7, 9): ").strip()
+        if choice in ['1', '2', '3', '4', '5', '6', '7', '9']:
             return choice
-        print("Invalid choice. Please enter 1-6 or 9.")
+        print("Invalid choice. Please enter 1-7 or 9.")
 
 
 def choose_dungeon_type() -> str:
@@ -1441,7 +1449,404 @@ def run_game_with_party(party: Party, dungeon: Dungeon, game_data: GameData,
         print("\nThanks for playing Aerthos!")
         print("May your dice always roll high!")
 
+def campaign_mode(game_data: GameData):
+    """Campaign Mode - story-driven episodic adventures"""
+    campaign_mgr = CampaignManager()
+    display = Display()
 
+    while True:
+        print("\n" + "═" * 70)
+        print("CAMPAIGN MANAGER")
+        print("═" * 70)
+        print()
+        print("1. Start New Campaign")
+        print("2. Continue Campaign")
+        print("3. List All Campaigns")
+        print("4. Delete Campaign")
+        print("5. Back to Main Menu")
+        print()
+
+        choice = input("Choose an option (1-5): ").strip()
+
+        if choice == '1':
+            # Create new campaign
+            print("\nAvailable Campaign Templates:")
+            print("1. The Serpent's Shadow (10 episodes, recommended level 1-5)")
+
+            template_choice = input("\nChoose template (1): ").strip()
+            if template_choice != '1':
+                print("Invalid choice.")
+                continue
+
+            # Select or create party
+            party_mgr = PartyManager()
+            parties = party_mgr.list_parties()
+
+            if not parties:
+                print("\nNo parties available! Please create a party first.")
+                print("Use the Party Manager from the main menu.")
+                continue
+
+            print("\nAvailable Parties:")
+            for i, party in enumerate(parties, 1):
+                member_names = [m['name'] for m in party['members'][:3]]
+                members_str = ', '.join(member_names)
+                print(f"{i}. {party['name']} ({members_str}, {len(party['members'])} members)")
+
+            party_choice = input(f"\nSelect party (1-{len(parties)}): ").strip()
+            try:
+                party_idx = int(party_choice) - 1
+                if party_idx < 0 or party_idx >= len(parties):
+                    print("Invalid selection.")
+                    continue
+                party_id = parties[party_idx]['id']
+            except ValueError:
+                print("Invalid input.")
+                continue
+
+            # Create campaign
+            try:
+                campaign = campaign_mgr.create_campaign('serpents_shadow', party_id)
+                campaign_mgr.save_campaign(campaign)
+                print(f"\n✓ Campaign '{campaign.name}' created!")
+                print(f"   Party: {parties[party_idx]['name']}")
+                print(f"   Starting Hub: Oakhaven")
+                print(f"   First Episode: Episode 1 - The Goblin Refugees")
+
+                # Immediately enter campaign
+                run_campaign(campaign, campaign_mgr, party_mgr, game_data, display)
+                break
+
+            except Exception as e:
+                print(f"Error creating campaign: {e}")
+                import traceback
+                traceback.print_exc()
+
+        elif choice == '2':
+            # Continue existing campaign
+            campaigns = campaign_mgr.list_campaigns()
+            if not campaigns:
+                print("\nNo saved campaigns. Start a new campaign first!")
+                continue
+
+            print("\nSaved Campaigns:")
+            for i, camp in enumerate(campaigns, 1):
+                completed = len(camp.completed_episodes)
+                total = len(camp.unlocked_episodes)
+                print(f"{i}. {camp.name} - {camp.description}")
+                print(f"   Progress: {completed}/{total} episodes completed")
+                print(f"   Current Hub: {camp.current_hub_id}")
+
+            campaign_choice = input(f"\nSelect campaign (1-{len(campaigns)}): ").strip()
+            try:
+                camp_idx = int(campaign_choice) - 1
+                if camp_idx < 0 or camp_idx >= len(campaigns):
+                    print("Invalid selection.")
+                    continue
+
+                campaign = campaigns[camp_idx]
+                party_mgr = PartyManager()
+
+                # Run campaign
+                run_campaign(campaign, campaign_mgr, party_mgr, game_data, display)
+                break
+
+            except ValueError:
+                print("Invalid input.")
+            except Exception as e:
+                print(f"Error loading campaign: {e}")
+                import traceback
+                traceback.print_exc()
+
+        elif choice == '3':
+            # List campaigns
+            campaigns = campaign_mgr.list_campaigns()
+            if not campaigns:
+                print("\nNo saved campaigns.")
+            else:
+                print("\n" + "═" * 70)
+                for i, camp in enumerate(campaigns, 1):
+                    completed = len(camp.completed_episodes)
+                    total = len(camp.unlocked_episodes)
+                    print(f"{i}. {camp.name}")
+                    print(f"   {camp.description}")
+                    print(f"   Progress: {completed}/{total} episodes | Hub: {camp.current_hub_id}")
+                    print()
+                print("═" * 70)
+
+        elif choice == '4':
+            # Delete campaign
+            campaigns = campaign_mgr.list_campaigns()
+            if not campaigns:
+                print("\nNo campaigns to delete.")
+                continue
+
+            print("\nSaved Campaigns:")
+            for i, camp in enumerate(campaigns, 1):
+                print(f"{i}. {camp.name} ({len(camp.completed_episodes)} episodes completed)")
+
+            campaign_choice = input(f"\nSelect campaign to delete (1-{len(campaigns)}): ").strip()
+            try:
+                camp_idx = int(campaign_choice) - 1
+                campaign = campaigns[camp_idx]
+
+                confirm = input(f"\nReally delete '{campaign.name}'? (yes/no): ").strip().lower()
+                if confirm == 'yes':
+                    campaign_mgr.delete_campaign(campaign.id)
+                    print(f"✓ Campaign '{campaign.name}' deleted.")
+                else:
+                    print("Deletion cancelled.")
+
+            except (ValueError, IndexError):
+                print("Invalid selection.")
+
+        elif choice == '5':
+            # Back to main menu
+            break
+
+        else:
+            print("Invalid choice. Please enter 1-5.")
+
+
+def run_campaign(campaign: Campaign, campaign_mgr: CampaignManager,
+                party_mgr: PartyManager, game_data: GameData, display: Display):
+    """Run campaign gameplay loop - hub menu and episodes"""
+
+    # Load party
+    party_data = party_mgr.load_party(campaign.party_id)
+    if not party_data:
+        print("Error: Party not found!")
+        return
+
+    # Create Party object from party data
+    roster = CharacterRoster()
+    party_members = []
+    for member_id in party_data['character_ids']:
+        char_data = roster.load_character(member_id)
+        if char_data:
+            party_members.append(char_data)
+
+    if not party_members:
+        print("Error: No party members found!")
+        return
+
+    party = Party(members=party_members)
+
+    # Main campaign loop
+    while True:
+        # Show hub menu
+        hub_menu = HubMenuSystem(campaign, party)
+        menu_text = hub_menu.display_hub_menu()
+        print("\n" + menu_text)
+
+        # Get menu options
+        options = hub_menu.get_menu_options()
+
+        choice = input("\nEnter choice (0 to exit): ").strip()
+
+        try:
+            choice_num = int(choice)
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            continue
+
+        # Handle choice
+        result = hub_menu.handle_choice(choice_num)
+
+        if not result.success:
+            print(f"\n{result.message}")
+            continue
+
+        # Route based on next_state
+        if result.next_state == 'save_and_exit':
+            # Save campaign and exit
+            campaign_mgr.save_campaign(campaign)
+            print("\n✓ Campaign progress saved!")
+            print("Returning to campaign menu...")
+            break
+
+        elif result.next_state == 'travel':
+            # Show episode selection
+            destinations = hub_menu.get_travel_destinations()
+
+            if not destinations:
+                print("\nNo quests available at this time.")
+                continue
+
+            print("\n" + "═" * 70)
+            print("AVAILABLE QUESTS")
+            print("═" * 70)
+
+            for i, dest in enumerate(destinations, 1):
+                status_marker = {
+                    'AVAILABLE': '●',
+                    'CURRENT': '▶',
+                    'COMPLETED': '✓'
+                }[dest['status']]
+
+                print(f"{i}. [{status_marker}] {dest['title']}")
+                print(f"   {dest['dungeon_name']} (Level {dest['recommended_level']})")
+                print(f"   Status: {dest['status']}")
+                print()
+
+            print("0. Back to hub")
+            print("═" * 70)
+
+            episode_choice = input("\nSelect quest (0 to go back): ").strip()
+
+            try:
+                ep_choice_num = int(episode_choice)
+                if ep_choice_num == 0:
+                    continue
+                if ep_choice_num < 1 or ep_choice_num > len(destinations):
+                    print("Invalid selection.")
+                    continue
+
+                dest = destinations[ep_choice_num - 1]
+                episode_id = dest['episode_id']
+
+                # Load and run episode
+                run_episode(episode_id, campaign, party, campaign_mgr, game_data, display)
+
+            except ValueError:
+                print("Invalid input.")
+
+        elif result.next_state in ['inn', 'shop', 'temple', 'guild']:
+            # TODO: Implement these interfaces in future phases
+            print(f"\n{result.message}")
+            print(f"[{result.next_state.upper()} interface coming in Phase 5]")
+            input("\nPress Enter to continue...")
+
+        elif result.next_state == 'party_management':
+            # TODO: Implement party management interface
+            print(f"\n{result.message}")
+            print("[Party management interface coming in Phase 5]")
+            input("\nPress Enter to continue...")
+
+        elif result.next_state == 'journal':
+            # Simple journal display
+            print("\n" + "═" * 70)
+            print("CAMPAIGN JOURNAL")
+            print("═" * 70)
+            print(f"\nCampaign: {campaign.name}")
+            print(f"Party: {party_data['name']}")
+            print()
+            print(f"Episodes Completed: {len(campaign.completed_episodes)}")
+            for ep_id in campaign.completed_episodes:
+                print(f"  ✓ {ep_id}")
+            print()
+            print(f"Episodes Unlocked: {len(campaign.unlocked_episodes)}")
+            for ep_id in campaign.unlocked_episodes:
+                if ep_id not in campaign.completed_episodes:
+                    print(f"  ● {ep_id}")
+            print()
+            print(f"Story Flags: {len(campaign.story_flags)}")
+            for flag, value in campaign.story_flags.items():
+                print(f"  • {flag}: {value}")
+            print("═" * 70)
+            input("\nPress Enter to continue...")
+
+        else:
+            print(f"\nUnknown state: {result.next_state}")
+
+
+def run_episode(episode_id: str, campaign: Campaign, party: Party,
+               campaign_mgr: CampaignManager, game_data: GameData, display: Display):
+    """Run a single episode from intro to completion"""
+
+    try:
+        # Load episode
+        episode = Episode.load(episode_id)
+
+        # Create episode runner
+        runner = EpisodeRunner(episode, campaign, party)
+
+        # 1. Show intro
+        print("\n" + runner.get_intro_text())
+        input("\nPress Enter to continue...")
+
+        # 2. Show briefing
+        print("\n" + runner.get_briefing_text())
+        input("\nPress Enter when ready to begin quest...")
+
+        # 3. Load dungeon
+        success, message = runner.load_dungeon()
+        if not success:
+            print(f"\nError loading dungeon: {message}")
+            return
+
+        print(f"\n{message}")
+        print(f"Entering {runner.dungeon.name}...")
+        input("\nPress Enter to enter the dungeon...")
+
+        # 4. Select active character
+        print("\nSelect active character for dungeon exploration:")
+        for i, member in enumerate(party.members, 1):
+            alive_str = "ALIVE" if member.is_alive else "DEAD"
+            print(f"{i}. {member.name} ({member.race} {member.char_class} Lvl {member.level}) [{alive_str}]")
+
+        char_choice = input(f"\nSelect character (1-{len(party.members)}): ").strip()
+        try:
+            char_idx = int(char_choice) - 1
+            if char_idx < 0 or char_idx >= len(party.members):
+                print("Invalid selection.")
+                return
+
+            active_character = party.members[char_idx]
+
+            if not active_character.is_alive:
+                print(f"{active_character.name} is dead and cannot explore!")
+                return
+
+        except ValueError:
+            print("Invalid input.")
+            return
+
+        # 5. Create game state and run dungeon
+        success, message = runner.create_game_state(active_character)
+        if not success:
+            print(f"\nError: {message}")
+            return
+
+        # Run the dungeon using existing game loop
+        run_game(active_character, runner.dungeon, game_data)
+
+        # 6. After dungeon, check completion
+        # For now, ask if quest was completed
+        # (In full implementation, would check completion criteria automatically)
+        print("\n" + "═" * 70)
+        print("QUEST STATUS")
+        print("═" * 70)
+
+        completed = input("\nDid you complete the quest objectives? (y/n): ").strip().lower()
+
+        if completed == 'y':
+            # Mark episode complete
+            success, completion_message = runner.complete_episode()
+
+            if success:
+                print("\n" + completion_message)
+
+                # Save campaign
+                campaign_mgr.save_campaign(campaign)
+                print("\n✓ Campaign progress saved!")
+
+            else:
+                print(f"\nError completing episode: {completion_message}")
+
+            input("\nPress Enter to return to hub...")
+
+        else:
+            print("\nQuest incomplete. Returning to hub...")
+            print("You can retry the quest later.")
+            input("\nPress Enter to continue...")
+
+    except FileNotFoundError:
+        print(f"\nEpisode '{episode_id}' not found!")
+    except Exception as e:
+        print(f"\nError running episode: {e}")
+        import traceback
+        traceback.print_exc()
 def main():
     """Main game function"""
 
@@ -1508,6 +1913,10 @@ def main():
         elif choice == '6':
             # Session Manager
             manage_sessions(game_data)
+
+        elif choice == '7':
+            # Campaign Manager
+            campaign_mode(game_data)
 
         elif choice == '9':
             # Quit
