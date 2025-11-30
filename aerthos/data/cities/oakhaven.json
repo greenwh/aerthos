@@ -1,0 +1,82 @@
+{
+  "$schema": "city_hub_v1",
+  "id": "oakhaven",
+  "name": "Oakhaven",
+  "description": "A fortified wooden palisade town at the foot of the Shattered Peaks. The gateway to adventure—and exploitation.",
+  "theme": "Frontier Town",
+  "region": "Verdant Heartlands",
+
+  "special_rules": {
+    "gate_toll": 5,
+    "currency_exchange_rate": 0.9,
+    "inflation_multiplier": 1.5
+  },
+
+  "shops": [
+    {
+      "id": "silas_shop",
+      "name": "Silas's Equipment Emporium",
+      "type": "general",
+      "specialty": "Adventuring supplies at 'fair' prices",
+      "buy_rate": 0.4,
+      "inventory": ["longsword", "chain_mail", "shield", "torch", "rope_50ft", "rations_1_week", "backpack", "lantern", "oil_flask"],
+      "price_modifier": 1.5
+    }
+  ],
+
+  "inn": {
+    "id": "dirty_mug",
+    "name": "The Dirty Mug",
+    "description": "A rough tavern catering to adventurers. The ale is watered, the beds are lumpy, but the rumors are priceless.",
+    "rate_per_night": 10,
+    "services": ["rest", "rumors", "hirelings"],
+    "rumors_by_episode": {
+      "episode_01": [
+        "The goblins came from the High Pass. Something scared them out of their mountain homes.",
+        "Old Kaldor fell to plague decades ago. The keep's been abandoned ever since.",
+        "Silas has been buying goblin weapons lately. Strange business."
+      ],
+      "episode_02": [
+        "Three more people went missing last week. The watch says nothing.",
+        "Old Marta saw hooded figures near the old well at midnight.",
+        "There's something wrong with the new temple acolyte. His eyes..."
+      ]
+    }
+  },
+
+  "temple": {
+    "id": "temple_of_light",
+    "name": "Temple of Light",
+    "deity": "Pelor (equivalent)",
+    "alignment": "Lawful Good",
+    "services": ["cure_light", "cure_serious", "remove_curse"],
+    "donation_suggested": true
+  },
+
+  "npcs": {
+    "silas": {
+      "name": "Silas",
+      "role": "Merchant",
+      "alignment": "Lawful Evil",
+      "description": "An immaculately dressed man with cold, calculating eyes. He buys low and sells high—always.",
+      "dialogue": {
+        "greeting": "Ah, more heroes seeking their fortune. I'm sure we can come to a... mutually beneficial arrangement.",
+        "haggle_fail": "I'm afraid that's my final offer. Take it or leave it.",
+        "episode_03_confrontation": "You've uncovered my little side business. But I'm just a middleman! The real power lies elsewhere..."
+      }
+    },
+    "the_guide": {
+      "name": "The Guide",
+      "role": "Quest Giver",
+      "alignment": "True Neutral",
+      "description": "A weathered man who knows every trail and ruin within a hundred miles. Information has a price.",
+      "dialogue": {
+        "greeting": "Looking for work? Danger? Both? I know a few places...",
+        "episode_01_hook": "Word is, goblins have taken over the old Keep of Kaldor. Desperate ones—they're taking food, not gold.",
+        "episode_02_hook": "People are vanishing from the streets at night. The militia's useless. Might be coin in solving that mystery."
+      }
+    }
+  },
+
+  "available_quests": ["episode_01", "episode_02", "episode_03"]
+}

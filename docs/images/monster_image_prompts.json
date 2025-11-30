@@ -1,0 +1,1619 @@
+[
+  {
+    "creature_id": "aerial_servant",
+    "name": "Aerial Servant",
+    "size": "Large",
+    "visual_tags": ["elemental", "air", "invisible", "translucent", "whirlwind"],
+    "image_prompt": "A fantasy photograph of a semi-invisible, large elemental creature. It appears as a violently swirling vortex of dust, air currents, and subtle magical distortion, barely holding a vague, hulking humanoid shape. It is translucent, blurring the background behind it, with faint, coiling wisps of smoke suggesting arms."
+  },
+  {
+    "creature_id": "anhkheg",
+    "name": "Anhkheg",
+    "size": "Large",
+    "visual_tags": ["insectoid", "burrowing", "acid", "chitin"],
+    "image_prompt": "A large, segmented insectoid monster, similar to a giant earwig mixed with a praying mantis, bursting out of dry, cracked earth. Its chitinous armor is earthy brown. Massive, serrated mandibles are open, dripping viscous, bubbling green acid that sizzles on the ground. Soil explodes around it."
+  },
+  {
+    "creature_id": "beholder",
+    "name": "Beholder",
+    "size": "Medium",
+    "visual_tags": ["aberration", "spherical", "many eyes", "floating", "magical"],
+    "image_prompt": "A terrifying, leathery spherical creature floating in a dark dungeon chamber. It has one enormous, central, unblinking eye staring forward above a wide mouth filled with sharp teeth. Ten serpentine stalks wriggle from the top of its body, each tipped with a smaller eye glowing with different colored magical energies."
+  },
+  {
+    "creature_id": "black_pudding",
+    "name": "Black Pudding",
+    "size": "Small",
+    "visual_tags": ["ooze", "amorphous", "corrosive", "black slime"],
+    "image_prompt": "A massive, mobile glob of oily, pitch-black sludge flowing across a stone floor. The amorphous ooze bubbles and ripples. Where it touches metal armor lying on the floor, the metal is visibly corroding and dissolving into gray sludge."
+  },
+  {
+    "creature_id": "blink_dog",
+    "name": "Blink Dog",
+    "size": "Medium",
+    "visual_tags": ["beast", "canine", "magical", "teleporting"],
+    "image_prompt": "A medium-sized canine resembling a dingo or African wild dog with intelligent yellow eyes. Its fur is a mix of brown and yellowish hues. The image captures it mid-action, half-faded and translucent with magical displacement energy around it, as it teleports from one spot to another in a grassy field."
+  },
+  {
+    "creature_id": "chimera",
+    "name": "Chimera",
+    "size": "Large",
+    "visual_tags": ["hybrid", "monstrosity", "three heads", "dragon wings", "goat", "lion"],
+    "image_prompt": "A monstrous hybrid creature standing on a rocky outcrop. It has the hindquarters and main body of a large lion, great leathery dragon wings sprouting from its back, and three distinct heads: a shaggy goat head on the left, a snarling lion head in the center, and a scaly red dragon head on the right, exhaling a puff of smoke."
+  },
+  {
+    "creature_id": "cube_gelatinous",
+    "name": "Gelatinous Cube",
+    "size": "Large",
+    "visual_tags": ["ooze", "transparent", "dungeon hazard", "cube"],
+    "image_prompt": "A massive, nearly perfectly transparent cube of quivering, gelatinous slime filling a 10-foot wide stone dungeon corridor completely. It glides silently. Suspended within its Jell-O-like body are undigested items: a rusty sword, a skeleton encased in chainmail, and several gold coins. The edges glisten wetly against the torchlight."
+  },
+  {
+    "creature_id": "displacer_beast",
+    "name": "Displacer Beast",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "feline", "tentacles", "illusion", "six legs"],
+    "image_prompt": "A sleek, powerful feline predator, similar to a panther but with blue-black fur and six legs. Growing from its shoulders are two long tentacles ending in horny, barbed pads. The creature is surrounded by a shimmering visual distortion effect, making it appear slightly blurred and shifted a few feet from where its paws actually touch the ground."
+  },
+  {
+    "creature_id": "dragon_turtle",
+    "name": "Dragon Turtle",
+    "size": "Large",
+    "visual_tags": ["dragon", "aquatic", "turtle shell", "massive", "steam breath"],
+    "image_prompt": "A colossal aquatic creature emerging from the ocean waves. It has the massive, spiked shell of a sea turtle, but its head, tail, and legs are distinctly draconic with thick green scales and sharp claws. Clouds of scalding steam billow from its nostrils. A small wooden ship near it looks tiny by comparison."
+  },
+  {
+    "creature_id": "dryad",
+    "name": "Dryad",
+    "size": "Medium",
+    "visual_tags": ["fey", "female", "nature spirit", "tree"],
+    "image_prompt": "A beautiful female spirit appearing to step out of the bark of a large, ancient oak tree. Her skin looks like polished wood and smooth leaves, and her hair is a cascade of green foliage and small flowers. She wears clothes woven from natural vines. The forest around her is lush and sun-dappled."
+  },
+  {
+    "creature_id": "ghoul",
+    "name": "Ghoul",
+    "size": "Medium",
+    "visual_tags": ["undead", "corporeal", "feral", "graveyard"],
+    "image_prompt": "A hunched, feral undead humanoid crouched over a broken tombstone in a dark graveyard. Its skin is gray and rotting, pulled tight over its bones. It has elongated, claw-like fingers, jagged teeth, and a long, lolling tongue. Its eyes glow with a feral, hungry red light. It is dressed in tattered burial rags."
+  },
+  {
+    "creature_id": "iron_golem",
+    "name": "Iron Golem",
+    "size": "Large",
+    "visual_tags": ["construct", "automaton", "metal", "massive", "steampunk"],
+    "image_prompt": "A hulking, massive automaton standing 12 feet tall, constructed entirely of heavy, riveted iron plates. It is humanoid in shape but blocky and crude. It holds a massive iron sword. Its metal surface shows signs of rust and ancient wear. No eyes are visible, just dark slits in its helmet-like head. It stands guard in front of a wizard's tower."
+  },
+  {
+    "creature_id": "lich",
+    "name": "Lich",
+    "size": "Medium",
+    "visual_tags": ["undead", "skeletal", "spellcaster", "evil", "glowing eyes"],
+    "image_prompt": "A powerful undead spellcaster floating slightly above the ground in a crypt. It is skeletal, dressed in rotting, ornate ancient robes and a tarnished crown. Pinpricks of intense red light glow in its empty eye sockets. Its skeletal hands are raised, weaving dark purple arcane energy. An elaborate, jeweled phylactery hangs around its neck."
+  },
+  {
+    "creature_id": "mind_flayer",
+    "name": "Mind Flayer",
+    "size": "Medium",
+    "visual_tags": ["aberration", "humanoid", "tentacles", "psionic", "underdark"],
+    "image_prompt": "A sinister humanoid figure standing in a dark, purple-lit cavern. It wears flowing, high-collared robes of deep violet and black. Its head resembles an octopus, with four rubbery, mauve tentacles writhing around a lamprey-like mouth containing sharp teeth. Its skin is slimy and mauve. It holds a strange, twisted staff."
+  },
+  {
+    "creature_id": "owlbear",
+    "name": "Owlbear",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "bear body", "owl head", "feathers and fur"],
+    "image_prompt": "A hulking, aggressive monstrosity standing on its hind legs in a forest clearing. It has the thick, furry body and powerful claws of a grizzly bear, topped with the massive, feathered head and giant beak of a great horned owl. Its eyes are wide, wild, and angry. Feathers blend into thick brown fur at the neck."
+  },
+  {
+    "creature_id": "purple_worm",
+    "name": "Purple Worm",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "worm", "subterranean", "colossal", "stinger"],
+    "image_prompt": "A colossal, segmented worm bursting through the rock wall of a deep underground cavern. Its thick, rubbery hide is a deep purple color. A massive, circular maw filled with rows of grinding teeth dominates the front. Its tail end is visible elsewhere in the cavern, ending in a large, curved purple stinger."
+  },
+  {
+    "creature_id": "red_dragon_young",
+    "name": "Young Red Dragon",
+    "size": "Large",
+    "visual_tags": ["dragon", "scaled", "winged", "fire", "mountain"],
+    "image_prompt": "A young, yet still large, chromatic dragon perched on a volcanic rock ledge. Its scales are a vibrant, glossy crimson red. Leathery bat-like wings are partially folded on its back. Smoke curls from its nostrils and between its sharp teeth. It has a cruel, reptilian intelligence in its golden eyes."
+  },
+  {
+    "creature_id": "rope_trick_roper",
+    "name": "Roper",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "camouflage", "subterranean", "tentacles", "stalagmite"],
+    "image_prompt": "A grotesque creature in a dark cave that perfectly resembles a large, rough stalagmite or rock formation. Its hide is stony and gray. Closer inspection reveals a single large eye opens near the top, and six long, sticky, rope-like strands lash out from its body toward the viewer. A toothy maw is hidden beneath the strands."
+  },
+  {
+    "creature_id": "rust_monster",
+    "name": "Rust Monster",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "insectoid", "antennae", "dungeon"],
+    "image_prompt": "A strange, armadillo-sized insectoid creature scuttling across a dungeon floor. It has four legs, a squat body covered in bumpy, reddish-brown plating, and a long tail. From its head sprout two feathery, moth-like antennae that it is using to touch a discarded metal shield, which is instantly turning to flaky orange rust where touched."
+  },
+  {
+    "creature_id": "skeleton",
+    "name": "Skeleton",
+    "size": "Medium",
+    "visual_tags": ["undead", "bones", "animated", "dungeon"],
+    "image_prompt": "An animated human skeleton standing in a dusty crypt. The bones are yellowed with age and some are cracked. It holds a rusty, notched sword in one bony hand and a rotting wooden shield in the other. Empty eye sockets stare forward blankly. Cobwebs hang from its ribcage."
+  },
+  {
+    "creature_id": "treant",
+    "name": "Treant",
+    "size": "Large",
+    "visual_tags": ["plant", "treefolk", "forest guardian", "massive"],
+    "image_prompt": "A massive, sentient tree moving slowly through an ancient forest. Its body is made of thick, gnarled bark resembling an oak, and its arms are thick branches ending in grasping root-like fingers. A wise, old face is formed naturally into the wood grain of its trunk. Moss and leaves grow all over its body."
+  },
+  {
+    "creature_id": "vampire",
+    "name": "Vampire",
+    "size": "Medium",
+    "visual_tags": ["undead", "aristocrat", "gothic", "fangs", "pale"],
+    "image_prompt": "A pale, aristocratically dressed humanoid standing in a gothic castle hall at night. He has slicked-back dark hair, intense red eyes, and elongated, sharp canine teeth visible over his lower lip. He wears fine, dark velvet clothing with a high collar. He casts no shadow on the floor."
+  },
+  {
+    "creature_id": "will_o_wisp",
+    "name": "Will-O-Wisp",
+    "size": "Small",
+    "visual_tags": ["aberration", "incorporeal", "glowing orb", "swamp"],
+    "image_prompt": "A photograph of a dark, misty swamp at night. Hovering over dark water is a small, spongy sphere of pulsating, cold blue and white light. It has no solid form, appearing as a coalesced ball of glowing gas or energy, casting an eerie light on the surrounding cypress trees."
+  },
+  {
+    "creature_id": "ant_giant",
+    "name": "Giant Ant",
+    "size": "Small",
+    "visual_tags": ["insect", "giant", "mandibles", "colony", "black exoskeleton"],
+    "image_prompt": "A macro-style shot of a terrifyingly large ant, the size of a dog. Its black exoskeleton gleams under hard light. Massive, crushing mandibles open aggressively in the foreground, and its multi-faceted eyes reflect the surroundings. It stands on rocky terrain."
+  },
+  {
+    "creature_id": "ape",
+    "name": "Ape",
+    "size": "Medium",
+    "visual_tags": ["primate", "jungle", "beast", "fur", "muscle"],
+    "image_prompt": "A powerful, great ape, resembling a large gorilla, beating its chest in a dense jungle. Sunlight filters through the canopy, illuminating its dark, matted fur and bared teeth. It displays immense physical strength and aggression."
+  },
+  {
+    "creature_id": "axebeak",
+    "name": "Axebeak",
+    "size": "Large",
+    "visual_tags": ["bird", "prehistoric", "flightless", "beak", "ostrich-like"],
+    "image_prompt": "A tall, prehistoric flightless bird resembling a muscular ostrich running across a grassy plain. It has a massive, heavy head with a sharp, wedge-shaped beak resembling a giant axe blade. Its plumage is dull brown and grey."
+  },
+  {
+    "creature_id": "baboon",
+    "name": "Baboon",
+    "size": "Small",
+    "visual_tags": ["primate", "fangs", "aggressive", "pack"],
+    "image_prompt": "A large, aggressive baboon crouching on a rock. It has a dog-like snout, sharp fangs bared in a scream, and rough, tawny fur. Its eyes are wild and intelligent."
+  },
+  {
+    "creature_id": "badger",
+    "name": "Badger",
+    "size": "Small",
+    "visual_tags": ["mammal", "striped", "claws", "burrowing"],
+    "image_prompt": "A fierce badger with distinctive black and white facial stripes, digging into the earth. It turns to snarl at the camera, showing sharp teeth and long digging claws. Dirt flies around it."
+  },
+  {
+    "creature_id": "baluchitherium",
+    "name": "Baluchitherium",
+    "size": "Large",
+    "visual_tags": ["mammal", "prehistoric", "herbivore", "massive", "rhino-like"],
+    "image_prompt": "A colossal prehistoric mammal, resembling a hornless rhinoceros with a long neck and long legs, grazing on tree tops. Its skin is thick, gray, and folded like armor. It towers over the surrounding landscape."
+  },
+  {
+    "creature_id": "barracuda",
+    "name": "Barracuda",
+    "size": "Small",
+    "visual_tags": ["fish", "aquatic", "predator", "teeth", "underwater"],
+    "image_prompt": "A sleek, silver barracuda darting through clear blue tropical water. Its mouth is slightly open, revealing rows of razor-sharp, needle-like teeth. Light refracts through the water, highlighting its streamlined scales."
+  },
+  {
+    "creature_id": "basilisk",
+    "name": "Basilisk",
+    "size": "Medium",
+    "visual_tags": ["reptile", "lizard", "petrification", "eight legs", "stone"],
+    "image_prompt": "A low-slung, heavy-bodied reptile with eight legs, crawling over a collection of lifelike stone statues in a cave. It has a dull brown hide and a crested head. Its pale green eyes glow with a petrifying magical energy."
+  },
+  {
+    "creature_id": "bear",
+    "name": "Bear",
+    "size": "Medium",
+    "visual_tags": ["mammal", "beast", "claws", "fur", "forest"],
+    "image_prompt": "A massive brown bear standing on its hind legs, roaring. Its thick fur is dark and shaggy, and its front paws are raised, displaying long, curved claws. The background is a dense pine forest."
+  },
+  {
+    "creature_id": "beaver_giant",
+    "name": "Giant Beaver",
+    "size": "Medium",
+    "visual_tags": ["rodent", "aquatic", "giant", "teeth", "dam"],
+    "image_prompt": "An enormous beaver, the size of a bear, gnawing on a tree trunk near a river. Its orange incisors are massive and chisel-like. A large wooden dam is visible in the background water."
+  },
+  {
+    "creature_id": "beetle_giant",
+    "name": "Giant Beetle",
+    "size": "Large",
+    "visual_tags": ["insect", "giant", "carapace", "mandibles"],
+    "image_prompt": "A gargantuan beetle with a shimmering, iridescent black carapace lumbering through a dungeon corridor. Its mandibles are large enough to snap a man in half. Glowing glands on its abdomen cast an eerie light."
+  },
+  {
+    "creature_id": "boar",
+    "name": "Boar",
+    "size": "Medium",
+    "visual_tags": ["beast", "tusks", "bristles", "charging"],
+    "image_prompt": "A wild boar charging through underbrush. It has dark, coarse bristles, a hunched back, and dangerous, curved white tusks jutting from its lower jaw. Its eyes are red with rage."
+  },
+  {
+    "creature_id": "brain_mole",
+    "name": "Brain Mole",
+    "size": "Small",
+    "visual_tags": ["rodent", "psionic", "subterranean", "strange"],
+    "image_prompt": "A small, hairless, mole-like creature poking its head out of a tunnel floor. It has a wrinkled, oversized head and no visible eyes, suggesting psionic sensory abilities. It looks alien and disturbing."
+  },
+  {
+    "creature_id": "brownie",
+    "name": "Brownie",
+    "size": "Small",
+    "visual_tags": ["fey", "tiny", "humanoid", "benevolent"],
+    "image_prompt": "A tiny, friendly humanoid standing on a wooden table, about 18 inches tall. He wears brown rugged clothes and a pointed cap. He has a kind, weathered face and is holding a needle like a sword."
+  },
+  {
+    "creature_id": "buffalo",
+    "name": "Buffalo",
+    "size": "Large",
+    "visual_tags": ["mammal", "herd", "horns", "fur"],
+    "image_prompt": "A massive buffalo with a heavy, shaggy mane and short, curved horns. It stands on a dusty plain, staring down the viewer. Steam rises from its nostrils in the cold air."
+  },
+  {
+    "creature_id": "bugbear",
+    "name": "Bugbear",
+    "size": "Large",
+    "visual_tags": ["humanoid", "goblinoid", "hairy", "stealthy", "morningstar"],
+    "image_prompt": "A looming, muscular goblinoid covered in thick, matted fur. It has a flat nose, large ears, and bears teeth. It is creeping out of the shadows holding a crude morningstar weapon."
+  },
+  {
+    "creature_id": "bulette",
+    "name": "Bulette",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "land shark", "armored", "burrowing"],
+    "image_prompt": "A heavily armored beast bursting from the earth. It looks like a cross between a snapping turtle and a shark, with silver-grey plating, a blue-ish underbelly, and a massive snapping maw. Dirt flies as it breaches the surface."
+  },
+  {
+    "creature_id": "bull",
+    "name": "Bull",
+    "size": "Large",
+    "visual_tags": ["mammal", "horns", "aggressive", "farm"],
+    "image_prompt": "An angry bull pawing the ground. It is muscular and dark, with long, sharp horns pointing forward. Dust kicks up around its hooves as it prepares to charge."
+  },
+  {
+    "creature_id": "camel_wild",
+    "name": "Wild Camel",
+    "size": "Large",
+    "visual_tags": ["mammal", "desert", "hump", "shaggy"],
+    "image_prompt": "A wild, shaggy camel in a desert landscape. It looks untamed and aggressive, with foam around its mouth, ready to spit. Heat waves shimmer in the background."
+  },
+  {
+    "creature_id": "carrion_crawler",
+    "name": "Carrion Crawler",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "worm", "tentacles", "green"],
+    "image_prompt": "A long, segmented green worm rearing up in a dark tunnel. A ring of writhing, paralyzed tentacles surrounds its mouth. It crawls over a pile of bones, looking for flesh."
+  },
+  {
+    "creature_id": "catoblepas",
+    "name": "Catoblepas",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "swamp", "long neck", "death gaze"],
+    "image_prompt": "A grotesque beast wading through a swamp. It has the body of a buffalo, legs like a hippo, and a long, snake-like neck. Its head is heavy and ugly, hanging low, with bloodshot eyes capable of a deadly gaze."
+  },
+  {
+    "creature_id": "cattle_wild",
+    "name": "Wild Cattle",
+    "size": "Large",
+    "visual_tags": ["mammal", "bovine", "herd", "horns"],
+    "image_prompt": "A herd of wild oxen with large, sweeping horns grazing in a valley. They look sturdy and untamed, with shaggy coats."
+  },
+  {
+    "creature_id": "centaur",
+    "name": "Centaur",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "horse", "human", "forest"],
+    "image_prompt": "A majestic creature with the upper body of a human and the lower body of a horse. He holds a wooden spear and stands in a sunlit forest clearing. He has a beard and looks noble and stern."
+  },
+  {
+    "creature_id": "centipede_giant",
+    "name": "Giant Centipede",
+    "size": "Small",
+    "visual_tags": ["insect", "giant", "segmented", "legs"],
+    "image_prompt": "A giant, foot-long centipede winding its way down a dungeon wall. Its chitin is red and orange, and its many legs scuttle silently. Large poison pincers frame its head."
+  },
+  {
+    "creature_id": "cerebral_parasite",
+    "name": "Cerebral Parasite",
+    "size": "Small",
+    "visual_tags": ["parasite", "worm", "invisible", "psionic"],
+    "image_prompt": "A microscopic view of a translucent, flea-like parasite. It is barely visible, clinging to a strand of hair, pulsating with faint pink psionic energy."
+  },
+  {
+    "creature_id": "cockatrice",
+    "name": "Cockatrice",
+    "size": "Small",
+    "visual_tags": ["monstrosity", "bird", "lizard", "petrification"],
+    "image_prompt": "A hideous small creature that is a hybrid of a rooster and a lizard. It has leathery bat wings, a scaly tail, and a bird's head with a comb. It pecks at a stone statue of a small animal."
+  },
+  {
+    "creature_id": "couatl",
+    "name": "Couatl",
+    "size": "Medium",
+    "visual_tags": ["celestial", "serpent", "winged", "feathers", "colorful"],
+    "image_prompt": "A beautiful winged serpent soaring through the clouds. Its body is covered in brilliant, rainbow-colored feathers. It has intelligent, benevolent eyes and a divine aura."
+  },
+  {
+    "creature_id": "crab_giant",
+    "name": "Giant Crab",
+    "size": "Large",
+    "visual_tags": ["crustacean", "giant", "claws", "beach"],
+    "image_prompt": "A colossal crab rising from the surf on a rocky beach. Its shell is mottled rock-color, and its pincers are large enough to crush a humanoid. Foam cascades off its carapace."
+  },
+  {
+    "creature_id": "crayfish_giant",
+    "name": "Giant Crayfish",
+    "size": "Large",
+    "visual_tags": ["crustacean", "giant", "river", "pincers"],
+    "image_prompt": "A massive crayfish lurking in the murky waters of a riverbed. It resembles a giant lobster with a dark green and brown shell. Its antennae twitch in the current."
+  },
+  {
+    "creature_id": "crocodile",
+    "name": "Crocodile",
+    "size": "Large",
+    "visual_tags": ["reptile", "aquatic", "teeth", "scales"],
+    "image_prompt": "A large crocodile drifting like a log in a swamp, with only its eyes and nostrils visible above the algae-covered water. Its jaws are slightly open, hinting at the teeth within."
+  },
+  {
+    "creature_id": "demon",
+    "name": "Demon (Type I)",
+    "size": "Large",
+    "visual_tags": ["fiend", "chaotic evil", "horns", "wings", "abyss"],
+    "image_prompt": "A classic vulture-headed demon standing in a desolate, fiery landscape. It has a humanoid body with pinkish, rubbery skin, large feathered wings, and taloned hands. It screeches into the void."
+  },
+  {
+    "creature_id": "devil",
+    "name": "Devil (Barbed)",
+    "size": "Large",
+    "visual_tags": ["fiend", "lawful evil", "spikes", "hell"],
+    "image_prompt": "A humanoid devil covered in sharp, greenish barbs and spines. It has a tail, cloven hooves, and burning yellow eyes. It stands guard at an obsidian gate in a volcanic cavern."
+  },
+  {
+    "creature_id": "dinosaur",
+    "name": "Dinosaur (T-Rex)",
+    "size": "Large",
+    "visual_tags": ["reptile", "prehistoric", "carnivore", "teeth"],
+    "image_prompt": "A Tyrannosaurus Rex roaring in a prehistoric jungle. Its massive jaws are open, showing serrated teeth. Its skin is scaled and mottled green and brown."
+  },
+  {
+    "creature_id": "djinni",
+    "name": "Djinni",
+    "size": "Large",
+    "visual_tags": ["elemental", "genie", "air", "clouds", "turban"],
+    "image_prompt": "A muscular, blue-skinned genie forming out of a whirlwind. The lower half of his body is a swirling vortex of wind. He wears silk pantaloons and a turban, with arms crossed confidently."
+  },
+  {
+    "creature_id": "dog",
+    "name": "Dog",
+    "size": "Small",
+    "visual_tags": ["mammal", "canine", "pet", "guard"],
+    "image_prompt": "A large, alert mastiff dog with a spiked collar standing guard. It has short fur and a muscular build, watching intently."
+  },
+  {
+    "creature_id": "dolphin",
+    "name": "Dolphin",
+    "size": "Medium",
+    "visual_tags": ["mammal", "aquatic", "friendly", "ocean"],
+    "image_prompt": "A dolphin leaping gracefully out of the ocean waves. Water droplets sparkle in the sun around its sleek, grey body. It looks intelligent and playful."
+  },
+  {
+    "creature_id": "doppleganger",
+    "name": "Doppleganger",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "shapeshifter", "gray", "faceless"],
+    "image_prompt": "A gray, hairless humanoid with undefined, malleable facial features. It is in the process of transforming, its skin rippling as it takes on the appearance of a nearby human guard."
+  },
+  {
+    "creature_id": "dragon",
+    "name": "Dragon (Gold)",
+    "size": "Large",
+    "visual_tags": ["dragon", "metallic", "wings", "whiskers", "majestic"],
+    "image_prompt": "A magnificent metallic gold dragon with large, sail-like wings. It has a serpentine body, two long whiskers trailing from its snout, and scales that glitter like pure gold coins. It is perched on a high mountain peak."
+  },
+  {
+    "creature_id": "dragonne",
+    "name": "Dragonne",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "lion", "dragon wings"],
+    "image_prompt": "A large beast that looks like a cross between a brass dragon and a giant lion. It has a lion's body and mane, but with brass scales and small dragon wings. It roars, shaking the ground."
+  },
+  {
+    "creature_id": "dwarf",
+    "name": "Dwarf",
+    "size": "Small",
+    "visual_tags": ["humanoid", "stout", "beard", "armor", "axe"],
+    "image_prompt": "A stout, muscular dwarf with a long, braided beard. He wears heavy plate armor and holds a battleaxe. He stands in a mine shaft illuminated by glowing crystals."
+  },
+  {
+    "creature_id": "eagle_giant",
+    "name": "Giant Eagle",
+    "size": "Medium",
+    "visual_tags": ["bird", "giant", "raptor", "mount"],
+    "image_prompt": "An enormous eagle with a wingspan of 20 feet soaring over mountains. Its feathers are golden-brown, and its eyes are sharp and intelligent. It carries a saddle on its back."
+  },
+  {
+    "creature_id": "ear_seeker",
+    "name": "Ear Seeker",
+    "size": "Small",
+    "visual_tags": ["insect", "tiny", "parasite"],
+    "image_prompt": "A tiny, insect-like creature with many legs and pincers, hiding inside rotting wood. It is small enough to crawl into an ear, looking sinister and parasitic."
+  },
+  {
+    "creature_id": "eel",
+    "name": "Eel",
+    "size": "Medium",
+    "visual_tags": ["fish", "aquatic", "serpentine", "electric"],
+    "image_prompt": "A long, serpentine electric eel swimming in dark water. Arcs of blue electricity crackle along the length of its body, illuminating the surrounding seaweed."
+  },
+  {
+    "creature_id": "efreeti",
+    "name": "Efreeti",
+    "size": "Large",
+    "visual_tags": ["elemental", "genie", "fire", "red skin", "horns"],
+    "image_prompt": "A massive, red-skinned genie emerging from a volcano. He has small horns, a cruel expression, and his lower body is a pillar of fire and smoke. He wields a flaming scimitar."
+  },
+  {
+    "creature_id": "elemental",
+    "name": "Earth Elemental",
+    "size": "Large",
+    "visual_tags": ["elemental", "rock", "stone", "construct"],
+    "image_prompt": "A hulking humanoid shape composed entirely of jagged rocks and earth. It has no face, just a rough approximation of a head and glowing fissures for eyes. It punches the ground, causing a tremor."
+  },
+  {
+    "creature_id": "elephant",
+    "name": "Elephant",
+    "size": "Large",
+    "visual_tags": ["mammal", "trunk", "tusks", "jungle"],
+    "image_prompt": "A large grey elephant with impressive ivory tusks walking through tall grass. Its trunk is raised, sniffing the air. Wrinkles cover its thick skin."
+  },
+  {
+    "creature_id": "elf",
+    "name": "Elf",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "pointy ears", "graceful", "bow"],
+    "image_prompt": "A tall, slender elf with pointed ears and long hair. He wears tunic and cloak of forest green and holds a longbow drawn, aiming into the trees. He stands on a tree branch effortlessly."
+  },
+  {
+    "creature_id": "ettin",
+    "name": "Ettin",
+    "size": "Large",
+    "visual_tags": ["giant", "two heads", "dirty", "clubs"],
+    "image_prompt": "A filthy, two-headed giant wearing animal skins. Each head looks angry and argues with the other. It holds a spiked club in each hand. Its skin is grimy and covered in warts."
+  },
+  {
+    "creature_id": "eye_floating",
+    "name": "Floating Eye",
+    "size": "Small",
+    "visual_tags": ["aberration", "eye", "flying", "single eye"],
+    "image_prompt": "A small, detached eyeball floating in the air, trailing a optic nerve. It looks around swiftly, acting as a magical spy."
+  },
+  {
+    "creature_id": "eye_of_the_deep",
+    "name": "Eye of the Deep",
+    "size": "Large",
+    "visual_tags": ["aberration", "beholder-kin", "aquatic", "crab claws"],
+    "image_prompt": "A creature resembling a beholder but adapted for underwater life. It is spherical with a large central eye, but has two crab-like pinchers and two eyestalks. It floats in the deep ocean depths."
+  },
+  {
+    "creature_id": "flightless_bird",
+    "name": "Flightless Bird",
+    "size": "Medium",
+    "visual_tags": ["bird", "ostrich", "running"],
+    "image_prompt": "A large, feathered flightless bird, similar to an emu or ostrich, sprinting across a savannah. It has strong legs and a long neck."
+  },
+  {
+    "creature_id": "frog_giant",
+    "name": "Giant Frog",
+    "size": "Small",
+    "visual_tags": ["amphibian", "giant", "tongue", "swamp"],
+    "image_prompt": "A frog the size of a pony sitting on a lily pad. Its skin is warty and green. It shoots out a long, sticky tongue to catch a large dragonfly."
+  },
+  {
+    "creature_id": "fungi_violet",
+    "name": "Violet Fungi",
+    "size": "Small",
+    "visual_tags": ["plant", "fungus", "purple", "tentacles"],
+    "image_prompt": "A cluster of human-sized mushrooms with violet caps. Underneath the caps, rotting tentacle-like vines writhe and reach out. They grow in a dark, damp cavern."
+  },
+  {
+    "creature_id": "gar_giant",
+    "name": "Giant Gar",
+    "size": "Large",
+    "visual_tags": ["fish", "aquatic", "long snout", "predator"],
+    "image_prompt": "A massive freshwater fish with an elongated, needle-filled snout. It swims through murky river water, its scales reflecting dull light. It looks ancient and predatory."
+  },
+  {
+    "creature_id": "gargoyle",
+    "name": "Gargoyle",
+    "size": "Medium",
+    "visual_tags": ["construct", "stone", "winged", "demon-like"],
+    "image_prompt": "A grotesque, winged creature made of carved stone perched on a cathedral ledge. It resembles a demon with horns and claws, but its surface is rough granite."
+  },
+  {
+    "creature_id": "gas_spore",
+    "name": "Gas Spore",
+    "size": "Medium",
+    "visual_tags": ["plant", "fungus", "fake beholder", "floating"],
+    "image_prompt": "A floating spherical fungus that perfectly mimics the appearance of a beholder, but upon closer inspection, the 'eyes' are merely markings and mold growths. It looks bloated and ready to burst."
+  },
+  {
+    "creature_id": "ghast",
+    "name": "Ghast",
+    "size": "Medium",
+    "visual_tags": ["undead", "corpse", "pale", "smell"],
+    "image_prompt": "A terrifying undead creature similar to a ghoul but more gaunt and pale. A visible green miasma of stench surrounds it. Its claws are long and paralyzing."
+  },
+  {
+    "creature_id": "ghost",
+    "name": "Ghost",
+    "size": "Medium",
+    "visual_tags": ["undead", "incorporeal", "translucent", "spirit"],
+    "image_prompt": "A translucent, pearly-white spirit of a deceased noble. It floats above the ground, its face twisted in a mask of sorrow and rage. You can see the wall behind it through its body."
+  },
+  {
+    "creature_id": "giant",
+    "name": "Giant",
+    "size": "Large",
+    "visual_tags": ["humanoid", "massive", "primitive"],
+    "image_prompt": "A generic giant, standing 12 feet tall, dressed in rough furs and leather. It holds a tree trunk as a club and has a brutish, weathered face."
+  },
+  {
+    "creature_id": "gnoll",
+    "name": "Gnoll",
+    "size": "Large",
+    "visual_tags": ["humanoid", "hyena-head", "savage", "armor"],
+    "image_prompt": "A tall, humanoid creature with the head of a hyena. It has greenish-gray skin, furry legs, and wears patchwork leather armor. It holds a spear and snarls, dripping saliva."
+  },
+  {
+    "creature_id": "gnome",
+    "name": "Gnome",
+    "size": "Small",
+    "visual_tags": ["humanoid", "short", "big nose", "illusionist"],
+    "image_prompt": "A small humanoid with a large nose and bright eyes, wearing earth-toned clothes and a conical hat. He is tinkering with a small mechanical device and smiling mischievously."
+  },
+  {
+    "creature_id": "goat_giant",
+    "name": "Giant Goat",
+    "size": "Large",
+    "visual_tags": ["mammal", "horns", "mountain", "fur"],
+    "image_prompt": "A giant mountain goat with massive, curled horns standing on a precipice. Its fur is thick and white, and it looks ready to ram anything that approaches."
+  },
+  {
+    "creature_id": "goblin",
+    "name": "Goblin",
+    "size": "Small",
+    "visual_tags": ["humanoid", "green skin", "pointed ears", "ragged"],
+    "image_prompt": "A small, malicious humanoid with leathery green skin and long, pointed ears. It wears ragged clothes and holds a jagged rusty dagger. Its eyes glow red in the dark."
+  },
+  {
+    "creature_id": "golem",
+    "name": "Clay Golem",
+    "size": "Large",
+    "visual_tags": ["construct", "clay", "clumsy", "humanoid"],
+    "image_prompt": "A massive, clumsy humanoid figure sculpted from soft clay. Its features are crude and melted-looking. It stands silently, emanating a magical aura of protection."
+  },
+  {
+    "creature_id": "gorgon",
+    "name": "Gorgon",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "bull", "metal scales", "green breath"],
+    "image_prompt": "A monstrous bull covered in metallic, iron scales. It exhales a cloud of green, petrifying gas from its nostrils. It looks heavy and unstoppable."
+  },
+  {
+    "creature_id": "gray_ooze",
+    "name": "Gray Ooze",
+    "size": "Medium",
+    "visual_tags": ["ooze", "slime", "puddle", "stone color"],
+    "image_prompt": "A puddle of wet, gray sludge moving across a stone floor. It looks almost like wet stone itself, blending in perfectly until it rises up to strike."
+  },
+  {
+    "creature_id": "green_slime",
+    "name": "Green Slime",
+    "size": "Small",
+    "visual_tags": ["plant", "mold", "slime", "dripping"],
+    "image_prompt": "A patch of bright green, wet slime clinging to the ceiling of a dungeon. A drop of it falls downward, sizzling as it hits the stone floor."
+  },
+  {
+    "creature_id": "griffon",
+    "name": "Griffon",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "eagle", "lion"],
+    "image_prompt": "A majestic beast with the head, wings, and forelegs of a giant eagle, and the body, hind legs, and tail of a lion. It screeches from a mountaintop nest."
+  },
+  {
+    "creature_id": "groaning_spirit",
+    "name": "Groaning Spirit (Banshee)",
+    "size": "Medium",
+    "visual_tags": ["undead", "ghost", "female", "wailing"],
+    "image_prompt": "A translucent, ghostly female elf with a face contorted in eternal anguish. She floats in a mist, her mouth open in a silent, deadly scream. Her spectral robes flow around her."
+  },
+  {
+    "creature_id": "halfling",
+    "name": "Halfling",
+    "size": "Small",
+    "visual_tags": ["humanoid", "short", "hairy feet", "friendly"],
+    "image_prompt": "A small humanoid, about 3 feet tall, with curly hair and large, hairy bare feet. He wears a comfortable vest and breeches, holding a pipe and smiling warmly."
+  },
+  {
+    "creature_id": "harpy",
+    "name": "Harpy",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "hybrid", "woman", "bird"],
+    "image_prompt": "A hideous creature with the body of a vulture and the upper torso and head of an old crone. It has filthy feathers and sharp talons. It perches on a rock, singing a magical song."
+  },
+  {
+    "creature_id": "hell_hound",
+    "name": "Hell Hound",
+    "size": "Medium",
+    "visual_tags": ["fiend", "dog", "fire", "black fur"],
+    "image_prompt": "A large, black mastiff with glowing red eyes and smoke billowing from its mouth. The fur around its neck seems to be made of embers and ash. It prepares to breathe fire."
+  },
+  {
+    "creature_id": "herd_animal",
+    "name": "Herd Animal",
+    "size": "Small",
+    "visual_tags": ["mammal", "antelope", "grazing"],
+    "image_prompt": "A generic antelope-like herd animal grazing in a field. It has tan fur and small antlers, looking skittish and ready to run."
+  },
+  {
+    "creature_id": "hippocampus",
+    "name": "Hippocampus",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "horse", "fish"],
+    "image_prompt": "A sea creature with the head and forelegs of a horse and the long, scaled tail of a giant fish. It has fin-like manes and greenish scales, swimming through the ocean."
+  },
+  {
+    "creature_id": "hippogriff",
+    "name": "Hippogriff",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "eagle", "horse"],
+    "image_prompt": "A creature with the head, wings, and foreclaws of an eagle and the body and hind legs of a horse. It has feathers transitioning into horsehair coat. It stands proudly in a field."
+  },
+  {
+    "creature_id": "hippopotamus",
+    "name": "Hippopotamus",
+    "size": "Large",
+    "visual_tags": ["mammal", "river", "huge mouth", "aggressive"],
+    "image_prompt": "A massive hippo emerging from a river with its mouth wide open, displaying enormous teeth. It looks aggressive and heavy."
+  },
+  {
+    "creature_id": "hobgoblin",
+    "name": "Hobgoblin",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "goblinoid", "militaristic", "armor"],
+    "image_prompt": "A tall, muscular goblinoid with reddish-orange skin and a blue nose. It wears disciplined, polished chainmail armor and holds a sword with military precision."
+  },
+  {
+    "creature_id": "homunculus",
+    "name": "Homunculus",
+    "size": "Small",
+    "visual_tags": ["construct", "tiny", "winged", "imp-like"],
+    "image_prompt": "A tiny, clay-like humanoid with bat wings, about 18 inches tall. It sits on a wizard's bookshelf, looking alert and loyal. Its skin is rubbery and smooth."
+  },
+  {
+    "creature_id": "horse",
+    "name": "Horse",
+    "size": "Large",
+    "visual_tags": ["mammal", "equine", "riding", "domestic"],
+    "image_prompt": "A strong, brown riding horse with a black mane and tail. It is saddled and bridled, standing patiently outside a tavern."
+  },
+  {
+    "creature_id": "hydra",
+    "name": "Hydra",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "reptile", "many heads", "swamp"],
+    "image_prompt": "A massive reptilian monster with five serpentine heads on long necks attached to a dinosaur-like body. Each head hisses and snaps in a different direction."
+  },
+  {
+    "creature_id": "hyena",
+    "name": "Hyena",
+    "size": "Medium",
+    "visual_tags": ["mammal", "scavenger", "spots", "laughing"],
+    "image_prompt": "A spotted hyena with a sloping back and powerful jaws. It skulks in the savannah grass, looking for carrion."
+  },
+  {
+    "creature_id": "imp",
+    "name": "Imp",
+    "size": "Small",
+    "visual_tags": ["fiend", "tiny", "winged", "red", "tail"],
+    "image_prompt": "A tiny, red-skinned demon with bat wings and a barbed tail. It flies mid-air, holding a small trident and grinning maliciously."
+  },
+  {
+    "creature_id": "intellect_devourer",
+    "name": "Intellect Devourer",
+    "size": "Medium",
+    "visual_tags": ["aberration", "brain", "legs", "creepy"],
+    "image_prompt": "A horrifying creature that looks like a giant human brain on four bestial, clawed legs. It has no face, just the convolutions of brain matter."
+  },
+  {
+    "creature_id": "invisible_stalker",
+    "name": "Invisible Stalker",
+    "size": "Large",
+    "visual_tags": ["elemental", "air", "distortion", "silhouette"],
+    "image_prompt": "A vague, humanoid silhouette formed only by the distortion of light and air. It is nearly invisible, noticeable only by the blurring of the background behind it."
+  },
+  {
+    "creature_id": "irish_deer",
+    "name": "Irish Deer",
+    "size": "Large",
+    "visual_tags": ["mammal", "elk", "giant antlers", "prehistoric"],
+    "image_prompt": "A giant elk (Megaloceros) with an immense span of antlers, standing majestic in a meadow. It towers over normal deer."
+  },
+  {
+    "creature_id": "ixitxachitl",
+    "name": "Ixitxachitl",
+    "size": "Medium",
+    "visual_tags": ["aberration", "ray", "aquatic", "evil"],
+    "image_prompt": "A creature resembling a manta ray with reddish-brown skin and a sinister, intelligent look in its eyes. It swims in a coral reef, surrounded by a dark aura."
+  },
+  {
+    "creature_id": "jackal",
+    "name": "Jackal",
+    "size": "Small",
+    "visual_tags": ["mammal", "canine", "desert", "scavenger"],
+    "image_prompt": "A lean, golden-brown jackal standing in a desert environment. It looks cautious and wiry."
+  },
+  {
+    "creature_id": "jackalwere",
+    "name": "Jackalwere",
+    "size": "Small",
+    "visual_tags": ["monstrosity", "shapeshifter", "jackal-man", "evil"],
+    "image_prompt": "A humanoid with the head of a jackal, wearing tattered robes. It stands upright but has a hunched, predatory posture. Its eyes glow with a hypnotic light."
+  },
+  {
+    "creature_id": "jaguar",
+    "name": "Jaguar",
+    "size": "Large",
+    "visual_tags": ["mammal", "cat", "spotted", "jungle"],
+    "image_prompt": "A muscular jaguar crouching on a tree branch, its rosette-patterned fur blending with the dappled sunlight. It stares intensely at prey below."
+  },
+  {
+    "creature_id": "ki_rin",
+    "name": "Ki-Rin",
+    "size": "Medium",
+    "visual_tags": ["celestial", "unicorn-like", "flying", "scales", "golden"],
+    "image_prompt": "A magnificent celestial creature soaring through the sky. It has the body of a stag covered in golden scales, a single horn, and a mane of fire. It walks on air."
+  },
+  {
+    "creature_id": "kobold",
+    "name": "Kobold",
+    "size": "Small",
+    "visual_tags": ["humanoid", "reptilian", "small", "trap maker"],
+    "image_prompt": "A small, reptilian humanoid with rusty-brown scales and a rat-like tail. It crouches in a tunnel, setting a tripwire trap. It has small horns and bright, beady eyes."
+  },
+  {
+    "creature_id": "lamia",
+    "name": "Lamia",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "hybrid", "lion body", "woman torso"],
+    "image_prompt": "A creature with the lower body of a lion and the upper torso of a beautiful woman. She reclines in a desert ruin, holding a dagger, with a deceptive smile."
+  },
+  {
+    "creature_id": "lammasu",
+    "name": "Lammasu",
+    "size": "Large",
+    "visual_tags": ["celestial", "hybrid", "winged lion", "human head"],
+    "image_prompt": "A noble creature with the body of a golden lion, large eagle wings, and a bearded human face. It stands guard at a temple entrance, exuding wisdom and power."
+  },
+  {
+    "creature_id": "lamprey",
+    "name": "Lamprey",
+    "size": "Small",
+    "visual_tags": ["fish", "parasite", "mouth", "teeth"],
+    "image_prompt": "A grotesque, eel-like fish latched onto a rock. Its mouth is a circular suction cup filled with concentric rows of sharp teeth."
+  },
+  {
+    "creature_id": "larva",
+    "name": "Larva",
+    "size": "Medium",
+    "visual_tags": ["fiend", "worm", "face", "gross"],
+    "image_prompt": "A fleshy, oversized maggot with a distorted human face where the head should be. It writhes in gray muck, looking pathetic and evil."
+  },
+  {
+    "creature_id": "leech_giant",
+    "name": "Giant Leech",
+    "size": "Small",
+    "visual_tags": ["invertebrate", "parasite", "swamp", "bloated"],
+    "image_prompt": "A giant leech, several feet long, swimming in murky water. It is bloated with blood and black in color."
+  },
+  {
+    "creature_id": "leopard",
+    "name": "Leopard",
+    "size": "Medium",
+    "visual_tags": ["mammal", "cat", "spotted", "tree"],
+    "image_prompt": "A sleek leopard hauling a kill up a tree. Its spotted coat is beautiful and deadly."
+  },
+  {
+    "creature_id": "leprechaun",
+    "name": "Leprechaun",
+    "size": "Small",
+    "visual_tags": ["fey", "small", "green", "gold"],
+    "image_prompt": "A tiny man in a green coat and buckled shoes, sitting on a toadstool. He is counting gold coins from a small pot and grinning mischievously."
+  },
+  {
+    "creature_id": "leucrotta",
+    "name": "Leucrotta",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "stag", "badger", "creepy mouth"],
+    "image_prompt": "A bizarre creature with the body of a stag, the head of a giant badger, and a wide, unnatural mouth that stretches to its ears. Instead of teeth, it has jagged ridges of bone."
+  },
+  {
+    "creature_id": "lion",
+    "name": "Lion",
+    "size": "Large",
+    "visual_tags": ["mammal", "cat", "mane", "savannah"],
+    "image_prompt": "A large male lion with a magnificent mane resting in the grass. It yawns, showing impressive teeth."
+  },
+  {
+    "creature_id": "lizard",
+    "name": "Giant Lizard",
+    "size": "Large",
+    "visual_tags": ["reptile", "giant", "scales", "tongue"],
+    "image_prompt": "A monitor lizard the size of a crocodile basking on a rock. Its forked tongue flicks out to taste the air."
+  },
+  {
+    "creature_id": "lizard_man",
+    "name": "Lizard Man",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "reptilian", "swamp", "primitive"],
+    "image_prompt": "A humanoid lizard with green scales and a tail, wading through a swamp. It carries a primitive spear made of bone and wood."
+  },
+  {
+    "creature_id": "locathah",
+    "name": "Locathah",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "fish-man", "aquatic", "scales"],
+    "image_prompt": "A fish-like humanoid with fine scales, large eyes, and fins on its arms and legs. It holds a trident and swims near a coral reef."
+  },
+  {
+    "creature_id": "lurker_above",
+    "name": "Lurker Above",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "camouflage", "ceiling", "flat"],
+    "image_prompt": "A creature that looks like a patch of stone ceiling. It is flat and amorphous, clinging to the top of a cavern, waiting to drop on prey."
+  },
+  {
+    "creature_id": "lycanthrope",
+    "name": "Werewolf",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "shapechanger", "wolf-man", "fur"],
+    "image_prompt": "A fearsome hybrid of man and wolf standing on hind legs. It has thick fur, a wolf's snout, and claws, howling at a full moon."
+  },
+  {
+    "creature_id": "lynx_giant",
+    "name": "Giant Lynx",
+    "size": "Medium",
+    "visual_tags": ["mammal", "cat", "tufted ears", "snow"],
+    "image_prompt": "An oversized lynx with distinctive ear tufts and a short tail. It moves silently through a snowy forest."
+  },
+  {
+    "creature_id": "mammoth",
+    "name": "Mammoth",
+    "size": "Large",
+    "visual_tags": ["mammal", "elephant", "fur", "tusks", "ice age"],
+    "image_prompt": "A woolly mammoth trekking through a blizzard. It has long, shaggy brown fur and massive, curved tusks."
+  },
+  {
+    "creature_id": "manticore",
+    "name": "Manticore",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "human head", "lion body", "bat wings", "spikes"],
+    "image_prompt": "A terrifying monster with the body of a lion, leathery bat wings, and a human face with three rows of teeth. Its tail ends in a cluster of deadly spikes that it can fire."
+  },
+  {
+    "creature_id": "masher",
+    "name": "Masher",
+    "size": "Large",
+    "visual_tags": ["aquatic", "worm", "coral", "crushing"],
+    "image_prompt": "A large, segmented marine worm with many legs, crawling over a coral reef. It eats the coral with a hard, beak-like mouth."
+  },
+  {
+    "creature_id": "mastodon",
+    "name": "Mastodon",
+    "size": "Large",
+    "visual_tags": ["mammal", "elephant", "prehistoric", "tusks"],
+    "image_prompt": "A mastodon grazing in a prehistoric forest. It resembles an elephant but is more muscular, with straighter tusks."
+  },
+  {
+    "creature_id": "medusa",
+    "name": "Medusa",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "humanoid", "snake hair", "gaze"],
+    "image_prompt": "A woman with green skin and a nest of writhing vipers for hair. Her eyes glow with a petrifying light. She holds a bow."
+  },
+  {
+    "creature_id": "men",
+    "name": "Men (Bandits)",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "human", "armor", "weapons"],
+    "image_prompt": "A group of gritty human bandits in leather armor lying in ambush in a forest. They hold crossbows and swords."
+  },
+  {
+    "creature_id": "merman",
+    "name": "Merman",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "aquatic", "fish tail", "trident"],
+    "image_prompt": "A male humanoid with the tail of a fish instead of legs. He holds a trident and floats in the water, surrounded by fish."
+  },
+  {
+    "creature_id": "mimic",
+    "name": "Mimic",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "shapeshifter", "chest", "teeth", "tongue"],
+    "image_prompt": "A wooden treasure chest that has morphed into a monster. The lid is open to reveal sharp teeth and a long, purple adhesive tongue lashing out."
+  },
+  {
+    "creature_id": "minotaur",
+    "name": "Minotaur",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "bull head", "maze"],
+    "image_prompt": "A hulking humanoid with the head of a bull. It stands in a stone labyrinth, snorting steam and holding a giant greataxe."
+  },
+  {
+    "creature_id": "mold",
+    "name": "Yellow Mold",
+    "size": "Small",
+    "visual_tags": ["plant", "fungus", "yellow", "spores"],
+    "image_prompt": "A patch of vibrant yellow mold covering a dungeon floor. It releases a cloud of choking yellow spores into the air."
+  },
+  {
+    "creature_id": "morkoth",
+    "name": "Morkoth",
+    "size": "Medium",
+    "visual_tags": ["aberration", "aquatic", "maze", "hypnotic"],
+    "image_prompt": "A strange, shadowy aquatic creature with a beak and tentacles, floating in the center of a spiraling, hypnotic underwater tunnel maze."
+  },
+  {
+    "creature_id": "mule",
+    "name": "Mule",
+    "size": "Large",
+    "visual_tags": ["mammal", "equine", "pack animal", "stubborn"],
+    "image_prompt": "A sturdy mule carrying heavy saddlebags on a mountain trail. It has long ears and a determined expression."
+  },
+  {
+    "creature_id": "mummy",
+    "name": "Mummy",
+    "size": "Medium",
+    "visual_tags": ["undead", "bandages", "ancient", "tomb"],
+    "image_prompt": "A shambling corpse wrapped in rotting linen bandages. It reaches out with withered hands in a dusty tomb. Hieroglyphs are visible on the walls."
+  },
+  {
+    "creature_id": "naga",
+    "name": "Naga",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "snake", "human head", "magical"],
+    "image_prompt": "A giant serpent with a human face. It is coiled in an ancient ruin, and its face looks wise and magical. It is casting a spell."
+  },
+  {
+    "creature_id": "neo_otyugh",
+    "name": "Neo-Otyugh",
+    "size": "Large",
+    "visual_tags": ["aberration", "trash", "tentacles", "maw"],
+    "image_prompt": "A larger, more vicious version of the otyugh. A massive pile of flesh and refuse with a gaping, toothed maw and three tentacles ending in spikes and eyes."
+  },
+  {
+    "creature_id": "night_hag",
+    "name": "Night Hag",
+    "size": "Medium",
+    "visual_tags": ["fiend", "hag", "ugly", "nightmare"],
+    "image_prompt": "A hideous, purple-skinned crone with horns and burning eyes. She sits astride a sleeping victim, stealing their dreams."
+  },
+  {
+    "creature_id": "nightmare",
+    "name": "Nightmare",
+    "size": "Large",
+    "visual_tags": ["fiend", "horse", "fire", "black"],
+    "image_prompt": "A jet-black horse with a mane and tail of pure fire. Its hooves burn the ground where it stands, and smoke pours from its nostrils."
+  },
+  {
+    "creature_id": "nixie",
+    "name": "Nixie",
+    "size": "Small",
+    "visual_tags": ["fey", "aquatic", "elf-like", "green skin"],
+    "image_prompt": "A small, green-skinned water sprite with webbed fingers. She peers playfully from behind reeds in a lake."
+  },
+  {
+    "creature_id": "nymph",
+    "name": "Nymph",
+    "size": "Medium",
+    "visual_tags": ["fey", "beautiful", "nature", "water"],
+    "image_prompt": "A blindingly beautiful woman rising from a pristine pool of water. She radiates an aura of stunning, fey magic."
+  },
+  {
+    "creature_id": "ochre_jelly",
+    "name": "Ochre Jelly",
+    "size": "Medium",
+    "visual_tags": ["ooze", "yellow", "amorphous", "split"],
+    "image_prompt": "A quivering blob of yellowish-orange jelly oozing under a door. It looks acidic and dangerous."
+  },
+  {
+    "creature_id": "octopus_giant",
+    "name": "Giant Octopus",
+    "size": "Large",
+    "visual_tags": ["aquatic", "cephalopod", "tentacles", "giant"],
+    "image_prompt": "A colossal octopus wrapping its tentacles around a small boat. Its beak snaps at the hull."
+  },
+  {
+    "creature_id": "ogre",
+    "name": "Ogre",
+    "size": "Large",
+    "visual_tags": ["giant", "brutish", "ugly", "club"],
+    "image_prompt": "A 9-foot tall, fat, muscular brute with yellowish skin. He wears animal hides and holds a massive wooden club. He looks dull-witted and hungry."
+  },
+  {
+    "creature_id": "ogre_mage",
+    "name": "Ogre Mage",
+    "size": "Large",
+    "visual_tags": ["giant", "blue skin", "horns", "magic"],
+    "image_prompt": "A tall ogre with light blue skin, ivory horns, and intelligent eyes. He wears oriental-style armor and floats in the air, wielding a glaive."
+  },
+  {
+    "creature_id": "orc",
+    "name": "Orc",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "pig-faced", "tusks", "warrior"],
+    "image_prompt": "A stooped humanoid with a pig-like snout and tusks. It has greyish skin, wears dirty armor, and holds a jagged scimitar."
+  },
+  {
+    "creature_id": "otter_giant",
+    "name": "Giant Otter",
+    "size": "Large",
+    "visual_tags": ["mammal", "aquatic", "giant", "playful"],
+    "image_prompt": "A sleek otter the size of a wolf swimming in a river. It has sharp teeth and looks curious."
+  },
+  {
+    "creature_id": "otyugh",
+    "name": "Otyugh",
+    "size": "Large",
+    "visual_tags": ["aberration", "trash", "tentacles", "three legs"],
+    "image_prompt": "A grotesque monster living in a dung heap. It has a bulbous body on three legs, a wide mouth filled with teeth, and three tentacles—two with spikes and one with eyes."
+  },
+  {
+    "creature_id": "owl_giant",
+    "name": "Giant Owl",
+    "size": "Large",
+    "visual_tags": ["bird", "owl", "giant", "nocturnal"],
+    "image_prompt": "A massive owl with a 20-foot wingspan perched silently in a giant tree. Its eyes glow with intelligence."
+  },
+  {
+    "creature_id": "pegasus",
+    "name": "Pegasus",
+    "size": "Large",
+    "visual_tags": ["celestial", "horse", "winged", "white"],
+    "image_prompt": "A magnificent white horse with large, feathered wings. It flies through a blue sky, looking noble and free."
+  },
+  {
+    "creature_id": "peryton",
+    "name": "Peryton",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "hybrid", "stag", "bird"],
+    "image_prompt": "A bizarre creature with the body of a stag and the wings and head of a giant eagle. It casts a strange shadow that looks like a human."
+  },
+  {
+    "creature_id": "piercer",
+    "name": "Piercer",
+    "size": "Small",
+    "visual_tags": ["monstrosity", "stalactite", "camouflage", "dungeon"],
+    "image_prompt": "A creature that looks exactly like a stalactite hanging from a cave ceiling. It has a single eye and is dropping down to impale prey."
+  },
+  {
+    "creature_id": "pike_giant",
+    "name": "Giant Pike",
+    "size": "Large",
+    "visual_tags": ["fish", "aquatic", "predator", "teeth"],
+    "image_prompt": "A monstrous pike fish lurking in weeds. It is long and slender with a mouth full of backward-pointing teeth."
+  },
+  {
+    "creature_id": "pixie",
+    "name": "Pixie",
+    "size": "Small",
+    "visual_tags": ["fey", "tiny", "winged", "invisible"],
+    "image_prompt": "A tiny elf-like creature with translucent wings fluttering in a forest. It holds a tiny bow and is fading into invisibility."
+  },
+  {
+    "creature_id": "porcupine_giant",
+    "name": "Giant Porcupine",
+    "size": "Large",
+    "visual_tags": ["mammal", "rodent", "quills", "giant"],
+    "image_prompt": "A porcupine the size of a bear. Its back is covered in long, black-and-white quills that it can shoot at enemies."
+  },
+  {
+    "creature_id": "portuguese_man_o_war_giant",
+    "name": "Giant Portuguese Man-O-War",
+    "size": "Large",
+    "visual_tags": ["jellyfish", "aquatic", "tentacles", "floating"],
+    "image_prompt": "A gigantic, balloon-like creature floating on the ocean surface. Beneath it, a curtain of paralyzing tentacles drags through the water."
+  },
+  {
+    "creature_id": "pseudo_dragon",
+    "name": "Pseudo-Dragon",
+    "size": "Small",
+    "visual_tags": ["dragon", "tiny", "pet", "sting"],
+    "image_prompt": "A tiny dragon, the size of a cat, perched on a wizard's shoulder. It has red scales and a stinger on the tip of its tail."
+  },
+  {
+    "creature_id": "quasit",
+    "name": "Quasit",
+    "size": "Small",
+    "visual_tags": ["fiend", "demon", "tiny", "shapechanger"],
+    "image_prompt": "A tiny, green-skinned demon with horns and bat wings. It is transforming into a toad."
+  },
+  {
+    "creature_id": "rakshasa",
+    "name": "Rakshasa",
+    "size": "Medium",
+    "visual_tags": ["fiend", "tiger-head", "rich clothes", "backward hands"],
+    "image_prompt": "A humanoid with the head of a tiger, dressed in opulent robes. Its hands are backward, with the palms facing away from the body."
+  },
+  {
+    "creature_id": "ram_giant",
+    "name": "Giant Ram",
+    "size": "Large",
+    "visual_tags": ["mammal", "sheep", "horns", "mountain"],
+    "image_prompt": "A giant ram standing on a rocky peak. Its horns are massive curls, capable of shattering stone."
+  },
+  {
+    "creature_id": "ray",
+    "name": "Manta Ray",
+    "size": "Large",
+    "visual_tags": ["fish", "aquatic", "flat", "wings"],
+    "image_prompt": "A majestic manta ray gliding through the ocean. Its wide wings flap slowly as it filters plankton."
+  },
+  {
+    "creature_id": "remorhaz",
+    "name": "Remorhaz",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "insectoid", "ice", "fire"],
+    "image_prompt": "A massive, centipede-like creature bursting from a glacier. It has a chitinous blue body with red-hot glowing protrusions on its back that melt the ice."
+  },
+  {
+    "creature_id": "rhinoceros",
+    "name": "Rhinoceros",
+    "size": "Large",
+    "visual_tags": ["mammal", "horn", "armored", "charge"],
+    "image_prompt": "A gray rhinoceros charging across a plain. Its head is lowered, pointing its horn at the viewer."
+  },
+  {
+    "creature_id": "roc",
+    "name": "Roc",
+    "size": "Large",
+    "visual_tags": ["bird", "colossal", "eagle", "mountains"],
+    "image_prompt": "A bird of prey so large it is carrying an elephant in its talons. It flies towards a nest on a high mountain peak."
+  },
+  {
+    "creature_id": "rot_grub",
+    "name": "Rot Grub",
+    "size": "Small",
+    "visual_tags": ["insect", "maggot", "flesh-eating", "tiny"],
+    "image_prompt": "Tiny, white, worm-like grubs wriggling in a pile of offal. They look harmless but disturbing."
+  },
+  {
+    "creature_id": "sahuagin",
+    "name": "Sahuagin",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "fish-man", "green", "fins"],
+    "image_prompt": "A fish-like humanoid with green scales, finned limbs, and a tail. It holds a trident and looks fierce and warlike."
+  },
+  {
+    "creature_id": "salamander",
+    "name": "Salamander",
+    "size": "Large",
+    "visual_tags": ["elemental", "fire", "snake body", "spear"],
+    "image_prompt": "A creature with the upper body of a humanoid and the lower body of a snake. It is wreathed in flames and holds a metal spear red-hot from heat."
+  },
+  {
+    "creature_id": "satyr",
+    "name": "Satyr",
+    "size": "Medium",
+    "visual_tags": ["fey", "goat legs", "pipes", "horns"],
+    "image_prompt": "A man with the hairy legs and hooves of a goat. He plays a pan flute in a sunlit glade and has small horns curling from his forehead."
+  },
+  {
+    "creature_id": "scorpion_giant",
+    "name": "Giant Scorpion",
+    "size": "Large",
+    "visual_tags": ["arachnid", "giant", "pincers", "stinger"],
+    "image_prompt": "A massive black scorpion scuttling across desert sand. Its tail is arched over its back, ready to sting."
+  },
+  {
+    "creature_id": "sea_hag",
+    "name": "Sea Hag",
+    "size": "Medium",
+    "visual_tags": ["fey", "hag", "ugly", "aquatic"],
+    "image_prompt": "A wretchedly ugly woman with green, slimy skin and seaweed hair rising from the ocean. Her gaze is terrifying."
+  },
+  {
+    "creature_id": "sea_horse_giant",
+    "name": "Giant Sea Horse",
+    "size": "Large",
+    "visual_tags": ["fish", "aquatic", "mount", "giant"],
+    "image_prompt": "A giant seahorse being ridden by a merman. It swims gracefully through a coral reef."
+  },
+  {
+    "creature_id": "sea_lion",
+    "name": "Sea Lion",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "hybrid", "lion", "fish"],
+    "image_prompt": "A creature with the head and mane of a lion and the body of a large fish. It roars on a rocky coastline."
+  },
+  {
+    "creature_id": "shadow",
+    "name": "Shadow",
+    "size": "Medium",
+    "visual_tags": ["undead", "shadow", "silhouette", "darkness"],
+    "image_prompt": "A sentient, 2D shadow detaching itself from a wall. It is a dark, humanoid silhouette reaching out with chilling claws."
+  },
+  {
+    "creature_id": "shambling_mound",
+    "name": "Shambling Mound",
+    "size": "Large",
+    "visual_tags": ["plant", "swamp", "rotting", "heap"],
+    "image_prompt": "A massive heap of rotting vegetation and vines animated into a humanoid shape. It shambles through a swamp, lightning crackling harmlessly over its wet surface."
+  },
+  {
+    "creature_id": "shark",
+    "name": "Shark",
+    "size": "Large",
+    "visual_tags": ["fish", "aquatic", "predator", "fin"],
+    "image_prompt": "A great white shark swimming in deep blue water. Its mouth is open, revealing rows of serrated teeth."
+  },
+  {
+    "creature_id": "shedu",
+    "name": "Shedu",
+    "size": "Large",
+    "visual_tags": ["celestial", "winged bull", "human head", "beard"],
+    "image_prompt": "A winged bull with a human head, wearing a crown and beard. It stands guard in a desert temple."
+  },
+  {
+    "creature_id": "shrieker",
+    "name": "Shrieker",
+    "size": "Medium",
+    "visual_tags": ["plant", "fungus", "mushroom", "loud"],
+    "image_prompt": "A large, purple mushroom with holes in its cap. It appears to be vibrating, emitting a piercing sonic scream."
+  },
+  {
+    "creature_id": "skunk_giant",
+    "name": "Giant Skunk",
+    "size": "Medium",
+    "visual_tags": ["mammal", "black and white", "spray", "giant"],
+    "image_prompt": "A skunk the size of a wolf, raising its tail to spray a noxious cloud of musk."
+  },
+  {
+    "creature_id": "slithering_tracker",
+    "name": "Slithering Tracker",
+    "size": "Small",
+    "visual_tags": ["ooze", "transparent", "puddle", "ambush"],
+    "image_prompt": "A transparent protoplasm spreading almost invisibly across a dungeon floor, stalking its prey."
+  },
+  {
+    "creature_id": "slug_giant",
+    "name": "Giant Slug",
+    "size": "Large",
+    "visual_tags": ["invertebrate", "slug", "slime", "acid"],
+    "image_prompt": "A gigantic gray slug leaving a trail of slime. It rears up to spit a glob of burning acid."
+  },
+  {
+    "creature_id": "snake_giant",
+    "name": "Giant Constrictor Snake",
+    "size": "Large",
+    "visual_tags": ["reptile", "snake", "giant", "coiled"],
+    "image_prompt": "A massive boa constrictor coiled around a tree branch. Its body is thick with muscle, ready to strike."
+  },
+  {
+    "creature_id": "spectre",
+    "name": "Spectre",
+    "size": "Medium",
+    "visual_tags": ["undead", "ghost", "incorporeal", "evil"],
+    "image_prompt": "A terrifying, semi-transparent undead spirit appearing as a humanoid in tattered robes. It glows with a faint, unholy light and reaches out to drain life."
+  },
+  {
+    "creature_id": "sphinx",
+    "name": "Sphinx (Androsphinx)",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "lion body", "human head", "wings"],
+    "image_prompt": "A majestic sphinx with the body of a lion, eagle wings, and a male human face. It sits on a stone pedestal, looking enigmatic."
+  },
+  {
+    "creature_id": "spider",
+    "name": "Giant Spider",
+    "size": "Large",
+    "visual_tags": ["arachnid", "giant", "web", "fangs"],
+    "image_prompt": "A giant black spider sitting in a massive web stretched between trees. Its fangs drip venom."
+  },
+  {
+    "creature_id": "sprite",
+    "name": "Sprite",
+    "size": "Small",
+    "visual_tags": ["fey", "winged", "tiny", "sword"],
+    "image_prompt": "A tiny fey creature with insect wings, wearing clothes made of leaves. It points a tiny sword threateningly."
+  },
+  {
+    "creature_id": "squid_giant",
+    "name": "Giant Squid",
+    "size": "Large",
+    "visual_tags": ["aquatic", "cephalopod", "giant", "deep sea"],
+    "image_prompt": "A giant squid attacking a ship in a storm. Its massive tentacles wrap around the hull, and its large eye stares from the depths."
+  },
+  {
+    "creature_id": "stag",
+    "name": "Stag",
+    "size": "Large",
+    "visual_tags": ["mammal", "deer", "antlers", "forest"],
+    "image_prompt": "A noble male deer with a large rack of antlers standing in a forest clearing."
+  },
+  {
+    "creature_id": "stirge",
+    "name": "Stirge",
+    "size": "Small",
+    "visual_tags": ["monstrosity", "insect-bird", "proboscis", "blood"],
+    "image_prompt": "A creature resembling a cross between a bat and a mosquito. It flies through the air, seeking blood with its long, needle-like proboscis."
+  },
+  {
+    "creature_id": "strangle_weed",
+    "name": "Strangle Weed",
+    "size": "Medium",
+    "visual_tags": ["plant", "aquatic", "seaweed", "trap"],
+    "image_prompt": "A patch of seaweed that looks suspiciously like grasping tentacles. It floats just below the water surface."
+  },
+  {
+    "creature_id": "su_monster",
+    "name": "Su-Monster",
+    "size": "Medium",
+    "visual_tags": ["monstrosity", "monkey", "hanging", "psionic"],
+    "image_prompt": "A creature resembling a ragged, starving monkey hanging from a tree by its tail. It has a look of intense, psionic concentration."
+  },
+  {
+    "creature_id": "sylph",
+    "name": "Sylph",
+    "size": "Medium",
+    "visual_tags": ["elemental", "fey", "air", "flying"],
+    "image_prompt": "A translucent, beautiful woman with dragonfly wings floating on a breeze. She is surrounded by swirling leaves."
+  },
+  {
+    "creature_id": "thought_eater",
+    "name": "Thought Eater",
+    "size": "Small",
+    "visual_tags": ["aberration", "ethereal", "platypus-like", "transparent"],
+    "image_prompt": "A bizarre, skeletal creature resembling a platypus with a translucent body. It floats through the air, seeking mental energy."
+  },
+  {
+    "creature_id": "tick_giant",
+    "name": "Giant Tick",
+    "size": "Small",
+    "visual_tags": ["arachnid", "parasite", "bloated", "giant"],
+    "image_prompt": "A tick the size of a rock, swollen with blood, dropping from a cave ceiling."
+  },
+  {
+    "creature_id": "tiger",
+    "name": "Tiger",
+    "size": "Large",
+    "visual_tags": ["mammal", "cat", "stripes", "jungle"],
+    "image_prompt": "A large tiger stalking through tall grass. Its orange and black stripes provide camouflage."
+  },
+  {
+    "creature_id": "titan",
+    "name": "Titan",
+    "size": "Large",
+    "visual_tags": ["giant", "god-like", "huge", "perfect"],
+    "image_prompt": "A colossal human-like figure of perfect proportions, dressed in greek-style togas and sandals. He stands taller than a castle."
+  },
+  {
+    "creature_id": "titanothere",
+    "name": "Titanothere",
+    "size": "Large",
+    "visual_tags": ["mammal", "prehistoric", "rhino-like", "horns"],
+    "image_prompt": "A massive prehistoric herbivore with a large, Y-shaped bony horn on its nose. It grazes in a prehistoric valley."
+  },
+  {
+    "creature_id": "toad_giant",
+    "name": "Giant Toad",
+    "size": "Medium",
+    "visual_tags": ["amphibian", "giant", "warty", "mouth"],
+    "image_prompt": "A toad large enough to swallow a halfling whole. It sits motionless, its throat puffing in and out."
+  },
+  {
+    "creature_id": "trapper",
+    "name": "Trapper",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "camouflage", "floor", "mouth"],
+    "image_prompt": "A creature mimicking a stone floor. The center of the floor suddenly opens into a toothy maw as it wraps around its prey."
+  },
+  {
+    "creature_id": "triton",
+    "name": "Triton",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "aquatic", "noble", "trident"],
+    "image_prompt": "A noble aquatic humanoid with silver skin and blue hair. He rides a giant seahorse and blows a conch shell."
+  },
+  {
+    "creature_id": "troglodyte",
+    "name": "Troglodyte",
+    "size": "Medium",
+    "visual_tags": ["humanoid", "reptilian", "subterranean", "smell"],
+    "image_prompt": "A lizard-like humanoid with a spined crest on its head and back. It hides in a cave, emitting a foul, visible stench."
+  },
+  {
+    "creature_id": "troll",
+    "name": "Troll",
+    "size": "Large",
+    "visual_tags": ["giant", "regenerating", "green", "lanky"],
+    "image_prompt": "A tall, lanky, green-skinned giant with a long nose and rubbery skin. It is healing visibly from a sword wound as it attacks with claws."
+  },
+  {
+    "creature_id": "turtle",
+    "name": "Giant Sea Turtle",
+    "size": "Large",
+    "visual_tags": ["reptile", "aquatic", "shell", "swimming"],
+    "image_prompt": "A sea turtle of immense size swimming gracefully. Its shell is covered in barnacles and coral."
+  },
+  {
+    "creature_id": "umber_hulk",
+    "name": "Umber Hulk",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "insectoid", "beetle-like", "confusing gaze"],
+    "image_prompt": "A hulking bipedal monster that looks like a cross between an ape and a beetle. It has massive mandibles and four eyes that seem to bewilder the viewer."
+  },
+  {
+    "creature_id": "unicorn",
+    "name": "Unicorn",
+    "size": "Large",
+    "visual_tags": ["celestial", "horse", "horn", "forest"],
+    "image_prompt": "A beautiful white horse with a single spiraling horn on its forehead. It stands in a magical glade, glowing with a soft light."
+  },
+  {
+    "creature_id": "wasp_giant",
+    "name": "Giant Wasp",
+    "size": "Medium",
+    "visual_tags": ["insect", "giant", "striped", "sting"],
+    "image_prompt": "A wasp the size of a human flying through the air. Its black and yellow abdomen pulses, ready to sting."
+  },
+  {
+    "creature_id": "water_weird",
+    "name": "Water Weird",
+    "size": "Large",
+    "visual_tags": ["elemental", "water", "serpentine", "pool"],
+    "image_prompt": "A serpent made entirely of water rising from a pool to strike. It has a vague face formed from the liquid."
+  },
+  {
+    "creature_id": "weasel_giant",
+    "name": "Giant Weasel",
+    "size": "Medium",
+    "visual_tags": ["mammal", "giant", "long", "predator"],
+    "image_prompt": "A giant weasel with brown fur and a creamy underbelly. It moves with a serpentine grace, hunting prey."
+  },
+  {
+    "creature_id": "whale",
+    "name": "Whale",
+    "size": "Large",
+    "visual_tags": ["mammal", "aquatic", "giant", "ocean"],
+    "image_prompt": "A massive whale breaching the surface of the ocean. Water cascades off its back."
+  },
+  {
+    "creature_id": "wight",
+    "name": "Wight",
+    "size": "Medium",
+    "visual_tags": ["undead", "corporeal", "evil", "barrow"],
+    "image_prompt": "A twisted, mummified corpse with burning eyes. It haunts a barrow mound, reaching out with hands that drain life energy."
+  },
+  {
+    "creature_id": "wind_walker",
+    "name": "Wind Walker",
+    "size": "Large",
+    "visual_tags": ["elemental", "air", "cloud", "ethereal"],
+    "image_prompt": "A vague humanoid shape composed of swirling clouds and wind. It moves effortlessly through the sky."
+  },
+  {
+    "creature_id": "wolf",
+    "name": "Wolf",
+    "size": "Medium",
+    "visual_tags": ["mammal", "canine", "pack", "howling"],
+    "image_prompt": "A gray wolf standing on a rocky outcrop, howling at the moon. Its breath is visible in the cold air."
+  },
+  {
+    "creature_id": "wolverine",
+    "name": "Wolverine",
+    "size": "Small",
+    "visual_tags": ["mammal", "fierce", "claws", "badger-like"],
+    "image_prompt": "A stocky, bear-like wolverine snarling over a kill. It looks incredibly fierce for its size."
+  },
+  {
+    "creature_id": "wraith",
+    "name": "Wraith",
+    "size": "Medium",
+    "visual_tags": ["undead", "shadow", "floating", "evil"],
+    "image_prompt": "A sinister figure composed of black smoke and shadow. Two red points of light serve as eyes beneath a tattered hood."
+  },
+  {
+    "creature_id": "wyvern",
+    "name": "Wyvern",
+    "size": "Large",
+    "visual_tags": ["dragon", "two legs", "sting", "poison"],
+    "image_prompt": "A reptilian beast resembling a dragon but with only two legs and wings. Its tail ends in a thick, scorpion-like stinger dripping poison."
+  },
+  {
+    "creature_id": "xorn",
+    "name": "Xorn",
+    "size": "Medium",
+    "visual_tags": ["elemental", "earth", "three-sided", "mouth"],
+    "image_prompt": "A bizarre creature with a radially symmetrical body made of stone. It has three arms, three legs, and a mouth on top of its head. It is phasing through a rock wall."
+  },
+  {
+    "creature_id": "yeti",
+    "name": "Yeti",
+    "size": "Large",
+    "visual_tags": ["monstrosity", "ape", "snow", "white fur"],
+    "image_prompt": "A terrifying, white-furred ape creature standing in a blizzard. Its eyes are icy blue and it bares sharp teeth."
+  },
+  {
+    "creature_id": "zombie",
+    "name": "Zombie",
+    "size": "Medium",
+    "visual_tags": ["undead", "corpse", "rotting", "shambling"],
+    "image_prompt": "A reanimated corpse shambling forward. Its flesh is gray and rotting, and it stares vacantly. Flies buzz around it."
+  },
+  {
+    "creature_id": "giant_rat",
+    "name": "Giant Rat",
+    "size": "Small",
+    "visual_tags": ["rodent", "giant", "vermin", "sewer"],
+    "image_prompt": "A rat the size of a dog, crouched in a dark corner. Its eyes gleam red and its fur is mangy."
+  },
+  {
+    "creature_id": "hill_giant",
+    "name": "Hill Giant",
+    "size": "Large",
+    "visual_tags": ["giant", "primitive", "club", "hill"],
+    "image_prompt": "A brutish, 10-foot tall giant with a potbelly and sloping forehead. He wears animal skins and drags a massive wooden club behind him."
+  },
+  {
+    "creature_id": "frost_giant",
+    "name": "Frost Giant",
+    "size": "Large",
+    "visual_tags": ["giant", "ice", "blue skin", "beard"],
+    "image_prompt": "A towering giant with blue skin and a beard frosted with ice. He wears fur-lined armor and holds a greataxe made of ice-covered steel."
+  },
+  {
+    "creature_id": "fire_giant",
+    "name": "Fire Giant",
+    "size": "Large",
+    "visual_tags": ["giant", "fire", "black skin", "armor"],
+    "image_prompt": "A massive giant with coal-black skin and flaming red hair. He wears heavy plate armor and works at a massive anvil, surrounded by lava."
+  },
+  {
+    "creature_id": "black_dragon_adult",
+    "name": "Adult Black Dragon",
+    "size": "Large",
+    "visual_tags": ["dragon", "swamp", "acid", "skull face"],
+    "image_prompt": "A skeletal-looking black dragon rising from a swamp. Acid drips from its jaws, dissolving the vegetation around it. Its horns curve forward like a bull's."
+  },
+  {
+    "creature_id": "green_dragon_adult",
+    "name": "Adult Green Dragon",
+    "size": "Large",
+    "visual_tags": ["dragon", "forest", "poison", "cunning"],
+    "image_prompt": "A large green dragon coiled around a giant tree in an ancient forest. It exhales a cloud of chlorine gas and looks down with a cunning expression."
+  },
+  {
+    "creature_id": "golem",
+    "name": "Stone Golem",
+    "size": "Large",
+    "visual_tags": ["construct", "stone", "statue", "runes"],
+    "image_prompt": "A massive statue carved from granite, animated by magic. It has a stoic, carved face and heavy limbs. Ancient runes glow faintly on its chest."
+  }
+]

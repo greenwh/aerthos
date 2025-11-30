@@ -1,0 +1,40 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_01",
+  "title": "The Goblin Refugees",
+  "act": 1,
+  "recommended_level": 1,
+  "hub_id": "oakhaven",
+  "intro_text": "The town of Oakhaven buzzes with worried whispers. For three weeks now, merchant caravans traveling the mountain road have been ambushed. Not by bandits seeking gold, but by goblins—desperate, organized goblins taking food and supplies.\n\nThe town militia is too weak to handle the threat. The mayor has posted a bounty: clear the old Keep of Kaldor, six miles north, where the goblin refugees have made their lair.",
+  "briefing": {
+    "quest_giver": "The Guide",
+    "location": "The Dirty Mug tavern",
+    "dialogue": "Word is, goblins have taken over the old Keep of Kaldor. Not your usual goblin raiders though—these ones seem desperate, organized. The caravans they hit? They take food, not gold. Strange, that. Someone—or something—drove them out of the mountains. I'd wager you'll find more than just hungry goblins up there."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/keep_of_kaldor.json",
+    "name": "The Ruined Keep of Kaldor",
+    "theme": "ruins",
+    "levels": 2,
+    "boss": "Grukk the Hobgoblin Chief"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "grukk_hobgoblin_chief"
+  },
+  "completion_text": "With Grukk defeated, the goblin threat ends. The refugees scatter into the wilderness, leaderless and broken.\n\nBut among Grukk's possessions, you find something disturbing: a bronze medallion bearing a serpent coiled around an eye. It pulses with cold, malevolent energy. The goblins weren't just refugees—someone drove them here deliberately. Someone with dark purpose.\n\nYou pocket the medallion. Perhaps the authorities in Oakhaven will know what it means.",
+  "rewards": {
+    "xp_bonus": 500,
+    "gold_bonus": 100,
+    "items": ["dagger_plus_1"],
+    "unlocks": ["episode_02"],
+    "story_flags": ["found_serpent_medallion", "goblin_threat_ended"]
+  },
+  "rumors": [
+    "The goblins came from the High Pass. Something scared them out of their mountain homes.",
+    "Old Kaldor fell to plague decades ago. The keep's been abandoned ever since.",
+    "Silas has been buying goblin weapons lately. Strange business for an equipment merchant."
+  ],
+  "prerequisites": []
+}

@@ -1,0 +1,7 @@
+  {
+    "item_id": "",
+    "name": "",
+    "size": "",
+    "visual_tags": [""],
+    "image_prompt": ""
+  },

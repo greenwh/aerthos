@@ -1,0 +1,46 @@
+{
+  "$schema": "campaign_template_v1",
+  "id": "serpents_shadow",
+  "name": "The Serpent's Shadow",
+  "description": "A 10-episode campaign exploring the threat of the Cult of the Serpent Eye across all regions of Aerthos.",
+  "author": "Aerthos Development Team",
+  "version": "1.0",
+  "recommended_party_size": [4, 6],
+  "level_range": [1, 12],
+  "episodes": [
+    "episode_01",
+    "episode_02",
+    "episode_03",
+    "episode_04",
+    "episode_05",
+    "episode_06",
+    "episode_07",
+    "episode_08",
+    "episode_09",
+    "episode_10"
+  ],
+  "starting_hub": "oakhaven",
+  "starting_episode": "episode_01",
+  "factions": {
+    "ironfast_dwarves": {
+      "name": "Ironfast Dwarves",
+      "description": "Ancient dwarven holds in the Shattered Peaks",
+      "starting_reputation": 0
+    },
+    "silvan_concordance": {
+      "name": "Silvan Concordance",
+      "description": "Elven kingdoms of the ancient forests",
+      "starting_reputation": 0
+    },
+    "free_cities": {
+      "name": "Free Cities of Eldoria",
+      "description": "Human city-states ruled by merchant guilds",
+      "starting_reputation": 0
+    },
+    "lizardfolk_tribes": {
+      "name": "Lizardfolk Tribes",
+      "description": "Swamp-dwelling reptilian peoples",
+      "starting_reputation": 0
+    }
+  }
+}
