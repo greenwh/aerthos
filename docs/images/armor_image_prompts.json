@@ -1,0 +1,107 @@
+[
+  {
+    "item_id": "padded",
+    "name": "Padded Armor",
+    "size": "garment",
+    "visual_tags": ["cloth", "quilted", "minimal protection", "light armor", "fantasy", "gambeson"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Padded Armor (Gambeson). The armor is a thick, quilted cloth garment, showing stitching patterns and minimal padding, worn by a humble adventurer. Simple, utilitarian design, neutral earth tones. Full shot, plain background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "leather",
+    "name": "Leather Armor",
+    "size": "garment",
+    "visual_tags": ["leather", "boiled leather", "flexible", "light armor", "fantasy", "cuir bouilli"],
+    "image_prompt": "A detailed, realistic illustration of fantasy Leather Armor. The armor is made of boiled and treated dark brown leather, consisting of a breastplate, pauldrons, and tassets. It looks flexible and quiet, perfect for a rogue or druid. High-quality texture, studio lighting, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "studded_leather",
+    "name": "Studded Leather",
+    "size": "garment",
+    "visual_tags": ["leather", "metal studs", "reinforced", "light armor", "fantasy", "rogue gear"],
+    "image_prompt": "A detailed, realistic illustration of fantasy Studded Leather Armor. Dark, hardened leather garment reinforced all over with small, dull metal studs. The design is practical and rugged, suitable for a thief or adventurer. Close-up on the texture and detail of the studs, studio lighting, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_mail",
+    "name": "Ring Mail",
+    "size": "garment",
+    "visual_tags": ["leather", "metal rings", "sewn rings", "light armor", "hybrid armor", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of fantasy Ring Mail. A dark leather garment with many small, simple metal rings sewn directly onto the surface of the leather for reinforcement. The rings should be visible but not fully interlinked like chainmail. Historical fantasy aesthetic, studio shot, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scale_mail",
+    "name": "Scale Mail",
+    "size": "full body",
+    "visual_tags": ["metal scales", "leather backing", "heavy armor", "overlapping", "plated", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of fantasy Scale Mail. Armor constructed from numerous small, overlapping, polished steel scales sewn onto a visible, rugged leather backing. The scales should create a protective, shimmering pattern. Full body view, strong light to show metal reflections, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "chain_mail",
+    "name": "Chain Mail",
+    "size": "full body",
+    "visual_tags": ["interlocking rings", "metal", "flexible", "heavy armor", "maille", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Chain Mail hauberk. A garment made entirely of closely interlocking steel rings, appearing heavy but flexible, draped over a stand or a simple undergarment. High detail on the texture of the maille, medieval fantasy style, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "splint_mail",
+    "name": "Splint Mail",
+    "size": "full body",
+    "visual_tags": ["metal strips", "riveted", "leather backing", "heavy armor", "iron", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of fantasy Splint Mail. Long, vertical metal strips (splints) of dull steel are visibly riveted to a dark leather or cloth backing, covering the torso and limbs. The armor looks rigid and protective. Studio shot with emphasis on the riveting and material contrast, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "banded_mail",
+    "name": "Banded Mail",
+    "size": "full body",
+    "visual_tags": ["overlapping bands", "chain mail backing", "heavy armor", "metal", "layered", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of fantasy Banded Mail. Overlapping horizontal bands of polished metal are layered over and riveted to an underlayer of fine chain mail. The armor should look bulky and heavily protective. Full suit depiction, high fantasy aesthetic, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "plate_mail",
+    "name": "Plate Mail",
+    "size": "full body",
+    "visual_tags": ["full suit", "shaped metal plates", "very heavy armor", "articulated", "polished steel", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of a magnificent fantasy Plate Mail suit. A full suit of shaped and fitted, highly polished steel plates, fully articulated at the joints. The design should be ornate, powerful, and imposing, suitable for a paladin or knight. Displayed on a mannequin in a heraldic pose, dramatic lighting, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "shield_small_wood",
+    "name": "Small Wooden Shield",
+    "size": "handheld",
+    "visual_tags": ["small", "round", "wood", "simple", "light shield", "rustic"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Small Wooden Shield. A simple, round buckler-style shield made of plain, rough-hewn wood planks, perhaps with a basic painted design or battle damage. Rustic and utilitarian appearance. Isolated on a neutral background, top-down view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "shield_small",
+    "name": "Small Shield",
+    "size": "handheld",
+    "visual_tags": ["small", "metal-rimmed", "buckler", "leather boss", "light shield", "adventurer gear"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Small Shield. A small, round shield with a polished steel rim and a central metal boss, likely made of wood covered in reinforced leather. Practical and easily maneuverable. Studio shot, high detail on the materials, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "shield_medium",
+    "name": "Medium Shield",
+    "size": "handheld",
+    "visual_tags": ["medium size", "kite shield shape", "standard", "metal boss", "heater shield", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Medium Shield (Heater Shield shape). A standard, well-made shield of medium size, painted with a simple heraldic design (e.g., a griffin or a sword). It has a reinforced metal edge and a prominent central boss. Studio lighting, dramatic fantasy style, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "shield_large",
+    "name": "Large Shield",
+    "size": "handheld",
+    "visual_tags": ["large", "tower shield", "heavy", "defensive", "metal reinforced", "full coverage"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Large Shield (Tower Shield). A tall, formidable rectangular shield providing near-full body coverage. Heavy steel reinforcement, rugged surface, and a dented, battle-worn appearance. Emphasize its size and defensive capability. Standing upright on a stone floor, dramatic lighting, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "helmet_small",
+    "name": "Small Helmet",
+    "size": "headwear",
+    "visual_tags": ["leather cap", "coif", "simple headwear", "light protection", "flexible"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Small Helmet. A simple leather cap or padded coif, providing minimal head protection. The leather is soft and worn. Isolated item, top-down view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "helmet_great",
+    "name": "Great Helmet",
+    "size": "headwear",
+    "visual_tags": ["full metal helmet", "great helm", "face protection", "heavy headwear", "crusader style", "fantasy"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Great Helmet. A massive, cylindrical metal helmet that fully encases the head, featuring narrow eye-slits and breathing holes. Highly polished or slightly tarnished steel. The design is imposing and medieval, suitable for a knight. Studio shot, high contrast, photorealistic RPG item illustration."
+  }
+]

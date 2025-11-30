@@ -183,7 +183,12 @@ def main():
             ('Magic Functionality Tests', 'test_magic_functionality.py'),
             ('Phase 3 Integration Tests', 'test_phase3_integration.py'),
             ('Village System Tests', 'test_village_system.py'),
-            ('Multi-Level Dungeon Tests', 'test_multilevel_dungeons.py')
+            ('Multi-Level Dungeon Tests', 'test_multilevel_dungeons.py'),
+            ('Campaign System Tests', 'test_campaign.py'),
+            ('Episode System Tests', 'test_episode.py'),
+            ('City Hub System Tests', 'test_city_hub.py'),
+            ('Campaign Manager Tests', 'test_campaign_manager.py'),
+            ('Hub Menu System Tests', 'test_hub_menu.py')
         ]
 
         for suite_name, pattern in unit_tests:

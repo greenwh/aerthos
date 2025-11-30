@@ -12,6 +12,8 @@ from .campaign import Campaign
 from .episode import Episode, EpisodeBriefing, DungeonReference, CompletionCriteria, EpisodeRewards
 from .city_hub import CityHub, MenuOption, ShopConfig, InnConfig, TempleConfig, GuildConfig, NPC
 from .campaign_manager import CampaignManager, CampaignSummary
+from .hub_interfaces import ShopInterface, InnInterface, TempleInterface
+from .hub_menu import HubMenuSystem, HubMenuResult
 
 __all__ = [
     'Campaign',
@@ -29,4 +31,9 @@ __all__ = [
     'NPC',
     'CampaignManager',
     'CampaignSummary',
+    'ShopInterface',
+    'InnInterface',
+    'TempleInterface',
+    'HubMenuSystem',
+    'HubMenuResult',
 ]

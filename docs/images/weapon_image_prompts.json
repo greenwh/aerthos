@@ -1,0 +1,261 @@
+[
+  {
+    "item_id": "battle_axe",
+    "name": "Battle Axe",
+    "size": "large",
+    "visual_tags": ["two-handed", "heavy axe", "long haft", "wide crescent blade", "slashing", "fantasy weapon"],
+    "image_prompt": "A detailed, realistic illustration of a two-handed fantasy Battle Axe. It features a heavy, wide steel crescent blade mounted on a 4-foot long wooden haft. The weapon looks rugged and designed for powerful, cleaving blows. Isolated on a dark background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "hand_axe",
+    "name": "Hand Axe",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "throwing", "short haft", "small blade", "utility axe", "compact"],
+    "image_prompt": "A detailed, realistic illustration of a one-handed fantasy Hand Axe. It has a practical, balanced design with a sharp steel blade and a short, simple wooden handle, ideal for both melee and throwing. Isolated on a neutral background, high detail on wood grain and metal texture, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "club",
+    "name": "Club",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "throwing", "bludgeoning", "simple weapon", "crude wood", "improvised"],
+    "image_prompt": "A detailed, realistic illustration of a simple fantasy Club. A short, rough-hewn piece of heavy, dark wood, thicker at one end, suitable for bludgeoning. Looks crude and primitive, perhaps reinforced with iron bands or studded. Isolated on a plain background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "dagger",
+    "name": "Dagger",
+    "size": "small",
+    "visual_tags": ["one-handed", "throwing", "piercing", "short blade", "utility", "concealable"],
+    "image_prompt": "A detailed, realistic illustration of a classic fantasy Dagger. A short, straight, double-edged steel blade with a simple hilt and pommel, perfect for stabbing or throwing. High detail on the polished blade and worn leather grip. Isolated on a dark background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "dart",
+    "name": "Dart",
+    "size": "small projectile",
+    "visual_tags": ["throwing", "light", "fletched", "small point", "ammunition"],
+    "image_prompt": "A detailed, realistic illustration of a bundle of fantasy Darts. Small, slender projectiles with sharp metal points and simple feather fletching, grouped together. Show the light, balanced design for throwing. Isolated on a neutral background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "footmans_flail",
+    "name": "Footman's Flail",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "bludgeoning", "spiked head", "heavy chain", "medieval flail"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Footman's Flail. A long, sturdy wooden handle connected by a heavy metal chain to a single, large, spiked or knobbed steel ball. The weapon looks brutal and cumbersome. Isolated on a stone background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "horsemans_flail",
+    "name": "Horseman's Flail",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "bludgeoning", "shorter chain", "lighter head", "cavalry weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Horseman's Flail. A shorter, more maneuverable version of a flail with a lighter, perhaps less-spiked metal head and chain, designed for use on horseback. Emphasize its balance and speed. Isolated on a neutral background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "halberd",
+    "name": "Halberd",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "long pole", "axe blade", "pike point", "medieval polearm"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Halberd. A formidable 5-foot long polearm with a complex steel head featuring an axe blade, a sharp spike (pike), and a back hook, mounted on a wooden pole. Studio shot, full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "hammer",
+    "name": "Hammer",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "throwing", "warhammer", "bludgeoning", "metal head"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Warhammer. A short, sturdy wooden haft with a heavy, angular steel head, featuring a blunt striking face and a potential spike or beak on the reverse, suitable for throwing and melee. Isolated on a wooden surface, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "javelin",
+    "name": "Javelin",
+    "size": "projectile",
+    "visual_tags": ["throwing", "melee", "light spear", "fletching", "long range"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Javelin. A thin, light spear with a sharp, leaf-shaped metal head and simple fletching near the base, designed primarily for long-distance throwing. Isolated, in flight pose, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "footmans_mace",
+    "name": "Footman's Mace",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "heavy", "flanged head", "bludgeoning", "war mace"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Footman's Mace. A sturdy weapon with a heavy, multi-flanged steel head on a wooden or metal shaft, designed to deliver devastating bludgeoning damage. Looks imposing and functional. Isolated on a dark background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "horsemans_mace",
+    "name": "Horseman's Mace",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "lighter", "compact", "small flanged head", "cavalry weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Horseman's Mace. A lighter, shorter, more compact mace with a smaller flanged head, optimized for quick, repeated strikes from horseback. Isolated, showing the balance point, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "morning_star",
+    "name": "Morning Star",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "spiked ball head", "bludgeoning", "heavy", "medieval weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Morning Star. A long, heavy wooden shaft topped with a large, solid metal ball covered in numerous sharp spikes (distinct from a flail). The design is menacing and medieval. Isolated on a stone texture, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "military_pick_footmans",
+    "name": "Military Pick (Footman's)",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "piercing", "long handle", "armor piercing", "sharp spike"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Footman's Military Pick. A weapon with a long wooden haft and a narrow, sharply pointed steel beak or spike on the head, designed to punch through armor. Looks formidable and heavy-duty. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "quarterstaff",
+    "name": "Quarterstaff",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "long pole", "simple wood", "bludgeoning", "monk weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Quarterstaff. A very long (7-foot), straight pole of sturdy, polished wood, simple and unadorned, perhaps with metal caps on the ends for extra impact. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scimitar",
+    "name": "Scimitar",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "slashing", "curved blade", "oriental sword", "swift"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Scimitar. A single-edged sword with a distinct, elegant, curved steel blade, a simple crossguard, and a balanced handle. Emphasis on the sharpness of the curve and the swiftness it implies. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "spear",
+    "name": "Spear",
+    "size": "polearm",
+    "visual_tags": ["one-handed", "two-handed", "throwing", "very long shaft", "simple pointed head", "versatile"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Spear. A very long (10-foot) wooden shaft topped with a simple, utilitarian metal leaf-shaped point. Looks versatile for thrusting, throwing, or bracing. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "bastard_sword",
+    "name": "Bastard Sword",
+    "size": "hand-and-a-half",
+    "visual_tags": ["one-handed", "two-handed", "long blade", "hand-and-a-half grip", "slashing", "versatile sword"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Bastard Sword (Hand-and-a-Half Sword). A long, straight, double-edged steel blade with a long grip and prominent pommel that allows for both one-handed and two-handed use. High-fantasy style, isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "broad_sword",
+    "name": "Broad Sword",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "slashing", "wide blade", "heavy", "knight's sword"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Broad Sword. A classic one-handed sword with a wide, straight, heavy-looking steel blade and a sturdy crossguard. Emphasize the blade's width and weight. Isolated on a forge background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "long_sword",
+    "name": "Long Sword",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "slashing", "standard sword", "balanced", "classic fantasy weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Long Sword. A classic, straight, double-edged steel sword with a clean, functional design, balanced for one-handed combat. The blade should be highly polished. Isolated, high-quality studio shot, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "short_sword",
+    "name": "Short Sword",
+    "size": "handheld",
+    "visual_tags": ["one-handed", "slashing", "piercing", "compact", "sidearm", "rogue weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Short Sword. A compact, straight, double-edged blade with a simple, small hilt, ideal for close-quarters fighting or as a secondary weapon. Isolated, top-down view to show its relative shortness, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "two_handed_sword",
+    "name": "Two-Handed Sword",
+    "size": "massive",
+    "visual_tags": ["two-handed", "slashing", "greatsword", "very long", "heavy", "imposing"],
+    "image_prompt": "A detailed, realistic illustration of a colossal fantasy Two-Handed Sword (Greatsword). A massive, very long (6-foot) blade with a lengthy grip, demanding two hands to wield. The sword is heavy and imposing. Full length view, leaning against a wall, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "trident",
+    "name": "Trident",
+    "size": "polearm",
+    "visual_tags": ["one-handed", "two-handed", "throwing", "three-pronged", "spear-like", "naval weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Trident. A spear-like weapon with a 6-foot wooden shaft and a head consisting of three sharp, metal prongs. Looks balanced for melee and throwing, with a nautical/aquatic theme implied. Isolated on a plain background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "long_bow",
+    "name": "Long Bow",
+    "size": "large",
+    "visual_tags": ["two-handed", "missile", "archery", "tall", "wooden bow", "powerful"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Long Bow. A tall, simple, and powerful wooden bow made from a single stave of dark wood, unstrung, showing the smooth curves and the material quality. Isolated next to a quiver of arrows, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "short_bow",
+    "name": "Short Bow",
+    "size": "handheld",
+    "visual_tags": ["two-handed", "missile", "compact", "wooden bow", "horse archery"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Short Bow. A compact, highly curved wooden bow, strung and ready for use. Looks lighter and more maneuverable than a longbow. Isolated, studio shot, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "light_crossbow",
+    "name": "Light Crossbow",
+    "size": "handheld",
+    "visual_tags": ["two-handed", "missile", "wooden stock", "simple bow", "fast reload"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Light Crossbow. A simple, wooden stock with a small metal prod (bow) and basic firing mechanism, looking light and easy to handle. Isolated with a few quarrels, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "heavy_crossbow",
+    "name": "Heavy Crossbow",
+    "size": "large",
+    "visual_tags": ["two-handed", "missile", "large stock", "powerful", "slow reload", "siege weapon details"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Heavy Crossbow. A robust, large wooden stock with a heavy metal prod, featuring a visible, durable cocking mechanism (like a windlass or goat's foot lever). Looks powerful but slow to reload. Isolated, emphasizing its size and complexity, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sling",
+    "name": "Sling",
+    "size": "small",
+    "visual_tags": ["one-handed", "missile", "rope weapon", "leather pouch", "simple"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Sling. A simple weapon made of woven rope or cord with a central leather pouch for holding a bullet or stone. Shown coiled, alongside several sling bullets. Isolated on a simple background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "bardiche",
+    "name": "Bardiche",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "very large axe blade", "cleaving", "slashing polearm"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Bardiche. A 5-foot long polearm with a massive, cleaver-like, elongated axe head that is often attached to the wooden pole at two points. Emphasize the size and weight of the blade. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "glaive",
+    "name": "Glaive",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "long pole", "single-edged blade", "sword on a stick"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Glaive. An 8-foot long polearm with a long, sharp, single-edged blade mounted on the end, resembling a sword blade on a pole. Looks elegant and deadly. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "guisarme",
+    "name": "Guisarme",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "hooked blade", "cutting and pulling", "agricultural tool weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Guisarme. A 6-foot long polearm with a pointed blade that has a prominent hook or prong on the side, designed for cutting and dismounting riders. Rugged and practical. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "partisan",
+    "name": "Partisan",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "ornate spear head", "small wings", "parade weapon"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Partisan. A 7-foot long polearm with a large, double-edged, leaf-shaped spear head that has two small, upward-curving projections (wings) at its base. Looks formal and piercing. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ranseur",
+    "name": "Ranseur",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "three-pronged head", "thrusting", "piercing polearm"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Ranseur. An 8-foot long polearm with a central spike and two sharp, side-curving prongs near its base, giving it a three-pronged look, excellent for piercing and parrying. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "voulge",
+    "name": "Voulge",
+    "size": "polearm",
+    "visual_tags": ["two-handed", "reach", "heavy axe-blade", "slashing", "military fork-like"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Voulge. An 8-foot long polearm with a heavy, broad, slightly curved blade that resembles an agricultural implement or war scythe, affixed to the pole. Looks rustic and brutal. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "light_lance",
+    "name": "Light Lance",
+    "size": "mounted weapon",
+    "visual_tags": ["mounted", "charge", "long pole", "light", "cavalry weapon", "wooden shaft"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Light Lance. A very long (12-foot), relatively slender wooden pole with a simple, sharp metal head, designed for mounted charges and quick maneuvers. Isolated, long view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "heavy_lance",
+    "name": "Heavy Lance",
+    "size": "mounted weapon",
+    "visual_tags": ["mounted", "charge", "very long pole", "heavy", "powerful", "vamplate"],
+    "image_prompt": "A detailed, realistic illustration of a fantasy Heavy Lance. A massive, very long (14-foot), thick wooden pole with a heavy, reinforced metal head and a protective hand-guard (vamplate). Designed for maximum impact in a cavalry charge. Isolated, emphasizing its size and weight, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "unarmed",
+    "name": "Unarmed (Fist/Open Hand)",
+    "size": "body part",
+    "visual_tags": ["nonlethal", "bare hand", "martial arts", "fist", "strike"],
+    "image_prompt": "A close-up, dynamic, realistic illustration of a powerful, bare, clenched human fist in mid-strike. The hand should look strong, slightly scarred, and capable of unarmed combat. Focus on muscle tension and skin texture, cinematic lighting, photorealistic RPG character detail."
+  }
+]

@@ -1,0 +1,576 @@
+[
+  {
+    "item_id": "potion_animal_control",
+    "name": "Potion of Animal Control",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "swirling liquid", "amber", "beast control", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Animal Control. The liquid inside the glass vial is a swirling amber or moss-green color, with faint images of animal paws or eyes visible within the swirl. The vial has an ornate stopper and a faint, natural aura. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_clairaudience",
+    "name": "Potion of Clairaudience",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "luminous blue", "aural magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Clairaudience. The liquid is a clear, luminous, deep blue, with faint, soundwave-like ripples constantly moving through it. The glass vial is delicate and has a silver stopper. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_clairvoyance",
+    "name": "Potion of Clairvoyance",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "luminous purple", "scrying magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Clairvoyance. The liquid is a vibrant, luminous purple, with faint, smoky spirals swirling as if depicting distant visions. The vial is elegantly shaped and sealed with wax. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_climbing",
+    "name": "Potion of Climbing",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "viscous", "sticky brown", "adhesion magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Climbing. The liquid is a viscous, dark reddish-brown, looking almost sticky, with tiny crystal motes sinking slowly through it. The vial is rugged and stoppered with a simple wooden cork. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_diminution",
+    "name": "Potion of Diminution",
+    "size": "vial",
+    "visual_tags": ["potion", "tiny vial", "clear sparkling", "shrink magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Diminution. A very small, delicate glass vial holding a perfectly clear liquid that sparkles intensely, as if miniature light sources are contained within. Isolated on a neutral background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_esp",
+    "name": "Potion of ESP",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "swirling grey", "mind reading", "psychic magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of ESP (Extra-Sensory Perception). The liquid is a smoky, swirling grey that seems to contain faint, shifting shadow-shapes, representing thoughts. The vial is made of dark, opaque glass. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_extra_healing",
+    "name": "Potion of Extra-Healing",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "vibrant red", "bubbling", "strong healing", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Extra-Healing. A standard, stout vial containing a highly saturated, vibrant, and gently bubbling red liquid that radiates a faint glow, symbolizing potent restorative power. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_flying",
+    "name": "Potion of Flying",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "ethereal blue", "vapor", "flight magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Flying. The liquid is a light, ethereal sky-blue, with delicate white wisps of vapor constantly rising and dissipating from the liquid's surface inside the bottle. The vial is long and slender. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_gaseous_form",
+    "name": "Potion of Gaseous Form",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "smoky grey", "dissolving", "gas transformation", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Gaseous Form. The liquid is a dense, smoky grey cloud that constantly churns, seeming to have no fixed volume. It is contained in a tightly corked, bulbous flask. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_giant_strength",
+    "name": "Potion of Giant Strength",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "deep crimson", "muscle power", "strength enhancement", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Giant Strength. The liquid is a thick, deep crimson or burgundy, radiating a visible, intimidating aura of latent power. The vial is square and rugged, suggesting brute force. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_healing",
+    "name": "Potion of Healing",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "glowing red", "basic healing", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Healing. A simple, small glass vial containing a gently glowing, translucent red liquid, representing standard restorative magic. Isolated on a wooden table, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_heroism",
+    "name": "Potion of Heroism",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "bright gold", "courage", "heroic aura", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Heroism. The liquid is a brilliant, reflective gold or bright amber, radiating a faint, warm, encouraging light. The vial is shaped like a small trophy or shield. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_invisibility",
+    "name": "Potion of Invisibility",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "perfectly clear", "light bending", "stealth magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Invisibility. The glass vial is clearly present, but the liquid inside is perfectly clear and seems to subtly distort the objects behind it, bending the light unnaturally. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_levitation",
+    "name": "Potion of Levitation",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "silver liquid", "floating", "anti-gravity", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Levitation. The liquid is a shimmering silver or light blue, visibly suspended a tiny distance above the bottom of the vial, defying gravity. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_speed",
+    "name": "Potion of Speed",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "electric yellow", "fizzing", "swiftness", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Speed. The liquid is an electric, neon yellow or bright green, constantly fizzing and streaking rapidly within the bottle, suggesting frenetic energy. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_poison",
+    "name": "Potion of Poison",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "dark murky green", "skull label", "lethal", "cursed item", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Poison. A menacing vial containing a dark, viscous black or murky green liquid, with a small, crude skull and crossbones emblem painted on the glass. The liquid looks foul and deadly. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "potion_water_breathing",
+    "name": "Potion of Water Breathing",
+    "size": "vial",
+    "visual_tags": ["potion", "vial", "deep aqua", "ocean water", "gills magic", "fantasy liquid"],
+    "image_prompt": "A highly detailed, realistic illustration of a fantasy Potion of Water Breathing. The liquid is a deep, tranquil aqua or turquoise color, swirling slowly like a miniature deep-sea current. The vial is shaped like a fish or a seashell. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_protection_demons",
+    "name": "Protection from Demons Scroll",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "demon-warding runes", "abjuration magic"],
+    "image_prompt": "A realistic illustration of a magical Scroll of Protection from Demons. It is a roll of ancient parchment tied with black cord, prominently displaying potent, glowing silver or red celestial runes and holy symbols meant to repel infernal beings. Isolated on a dark, stone altar, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_protection_devils",
+    "name": "Protection from Devils Scroll",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "devil-warding sigils", "divine magic"],
+    "image_prompt": "A realistic illustration of a magical Scroll of Protection from Devils. A roll of fine, white parchment, tied with gold thread. The visible writing includes elaborate, complex, circular sigils and script in blue ink, designed for warding against lawful evil outsiders. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_protection_elementals",
+    "name": "Protection from Elementals Scroll",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "elemental symbols", "warding magic"],
+    "image_prompt": "A realistic illustration of a magical Scroll of Protection from Elementals. The parchment shows diagrams of the four elemental symbols (air, earth, fire, water) bound together by glowing runic text, signifying protection from all four elements. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_protection_lycanthropes",
+    "name": "Protection from Lycanthropes Scroll",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "silver ink", "wolfsbane symbols", "beast curse protection"],
+    "image_prompt": "A realistic illustration of a magical Scroll of Protection from Lycanthropes. A roll of aged parchment where the protective script and symbols are written in pure silver ink, perhaps with an image of a full moon being negated. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_protection_magic",
+    "name": "Protection from Magic Scroll",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "metal bands", "anti-magic runes", "abjuration"],
+    "image_prompt": "A realistic illustration of a powerful Scroll of Protection from Magic. The rolled parchment is visibly wrapped in thin, engraved bands of cold iron, with arcane nullification runes carved directly into the metal and the exposed parchment edges. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_protection_undead",
+    "name": "Protection from Undead Scroll",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "holy symbols", "necrotic warding", "cleric magic"],
+    "image_prompt": "A realistic illustration of a magical Scroll of Protection from Undead. A clean, sacred-looking parchment, tied with a white silk ribbon. Visible script includes stylized holy symbols and burning golden text, warding against necrotic forces. Isolated on velvet cloth, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "scroll_spell_general",
+    "name": "Spell Scroll (General)",
+    "size": "scroll",
+    "visual_tags": ["scroll", "parchment", "rolled", "arcane script", "magic item"],
+    "image_prompt": "A realistic illustration of a generic Spell Scroll. A simple roll of finely prepared parchment, with a small section unrolled to reveal complex, elegant, illegible arcane script written in vibrant blue-black ink, glowing faintly with latent power. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus_generic",
+    "name": "Sword +1, +2, +3, +4, +5 (Generic)",
+    "size": "longsword",
+    "visual_tags": ["magic sword", "longsword", "glowing blade", "enchanted", "polished steel"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +1. The sword is a beautifully crafted longsword with a polished steel blade that emits a faint, steady, silver or blue magical light along its edges, indicating its non-specific enchantment. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus1_vs_magic_users",
+    "name": "Sword +1, +2 vs Magic-Using Creatures",
+    "size": "longsword",
+    "visual_tags": ["magic sword", "arcane runes", "anti-magic", "glowing inscription"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +1, +2 vs Magic-Using Creatures. The blade is inscribed with barely visible, ancient runes that glow briefly with a white-hot light when viewed closely, signifying its power against spellcasters. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus1_vs_lycanthropes",
+    "name": "Sword +1, +3 vs Lycanthropes",
+    "size": "broadsword",
+    "visual_tags": ["magic sword", "silvered blade", "wolfsbane", "holy symbols", "lycanthrope bane"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +1, +3 vs Lycanthropes. The broadsword blade is polished to a high-sheen silver, and the pommel is subtly shaped like a stylized wolf's head or paw, signifying its potent effect against shapechangers. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus1_vs_regenerating",
+    "name": "Sword +1, +3 vs Regenerating Creatures",
+    "size": "bastard_sword",
+    "visual_tags": ["magic sword", "serrated edge", "vicious", "anti-regeneration", "dark enchantment"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +1, +3 vs Regenerating Creatures. The bastard sword has a wickedly sharp, subtly serrated edge and a faint, dark, anti-life aura around the blade, suggesting its power to prevent healing. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus1_flame_tongue",
+    "name": "Sword +1, Flame Tongue",
+    "size": "longsword",
+    "visual_tags": ["magic sword", "fire magic", "wreathed in flames", "elemental weapon", "flaming blade"],
+    "image_prompt": "A highly detailed, dramatic illustration of a magical Sword +1, Flame Tongue. The double-edged steel blade is wreathed in flickering, controlled red and orange flames, radiating heat and light. Isolated, cinematic lighting, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus1_luck_blade",
+    "name": "Sword +1, Luck Blade",
+    "size": "short_sword",
+    "visual_tags": ["magic sword", "elegant", "lucky charm", "gold inlay", "well-maintained"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +1, Luck Blade. An elegant, perfectly balanced short sword with a flawless blade and hilt. The crossguard or pommel has a small, subtle inlay of a four-leaf clover or lucky star, subtly shimmering. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus2_giant_slayer",
+    "name": "Sword +2, Giant Slayer",
+    "size": "two_handed_sword",
+    "visual_tags": ["magic sword", "massive greatsword", "giant slaying", "heavy", "imposing"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +2, Giant Slayer. A massive, imposing Two-Handed Sword (Greatsword). The enormous blade has been clearly tempered for immense strength, and the hilt is engraved with figures of colossal beasts and monsters being defeated. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus2_dragon_slayer",
+    "name": "Sword +2, Dragon Slayer",
+    "size": "bastard_sword",
+    "visual_tags": ["magic sword", "serpentine guard", "dragon scales", "dragon bane", "mythic weapon"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +2, Dragon Slayer. The bastard sword has a blade shaped like a stylized dragon's tooth or claw, with a crossguard formed from serpentine dragon figures. The blade has faint, metallic scale patterns engraved into the steel. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus3_frost_brand",
+    "name": "Sword +3, Frost Brand",
+    "size": "broad_sword",
+    "visual_tags": ["magic sword", "ice magic", "frost-covered", "blue aura", "cold weapon"],
+    "image_prompt": "A highly detailed, dramatic illustration of a magical Sword +3, Frost Brand. The broad sword blade is covered in a visible layer of ice and rime, radiating an intense, visible blue-white cold aura. The surroundings near the blade are visibly frosted. Isolated, cinematic lighting, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_plus1_cursed",
+    "name": "Sword +1, Cursed",
+    "size": "longsword",
+    "visual_tags": ["cursed item", "magic sword", "deceptive beauty", "oily sheen", "malevolent aura"],
+    "image_prompt": "A highly detailed illustration of a magical Sword +1, Cursed. The longsword appears beautifully made and highly polished, but the steel has an unnatural, faint, oily, and slightly dark sheen that hints at a malevolent, insidious enchantment beneath the surface. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "sword_minus2_cursed",
+    "name": "Sword -2, Cursed",
+    "size": "broadsword",
+    "visual_tags": ["cursed item", "pitted blade", "rusty", "badly made", "evil enchantment"],
+    "image_prompt": "A highly detailed illustration of a magical Sword -2, Cursed. The broadsword is covered in unnatural, deep rust and pitting, the edge is dull and chipped, and the hilt looks ill-fitted. Despite its poor state, an unnaturally resilient, faint dark energy prevents it from crumbling. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "arrow_plus_generic",
+    "name": "Arrow +1, +2, +3 (Generic)",
+    "size": "ammunition",
+    "visual_tags": ["magic missile", "arrow", "glowing fletching", "enchanted ammo"],
+    "image_prompt": "A close-up, highly detailed illustration of a magical Arrow. The arrowhead is razor-sharp and polished, and the fletching and nock glow faintly with a golden, magical light. Show a small bundle of 2-3 arrows. Isolated on a simple background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "axe_plus_generic",
+    "name": "Axe +1, +2 (Generic)",
+    "size": "battle_axe",
+    "visual_tags": ["magic axe", "battle axe", "glowing blade", "enchanted"],
+    "image_prompt": "A highly detailed illustration of a magical Axe +1. The battle axe has a head of dark, flawless steel that emits a dull, deep blue magical hum. The wooden haft is reinforced with metal bindings. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "bolt_plus_generic",
+    "name": "Bolt +1, +2 (Generic)",
+    "size": "ammunition",
+    "visual_tags": ["magic missile", "crossbow bolt", "glowing tip", "enchanted ammo"],
+    "image_prompt": "A close-up, highly detailed illustration of a magical Bolt. The metal tip of the crossbow bolt glows intensely with a sharp, white magical light, and the shaft is perfectly straight. Show a small group of 2-3 bolts. Isolated on a simple background, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "bow_plus1",
+    "name": "Bow +1",
+    "size": "long_bow",
+    "visual_tags": ["magic bow", "longbow", "carved wood", "arcane sheen", "enchanted"],
+    "image_prompt": "A highly detailed illustration of a magical Bow +1. A beautiful long bow crafted from rich, dark wood, covered in intricate, subtle carvings that glow with a faint, arcane sheen when the bowstring is pulled taut. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "dagger_plus_generic",
+    "name": "Dagger +1, +2 (Generic)",
+    "size": "dagger",
+    "visual_tags": ["magic dagger", "glowing edge", "enchanted", "sharp"],
+    "image_prompt": "A highly detailed illustration of a magical Dagger +1. The small blade is impossibly sharp, and its cutting edge glows with a faint, razor-thin line of green magical energy. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "hammer_plus_generic",
+    "name": "Hammer +1, +2 (Generic)",
+    "size": "hammer",
+    "visual_tags": ["magic hammer", "warhammer", "bludgeoning", "runic glow", "enchanted"],
+    "image_prompt": "A highly detailed illustration of a magical Hammer +1 (Warhammer). The heavy, steel head is solid and bears glowing, protective, dwarven-style runes along its blunt faces, radiating a dull, magical blue light. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "mace_plus_generic",
+    "name": "Mace +1, +2 (Generic)",
+    "size": "footmans_mace",
+    "visual_tags": ["magic mace", "flanged mace", "holy weapon", "flanged head", "enchanted"],
+    "image_prompt": "A highly detailed illustration of a magical Mace +1. A flanged footman's mace where the metal flanges of the head have delicate, repeating silver-inlaid patterns that faintly shimmer when light catches them. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "spear_plus_generic",
+    "name": "Spear +1, +2 (Generic)",
+    "size": "spear",
+    "visual_tags": ["magic spear", "long shaft", "glowing tip", "enchanted"],
+    "image_prompt": "A highly detailed illustration of a magical Spear +1. The long wooden shaft is perfectly straight, and the spearhead is crafted from a single, flawless piece of crystal-like material that glows with a powerful, white magical light. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "armor_leather_plus",
+    "name": "Leather Armor +1, +2",
+    "size": "garment",
+    "visual_tags": ["magic armor", "leather armor", "subtle golden stitching", "light armor", "enchanted"],
+    "image_prompt": "A detailed illustration of magical Leather Armor +1. The dark, boiled leather is expertly crafted and reinforced with a pattern of subtle, glowing golden stitching that shimmers faintly, indicating its protective enchantment. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "armor_chain_mail_plus",
+    "name": "Chain Mail +1, +2, +3",
+    "size": "garment",
+    "visual_tags": ["magic armor", "chain mail", "silver shimmer", "heavy armor", "enchanted"],
+    "image_prompt": "A detailed illustration of magical Chain Mail +1. A chain mail hauberk where every interlocking metal ring is polished to a flawless silver and gently shimmers with a soft, protective silver light. The mail looks impossibly light and flexible. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "armor_plate_mail_plus",
+    "name": "Plate Mail +1, +2, +3, +4",
+    "size": "full body",
+    "visual_tags": ["magic armor", "plate mail", "glowing edges", "impossibly polished", "very heavy armor", "enchanted"],
+    "image_prompt": "A detailed illustration of magical Plate Mail +1. A full suit of plate armor that is impossibly bright and polished, reflecting its surroundings perfectly. Faint, blue-white light traces the borders and rivets of the metal plates, showing the protective enchantment. Isolated on a stand, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "shield_plus",
+    "name": "Shield +1, +2, +3",
+    "size": "handheld",
+    "visual_tags": ["magic shield", "medium shield", "glowing sigil", "protective magic", "enchanted"],
+    "image_prompt": "A detailed illustration of a magical Shield +1. A medium-sized heater shield with a flawless metal rim and a simple, dark wood face upon which a complex, brightly glowing protective arcane sigil is painted. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "armor_plus1_cursed",
+    "name": "Armor +1, Cursed",
+    "size": "full body",
+    "visual_tags": ["cursed item", "magic armor", "overly ornate", "oily sheen", "deceptive"],
+    "image_prompt": "A detailed illustration of Cursed Armor +1. A full suit of Plate Mail that is overly ornate and ostentatious, with a faint, oily, disturbing dark shimmer despite its high polish, hinting at a malevolent or trapping enchantment. Isolated on a stand, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "armor_minus1_cursed",
+    "name": "Armor -1, Cursed AC 9",
+    "size": "garment",
+    "visual_tags": ["cursed item", "pitted armor", "shabby", "badly fitted", "unending rust"],
+    "image_prompt": "A detailed illustration of Cursed Armor -1. A Chain Mail hauberk that is visibly pitted, poorly fitted, and covered in unnatural, aggressive rust spots that seem to immediately reform if scrubbed away. The armor looks shoddily made and hindering. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_contrariness_cursed",
+    "name": "Ring of Contrariness (Cursed)",
+    "size": "ring",
+    "visual_tags": ["cursed item", "magic ring", "dull metal", "backwards design"],
+    "image_prompt": "A detailed illustration of a Cursed Ring of Contrariness. A simple, dull, heavy iron band that looks subtly wrong or backwards, as if the carvings or setting are inverted or inside-out, reflecting a sense of confusion. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_delusion_cursed",
+    "name": "Ring of Delusion (Cursed)",
+    "size": "ring",
+    "visual_tags": ["cursed item", "magic ring", "highly polished", "distorted reflection"],
+    "image_prompt": "A detailed illustration of a Cursed Ring of Delusion. A large, beautiful golden signet ring that is highly polished, but its surface casts subtly distorted and unsettling reflections of its surroundings and the viewer. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_feather_falling",
+    "name": "Ring of Feather Falling",
+    "size": "ring",
+    "visual_tags": ["magic ring", "silver", "feather motif", "delicate", "lightness"],
+    "image_prompt": "A detailed illustration of a Ring of Feather Falling. A delicate silver band with an intricate, flowing feather motif carved into the metal, appearing weightless and airy. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_fire_resistance",
+    "name": "Ring of Fire Resistance",
+    "size": "ring",
+    "visual_tags": ["magic ring", "iron", "ember gem", "perpetually warm", "fire warding"],
+    "image_prompt": "A detailed illustration of a Ring of Fire Resistance. A simple, thick iron band that is perpetually warm to the touch, set with a small, flawless, dark red gem that looks like a miniature, contained ember. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_invisibility",
+    "name": "Ring of Invisibility",
+    "size": "ring",
+    "visual_tags": ["magic ring", "crystalline setting", "light refraction", "vanishing", "stealth"],
+    "image_prompt": "A detailed illustration of a Ring of Invisibility. A platinum band with a large, faceted, perfectly clear crystalline setting that refracts light bizarrely, causing the edges of the ring itself to appear blurred or semi-transparent. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_protection_plus",
+    "name": "Ring of Protection +1, +2, +3",
+    "size": "ring",
+    "visual_tags": ["magic ring", "simple silver", "protective aura", "subtle enchantment"],
+    "image_prompt": "A detailed illustration of a Ring of Protection +1. A simple, plain, perfectly polished silver band that is seemingly featureless, but emits a very faint, nearly invisible, spherical aura of magical protective energy. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_regeneration",
+    "name": "Ring of Regeneration",
+    "size": "ring",
+    "visual_tags": ["magic ring", "antler/wood band", "regrowth", "organic feel"],
+    "image_prompt": "A detailed illustration of a Ring of Regeneration. The ring is made from smooth, dark polished antler or petrified wood, with a tiny, visible section of the band perpetually growing and unfolding a new, vibrant green leaf or bud. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_spell_storing",
+    "name": "Ring of Spell Storing",
+    "size": "ring",
+    "visual_tags": ["magic ring", "platinum", "crystalline slots", "arcane storage"],
+    "image_prompt": "A detailed illustration of a Ring of Spell Storing. A heavy platinum ring with a series of small, precisely cut, empty crystalline slots or settings running around the band, visibly waiting to be filled with magical energy. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_water_walking",
+    "name": "Ring of Water Walking",
+    "size": "ring",
+    "visual_tags": ["magic ring", "bronze", "wave pattern", "water drop suspension"],
+    "image_prompt": "A detailed illustration of a Ring of Water Walking. A bronze band with an elegant wave pattern carved into the metal, featuring a small gem setting over which a single, perfect drop of water is perpetually suspended and slowly rotating. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_weakness_cursed",
+    "name": "Ring of Weakness (Cursed)",
+    "size": "ring",
+    "visual_tags": ["cursed item", "magic ring", "thin wire", "fragile", "draining"],
+    "image_prompt": "A detailed illustration of a Cursed Ring of Weakness. An extremely thin, fragile-looking ring made of dull, bent wire that appears to have almost no substance and looks as if it could snap instantly, giving a feeling of fragility and draining power. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_wishes",
+    "name": "Ring of Wishes (1-2), Ring of Wishes (3)",
+    "size": "ring",
+    "visual_tags": ["magic ring", "wish magic", "large diamond", "starlight", "powerful artifact"],
+    "image_prompt": "A close-up, highly detailed illustration of a Ring of Wishes. A magnificent, heavy golden ring, set with a single, massive, perfectly cut, flawless diamond that seems to capture and hold starlight, radiating an incredibly potent and rare magical aura. Isolated on velvet, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "ring_of_xray_vision",
+    "name": "Ring of X-Ray Vision",
+    "size": "ring",
+    "visual_tags": ["magic ring", "smoked quartz", "dark setting", "perceptive"],
+    "image_prompt": "A detailed illustration of a Ring of X-Ray Vision. A dark metal band set with a large, cabochon-cut piece of smoked quartz or obsidian that seems to absorb all light and looks slightly unnerving, as if peering into its depths reveals what is hidden. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "wand_enemy_detection",
+    "name": "Wand of Enemy Detection",
+    "size": "wand",
+    "visual_tags": ["magic wand", "dark wood", "vibrating tip", "red glow", "detection magic"],
+    "image_prompt": "A detailed illustration of a Wand of Enemy Detection. A short wand made of dark, smooth wood with a silver metallic tip that faintly vibrates and glows an intense red, as if sensing a nearby threat. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "wand_fear",
+    "name": "Wand of Fear",
+    "size": "wand",
+    "visual_tags": ["magic wand", "gnarly wood", "dark aura", "terror", "twisted"],
+    "image_prompt": "A detailed illustration of a Wand of Fear. A twisted, gnarly wand of black, ancient-looking wood, emitting a dark purple, shimmering, unsettling aura that seems to instill a primal sense of terror in the viewer. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "wand_magic_detection",
+    "name": "Wand of Magic Detection",
+    "size": "wand",
+    "visual_tags": ["magic wand", "crystal orb", "multi-colored light", "arcane sensor"],
+    "image_prompt": "A detailed illustration of a Wand of Magic Detection. A slender, polished wand with a small, clear crystal orb set at the tip that glows with a faint, shifting, multi-colored light, indicating the presence of various magical auras. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "wand_magic_missiles",
+    "name": "Wand of Magic Missiles",
+    "size": "wand",
+    "visual_tags": ["magic wand", "polished wood", "energy tip", "arcane bolts"],
+    "image_prompt": "A detailed illustration of a Wand of Magic Missiles. A slender wand of smooth, rich-brown wood. The tip of the wand is glowing intensely with nascent pink/purple magical energy, as if tiny energy bolts are forming and ready to fire. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "wand_paralyzation",
+    "name": "Wand of Paralyzation",
+    "size": "wand",
+    "visual_tags": ["magic wand", "bone/ivory", "serpentine carving", "sickly yellow glow"],
+    "image_prompt": "A detailed illustration of a Wand of Paralyzation. A wand carved from smooth, polished ivory or bone, featuring a serpentine or skeletal carving along its length. The tip glows with a faint, sickly yellow or pale green light. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "wand_secret_door_detection",
+    "name": "Wand of Secret Door Detection",
+    "size": "wand",
+    "visual_tags": ["magic wand", "iron", "arrow head", "pulsing light", "detection magic"],
+    "image_prompt": "A detailed illustration of a Wand of Secret Door Detection. A short, iron wand with a flat, arrow-like head. The body of the wand is simple, and the tip emits a subtle, periodic, rhythmic green pulse of light. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "staff_of_striking",
+    "name": "Staff of Striking",
+    "size": "staff",
+    "visual_tags": ["magic staff", "two-handed", "iron bands", "cracking energy", "combat focus"],
+    "image_prompt": "A detailed illustration of a Staff of Striking. A thick, sturdy wooden staff wrapped tightly in heavy iron bands, designed for combat. The surface crackles faintly with localized, static-like kinetic energy or bright blue sparks. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "staff_of_healing",
+    "name": "Staff of Healing",
+    "size": "staff",
+    "visual_tags": ["magic staff", "white wood", "gentle glow", "healing crystal", "restoration magic"],
+    "image_prompt": "A detailed illustration of a Staff of Healing. A smooth, pale, white wooden staff, topped with a large, perfectly clear crystal or polished stone that emits a gentle, warm, comforting green or silver light. Full length view, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "rod_of_cancellation",
+    "name": "Rod of Cancellation",
+    "size": "rod",
+    "visual_tags": ["magic rod", "heavy iron", "featureless", "dull black", "anti-magic"],
+    "image_prompt": "A detailed illustration of a Rod of Cancellation. A heavy, featureless, perfectly cylindrical rod of dull, flat black iron. The surface absorbs all ambient light, giving it an unnerving, void-like appearance, signifying its power to negate magic. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "bag_of_holding",
+    "name": "Bag of Holding",
+    "size": "bag",
+    "visual_tags": ["magic bag", "plain cloth", "deceptively small", "dimensional storage", "canvas sack"],
+    "image_prompt": "A detailed illustration of a Bag of Holding. A simple, drab, well-worn, drawstring canvas sack that looks utterly ordinary, yet the mouth of the bag appears slightly distorted, as if staring into an unnatural, light-absorbing void within. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "boots_of_elvenkind",
+    "name": "Boots of Elvenkind",
+    "size": "footwear",
+    "visual_tags": ["magic boots", "soft leather", "forest green", "silent", "elven gear"],
+    "image_prompt": "A detailed illustration of a pair of Boots of Elvenkind. Soft, supple, knee-high leather boots in a natural, dark forest-green or moss color, with thin, expertly crafted soles designed for silence and stealth in natural environments. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "boots_of_levitation",
+    "name": "Boots of Levitation",
+    "size": "footwear",
+    "visual_tags": ["magic boots", "polished leather", "silver wings", "anti-gravity"],
+    "image_prompt": "A detailed illustration of a pair of Boots of Levitation. Highly polished, dark brown leather boots with small, stylized, silver wings or fins attached to the ankle and heel, occasionally emitting a faint, upward-straining magical glow. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "boots_of_speed",
+    "name": "Boots of Speed",
+    "size": "footwear",
+    "visual_tags": ["magic boots", "crimson red", "wind motifs", "swiftness", "speed"],
+    "image_prompt": "A detailed illustration of a pair of Boots of Speed. Eye-catching crimson red leather boots, embroidered with white or gold thread in patterns that mimic streaks of wind or lightning, appearing light and streamlined. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "bracers_of_defense",
+    "name": "Bracers of Defense AC 6, AC 4",
+    "size": "wristwear",
+    "visual_tags": ["magic bracers", "leather wrist guards", "invisible force", "protective magic"],
+    "image_prompt": "A detailed illustration of a pair of Bracers of Defense. Thick, simple, dark brown leather wrist guards (bracers) with no visible metal, but with a palpable, invisible magical force-field shimmer or heat haze visible just inches above the surface. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "cloak_of_displacement",
+    "name": "Cloak of Displacement",
+    "size": "garment",
+    "visual_tags": ["magic cloak", "dark wool", "blurring outline", "illusion magic", "defensive"],
+    "image_prompt": "A detailed illustration of a Cloak of Displacement. A heavy, dark-colored hooded travel cloak that subtly blurs or shifts its outline and shadows at the edges, making the shape of the garment and the wearer seem out of focus or slightly 'off' from reality. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "cloak_of_elvenkind",
+    "name": "Cloak of Elvenkind",
+    "size": "garment",
+    "visual_tags": ["magic cloak", "hooded", "shifting color", "camouflage", "elven gear"],
+    "image_prompt": "A detailed illustration of a Cloak of Elvenkind. A finely-woven, hooded cloak made of a natural fabric whose color subtly shifts between forest greens, stone greys, and earth browns, allowing it to blend perfectly into the background. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "cloak_of_protection",
+    "name": "Cloak of Protection +1, +2",
+    "size": "garment",
+    "visual_tags": ["magic cloak", "deep blue", "silver clasp", "protective aura"],
+    "image_prompt": "A detailed illustration of a Cloak of Protection +1. A voluminous hooded cloak of rich, deep blue or purple fabric, held by an ornate silver clasp that pulses with a subtle, protective, white magical aura. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "gauntlets_of_ogre_power",
+    "name": "Gauntlets of Ogre Power",
+    "size": "handwear",
+    "visual_tags": ["magic gauntlets", "oversized", "spiked iron", "brute strength", "ogre gear"],
+    "image_prompt": "A detailed illustration of a pair of Gauntlets of Ogre Power. Oversized, heavy, crude iron gauntlets with dull spikes, looking far too large for a human hand, and glowing faintly with an intimidating, brute red or orange aura of raw strength. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "helm_of_telepathy",
+    "name": "Helm of Telepathy",
+    "size": "headwear",
+    "visual_tags": ["magic helm", "simple metal", "glowing crystal", "mind reading", "psionics"],
+    "image_prompt": "A detailed illustration of a Helm of Telepathy. A simple, close-fitting metal coif or helm with a small, glowing psychic-blue or violet crystal gem placed directly over the brow or forehead, indicating mind-to-mind connection. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "rope_of_climbing",
+    "name": "Rope of Climbing",
+    "size": "rope",
+    "visual_tags": ["magic rope", "sturdy cord", "animated knot", "self-climbing"],
+    "image_prompt": "A detailed illustration of a Rope of Climbing. A standard, thick, coiled hemp or flax rope where the end is tied in a perpetual, animated, snake-like knot that seems to be pulling the rope upward against gravity. Isolated, photorealistic RPG item illustration."
+  },
+  {
+    "item_id": "rope_of_entanglement",
+    "name": "Rope of Entanglement",
+    "size": "rope",
+    "visual_tags": ["magic rope", "thorny", "vine-like", "grabbing", "constriction"],
+    "image_prompt": "A detailed illustration of a Rope of Entanglement. A length of rough, thick rope that appears to be covered in sharp, wooden, vine-like thorns or barbs that are subtly twitching, ready to grab and constrict a target. Isolated, photorealistic RPG item illustration."
+  }
+]
