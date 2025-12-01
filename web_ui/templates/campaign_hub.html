@@ -306,17 +306,19 @@
         }
 
         function handleMenuChoice(action, optionId) {
-            if (action === 'inn') {
+            if (action === 'enter_inn') {
                 goToInn();
-            } else if (action === 'shop') {
+            } else if (action === 'enter_shop') {
                 goToShop(optionId);
-            } else if (action === 'temple') {
+            } else if (action === 'enter_temple') {
                 goToTemple();
-            } else if (action === 'travel') {
+            } else if (action === 'enter_guild') {
+                showMessage('Guild interface coming soon', 'success');
+            } else if (action === 'travel_menu') {
                 goToTravel();
-            } else if (action === 'journal') {
+            } else if (action === 'view_journal') {
                 showJournal();
-            } else if (action === 'party_management') {
+            } else if (action === 'manage_party') {
                 showMessage('Party management coming soon', 'success');
             } else {
                 showMessage('Unknown action: ' + action, 'error');
