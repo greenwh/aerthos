@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 30px;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0a0;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #0a0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #0a0;
+            color: #0f0;
+        }
+
+        .service-item {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .service-item:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .service-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: #0a0;
+            margin-bottom: 5px;
+        }
+
+        .service-cost {
+            font-size: 16px;
+            color: #ff0;
+        }
+
+        .party-member {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .member-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .member-stats {
+            font-size: 12px;
+            color: #0a0;
+        }
+
+        .btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 12px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            display: none;
+        }
+
+        .message.success {
+            border-color: #0f0;
+            background-color: #003300;
+        }
+
+        .message.error {
+            border-color: #f00;
+            background-color: #330000;
+            color: #f00;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0a0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #0f0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #ff0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 30px #0f0;
+        }
+
+        .modal-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0a0;
+        }
+
+        .character-option {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .character-option:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title" id="temple-name">THE TEMPLE</div>
+            <div class="subtitle" id="temple-deity">Deity</div>
+            <div class="subtitle" id="campaign-name">Campaign</div>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <!-- Temple Services -->
+        <div class="section">
+            <div class="section-title">DIVINE SERVICES</div>
+            <div id="services-list">
+                <div class="loading">Loading services...</div>
+            </div>
+        </div>
+
+        <!-- Party Status -->
+        <div class="section">
+            <div class="section-title">PARTY STATUS</div>
+            <div id="party-status">
+                <div class="loading">Loading party...</div>
+            </div>
+        </div>
+
+        <a href="#" onclick="goBackToHub(); return false;" class="back-link">← Back to Hub</a>
+    </div>
+
+    <!-- Character Selection Modal -->
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Select Target Character</div>
+            <div id="character-list">
+                <div class="loading">Loading party...</div>
+            </div>
+            <button class="btn" onclick="closeCharacterModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Extract campaign_id from URL path: /campaign/{campaign_id}/temple
+        const pathParts = window.location.pathname.split('/');
+        const campaignId = pathParts[2];
+
+        let templeData = null;
+        let selectedService = null;
+
+        if (!campaignId) {
+            showMessage('No campaign ID provided', 'error');
+        } else {
+            loadTempleData();
+        }
+
+        function showMessage(text, type = 'success') {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type} active`;
+            setTimeout(() => {
+                msg.className = 'message';
+            }, 5000);
+        }
+
+        async function loadTempleData() {
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/temple`);
+                const data = await response.json();
+
+                if (data.success) {
+                    templeData = data;
+
+                    document.getElementById('temple-name').textContent = data.temple.name.toUpperCase();
+                    document.getElementById('temple-deity').textContent = 'Temple of ' + data.temple.deity;
+                    document.getElementById('campaign-name').textContent = data.campaign_name;
+
+                    displayServices(data.services);
+                    displayParty(data.party);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error loading temple:', error);
+                showMessage('Error loading temple: ' + error.message, 'error');
+            }
+        }
+
+        function displayServices(services) {
+            const servicesEl = document.getElementById('services-list');
+
+            if (!services || services.length === 0) {
+                servicesEl.innerHTML = '<div>No services available</div>';
+                return;
+            }
+
+            servicesEl.innerHTML = services.map(service => {
+                return `
+                    <div class="service-item" onclick="requestService('${service.name}', ${service.cost})">
+                        <div class="service-name">${service.name}</div>
+                        <div class="service-description">${service.description}</div>
+                        <div class="service-cost">Cost: ${service.cost}gp</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function displayParty(party) {
+            const partyEl = document.getElementById('party-status');
+
+            if (!party || party.length === 0) {
+                partyEl.innerHTML = '<div>No party members</div>';
+                return;
+            }
+
+            partyEl.innerHTML = party.map(member => {
+                const status = member.is_alive ? 'ALIVE' : 'DEAD';
+                const statusClass = member.is_alive ? '' : 'style="color: #f00;"';
+
+                return `
+                    <div class="party-member">
+                        <div>
+                            <span class="member-name">${member.name}</span>
+                            <span ${statusClass}> [${status}]</span>
+                        </div>
+                        <div>
+                            <span class="member-stats">HP: ${member.hp_current}/${member.hp_max} | Gold: ${member.gold}gp</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function requestService(serviceName, cost) {
+            selectedService = { name: serviceName, cost: cost };
+            showCharacterModal();
+        }
+
+        function showCharacterModal() {
+            const listEl = document.getElementById('character-list');
+
+            listEl.innerHTML = templeData.party.map((member, index) => {
+                const canAfford = member.gold >= selectedService.cost;
+                const affordText = canAfford ? '' : ' (Cannot afford)';
+                const disabled = !canAfford ? 'style="opacity: 0.5; cursor: not-allowed;"' : '';
+
+                return `
+                    <div class="character-option" ${disabled} onclick="${canAfford ? `purchaseService(${index})` : ''}">
+                        <div class="member-name">${member.name}${affordText}</div>
+                        <div class="member-stats">Gold: ${member.gold}gp | HP: ${member.hp_current}/${member.hp_max}</div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('characterModal').classList.add('active');
+        }
+
+        function closeCharacterModal() {
+            document.getElementById('characterModal').classList.remove('active');
+            selectedService = null;
+        }
+
+        async function purchaseService(characterIndex) {
+            closeCharacterModal();
+
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/temple/service`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        service_name: selectedService.name,
+                        target_character_index: characterIndex,
+                        paid_amount: selectedService.cost
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    // Reload temple data
+                    setTimeout(() => {
+                        loadTempleData();
+                    }, 1500);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            }
+        }
+
+        function goBackToHub() {
+            window.location.href = `/campaign/${campaignId}/hub`;
+        }
+    </script>
+</body>
+</html>

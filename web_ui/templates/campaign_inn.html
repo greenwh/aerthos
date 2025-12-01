@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inn - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 30px;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0a0;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #0a0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #0a0;
+            color: #0f0;
+        }
+
+        .party-member {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .member-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .member-stats {
+            font-size: 12px;
+            color: #0a0;
+        }
+
+        .rest-control {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .control-label {
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        .control-input {
+            background-color: #001100;
+            border: 1px solid #0a0;
+            color: #0f0;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            width: 100px;
+        }
+
+        .btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 12px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn-primary {
+            background-color: #003300;
+            font-weight: bold;
+        }
+
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            display: none;
+        }
+
+        .message.success {
+            border-color: #0f0;
+            background-color: #003300;
+        }
+
+        .message.error {
+            border-color: #f00;
+            background-color: #330000;
+            color: #f00;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0a0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #0f0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #ff0;
+        }
+
+        .cost-info {
+            font-size: 14px;
+            color: #0a0;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title" id="inn-name">THE INN</div>
+            <div class="subtitle" id="campaign-name">Campaign</div>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <!-- Rest Controls -->
+        <div class="section">
+            <div class="section-title">REST AT THE INN</div>
+            <div class="rest-control">
+                <div class="control-row">
+                    <span class="control-label">Number of Nights:</span>
+                    <input type="number" id="nights-input" class="control-input" value="1" min="1" max="10">
+                    <span class="cost-info">Rate: <span id="rate">0</span>gp per person per night</span>
+                </div>
+                <div class="control-row">
+                    <span class="control-label">Total Cost:</span>
+                    <span id="total-cost" style="font-size: 18px; font-weight: bold;">0gp</span>
+                </div>
+                <div class="control-row">
+                    <button class="btn btn-primary" onclick="restAtInn()">Rest Party</button>
+                    <span class="cost-info">Resting restores HP for all party members</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Party Status -->
+        <div class="section">
+            <div class="section-title">PARTY STATUS</div>
+            <div id="party-status">
+                <div class="loading">Loading party...</div>
+            </div>
+        </div>
+
+        <a href="#" onclick="goBackToHub(); return false;" class="back-link">← Back to Hub</a>
+    </div>
+
+    <script>
+        // Extract campaign_id from URL path: /campaign/{campaign_id}/inn
+        const pathParts = window.location.pathname.split('/');
+        const campaignId = pathParts[2];
+
+        if (!campaignId) {
+            showMessage('No campaign ID provided', 'error');
+        } else {
+            loadInnData();
+        }
+
+        function showMessage(text, type = 'success') {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type} active`;
+            setTimeout(() => {
+                msg.className = 'message';
+            }, 5000);
+        }
+
+        async function loadInnData() {
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/inn`);
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('inn-name').textContent = data.inn.name.toUpperCase();
+                    document.getElementById('campaign-name').textContent = data.campaign_name;
+                    document.getElementById('rate').textContent = data.inn.rate_per_night;
+
+                    displayParty(data.party);
+                    updateTotalCost(data.inn.rate_per_night, data.party.length);
+
+                    // Update cost when nights change
+                    document.getElementById('nights-input').addEventListener('input', function() {
+                        updateTotalCost(data.inn.rate_per_night, data.party.length);
+                    });
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error loading inn:', error);
+                showMessage('Error loading inn: ' + error.message, 'error');
+            }
+        }
+
+        function displayParty(party) {
+            const partyEl = document.getElementById('party-status');
+
+            if (!party || party.length === 0) {
+                partyEl.innerHTML = '<div>No party members</div>';
+                return;
+            }
+
+            partyEl.innerHTML = party.map(member => {
+                const hpPercent = (member.hp_current / member.hp_max) * 100;
+                const status = member.is_alive ? 'ALIVE' : 'DEAD';
+                const statusClass = member.is_alive ? '' : 'style="color: #f00;"'
+
+                return `
+                    <div class="party-member">
+                        <div>
+                            <span class="member-name">${member.name}</span>
+                            <span ${statusClass}> [${status}]</span>
+                        </div>
+                        <div>
+                            <span class="member-stats">HP: ${member.hp_current}/${member.hp_max} | Gold: ${member.gold}gp</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateTotalCost(ratePerNight, partySize) {
+            const nights = parseInt(document.getElementById('nights-input').value) || 1;
+            const total = ratePerNight * partySize * nights;
+            document.getElementById('total-cost').textContent = total + 'gp';
+        }
+
+        async function restAtInn() {
+            const nights = parseInt(document.getElementById('nights-input').value) || 1;
+
+            if (nights < 1) {
+                showMessage('Please enter a valid number of nights', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/inn/rest`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nights: nights
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    // Reload to show updated party status
+                    setTimeout(() => {
+                        loadInnData();
+                    }, 1500);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            }
+        }
+
+        function goBackToHub() {
+            window.location.href = `/campaign/${campaignId}/hub`;
+        }
+    </script>
+</body>
+</html>

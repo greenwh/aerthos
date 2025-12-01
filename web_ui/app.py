@@ -104,6 +104,24 @@ def campaign_episodes(campaign_id):
     return render_template('campaign_episodes.html')
 
 
+@app.route('/campaign/<campaign_id>/inn')
+def campaign_inn(campaign_id):
+    """Campaign inn page"""
+    return render_template('campaign_inn.html')
+
+
+@app.route('/campaign/<campaign_id>/shop/<shop_id>')
+def campaign_shop(campaign_id, shop_id):
+    """Campaign shop page"""
+    return render_template('campaign_shop.html')
+
+
+@app.route('/campaign/<campaign_id>/temple')
+def campaign_temple(campaign_id):
+    """Campaign temple page"""
+    return render_template('campaign_temple.html')
+
+
 # ============================================================================
 # CAMPAIGN API ROUTES
 # ============================================================================
@@ -591,6 +609,56 @@ def check_episode_completion(campaign_id, episode_id):
         }), 500
 
 
+@app.route('/api/campaigns/<campaign_id>/inn', methods=['GET'])
+def get_inn_info(campaign_id):
+    """Get inn information and party status"""
+    try:
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_result = party_mgr.load_party(campaign.party_id)
+
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
+
+        party = party_result['party']
+
+        # Get inn config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+        inn_config = hub.inn
+
+        if not inn_config:
+            return jsonify({'success': False, 'error': 'No inn available'}), 404
+
+        # Format party data
+        party_data = []
+        for member in party.members:
+            party_data.append({
+                'name': member.name,
+                'hp_current': member.hp_current,
+                'hp_max': member.hp_max,
+                'gold': member.gold,
+                'is_alive': member.is_alive
+            })
+
+        return jsonify({
+            'success': True,
+            'inn': {
+                'name': inn_config.name,
+                'rate_per_night': inn_config.rate_per_night
+            },
+            'party': party_data,
+            'campaign_name': campaign.name
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/campaigns/<campaign_id>/inn/rest', methods=['POST'])
 def inn_rest(campaign_id):
     """Rest party at inn - IDENTICAL to CLI"""
@@ -653,6 +721,78 @@ def inn_rest(campaign_id):
             'success': False,
             'error': str(e)
         }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/shop/<shop_id>', methods=['GET'])
+def get_shop_info(campaign_id, shop_id):
+    """Get shop inventory and party status"""
+    try:
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_result = party_mgr.load_party(campaign.party_id)
+
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
+
+        party = party_result['party']
+
+        # Get shop config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+
+        shop_config = None
+        for shop in hub.shops:
+            if shop.id == shop_id:
+                shop_config = shop
+                break
+
+        if not shop_config:
+            return jsonify({'success': False, 'error': 'Shop not found'}), 404
+
+        # Load shop inventory
+        game_data = GameData.load_all()
+        inventory = []
+        for item_id in shop_config.inventory:
+            if item_id in game_data['items']:
+                item_data = game_data['items'][item_id]
+                inventory.append({
+                    'id': item_id,
+                    'name': item_data.get('name', item_id),
+                    'cost': item_data.get('cost', 0),
+                    'type': item_data.get('type', 'misc'),
+                    'description': item_data.get('description', '')
+                })
+
+        # Format party data
+        party_data = []
+        for idx, member in enumerate(party.members):
+            party_data.append({
+                'index': idx,
+                'name': member.name,
+                'gold': member.gold,
+                'inventory': [{'id': item.id, 'name': item.name} for item in member.inventory.items],
+                'is_alive': member.is_alive
+            })
+
+        return jsonify({
+            'success': True,
+            'shop': {
+                'id': shop_config.id,
+                'name': shop_config.name,
+                'specialty': shop_config.specialty,
+                'type': shop_config.type
+            },
+            'inventory': inventory,
+            'party': party_data,
+            'campaign_name': campaign.name
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 @app.route('/api/campaigns/<campaign_id>/shop/buy', methods=['POST'])
@@ -839,6 +979,67 @@ def shop_sell(campaign_id):
             'success': False,
             'error': str(e)
         }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/temple', methods=['GET'])
+def get_temple_info(campaign_id):
+    """Get temple services and party status"""
+    try:
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_result = party_mgr.load_party(campaign.party_id)
+
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
+
+        party = party_result['party']
+
+        # Get temple config from hub
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+        temple_config = hub.temple
+
+        if not temple_config:
+            return jsonify({'success': False, 'error': 'No temple available'}), 404
+
+        # Format services
+        services = []
+        for service in temple_config.services:
+            services.append({
+                'name': service.name,
+                'description': service.description,
+                'cost': service.cost
+            })
+
+        # Format party data
+        party_data = []
+        for idx, member in enumerate(party.members):
+            party_data.append({
+                'index': idx,
+                'name': member.name,
+                'hp_current': member.hp_current,
+                'hp_max': member.hp_max,
+                'gold': member.gold,
+                'is_alive': member.is_alive
+            })
+
+        return jsonify({
+            'success': True,
+            'temple': {
+                'name': temple_config.name,
+                'deity': temple_config.deity
+            },
+            'services': services,
+            'party': party_data,
+            'campaign_name': campaign.name
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 @app.route('/api/campaigns/<campaign_id>/temple/service', methods=['POST'])

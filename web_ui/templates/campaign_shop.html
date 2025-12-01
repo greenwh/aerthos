@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 30px;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0a0;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #0a0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #0a0;
+            color: #0f0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .item {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .item:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .item-details {
+            font-size: 12px;
+            color: #0a0;
+        }
+
+        .item-cost {
+            font-size: 14px;
+            color: #ff0;
+            margin-top: 5px;
+        }
+
+        .character-select {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .character-option {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #0a0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .character-option:hover {
+            background-color: #003300;
+            border-color: #0f0;
+        }
+
+        .character-option.selected {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 12px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn-primary {
+            background-color: #003300;
+            font-weight: bold;
+        }
+
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid;
+            display: none;
+        }
+
+        .message.success {
+            border-color: #0f0;
+            background-color: #003300;
+        }
+
+        .message.error {
+            border-color: #f00;
+            background-color: #330000;
+            color: #f00;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0a0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #0f0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #ff0;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #0a0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title" id="shop-name">THE SHOP</div>
+            <div class="subtitle" id="shop-specialty">Specialty</div>
+            <div class="subtitle" id="campaign-name">Campaign</div>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <!-- Character Selection -->
+        <div class="section">
+            <div class="section-title">SELECT CHARACTER</div>
+            <div id="character-select" class="character-select">
+                <div class="loading">Loading party...</div>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <!-- Shop Inventory -->
+            <div class="section">
+                <div class="section-title">SHOP INVENTORY</div>
+                <div id="shop-inventory">
+                    <div class="loading">Loading inventory...</div>
+                </div>
+            </div>
+
+            <!-- Character Inventory -->
+            <div class="section">
+                <div class="section-title">CHARACTER INVENTORY</div>
+                <div id="character-inventory">
+                    <div class="empty-state">Select a character to view inventory</div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" onclick="goBackToHub(); return false;" class="back-link">← Back to Hub</a>
+    </div>
+
+    <script>
+        // Extract campaign_id and shop_id from URL
+        const pathParts = window.location.pathname.split('/');
+        const campaignId = pathParts[2];
+        const shopId = pathParts[4]; // /campaign/{id}/shop/{shop_id}
+
+        let shopData = null;
+        let partyData = [];
+        let selectedCharacterIndex = null;
+
+        if (!campaignId || !shopId) {
+            showMessage('Missing campaign or shop ID', 'error');
+        } else {
+            loadShopData();
+        }
+
+        function showMessage(text, type = 'success') {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type} active`;
+            setTimeout(() => {
+                msg.className = 'message';
+            }, 5000);
+        }
+
+        async function loadShopData() {
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/shop/${shopId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    shopData = data;
+                    partyData = data.party;
+
+                    document.getElementById('shop-name').textContent = data.shop.name.toUpperCase();
+                    document.getElementById('shop-specialty').textContent = data.shop.specialty;
+                    document.getElementById('campaign-name').textContent = data.campaign_name;
+
+                    displayCharacterSelect(data.party);
+                    displayShopInventory(data.inventory);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error loading shop:', error);
+                showMessage('Error loading shop: ' + error.message, 'error');
+            }
+        }
+
+        function displayCharacterSelect(party) {
+            const selectEl = document.getElementById('character-select');
+
+            if (!party || party.length === 0) {
+                selectEl.innerHTML = '<div>No party members</div>';
+                return;
+            }
+
+            selectEl.innerHTML = party.map((member, index) => {
+                return `
+                    <div class="character-option" onclick="selectCharacter(${index})">
+                        <span style="font-weight: bold;">${member.name}</span>
+                        <span style="float: right; color: #ff0;">Gold: ${member.gold}gp</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectCharacter(index) {
+            selectedCharacterIndex = index;
+
+            // Update visual selection
+            document.querySelectorAll('.character-option').forEach((el, i) => {
+                if (i === index) {
+                    el.classList.add('selected');
+                } else {
+                    el.classList.remove('selected');
+                }
+            });
+
+            displayCharacterInventory(partyData[index]);
+        }
+
+        function displayShopInventory(inventory) {
+            const invEl = document.getElementById('shop-inventory');
+
+            if (!inventory || inventory.length === 0) {
+                invEl.innerHTML = '<div class="empty-state">No items available</div>';
+                return;
+            }
+
+            invEl.innerHTML = inventory.map(item => {
+                return `
+                    <div class="item" onclick="buyItem('${item.id}')">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-details">${item.type} - ${item.description || 'No description'}</div>
+                        <div class="item-cost">Cost: ${item.cost}gp</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function displayCharacterInventory(character) {
+            const invEl = document.getElementById('character-inventory');
+
+            if (!character.inventory || character.inventory.length === 0) {
+                invEl.innerHTML = '<div class="empty-state">No items in inventory</div>';
+                return;
+            }
+
+            invEl.innerHTML = character.inventory.map(item => {
+                return `
+                    <div class="item" onclick="sellItem('${item.id}')">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-details">Click to sell (50% value)</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function buyItem(itemId) {
+            if (selectedCharacterIndex === null) {
+                showMessage('Please select a character first', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/shop/buy`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        item_id: itemId,
+                        shop_id: shopId,
+                        character_index: selectedCharacterIndex
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    // Reload shop data
+                    setTimeout(() => {
+                        loadShopData().then(() => {
+                            selectCharacter(selectedCharacterIndex);
+                        });
+                    }, 1000);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            }
+        }
+
+        async function sellItem(itemId) {
+            if (selectedCharacterIndex === null) {
+                showMessage('Please select a character first', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/shop/sell`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        item_id: itemId,
+                        shop_id: shopId,
+                        character_index: selectedCharacterIndex
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    // Reload shop data
+                    setTimeout(() => {
+                        loadShopData().then(() => {
+                            selectCharacter(selectedCharacterIndex);
+                        });
+                    }, 1000);
+                } else {
+                    showMessage('Error: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            }
+        }
+
+        function goBackToHub() {
+            window.location.href = `/campaign/${campaignId}/hub`;
+        }
+    </script>
+</body>
+</html>

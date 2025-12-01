@@ -326,24 +326,17 @@
         }
 
         function goToInn() {
-            // For MVP, just call the rest API directly
-            showMessage('Inn interface: Use the rest API to rest your party', 'success');
-            // In full implementation:
-            // window.location.href = `/campaign/${campaignId}/inn`;
+            window.location.href = `/campaign/${campaignId}/inn`;
         }
 
         function goToShop(shopId) {
-            // For MVP, show message
-            showMessage('Shop interface coming soon', 'success');
-            // In full implementation:
-            // window.location.href = `/campaign/${campaignId}/shop?shop_id=${shopId}`;
+            // Extract shop_id from the menu option data
+            const shop_id = shopId.replace('shop_', '');
+            window.location.href = `/campaign/${campaignId}/shop/${shop_id}`;
         }
 
         function goToTemple() {
-            // For MVP, show message
-            showMessage('Temple interface coming soon', 'success');
-            // In full implementation:
-            // window.location.href = `/campaign/${campaignId}/temple`;
+            window.location.href = `/campaign/${campaignId}/temple`;
         }
 
         function goToTravel() {
