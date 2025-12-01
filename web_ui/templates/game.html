@@ -1148,6 +1148,9 @@
         let gameActive = false;
         let activeCharacterIndex = 0;
         let currentParty = [];
+        let campaignId = null;
+        let episodeId = null;
+        let isEpisode = false;
 
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -1288,6 +1291,50 @@
             updateSpellCastBar();  // PRIORITY 5: Update spell bar when character changes
             updateActiveCharacterPanel();
             updateInventoryPanel();
+        }
+
+        async function checkEpisodeCompletion() {
+            if (!isEpisode || !gameActive) return;
+
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/check_completion`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({session_id: sessionId})
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.is_complete) {
+                    // Show completion notification
+                    if (confirm('Quest objectives complete! Would you like to complete this episode and return to the hub?')) {
+                        completeEpisode();
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking episode completion:', error);
+            }
+        }
+
+        async function completeEpisode() {
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/complete`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(data.message);
+                    // Redirect back to hub
+                    window.location.href = `/campaign/${campaignId}/hub`;
+                } else {
+                    alert('Error completing episode: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
         }
 
         function updateDisplay(state, message) {
@@ -2379,8 +2426,18 @@
             // Check if we have a session_id in the URL
             const urlSessionId = getUrlParameter('session_id');
             if (urlSessionId) {
+                // Check if this is an episode dungeon
+                campaignId = getUrlParameter('campaign_id');
+                episodeId = getUrlParameter('episode_id');
+                isEpisode = !!(campaignId && episodeId);
+
                 // Load the existing session
                 loadExistingSession(urlSessionId);
+
+                // If this is an episode, check completion periodically
+                if (isEpisode) {
+                    setInterval(checkEpisodeCompletion, 5000); // Check every 5 seconds
+                }
             }
         };
     </script>

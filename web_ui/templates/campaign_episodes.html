@@ -160,6 +160,87 @@
             color: #0a0;
             font-style: italic;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #001a00;
+            border: 3px solid #0f0;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 30px #0f0;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0a0;
+        }
+
+        .character-item {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .character-item:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .character-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .character-stats {
+            font-size: 12px;
+            color: #0a0;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #002200;
+            border: 2px solid #0a0;
+            color: #0f0;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #003300;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
     </style>
 </head>
 <body>
@@ -181,7 +262,20 @@
         <a href="#" onclick="goBackToHub(); return false;" class="back-link">← Back to Hub</a>
     </div>
 
+    <!-- Character Selection Modal -->
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Select Active Character</div>
+            <div id="character-list">
+                <div class="loading">Loading party...</div>
+            </div>
+            <button class="btn" onclick="closeCharacterModal()">Cancel</button>
+        </div>
+    </div>
+
     <script>
+        let currentEpisodeId = null;
+        let partyMembers = [];
         const urlParams = new URLSearchParams(window.location.search);
         const campaignId = urlParams.get('campaign_id');
 
@@ -250,11 +344,10 @@
         }
 
         async function startEpisode(episodeId) {
-            if (!confirm('Start this quest? You will need to complete it in the CLI for now.')) {
-                return;
-            }
+            currentEpisodeId = episodeId;
 
             try {
+                // First, show intro and briefing
                 const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/start`, {
                     method: 'POST',
                     headers: {
@@ -266,24 +359,102 @@
 
                 if (data.success) {
                     // Show intro and briefing
-                    let message = 'QUEST STARTED\n\n';
-                    message += data.intro + '\n\n';
-                    message += data.briefing;
+                    const episode = data.episode;
+                    let message = `${episode.title.toUpperCase()}\n\n`;
+                    message += `${episode.intro_text}\n\n`;
+                    message += `${episode.briefing_text}\n\n`;
+                    message += `Dungeon: ${episode.dungeon_name}`;
 
                     alert(message);
 
-                    showMessage('Quest started! Complete it in the CLI by running: python main.py → Campaign Manager', 'success');
-
-                    // Reload episodes to update status
-                    setTimeout(() => {
-                        loadEpisodes();
-                    }, 2000);
+                    // Load party for character selection
+                    await loadPartyForSelection();
                 } else {
                     showMessage('Error: ' + data.error, 'error');
                 }
             } catch (error) {
                 console.error('Error starting episode:', error);
                 showMessage('Error starting episode: ' + error.message, 'error');
+            }
+        }
+
+        async function loadPartyForSelection() {
+            try {
+                const response = await fetch(`/api/campaigns/${campaignId}/hub_menu`);
+                const data = await response.json();
+
+                if (data.success) {
+                    partyMembers = data.party;
+                    displayCharacterSelection();
+                } else {
+                    showMessage('Error loading party: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading party: ' + error.message, 'error');
+            }
+        }
+
+        function displayCharacterSelection() {
+            const listEl = document.getElementById('character-list');
+
+            if (!partyMembers || partyMembers.length === 0) {
+                listEl.innerHTML = '<div>No party members available</div>';
+                return;
+            }
+
+            listEl.innerHTML = partyMembers.map((member, index) => {
+                const status = member.is_alive ? 'ALIVE' : 'DEAD';
+                const statusClass = member.is_alive ? '' : 'style="color: #f00;"';
+                const disabled = !member.is_alive ? 'style="opacity: 0.5; cursor: not-allowed;"' : '';
+
+                return `
+                    <div class="character-item" ${disabled} onclick="${member.is_alive ? `selectCharacter(${index})` : ''}">
+                        <div class="character-name">${member.name} [${status}]</div>
+                        <div class="character-stats">
+                            ${member.race} ${member.char_class} Level ${member.level} |
+                            HP: ${member.hp_current}/${member.hp_max} |
+                            Gold: ${member.gold}gp
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('characterModal').classList.add('active');
+        }
+
+        function closeCharacterModal() {
+            document.getElementById('characterModal').classList.remove('active');
+            currentEpisodeId = null;
+        }
+
+        async function selectCharacter(characterIndex) {
+            closeCharacterModal();
+
+            const sessionId = 'episode_' + campaignId + '_' + currentEpisodeId + '_' + Date.now();
+
+            try {
+                // Initialize dungeon
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${currentEpisodeId}/dungeon/init`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionId,
+                        character_index: characterIndex
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Redirect to game page
+                    window.location.href = `/game?session_id=${sessionId}&campaign_id=${campaignId}&episode_id=${currentEpisodeId}`;
+                } else {
+                    showMessage('Error initializing dungeon: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
             }
         }
 

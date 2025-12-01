@@ -452,6 +452,140 @@ def complete_episode(campaign_id, episode_id):
         }), 500
 
 
+@app.route('/api/campaigns/<campaign_id>/episodes/<episode_id>/dungeon/init', methods=['POST'])
+def init_episode_dungeon(campaign_id, episode_id):
+    """Initialize dungeon game state for episode - IDENTICAL to CLI"""
+    try:
+        data = request.json
+        session_id = data.get('session_id')
+        character_index = data.get('character_index', 0)
+
+        if not session_id:
+            return jsonify({
+                'success': False,
+                'error': 'No session_id provided'
+            }), 400
+
+        # Load campaign and party (same as CLI)
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_data = party_mgr.load_party(campaign.party_id)
+
+        roster = CharacterRoster()
+        party_members = []
+        for member_id in party_data['character_ids']:
+            char_data = roster.load_character(member_id)
+            if char_data:
+                party_members.append(char_data)
+
+        party = Party(members=party_members)
+
+        # IDENTICAL calls as CLI: Episode.load(), EpisodeRunner()
+        episode = Episode.load(episode_id)
+        runner = EpisodeRunner(episode, campaign, party)
+
+        # Load dungeon (same as CLI)
+        success, message = runner.load_dungeon()
+        if not success:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 500
+
+        # Select active character (same as CLI)
+        if character_index < 0 or character_index >= len(party.members):
+            character_index = 0
+
+        active_character = party.members[character_index]
+
+        if not active_character.is_alive:
+            return jsonify({
+                'success': False,
+                'error': f'{active_character.name} is dead and cannot explore!'
+            }), 400
+
+        # IDENTICAL calls as CLI: create_game_state()
+        success, msg = runner.create_game_state(active_character)
+        if not success:
+            return jsonify({
+                'success': False,
+                'error': msg
+            }), 500
+
+        # Store game state with campaign/episode metadata
+        game_state = runner.game_state
+        game_state.party = party
+        game_state.campaign_id = campaign_id
+        game_state.episode_id = episode_id
+        game_state.episode_runner = runner
+
+        active_games[session_id] = game_state
+
+        return jsonify({
+            'success': True,
+            'message': f'Entering {runner.dungeon.name}...',
+            'state': get_game_state_json(game_state),
+            'active_character': character_index
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/episodes/<episode_id>/check_completion', methods=['POST'])
+def check_episode_completion(campaign_id, episode_id):
+    """Check if episode completion criteria are met"""
+    try:
+        data = request.json
+        session_id = data.get('session_id')
+
+        if not session_id:
+            return jsonify({
+                'success': False,
+                'error': 'No session_id provided'
+            }), 400
+
+        game_state = active_games.get(session_id)
+        if not game_state:
+            return jsonify({
+                'success': False,
+                'error': 'No active game'
+            }), 400
+
+        # Get episode runner from game state
+        if not hasattr(game_state, 'episode_runner'):
+            return jsonify({
+                'success': False,
+                'error': 'Not an episode game'
+            }), 400
+
+        runner = game_state.episode_runner
+
+        # Check completion (same as CLI)
+        is_complete = runner.check_completion()
+
+        return jsonify({
+            'success': True,
+            'is_complete': is_complete,
+            'episode_id': episode_id
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/campaigns/<campaign_id>/inn/rest', methods=['POST'])
 def inn_rest(campaign_id):
     """Rest party at inn - IDENTICAL to CLI"""
