@@ -287,15 +287,38 @@ def get_hub_menu(campaign_id):
                 'data': opt.data if opt.data else {}
             })
 
+        # Load hub for hub name
+        from aerthos.campaign.city_hub import CityHub
+        hub = CityHub.load(campaign.current_hub_id)
+
+        # Format party data for frontend
+        party_data_list = []
+        for member in party_members:
+            party_data_list.append({
+                'name': member.name,
+                'race': member.race,
+                'char_class': member.char_class,
+                'level': member.level,
+                'hp_current': member.hp_current,
+                'hp_max': member.hp_max,
+                'gold': member.gold,
+                'is_alive': member.is_alive
+            })
+
         return jsonify({
             'success': True,
             'menu_text': menu_text,
-            'options': options_data,
+            'menu_options': options_data,  # Changed from 'options' to 'menu_options'
+            'hub': {
+                'id': hub.id,
+                'name': hub.name
+            },
             'campaign': {
                 'id': campaign.id,
                 'name': campaign.name,
                 'current_hub_id': campaign.current_hub_id
-            }
+            },
+            'party': party_data_list
         })
     except Exception as e:
         import traceback
