@@ -2427,6 +2427,35 @@ def create_party():
         return jsonify({'success': False, 'error': str(e)})
 
 
+@app.route('/api/party/list', methods=['GET'])
+def list_parties():
+    """List all parties"""
+    try:
+        party_mgr = PartyManager()
+        parties = party_mgr.list_parties()
+
+        # Format parties for frontend
+        formatted_parties = []
+        for party in parties:
+            formatted_parties.append({
+                'id': party['id'],
+                'name': party['name'],
+                'members': party.get('character_ids', [])
+            })
+
+        return jsonify({
+            'success': True,
+            'parties': formatted_parties
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
+
 @app.route('/api/parties/<party_id>', methods=['DELETE'])
 def delete_party(party_id):
     """Delete a party"""
