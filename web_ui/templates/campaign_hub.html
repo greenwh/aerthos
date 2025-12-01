@@ -213,8 +213,9 @@
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const campaignId = urlParams.get('campaign_id');
+        // Extract campaign_id from URL path: /campaign/{campaign_id}/hub
+        const pathParts = window.location.pathname.split('/');
+        const campaignId = pathParts[2]; // /campaign/{id}/hub -> index 2
 
         if (!campaignId) {
             showMessage('No campaign ID provided', 'error');

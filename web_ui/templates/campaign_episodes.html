@@ -276,8 +276,9 @@
     <script>
         let currentEpisodeId = null;
         let partyMembers = [];
-        const urlParams = new URLSearchParams(window.location.search);
-        const campaignId = urlParams.get('campaign_id');
+        // Extract campaign_id from URL path: /campaign/{campaign_id}/episodes
+        const pathParts = window.location.pathname.split('/');
+        const campaignId = pathParts[2]; // /campaign/{id}/episodes -> index 2
 
         if (!campaignId) {
             showMessage('No campaign ID provided', 'error');
