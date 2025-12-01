@@ -751,16 +751,37 @@ def get_shop_info(campaign_id, shop_id):
         if not shop_config:
             return jsonify({'success': False, 'error': 'Shop not found'}), 404
 
-        # Load shop inventory
-        game_data = GameData.load_all()
+        # Load shop inventory from equipment/armor/weapons JSON files
+        import json
+        import os
+
+        # Load all item data files
+        data_dir = "aerthos/data"
+        all_items = {}
+
+        # Load equipment.json
+        if os.path.exists(f"{data_dir}/equipment.json"):
+            with open(f"{data_dir}/equipment.json") as f:
+                all_items.update(json.load(f))
+
+        # Load weapons.json
+        if os.path.exists(f"{data_dir}/weapons.json"):
+            with open(f"{data_dir}/weapons.json") as f:
+                all_items.update(json.load(f))
+
+        # Load armor.json
+        if os.path.exists(f"{data_dir}/armor.json"):
+            with open(f"{data_dir}/armor.json") as f:
+                all_items.update(json.load(f))
+
         inventory = []
         for item_id in shop_config.inventory:
-            if item_id in game_data['items']:
-                item_data = game_data['items'][item_id]
+            if item_id in all_items:
+                item_data = all_items[item_id]
                 inventory.append({
                     'id': item_id,
                     'name': item_data.get('name', item_id),
-                    'cost': item_data.get('cost', 0),
+                    'cost': item_data.get('cost_gp', item_data.get('cost', 0)),
                     'type': item_data.get('type', 'misc'),
                     'description': item_data.get('description', '')
                 })
@@ -1004,14 +1025,24 @@ def get_temple_info(campaign_id):
         if not temple_config:
             return jsonify({'success': False, 'error': 'No temple available'}), 404
 
-        # Format services
+        # Format services - service IDs need to be looked up in TempleInterface.SERVICES
+        from aerthos.campaign.hub_interfaces import TempleInterface
         services = []
-        for service in temple_config.services:
-            services.append({
-                'name': service.name,
-                'description': service.description,
-                'cost': service.cost
-            })
+        for service_id in temple_config.services:
+            if service_id in TempleInterface.SERVICES:
+                service_data = TempleInterface.SERVICES[service_id]
+                services.append({
+                    'name': service_id,
+                    'description': service_data['description'],
+                    'cost': service_data['cost']
+                })
+            else:
+                # Fallback for unknown services
+                services.append({
+                    'name': service_id,
+                    'description': f'Unknown service: {service_id}',
+                    'cost': 0
+                })
 
         # Format party data
         party_data = []
