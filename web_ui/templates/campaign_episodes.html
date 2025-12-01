@@ -425,17 +425,19 @@
 
         function closeCharacterModal() {
             document.getElementById('characterModal').classList.remove('active');
-            currentEpisodeId = null;
         }
 
         async function selectCharacter(characterIndex) {
+            // Save episode ID before closing modal
+            const episodeId = currentEpisodeId;
             closeCharacterModal();
+            currentEpisodeId = null;
 
-            const sessionId = 'episode_' + campaignId + '_' + currentEpisodeId + '_' + Date.now();
+            const sessionId = 'episode_' + campaignId + '_' + episodeId + '_' + Date.now();
 
             try {
                 // Initialize dungeon
-                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${currentEpisodeId}/dungeon/init`, {
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/dungeon/init`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -450,7 +452,7 @@
 
                 if (data.success) {
                     // Redirect to game page
-                    window.location.href = `/game?session_id=${sessionId}&campaign_id=${campaignId}&episode_id=${currentEpisodeId}`;
+                    window.location.href = `/game?session_id=${sessionId}&campaign_id=${campaignId}&episode_id=${episodeId}`;
                 } else {
                     showMessage('Error initializing dungeon: ' + data.error, 'error');
                 }
