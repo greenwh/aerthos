@@ -789,11 +789,19 @@ def get_shop_info(campaign_id, shop_id):
         # Format party data
         party_data = []
         for idx, member in enumerate(party.members):
+            # Format inventory - use name as id if no id attribute exists
+            inventory_items = []
+            for item in member.inventory.items:
+                inventory_items.append({
+                    'id': getattr(item, 'id', item.name),  # Fallback to name if no id
+                    'name': item.name
+                })
+
             party_data.append({
                 'index': idx,
                 'name': member.name,
                 'gold': member.gold,
-                'inventory': [{'id': item.id, 'name': item.name} for item in member.inventory.items],
+                'inventory': inventory_items,
                 'is_alive': member.is_alive
             })
 
