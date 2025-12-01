@@ -250,25 +250,19 @@ def get_hub_menu(campaign_id):
                 'error': 'Campaign not found'
             }), 404
 
-        # Load party
+        # Load party - returns dict with 'party' key containing Party object
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        if not party_data:
+        if not party_result:
             return jsonify({
                 'success': False,
                 'error': 'Party not found'
             }), 404
 
-        # Create Party object from party data
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
-
-        party = Party(members=party_members)
+        # Get Party object and its members (already loaded by PartyManager)
+        party = party_result['party']
+        party_members = party.members
 
         # IDENTICAL call as CLI: HubMenuSystem()
         hub_menu = HubMenuSystem(campaign, party)
@@ -338,16 +332,13 @@ def list_episodes(campaign_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # IDENTICAL call as CLI: hub_menu.get_travel_destinations()
         hub_menu = HubMenuSystem(campaign, party)
@@ -373,16 +364,13 @@ def start_episode(campaign_id, episode_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # IDENTICAL calls as CLI: Episode.load(), EpisodeRunner()
         episode = Episode.load(episode_id)
@@ -430,16 +418,13 @@ def complete_episode(campaign_id, episode_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # IDENTICAL calls as CLI
         episode = Episode.load(episode_id)
@@ -494,16 +479,13 @@ def init_episode_dungeon(campaign_id, episode_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 500
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # IDENTICAL calls as CLI: Episode.load(), EpisodeRunner()
         episode = Episode.load(episode_id)
@@ -622,16 +604,13 @@ def inn_rest(campaign_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # Get inn config from hub
         from aerthos.campaign.city_hub import CityHub
@@ -691,16 +670,13 @@ def shop_buy(campaign_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # Get shop config from hub
         from aerthos.campaign.city_hub import CityHub
@@ -787,16 +763,13 @@ def shop_sell(campaign_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # Get shop config from hub
         from aerthos.campaign.city_hub import CityHub
@@ -883,16 +856,13 @@ def temple_service(campaign_id):
         campaign = campaign_mgr.load_campaign(campaign_id)
 
         party_mgr = PartyManager()
-        party_data = party_mgr.load_party(campaign.party_id)
+        party_result = party_mgr.load_party(campaign.party_id)
 
-        roster = CharacterRoster()
-        party_members = []
-        for member_id in party_data['character_ids']:
-            char_data = roster.load_character(member_id)
-            if char_data:
-                party_members.append(char_data)
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
 
-        party = Party(members=party_members)
+        # Get Party object (already has members loaded)
+        party = party_result['party']
 
         # Get temple config from hub
         from aerthos.campaign.city_hub import CityHub
