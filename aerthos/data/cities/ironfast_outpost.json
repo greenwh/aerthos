@@ -1,0 +1,110 @@
+{
+  "$schema": "city_hub_v1",
+  "id": "ironfast_outpost",
+  "name": "Ironfast Outpost",
+  "description": "A dwarven military fortress carved into the mountainside. Stone halls echo with the ring of hammers and the march of disciplined boots. Discipline is absolute, trust is earned.",
+  "theme": "Military Fortress",
+  "region": "Shattered Peaks",
+
+  "special_rules": {
+    "entry_requirements": ["episode_04_unlocked"],
+    "full_access_requirements": ["episode_04_complete"],
+    "restricted_areas": ["barracks", "armory"],
+    "discount_with_reputation": {
+      "dwarves_ironfast": {
+        "50": 0.9,
+        "100": 0.8
+      }
+    }
+  },
+
+  "shops": [
+    {
+      "id": "dwarven_forge",
+      "name": "Master Durin's Forge",
+      "type": "weapons_armor",
+      "specialty": "Dwarven-crafted arms and armor of exceptional quality",
+      "buy_rate": 0.5,
+      "inventory": [
+        "dwarven_waraxe",
+        "warhammer",
+        "battleaxe",
+        "plate_mail",
+        "chain_mail",
+        "dwarven_shield",
+        "throwing_axe"
+      ],
+      "price_modifier": 1.2,
+      "special_items": {
+        "dwarven_plate": {
+          "requires_reputation": 100,
+          "description": "Masterwork dwarven plate armor, AC 1"
+        }
+      }
+    }
+  ],
+
+  "inn": null,
+
+  "barracks": {
+    "id": "outpost_barracks",
+    "name": "Soldier's Rest",
+    "description": "Austere stone bunks and military precision. Dwarves only—unless you've proven yourself.",
+    "rate_per_night": 0,
+    "requirements": ["is_dwarf OR dwarves_ironfast_reputation >= 50"],
+    "services": ["rest", "armory_access"]
+  },
+
+  "temple": {
+    "id": "shrine_moradin",
+    "name": "Shrine to Moradin Soulforger",
+    "deity": "Moradin (Dwarven god of creation)",
+    "alignment": "Lawful Good",
+    "services": ["cure_light", "cure_serious", "remove_curse", "consecrate_weapon"],
+    "donation_suggested": false,
+    "special_services": {
+      "consecrate_weapon": {
+        "cost": 500,
+        "description": "Bless a weapon against evil creatures (+1 vs evil for 1 day)"
+      }
+    }
+  },
+
+  "npcs": {
+    "commander_thrain": {
+      "name": "Commander Thrain Ironfoot",
+      "role": "Military Commander",
+      "alignment": "Lawful Good",
+      "description": "A grizzled dwarf with a braided white beard and scars from countless battles. His eyes are hard but fair.",
+      "dialogue": {
+        "greeting": "State your business, outsider. We've no time for tourists.",
+        "episode_04_briefing": "The duergar took our lower hold. Help us reclaim it, and you'll have earned our respect.",
+        "after_episode_04": "You fought well. Ironfast remembers its allies. You're welcome here, friend."
+      }
+    },
+    "master_durin": {
+      "name": "Master Durin Hammerhand",
+      "role": "Master Smith",
+      "alignment": "Neutral Good",
+      "description": "A broad-shouldered dwarf whose arms are thick as tree trunks. His hammer never stops ringing against the anvil.",
+      "dialogue": {
+        "greeting": "Aye? You want something forged, or just gawking at real craftsmanship?",
+        "about_dwarven_quality": "Dwarven steel lasts generations. Your great-grandchildren will still be using what I make today.",
+        "high_reputation": "For a friend of Ironfast, I'll craft something special. Bring me the materials."
+      }
+    },
+    "scout_brunhild": {
+      "name": "Scout Brunhild Stoneye",
+      "role": "Scout/Ranger",
+      "alignment": "Chaotic Good",
+      "description": "A lean dwarven woman with close-cropped hair and keen eyes. She moves with surprising grace for her kind.",
+      "dialogue": {
+        "greeting": "You don't move like a city-dweller. Mountain bred?",
+        "about_peaks": "The Shattered Peaks hide many secrets. Some should stay hidden.",
+        "episode_05_hint": "Heard rumors from the east. Marshlands stirring with activity. Might be worth investigating."
+      }
+    }
+  },
+
+  "available_quests": ["episode_04"]
+}

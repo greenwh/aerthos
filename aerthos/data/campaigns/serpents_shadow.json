@@ -22,9 +22,29 @@
   "starting_hub": "oakhaven",
   "starting_episode": "episode_01",
   "factions": {
+    "serpent_eye_cult": {
+      "name": "The Serpent Eye Cult",
+      "description": "A sinister organization seeking to awaken an ancient evil",
+      "starting_reputation": -100
+    },
     "ironfast_dwarves": {
       "name": "Ironfast Dwarves",
       "description": "Ancient dwarven holds in the Shattered Peaks",
+      "starting_reputation": 0
+    },
+    "mires_edge_townsfolk": {
+      "name": "Mire's Edge Citizens",
+      "description": "The hardy folk of the marsh settlement",
+      "starting_reputation": 0
+    },
+    "bloodfang_orcs": {
+      "name": "Bloodfang Orc Clan",
+      "description": "A fierce orcish tribe, traditional enemies turned unlikely allies",
+      "starting_reputation": -50
+    },
+    "smugglers_guild": {
+      "name": "Mire's Edge Smugglers",
+      "description": "The black market operators of the marshlands",
       "starting_reputation": 0
     },
     "silvan_concordance": {

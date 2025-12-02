@@ -305,6 +305,24 @@ class PlayerCharacter(Character):
         return (self.equipment.light_source is not None and
                 self.equipment.light_source.turns_remaining > 0)
 
+    @property
+    def has_waterbreathing(self) -> bool:
+        """Check if player character can breathe underwater"""
+        # Check base character conditions first (spells, monster abilities)
+        if super().has_waterbreathing:
+            return True
+
+        # Check for Amulet of Waterbreathing in inventory
+        for item in self.inventory.items:
+            if hasattr(item, 'properties') and isinstance(item.properties, dict):
+                if item.properties.get('grants_waterbreathing'):
+                    return True
+            # Also check direct attribute (for equipment.json items)
+            if hasattr(item, 'grants_waterbreathing') and item.grants_waterbreathing:
+                return True
+
+        return False
+
     def get_effective_ac(self) -> int:
         """Calculate effective AC including DEX bonus and equipment"""
         base_ac = self.ac

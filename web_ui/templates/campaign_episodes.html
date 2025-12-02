@@ -345,38 +345,8 @@
         }
 
         async function startEpisode(episodeId) {
-            currentEpisodeId = episodeId;
-
-            try {
-                // First, show intro and briefing
-                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/start`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    // Show intro and briefing
-                    const episode = data.episode;
-                    let message = `${episode.title.toUpperCase()}\n\n`;
-                    message += `${episode.intro_text}\n\n`;
-                    message += `${episode.briefing_text}\n\n`;
-                    message += `Dungeon: ${episode.dungeon_name}`;
-
-                    alert(message);
-
-                    // Load party for character selection
-                    await loadPartyForSelection();
-                } else {
-                    showMessage('Error: ' + data.error, 'error');
-                }
-            } catch (error) {
-                console.error('Error starting episode:', error);
-                showMessage('Error starting episode: ' + error.message, 'error');
-            }
+            // Redirect to episode intro screen instead of showing alert
+            window.location.href = `/campaign/${campaignId}/episodes/${episodeId}/intro`;
         }
 
         async function loadPartyForSelection() {

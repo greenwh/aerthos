@@ -783,6 +783,23 @@
             background-color: #050;
         }
 
+        .button-save {
+            background-color: #004400;
+            border-color: #00ff00;
+            box-shadow: 0 0 5px #00ff00;
+        }
+
+        .button-save:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        .button-save:active {
+            background-color: #ffff00;
+            box-shadow: 0 0 20px #ffff00;
+        }
+
         .button-new-game {
             padding: 8px 20px;
             font-size: 14px;
@@ -1132,6 +1149,7 @@
                 <button class="button" onclick="quickCommand('west')">West</button>
                 <button class="button" onclick="quickCommand('status')">Status</button>
                 <button class="button" onclick="quickCommand('spells')">Spells</button>
+                <button class="button button-save" id="save-button" onclick="saveCheckpoint()" title="Save Campaign Progress">💾 Save</button>
             </div>
             <div class="input-row">
                 <input type="text" id="command-box" class="command-box" list="command-suggestions" placeholder="Type command here or use buttons above..." onkeypress="handleKeyPress(event)" oninput="updateAutocomplete()">
@@ -1205,6 +1223,48 @@
                 return;
             }
             sendCommand(command);
+        }
+
+        function saveCheckpoint() {
+            // Only save if we're in campaign mode
+            if (!campaignId) {
+                appendMessage("Save is only available in campaign mode.");
+                return;
+            }
+
+            const saveButton = document.getElementById('save-button');
+            saveButton.disabled = true;
+            saveButton.textContent = '💾 Saving...';
+
+            fetch(`/api/campaigns/${campaignId}/save_checkpoint`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({session_id: sessionId})
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    appendMessage(`✓ ${data.message}`);
+                    // Flash the button green
+                    saveButton.style.backgroundColor = '#00ff00';
+                    saveButton.style.color = '#000';
+                    setTimeout(() => {
+                        saveButton.style.backgroundColor = '';
+                        saveButton.style.color = '';
+                        saveButton.textContent = '💾 Save';
+                        saveButton.disabled = false;
+                    }, 2000);
+                } else {
+                    appendMessage(`Save failed: ${data.error}`);
+                    saveButton.textContent = '💾 Save';
+                    saveButton.disabled = false;
+                }
+            })
+            .catch(err => {
+                appendMessage(`Save error: ${err.message}`);
+                saveButton.textContent = '💾 Save';
+                saveButton.disabled = false;
+            });
         }
 
         function promptCast() {

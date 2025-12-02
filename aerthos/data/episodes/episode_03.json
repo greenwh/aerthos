@@ -1,0 +1,41 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_03",
+  "title": "The Merchant's Secret",
+  "act": 1,
+  "recommended_level": 3,
+  "hub_id": "oakhaven",
+  "intro_text": "The evidence is clear: Silas, the town's most prominent merchant, has been aiding the Serpent Eye cult. His shop has been the nexus for their operations in Oakhaven—a front for something far more sinister.\n\nThe town guard, once bribed into complacency, now demands action. The mayor issues a warrant for Silas's arrest. But when the guards arrive at his shop, they find it abandoned. A hidden staircase leads to a warehouse beneath the building, and from there, a tunnel system connecting to the sewers and beyond.\n\nSilas has fled, but his secrets remain. You must explore his hidden warehouse and discover the full extent of his involvement with the cult.",
+  "briefing": {
+    "quest_giver": "The Guide",
+    "location": "The Dirty Mug tavern",
+    "dialogue": "Silas has been playing us all for fools. That shop of his? Just the surface. Word is he's got a whole operation underground—warehouses full of cursed items, smuggling routes, the works. The guards raided his shop this morning and found the entrance. Silas himself? Gone. Escaped through one of his tunnels. But if you search his warehouse, you might find proof of who's really behind all this. Just watch yourself—if he left in a hurry, he probably left traps behind."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/silas_warehouse.json",
+    "name": "Silas's Hidden Warehouse",
+    "theme": "warehouse",
+    "levels": 3,
+    "boss": "Silas the Merchant"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "silas_merchant"
+  },
+  "completion_text": "Silas falls, wounded but alive. As the town guard takes him into custody, he laughs—a bitter, hollow sound.\n\n'You think you've won?' he rasps. 'You've merely cut off one finger. The Serpent has many more. The cult spans all of Aerthos. Oakhaven was just a test. The real work happens in the mountains, the marshes, the cities. The ten keys are almost gathered. When the Serpent awakens, your pitiful heroics will mean nothing.'\n\nSearching his warehouse, you find ledgers documenting shipments to multiple locations: Ironfast Outpost in the Shattered Peaks, Mire's Edge in the Whispering Marshes, even the capital city of Eldoria. The cult's reach is vast.\n\nOakhaven is saved, but the true threat has only just revealed itself. You must leave this frontier town and pursue the cult to its sources.",
+  "rewards": {
+    "xp_bonus": 1000,
+    "gold_bonus": 300,
+    "items": ["ring_protection_1"],
+    "unlocks": ["episode_04"],
+    "unlocks_hubs": ["ironfast_outpost"],
+    "story_flags": ["silas_captured", "oakhaven_secured", "cult_conspiracy_revealed"]
+  },
+  "rumors": [
+    "Silas had connections to dwarven smiths in the mountains. Did they know what he was doing?",
+    "The cursed items in his warehouse bear marks from distant lands. How far does this conspiracy reach?",
+    "Some of the missing people were never found. Did Silas sell them to someone?"
+  ],
+  "prerequisites": ["episode_02"]
+}

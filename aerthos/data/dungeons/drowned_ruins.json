@@ -1,0 +1,121 @@
+{
+  "name": "Drowned Ruins of Ys'Thara",
+  "description": "An ancient city beneath the waves, filled with dark magic and aquatic horrors.",
+  "theme": "underwater_ruins",
+  "levels": 3,
+  "start_room": "diving_point",
+  "rooms": {
+    "diving_point": {
+      "id": "diving_point",
+      "title": "Surface - Diving Point",
+      "description": "Your boat rocks gently above the ruins. Below, green-lit structures shimmer in the depths. You don your diving gear and descend into the cold, dark water.",
+      "light_level": "bright",
+      "exits": {
+        "down": "outer_ruins"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "outer_ruins": {
+      "id": "outer_ruins",
+      "title": "Outer Ruins - Flooded Plaza",
+      "description": "Crumbling buildings loom out of the murk. Fish dart between broken columns. The water here is thick with silt and old magic. Passages lead deeper into the city.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "up": "diving_point",
+        "north": "collapsed_district",
+        "east": "temple_approach"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["sahuagin", "sahuagin"],
+          "description": "Two sahuagin guards patrol the ruins!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "collapsed_district": {
+      "id": "collapsed_district",
+      "title": "Collapsed District",
+      "description": "Buildings have fallen here, creating a maze of rubble. Something large has made a lair among the debris.",
+      "tags": ["underwater"],
+      "light_level": "dark",
+      "exits": {
+        "south": "outer_ruins"
+      },
+      "items": ["ancient_treasure", "waterlogged_scroll"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_octopus"],
+          "description": "A massive octopus emerges from the rubble!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "temple_approach": {
+      "id": "temple_approach",
+      "title": "Temple Approach",
+      "description": "A wide avenue leads to the Temple of the Serpent's Fang. Statues of ancient rulers line the path, their faces eroded by time and water. Cultist divers work at the temple entrance.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "west": "outer_ruins",
+        "east": "temple_entrance"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_diver", "cultist_diver", "cultist_diver"],
+          "description": "Cult divers turn to attack, weapons drawn!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "temple_entrance": {
+      "id": "temple_entrance",
+      "title": "Serpent Temple - Outer Chamber",
+      "description": "The temple interior is eerily preserved. Green bioluminescent algae provides ghostly light. Serpent carvings cover every surface. Water flows through channels in the floor.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "west": "temple_approach",
+        "north": "ritual_chamber"
+      },
+      "items": ["holy_symbol_serpent"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "water_elemental"],
+          "description": "Cultists and their elemental guardian attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ritual_chamber": {
+      "id": "ritual_chamber",
+      "title": "Ritual Chamber of the Fang",
+      "description": "The heart of the temple. A massive altar carved from black coral dominates the chamber. High Priest Morvathis stands before it, the Fifth Key in one hand and the Serpent's Fang in the other. His eyes glow with unnatural power as he completes his incantation.",
+      "tags": ["underwater"],
+      "light_level": "bright",
+      "exits": {
+        "south": "temple_entrance"
+      },
+      "items": ["fifth_key", "serpents_fang", "amulet_waterbreathing", "ritual_notes", "gold_700"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["morvathis_high_priest", "cultist", "cultist", "aboleth_spawn"],
+          "description": "High Priest Morvathis turns from his ritual! 'You're too late! The Fang is mine, and soon the Serpent will rise!' An aboleth spawn emerges from the depths to aid him!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

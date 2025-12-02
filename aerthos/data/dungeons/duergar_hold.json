@@ -1,0 +1,110 @@
+{
+  "name": "Duergar-Occupied Hold",
+  "description": "The lower halls of Ironfast Outpost, now controlled by gray dwarves.",
+  "theme": "dwarven_fortress",
+  "levels": 3,
+  "start_room": "barricade",
+  "rooms": {
+    "barricade": {
+      "id": "barricade",
+      "title": "Dwarven Barricade",
+      "description": "The dwarves have erected a hasty barricade of rubble and iron beams. Beyond, the dark halls are controlled by the duergar. Commander Thrain nods grimly as you prepare to breach.",
+      "light_level": "bright",
+      "exits": {
+        "north": "upper_hall"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "upper_hall": {
+      "id": "upper_hall",
+      "title": "Upper Hall",
+      "description": "A wide hall carved from living stone. Dwarven carvings depicting battles and forges line the walls. Signs of recent combat are everywhere—blood, broken weapons, scorched stone.",
+      "light_level": "dim",
+      "exits": {
+        "south": "barricade",
+        "north": "forge_level",
+        "east": "armory",
+        "west": "barracks"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar", "duergar"],
+          "description": "Three duergar warriors block your path!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Ransacked Armory",
+      "description": "The dwarven armory has been thoroughly looted. Empty weapon racks and shattered display cases are all that remain.",
+      "light_level": "dark",
+      "exits": {
+        "west": "upper_hall"
+      },
+      "items": ["dwarven_shield", "warhammer"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar"],
+          "description": "Duergar looters attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "barracks": {
+      "id": "barracks",
+      "title": "Slaughter Hall",
+      "description": "The dwarven barracks. Bunks are overturned, and the floor is stained with blood. The dwarves fought desperately here.",
+      "light_level": "dark",
+      "exits": {
+        "east": "upper_hall"
+      },
+      "items": ["healing_potion"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "forge_level": {
+      "id": "forge_level",
+      "title": "The Great Forge",
+      "description": "A massive chamber housing the dwarven forge. The fires are cold now, the anvils silent. The duergar have desecrated this sacred place.",
+      "light_level": "dim",
+      "exits": {
+        "south": "upper_hall",
+        "north": "deep_vault"
+      },
+      "items": ["masterwork_hammer"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar", "duergar", "duergar"],
+          "description": "Four duergar defend the forge!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "deep_vault": {
+      "id": "deep_vault",
+      "title": "Deep Vault of Ironfast",
+      "description": "The deepest chamber of the hold, where the dwarves kept their greatest treasures. Grathak the Soulless stands before the open vault, a serpent amulet glowing on his chest. Behind him, duergar warriors form a shield wall.",
+      "light_level": "bright",
+      "exits": {
+        "south": "forge_level"
+      },
+      "items": ["second_key", "dwarven_waraxe_plus_1", "plate_mail", "gold_400"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["grathak_soulless", "duergar", "duergar", "duergar"],
+          "description": "Grathak the Soulless and his elite guard turn to face you! Dark energy crackles around Grathak's war pick!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

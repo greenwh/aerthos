@@ -216,6 +216,20 @@ class GameState:
         # Get room description
         room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
 
+        # Check for drowning in underwater rooms
+        drowning_messages = []
+        if hasattr(self, 'party') and self.party:
+            # Check drowning for all party members
+            for member in self.party.members:
+                drowning_msg = self.current_room.check_drowning(member)
+                if drowning_msg:
+                    drowning_messages.append(drowning_msg)
+        else:
+            # Check drowning for solo player
+            drowning_msg = self.current_room.check_drowning(self.player)
+            if drowning_msg:
+                drowning_messages.append(drowning_msg)
+
         # Check for encounters
         encounter_msg = self._check_encounters('on_enter')
 
@@ -223,6 +237,7 @@ class GameState:
         if level_change_msg:
             messages.append(level_change_msg)
         messages.append(room_desc)
+        messages.extend(drowning_messages)
         if encounter_msg:
             messages.append(encounter_msg)
         messages.extend(time_messages)
@@ -1181,10 +1196,25 @@ class GameState:
         # Get room description
         room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
 
+        # Check for drowning in underwater rooms
+        drowning_messages = []
+        if hasattr(self, 'party') and self.party:
+            # Check drowning for all party members
+            for member in self.party.members:
+                drowning_msg = self.current_room.check_drowning(member)
+                if drowning_msg:
+                    drowning_messages.append(drowning_msg)
+        else:
+            # Check drowning for solo player
+            drowning_msg = self.current_room.check_drowning(self.player)
+            if drowning_msg:
+                drowning_messages.append(drowning_msg)
+
         # Check for encounters
         encounter_msg = self._check_encounters('on_enter')
 
         messages = [f"You ascend the stairs to Level {new_level}.\n", room_desc]
+        messages.extend(drowning_messages)
         if encounter_msg:
             messages.append(encounter_msg)
         messages.extend(time_messages)
@@ -1218,10 +1248,25 @@ class GameState:
         # Get room description
         room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
 
+        # Check for drowning in underwater rooms
+        drowning_messages = []
+        if hasattr(self, 'party') and self.party:
+            # Check drowning for all party members
+            for member in self.party.members:
+                drowning_msg = self.current_room.check_drowning(member)
+                if drowning_msg:
+                    drowning_messages.append(drowning_msg)
+        else:
+            # Check drowning for solo player
+            drowning_msg = self.current_room.check_drowning(self.player)
+            if drowning_msg:
+                drowning_messages.append(drowning_msg)
+
         # Check for encounters
         encounter_msg = self._check_encounters('on_enter')
 
         messages = [f"You descend the stairs to Level {new_level}.\n", room_desc]
+        messages.extend(drowning_messages)
         if encounter_msg:
             messages.append(encounter_msg)
         messages.extend(time_messages)

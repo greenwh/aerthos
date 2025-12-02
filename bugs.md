@@ -1,0 +1,1 @@
+Shop, when I select an item: "Error: 'GameData' object has no attribute 'items'"

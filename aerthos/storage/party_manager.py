@@ -162,7 +162,8 @@ class PartyManager:
             'party': party,
             'name': party_data['name'],
             'id': party_data['id'],
-            'created': party_data['created']
+            'created': party_data['created'],
+            'character_ids': character_ids  # Include character IDs for saving
         }
 
     def list_parties(self) -> List[Dict]:

@@ -1,0 +1,143 @@
+{
+  "$schema": "city_hub_v1",
+  "id": "eldoria",
+  "name": "Eldoria",
+  "description": "The crown jewel of the Free Cities—a metropolis of white marble towers, gilded domes, and bustling marketplaces. Wealth and power flow through its streets like rivers. But beneath the grandeur, corruption and conspiracy fester.",
+  "theme": "Capital City",
+  "region": "Central Heartlands",
+
+  "special_rules": {
+    "political_intrigue": true,
+    "noble_district_restricted": {
+      "requires": ["noble_invitation", "reputation >= 50"],
+      "unlocked_after": "episode_08"
+    },
+    "multiple_shops": true,
+    "guild_services": ["thieves_guild", "mages_guild", "merchants_guild"]
+  },
+
+  "shops": [
+    {
+      "id": "grand_bazaar",
+      "name": "The Grand Bazaar",
+      "type": "general",
+      "specialty": "Everything a traveler could need",
+      "buy_rate": 0.5,
+      "inventory": [
+        "all_basic_equipment",
+        "exotic_goods",
+        "rare_components",
+        "fine_clothing"
+      ],
+      "price_modifier": 1.2
+    },
+    {
+      "id": "arcane_emporium",
+      "name": "The Arcane Emporium",
+      "type": "magic",
+      "specialty": "Magical items and scrolls",
+      "buy_rate": 0.4,
+      "inventory": [
+        "scrolls_all_levels",
+        "potions_rare",
+        "wands",
+        "rings_magical",
+        "enchanted_weapons"
+      ],
+      "price_modifier": 2.0
+    },
+    {
+      "id": "master_armorer",
+      "name": "Master Armorer's Forge",
+      "type": "weapons_armor",
+      "specialty": "Masterwork and magical arms",
+      "buy_rate": 0.5,
+      "inventory": [
+        "masterwork_weapons",
+        "full_plate",
+        "enchanted_shields",
+        "custom_commissions"
+      ],
+      "price_modifier": 1.5
+    }
+  ],
+
+  "inn": {
+    "id": "golden_griffin",
+    "name": "The Golden Griffin",
+    "description": "An upscale establishment catering to wealthy merchants and minor nobility. The rooms are luxurious, the food exquisite, and the information valuable.",
+    "rate_per_night": 50,
+    "services": ["rest", "rumors", "noble_contacts", "private_meetings"],
+    "rumors_by_episode": {
+      "episode_08": [
+        "Three Syndics dead in a week. Someone's making a play for power.",
+        "Valerius Krane has always been untouchable. Too rich, too connected.",
+        "The catacombs beneath the city are older than Eldoria itself. Pre-human, some say."
+      ],
+      "episode_09": [
+        "The eastern district is in chaos. Elementals everywhere!",
+        "The Arcane Academy's been destroyed. The rift just... appeared.",
+        "They say reality itself is breaking down near the rift. People seeing things that aren't there."
+      ]
+    }
+  },
+
+  "temple": {
+    "id": "grand_cathedral",
+    "name": "Grand Cathedral of Light",
+    "deity": "Pantheon of Good Gods",
+    "alignment": "Lawful Good",
+    "services": ["cure_light", "cure_serious", "remove_curse", "cure_disease", "raise_dead", "restoration"],
+    "donation_suggested": false,
+    "note": "The cathedral is the cult's final target. After Episode 09, it becomes inaccessible (converted to Episode 10's hub).",
+    "special_services": {
+      "greater_restoration": {
+        "cost": 1000,
+        "description": "Removes all negative conditions and restores ability drain"
+      },
+      "true_resurrection": {
+        "cost": 10000,
+        "description": "Brings back the dead, even without a body (level 9+ only)"
+      }
+    }
+  },
+
+  "npcs": {
+    "syndic_brightstar": {
+      "name": "Syndic Helena Brightstar",
+      "role": "Political Leader / Quest Giver",
+      "alignment": "Lawful Good",
+      "description": "A stern woman in her fifties, one of the few uncorrupted members of the ruling council. Her silver hair and sharp eyes miss nothing.",
+      "dialogue": {
+        "greeting": "State your business quickly. I have a city to save.",
+        "episode_08_hook": "Valerius Krane is a cancer on this council. Help me remove him, and you'll have the city's eternal gratitude.",
+        "after_episode_08": "Krane is finished. But the damage he's done... it will take years to undo.",
+        "episode_09_hook": "The rift must be closed. I'm authorizing full military support. Whatever you need."
+      }
+    },
+    "archmage_elara": {
+      "name": "Archmage Elara Stormwind",
+      "role": "Magical Expert",
+      "alignment": "Neutral Good",
+      "description": "The headmistress of what remains of the Arcane Academy. Her robes are singed, her face haggard, but her resolve is iron.",
+      "dialogue": {
+        "greeting": "My academy is destroyed. My students are dead or scattered. But we will endure.",
+        "about_rift": "The Elemental Chaos is bleeding into our world. If we don't stop it, Eldoria becomes part of the Chaos permanently.",
+        "after_episode_09": "You've saved the city twice now. Eldoria owes you everything."
+      }
+    },
+    "master_merchant_gavin": {
+      "name": "Master Merchant Gavin Goldhand",
+      "role": "Merchant Guild Master",
+      "alignment": "Lawful Neutral",
+      "description": "A rotund man dripping with jewelry. He controls the flow of trade through Eldoria and knows the value of everything.",
+      "dialogue": {
+        "greeting": "Heroes! How wonderful. Tell me, what's your rate? Everyone has a price.",
+        "about_economy": "The cult's attacks are bad for business. Very bad. I'll pay handsomely for their heads.",
+        "trade_offers": "Need something special? I can acquire anything... for the right price."
+      }
+    }
+  },
+
+  "available_quests": ["episode_08", "episode_09"]
+}

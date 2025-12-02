@@ -481,5 +481,423 @@
     "weight_gp": 2500,
     "carrying_capacity_gp": 15000,
     "description": "A four-wheeled wagon. Requires 2 horses or 4 mules to pull. Can carry up to 15000 gp weight."
+  },
+  "boots_levitation": {
+    "name": "Boots of Levitation",
+    "type": "magic_equipment",
+    "cost_gp": 1500,
+    "weight_gp": 2,
+    "properties": ["magic", "levitation"],
+    "description": "Enchanted boots that allow the wearer to levitate at will, rising or descending up to 20 feet per round."
+  },
+  "amulet_waterbreathing": {
+    "name": "Amulet of Waterbreathing",
+    "type": "magic_equipment",
+    "cost_gp": 1500,
+    "weight_gp": 0.1,
+    "properties": ["magic", "waterbreathing"],
+    "grants_waterbreathing": true,
+    "description": "A magical amulet that allows the wearer to breathe underwater indefinitely."
+  },
+  "serpents_fang": {
+    "name": "The Serpent's Fang",
+    "type": "artifact",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": ["artifact", "cursed", "unique"],
+    "description": "A crystallized serpent fang pulsing with dark energy. Said to be a fragment of the Serpent God's power."
+  },
+  "legendary_weapon_choice": {
+    "name": "Legendary Weapon (Player's Choice)",
+    "type": "quest_reward",
+    "cost_gp": 0,
+    "weight_gp": 0,
+    "properties": ["legendary", "choice"],
+    "description": "A token representing the player's choice of one legendary weapon as a reward for completing the campaign."
+  },
+  "first_key": {
+    "name": "First Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 1."
+  },
+  "second_key": {
+    "name": "Second Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 2."
+  },
+  "third_key": {
+    "name": "Third Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 3."
+  },
+  "fourth_key": {
+    "name": "Fourth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 4."
+  },
+  "fifth_key": {
+    "name": "Fifth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 5."
+  },
+  "sixth_key": {
+    "name": "Sixth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 6."
+  },
+  "seventh_key": {
+    "name": "Seventh Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 7."
+  },
+  "eighth_key": {
+    "name": "Eighth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 8."
+  },
+  "ninth_key": {
+    "name": "Ninth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 9."
+  },
+  "tenth_key": {
+    "name": "Tenth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "key"],
+    "description": "The final key bearing the serpent symbol, obtained from completing Episode 10."
+  },
+  "serpent_eye_medallion": {
+    "name": "Serpent Eye Medallion",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": ["quest", "evidence"],
+    "description": "A medallion worn by members of the Serpent Eye cult, proving their allegiance."
+  },
+  "kranes_journal": {
+    "name": "Krane's Journal",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": ["quest", "lore"],
+    "description": "The personal journal of Valerius Krane, detailing his dark plans and the cult's hierarchy."
+  },
+  "ritual_notes": {
+    "name": "Ritual Notes",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": ["quest", "lore"],
+    "description": "Detailed notes describing the cult's dark rituals and summoning procedures."
+  },
+  "serpent_slayer_title_scroll": {
+    "name": "Scroll of the Serpent Slayer",
+    "type": "quest_reward",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["quest", "title", "reward"],
+    "description": "An official proclamation granting the bearer the title 'Serpent Slayer' for defeating the cult and saving the realm."
+  },
+  "serpent_slayer_title": {
+    "name": "Title: Serpent Slayer",
+    "type": "quest_reward",
+    "cost_gp": 0,
+    "weight_gp": 0,
+    "properties": ["quest", "title", "reward", "permanent"],
+    "description": "The prestigious title 'Serpent Slayer' has been bestowed upon you for defeating the Serpent Eye cult and saving the realm from darkness."
+  },
+  "healing_potion": {
+    "name": "Potion of Healing",
+    "type": "consumable",
+    "cost_gp": 50,
+    "weight_gp": 2,
+    "properties": ["consumable", "healing"],
+    "healing": "2d4+2",
+    "description": "A red liquid in a glass vial. Drinking this potion heals 2d4+2 hit points."
+  },
+  "bolts": {
+    "name": "Crossbow Bolts (20)",
+    "type": "ammunition",
+    "cost_gp": 2,
+    "weight_gp": 10,
+    "ammo_type": "quarrel",
+    "quantity": 20,
+    "description": "A quiver of 20 iron-tipped crossbow bolts."
+  },
+  "gold_coins": {
+    "name": "Gold Coins",
+    "type": "treasure",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["treasure", "coins"],
+    "description": "A pile of gold coins. Value varies."
+  },
+  "rat_pelt": {
+    "name": "Giant Rat Pelt",
+    "type": "trophy",
+    "cost_gp": 1,
+    "weight_gp": 5,
+    "properties": ["trophy", "sellable"],
+    "description": "The pelt of a giant rat. Has minimal value but can be sold."
+  },
+  "waterlogged_journal": {
+    "name": "Waterlogged Journal",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": ["lore", "quest"],
+    "description": "A badly water-damaged journal belonging to a long-dead adventurer. Describes the sewers and mentions 'something lurking in the deep water.'"
+  },
+  "guard_schedule": {
+    "name": "Guard Rotation Schedule",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": ["lore", "evidence"],
+    "description": "A parchment detailing the cultist guard rotations and patrol routes throughout the sewers."
+  },
+  "cult_scripture": {
+    "name": "Cult Scripture",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": ["lore", "evidence"],
+    "description": "Religious texts of the Serpent Eye cult, describing their beliefs about 'the awakening' and the power of the Serpent."
+  },
+  "ritual_scroll": {
+    "name": "Ritual Scroll",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": ["lore", "evidence"],
+    "description": "A scroll describing a dark ritual for summoning serpentine entities."
+  },
+  "quill_and_ink": {
+    "name": "Quill and Ink",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 1,
+    "description": "A feather quill and ink pot for writing."
+  },
+  "prayer_beads": {
+    "name": "Serpent Prayer Beads",
+    "type": "quest_item",
+    "cost_gp": 5,
+    "weight_gp": 0.5,
+    "properties": ["quest", "religious"],
+    "description": "Prayer beads carved with serpent symbols, used by cultists during meditation."
+  },
+  "emerald_eyes": {
+    "name": "Emerald Serpent Eyes",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 1,
+    "properties": ["treasure", "valuable", "gems"],
+    "description": "Two large emeralds carved to resemble serpent eyes, taken from a cult statue. Extremely valuable."
+  },
+  "gold_chalice": {
+    "name": "Gold Chalice",
+    "type": "treasure",
+    "cost_gp": 150,
+    "weight_gp": 20,
+    "properties": ["treasure", "valuable"],
+    "description": "An ornate gold chalice used in cult rituals. Bears serpent engravings."
+  },
+  "mysterious_key": {
+    "name": "Mysterious Serpent Key",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": ["quest", "key"],
+    "description": "An unusual key found in the hidden shrine. Its purpose is unclear, but it bears the serpent symbol."
+  },
+  "cultist_roster": {
+    "name": "Cultist Roster",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": ["lore", "evidence"],
+    "description": "A list of cult members' names and ranks. Many names are recognizable as Oakhaven citizens."
+  },
+  "merchant_ledger": {
+    "name": "The Merchant's Ledger",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": ["lore", "evidence", "important"],
+    "description": "A ledger tracking shipments from 'The Merchant' (Silas) to the cult. Records weapons, supplies, and ritual components."
+  },
+  "torture_notes": {
+    "name": "Torture Documentation",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": ["lore", "evidence", "disturbing"],
+    "description": "Disturbing notes detailing interrogation techniques and results. Lists prisoners and what information was extracted."
+  },
+  "incense": {
+    "name": "Ritual Incense",
+    "type": "consumable",
+    "cost_gp": 5,
+    "weight_gp": 1,
+    "properties": ["consumable", "ritual"],
+    "description": "Strange-smelling incense used in cult rituals. Burns with an acrid, green smoke."
+  },
+  "merchant_letters": {
+    "name": "Letters from The Merchant",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": ["lore", "evidence", "important"],
+    "description": "Correspondence between the cult leader and 'The Merchant.' Discusses 'the awakening,' gathering sacrifices, and 'the ten keys.'"
+  },
+  "regional_map": {
+    "name": "Marked Regional Map",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": ["lore", "evidence", "important"],
+    "description": "A map of the region marked with serpent symbols at various locations. Shows cult activity extending far beyond Oakhaven."
+  },
+  "serpent_idol": {
+    "name": "Serpent Idol",
+    "type": "quest_item",
+    "cost_gp": 25,
+    "weight_gp": 3,
+    "properties": ["quest", "religious", "sellable"],
+    "description": "A small statue of a coiled serpent with ruby eyes. Used in cult devotions."
+  },
+  "ceremonial_dagger": {
+    "name": "Ceremonial Serpent Dagger",
+    "type": "weapon",
+    "cost_gp": 50,
+    "weight_gp": 10,
+    "damage": "1d4",
+    "properties": ["ceremonial", "quest"],
+    "description": "An ornate dagger with a serpent-shaped hilt. Used in cult blood rituals, but functions as a weapon."
+  },
+  "iron_chains": {
+    "name": "Iron Chains",
+    "type": "equipment",
+    "cost_gp": 3,
+    "weight_gp": 30,
+    "description": "Heavy iron chains used to restrain prisoners."
+  },
+  "iron_spikes": {
+    "name": "Iron Spikes (12)",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 60,
+    "description": "A dozen iron spikes for securing ropes or wedging doors."
+  },
+  "rope": {
+    "name": "Rope, 50 feet",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 50,
+    "description": "50 feet of sturdy hemp rope."
+  },
+  "rations": {
+    "name": "Standard Rations (1 day)",
+    "type": "consumable",
+    "cost_gp": 0.5,
+    "weight_gp": 10,
+    "description": "One day's worth of preserved food - bread, dried meat, cheese."
+  },
+  "ritual_scroll_darkness": {
+    "name": "Ritual Scroll: Darkness",
+    "type": "scroll",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "spell": "darkness",
+    "properties": ["scroll", "magic", "quest"],
+    "description": "A dark ritual scroll that can cast the 'Darkness' spell once when read."
+  },
+  "spell_scroll_cure_light_wounds": {
+    "name": "Spell Scroll: Cure Light Wounds",
+    "type": "scroll",
+    "cost_gp": 100,
+    "weight_gp": 0.1,
+    "spell": "cure_light_wounds",
+    "properties": ["scroll", "magic", "healing"],
+    "description": "A divine scroll that can cast 'Cure Light Wounds' once when read by a cleric."
+  },
+  "serpent_robes": {
+    "name": "Serpent Eye Robes",
+    "type": "clothing",
+    "cost_gp": 10,
+    "weight_gp": 30,
+    "properties": ["clothing", "disguise"],
+    "description": "Hooded robes worn by Serpent Eye cultists, embroidered with serpent symbols. Could be used as a disguise."
+  },
+  "ritual_dagger": {
+    "name": "Ritual Dagger",
+    "type": "weapon",
+    "cost_gp": 10,
+    "weight_gp": 10,
+    "damage": "1d4",
+    "properties": ["ritual", "weapon"],
+    "description": "A simple dagger used in blood sacrifices. Bloodstained but functional."
+  },
+  "cult_documents": {
+    "name": "Cult Documents",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": ["lore", "evidence", "important"],
+    "description": "A collection of letters, maps, and documents detailing the cult's structure, goals, and connections to larger conspiracy."
+  },
+  "cell_key": {
+    "name": "Prison Cell Key",
+    "type": "key",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": ["key", "quest"],
+    "description": "An iron key that opens the prison cells where the captives are held."
+  },
+  "holy_symbol": {
+    "name": "Holy Symbol",
+    "type": "religious",
+    "cost_gp": 5,
+    "weight_gp": 2,
+    "properties": ["religious", "divine"],
+    "description": "A wooden holy symbol blessed by a temple priest. Required for clerics to turn undead and cast some divine spells."
+  },
+  "serpent_holy_symbol": {
+    "name": "Serpent Eye Holy Symbol",
+    "type": "quest_item",
+    "cost_gp": 25,
+    "weight_gp": 2,
+    "properties": ["quest", "religious", "evil"],
+    "description": "A silver serpent eye symbol worn by high-ranking cultists. Radiates malevolence."
   }
 }

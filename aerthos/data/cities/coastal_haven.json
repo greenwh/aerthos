@@ -1,0 +1,113 @@
+{
+  "$schema": "city_hub_v1",
+  "id": "coastal_haven",
+  "name": "Coastal Haven",
+  "description": "A bustling port city where merchant ships dock alongside fishing vessels. The smell of salt and fish permeates everything. Beyond the harbor, the drowned ruins of Ys'Thara shimmer beneath the waves.",
+  "theme": "Port City",
+  "region": "Sapphire Coast",
+
+  "special_rules": {
+    "naval_services": true,
+    "diving_equipment_available": true,
+    "underwater_access": {
+      "requires": ["waterbreathing_magic", "alchemical_gills"],
+      "cost_per_hour": 50
+    }
+  },
+
+  "shops": [
+    {
+      "id": "deep_diver_supply",
+      "name": "The Deep Diver's Supply",
+      "type": "specialized",
+      "specialty": "Underwater adventuring equipment and magic",
+      "buy_rate": 0.5,
+      "inventory": [
+        "alchemical_gills",
+        "waterbreathing_potion",
+        "weighted_boots",
+        "diving_bell_rental",
+        "harpoon",
+        "underwater_torch",
+        "shark_repellent"
+      ],
+      "price_modifier": 1.4
+    },
+    {
+      "id": "maritime_arms",
+      "name": "Maritime Arms & Armor",
+      "type": "weapons_armor",
+      "specialty": "Weapons effective underwater",
+      "buy_rate": 0.45,
+      "inventory": [
+        "trident",
+        "net",
+        "harpoon_launcher",
+        "coral_blade",
+        "sharkskin_armor"
+      ],
+      "price_modifier": 1.3
+    }
+  ],
+
+  "inn": {
+    "id": "sailors_rest",
+    "name": "The Sailor's Rest",
+    "description": "A rowdy tavern frequented by sailors, merchants, and the occasional pirate. The ale flows freely and tales grow taller with each round.",
+    "rate_per_night": 15,
+    "services": ["rest", "rumors", "ship_passage"],
+    "rumors_by_episode": {
+      "episode_07": [
+        "The ruins have been rising for weeks. Something's calling them up from the depths.",
+        "Divers say there are things down there that aren't fish, aren't human. Things that watch.",
+        "The cult ships anchor over the temple district every night. What are they bringing up?"
+      ]
+    }
+  },
+
+  "temple": {
+    "id": "shrine_sea_goddess",
+    "name": "Shrine to the Sea Mother",
+    "deity": "Oceanic Goddess",
+    "alignment": "Neutral Good",
+    "services": ["cure_light", "cure_serious", "waterbreathing_blessing"],
+    "donation_suggested": true,
+    "special_services": {
+      "waterbreathing_blessing": {
+        "cost": 200,
+        "description": "Blessing of waterbreathing for 24 hours"
+      },
+      "safe_passage": {
+        "cost": 100,
+        "description": "Blessing protecting against sea creatures for 12 hours"
+      }
+    }
+  },
+
+  "npcs": {
+    "captain_thessa": {
+      "name": "Captain Thessa Waveborn",
+      "role": "Harbor Master / Quest Giver",
+      "alignment": "Neutral Good",
+      "description": "A weathered sea captain with salt-gray hair and eyes that have seen too many storms. She knows every current and reef along the coast.",
+      "dialogue": {
+        "greeting": "Welcome to Coastal Haven. Watch your coin purse—the pickpockets here are almost as dangerous as the sharks.",
+        "episode_07_hook": "The cult's diving into the ruins. They're after something in the old Serpent Temple. I can get you down there, but it'll cost.",
+        "after_episode_07": "You stopped them. The ruins are sinking again, back to where they belong. The sea thanks you."
+      }
+    },
+    "master_diver_kael": {
+      "name": "Master Diver Kael",
+      "role": "Diving Equipment Merchant",
+      "alignment": "True Neutral",
+      "description": "A taciturn man with scars from shark bites and tentacle marks. He's been to the bottom and back more times than anyone.",
+      "dialogue": {
+        "greeting": "Need gear for the deep? I got it. Need advice? That costs extra.",
+        "about_ruins": "Ys'Thara wasn't just sunk—it was sealed. Something down there was too dangerous to let surface. The cult's breaking those seals.",
+        "equipment_advice": "Down there, weight is life. Bring what you need, nothing more. And trust your gills—I make the best in the business."
+      }
+    }
+  },
+
+  "available_quests": ["episode_07"]
+}

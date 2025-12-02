@@ -1,0 +1,111 @@
+{
+  "name": "Silas's Hidden Warehouse",
+  "description": "A maze of smuggling tunnels and cursed goods beneath the merchant's shop.",
+  "theme": "warehouse",
+  "levels": 3,
+  "start_room": "hidden_entrance",
+  "rooms": {
+    "hidden_entrance": {
+      "id": "hidden_entrance",
+      "title": "Hidden Staircase",
+      "description": "A narrow staircase descends from Silas's shop into darkness. The walls are lined with shelves of mysterious crates.",
+      "light_level": "dim",
+      "exits": {
+        "down": "main_warehouse"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "main_warehouse": {
+      "id": "main_warehouse",
+      "title": "Main Warehouse",
+      "description": "A vast underground chamber filled with crates, barrels, and mysterious goods. Some items pulse with dark magic. Tunnels lead in multiple directions.",
+      "light_level": "dark",
+      "exits": {
+        "up": "hidden_entrance",
+        "north": "trapped_vault",
+        "east": "smuggler_tunnel",
+        "west": "cursed_goods"
+      },
+      "items": ["torch", "lockpicks"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["thug", "thug", "thug"],
+          "description": "Silas's hired thugs attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "trapped_vault": {
+      "id": "trapped_vault",
+      "title": "Trapped Vault",
+      "description": "A reinforced iron door stands ajar, its lock mechanisms broken. Inside, shelves hold ledgers and documents. A pressure plate trap is visible on the floor.",
+      "light_level": "dark",
+      "exits": {
+        "south": "main_warehouse"
+      },
+      "items": ["ledgers", "cult_correspondence", "gold_100"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "poison_dart",
+          "description": "Poison darts shoot from the walls!",
+          "save_type": "dexterity"
+        }
+      ],
+      "safe_rest": false
+    },
+    "smuggler_tunnel": {
+      "id": "smuggler_tunnel",
+      "title": "Smuggling Tunnel",
+      "description": "A narrow tunnel that connects to the sewer system. Recent footprints show Silas fled this way.",
+      "light_level": "dark",
+      "exits": {
+        "west": "main_warehouse",
+        "east": "silas_hideout"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "cursed_goods": {
+      "id": "cursed_goods",
+      "title": "Cursed Goods Storage",
+      "description": "Crates marked with serpent symbols contain cursed items and dark artifacts. The air feels thick with malevolent energy.",
+      "light_level": "dim",
+      "exits": {
+        "east": "main_warehouse"
+      },
+      "items": ["cursed_amulet", "dark_scroll"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Cultists guarding the cursed goods attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "silas_hideout": {
+      "id": "silas_hideout",
+      "title": "Silas's Final Stand",
+      "description": "A small chamber with supplies for flight. Silas stands cornered, a poisoned blade in hand and desperation in his eyes. Maps and documents cover a makeshift desk.",
+      "light_level": "bright",
+      "exits": {
+        "west": "smuggler_tunnel"
+      },
+      "items": ["cult_maps", "ring_protection_1", "gold_300"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["silas_merchant", "bodyguard", "bodyguard"],
+          "description": "Silas and his bodyguards make their last stand!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

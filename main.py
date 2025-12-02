@@ -1881,12 +1881,22 @@ def run_campaign(campaign: Campaign, campaign_mgr: CampaignManager,
         # Get menu options
         options = hub_menu.get_menu_options()
 
-        choice = input("\nEnter choice (0 to exit): ").strip()
+        choice = input("\nEnter choice (0 to exit, s to save): ").strip().lower()
 
+        # Handle manual save command
+        if choice == 's':
+            campaign_mgr.save_campaign(campaign)
+            # Also save party state
+            party_mgr.save_party(party)
+            print("\n✓ Campaign progress saved!")
+            input("Press Enter to continue...")
+            continue
+
+        # Handle numeric menu choices
         try:
             choice_num = int(choice)
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. Please enter a number or 's' to save.")
             continue
 
         # Handle choice

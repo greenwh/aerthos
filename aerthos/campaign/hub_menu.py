@@ -88,6 +88,7 @@ class HubMenuSystem:
 
         # Footer
         lines.extend([
+            f"║  s. Save Campaign Progress{'':<40}║",
             f"║  0. Save & Exit Campaign{'':<42}║",
             f"║  {'':<66}║",
             f"╚{'═' * 68}╝",

@@ -46,9 +46,10 @@ class MagicItemFactory:
 
         with open(armor_path, 'r') as f:
             armor_data = json.load(f)
-            # armor.json has sections: armor, shields, helmets
+            # armor.json has sections: armor, shields, helmets, magic_items
             self.base_armor = armor_data.get('armor', {})
             self.base_shields = armor_data.get('shields', {})
+            self.base_magic_armor = armor_data.get('magic_items', {})
 
         with open(equipment_path, 'r') as f:
             self.base_equipment = json.load(f)
@@ -58,6 +59,7 @@ class MagicItemFactory:
         self.base_items.update(self.base_weapons)
         self.base_items.update(self.base_armor)
         self.base_items.update(self.base_shields)
+        self.base_items.update(self.base_magic_armor)
         self.base_items.update(self.base_equipment)
 
         with open(magic_items_path, 'r') as f:

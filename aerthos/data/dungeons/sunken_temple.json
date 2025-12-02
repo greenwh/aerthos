@@ -1,0 +1,111 @@
+{
+  "name": "Sunken Temple",
+  "description": "An ancient temple rising from the Whispering Marshes, pulsing with serpent-green magic.",
+  "theme": "ancient_temple",
+  "levels": 4,
+  "start_room": "temple_entrance",
+  "rooms": {
+    "temple_entrance": {
+      "id": "temple_entrance",
+      "title": "Temple Threshold",
+      "description": "Massive stone doors stand open, revealing stairs descending into green-lit darkness. Water drips from the ceiling. Serpent statues flank the entrance, their eyes seeming to follow your movement.",
+      "light_level": "dim",
+      "exits": {
+        "down": "outer_sanctum"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "outer_sanctum": {
+      "id": "outer_sanctum",
+      "title": "Outer Sanctum",
+      "description": "A circular chamber with a flooded floor. Green light emanates from beneath the water. Ancient pillars carved with serpents rise from the depths. Passages lead deeper.",
+      "light_level": "dim",
+      "exits": {
+        "up": "temple_entrance",
+        "north": "hall_of_coils",
+        "east": "offering_chamber",
+        "west": "drowned_library"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "marsh_zombie"],
+          "description": "Cultists and their undead servants rise from the water!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "offering_chamber": {
+      "id": "offering_chamber",
+      "title": "Chamber of Offerings",
+      "description": "Stone altars stained with old blood line the walls. Recent offerings—coins, weapons, jewelry—lie scattered about. Something valuable glints in the shadows.",
+      "light_level": "dark",
+      "exits": {
+        "west": "outer_sanctum"
+      },
+      "items": ["gold_200", "silver_dagger", "jade_statue"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "poison_gas",
+          "description": "Green gas hisses from vents in the floor!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "drowned_library": {
+      "id": "drowned_library",
+      "title": "Drowned Library",
+      "description": "Shelves of waterlogged books and scrolls. Most are ruined, but some texts remain readable, written in ancient scripts. Cultist notes and maps are scattered on a stone table.",
+      "light_level": "dim",
+      "exits": {
+        "east": "outer_sanctum"
+      },
+      "items": ["ancient_scroll", "cult_journal", "ritual_notes"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "hall_of_coils": {
+      "id": "hall_of_coils",
+      "title": "Hall of Serpent Coils",
+      "description": "A long hall lined with massive serpent statues. Their coils wrap around pillars reaching to the vaulted ceiling. The floor is covered in knee-deep water that reflects the eerie green light.",
+      "light_level": "dim",
+      "exits": {
+        "south": "outer_sanctum",
+        "north": "inner_sanctum"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_snake", "giant_snake"],
+          "description": "Two massive serpents slither out from behind the statues!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "inner_sanctum": {
+      "id": "inner_sanctum",
+      "title": "Inner Sanctum - Heart of the Temple",
+      "description": "The temple's central chamber. A massive pool of dark water fills the center, glowing with unnatural light. The serpent altar rises from the pool's center. High Priest Korvash stands before it, arms raised, chanting in a language that makes your ears bleed. Around the pool, cultists join in the ritual.",
+      "light_level": "bright",
+      "exits": {
+        "south": "hall_of_coils"
+      },
+      "items": ["third_key", "staff_serpents", "ritual_robes", "gold_500"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["high_priest_korvash", "cultist", "cultist", "cultist", "marsh_zombie"],
+          "description": "High Priest Korvash turns from his ritual, dark magic swirling around him! 'You are too late! The key is ours!' His followers surge forward!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

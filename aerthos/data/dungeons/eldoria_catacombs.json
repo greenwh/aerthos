@@ -1,0 +1,97 @@
+{
+  "name": "Eldoria Catacombs",
+  "description": "Ancient burial tunnels beneath the city, now corrupted by cult magic and devil-worship.",
+  "theme": "urban_dungeon",
+  "levels": 3,
+  "start_room": "secret_entrance",
+  "rooms": {
+    "secret_entrance": {
+      "id": "secret_entrance",
+      "title": "Secret Entrance - Wine Cellar",
+      "description": "Krane's estate wine cellar. A hidden door behind a wine rack leads down into darkness. The smell of brimstone wafts up from below.",
+      "light_level": "dim",
+      "exits": {
+        "down": "upper_catacombs"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "upper_catacombs": {
+      "id": "upper_catacombs",
+      "title": "Upper Catacombs",
+      "description": "Ancient burial niches line the walls, their occupants long since turned to dust. Fresher corpses lie scattered about—Krane's failed experiments and sacrifices.",
+      "light_level": "dark",
+      "exits": {
+        "up": "secret_entrance",
+        "north": "guard_post",
+        "south": "ritual_preparation"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["skeleton", "skeleton", "zombie"],
+          "description": "The dead rise to defend their master!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "guard_post": {
+      "id": "guard_post",
+      "title": "Cult Guard Post",
+      "description": "A chamber converted into a guardroom. Weapons, armor, and supplies are stacked here. Cultist guards rest between patrols.",
+      "light_level": "bright",
+      "exits": {
+        "south": "upper_catacombs"
+      },
+      "items": ["healing_potion", "antidote"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_guard", "cultist_guard", "cultist_guard"],
+          "description": "Cultist guards leap to their feet!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ritual_preparation": {
+      "id": "ritual_preparation",
+      "title": "Ritual Preparation Chamber",
+      "description": "Tables covered with ritual implements, dark tomes, and alchemical equipment. This is where Krane prepares his dark magic.",
+      "light_level": "dim",
+      "exits": {
+        "north": "upper_catacombs",
+        "down": "devils_sanctum"
+      },
+      "items": ["scroll_protection_evil", "potion_resistance"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_sorcerer", "imp"],
+          "description": "A cult sorcerer and his imp familiar attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "devils_sanctum": {
+      "id": "devils_sanctum",
+      "title": "Devil's Sanctum",
+      "description": "The deepest chamber, where Krane made his pact. A pentagram of iron is burned into the floor. The air reeks of sulfur. Syndic Valerius Krane stands in the center, a horned devil at his side. Two keys rest on a pedestal behind them.",
+      "light_level": "bright",
+      "exits": {
+        "up": "ritual_preparation"
+      },
+      "items": ["sixth_key", "seventh_key", "ring_spell_turning", "cloak_protection_plus_2", "kranes_journal", "gold_900"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["valerius_krane", "barbed_devil", "cultist_elite", "cultist_elite"],
+          "description": "Syndic Krane turns to face you, dark magic crackling around his hands! 'You've meddled in affairs far beyond your understanding!' he snarls. 'Terminate them!' he commands the devil!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

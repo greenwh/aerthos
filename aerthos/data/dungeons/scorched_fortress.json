@@ -1,0 +1,123 @@
+{
+  "name": "Scorched Fortress",
+  "description": "An orcish stronghold built atop volcanic rock, now controlled by the Serpent Cult.",
+  "theme": "volcanic_fortress",
+  "levels": 3,
+  "start_room": "outer_walls",
+  "rooms": {
+    "outer_walls": {
+      "id": "outer_walls",
+      "title": "Breached Outer Wall",
+      "description": "The fortress walls are blackened stone, built to withstand siege. A gaping hole shows where the cultists breached. Urgot and his Bloodfang warriors wait nearby, ready to charge when you give the signal. Heat radiates from the volcanic rock beneath.",
+      "light_level": "bright",
+      "exits": {
+        "north": "courtyard"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "courtyard": {
+      "id": "courtyard",
+      "title": "Fortress Courtyard",
+      "description": "The courtyard is littered with orcish and cultist bodies. The battle here was brutal. Scorch marks scar the ground from magical attacks. Passages lead into the fortress proper.",
+      "light_level": "bright",
+      "exits": {
+        "south": "outer_walls",
+        "north": "great_hall",
+        "east": "barracks",
+        "west": "war_room"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist", "cultist"],
+          "description": "Cultist defenders rush out to meet you!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "barracks": {
+      "id": "barracks",
+      "title": "Orcish Barracks",
+      "description": "Crude bunks and weapon racks line the walls. The cultists have defiled this place, painting serpent symbols over the orcish clan markings.",
+      "light_level": "dim",
+      "exits": {
+        "west": "courtyard"
+      },
+      "items": ["orcish_axe", "healing_potion"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Two cultists attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "war_room": {
+      "id": "war_room",
+      "title": "War Planning Chamber",
+      "description": "Maps of the region are pinned to the walls. The cultists have marked strategic locations with serpent tokens. Battle plans and correspondence litter a stone table.",
+      "light_level": "bright",
+      "exits": {
+        "east": "courtyard"
+      },
+      "items": ["cult_battle_plans", "regional_maps"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "great_hall": {
+      "id": "great_hall",
+      "title": "Great Hall of the Bloodfang",
+      "description": "The clan's gathering hall. Trophies of past victories hang on the walls. The cultists have set up their own altar here, a serpent idol placed on the chief's throne. The heat is oppressive—volcanic vents have been opened, turning this place into a furnace.",
+      "light_level": "dim",
+      "exits": {
+        "south": "courtyard",
+        "north": "vault_entrance"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist", "fire_elemental"],
+          "description": "Cultists and a summoned fire elemental attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "vault_entrance": {
+      "id": "vault_entrance",
+      "title": "Vault Entrance",
+      "description": "Massive iron doors stand open, their locks shattered by dark magic. Beyond lies the clan vault. General Malakar's voice echoes from within: 'The Fourth Key is ours! The Serpent's will shall be done!'",
+      "light_level": "dim",
+      "exits": {
+        "south": "great_hall",
+        "north": "clan_vault"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "clan_vault": {
+      "id": "clan_vault",
+      "title": "Bloodfang Clan Vault",
+      "description": "The sacred vault of the Bloodfang Orcs. Tribal treasures, weapons of legend, and the bones of honored ancestors line the walls. In the center, General Malakar stands before the opened inner vault, the Fourth Key in his hand. Lava flows through channels in the floor, filling the room with hellish heat and light. Elite cultist guards surround him.",
+      "light_level": "bright",
+      "exits": {
+        "south": "vault_entrance"
+      },
+      "items": ["fourth_key", "orcish_greataxe_plus_2", "tribal_treasures", "gold_600"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cult_general_malakar", "cultist_elite", "cultist_elite", "cultist_elite"],
+          "description": "General Malakar turns to face you, eyes burning with fanatical fire! 'You've interfered for the last time!' he roars, raising his flaming sword! His elite guards charge!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

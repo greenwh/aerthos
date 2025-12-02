@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode Complete - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .completion-container {
+            max-width: 900px;
+            width: 100%;
+            border: 3px solid #ff0;
+            background-color: #1a1a00;
+            padding: 40px;
+            box-shadow: 0 0 30px #ff0;
+            animation: victoryPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes victoryPulse {
+            0%, 100% { box-shadow: 0 0 30px #ff0; }
+            50% { box-shadow: 0 0 50px #ff0; }
+        }
+
+        .victory-banner {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #ff0;
+            background-color: #2a2a00;
+        }
+
+        .victory-text {
+            font-size: 48px;
+            color: #ff0;
+            font-weight: bold;
+            text-shadow: 0 0 20px #ff0;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .episode-title {
+            font-size: 24px;
+            color: #0f0;
+            margin-top: 10px;
+        }
+
+        .completion-narrative {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 30px 0;
+            padding: 25px;
+            background-color: #001a00;
+            border: 2px solid #0a0;
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        .rewards-section {
+            margin-top: 40px;
+            border: 2px solid #ff0;
+            background-color: #2a2a00;
+            padding: 30px;
+        }
+
+        .rewards-header {
+            font-size: 24px;
+            color: #ff0;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff0;
+        }
+
+        .reward-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .reward-box {
+            border: 1px solid #0a0;
+            background-color: #001100;
+            padding: 15px;
+        }
+
+        .reward-label {
+            font-size: 12px;
+            color: #0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .reward-value {
+            font-size: 20px;
+            color: #ff0;
+            font-weight: bold;
+        }
+
+        .reward-items {
+            margin-top: 20px;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item-list li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #001100;
+            border-left: 3px solid #ff0;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #ff0;
+        }
+
+        .unlocks-section {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #0f0;
+            background-color: #001100;
+        }
+
+        .unlocks-header {
+            font-size: 18px;
+            color: #0f0;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .unlock-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background-color: #002200;
+            border-left: 3px solid #0f0;
+            color: #0f0;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn {
+            padding: 20px 50px;
+            font-size: 20px;
+            background: #003300;
+            color: #0f0;
+            border: 3px solid #0f0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn:hover {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 30px #0f0;
+            transform: scale(1.05);
+        }
+
+        .story-flags {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #000;
+            border: 1px solid #555;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .story-flag {
+            margin-bottom: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 18px;
+            color: #ff0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="completion-container">
+        <div class="victory-banner">
+            <div class="victory-text">✦ VICTORY ✦</div>
+            <div class="episode-title">{{ episode.title }}</div>
+        </div>
+
+        <div class="completion-narrative">{{ episode.completion_text }}</div>
+
+        <div class="rewards-section">
+            <div class="rewards-header">⚡ REWARDS EARNED ⚡</div>
+
+            <div class="reward-grid">
+                {% if episode.rewards.xp_bonus > 0 %}
+                <div class="reward-box">
+                    <div class="reward-label">Experience Points</div>
+                    <div class="reward-value">+{{ episode.rewards.xp_bonus }} XP</div>
+                </div>
+                {% endif %}
+
+                {% if episode.rewards.gold_bonus > 0 %}
+                <div class="reward-box">
+                    <div class="reward-label">Gold Pieces</div>
+                    <div class="reward-value">+{{ episode.rewards.gold_bonus }} GP</div>
+                </div>
+                {% endif %}
+            </div>
+
+            {% if episode.rewards.items and episode.rewards.items|length > 0 %}
+            <div class="reward-items">
+                <div class="reward-label">Magic Items & Treasures:</div>
+                <ul class="item-list">
+                    {% for item_id in episode.rewards.items %}
+                    <li>
+                        <span class="item-name">{{ item_id|replace('_', ' ')|title }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+
+        {% if episode.rewards.unlocks or episode.rewards.unlocks_hubs %}
+        <div class="unlocks-section">
+            <div class="unlocks-header">🔓 NEW CONTENT UNLOCKED 🔓</div>
+
+            {% if episode.rewards.unlocks %}
+                {% for unlock in episode.rewards.unlocks %}
+                <div class="unlock-item">
+                    ➤ New Episode Available: {{ unlock|replace('_', ' ')|title }}
+                </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if episode.rewards.unlocks_hubs %}
+                {% for hub in episode.rewards.unlocks_hubs %}
+                <div class="unlock-item">
+                    ➤ New Hub Unlocked: {{ hub|replace('_', ' ')|title }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if episode.rewards.story_flags and episode.rewards.story_flags|length > 0 %}
+        <div class="story-flags">
+            <div class="reward-label">Story Progress:</div>
+            {% for flag in episode.rewards.story_flags %}
+            <div class="story-flag">• {{ flag|replace('_', ' ')|title }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="button-container">
+            <button class="btn" onclick="returnToHub()">➤ CONTINUE TO HUB</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            Saving progress...
+        </div>
+    </div>
+
+    <script>
+        const campaignId = "{{ campaign_id }}";
+        const episodeId = "{{ episode.id }}";
+
+        function returnToHub() {
+            // Redirect back to hub
+            window.location.href = `/campaign/${campaignId}/hub`;
+        }
+
+        // Auto-save completion on load
+        window.addEventListener('load', function() {
+            console.log('Episode completed:', episodeId);
+            // Campaign state is already saved by the completion API
+        });
+    </script>
+</body>
+</html>

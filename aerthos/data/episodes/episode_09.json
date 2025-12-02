@@ -1,0 +1,43 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_09",
+  "title": "The Planar Rift",
+  "act": 3,
+  "recommended_level": 9,
+  "hub_id": "eldoria",
+  "intro_text": "The eastern district of Eldoria burns with unnatural fire. The rift hovers above the ruins of the Arcane Academy, a tear in reality itself, pulsing with chaotic energy. Fire elementals pour through, setting buildings ablaze. Water elementals flood the streets. The city guard fights desperately to contain the destruction, but they're losing ground.\n\nThe cult's mages maintain the rift from within a pocket dimension—a fragment of the Elemental Chaos anchored to this world. To close the rift, you must enter the chaos, find the anchoring runes, and destroy them. But the Elemental Chaos is no normal dungeon—reality itself is unstable, rooms shift and change, and the very elements are hostile.\n\nTime is running out. Every moment the rift remains open, more elementals cross over. Eldoria's survival—and your chance to stop the final ritual—depends on sealing this breach.",
+  "briefing": {
+    "quest_giver": "Archmage Elara Stormwind",
+    "location": "Eldoria - Emergency War Council",
+    "dialogue": "The rift is anchored by four elemental keystones—fire, water, earth, and air. They're inside the pocket dimension, maintained by cult sorcerers who've given themselves over to elemental transformation. We've managed to create a temporary portal, but it's unstable. You'll have minutes, maybe an hour, before it collapses. Find the keystones, destroy them, and kill the Prince's servant who's directing the ritual. The Elemental Chaos isn't like our world—physics, time, space, they're all suggestions there. Trust your instincts, not your senses. And whatever you do, don't let the elementals surround you. Here, take these resistance charms. You'll need them."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/elemental_chaos.json",
+    "name": "The Elemental Chaos",
+    "theme": "planar_chaos",
+    "levels": 4,
+    "boss": "Elemental Prince's Herald"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "elemental_herald"
+  },
+  "completion_text": "The Elemental Prince's Herald explodes in a cascade of primal energy. The keystones shatter, and the rift collapses with a deafening roar. Eldoria is saved.\n\nBut there's no time to celebrate. Among the Herald's possessions, you find the Eighth and Ninth Keys—the cult had hidden them here for safekeeping. You now have nine of the ten keys. Only one remains, and you know where it is: with the cult's supreme leader, in the Grand Cathedral.\n\nSyndic Brightstar delivers grim news: the cult has activated the cathedral's defenses and taken hostages. Worse, they've sent an army to Oakhaven—where this all began. The town is under siege. The cult's message is clear: surrender the keys, or Oakhaven burns.\n\nYou have a choice to make. Protect Oakhaven and save innocent lives, or strike directly at the cathedral and end this once and for all. Either way, the final confrontation is at hand.",
+  "rewards": {
+    "xp_bonus": 4000,
+    "gold_bonus": 1000,
+    "items": ["staff_elemental_mastery", "boots_levitation"],
+    "unlocks": ["episode_10"],
+    "story_flags": ["eighth_key_found", "ninth_key_found", "rift_closed", "oakhaven_under_siege"],
+    "reputation_changes": {
+      "eldoria_citizens": 100
+    }
+  },
+  "rumors": [
+    "The Elemental Chaos is the birthplace of all genies and elementals.",
+    "Some who enter the Chaos return changed, touched by primal forces.",
+    "The cult's leader has never been seen. Some say they're not human anymore."
+  ],
+  "prerequisites": ["episode_08"]
+}

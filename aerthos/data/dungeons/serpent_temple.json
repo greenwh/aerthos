@@ -1,0 +1,124 @@
+{
+  "name": "The Serpent Temple",
+  "description": "The cult's final stronghold in the ruins of Oakhaven's old temple. The site of the apocalyptic ritual.",
+  "theme": "final_dungeon",
+  "levels": 4,
+  "start_room": "outer_courtyard",
+  "rooms": {
+    "outer_courtyard": {
+      "id": "outer_courtyard",
+      "title": "Burning Courtyard",
+      "description": "Oakhaven burns around you. The temple courtyard is filled with cultists preparing for the final ritual. In the distance, you hear the sounds of battle—your allies creating a distraction. The temple doors stand open, serpent banners flying above.",
+      "light_level": "bright",
+      "exits": {
+        "north": "temple_entrance"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist", "cultist"],
+          "description": "Cultist guards rush to stop you! This is it—the final battle begins!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "temple_entrance": {
+      "id": "temple_entrance",
+      "title": "Corrupted Temple Hall",
+      "description": "What was once a place of worship is now desecrated. Serpent idols replace holy symbols. The walls run with blood. Cultist elite guard the path forward.",
+      "light_level": "dim",
+      "exits": {
+        "south": "outer_courtyard",
+        "north": "antechamber",
+        "east": "treasury",
+        "west": "barracks"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elite", "cultist_elite", "cultist_sorcerer"],
+          "description": "The cult's elite forces bar your way!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "treasury": {
+      "id": "treasury",
+      "title": "Plundered Treasury",
+      "description": "The town's wealth, stolen and hoarded by the cult. Gold and gems are piled high, but they mean nothing if the ritual succeeds.",
+      "light_level": "bright",
+      "exits": {
+        "west": "temple_entrance"
+      },
+      "items": ["gold_2000", "gems", "minor_magic_items"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "poison_gas",
+          "description": "Green gas hisses from vents!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "barracks": {
+      "id": "barracks",
+      "title": "Cult Barracks",
+      "description": "Where the cult's army rests. Most are at the ritual, but a few guards remain.",
+      "light_level": "dim",
+      "exits": {
+        "east": "temple_entrance"
+      },
+      "items": ["healing_potions", "weapons"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Cultists attack from their bunks!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "antechamber": {
+      "id": "antechamber",
+      "title": "Ritual Antechamber",
+      "description": "The chamber before the inner sanctum. Powerful wards block the way. The cult's high priest guards the passage, channeling dark magic.",
+      "light_level": "dim",
+      "exits": {
+        "south": "temple_entrance",
+        "north": "inner_sanctum"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["high_priest_defender", "cultist_elite", "cultist_elite"],
+          "description": "The High Priest raises his staff! 'None shall pass! The Serpent awakens!'"
+        }
+      ],
+      "safe_rest": false
+    },
+    "inner_sanctum": {
+      "id": "inner_sanctum",
+      "title": "The Serpent's Eye - Final Ritual Chamber",
+      "description": "The heart of it all. A massive chamber carved with serpent runes that glow with sickly green light. In the center, a ritual circle contains all ten keys, arranged in a pattern. The Serpent's Voice stands at the altar, arms raised, chanting in a language that predates humanity. Behind them, reality itself cracks—a glimpse of the prison breaking, of something vast and terrible beginning to emerge.\n\nThe Voice turns to face you. 'You're too late. The keys are in place. The Serpent Eye awakens. All your struggles, all your victories—they were meaningless. This world ends tonight, and a new age begins in blood and chaos!'\n\nThis is it. Everything has led to this moment.",
+      "light_level": "bright",
+      "exits": {
+        "south": "antechamber"
+      },
+      "items": ["legendary_weapon_choice", "serpent_slayer_title_scroll", "gold_2000", "all_ten_keys_shattered"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["serpents_voice", "cultist_elite", "cultist_elite", "cultist_elite", "summoned_demon"],
+          "description": "The Serpent's Voice channels the power of the awakening entity! Dark energy surrounds them! Elite cultists and a summoned demon join the battle! This is the final stand—win or lose, it ends here!",
+          "boss": true,
+          "final_boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

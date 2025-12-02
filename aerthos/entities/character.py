@@ -198,3 +198,9 @@ class Character:
     def cha(self) -> int:
         """Charisma (standard abbreviation)"""
         return self.charisma
+
+    @property
+    def has_waterbreathing(self) -> bool:
+        """Check if character can breathe underwater"""
+        # Base characters (monsters) don't have waterbreathing unless specified in conditions
+        return 'waterbreathing' in self.conditions

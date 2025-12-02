@@ -18,9 +18,15 @@ class Room:
     items: List[str] = field(default_factory=list)  # item names
     is_explored: bool = False
     is_safe_for_rest: bool = False
+    tags: List[str] = field(default_factory=list)  # Room tags (e.g., 'underwater', 'hot', 'cold')
 
     # Encounter tracking
     encounters_completed: List[str] = field(default_factory=list)
+
+    @property
+    def is_underwater(self) -> bool:
+        """Check if this room is underwater"""
+        return 'underwater' in self.tags if self.tags else False
 
     def on_enter(self, has_light: bool, player=None) -> str:
         """
@@ -41,6 +47,37 @@ class Room:
             return self._describe_darkness(player)
 
         return self._get_full_description()
+
+    def check_drowning(self, character) -> str:
+        """
+        Check if character is drowning in underwater room
+
+        Args:
+            character: Character to check
+
+        Returns:
+            Message describing drowning damage, or empty string if safe
+        """
+        if not self.is_underwater:
+            return ""
+
+        if character.has_waterbreathing:
+            return ""
+
+        # Character is drowning - deal damage
+        import random
+        damage = random.randint(1, 6)
+        character.hp_current -= damage
+
+        msg = f"\n⚠️  **DROWNING!** {character.name} cannot breathe underwater! Takes {damage} damage."
+
+        if character.hp_current <= 0:
+            character.is_alive = False
+            msg += f"\n💀 {character.name} has drowned!"
+        else:
+            msg += f" ({character.hp_current}/{character.hp_max} HP remaining)"
+
+        return msg
 
     def _describe_darkness(self, player=None) -> str:
         """Return description for dark room without light"""

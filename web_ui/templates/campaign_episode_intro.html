@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ episode.title }} - AERTHOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .narrative-container {
+            max-width: 900px;
+            width: 100%;
+            border: 3px solid #0f0;
+            background-color: #001a00;
+            padding: 40px;
+            box-shadow: 0 0 30px #0f0;
+        }
+
+        .episode-number {
+            font-size: 14px;
+            color: #0a0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .episode-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0f0;
+            text-shadow: 0 0 15px #0f0;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            color: #0a0;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        .briefing-box {
+            border: 2px solid #0a0;
+            background-color: #002200;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .briefing-header {
+            font-size: 18px;
+            color: #0f0;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #0a0;
+            padding-bottom: 10px;
+        }
+
+        .quest-giver {
+            font-weight: bold;
+            color: #ff0;
+            margin-bottom: 5px;
+        }
+
+        .quest-location {
+            color: #0a0;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .dialogue {
+            font-style: italic;
+            margin-top: 15px;
+            padding: 15px;
+            border-left: 3px solid #0a0;
+            background-color: #001100;
+            line-height: 1.6;
+        }
+
+        .dungeon-info {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #555;
+            background: #000;
+        }
+
+        .info-row {
+            margin-bottom: 8px;
+            display: flex;
+        }
+
+        .info-label {
+            color: #0a0;
+            min-width: 180px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            color: #0f0;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 18px;
+            background: #003300;
+            color: #0f0;
+            border: 2px solid #0f0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        .btn-primary {
+            background: #004400;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0a0;
+        }
+
+        .btn-secondary {
+            background: #330000;
+            border-color: #ff0000;
+            color: #ff0000;
+        }
+
+        .btn-secondary:hover {
+            background: #ff0000;
+            color: #fff;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 18px;
+            color: #0a0;
+            margin-top: 20px;
+        }
+
+        .error {
+            background-color: #330000;
+            border: 2px solid #f00;
+            color: #f00;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="narrative-container">
+        <div class="episode-number">EPISODE {{ episode.act }}-{{ episode.id.split('_')[1] }}</div>
+        <div class="episode-title">{{ episode.title }}</div>
+
+        <div class="section">
+            <div class="section-label">/// SITUATION REPORT ///</div>
+            <div class="intro-text">{{ episode.intro_text }}</div>
+        </div>
+
+        <div class="briefing-box">
+            <div class="briefing-header">⚔ QUEST BRIEFING ⚔</div>
+            <div class="quest-giver">{{ episode.briefing.quest_giver }}</div>
+            <div class="quest-location">{{ episode.briefing.location }}</div>
+            <div class="dialogue">"{{ episode.briefing.dialogue }}"</div>
+        </div>
+
+        <div class="dungeon-info">
+            <div class="section-label">/// MISSION PARAMETERS ///</div>
+            <div class="info-row">
+                <span class="info-label">Recommended Level:</span>
+                <span class="info-value">{{ episode.recommended_level }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Target Location:</span>
+                <span class="info-value">{{ episode.dungeon_config.name }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Dungeon Theme:</span>
+                <span class="info-value">{{ episode.dungeon_config.theme|capitalize }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Estimated Depth:</span>
+                <span class="info-value">{{ episode.dungeon_config.levels }} level(s)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Objective:</span>
+                <span class="info-value">{{ episode.completion_criteria.type|replace('_', ' ')|title }}</span>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-primary" onclick="enterDungeon()">⚔️ ENTER DUNGEON</button>
+            <button class="btn btn-secondary" onclick="returnToHub()">🏠 NOT READY - RETURN TO HUB</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            Initializing dungeon...
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <script>
+        const campaignId = "{{ campaign_id }}";
+        const episodeId = "{{ episode.id }}";
+
+        async function enterDungeon() {
+            const loadingEl = document.getElementById('loading');
+            const errorEl = document.getElementById('error');
+
+            loadingEl.style.display = 'block';
+            errorEl.style.display = 'none';
+
+            try {
+                // Initialize dungeon for gameplay
+                const response = await fetch(`/api/campaigns/${campaignId}/episodes/${episodeId}/initialize`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Redirect to character selection / game start
+                    window.location.href = `/campaign/${campaignId}/episodes/${episodeId}/select_character`;
+                } else {
+                    errorEl.textContent = 'Error: ' + data.error;
+                    errorEl.style.display = 'block';
+                    loadingEl.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error initializing dungeon:', error);
+                errorEl.textContent = 'Error initializing dungeon: ' + error.message;
+                errorEl.style.display = 'block';
+                loadingEl.style.display = 'none';
+            }
+        }
+
+        function returnToHub() {
+            window.location.href = `/campaign/${campaignId}/hub`;
+        }
+    </script>
+</body>
+</html>

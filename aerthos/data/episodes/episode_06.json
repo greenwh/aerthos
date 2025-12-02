@@ -1,0 +1,44 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_06",
+  "title": "The Orc Truce",
+  "act": 2,
+  "recommended_level": 6,
+  "hub_id": "mires_edge",
+  "intro_text": "The Scorched Wastes lie beyond the marshes—a brutal landscape of blackened earth and volcanic rock, home to the Bloodfang Orc Clan. For decades, they raided settlements, took slaves, and burned villages. But something has changed.\n\nAn orc emissary arrives in Mire's Edge under a white flag, bearing a message for you specifically: 'The Serpent Cult has taken our sacred fortress. They slaughter my people like cattle, steal our young for dark rituals. We do not ask for mercy—we offer alliance. Help us reclaim the Scorched Fortress, and the Bloodfang Clan will fight beside you against the cult. Refuse, and we all fall to the serpent's coils.'\n\nAn alliance with orcs is unthinkable to many. But the cult grows stronger by the day. Can you trust your ancient enemies to fight a greater threat?",
+  "briefing": {
+    "quest_giver": "War-Chief Urgot",
+    "location": "Mire's Edge - Neutral Meeting Ground",
+    "dialogue": "I am Urgot, War-Chief of the Bloodfang. My words are iron. The Serpent Cult invaded our fortress two months ago. We fought—gods, how we fought. But their magic is strong, their numbers endless. They seek the Fourth Key, hidden in our vault. If they claim it, they will use our fortress as a staging ground to conquer the entire region. I offer you this: fight with us, reclaim our home, and the Bloodfang will stand with you in the battles to come. We have raided your people—this I do not deny. But the Serpent threatens us all. Will you accept?"
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/scorched_fortress.json",
+    "name": "The Scorched Fortress",
+    "theme": "volcanic_fortress",
+    "levels": 3,
+    "boss": "Cult General Malakar"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "cult_general_malakar"
+  },
+  "completion_text": "General Malakar's corpse lies burning, consumed by the volcanic heat he tried to wield against you. The cultists scatter or die as Bloodfang warriors surge through the fortress, reclaiming their ancestral home.\n\nIn the fortress vault, you find the Fourth Key—a blackened iron key still hot to the touch, inscribed with runes of conquest and flame. Malakar's battle plans reveal the cult's strategy: they're consolidating forces in the eastern wastes, preparing for the final gathering of the keys.\n\nWar-Chief Urgot clasps your forearm in the orcish way, his grip like iron. 'Today, we are allies. Tomorrow, we fight the Serpent together. The Bloodfang remember their oaths. When you call, we will answer.'\n\nAct II ends with an unlikely alliance forged in blood and fire. The cult has been driven back, but six keys remain. The true war is about to begin.",
+  "rewards": {
+    "xp_bonus": 2500,
+    "gold_bonus": 600,
+    "items": ["orcish_greataxe_plus_2"],
+    "unlocks": ["episode_07"],
+    "unlocks_hubs": ["bloodfang_camp"],
+    "story_flags": ["fourth_key_found", "orc_alliance_forged", "act_2_complete"],
+    "reputation_changes": {
+      "bloodfang_orcs": 100
+    }
+  },
+  "rumors": [
+    "The orcs have a shaman who can see the future. She warned them of the Serpent months ago.",
+    "Some in Mire's Edge think you're a traitor for working with orcs. Others call you a pragmatist.",
+    "The Scorched Fortress sits atop a dormant volcano. The cult was trying to awaken it."
+  ],
+  "prerequisites": ["episode_05"]
+}

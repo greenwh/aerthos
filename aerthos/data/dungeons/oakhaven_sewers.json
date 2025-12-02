@@ -1,0 +1,322 @@
+{
+  "name": "Oakhaven Sewers",
+  "description": "Dark tunnels beneath the town, filled with filth and cultist activity.",
+  "theme": "sewers",
+  "levels": 3,
+  "start_room": "entrance",
+  "rooms": {
+    "entrance": {
+      "id": "entrance",
+      "title": "Sewer Entrance",
+      "description": "The old well shaft drops into darkness. The smell is overwhelming—a mixture of decay, sewage, and something else... incense? Fresh footprints lead north into the tunnels, disturbing the decades of accumulated filth.",
+      "light_level": "dark",
+      "exits": {
+        "north": "main_tunnel"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "main_tunnel": {
+      "id": "main_tunnel",
+      "title": "Main Sewer Tunnel",
+      "description": "A wide stone tunnel runs east and west. Foul water flows through a central channel. Strange symbols are painted on the walls in dried blood—serpentine shapes that seem to writhe in the torchlight. The stonework is ancient, pre-dating Oakhaven itself.",
+      "light_level": "dark",
+      "exits": {
+        "south": "entrance",
+        "east": "east_junction",
+        "west": "west_junction"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Two robed cultists guard the intersection, serpent daggers drawn!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "east_junction": {
+      "id": "east_junction",
+      "title": "Eastern Junction",
+      "description": "The tunnel branches here. To the north, you hear dripping water and the scurrying of many small feet. To the east, a door marked with a faded 'FILTRATION' sign. To the south, the tunnel slopes downward into darkness.",
+      "light_level": "dark",
+      "exits": {
+        "west": "main_tunnel",
+        "north": "rat_warren",
+        "east": "filtration_chamber",
+        "south": "flooded_passage"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "filtration_chamber": {
+      "id": "filtration_chamber",
+      "title": "Filtration Chamber",
+      "description": "Ancient machinery fills this room—rusted gears and clogged filters that once purified the town's water. The mechanisms haven't worked in decades. Something has nested in the corner, surrounded by gnawed bones.",
+      "light_level": "dim",
+      "exits": {
+        "west": "east_junction"
+      },
+      "items": ["torch", "iron_spikes"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_rat", "giant_rat", "giant_rat"],
+          "description": "Three giant rats, each the size of a dog, emerge from the machinery with a chittering screech!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "rat_warren": {
+      "id": "rat_warren",
+      "title": "Rat Warren",
+      "description": "The tunnel opens into a disgusting nest of shredded cloth, gnawed wood, and bones. Hundreds of small tunnels riddle the walls. The squeaking is deafening. At the center of the nest, you see a glint of metal—something valuable dragged here.",
+      "light_level": "dark",
+      "exits": {
+        "south": "east_junction"
+      },
+      "items": ["silver_dagger", "gold_coins", "rat_pelt"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_rat", "giant_rat", "giant_rat", "giant_rat", "giant_rat"],
+          "description": "The warren erupts with angry rats defending their nest!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "flooded_passage": {
+      "id": "flooded_passage",
+      "title": "Flooded Passage",
+      "description": "The tunnel is flooded waist-deep with foul water. Something swims beneath the surface—you see ripples and bubbles. The passage continues south to what looks like a larger chamber.",
+      "light_level": "dark",
+      "exits": {
+        "north": "east_junction",
+        "south": "old_cistern"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "disease",
+          "description": "The water is thick with disease. Those who wade through risk infection.",
+          "difficulty": 14
+        }
+      ],
+      "safe_rest": false
+    },
+    "old_cistern": {
+      "id": "old_cistern",
+      "title": "Old Cistern",
+      "description": "A vast chamber with a deep pool of stagnant water. Stone platforms circle the edge. Something large lurks in the murky depths—you see tentacles briefly surface. On the far platform, a skeleton in rusted armor clutches a sword.",
+      "light_level": "dark",
+      "exits": {
+        "north": "flooded_passage"
+      },
+      "items": ["longsword_plus_1", "plate_mail", "waterlogged_journal"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["otyugh"],
+          "description": "A massive otyugh erupts from the water, its tentacles lashing toward you!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "west_junction": {
+      "id": "west_junction",
+      "title": "Western Junction",
+      "description": "A four-way intersection. The cultists clearly use these tunnels frequently—the floor is swept clean and torches burn in wall sconces. Passages lead in all directions.",
+      "light_level": "dim",
+      "exits": {
+        "east": "main_tunnel",
+        "north": "guard_post",
+        "west": "cultist_quarters",
+        "south": "prison_cells"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "guard_post": {
+      "id": "guard_post",
+      "title": "Guard Post",
+      "description": "A narrow room with murder holes in the walls and a heavy iron portcullis (currently raised). This is a defensive chokepoint. A table holds dice, cards, and half-eaten food—the guards were recently here.",
+      "light_level": "dim",
+      "exits": {
+        "south": "west_junction",
+        "north": "scriptorium"
+      },
+      "items": ["crossbow", "bolts", "guard_schedule"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Two cultist guards scramble to their feet, reaching for weapons!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "scriptorium": {
+      "id": "scriptorium",
+      "title": "Scriptorium",
+      "description": "A room lined with shelves holding scrolls, books, and parchments. A writing desk sits in the center, covered with half-finished texts. The documents detail the cult's beliefs—worship of the Serpent Eye, prophecies of 'the awakening,' and instructions for blood rituals.",
+      "light_level": "bright",
+      "exits": {
+        "south": "guard_post",
+        "east": "meditation_cells"
+      },
+      "items": ["cult_scripture", "ritual_scroll", "quill_and_ink", "spell_scroll_cure_light_wounds"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_scribe"],
+          "description": "A cultist scribe looks up from his work, eyes wide with alarm!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "meditation_cells": {
+      "id": "meditation_cells",
+      "title": "Meditation Cells",
+      "description": "A hallway with six small cells, each barely large enough for a person to sit cross-legged. Each contains a prayer mat, a serpent idol, and dried blood stains. This is where cultists perform personal devotions.",
+      "light_level": "dim",
+      "exits": {
+        "west": "scriptorium",
+        "south": "hidden_shrine"
+      },
+      "items": ["serpent_idol", "prayer_beads"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "hidden_shrine": {
+      "id": "hidden_shrine",
+      "title": "Hidden Shrine",
+      "description": "A secret shrine hidden behind a false wall in the meditation cells. A massive serpent statue dominates the room, its eyes set with green gemstones. The altar before it is covered with offerings—coins, jewels, and disturbingly fresh blood.",
+      "light_level": "dim",
+      "exits": {
+        "north": "meditation_cells"
+      },
+      "items": ["emerald_eyes", "gold_chalice", "serpent_holy_symbol", "mysterious_key"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "poison_needle",
+          "description": "The altar is trapped! A needle springs out when the treasures are touched.",
+          "difficulty": 15
+        }
+      ],
+      "safe_rest": false
+    },
+    "cultist_quarters": {
+      "id": "cultist_quarters",
+      "title": "Cultist Living Quarters",
+      "description": "A long chamber with crude bunks along both walls. This is where the cult members sleep when not performing rituals. Personal belongings are scattered about—clothing, weapons, rations. A notice board on the wall shows guard rotations and ritual schedules.",
+      "light_level": "dim",
+      "exits": {
+        "east": "west_junction",
+        "north": "storage_chamber"
+      },
+      "items": ["rations", "rations", "rope", "backpack", "cultist_roster"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist"],
+          "description": "Three off-duty cultists scramble from their bunks, grabbing weapons!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "storage_chamber": {
+      "id": "storage_chamber",
+      "title": "Cultist Supply Room",
+      "description": "Crates and barrels are stacked haphazardly. Some contain mundane supplies—food, torches, rope. Others hold disturbing ritual implements—ceremonial daggers, vials of blood, serpent-carved masks. A ledger on the table tracks shipments from 'The Merchant.'",
+      "light_level": "dim",
+      "exits": {
+        "south": "cultist_quarters"
+      },
+      "items": ["dagger", "rations", "holy_symbol", "torch", "torch", "merchant_ledger"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "prison_cells": {
+      "id": "prison_cells",
+      "title": "Prison Cells",
+      "description": "Iron-barred cells line the walls. Seven emaciated prisoners huddle in the shadows, their eyes wide with terror. They've been here for weeks, fed just enough to keep them alive. Buckets of waste and torture implements tell a grim story.",
+      "light_level": "dark",
+      "exits": {
+        "north": "west_junction",
+        "west": "torture_chamber",
+        "east": "ritual_antechamber"
+      },
+      "items": ["cell_key"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist"],
+          "description": "Three cultist jailers turn from their prisoners, weapons drawn!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "torture_chamber": {
+      "id": "torture_chamber",
+      "title": "Torture Chamber",
+      "description": "A nightmare room filled with implements of pain—racks, iron maidens, branding irons. The cultists used this place to 'prepare' sacrifices, breaking their will before the final ritual. Blood stains everything. You find partially burned documents detailing interrogation techniques.",
+      "light_level": "dim",
+      "exits": {
+        "east": "prison_cells"
+      },
+      "items": ["torture_notes", "healing_potion", "iron_chains"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_torturer"],
+          "description": "The cult's torturer, a sadistic brute, grins and hefts a bloody hammer!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ritual_antechamber": {
+      "id": "ritual_antechamber",
+      "title": "Ritual Antechamber",
+      "description": "A preparation room before the main ritual chamber. Cultists don their ceremonial robes here and prepare sacrifices. Hooks on the walls hold dozens of serpent-embroidered robes. A table displays ritual implements laid out with care. The air hums with dark energy.",
+      "light_level": "bright",
+      "exits": {
+        "west": "prison_cells",
+        "north": "ritual_chamber"
+      },
+      "items": ["serpent_robes", "ceremonial_dagger", "incense"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Two cultists preparing for the ritual turn in shock at your intrusion!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ritual_chamber": {
+      "id": "ritual_chamber",
+      "title": "Ritual Chamber",
+      "description": "A large vaulted chamber with a massive serpent altar in the center. Candles burn with sickly green flame, casting writhing shadows. Blood stains the floor in intricate ritual patterns forming a massive serpent coil. The cultist leader stands before the altar, chanting in a guttural tongue. Maps of the region marked with serpent symbols cover the walls, and letters from 'The Merchant' are scattered on a side table.",
+      "light_level": "dim",
+      "exits": {
+        "south": "ritual_antechamber"
+      },
+      "items": ["serpent_robes", "ritual_dagger", "cult_documents", "merchant_letters", "regional_map", "ritual_scroll_darkness"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_fanatic", "cultist", "cultist"],
+          "description": "The Cultist Fanatic wheels around, dark magic crackling around his hands! 'The Serpent Eye sees all! You cannot stop the awakening!' His guards rush to defend him!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    }
+  }
+}

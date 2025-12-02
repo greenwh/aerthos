@@ -1,0 +1,44 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_04",
+  "title": "The Dwarven Distress",
+  "act": 2,
+  "recommended_level": 4,
+  "hub_id": "ironfast_outpost",
+  "intro_text": "The mountain road to Ironfast Outpost is treacherous, winding through narrow passes and across ancient bridges. The dwarven outpost stands as a fortress carved into the living rock of the Shattered Peaks—or it should.\n\nSmoke rises from several watchtowers. The gates are barricaded from within. As you approach, a grizzled dwarf captain emerges, bloodied and exhausted.\n\n'Duergar!' he spits. 'The gray dwarves came from below, from the old deeps we thought sealed. They've taken the lower halls, cut off our supply tunnels. We're under siege, and they bear that cursed serpent symbol you warned us about. If you truly hunt this cult, their headquarters is down there—in what used to be our home.'",
+  "briefing": {
+    "quest_giver": "Commander Thrain Ironfoot",
+    "location": "Ironfast Outpost - Command Post",
+    "dialogue": "Twenty-three of my kin dead, another forty wounded. The duergar came like shadows in the night. They knew our tunnels, our secret ways. Someone told them. Their leader, Grathak the Soulless, wears a serpent amulet and speaks of 'preparing the key.' We've held the upper fortress, but the lower hold—the forges, the armory, the deep vaults—all lost. If you can break through, kill Grathak, and discover what they're after, we'll consider it even. Fair warning: duergar aren't just strong—they can turn invisible, walk through walls with their cursed magic. Come prepared."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/duergar_hold.json",
+    "name": "The Duergar-Occupied Hold",
+    "theme": "dwarven_fortress",
+    "levels": 3,
+    "boss": "Grathak the Soulless"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "grathak_soulless"
+  },
+  "completion_text": "Grathak falls, his body fading to ash as the dark magic sustaining him dissipates. The remaining duergar flee into the deep tunnels, driven back by dwarven reinforcements.\n\nIn Grathak's chamber, you find a massive iron key inscribed with serpent runes—'The Second Key,' according to the cult's records. Maps show eight other locations marked for key retrieval. The duergar weren't just raiders; they were gatherers for the cult.\n\nCommander Thrain surveys the reclaimed hold, his face grim. 'We've won today, but at great cost. The cult knew our secrets. Someone in the mountains betrayed us—or they have agents everywhere. Take the key, warn the other settlements. And know that Ironfast Outpost stands with you against this darkness.'",
+  "rewards": {
+    "xp_bonus": 1500,
+    "gold_bonus": 400,
+    "items": ["dwarven_waraxe_plus_1"],
+    "unlocks": ["episode_05"],
+    "unlocks_hubs": ["mires_edge"],
+    "story_flags": ["second_key_found", "duergar_defeated", "dwarven_alliance"],
+    "reputation_changes": {
+      "dwarves_ironfast": 50
+    }
+  },
+  "rumors": [
+    "The duergar came from the Underdark. Some say they worship dark gods down there.",
+    "Commander Thrain's brother went missing three months ago. Taken by someone—or something.",
+    "The deep vaults contained something important. The duergar were searching for it specifically."
+  ],
+  "prerequisites": ["episode_03"]
+}

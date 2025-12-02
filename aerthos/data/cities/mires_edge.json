@@ -1,0 +1,130 @@
+{
+  "$schema": "city_hub_v1",
+  "id": "mires_edge",
+  "name": "Mire's Edge",
+  "description": "A frontier settlement built on wooden platforms above the Whispering Marshes. The air reeks of decay and possibility. Smugglers, outcasts, and fortune-seekers all find refuge here—for a price.",
+  "theme": "Swamp Settlement",
+  "region": "Whispering Marshes",
+
+  "special_rules": {
+    "disease_chance": 0.1,
+    "disease_type": "marsh_fever",
+    "smuggling_available": true,
+    "black_market_access": {
+      "requires_reputation": 25,
+      "faction": "smugglers_guild"
+    }
+  },
+
+  "shops": [
+    {
+      "id": "garricks_goods",
+      "name": "Garrick's General Goods",
+      "type": "general",
+      "specialty": "Survival supplies and marsh gear",
+      "buy_rate": 0.45,
+      "inventory": [
+        "rope_50ft",
+        "rope_100ft",
+        "grappling_hook",
+        "torch",
+        "lantern",
+        "oil_flask",
+        "rations_1_week",
+        "waterskin",
+        "antitoxin",
+        "healer_kit"
+      ],
+      "price_modifier": 1.3
+    },
+    {
+      "id": "black_market",
+      "name": "The Black Market",
+      "type": "black_market",
+      "specialty": "Questionable goods, no questions asked",
+      "buy_rate": 0.6,
+      "inventory": [
+        "poison_basic",
+        "poison_paralytic",
+        "thieves_tools",
+        "disguise_kit",
+        "forged_documents"
+      ],
+      "price_modifier": 2.0,
+      "requirements": ["smugglers_guild_reputation >= 25"]
+    }
+  ],
+
+  "inn": {
+    "id": "driftwood_rest",
+    "name": "The Driftwood Rest",
+    "description": "A ramshackle tavern that tilts slightly to the left. The ale is cheap, the beds cheaper, but the rumors flow freely.",
+    "rate_per_night": 5,
+    "services": ["rest", "rumors", "smuggler_contacts"],
+    "rumors_by_episode": {
+      "episode_05": [
+        "The Sunken Temple's been rising from the swamp. Unnatural, that.",
+        "Cultists been buying up marsh reed and quicklime. For what, I don't want to know.",
+        "Old Garrick says he explored that temple years back. Never talks about what he saw."
+      ],
+      "episode_06": [
+        "Orcs under a white flag? Never thought I'd see the day.",
+        "The Bloodfang have been quiet lately. Makes me nervous when orcs go quiet.",
+        "Urgot's a hard bastard, but he keeps his word. If he swears alliance, he means it."
+      ]
+    }
+  },
+
+  "temple": {
+    "id": "shrine_nature",
+    "name": "Shrine to the Green Mother",
+    "deity": "Nature Goddess (neutral alignment)",
+    "alignment": "True Neutral",
+    "services": ["cure_light", "cure_disease", "neutralize_poison"],
+    "donation_suggested": true,
+    "special_services": {
+      "marsh_blessing": {
+        "cost": 100,
+        "description": "Blessing against marsh diseases and poisons (+4 to saves vs disease/poison for 1 week)"
+      }
+    }
+  },
+
+  "npcs": {
+    "harbormaster_garrick": {
+      "name": "Harbormaster Garrick",
+      "role": "Quest Giver / Merchant",
+      "alignment": "Neutral Good",
+      "description": "A weathered man in his fifties with salt-and-pepper hair and scars from a hundred close calls. He's seen things in the marsh that would drive others mad.",
+      "dialogue": {
+        "greeting": "Welcome to Mire's Edge. Watch your step—literally. Platforms rot fast in this climate.",
+        "episode_05_hook": "That temple's been trouble since it started rising. Help deal with it, and you'll have the town's gratitude.",
+        "after_episode_05": "You did good work at the temple. Mire's Edge owes you one."
+      }
+    },
+    "urgot_warchief": {
+      "name": "War-Chief Urgot",
+      "role": "Orc Emissary",
+      "alignment": "Lawful Neutral",
+      "description": "A massive orc with ritualistic scars and iron-gray hair braided with bones. His eyes hold brutal intelligence.",
+      "dialogue": {
+        "greeting": "You are the one who hunts the Serpent. Good. We have common enemy.",
+        "episode_06_proposal": "The Serpent has taken our fortress. Fight with us. Prove orcs and humans can be more than enemies.",
+        "after_alliance": "You have my axe, human. When you need the Bloodfang, we come."
+      }
+    },
+    "widow_marla": {
+      "name": "Widow Marla",
+      "role": "Smuggler Contact",
+      "alignment": "Chaotic Neutral",
+      "description": "A sharp-eyed woman who runs the Driftwood Rest. Nothing happens in Mire's Edge without her knowing.",
+      "dialogue": {
+        "greeting": "Drink? Information? Both are for sale here.",
+        "about_smugglers": "Smugglers Guild operates out of the eastern platforms. You need an introduction, I can arrange it—for a price.",
+        "black_market_hint": "Looking for items the law frowns upon? Talk to me after you've earned some trust."
+      }
+    }
+  },
+
+  "available_quests": ["episode_05", "episode_06"]
+}

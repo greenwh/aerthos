@@ -1,0 +1,44 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_08",
+  "title": "The Syndic's Treachery",
+  "act": 3,
+  "recommended_level": 8,
+  "hub_id": "eldoria",
+  "intro_text": "Eldoria, jewel of the Free Cities—a sprawling metropolis of white marble and gold, where merchant princes rule and coin is law. But beneath the grandeur, corruption festers.\n\nYou arrive bearing evidence of the cult's conspiracy, only to find the city already in turmoil. Three of the seven Syndics have been assassinated in the past week. The remaining four point fingers at each other, each claiming the others are cultists. The city guard is paralyzed, afraid to arrest the wrong noble.\n\nYour investigation reveals the truth: Syndic Valerius Krane is the cult's agent. But he's no mere puppet—he's a powerful sorcerer who has ruled Eldoria for two decades, amassing wealth and influence. His estates sprawl across the city, and beneath them lies a network of catacombs where he conducts his dark rites.\n\nYou must navigate political intrigue, avoid assassins, and descend into the catacombs to confront Krane before he uses his position to complete the cult's work.",
+  "briefing": {
+    "quest_giver": "Syndic Helena Brightstar",
+    "location": "Eldoria - Council Chambers",
+    "dialogue": "I don't know who to trust anymore. Valerius seemed above reproach—a pillar of the city. But your evidence is damning. If he truly serves the Serpent Eye, then Eldoria is in graver danger than we knew. He controls the city guard, the merchant guilds, even the Arcane Academy. We cannot move against him openly without proof absolute, or civil war will erupt. If you can infiltrate his catacombs, find the sixth key, and stop whatever ritual he's planning, you'll have my full support. But be warned: Krane has allies in dark places. Rumors say he's made a pact with a devil for power."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/eldoria_catacombs.json",
+    "name": "The Eldoria Catacombs",
+    "theme": "urban_dungeon",
+    "levels": 3,
+    "boss": "Syndic Valerius Krane"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "valerius_krane"
+  },
+  "completion_text": "Valerius Krane falls, his devil ally banished back to the Nine Hells. The catacombs shudder and collapse as the dark magic sustaining them fails.\n\nAmong his treasures, you find the Sixth and Seventh Keys—he had already gathered another. His personal correspondence reveals the Sanctum's location: the Grand Cathedral of Eldoria, corrupted from within. But there's more: the cult plans to open a planar rift to summon reinforcements from the Elemental Chaos. The ritual has already begun.\n\nSyndic Brightstar takes control of the city, arresting Krane's conspirators. But time is short—the rift is already forming in the eastern district. If it stabilizes, an army of elementals will pour through, and Eldoria will burn.\n\nYou must close the rift before confronting the cult's leadership.",
+  "rewards": {
+    "xp_bonus": 3500,
+    "gold_bonus": 900,
+    "items": ["ring_spell_turning", "cloak_protection_plus_2"],
+    "unlocks": ["episode_09"],
+    "story_flags": ["sixth_key_found", "seventh_key_found", "krane_defeated", "rift_discovered"],
+    "reputation_changes": {
+      "eldoria_government": 75,
+      "merchant_guilds": 50
+    }
+  },
+  "rumors": [
+    "Krane made his fortune overnight thirty years ago. No one knows how.",
+    "The catacombs beneath Eldoria are older than the city itself. Ancient evil dwells there.",
+    "A devil was seen in the noble district. The watch hushed it up."
+  ],
+  "prerequisites": ["episode_07"]
+}

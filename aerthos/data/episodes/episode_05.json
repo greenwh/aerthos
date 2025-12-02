@@ -1,0 +1,43 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_05",
+  "title": "The Marsh Temple",
+  "act": 2,
+  "recommended_level": 5,
+  "hub_id": "mires_edge",
+  "intro_text": "Mire's Edge sits at the boundary between civilization and the Whispering Marshes—a town built on stilts above fetid waters, where marsh gas drifts like ghosts and strange lights dance in the distance.\n\nThe townsfolk speak in hushed tones of the Sunken Temple, an ancient structure that has begun to rise from the swamp. Once dedicated to forgotten gods, it now pulses with serpent-green light. Cultists have been seen making pilgrimages into the marsh, and those who follow never return.\n\nThe harbormaster, a grizzled human named Garrick, tells you plainly: 'The temple holds something the cult needs. A key, like the one you carry. They've been dredging it up, room by room. If you don't stop them soon, they'll have whatever they're after—and this whole region will be theirs.'",
+  "briefing": {
+    "quest_giver": "Harbormaster Garrick",
+    "location": "Mire's Edge - Harbor District",
+    "dialogue": "I've seen that serpent symbol before. Ten years ago, when I was younger and dumber, I explored the Sunken Temple. Found carvings, strange altars, things that made my skin crawl. Left before I saw what was at the bottom. Now the cult's gone and done what I was afraid to—they're raising it, piece by piece. Magic, I reckon. Dark magic. You go in there, you keep your wits about you. The temple's defenses aren't just traps—they're alive. And they're hungry."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/sunken_temple.json",
+    "name": "The Sunken Temple",
+    "theme": "ancient_temple",
+    "levels": 4,
+    "boss": "High Priest Korvash"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "high_priest_korvash"
+  },
+  "completion_text": "High Priest Korvash falls into the temple's central pool, his body dissolving into serpentine shadows. The green light fades, and the temple begins to sink once more into the marsh.\n\nOn the altar, you find the Third Key—a bronze key carved with images of drowning cities and writhing serpents. Korvash's journal reveals disturbing truths: the cult has already gathered five of the ten keys. The Serpent Eye is not a god—it is a prison. When all ten keys are brought together, something ancient and terrible will be unleashed.\n\nThe journal mentions the final key locations: three remain scattered across Aerthos. But the cult's main stronghold, where the ritual will be performed, is identified only as 'The Sanctum,' hidden somewhere in the eastern wastes.\n\nMire's Edge is safe, for now. But time is running short.",
+  "rewards": {
+    "xp_bonus": 2000,
+    "gold_bonus": 500,
+    "items": ["staff_serpents"],
+    "unlocks": ["episode_06"],
+    "story_flags": ["third_key_found", "temple_sunk", "ritual_timeline_revealed"],
+    "reputation_changes": {
+      "mires_edge_townsfolk": 50
+    }
+  },
+  "rumors": [
+    "The temple wasn't always sunken. An earthquake buried it centuries ago—or so they say.",
+    "Marsh witches have been seen helping the cultists. For gold, or something worse?",
+    "The Whispering Marshes are haunted. The dead don't rest easy here."
+  ],
+  "prerequisites": ["episode_04"]
+}

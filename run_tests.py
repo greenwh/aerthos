@@ -173,6 +173,7 @@ def main():
             ('Armor System Tests', 'test_armor_system.py'),
             ('Thief Skills Tests', 'test_thief_skills.py'),
             ('Movement System Tests', 'test_movement.py'),
+            ('Waterbreathing System Tests', 'test_waterbreathing.py'),
             ('Weapon Proficiency Tests', 'test_weapon_proficiency.py'),
             ('Saving Throw Tests', 'test_saving_throws.py'),
             ('Spell Targeting Tests', 'test_spell_targeting.py'),
@@ -189,7 +190,8 @@ def main():
             ('City Hub System Tests', 'test_city_hub.py'),
             ('Campaign Manager Tests', 'test_campaign_manager.py'),
             ('Hub Menu System Tests', 'test_hub_menu.py'),
-            ('Episode Runner Tests', 'test_episode_runner.py')
+            ('Episode Runner Tests', 'test_episode_runner.py'),
+            ('Campaign Playthrough Tests', 'test_campaign_playthrough.py')
         ]
 
         for suite_name, pattern in unit_tests:

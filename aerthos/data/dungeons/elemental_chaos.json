@@ -1,0 +1,135 @@
+{
+  "name": "Elemental Chaos",
+  "description": "A pocket dimension where the primal elements clash in eternal conflict. Reality itself is unstable.",
+  "theme": "planar_chaos",
+  "levels": 4,
+  "start_room": "portal_chamber",
+  "rooms": {
+    "portal_chamber": {
+      "id": "portal_chamber",
+      "title": "Portal Chamber",
+      "description": "The Archmage's portal flickers unstably. Through it, you see a realm of impossible geometries and conflicting elements. Fire flows upward like water. Stone floats. The very air screams with primal energy.",
+      "light_level": "bright",
+      "exits": {
+        "through": "chaos_nexus"
+      },
+      "items": [],
+      "encounters": [],
+      "safe_rest": true,
+      "note": "Last safe point before entering the Chaos"
+    },
+    "chaos_nexus": {
+      "id": "chaos_nexus",
+      "title": "Chaos Nexus",
+      "description": "The center of the pocket dimension. Four paths lead to the elemental keystones. The Herald's voice echoes from everywhere and nowhere: 'You dare intrude upon the Prince's domain? You will be unmade!'",
+      "light_level": "variable",
+      "exits": {
+        "north": "fire_keystone",
+        "south": "water_keystone",
+        "east": "earth_keystone",
+        "west": "air_keystone"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["fire_elemental", "water_elemental"],
+          "description": "Elementals clash in the nexus, catching you in their battle!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "fire_keystone": {
+      "id": "fire_keystone",
+      "title": "Chamber of Flame",
+      "description": "A realm of eternal fire. Lava flows upward. Flames freeze solid then shatter. The Fire Keystone hovers in the center, guarded by a cult pyromancer who has transformed into living flame.",
+      "light_level": "bright",
+      "exits": {
+        "south": "chaos_nexus"
+      },
+      "items": ["fire_keystone_shard"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cult_pyromancer_transformed", "fire_elemental"],
+          "description": "The Pyromancer laughs, flames erupting from his body!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "water_keystone": {
+      "id": "water_keystone",
+      "title": "Chamber of Depths",
+      "description": "An impossible ocean suspended in mid-air. Water spheres float and merge. The Water Keystone sits at the center, defended by a transformed cult hydromancer.",
+      "light_level": "dim",
+      "exits": {
+        "north": "chaos_nexus"
+      },
+      "items": ["water_keystone_shard"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cult_hydromancer_transformed", "water_elemental"],
+          "description": "The Hydromancer emerges from a sphere of water!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "earth_keystone": {
+      "id": "earth_keystone",
+      "title": "Chamber of Stone",
+      "description": "A maze of floating boulders and crystal formations. Gravity shifts randomly. The Earth Keystone is embedded in a massive crystal, guarded by a cult geomancer merged with living stone.",
+      "light_level": "dim",
+      "exits": {
+        "west": "chaos_nexus"
+      },
+      "items": ["earth_keystone_shard"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cult_geomancer_transformed", "earth_elemental"],
+          "description": "The stone itself attacks!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "air_keystone": {
+      "id": "air_keystone",
+      "title": "Chamber of Storms",
+      "description": "Eternal tempests rage. Lightning arcs between floating platforms. The Air Keystone spins in a tornado, defended by a cult aeromancer who has become wind itself.",
+      "light_level": "bright",
+      "exits": {
+        "east": "chaos_nexus"
+      },
+      "items": ["air_keystone_shard"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cult_aeromancer_transformed", "air_elemental"],
+          "description": "The wind screams and takes humanoid form!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "herald_chamber": {
+      "id": "herald_chamber",
+      "title": "Herald's Chamber",
+      "description": "The pocket dimension collapses inward to this point. The Elemental Prince's Herald materializes—a being of pure elemental chaos. The Eighth and Ninth Keys hover behind it. 'You have destroyed the keystones,' it intones. 'But you will not leave this place alive!'",
+      "light_level": "bright",
+      "exits": {
+        "south": "chaos_nexus"
+      },
+      "items": ["eighth_key", "ninth_key", "staff_elemental_mastery", "boots_levitation", "gold_1000"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["elemental_herald", "fire_elemental", "water_elemental", "earth_elemental", "air_elemental"],
+          "description": "The Herald manifests with all four elements at its command! This is the ultimate test!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false,
+      "note": "This room becomes accessible after destroying all four keystones"
+    }
+  }
+}

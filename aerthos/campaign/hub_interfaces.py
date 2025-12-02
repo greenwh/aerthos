@@ -4,9 +4,10 @@ Interface classes that bridge existing Shop/Inn/Temple systems with Party in cam
 
 from typing import Tuple, List, Dict, Optional
 from ..entities.party import Party
-from ..entities.player import PlayerCharacter
+from ..entities.player import PlayerCharacter, Item
 from ..world.shop import Shop
 from ..world.inn import Inn
+from ..systems.magic_item_factory import MagicItemFactory
 
 
 class ShopInterface:
@@ -30,6 +31,8 @@ class ShopInterface:
         self.price_modifier = price_modifier
         self.buy_rate = buy_rate
         self.active_character_index = 0
+        # Initialize item factory for creating items
+        self.item_factory = MagicItemFactory()
 
     @property
     def active_character(self) -> PlayerCharacter:
@@ -50,9 +53,9 @@ class ShopInterface:
             return True
         return False
 
-    def get_party_gold(self) -> int:
-        """Get total gold across all party members"""
-        return sum(m.gold for m in self.party.members)
+    def get_party_gold(self) -> float:
+        """Get total gold value across all party members"""
+        return sum(m.get_total_money() for m in self.party.members)
 
     def get_item_price(self, item_id: str) -> Optional[int]:
         """Get the price of an item with modifier applied
@@ -68,12 +71,11 @@ class ShopInterface:
             return None
         return int(base_price * self.price_modifier)
 
-    def buy_item(self, item_id: str, from_game_data) -> Tuple[bool, str]:
+    def buy_item(self, item_id: str) -> Tuple[bool, str]:
         """Purchase item and add to active character's inventory
 
         Args:
             item_id: Item to purchase
-            from_game_data: GameData instance to create items
 
         Returns:
             (success, message) tuple
@@ -87,25 +89,40 @@ class ShopInterface:
         if price is None:
             return False, "Item not found."
 
-        # Check if character can afford it
-        if self.active_character.gold < price:
-            return False, f"Not enough gold. Need {price}gp, have {self.active_character.gold}gp."
+        # Check if character can afford it (in gold pieces)
+        if self.active_character.get_total_money() < price:
+            return False, f"Not enough gold. Need {price}gp, have {self.active_character.get_total_money():.1f}gp."
 
-        # Create the item from game data
+        # Create the item from item factory
         try:
-            # Assuming items are in game_data.items dictionary
-            if item_id not in from_game_data.items:
+            # Check if item exists in the factory's base items
+            if item_id not in self.item_factory.base_items:
                 return False, f"Item data not found: {item_id}"
 
-            item_data = from_game_data.items[item_id]
+            item_data = self.item_factory.base_items[item_id]
 
             # Check weight capacity
-            item_weight = item_data.get('weight', 0)
+            item_weight = item_data.get('weight_gp', item_data.get('weight', 0))
             if not self.active_character.inventory.can_carry(item_weight):
                 return False, "Too heavy to carry."
 
-            # Deduct gold
-            self.active_character.gold -= price
+            # Deduct gold from character (try exact gp first, then convert)
+            if self.active_character.gold_pieces >= price:
+                self.active_character.gold_pieces -= price
+            elif self.active_character.subtract_money(gp=price):
+                pass  # Successfully subtracted
+            else:
+                # Need to convert coins
+                total_gp_value = self.active_character.get_total_money()
+                if total_gp_value >= price:
+                    # Convert all to gold and subtract
+                    self.active_character.copper_pieces = 0
+                    self.active_character.silver_pieces = 0
+                    self.active_character.electrum_pieces = 0
+                    self.active_character.gold_pieces = int(total_gp_value - price)
+                    self.active_character.platinum_pieces = 0
+                else:
+                    return False, f"Not enough gold. Need {price}gp, have {total_gp_value:.1f}gp."
 
             # Reduce shop stock
             self.shop.buy_item(item_id)
@@ -116,8 +133,7 @@ class ShopInterface:
             return True, f"Purchased {item_data['name']} for {price}gp."
 
         except Exception as e:
-            # Rollback gold if something went wrong
-            self.active_character.gold += price
+            # Rollback not possible with coin conversion, so just report error
             return False, f"Error purchasing item: {e}"
 
     def sell_item(self, item_id: str) -> Tuple[bool, str]:
@@ -139,14 +155,14 @@ class ShopInterface:
             return False, "Item not found in inventory."
 
         # Calculate sell price (shop pays buy_rate * base_value)
-        base_value = item.get('cost', 0)
+        base_value = item.get('cost_gp', item.get('cost', 0))
         sell_price = int(base_value * self.buy_rate)
 
         # Remove from inventory
         self.active_character.inventory.remove_item(item_id)
 
-        # Add gold
-        self.active_character.gold += sell_price
+        # Add gold to character
+        self.active_character.add_money(gp=sell_price)
 
         return True, f"Sold {item['name']} for {sell_price}gp."
 
@@ -197,14 +213,31 @@ class InnInterface:
         total_cost = self.rate_per_night * nights * len(living_members)
 
         # Check if party has enough gold
-        party_gold = sum(m.gold for m in self.party.members)
+        party_gold = sum(m.get_total_money() for m in self.party.members)
         if party_gold < total_cost:
             return False, f"Not enough gold. Need {total_cost}gp for {nights} night(s)."
 
-        # Deduct gold proportionally from members
-        cost_per_member = total_cost // len(living_members)
+        # Deduct gold from members (try to take from their gold_pieces)
+        remaining_cost = total_cost
         for member in living_members:
-            member.gold -= cost_per_member
+            if remaining_cost <= 0:
+                break
+
+            member_gold = member.get_total_money()
+            deduct = min(member_gold, remaining_cost)
+
+            # Try to subtract exact gold pieces first
+            if member.gold_pieces >= deduct:
+                member.gold_pieces -= int(deduct)
+            else:
+                # Convert all coins to gold and subtract
+                member.copper_pieces = 0
+                member.silver_pieces = 0
+                member.electrum_pieces = 0
+                member.gold_pieces = int(member_gold - deduct)
+                member.platinum_pieces = 0
+
+            remaining_cost -= deduct
 
         # Restore HP and spells for all living members
         for member in living_members:
@@ -322,22 +355,30 @@ class TempleInterface:
         cost = paid_amount if self.donation_based and paid_amount is not None else service['cost']
 
         # Check if party can afford
-        party_gold = sum(m.gold for m in self.party.members)
+        party_gold = sum(m.get_total_money() for m in self.party.members)
         if party_gold < cost:
             return False, f"Not enough gold. Need {cost}gp."
 
-        # Deduct gold from party leader
-        if self.party.members[0].gold >= cost:
-            self.party.members[0].gold -= cost
-        else:
-            # Deduct from multiple members if needed
-            remaining = cost
-            for member in self.party.members:
-                if remaining <= 0:
-                    break
-                deduct = min(member.gold, remaining)
-                member.gold -= deduct
-                remaining -= deduct
+        # Deduct gold from party members
+        remaining = cost
+        for member in self.party.members:
+            if remaining <= 0:
+                break
+            member_gold = member.get_total_money()
+            deduct = min(member_gold, remaining)
+
+            # Try to subtract exact gold pieces first
+            if member.gold_pieces >= deduct:
+                member.gold_pieces -= int(deduct)
+            else:
+                # Convert all coins to gold and subtract
+                member.copper_pieces = 0
+                member.silver_pieces = 0
+                member.electrum_pieces = 0
+                member.gold_pieces = int(member_gold - deduct)
+                member.platinum_pieces = 0
+
+            remaining -= deduct
 
         # Apply effect
         effect = service['effect']

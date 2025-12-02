@@ -204,6 +204,44 @@
       "description": "Limited to light armor and light shields"
     }
   },
+  "magic_items": {
+    "cloak_protection_plus_2": {
+      "name": "Cloak of Protection +2",
+      "ac_bonus": 2,
+      "cost_gp": 2000,
+      "weight_gp": 1,
+      "armor_type": "magic",
+      "movement_rate": 12,
+      "allowed_classes": ["Fighter", "Ranger", "Paladin", "Cleric", "Druid", "Magic-User", "Illusionist", "Thief", "Assassin", "Monk", "Bard"],
+      "properties": ["magic", "protection", "save_bonus"],
+      "save_bonus": 2,
+      "description": "A shimmering magical cloak that grants +2 to AC and +2 to all saving throws."
+    },
+    "ring_spell_turning": {
+      "name": "Ring of Spell Turning",
+      "ac_bonus": 0,
+      "cost_gp": 5000,
+      "weight_gp": 0,
+      "armor_type": "magic",
+      "movement_rate": 12,
+      "allowed_classes": ["Fighter", "Ranger", "Paladin", "Cleric", "Druid", "Magic-User", "Illusionist", "Thief", "Assassin", "Monk", "Bard"],
+      "properties": ["magic", "spell_reflection"],
+      "spell_turning_chance": 50,
+      "description": "A powerful ring that has a 50% chance to reflect hostile spells back at the caster."
+    },
+    "ring_protection_1": {
+      "name": "Ring of Protection +1",
+      "ac_bonus": 1,
+      "cost_gp": 1000,
+      "weight_gp": 0,
+      "armor_type": "magic",
+      "movement_rate": 12,
+      "allowed_classes": ["Fighter", "Ranger", "Paladin", "Cleric", "Druid", "Magic-User", "Illusionist", "Thief", "Assassin", "Monk", "Bard"],
+      "properties": ["magic", "protection"],
+      "save_bonus": 1,
+      "description": "A simple but effective ring of protection that grants +1 to AC and +1 to all saving throws."
+    }
+  },
   "magic_armor_notes": {
     "weight_negation": "Magic armor negates weight for movement purposes - movement rate is not reduced",
     "ac_improvement": "Each +1 of magic improves AC by 1 (e.g., Plate Mail +3 = AC 0 instead of AC 3)",

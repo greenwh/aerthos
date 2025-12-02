@@ -1,0 +1,41 @@
+{
+  "$schema": "episode_v1",
+  "id": "episode_07",
+  "title": "The Sunken City",
+  "act": 3,
+  "recommended_level": 7,
+  "hub_id": "coastal_haven",
+  "intro_text": "The trail of the cult leads you to the coast, where the ancient city of Ys'Thara lies beneath the waves. Once a jewel of civilization, it was swallowed by the sea in a single night—punishment from the gods, the legends say, for dabbling in forbidden magic.\n\nNow, after a thousand years, the ruins are rising. Cult ships anchor above the submerged temples, and divers bring up artifacts of dark power. The townsfolk of Coastal Haven speak in terror of things that swim up from the depths—things that were once human.\n\nThe harbor master's records show the cult has been excavating one structure in particular: the Temple of the Serpent's Fang. If the pattern holds, another key awaits within. But the waters are deep, the ruins vast, and the creatures dwelling there do not welcome intruders.",
+  "briefing": {
+    "quest_giver": "Captain Thessa Waveborn",
+    "location": "Coastal Haven - Harbor Master's Office",
+    "dialogue": "I've sailed these waters forty years. Never seen the ruins rise like this. The cult's got diving bells, enchanted gear, whole expeditions going down. They're bringing something up—something big. My scouts report they've breached the inner temple. If you're going after them, you'll need waterbreathing magic or alchemical gills. The ruins are a maze, and they're defended—not just by cultists, but by things that lived there before the city sank. Aboleths, they say. Mind-controlling horrors from the deep. Watch your thoughts down there."
+  },
+  "dungeon": {
+    "type": "hand_crafted",
+    "file": "dungeons/drowned_ruins.json",
+    "name": "Drowned Ruins of Ys'Thara",
+    "theme": "underwater_ruins",
+    "levels": 3,
+    "boss": "Cult High Priest Morvathis"
+  },
+  "completion_criteria": {
+    "type": "boss_defeated",
+    "target": "morvathis_high_priest"
+  },
+  "completion_text": "High Priest Morvathis dissolves into black water, his form sustained only by dark magic. The temple begins to collapse, ancient stone finally surrendering to the weight of the sea.\n\nYou seize the Fifth Key—a coral-encrusted key that seems to pulse with the rhythm of the tides—and the Serpent's Fang, an artifact of terrible power. Morvathis's waterlogged journal reveals the cult's plan: all ten keys must be brought to the Sanctum in Eldoria, the capital city, where the final ritual will take place.\n\nBut there's a darker revelation: the cult has infiltrated the highest levels of Eldoria's government. One of the Syndics—the ruling council—is a cultist. The conspiracy reaches further than you ever imagined.\n\nYou must reach Eldoria before the ritual is completed.",
+  "rewards": {
+    "xp_bonus": 3000,
+    "gold_bonus": 700,
+    "items": ["serpents_fang", "amulet_waterbreathing"],
+    "unlocks": ["episode_08"],
+    "unlocks_hubs": ["eldoria"],
+    "story_flags": ["fifth_key_found", "serpents_fang_acquired", "syndic_betrayal_revealed"]
+  },
+  "rumors": [
+    "Ys'Thara sank because its rulers made a pact with something from the abyss.",
+    "The aboleths remember everything. They know why the city fell.",
+    "Some of the cultists who went down never came back up. Not as themselves, anyway."
+  ],
+  "prerequisites": ["episode_06"]
+}

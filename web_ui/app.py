@@ -38,6 +38,21 @@ app.secret_key = 'aerthos_secret_key_change_in_production'
 active_games = {}
 
 
+def save_party_members(party, character_ids):
+    """Save all party members back to character roster
+
+    Args:
+        party: Party object with members
+        character_ids: List of character IDs corresponding to party.members
+    """
+    roster = CharacterRoster()
+
+    for idx, member in enumerate(party.members):
+        if idx < len(character_ids):
+            char_id = character_ids[idx]
+            roster.save_character(member, char_id)
+
+
 @app.route('/')
 def index():
     """Main menu"""
@@ -101,6 +116,42 @@ def campaign_hub(campaign_id):
 @app.route('/campaign/<campaign_id>/episodes')
 def campaign_episodes(campaign_id):
     """Campaign episodes page"""
+    return render_template('campaign_episodes.html')
+
+
+@app.route('/campaign/<campaign_id>/episodes/<episode_id>/intro')
+def episode_intro(campaign_id, episode_id):
+    """Episode introduction screen"""
+    try:
+        from aerthos.campaign.episode import Episode
+        episode = Episode.load(episode_id)
+
+        return render_template('campaign_episode_intro.html',
+                             campaign_id=campaign_id,
+                             episode=episode)
+    except Exception as e:
+        return f"Error loading episode: {e}", 500
+
+
+@app.route('/campaign/<campaign_id>/episodes/<episode_id>/complete')
+def episode_complete_screen(campaign_id, episode_id):
+    """Episode completion screen"""
+    try:
+        from aerthos.campaign.episode import Episode
+        episode = Episode.load(episode_id)
+
+        return render_template('campaign_episode_complete.html',
+                             campaign_id=campaign_id,
+                             episode=episode)
+    except Exception as e:
+        return f"Error loading episode: {e}", 500
+
+
+@app.route('/campaign/<campaign_id>/episodes/<episode_id>/select_character')
+def episode_select_character(campaign_id, episode_id):
+    """Character selection for episode (redirects to existing episodes page with character selection)"""
+    # This route serves as a transition from intro to character selection
+    # The campaign_episodes.html template already has character selection functionality
     return render_template('campaign_episodes.html')
 
 
@@ -427,6 +478,55 @@ def start_episode(campaign_id, episode_id):
         }), 500
 
 
+@app.route('/api/campaigns/<campaign_id>/episodes/<episode_id>/initialize', methods=['POST'])
+def initialize_episode_dungeon(campaign_id, episode_id):
+    """Initialize dungeon for episode gameplay - prepares game state"""
+    try:
+        # Load campaign and party
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        party_mgr = PartyManager()
+        party_result = party_mgr.load_party(campaign.party_id)
+
+        if not party_result:
+            return jsonify({'success': False, 'error': 'Party not found'}), 404
+
+        # Get Party object
+        party = party_result['party']
+
+        # Load episode and runner
+        episode = Episode.load(episode_id)
+        runner = EpisodeRunner(episode, campaign, party)
+
+        # Load dungeon
+        success, message = runner.load_dungeon()
+
+        if not success:
+            return jsonify({
+                'success': False,
+                'error': message
+            }), 500
+
+        # Store episode runner state for gameplay
+        # (In a full implementation, this would be session-based storage)
+        # For now, just confirm dungeon is loaded successfully
+
+        return jsonify({
+            'success': True,
+            'message': 'Dungeon initialized successfully',
+            'dungeon_name': runner.dungeon.name
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/campaigns/<campaign_id>/episodes/<episode_id>/complete', methods=['POST'])
 def complete_episode(campaign_id, episode_id):
     """Complete an episode - IDENTICAL to CLI"""
@@ -701,6 +801,9 @@ def inn_rest(campaign_id):
         success, message = inn_interface.rest(nights)
 
         if success:
+            # Save party members (HP was modified)
+            save_party_members(party, party_result['character_ids'])
+
             # Save campaign (same as CLI)
             campaign_mgr.save_campaign(campaign)
 
@@ -895,6 +998,9 @@ def shop_buy(campaign_id):
         success, message = shop_interface.buy_item(item_id, game_data)
 
         if success:
+            # Save party members (gold and inventory were modified)
+            save_party_members(party, party_result['character_ids'])
+
             # Save campaign (same as CLI)
             campaign_mgr.save_campaign(campaign)
 
@@ -988,6 +1094,9 @@ def shop_sell(campaign_id):
         success, message = shop_interface.sell_item(item_id)
 
         if success:
+            # Save party members (gold and inventory were modified)
+            save_party_members(party, party_result['character_ids'])
+
             # Save campaign (same as CLI)
             campaign_mgr.save_campaign(campaign)
 
@@ -1131,6 +1240,9 @@ def temple_service(campaign_id):
         )
 
         if success:
+            # Save party members (HP/status was modified)
+            save_party_members(party, party_result['character_ids'])
+
             # Save campaign (same as CLI)
             campaign_mgr.save_campaign(campaign)
 
@@ -1150,6 +1262,64 @@ def temple_service(campaign_id):
         return jsonify({
             'success': False,
             'error': str(e)
+        }), 500
+
+
+@app.route('/api/campaigns/<campaign_id>/save_checkpoint', methods=['POST'])
+def save_campaign_checkpoint(campaign_id):
+    """Save campaign checkpoint (campaign, party, and session state)"""
+    try:
+        data = request.json
+        session_id = data.get('session_id')
+
+        if not session_id:
+            return jsonify({
+                'success': False,
+                'error': 'No session_id provided'
+            }), 400
+
+        # Load managers
+        campaign_mgr = CampaignManager()
+        party_mgr = PartyManager()
+        session_mgr = SessionManager()
+
+        # Load campaign
+        campaign = campaign_mgr.load_campaign(campaign_id)
+
+        # Load party
+        party_result = party_mgr.load_party(campaign.party_id)
+        if isinstance(party_result, tuple):
+            party, _ = party_result
+        else:
+            party = party_result
+
+        # Save campaign state
+        campaign.last_played = datetime.now()
+        campaign_mgr.save_campaign(campaign)
+
+        # Save party state
+        party_mgr.save_party(party)
+
+        # If session exists, save session state
+        try:
+            if session_id in session_mgr._sessions:
+                game_state = session_mgr._sessions[session_id]
+                session_mgr.save_session_state(session_id, game_state)
+        except:
+            pass  # Session might not exist yet or might be in a different state
+
+        return jsonify({
+            'success': True,
+            'message': f'Campaign checkpoint saved successfully!',
+            'timestamp': datetime.now().isoformat()
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': f'Failed to save checkpoint: {str(e)}'
         }), 500
 
 
