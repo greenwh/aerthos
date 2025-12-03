@@ -8,32 +8,35 @@
     "hidden_entrance": {
       "id": "hidden_entrance",
       "title": "Hidden Staircase",
-      "description": "A narrow staircase descends from Silas's shop into darkness. The walls are lined with shelves of mysterious crates.",
+      "description": "A narrow staircase descends from Silas's shop into darkness. The walls are lined with shelves of mysterious crates. You can hear distant sounds of activity below—the warehouse is not abandoned.",
       "light_level": "dim",
       "exits": {
         "down": "main_warehouse"
       },
-      "items": [],
+      "items": ["torch", "recent_shipping_notice"],
       "encounters": [],
       "safe_rest": false
     },
     "main_warehouse": {
       "id": "main_warehouse",
-      "title": "Main Warehouse",
-      "description": "A vast underground chamber filled with crates, barrels, and mysterious goods. Some items pulse with dark magic. Tunnels lead in multiple directions.",
+      "title": "Main Warehouse - Central Chamber",
+      "description": "A vast underground chamber filled with crates, barrels, and mysterious goods. Some items pulse with dark magic. The ceiling is supported by thick stone pillars. Tunnels and passages lead in all directions—this operation is far larger than you imagined. Wagon tracks lead east toward a loading area.",
       "light_level": "dark",
       "exits": {
         "up": "hidden_entrance",
-        "north": "trapped_vault",
-        "east": "smuggler_tunnel",
+        "north": "guard_barracks",
+        "northeast": "trapped_corridor",
+        "east": "loading_dock",
+        "southeast": "packing_room",
+        "south": "smuggler_tunnel",
         "west": "cursed_goods"
       },
-      "items": ["torch", "lockpicks"],
+      "items": ["torch", "lockpicks", "warehouse_inventory_list"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["thug", "thug", "thug"],
-          "description": "Silas's hired thugs attack!"
+          "monsters": ["merchant_guard", "merchant_guard", "thug"],
+          "description": "Silas's hired guards spot you and attack!"
         }
       ],
       "safe_rest": false
@@ -59,15 +62,22 @@
     },
     "smuggler_tunnel": {
       "id": "smuggler_tunnel",
-      "title": "Smuggling Tunnel",
-      "description": "A narrow tunnel that connects to the sewer system. Recent footprints show Silas fled this way.",
+      "title": "Main Smuggling Tunnel",
+      "description": "A wide smuggling tunnel, tall enough to move goods through on carts. The walls are smooth and well-maintained. Recent footprints and wheel tracks show this route sees heavy use. The tunnel branches in multiple directions—this is clearly the main artery of Silas's smuggling operation.",
       "light_level": "dark",
       "exits": {
-        "west": "main_warehouse",
-        "east": "silas_hideout"
+        "north": "main_warehouse",
+        "south": "tunnel_junction",
+        "east": "escape_tunnel"
       },
-      "items": [],
-      "encounters": [],
+      "items": ["cart_wheel", "smuggler_manifest"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["thug", "thug"],
+          "description": "Smugglers guarding the tunnel attack!"
+        }
+      ],
       "safe_rest": false
     },
     "cursed_goods": {
@@ -91,20 +101,310 @@
     "silas_hideout": {
       "id": "silas_hideout",
       "title": "Silas's Final Stand",
-      "description": "A small chamber with supplies for flight. Silas stands cornered, a poisoned blade in hand and desperation in his eyes. Maps and documents cover a makeshift desk.",
+      "description": "A small chamber with supplies for flight. Silas stands cornered, a poisoned blade in hand and desperation in his eyes. Maps and documents cover a makeshift desk. The smell of fear mixes with expensive cologne.",
       "light_level": "bright",
       "exits": {
-        "west": "smuggler_tunnel"
+        "west": "escape_tunnel"
       },
-      "items": ["cult_maps", "ring_protection_1", "gold_300"],
+      "items": ["cult_maps", "ring_protection_1", "gold_300", "silas_journal", "master_ledger"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["silas_merchant", "bodyguard", "bodyguard"],
-          "description": "Silas and his bodyguards make their last stand!",
+          "monsters": ["silas_merchant", "silas_bodyguard", "silas_bodyguard"],
+          "description": "Silas and his elite bodyguards make their last stand!",
           "boss": true
         }
       ],
+      "safe_rest": false
+    },
+    "loading_dock": {
+      "id": "loading_dock",
+      "title": "Underground Loading Dock",
+      "description": "A wide chamber with high ceilings and a subterranean river running through it. A stone dock extends into the dark water where small boats can deliver cargo unseen. Ropes, pulleys, and a crane system suggest heavy goods are moved here regularly. The water flows toward the sewers.",
+      "light_level": "dim",
+      "exits": {
+        "west": "main_warehouse",
+        "north": "foreman_office",
+        "south": "flooded_passage"
+      },
+      "items": ["rope", "boat_manifest", "cargo_hook", "lantern"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["warehouse_foreman", "thug", "thug"],
+          "description": "The dock foreman and his workers attack to protect their operation!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "packing_room": {
+      "id": "packing_room",
+      "title": "Packing & Sorting Room",
+      "description": "Long tables are covered with wrapping materials, straw, and half-packed crates. Shelves hold various containers and disguises for contraband. A shipping schedule on the wall shows deliveries to multiple cities across Aerthos. Some crates bear innocent labels hiding sinister contents.",
+      "light_level": "dark",
+      "exits": {
+        "northwest": "main_warehouse",
+        "east": "storage_annex"
+      },
+      "items": ["packing_materials", "shipping_schedule", "disguised_crate", "gold_50"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["thug", "thug"],
+          "description": "Workers scramble to defend the packing area!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "foreman_office": {
+      "id": "foreman_office",
+      "title": "Foreman's Office",
+      "description": "A cramped office with a desk buried under paperwork. Shipping manifests, bribe receipts, and guard rotation schedules cover every surface. A locked strongbox sits beneath the desk. The foreman clearly kept meticulous records—damning evidence of the entire operation.",
+      "light_level": "bright",
+      "exits": {
+        "south": "loading_dock"
+      },
+      "items": ["shipping_manifests", "bribe_receipts", "guard_schedules", "strongbox_key", "gold_100"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "ritual_workshop": {
+      "id": "ritual_workshop",
+      "title": "Cursed Item Workshop",
+      "description": "A disturbing chamber where cursed items are created. Workbenches hold half-finished amulets, weapons, and talismans, all radiating malevolence. Ritual circles are drawn on the floor in what looks like dried blood. Chanting can be heard from deeper chambers. The very air here feels wrong.",
+      "light_level": "dim",
+      "exits": {
+        "east": "cursed_goods",
+        "west": "cursed_vault_inner"
+      },
+      "items": ["ritual_components", "cursed_dagger", "dark_grimoire", "blood_chalk"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cursed_construct"],
+          "description": "Cultist artificers and their cursed creation attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "cursed_vault_inner": {
+      "id": "cursed_vault_inner",
+      "title": "Inner Cursed Vault",
+      "description": "A heavily warded vault containing the most dangerous cursed items. Glass cases hold weapons that whisper promises of power. Chains bind grimoires that rattle and shake. Warning runes cover the walls—this is where Silas stored items too dangerous even for his customers. One case holds what appears to be a pulsing demonic artifact.",
+      "light_level": "dark",
+      "exits": {
+        "east": "ritual_workshop",
+        "south": "demon_binding_chamber"
+      },
+      "items": ["cursed_longsword", "demonic_grimoire", "soul_gem", "warning_scroll"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "curse_ward",
+          "description": "Ancient curse wards trigger, sapping your vitality!",
+          "save_type": "spell"
+        }
+      ],
+      "safe_rest": false
+    },
+    "demon_binding_chamber": {
+      "id": "demon_binding_chamber",
+      "title": "Demon Binding Chamber (DANGER)",
+      "description": "A nightmarish chamber with a massive summoning circle carved into the stone floor. Chains hang from the ceiling, designed to bind otherworldly entities. Scorch marks and claw gouges mar the walls. An ominous presence lingers here. This is clearly where the cult's most dangerous rituals were performed. The air crackles with residual dark energy.",
+      "light_level": "dim",
+      "exits": {
+        "north": "cursed_vault_inner"
+      },
+      "items": ["binding_chains", "demonic_tome", "corrupted_crystal", "gold_200"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elite", "cultist_elite", "bound_demon"],
+          "description": "Elite cultists and a partially bound demon attack!",
+          "boss": false
+        }
+      ],
+      "safe_rest": false
+    },
+    "tunnel_junction": {
+      "id": "tunnel_junction",
+      "title": "Tunnel Junction",
+      "description": "A three-way junction where smuggling tunnels meet. Footprints in the dust show recent traffic in multiple directions. Discarded contraband and empty crates litter the corners. Signs on the walls use coded symbols to mark the routes—one leads to the sewers, another to a secret exit.",
+      "light_level": "dark",
+      "exits": {
+        "north": "smuggler_tunnel",
+        "east": "sewer_connection",
+        "west": "secret_passage"
+      },
+      "items": ["smuggler_codes", "abandoned_contraband", "torch"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "sewer_connection": {
+      "id": "sewer_connection",
+      "title": "Sewer Connection Tunnel",
+      "description": "A narrow tunnel that connects to Oakhaven's sewer system. The smell is overwhelming. Water drips from the ceiling, and the sound of flowing sewage echoes from below. This must be how Silas moved goods in and out without being seen—right under the town's nose. Old rat droppings and claw marks suggest this route isn't always safe.",
+      "light_level": "dark",
+      "exits": {
+        "west": "tunnel_junction"
+      },
+      "items": ["sewer_map", "rope_ladder"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_rat", "giant_rat", "giant_rat"],
+          "description": "Giant rats attack from the sewer darkness!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "secret_passage": {
+      "id": "secret_passage",
+      "title": "Hidden Passage",
+      "description": "A concealed passage behind a false wall. Unlike the working tunnels, this one is clean and well-maintained, with stone flooring and oil lamps. This was clearly Silas's personal escape route. A hidden cache contains emergency supplies and valuables—his insurance policy.",
+      "light_level": "bright",
+      "exits": {
+        "east": "tunnel_junction"
+      },
+      "items": ["escape_supplies", "emergency_gold", "silas_seal", "gold_150"],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "guard_barracks": {
+      "id": "guard_barracks",
+      "title": "Guard Barracks",
+      "description": "A long room with bunks, footlockers, and personal belongings of Silas's hired guards. A weapon rack holds spare arms. A card game sits abandoned on a table—the guards left in a hurry when the operation was exposed. Guard rotation schedules and pay records are pinned to the wall.",
+      "light_level": "dim",
+      "exits": {
+        "south": "main_warehouse",
+        "east": "armory",
+        "west": "merchant_office"
+      },
+      "items": ["guard_roster", "pay_records", "playing_cards", "ale_mug"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["merchant_guard", "merchant_guard"],
+          "description": "Off-duty guards attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Warehouse Armory",
+      "description": "A well-stocked armory containing weapons, armor, and supplies for Silas's guards. Weapon racks line the walls. A few higher-quality pieces suggest Silas armed his people well—loyalty through good equipment. Some items bear maker's marks from distant lands, showing the scope of his trade network.",
+      "light_level": "bright",
+      "exits": {
+        "west": "guard_barracks"
+      },
+      "items": ["crossbow", "bolts", "chain_mail", "shortsword", "shield"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "merchant_office": {
+      "id": "merchant_office",
+      "title": "Merchant's Office",
+      "description": "Silas's personal office beneath his shop. An ornate desk holds correspondence with cult leaders, shipping manifests for cursed goods, and evidence of his crimes. A portrait of Silas in better days hangs on the wall. Hidden compartments in the desk hold blackmail material on town officials. This room contains everything needed to convict him.",
+      "light_level": "bright",
+      "exits": {
+        "east": "guard_barracks",
+        "north": "trapped_vault"
+      },
+      "items": ["cult_correspondence", "blackmail_letters", "merchant_seal", "incriminating_ledger", "gold_100"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "trapped_corridor": {
+      "id": "trapped_corridor",
+      "title": "Trapped Corridor",
+      "description": "A narrow corridor lined with pressure plates, tripwires, and concealed dart launchers. Silas clearly didn't want anyone reaching his vault easily. Scorch marks and old bloodstains tell the story of failed intrusions. Disabling these traps requires skill and caution.",
+      "light_level": "dim",
+      "exits": {
+        "southwest": "main_warehouse",
+        "northeast": "trapped_vault"
+      },
+      "items": [],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "multiple_traps",
+          "description": "A gauntlet of poison darts, pressure plates, and blade traps!",
+          "save_type": "dexterity"
+        }
+      ],
+      "safe_rest": false
+    },
+    "flooded_passage": {
+      "id": "flooded_passage",
+      "title": "Flooded Passage",
+      "description": "A partially flooded tunnel where the underground river has seeped through cracks in the walls. The water is knee-deep and murky. Discarded crates float in the water—evidence of a smuggling mishap. The water carries a foul smell, likely from sewer contamination. Wading through here carries risks of disease.",
+      "light_level": "dark",
+      "exits": {
+        "north": "loading_dock",
+        "south": "collapsing_storeroom"
+      },
+      "items": ["waterlogged_crate", "moldy_rope"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "disease_water",
+          "description": "The contaminated water threatens to sicken you!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "collapsing_storeroom": {
+      "id": "collapsing_storeroom",
+      "title": "Collapsing Storeroom",
+      "description": "An unstable storage room where the ceiling has begun to cave in. Broken support beams lean at dangerous angles. Crates are crushed under fallen rubble. The structural damage must have occurred recently—perhaps from all the heavy goods Silas stored here. Dust rains from cracks in the ceiling. This area could fully collapse at any moment.",
+      "light_level": "dark",
+      "exits": {
+        "north": "flooded_passage",
+        "west": "storage_annex"
+      },
+      "items": ["crushed_crate", "broken_beam"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "collapsing_ceiling",
+          "description": "The ceiling gives way, raining rubble down!",
+          "save_type": "dexterity"
+        }
+      ],
+      "safe_rest": false
+    },
+    "storage_annex": {
+      "id": "storage_annex",
+      "title": "Storage Annex",
+      "description": "A secondary storage area filled with mundane goods mixed with contraband. Barrels of wine hide compartments of illegal substances. Crates of 'textiles' contain stolen weapons. This is where Silas hid illegal goods among legitimate merchandise—a classic smuggler's trick.",
+      "light_level": "dark",
+      "exits": {
+        "west": "packing_room",
+        "east": "collapsing_storeroom"
+      },
+      "items": ["hidden_contraband", "stolen_goods", "false_manifest", "gold_75"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["thug", "thug"],
+          "description": "Smugglers guarding the contraband attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "escape_tunnel": {
+      "id": "escape_tunnel",
+      "title": "Escape Tunnel",
+      "description": "A secret escape tunnel leading from the main smuggling route to Silas's final hideout. The walls are smooth, not rough like the working tunnels. Fresh torch sconces line the walls. Footprints in the dust show Silas fled this way recently. The end of the tunnel opens into his bolt-hole where he's making his desperate last stand.",
+      "light_level": "dim",
+      "exits": {
+        "west": "smuggler_tunnel",
+        "east": "silas_hideout"
+      },
+      "items": ["torch", "dropped_coin_pouch"],
+      "encounters": [],
       "safe_rest": false
     }
   }

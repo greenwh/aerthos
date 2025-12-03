@@ -1,4 +1,55 @@
 {
+  "aboleth_spawn": {
+    "name": "Aboleth Spawn",
+    "hit_dice": "6d8",
+    "ac": 4,
+    "thac0": 15,
+    "damage": "1d6",
+    "size": "L",
+    "movement": 3,
+    "morale": 12,
+    "treasure_type": "Special (enslaved treasure)",
+    "xp_value": 420,
+    "special_abilities": [
+      "water_breathing",
+      "enslavement",
+      "mucus_cloud"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A lesser aboleth, a fish-like creature with three eyes and four tentacles, able to enslave minds and secrete enslaving mucus.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Genius",
+      "score_range": "17-18"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Attack/Defense modes",
+    "frequency": {
+      "description": "Very rare (3%)",
+      "percentage": 3
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 4,
+    "special_attacks": "Enslavement (save vs spell or be dominated permanently). Mucus cloud (any creature within 10 feet must save vs poison or lose ability to breathe air for 3 hours - can only breathe water)",
+    "special_defenses": "Waterbreathing, telepathy",
+    "xp_formula": {
+      "base_xp": 420,
+      "xp_per_hp": 6,
+      "dungeon_level": 6
+    }
+  },
   "aerial_servant": {
     "name": "Aerial Servant",
     "hit_dice": "16d8",
@@ -48,6 +99,56 @@
       "dungeon_level": 8,
       "base_xp": 3550,
       "xp_per_hp": 20
+    }
+  },
+  "air_elemental": {
+    "name": "Air Elemental",
+    "hit_dice": "8d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "2d10",
+    "size": "L",
+    "movement": 36,
+    "morale": 13,
+    "treasure_type": "Nil",
+    "xp_value": 650,
+    "special_abilities": [
+      "flying",
+      "whirlwind"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "An invisible whirlwind of sentient air, nearly impossible to see and able to create devastating windstorms.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Whirlwind form can sweep up opponents (save vs breath weapon or take 3d6 damage and be flung)",
+    "special_defenses": "Immune to air/wind attacks, difficult to see (-2 to hit), takes double damage from earth magic",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
     }
   },
   "anhkheg": {
@@ -190,6 +291,57 @@
       "dungeon_level": 3,
       "base_xp": 85,
       "xp_per_hp": 5
+    }
+  },
+  "ash_wraith": {
+    "name": "Ash Wraith",
+    "hit_dice": "4d8",
+    "ac": 3,
+    "thac0": 17,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "Nil",
+    "xp_value": 270,
+    "special_abilities": [
+      "incorporeal",
+      "fire_immunity",
+      "life_drain"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A spectral remnant formed from victims of volcanic eruptions, wreathed in hot ash and smoke, draining the life force of the living.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Non-intelligent",
+      "score_range": "0"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (10%)",
+      "percentage": 10
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 5,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "special_attacks": "Life drain: 1 level on hit",
+    "special_defenses": "Incorporeal: half damage from normal weapons, fire immunity",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 6,
+      "dungeon_level": 6
     }
   },
   "axebeak": {
@@ -371,6 +523,57 @@
       "dungeon_level": 8,
       "base_xp": 2250,
       "xp_per_hp": 18
+    }
+  },
+  "barbed_devil": {
+    "name": "Barbed Devil (Hamatula)",
+    "hit_dice": "8d8",
+    "ac": 0,
+    "thac0": 13,
+    "damage": "2d8",
+    "size": "L",
+    "movement": 15,
+    "morale": 14,
+    "treasure_type": "Individuals Q",
+    "xp_value": 975,
+    "special_abilities": [
+      "barbed_embrace",
+      "fear_aura",
+      "summoning"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A towering devil covered in razor-sharp barbs, radiating an aura of terror and able to impale foes in a deadly embrace.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Very",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "40%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very rare (2%)",
+      "percentage": 2
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 2,
+    "special_attacks": "Fear aura (save vs spell or flee), barbed embrace (2d6 additional damage if both attacks hit)",
+    "special_defenses": "40% magic resistance, +1 or better weapons to hit, regenerates 1 HP/round",
+    "xp_formula": {
+      "base_xp": 975,
+      "xp_per_hp": 10,
+      "dungeon_level": 8
     }
   },
   "barracuda": {
@@ -652,6 +855,56 @@
       "xp_per_hp": 35
     }
   },
+  "black_dragon_adult": {
+    "name": "Adult Black Dragon",
+    "hit_dice": "8d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "1d6",
+    "size": "L",
+    "movement": 9,
+    "morale": 14,
+    "treasure_type": "H",
+    "xp_value": 2000,
+    "special_abilities": [
+      "breath_weapon",
+      "flying",
+      "swim",
+      "spellcasting"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "An adult black dragon, dwelling in swamps, breathing acid.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 2000,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
   "black_pudding": {
     "name": "Black Pudding",
     "hit_dice": "10d8",
@@ -746,6 +999,55 @@
       "xp_per_hp": 4
     }
   },
+  "bloodfang_orc": {
+    "name": "Bloodfang Orc Warrior",
+    "hit_dice": "3d8+3",
+    "ac": 5,
+    "thac0": 18,
+    "damage": "2d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 11,
+    "treasure_type": "Individuals K, L",
+    "xp_value": 65,
+    "special_abilities": [
+      "blood_rage",
+      "night_vision"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A member of the fearsome Bloodfang orc tribe, known for their red war paint and savage battle fury.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (30%)",
+      "percentage": 30
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 12,
+        "special": null
+      },
+      "lair": {
+        "min": 5,
+        "max": 30,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 1,
+    "special_attacks": "Blood rage (when below 50% HP, gains +2 to damage)",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
+    }
+  },
   "boar": {
     "name": "Boar",
     "hit_dice": "3+3",
@@ -790,6 +1092,57 @@
       "dungeon_level": 3,
       "base_xp": 65,
       "xp_per_hp": 3
+    }
+  },
+  "bound_demon": {
+    "name": "Bound Demon",
+    "hit_dice": "4d8+4",
+    "ac": 2,
+    "thac0": 17,
+    "damage": "1d6/1d6/2d6",
+    "size": "L",
+    "movement": 12,
+    "morale": 15,
+    "treasure_type": "None",
+    "xp_value": 270,
+    "special_abilities": [
+      "magic_resistance",
+      "fire_immunity",
+      "telepathy",
+      "fear_aura"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A lesser demon partially bound by the cult's rituals. Though chained to the binding chamber, it can still attack those who enter. Its form is grotesque\u2014horned, clawed, and wreathed in sulfurous smoke. The binding is weakening; it yearns for freedom and vengeance. Its very presence inspires terror.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Very Intelligent",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "30%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very Rare (1%)",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 0,
+        "max": 0,
+        "special": "Does not appear in wilderness"
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": "Unique to binding chamber"
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 3,
+    "special_attacks": "Fear aura (targets within 20ft must save vs. spell or flee for 1d4 rounds), fire breath (3d6 damage, usable once per 3 rounds)",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 5,
+      "dungeon_level": 4
     }
   },
   "brain_mole": {
@@ -1258,6 +1611,56 @@
       "xp_per_hp": 1
     }
   },
+  "cave_troll": {
+    "name": "Cave Troll",
+    "hit_dice": "6d8+6",
+    "ac": 4,
+    "thac0": 15,
+    "damage": "1d8/1d8/2d6",
+    "size": "L",
+    "movement": 12,
+    "morale": 11,
+    "treasure_type": "D",
+    "xp_value": 420,
+    "special_abilities": [
+      "regeneration",
+      "rend_attack",
+      "fear_of_fire"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A massive troll adapted to life in deep caves and the Underdark. Standing 9 feet tall with gray-green skin and long claws, it regenerates wounds at an alarming rate unless burned or dissolved in acid. The duergar have trained these beasts as war creatures. It attacks with two claws and a vicious bite. Fearsome and relentless, though it fears fire intensely.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 3,
+    "special_attacks": "Regenerates 3 HP per round (negated by fire or acid). If both claws hit, can rend for additional 2d6 damage.",
+    "xp_formula": {
+      "base_xp": 420,
+      "xp_per_hp": 6,
+      "dungeon_level": 5
+    }
+  },
   "centaur": {
     "name": "Centaur",
     "hit_dice": "4d8",
@@ -1497,6 +1900,56 @@
       "xp_per_hp": 5
     }
   },
+  "corrupted_dwarf": {
+    "name": "Mind-Controlled Dwarf",
+    "hit_dice": "2d8+2",
+    "ac": 6,
+    "thac0": 19,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 9,
+    "morale": 20,
+    "treasure_type": "None",
+    "xp_value": 35,
+    "special_abilities": [
+      "mindless_obedience",
+      "feel_no_pain",
+      "serpent_mark"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "Captured dwarves whose minds have been shattered by dark magic and serpent cult rituals. Their eyes glow with an eerie serpent-green light, and they fight with mindless ferocity. They feel no fear, no pain, only the compulsion to obey their duergar masters. A tragic fate\u2014these were once proud warriors of Ironfast. Killing them may be a mercy.",
+    "alignment": "Neutral (controlled)",
+    "intelligence": {
+      "category": "Non-intelligent (controlled)",
+      "score_range": "0"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 0,
+        "max": 0,
+        "special": "Does not appear in wilderness"
+      },
+      "lair": {
+        "min": 1,
+        "max": 6,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "Immune to fear and morale effects. Fights to the death with no sense of self-preservation.",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 3,
+      "dungeon_level": 4
+    }
+  },
   "couatl": {
     "name": "Couatl",
     "hit_dice": "9d8",
@@ -1680,6 +2133,733 @@
       "dungeon_level": 3,
       "base_xp": 35,
       "xp_per_hp": 3
+    }
+  },
+  "cult_aeromancer_transformed": {
+    "name": "Transformed Aeromancer",
+    "hit_dice": "5d8",
+    "ac": 2,
+    "thac0": 16,
+    "damage": "1d10",
+    "size": "M",
+    "movement": 18,
+    "morale": 9,
+    "treasure_type": "Q",
+    "xp_value": 270,
+    "special_abilities": [
+      "levitation",
+      "lightning_bolt"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A cultist infused with air magic, able to levitate and hurl bolts of lightning, their body crackling with static.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Lightning bolt 1d10 damage, 30 foot range",
+    "special_defenses": "Can levitate at will",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 5,
+      "dungeon_level": 5
+    }
+  },
+  "cult_general_malakar": {
+    "name": "General Malakar",
+    "hit_dice": "8d10+8",
+    "ac": 1,
+    "thac0": 12,
+    "damage": "3d8",
+    "size": "M",
+    "movement": 12,
+    "morale": 16,
+    "treasure_type": "Q, X, legendary weapon",
+    "xp_value": 975,
+    "special_abilities": [
+      "multiple_attacks",
+      "battle_fury",
+      "command_presence"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "The supreme military commander of the Serpent Eye cult, a legendary warrior whose presence inspires fanatical devotion.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Very",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 3,
+    "special_attacks": "Three attacks per round, all allies within 30 feet gain +2 to morale and attack rolls",
+    "special_defenses": "Battle fury (when below 25% HP, gains +4 to attack and damage)",
+    "xp_formula": {
+      "base_xp": 975,
+      "xp_per_hp": 10,
+      "dungeon_level": 8
+    }
+  },
+  "cult_geomancer_transformed": {
+    "name": "Transformed Geomancer",
+    "hit_dice": "6d8",
+    "ac": 3,
+    "thac0": 15,
+    "damage": "2d8",
+    "size": "M",
+    "movement": 9,
+    "morale": 11,
+    "treasure_type": "Q, gems",
+    "xp_value": 420,
+    "special_abilities": [
+      "stone_skin",
+      "earth_glide"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A cultist whose flesh has turned to living stone, tremendously strong and nearly impervious to normal weapons.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 1,
+    "special_defenses": "Takes half damage from non-magical weapons",
+    "xp_formula": {
+      "base_xp": 420,
+      "xp_per_hp": 6,
+      "dungeon_level": 6
+    }
+  },
+  "cult_hydromancer_transformed": {
+    "name": "Transformed Hydromancer",
+    "hit_dice": "5d8",
+    "ac": 4,
+    "thac0": 16,
+    "damage": "2d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 10,
+    "treasure_type": "Q, potion",
+    "xp_value": 270,
+    "special_abilities": [
+      "water_breathing",
+      "cold_attack"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A cultist transformed by water magic, their skin blue and scaled, able to breathe underwater and summon freezing sprays.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Can spray frost for 1d8 cold damage",
+    "special_defenses": "Waterbreathing, resistant to cold",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 5,
+      "dungeon_level": 5
+    }
+  },
+  "cult_pyromancer_transformed": {
+    "name": "Transformed Pyromancer",
+    "hit_dice": "5d8",
+    "ac": 4,
+    "thac0": 16,
+    "damage": "2d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 10,
+    "treasure_type": "Q, potion",
+    "xp_value": 270,
+    "special_abilities": [
+      "fire_immunity",
+      "burning_touch"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A cultist whose body has been warped by elemental fire, wreathed in flames and immune to heat.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Touch inflicts 1d6 fire damage",
+    "special_defenses": "Immune to fire damage",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 5,
+      "dungeon_level": 5
+    }
+  },
+  "cultist": {
+    "name": "Serpent Eye Cultist",
+    "hit_dice": "1d8",
+    "ac": 7,
+    "thac0": 20,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 8,
+    "treasure_type": "Individuals P",
+    "xp_value": 15,
+    "special_abilities": [],
+    "ai_behavior": "aggressive",
+    "description": "A fanatical follower of the Serpent Eye cult, wielding simple weapons and chanting dark prayers.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (50%)",
+      "percentage": 50
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 3,
+        "max": 12,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 15,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
+  "cultist_diver": {
+    "name": "Cultist Diver",
+    "hit_dice": "2d8",
+    "ac": 6,
+    "thac0": 19,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 9,
+    "treasure_type": "Individuals P",
+    "xp_value": 35,
+    "special_abilities": [
+      "water_breathing"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A cultist equipped with magical water-breathing gear, able to operate underwater to guard the cult's submerged facilities.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (15%)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 3,
+        "max": 12,
+        "special": null
+      }
+    },
+    "pct_in_lair": 60,
+    "num_attacks": 1,
+    "special_defenses": "Waterbreathing (via magic item)",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 2,
+      "dungeon_level": 3
+    }
+  },
+  "cultist_elite": {
+    "name": "Elite Serpent Eye Cultist",
+    "hit_dice": "2d8",
+    "ac": 6,
+    "thac0": 19,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 12,
+    "morale": 9,
+    "treasure_type": "Individuals P, Q",
+    "xp_value": 35,
+    "special_abilities": [],
+    "ai_behavior": "aggressive",
+    "description": "A veteran cultist, better armed and armored than their lesser brethren, displaying unwavering devotion.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (35%)",
+      "percentage": 35
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 6,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 2,
+      "dungeon_level": 2
+    }
+  },
+  "cultist_fanatic": {
+    "name": "Serpent Eye Fanatic",
+    "hit_dice": "3d8",
+    "ac": 6,
+    "thac0": 18,
+    "damage": "1d8+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 11,
+    "treasure_type": "Individuals Q",
+    "xp_value": 65,
+    "special_abilities": [
+      "fanatical_fury"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A wild-eyed cultist driven mad by devotion, fighting with supernatural fervor and feeling no pain.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 6,
+        "special": null
+      }
+    },
+    "pct_in_lair": 60,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
+    }
+  },
+  "cultist_pyromancer": {
+    "name": "Cultist Pyromancer",
+    "hit_dice": "4d8",
+    "ac": 5,
+    "thac0": 17,
+    "damage": "1d6+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 10,
+    "treasure_type": "Individuals P, Q, X",
+    "xp_value": 175,
+    "special_abilities": [
+      "fire_magic",
+      "fire_resistance"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A cultist specialized in fire magic, channeling volcanic energies to immolate enemies. Wears flame-resistant robes and carries a staff crowned with ever-burning flames.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average to High",
+      "score_range": "12-14"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (15%)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Can cast: burning hands (3/day), fireball (1/day)",
+    "special_defenses": "50% resistance to fire damage",
+    "xp_formula": {
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 6
+    }
+  },
+  "cultist_ritualist": {
+    "name": "Serpent Eye Ritualist",
+    "hit_dice": "2d8",
+    "ac": 7,
+    "thac0": 19,
+    "damage": "1d4",
+    "size": "M",
+    "movement": 12,
+    "morale": 14,
+    "treasure_type": "Individual",
+    "xp_value": 65,
+    "special_abilities": [
+      "spellcaster_minor",
+      "ritual_magic",
+      "serpent_blessing"
+    ],
+    "ai_behavior": "defensive",
+    "description": "Scholar-cultists who have learned the basics of serpent magic. They wear dark robes inscribed with serpent runes and carry ritual daggers. Weaker in direct combat than warriors, but dangerous with their spells. They can cast minor curses, summon serpent spirits, and create areas of darkness. Often found translating ancient texts or preparing rituals.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average to High",
+      "score_range": "10-14"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (15%)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 0,
+        "max": 0,
+        "special": "Does not appear in wilderness"
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Can cast 1-2 first level spells per day (darkness, cause fear, detect magic). +2 to all serpent cult ritual checks.",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
+    }
+  },
+  "cultist_scribe": {
+    "name": "Cult Scribe",
+    "hit_dice": "1d8",
+    "ac": 8,
+    "thac0": 20,
+    "damage": "1d4",
+    "size": "M",
+    "movement": 12,
+    "morale": 6,
+    "treasure_type": "Individuals P, scroll",
+    "xp_value": 15,
+    "special_abilities": [],
+    "ai_behavior": "defensive",
+    "description": "A scholarly cultist who transcribes dark rituals and maintains the cult's records. Weak in combat but holds valuable knowledge.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "High",
+      "score_range": "12-13"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (15%)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "None",
+    "xp_formula": {
+      "base_xp": 15,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
+  "cultist_sorcerer": {
+    "name": "Cult Sorcerer",
+    "hit_dice": "3d8",
+    "ac": 7,
+    "thac0": 18,
+    "damage": "1d4",
+    "size": "M",
+    "movement": 12,
+    "morale": 9,
+    "treasure_type": "Individuals Q, scroll",
+    "xp_value": 120,
+    "special_abilities": [
+      "spellcasting"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A robed cultist who has mastered minor magical powers through dark pacts, able to cast low-level spells.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "High",
+      "score_range": "13-14"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (10%)",
+      "percentage": 10
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 70,
+    "num_attacks": 1,
+    "special_attacks": "Can cast magic missile, sleep, and shield",
+    "xp_formula": {
+      "base_xp": 120,
+      "xp_per_hp": 4,
+      "dungeon_level": 3
+    }
+  },
+  "cultist_torturer": {
+    "name": "Cult Torturer",
+    "hit_dice": "2d8",
+    "ac": 6,
+    "thac0": 19,
+    "damage": "1d6+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 9,
+    "treasure_type": "Individuals P",
+    "xp_value": 35,
+    "special_abilities": [
+      "intimidation"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A brutal cultist who specializes in extracting information and breaking the will of prisoners through pain.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "9-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 1,
+    "special_attacks": "Intimidation: -1 to target morale",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 2,
+      "dungeon_level": 2
+    }
+  },
+  "cursed_construct": {
+    "name": "Cursed Construct",
+    "hit_dice": "3d8",
+    "ac": 3,
+    "thac0": 18,
+    "damage": "2d6",
+    "size": "M",
+    "movement": 9,
+    "morale": 20,
+    "treasure_type": "None",
+    "xp_value": 120,
+    "special_abilities": [
+      "immunity_normal_weapons",
+      "curse_aura",
+      "undead_immunities"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "An animated suit of armor possessed by dark magic and cursed spirits. Created in Silas's ritual workshop to guard the most dangerous items. Its eyes glow with malevolent red light, and cursed energy crackles around it. Only magical weapons can harm it.",
+    "alignment": "Neutral Evil",
+    "intelligence": {
+      "category": "Non-intelligent",
+      "score_range": "0"
+    },
+    "magic_resistance": "20%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very Rare (2%)",
+      "percentage": 2
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 0,
+        "max": 0,
+        "special": "Does not appear in wilderness"
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 2,
+    "special_attacks": "Curse aura (targets within 10ft must save vs. spell or suffer -1 to attack rolls)",
+    "xp_formula": {
+      "base_xp": 120,
+      "xp_per_hp": 4,
+      "dungeon_level": 3
     }
   },
   "demon": {
@@ -2100,54 +3280,6 @@
       "xp_per_hp": 1
     }
   },
-  "dragonne": {
-    "name": "Dragonne",
-    "hit_dice": "9d8",
-    "ac": 2,
-    "thac0": 12,
-    "damage": "1d8",
-    "size": "L",
-    "movement": 15,
-    "morale": 8,
-    "treasure_type": "B, S, T",
-    "xp_value": 1300,
-    "special_abilities": [
-      "paralysis_touch"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A powerful beast that is a cross between a great cat and a dragon, but lacks the dragon\u2019s intelligence and magical breath.",
-    "alignment": "Neutral",
-    "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Very rare (4%)",
-      "percentage": 4
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 40,
-    "num_attacks": 3,
-    "special_attacks": "Roar: causes weakness unless save vs. paralysis, deafens those within 30' for 2-12 rounds.",
-    "xp_formula": {
-      "dungeon_level": 7,
-      "base_xp": 1300,
-      "xp_per_hp": 12
-    }
-  },
   "dragon_turtle": {
     "name": "Dragon Turtle",
     "hit_dice": "12d8",
@@ -2196,6 +3328,54 @@
       "xp_per_hp": 16
     }
   },
+  "dragonne": {
+    "name": "Dragonne",
+    "hit_dice": "9d8",
+    "ac": 2,
+    "thac0": 12,
+    "damage": "1d8",
+    "size": "L",
+    "movement": 15,
+    "morale": 8,
+    "treasure_type": "B, S, T",
+    "xp_value": 1300,
+    "special_abilities": [
+      "paralysis_touch"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A powerful beast that is a cross between a great cat and a dragon, but lacks the dragon\u2019s intelligence and magical breath.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very rare (4%)",
+      "percentage": 4
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 3,
+    "special_attacks": "Roar: causes weakness unless save vs. paralysis, deafens those within 30' for 2-12 rounds.",
+    "xp_formula": {
+      "dungeon_level": 7,
+      "base_xp": 1300,
+      "xp_per_hp": 12
+    }
+  },
   "dryad": {
     "name": "Dryad",
     "hit_dice": "2d8",
@@ -2241,6 +3421,207 @@
       "dungeon_level": 3,
       "base_xp": 65,
       "xp_per_hp": 2
+    }
+  },
+  "duergar": {
+    "name": "Duergar (Gray Dwarf)",
+    "hit_dice": "1d8+1",
+    "ac": 4,
+    "thac0": 19,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 9,
+    "morale": 10,
+    "treasure_type": "Individuals Q, K",
+    "xp_value": 35,
+    "special_abilities": [
+      "invisibility",
+      "enlarge"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A gray-skinned dwarf from the Underdark, able to turn invisible and grow to giant size.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (10%)",
+      "percentage": 10
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 12,
+        "special": null
+      },
+      "lair": {
+        "min": 5,
+        "max": 30,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 1,
+    "special_attacks": "Can turn invisible or enlarge self (once per day each)",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 2,
+      "dungeon_level": 2
+    }
+  },
+  "duergar_cleric": {
+    "name": "Duergar Dark Priest",
+    "hit_dice": "3d8+3",
+    "ac": 4,
+    "thac0": 18,
+    "damage": "1d6+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 13,
+    "treasure_type": "Individuals M, R",
+    "xp_value": 175,
+    "special_abilities": [
+      "divine_magic",
+      "invisibility",
+      "turn_undead_reversed",
+      "serpent_cult_powers"
+    ],
+    "ai_behavior": "defensive",
+    "description": "Duergar clerics who worship both the traditional duergar gods and the Serpent Eye cult. They can cast dark divine spells and perform serpent rituals. Their prayers are guttural chants in the language of the Underdark, and they command undead rather than turning them. Utterly devoted to spreading the cult's influence.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "High",
+      "score_range": "13-14"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (15%)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Can cast cleric spells (3rd level). Can command undead. Can turn invisible once per day.",
+    "xp_formula": {
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 4
+    }
+  },
+  "duergar_elite": {
+    "name": "Duergar Elite Warrior",
+    "hit_dice": "3d8+6",
+    "ac": 3,
+    "thac0": 18,
+    "damage": "1d8+2",
+    "size": "M",
+    "movement": 12,
+    "morale": 14,
+    "treasure_type": "Individuals L, Q",
+    "xp_value": 175,
+    "special_abilities": [
+      "invisibility",
+      "enlarge_self",
+      "infravision",
+      "stun_resistance"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "Elite duergar warriors who serve as Grathak's personal guard. Clad in superior armor and wielding enchanted warpicks, they are the best the gray dwarves have to offer. Like all duergar, they can turn invisible and grow to giant size, making them terrifying opponents.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "11-12"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (10%)",
+      "percentage": 10
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 1,
+    "special_attacks": "Can turn invisible (as spell) once per day. Can enlarge self (double size, +4 damage) once per day for 1d6 rounds.",
+    "xp_formula": {
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 4
+    }
+  },
+  "duergar_slaver": {
+    "name": "Duergar Slaver",
+    "hit_dice": "2d8+4",
+    "ac": 5,
+    "thac0": 19,
+    "damage": "1d6+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "Individuals L, M",
+    "xp_value": 65,
+    "special_abilities": [
+      "invisibility",
+      "torture_expertise",
+      "shackles_and_whips"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "Cruel duergar who specialize in capturing, breaking, and selling slaves. They carry spiked chains and barbed whips, instruments designed to inflict pain without killing. Masters of psychological torture, they take perverse pleasure in breaking the spirits of their captives. Feared throughout the Underdark.",
+    "alignment": "Neutral Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "10-11"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (25%)",
+      "percentage": 25
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 3,
+        "max": 12,
+        "special": null
+      }
+    },
+    "pct_in_lair": 70,
+    "num_attacks": 1,
+    "special_attacks": "Attacks with spiked chain (can entangle on hit, target must save vs. paralysis or be restrained). Can turn invisible once per day.",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 3,
+      "dungeon_level": 4
     }
   },
   "dwarf": {
@@ -2383,6 +3764,56 @@
       "xp_per_hp": 1
     }
   },
+  "earth_elemental": {
+    "name": "Earth Elemental",
+    "hit_dice": "8d8",
+    "ac": 0,
+    "thac0": 13,
+    "damage": "4d8",
+    "size": "L",
+    "movement": 6,
+    "morale": 15,
+    "treasure_type": "Nil",
+    "xp_value": 650,
+    "special_abilities": [
+      "earth_glide",
+      "stone_fist"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A hulking mass of animated earth and stone, tremendously strong and nearly impervious to physical harm.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Can move through earth and stone at will",
+    "special_defenses": "Immune to earth/stone attacks, takes double damage from air/wind magic",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
   "eel": {
     "name": "Eel",
     "hit_dice": "1d8",
@@ -2522,6 +3953,57 @@
       "dungeon_level": 1,
       "base_xp": 10,
       "xp_per_hp": 1
+    }
+  },
+  "elemental_herald": {
+    "name": "Elemental Herald",
+    "hit_dice": "10d8",
+    "ac": 0,
+    "thac0": 11,
+    "damage": "4d6",
+    "size": "L",
+    "movement": 18,
+    "morale": 16,
+    "treasure_type": "Special (elemental gems)",
+    "xp_value": 1400,
+    "special_abilities": [
+      "elemental_mastery",
+      "immune_to_element",
+      "summon_elementals"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A being of pure elemental power, able to command all four elements and summon lesser elementals to its aid.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Very",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "30%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very rare (1%)",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 2,
+    "special_attacks": "Can summon 1d4 lesser elementals once per day, elemental attacks (fire/cold/acid/lightning)",
+    "special_defenses": "30% magic resistance, immune to one elemental type (varies), +2 or better weapons to hit",
+    "xp_formula": {
+      "base_xp": 1400,
+      "xp_per_hp": 12,
+      "dungeon_level": 9
     }
   },
   "elephant": {
@@ -2756,6 +4238,104 @@
       "xp_per_hp": 16
     }
   },
+  "fire_elemental": {
+    "name": "Fire Elemental",
+    "hit_dice": "8d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "3d8",
+    "size": "L",
+    "movement": 12,
+    "morale": 14,
+    "treasure_type": "Nil",
+    "xp_value": 650,
+    "special_abilities": [
+      "fire_immunity",
+      "ignite"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A churning mass of living flame, radiating intense heat and able to ignite anything it touches.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Ignites flammable materials on contact",
+    "special_defenses": "Immune to fire damage, takes double damage from water/cold",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "fire_giant": {
+    "name": "Fire Giant",
+    "hit_dice": "11+3",
+    "ac": 3,
+    "thac0": 11,
+    "damage": "5d6",
+    "size": "L",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "E+10000gp",
+    "xp_value": 2650,
+    "special_abilities": [
+      "boulder_throw",
+      "immune_to_fire"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A 16-foot tall giant from volcanic regions, master smiths and warriors.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 2650,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
   "flightless_bird": {
     "name": "Flightless Bird",
     "hit_dice": "1d8",
@@ -2847,6 +4427,54 @@
       "dungeon_level": 1,
       "base_xp": 10,
       "xp_per_hp": 1
+    }
+  },
+  "frost_giant": {
+    "name": "Frost Giant",
+    "hit_dice": "10+3",
+    "ac": 4,
+    "thac0": 12,
+    "damage": "4d6",
+    "size": "L",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "E+5000gp",
+    "xp_value": 2050,
+    "special_abilities": [
+      "boulder_throw",
+      "immune_to_cold"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A 15-foot tall giant from frozen lands, wielding massive axes.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 2050,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
     }
   },
   "fungi_violet": {
@@ -3279,6 +4907,103 @@
       "xp_per_hp": 1
     }
   },
+  "giant_octopus": {
+    "name": "Giant Octopus",
+    "hit_dice": "8d8",
+    "ac": 7,
+    "thac0": 13,
+    "damage": "1d3",
+    "size": "L",
+    "movement": 9,
+    "morale": 8,
+    "treasure_type": "Nil",
+    "xp_value": 650,
+    "special_abilities": [
+      "water_breathing",
+      "constriction",
+      "ink_cloud"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A massive octopus with tentacles thick as tree trunks, able to constrict prey and release blinding ink clouds.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Animal",
+      "score_range": "1"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (10%)",
+      "percentage": 10
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 8,
+    "special_attacks": "Constriction (any hit with tentacle grapples, dealing 2d6 automatic damage per round). Ink cloud (once per day, 20 foot radius, blinds for 1d6 rounds)",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "giant_rat": {
+    "name": "Giant Rat",
+    "hit_dice": "1d4",
+    "ac": 7,
+    "thac0": 20,
+    "damage": "1d3",
+    "size": "S",
+    "movement": 12,
+    "morale": 5,
+    "treasure_type": "C",
+    "xp_value": 5,
+    "special_abilities": [
+      "disease_bite"
+    ],
+    "ai_behavior": "flee_low_hp",
+    "description": "A rat the size of a small dog, with matted fur and gleaming teeth.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 5,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
   "gnoll": {
     "name": "Gnoll",
     "hit_dice": "2d8",
@@ -3561,6 +5286,58 @@
       "xp_per_hp": 10
     }
   },
+  "grathak_the_soulless": {
+    "name": "Grathak the Soulless",
+    "hit_dice": "7d8+7",
+    "ac": 1,
+    "thac0": 14,
+    "damage": "3d6",
+    "size": "M",
+    "movement": 9,
+    "morale": 15,
+    "treasure_type": "Q, X, magic items",
+    "xp_value": 650,
+    "special_abilities": [
+      "invisibility",
+      "enlarge",
+      "soul_drain",
+      "undead_command"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A legendary duergar necromancer who sold his soul for power, now able to command the undead and drain the life from his foes.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Genius",
+      "score_range": "17-18"
+    },
+    "magic_resistance": "30%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "Soul drain (touch drains 1 level), can command undead, 7th level magic-user spells",
+    "special_defenses": "30% magic resistance, can turn invisible or enlarge (at will)",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
   "gray_ooze": {
     "name": "Gray Ooze",
     "hit_dice": "3+3",
@@ -3606,6 +5383,55 @@
       "dungeon_level": 5,
       "base_xp": 200,
       "xp_per_hp": 5
+    }
+  },
+  "green_dragon_adult": {
+    "name": "Adult Green Dragon",
+    "hit_dice": "9d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "1d8",
+    "size": "L",
+    "movement": 9,
+    "morale": 15,
+    "treasure_type": "H",
+    "xp_value": 2500,
+    "special_abilities": [
+      "breath_weapon",
+      "flying",
+      "spellcasting"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A cunning green dragon that breathes poisonous chlorine gas.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 2500,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
     }
   },
   "green_slime": {
@@ -3745,6 +5571,55 @@
       "dungeon_level": 7,
       "base_xp": 1100,
       "xp_per_hp": 8
+    }
+  },
+  "grukk_hobgoblin_chief": {
+    "name": "Grukk, Hobgoblin Chieftain",
+    "hit_dice": "6d8+6",
+    "ac": 3,
+    "thac0": 15,
+    "damage": "2d8",
+    "size": "M",
+    "movement": 9,
+    "morale": 14,
+    "treasure_type": "Q, X, magic weapon",
+    "xp_value": 420,
+    "special_abilities": [
+      "command_presence",
+      "tactical_genius"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A cunning hobgoblin warlord allied with the cult, leading his tribe with brutal efficiency and tactical brilliance.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Very",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 85,
+    "num_attacks": 2,
+    "special_attacks": "All hobgoblins within 30 feet gain +1 to attack and morale. Two attacks per round.",
+    "xp_formula": {
+      "base_xp": 420,
+      "xp_per_hp": 6,
+      "dungeon_level": 6
     }
   },
   "halfling": {
@@ -3892,6 +5767,54 @@
       "xp_per_hp": 1
     }
   },
+  "hellhound": {
+    "name": "Hell Hound",
+    "hit_dice": "4-7d8",
+    "ac": 4,
+    "thac0": 16,
+    "damage": "1d10",
+    "size": "M",
+    "movement": 12,
+    "morale": 11,
+    "treasure_type": "C",
+    "xp_value": 240,
+    "special_abilities": [
+      "breath_weapon",
+      "detect_invisible"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A fiendish dog that breathes fire and hunts invisble prey.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 240,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
   "herd_animal": {
     "name": "Herd Animal",
     "hit_dice": "1d8",
@@ -3936,6 +5859,152 @@
       "dungeon_level": 1,
       "base_xp": 10,
       "xp_per_hp": 1
+    }
+  },
+  "high_priest_defender": {
+    "name": "High Priest Defender",
+    "hit_dice": "6d8",
+    "ac": 3,
+    "thac0": 15,
+    "damage": "2d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 13,
+    "treasure_type": "Q, magic items",
+    "xp_value": 650,
+    "special_abilities": [
+      "spellcasting",
+      "turn_undead"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "An elite guardian priest of the Serpent Eye cult, clad in dark robes and wielding powerful divine magic.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Very",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very rare (3%)",
+      "percentage": 3
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 95,
+    "num_attacks": 1,
+    "special_attacks": "6th level cleric spells",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 7,
+      "dungeon_level": 6
+    }
+  },
+  "high_priest_korvash": {
+    "name": "High Priest Korvash",
+    "hit_dice": "8d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "2d8",
+    "size": "M",
+    "movement": 12,
+    "morale": 15,
+    "treasure_type": "Q, X, magic items",
+    "xp_value": 975,
+    "special_abilities": [
+      "spellcasting",
+      "command_undead",
+      "serpent_blessing"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A powerful high priest of the cult, able to command both the living and the dead with dark divine authority.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Genius",
+      "score_range": "17-18"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "8th level cleric spells, can command undead",
+    "xp_formula": {
+      "base_xp": 975,
+      "xp_per_hp": 9,
+      "dungeon_level": 8
+    }
+  },
+  "hill_giant": {
+    "name": "Hill Giant",
+    "hit_dice": "8+2",
+    "ac": 4,
+    "thac0": 13,
+    "damage": "2d6",
+    "size": "L",
+    "movement": 12,
+    "morale": 10,
+    "treasure_type": "D+5000gp",
+    "xp_value": 850,
+    "special_abilities": [
+      "boulder_throw"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "The smallest of true giants, standing 12 feet tall and brutish.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 850,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
     }
   },
   "hippocampus": {
@@ -4961,6 +7030,57 @@
       "xp_per_hp": 1
     }
   },
+  "lava_serpent": {
+    "name": "Lava Serpent",
+    "hit_dice": "5d8",
+    "ac": 4,
+    "thac0": 16,
+    "damage": "1d8",
+    "size": "L",
+    "movement": 9,
+    "morale": 11,
+    "treasure_type": "Nil",
+    "xp_value": 270,
+    "special_abilities": [
+      "fire_immunity",
+      "poison",
+      "heat_aura"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A massive serpent that dwells in volcanic lava flows, its scales glowing red-hot. Its bite delivers both crushing damage and superheated venom.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Animal",
+      "score_range": "2-3"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 1,
+    "special_attacks": "Poison: Save vs poison or take 2d6 additional fire damage over 3 rounds",
+    "special_defenses": "Fire immunity, heat aura deals 1d4 fire damage to melee attackers",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 5,
+      "dungeon_level": 6
+    }
+  },
   "leech_giant": {
     "name": "Leech, Giant",
     "hit_dice": "1d8",
@@ -5533,6 +7653,58 @@
       "xp_per_hp": 3
     }
   },
+  "magma_elemental": {
+    "name": "Magma Elemental",
+    "hit_dice": "10d8",
+    "ac": 1,
+    "thac0": 11,
+    "damage": "4d8",
+    "size": "L",
+    "movement": 9,
+    "morale": 14,
+    "treasure_type": "Special (volcanic gems)",
+    "xp_value": 1400,
+    "special_abilities": [
+      "fire_immunity",
+      "ignite",
+      "lava_flow",
+      "earth_glide"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A massive elemental creature formed from molten lava and volcanic rock, combining the fury of fire with the crushing weight of stone. Extremely dangerous and nearly impossible to harm with normal weapons.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very Rare (2%)",
+      "percentage": 2
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 2,
+    "special_attacks": "Ignite: flammable items must save or catch fire, Lava flow: can create difficult terrain",
+    "special_defenses": "Fire immunity, can only be hit by +1 or better weapons",
+    "xp_formula": {
+      "base_xp": 1400,
+      "xp_per_hp": 14,
+      "dungeon_level": 8
+    }
+  },
   "mammoth": {
     "name": "Mammoth",
     "hit_dice": "13d8",
@@ -5622,6 +7794,107 @@
       "dungeon_level": 6,
       "base_xp": 650,
       "xp_per_hp": 8
+    }
+  },
+  "marsh_troll": {
+    "name": "Marsh Troll",
+    "hit_dice": "6d8+6",
+    "ac": 4,
+    "thac0": 15,
+    "damage": "1d8+4",
+    "size": "L",
+    "movement": 12,
+    "morale": 18,
+    "treasure_type": "Standard",
+    "xp_value": 420,
+    "special_abilities": [
+      "regeneration",
+      "swamp_stalker",
+      "disease_immunity",
+      "waterbreathing"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A variant troll adapted to marsh environments. Its skin is mottled green and gray, covered in moss and algae. It regenerates wounds at an alarming rate unless damaged by fire or acid. Marsh trolls are cunning hunters who lurk in flooded areas, grabbing prey and dragging them underwater. They reek of rot and swamp gas. Their claws carry marsh diseases from the filth they dwell in.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (12%)",
+      "percentage": 12
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 2,
+    "special_attacks": "Regenerates 3 HP per round (fire and acid prevent regeneration). Claw attacks can inflict marsh fever (save vs. poison or contract disease). Can fight underwater without penalty.",
+    "xp_formula": {
+      "base_xp": 420,
+      "xp_per_hp": 6,
+      "dungeon_level": 5
+    }
+  },
+  "marsh_zombie": {
+    "name": "Marsh Zombie",
+    "hit_dice": "2d8",
+    "ac": 8,
+    "thac0": 19,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 6,
+    "morale": 20,
+    "treasure_type": "Nil",
+    "xp_value": 20,
+    "special_abilities": [
+      "undead",
+      "disease"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A waterlogged corpse animated by dark magic, shambling from the swamps with diseased claws.",
+    "alignment": "Neutral Evil",
+    "intelligence": {
+      "category": "Non-intelligent",
+      "score_range": "0"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (40%)",
+      "percentage": 40
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 12,
+        "special": null
+      },
+      "lair": {
+        "min": 3,
+        "max": 24,
+        "special": null
+      }
+    },
+    "pct_in_lair": 30,
+    "num_attacks": 1,
+    "special_attacks": "Diseased touch (save vs poison or contract marsh fever)",
+    "special_defenses": "Immune to poison, sleep, charm, hold",
+    "xp_formula": {
+      "base_xp": 20,
+      "xp_per_hp": 2,
+      "dungeon_level": 2
     }
   },
   "masher": {
@@ -5808,6 +8081,52 @@
       "dungeon_level": 1,
       "base_xp": 10,
       "xp_per_hp": 1
+    }
+  },
+  "merchant_guard": {
+    "name": "Merchant Guard",
+    "hit_dice": "2d8+2",
+    "ac": 5,
+    "thac0": 19,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 12,
+    "morale": 10,
+    "treasure_type": "Individuals L, M",
+    "xp_value": 35,
+    "special_abilities": [],
+    "ai_behavior": "defensive",
+    "description": "A professional hired guard in Silas's employ. Better trained and equipped than common thugs, these guards are loyal to coin rather than the cult. They wear leather armor and wield longswords with competence.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "9-11"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (40%)",
+      "percentage": 40
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 3,
+        "max": 12,
+        "special": null
+      }
+    },
+    "pct_in_lair": 60,
+    "num_attacks": 1,
+    "special_attacks": "None",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
     }
   },
   "merman": {
@@ -6089,6 +8408,57 @@
       "dungeon_level": 7,
       "base_xp": 1300,
       "xp_per_hp": 8
+    }
+  },
+  "morvathis_high_priest": {
+    "name": "High Priest Morvathis",
+    "hit_dice": "9d8",
+    "ac": 1,
+    "thac0": 12,
+    "damage": "3d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 16,
+    "treasure_type": "Q, X, multiple magic items",
+    "xp_value": 1400,
+    "special_abilities": [
+      "spellcasting",
+      "unholy_aura",
+      "serpent_transformation"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "The supreme high priest of the Serpent Eye cult, possessing terrifying magical power and able to transform into a giant serpent.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Genius",
+      "score_range": "18"
+    },
+    "magic_resistance": "20%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "9th level cleric spells, can transform into giant serpent (10 HD, 3d8 damage)",
+    "special_defenses": "20% magic resistance, +3 or better weapons to hit",
+    "xp_formula": {
+      "base_xp": 1400,
+      "xp_per_hp": 12,
+      "dungeon_level": 9
     }
   },
   "mule": {
@@ -7565,6 +9935,56 @@
       "xp_per_hp": 1
     }
   },
+  "red_dragon_young": {
+    "name": "Young Red Dragon",
+    "hit_dice": "7d8",
+    "ac": 1,
+    "thac0": 14,
+    "damage": "1d8",
+    "size": "L",
+    "movement": 9,
+    "morale": 14,
+    "treasure_type": "H",
+    "xp_value": 1250,
+    "special_abilities": [
+      "breath_weapon",
+      "flying",
+      "immune_to_fire",
+      "spellcasting"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A young red dragon, greedy and cruel, with scorching fire breath.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (20%)",
+      "percentage": 20
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 10,
+        "special": null
+      }
+    },
+    "pct_in_lair": 25,
+    "num_attacks": 1,
+    "xp_formula": {
+      "base_xp": 1250,
+      "xp_per_hp": 1,
+      "dungeon_level": 1
+    }
+  },
   "remorhaz": {
     "name": "Remorhaz",
     "hit_dice": "7d8",
@@ -7846,23 +10266,26 @@
     }
   },
   "sahuagin": {
-    "name": "Sahuagin",
-    "hit_dice": "2+2",
+    "name": "Sahuagin (Sea Devil)",
+    "hit_dice": "2d8+2",
     "ac": 5,
-    "thac0": 19,
+    "thac0": 18,
     "damage": "1d6",
     "size": "M",
     "movement": 12,
-    "morale": 11,
-    "treasure_type": "Individuals N; I, O, P, Q (x10), X, Y in lair",
-    "xp_value": 60,
-    "special_abilities": [],
-    "ai_behavior": "intelligent",
-    "description": "A vicious, fish-like humanoid race (sea devils) that live in warlike, underwater kingdoms.",
-    "alignment": "Lawful evil",
+    "morale": 10,
+    "treasure_type": "Individuals K, Lair D",
+    "xp_value": 35,
+    "special_abilities": [
+      "water_breathing",
+      "blood_frenzy"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A shark-like humanoid from the depths, able to breathe underwater and driven into a frenzy by the scent of blood.",
+    "alignment": "Lawful Evil",
     "intelligence": {
-      "category": "High",
-      "score_range": "11-12"
+      "category": "Average",
+      "score_range": "8-10"
     },
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
@@ -7872,24 +10295,24 @@
     },
     "no_appearing": {
       "wilderness": {
-        "min": 20,
-        "max": 80,
+        "min": 2,
+        "max": 20,
         "special": null
       },
       "lair": {
-        "min": 20,
-        "max": 80,
+        "min": 5,
+        "max": 50,
         "special": null
       }
     },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "special_attacks": "Unarmed attacks with claws and teeth (1-2/1-2/1-4).",
-    "special_defenses": "Keen senses of sight and hearing.",
+    "pct_in_lair": 40,
+    "num_attacks": 3,
+    "special_attacks": "Blood frenzy (if any opponent is bloodied, gains +1 to attack and damage)",
+    "special_defenses": "Waterbreathing",
     "xp_formula": {
-      "dungeon_level": 3,
-      "base_xp": 60,
-      "xp_per_hp": 3
+      "base_xp": 35,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
     }
   },
   "salamander": {
@@ -8173,6 +10596,108 @@
       "xp_per_hp": 6
     }
   },
+  "serpent_priest": {
+    "name": "Serpent Priest",
+    "hit_dice": "4d8+4",
+    "ac": 5,
+    "thac0": 17,
+    "damage": "1d6+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 16,
+    "treasure_type": "Individual + magic",
+    "xp_value": 175,
+    "special_abilities": [
+      "spellcaster",
+      "serpent_summoning",
+      "unholy_blessing",
+      "serpent_affinity"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "Mid-ranking priests of the Serpent Eye cult. They wear elaborate serpent-scale armor and ceremonial headdresses shaped like cobra hoods. Wielding dark magic and serpent-blessed weapons, they lead rituals and command lesser cultists. Their serpent tattoos writhe with life during spellcasting. They can summon serpents, inflict curses, and heal cultist allies with dark rituals.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "High",
+      "score_range": "14-16"
+    },
+    "magic_resistance": "15%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (8%)",
+      "percentage": 8
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 0,
+        "max": 0,
+        "special": "Does not appear in wilderness"
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 1,
+    "special_attacks": "Can cast 2-3 cleric spells per day (levels 1-2). Can command serpents within 60 feet. Inflict curse once per day.",
+    "xp_formula": {
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 5
+    }
+  },
+  "serpents_voice": {
+    "name": "The Serpent's Voice",
+    "hit_dice": "9d8",
+    "ac": -1,
+    "thac0": 12,
+    "damage": "3d6",
+    "size": "L",
+    "movement": 15,
+    "morale": 17,
+    "treasure_type": "Q, X, magic items",
+    "xp_value": 1400,
+    "special_abilities": [
+      "telepathy",
+      "mind_control",
+      "serpent_summoning"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A mysterious entity claiming to speak for the Serpent God, able to control minds and summon serpents from the void.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Genius",
+      "score_range": "18"
+    },
+    "magic_resistance": "50%",
+    "psionic_ability": "Attack/Defense modes",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "Mind control (save vs spell -2 or be dominated for 1d6 rounds), summon 1d4 giant serpents",
+    "special_defenses": "50% magic resistance, telepathy, +2 or better weapons to hit",
+    "xp_formula": {
+      "base_xp": 1400,
+      "xp_per_hp": 14,
+      "dungeon_level": 9
+    }
+  },
   "shadow": {
     "name": "Shadow",
     "hit_dice": "3+3",
@@ -8409,6 +10934,55 @@
       "dungeon_level": 1,
       "base_xp": 20,
       "xp_per_hp": 3
+    }
+  },
+  "silas_bodyguard": {
+    "name": "Silas's Elite Bodyguard",
+    "hit_dice": "3d8+6",
+    "ac": 4,
+    "thac0": 18,
+    "damage": "1d8+1",
+    "size": "M",
+    "movement": 12,
+    "morale": 13,
+    "treasure_type": "Individuals Q, R",
+    "xp_value": 120,
+    "special_abilities": [
+      "shield_wall",
+      "loyal_unto_death"
+    ],
+    "ai_behavior": "defensive",
+    "description": "Silas's personal bodyguards are elite fighters, handpicked for skill and loyalty. They wear chain mail and wield longswords with deadly precision. They will fight to the death to protect their employer.",
+    "alignment": "Lawful Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "10-12"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 1,
+    "special_attacks": "Shield wall (AC bonus of +1 when fighting alongside another bodyguard)",
+    "xp_formula": {
+      "base_xp": 120,
+      "xp_per_hp": 4,
+      "dungeon_level": 3
     }
   },
   "skeleton": {
@@ -9090,6 +11664,109 @@
       "xp_per_hp": 6
     }
   },
+  "summoned_demon": {
+    "name": "Summoned Demon (Vrock)",
+    "hit_dice": "8d8",
+    "ac": 0,
+    "thac0": 13,
+    "damage": "1d8",
+    "size": "L",
+    "movement": 12,
+    "morale": 14,
+    "treasure_type": "Individuals Q",
+    "xp_value": 975,
+    "special_abilities": [
+      "flying",
+      "spore_cloud",
+      "teleport"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A vulture-headed demon summoned from the Abyss, able to fly and release deadly spore clouds.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "50%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very rare (2%)",
+      "percentage": 2
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 3,
+    "special_attacks": "Spore cloud (once per day, 15 foot radius, save vs poison or take 1d8 damage and be stunned for 1 round)",
+    "special_defenses": "50% magic resistance, +1 or better weapons to hit, can teleport without error",
+    "xp_formula": {
+      "base_xp": 975,
+      "xp_per_hp": 10,
+      "dungeon_level": 8
+    }
+  },
+  "swamp_wraith": {
+    "name": "Swamp Wraith",
+    "hit_dice": "5d8",
+    "ac": 3,
+    "thac0": 16,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 20,
+    "treasure_type": "Individual",
+    "xp_value": 270,
+    "special_abilities": [
+      "undead",
+      "energy_drain",
+      "incorporeal",
+      "sunlight_weakness",
+      "magic_weapon_required"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "Malevolent spirits of those who died in the marshes\u2014drowned, murdered, or sacrificed. They appear as translucent, ghostly figures shrouded in mist and marsh gas. Their touch drains life energy, leaving victims weakened and cold. Swamp wraiths are tied to the locations of their deaths, unable to rest. They hate the living with burning intensity. Only magic weapons can harm their incorporeal forms.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "8-10"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (8%)",
+      "percentage": 8
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 5,
+        "special": null
+      }
+    },
+    "pct_in_lair": 60,
+    "num_attacks": 1,
+    "special_attacks": "Touch drains 1 level/hit dice (permanent until restoration magic). Incorporeal (immune to normal weapons, takes half damage from magical weapons). Cannot enter sunlight (takes 1d6 damage per round).",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 5,
+      "dungeon_level": 5
+    }
+  },
   "sylph": {
     "name": "Sylph",
     "hit_dice": "3d8",
@@ -9137,6 +11814,58 @@
       "dungeon_level": 4,
       "base_xp": 150,
       "xp_per_hp": 1
+    }
+  },
+  "temple_guardian": {
+    "name": "Stone Serpent Guardian",
+    "hit_dice": "4d8",
+    "ac": 2,
+    "thac0": 17,
+    "damage": "2d6",
+    "size": "L",
+    "movement": 6,
+    "morale": 20,
+    "treasure_type": "None",
+    "xp_value": 175,
+    "special_abilities": [
+      "construct",
+      "immune_poison",
+      "immune_mind",
+      "half_damage_weapons",
+      "magic_detection"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "Animated stone statues carved in the shape of coiled serpents. Standing 10 feet tall, these ancient guardians were created by long-dead temple priests to protect sacred areas. Their stone bodies make them nearly impervious to normal weapons. Green light glows from their carved eyes as they animate to crush intruders. They feel no pain, no fear, and cannot be reasoned with\u2014only destroyed.",
+    "alignment": "Neutral (programmed)",
+    "intelligence": {
+      "category": "Non-intelligent (construct)",
+      "score_range": "0"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 0,
+        "max": 0,
+        "special": "Does not appear in wilderness"
+      },
+      "lair": {
+        "min": 2,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "Immune to poison, disease, mind-affecting magic. Takes half damage from non-magical weapons. Attacks with crushing stone coils (2d6 damage).",
+    "xp_formula": {
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 5
     }
   },
   "thought_eater": {
@@ -9803,6 +12532,57 @@
       "xp_per_hp": 5
     }
   },
+  "valerius_krane": {
+    "name": "Valerius Krane, Cult Leader",
+    "hit_dice": "10d8",
+    "ac": 0,
+    "thac0": 11,
+    "damage": "3d8",
+    "size": "M",
+    "movement": 12,
+    "morale": 18,
+    "treasure_type": "Q, X, Y, legendary items",
+    "xp_value": 2000,
+    "special_abilities": [
+      "spellcasting",
+      "legendary_resistance",
+      "dual_casting"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "The charismatic founder and absolute leader of the Serpent Eye cult, a master of both arcane and divine magic.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Supra-genius",
+      "score_range": "19+"
+    },
+    "magic_resistance": "30%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 2,
+    "special_attacks": "Can cast both 8th level magic-user spells AND 8th level cleric spells. Two attacks per round.",
+    "special_defenses": "30% magic resistance, regenerates 3 HP per round, +3 or better weapons to hit",
+    "xp_formula": {
+      "base_xp": 2000,
+      "xp_per_hp": 15,
+      "dungeon_level": 10
+    }
+  },
   "vampire": {
     "name": "Vampire",
     "hit_dice": "8+3",
@@ -9856,6 +12636,54 @@
       "xp_per_hp": 12
     }
   },
+  "warehouse_foreman": {
+    "name": "Warehouse Foreman",
+    "hit_dice": "3d8+6",
+    "ac": 6,
+    "thac0": 18,
+    "damage": "1d6+2",
+    "size": "M",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "Individuals M, Q",
+    "xp_value": 65,
+    "special_abilities": [
+      "leadership"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A burly, scarred overseer who runs Silas's warehouse operations with an iron fist. Armed with a heavy club and wearing studded leather, he's both tough and mean. His presence bolsters nearby workers and guards.",
+    "alignment": "Neutral Evil",
+    "intelligence": {
+      "category": "Average",
+      "score_range": "10-12"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Uncommon (15%)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Leadership (allies within 30ft gain +1 to morale)",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
+    }
+  },
   "wasp_giant": {
     "name": "Wasp, Giant",
     "hit_dice": "4d8",
@@ -9903,6 +12731,56 @@
       "dungeon_level": 4,
       "base_xp": 150,
       "xp_per_hp": 4
+    }
+  },
+  "water_elemental": {
+    "name": "Water Elemental",
+    "hit_dice": "8d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "3d8",
+    "size": "L",
+    "movement": 6,
+    "morale": 14,
+    "treasure_type": "Nil",
+    "xp_value": 650,
+    "special_abilities": [
+      "water_breathing",
+      "drowning_grasp"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A swirling vortex of living water, able to engulf and drown its victims in its liquid form.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Can attempt to engulf and drown opponents (save vs paralysis or take 2d8 damage/round)",
+    "special_defenses": "Immune to water damage, takes double damage from fire",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
     }
   },
   "water_weird": {
@@ -10539,213 +13417,123 @@
       "xp_per_hp": 2
     }
   },
-  "giant_rat": {
-    "name": "Giant Rat",
-    "hit_dice": "1d4",
-    "ac": 7,
-    "thac0": 20,
-    "damage": "1d3",
-    "size": "S",
+  "drowned_spirit": {
+    "name": "Drowned Spirit",
+    "hit_dice": "3d8",
+    "ac": 6,
+    "thac0": 18,
+    "damage": "1d6",
+    "size": "M",
     "movement": 12,
-    "morale": 5,
-    "treasure_type": "C",
-    "xp_value": 5,
+    "morale": 12,
+    "treasure_type": "Nil",
+    "xp_value": 65,
     "special_abilities": [
-      "disease_bite"
+      "undead",
+      "incorporeal",
+      "life_drain"
     ],
-    "ai_behavior": "flee_low_hp",
-    "description": "A rat the size of a small dog, with matted fur and gleaming teeth.",
+    "ai_behavior": "aggressive",
+    "description": "The tortured spirit of a citizen of Ys'Thara, drowned when the city sank. These wraiths haunt their former homes, unable to accept their fate.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (8%)",
+      "percentage": 8
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      }
+    },
+    "pct_in_lair": 30,
+    "num_attacks": 1,
+    "special_attacks": "Touch drains 1 level (save vs paralysis negates)",
+    "special_defenses": "Incorporeal (half damage from non-magical weapons), immune to cold and poison",
+    "xp_formula": {
+      "dungeon_level": 3,
+      "base_xp": 65,
+      "xp_per_hp": 3
+    }
+  },
+  "animated_armor": {
+    "name": "Animated Armor",
+    "hit_dice": "4d8",
+    "ac": 2,
+    "thac0": 17,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 6,
+    "morale": 12,
+    "treasure_type": "Nil",
+    "xp_value": 175,
+    "special_abilities": [
+      "construct",
+      "immune_to_mind_effects"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A suit of ornate plate armor animated by protective enchantments. It guards its lord's treasures even after death.",
     "alignment": "Neutral",
     "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
+      "category": "Non-intelligent",
+      "score_range": "0"
     },
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
+      "description": "Rare (5%)",
+      "percentage": 5
     },
     "no_appearing": {
       "wilderness": {
         "min": 1,
-        "max": 10,
+        "max": 2,
         "special": null
       },
       "lair": {
         "min": 1,
-        "max": 10,
+        "max": 4,
         "special": null
       }
     },
-    "pct_in_lair": 25,
+    "pct_in_lair": 90,
     "num_attacks": 1,
+    "special_attacks": "None",
+    "special_defenses": "Immune to mind-affecting effects, poison, and disease",
     "xp_formula": {
-      "base_xp": 5,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
+      "dungeon_level": 4,
+      "base_xp": 175,
+      "xp_per_hp": 4
     }
   },
-  "hellhound": {
-    "name": "Hell Hound",
-    "hit_dice": "4-7d8",
-    "ac": 4,
-    "thac0": 16,
-    "damage": "1d10",
+  "cultist_foreman": {
+    "name": "Cultist Foreman",
+    "hit_dice": "3d8+3",
+    "ac": 5,
+    "thac0": 18,
+    "damage": "1d8+1",
     "size": "M",
-    "movement": 12,
-    "morale": 11,
-    "treasure_type": "C",
-    "xp_value": 240,
-    "special_abilities": [
-      "breath_weapon",
-      "detect_invisible"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A fiendish dog that breathes fire and hunts invisble prey.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 240,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "hill_giant": {
-    "name": "Hill Giant",
-    "hit_dice": "8+2",
-    "ac": 4,
-    "thac0": 13,
-    "damage": "2d6",
-    "size": "L",
     "movement": 12,
     "morale": 10,
-    "treasure_type": "D+5000gp",
-    "xp_value": 850,
+    "treasure_type": "Individual (P+Q)",
+    "xp_value": 120,
     "special_abilities": [
-      "boulder_throw"
+      "leadership"
     ],
-    "ai_behavior": "aggressive",
-    "description": "The smallest of true giants, standing 12 feet tall and brutish.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 850,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "frost_giant": {
-    "name": "Frost Giant",
-    "hit_dice": "10+3",
-    "ac": 4,
-    "thac0": 12,
-    "damage": "4d6",
-    "size": "L",
-    "movement": 12,
-    "morale": 12,
-    "treasure_type": "E+5000gp",
-    "xp_value": 2050,
-    "special_abilities": [
-      "boulder_throw",
-      "immune_to_cold"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A 15-foot tall giant from frozen lands, wielding massive axes.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 2050,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "fire_giant": {
-    "name": "Fire Giant",
-    "hit_dice": "11+3",
-    "ac": 3,
-    "thac0": 11,
-    "damage": "5d6",
-    "size": "L",
-    "movement": 12,
-    "morale": 12,
-    "treasure_type": "E+10000gp",
-    "xp_value": 2650,
-    "special_abilities": [
-      "boulder_throw",
-      "immune_to_fire"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A 16-foot tall giant from volcanic regions, master smiths and warriors.",
+    "ai_behavior": "intelligent",
+    "description": "A tough, experienced cultist who oversees underwater excavation operations. Commands respect and obedience from lesser cultists.",
     "alignment": "Lawful Evil",
     "intelligence": {
       "category": "Average",
@@ -10754,207 +13542,62 @@
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
+      "description": "Uncommon (12%)",
+      "percentage": 12
     },
     "no_appearing": {
       "wilderness": {
         "min": 1,
-        "max": 10,
+        "max": 1,
         "special": null
       },
       "lair": {
         "min": 1,
-        "max": 10,
+        "max": 2,
         "special": null
       }
     },
-    "pct_in_lair": 25,
+    "pct_in_lair": 50,
     "num_attacks": 1,
+    "special_attacks": "Grants +1 to hit and morale to nearby allies",
+    "special_defenses": "None",
     "xp_formula": {
-      "base_xp": 2650,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
+      "dungeon_level": 3,
+      "base_xp": 120,
+      "xp_per_hp": 3
     }
   },
-  "red_dragon_young": {
-    "name": "Young Red Dragon",
-    "hit_dice": "7d8",
-    "ac": 1,
-    "thac0": 14,
-    "damage": "1d8",
-    "size": "L",
-    "movement": 9,
-    "morale": 14,
-    "treasure_type": "H",
-    "xp_value": 1250,
-    "special_abilities": [
-      "breath_weapon",
-      "flying",
-      "immune_to_fire",
-      "spellcasting"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "A young red dragon, greedy and cruel, with scorching fire breath.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 1250,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "black_dragon_adult": {
-    "name": "Adult Black Dragon",
-    "hit_dice": "8d8",
-    "ac": 2,
-    "thac0": 13,
-    "damage": "1d6",
-    "size": "L",
-    "movement": 9,
-    "morale": 14,
-    "treasure_type": "H",
-    "xp_value": 2000,
-    "special_abilities": [
-      "breath_weapon",
-      "flying",
-      "swim",
-      "spellcasting"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "An adult black dragon, dwelling in swamps, breathing acid.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 2000,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "green_dragon_adult": {
-    "name": "Adult Green Dragon",
-    "hit_dice": "9d8",
-    "ac": 2,
-    "thac0": 13,
-    "damage": "1d8",
-    "size": "L",
-    "movement": 9,
-    "morale": 15,
-    "treasure_type": "H",
-    "xp_value": 2500,
-    "special_abilities": [
-      "breath_weapon",
-      "flying",
-      "spellcasting"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "A cunning green dragon that breathes poisonous chlorine gas.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 10,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 2500,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "cultist": {
-    "name": "Serpent Eye Cultist",
-    "hit_dice": "1d8",
+  "mind_controlled_diver": {
+    "name": "Mind-Controlled Diver",
+    "hit_dice": "2d8",
     "ac": 7,
-    "thac0": 20,
+    "thac0": 19,
     "damage": "1d6",
     "size": "M",
-    "movement": 12,
-    "morale": 8,
-    "treasure_type": "Individuals P",
-    "xp_value": 15,
-    "special_abilities": [],
+    "movement": 9,
+    "morale": 12,
+    "treasure_type": "Individual (minimal)",
+    "xp_value": 35,
+    "special_abilities": [
+      "fearless"
+    ],
     "ai_behavior": "aggressive",
-    "description": "A fanatical follower of the Serpent Eye cult, wielding simple weapons and chanting dark prayers.",
-    "alignment": "Chaotic Evil",
+    "description": "A former fisherman or diver whose mind has been enslaved by the aboleth. They fight without fear or mercy, trapped in their own body.",
+    "alignment": "Neutral (enslaved)",
     "intelligence": {
-      "category": "Average",
+      "category": "Average (enslaved)",
       "score_range": "8-10"
     },
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Common (50%)",
-      "percentage": 50
+      "description": "Rare (6%)",
+      "percentage": 6
     },
     "no_appearing": {
       "wilderness": {
         "min": 2,
-        "max": 8,
+        "max": 6,
         "special": null
       },
       "lair": {
@@ -10963,29 +13606,35 @@
         "special": null
       }
     },
-    "pct_in_lair": 40,
+    "pct_in_lair": 70,
     "num_attacks": 1,
+    "special_attacks": "None",
+    "special_defenses": "Immune to fear and morale checks (enslaved)",
     "xp_formula": {
-      "base_xp": 15,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
+      "dungeon_level": 2,
+      "base_xp": 35,
+      "xp_per_hp": 2
     }
   },
-  "cultist_elite": {
-    "name": "Elite Serpent Eye Cultist",
-    "hit_dice": "2d8",
-    "ac": 6,
-    "thac0": 19,
-    "damage": "1d8",
+  "sahuagin_chieftain": {
+    "name": "Sahuagin Chieftain",
+    "hit_dice": "4d8+2",
+    "ac": 4,
+    "thac0": 17,
+    "damage": "1d8+2",
     "size": "M",
     "movement": 12,
-    "morale": 9,
-    "treasure_type": "Individuals P, Q",
-    "xp_value": 35,
-    "special_abilities": [],
-    "ai_behavior": "aggressive",
-    "description": "A veteran cultist, better armed and armored than their lesser brethren, displaying unwavering devotion.",
-    "alignment": "Chaotic Evil",
+    "morale": 14,
+    "treasure_type": "Individual (P+Q), Lair (C)",
+    "xp_value": 270,
+    "special_abilities": [
+      "water_breathing",
+      "leadership",
+      "shark_summoning"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "The leader of a sahuagin war band. Larger and stronger than typical sahuagin, with ceremonial scars and trophies from defeated enemies.",
+    "alignment": "Lawful Evil",
     "intelligence": {
       "category": "Average",
       "score_range": "8-10"
@@ -10993,640 +13642,151 @@
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Common (35%)",
-      "percentage": 35
+      "description": "Rare (5%)",
+      "percentage": 5
     },
     "no_appearing": {
       "wilderness": {
         "min": 1,
-        "max": 6,
-        "special": null
-      },
-      "lair": {
-        "min": 2,
-        "max": 8,
-        "special": null
-      }
-    },
-    "pct_in_lair": 50,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 35,
-      "xp_per_hp": 2,
-      "dungeon_level": 2
-    }
-  },
-  "cultist_fanatic": {
-    "name": "Serpent Eye Fanatic",
-    "hit_dice": "3d8",
-    "ac": 6,
-    "thac0": 18,
-    "damage": "1d8+1",
-    "size": "M",
-    "movement": 12,
-    "morale": 11,
-    "treasure_type": "Individuals Q",
-    "xp_value": 65,
-    "special_abilities": [
-      "fanatical_fury"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A wild-eyed cultist driven mad by devotion, fighting with supernatural fervor and feeling no pain.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 4,
-        "special": null
-      },
-      "lair": {
-        "min": 2,
-        "max": 6,
-        "special": null
-      }
-    },
-    "pct_in_lair": 60,
-    "num_attacks": 1,
-    "xp_formula": {
-      "base_xp": 65,
-      "xp_per_hp": 3,
-      "dungeon_level": 3
-    }
-  },
-  "cultist_sorcerer": {
-    "name": "Cult Sorcerer",
-    "hit_dice": "3d8",
-    "ac": 7,
-    "thac0": 18,
-    "damage": "1d4",
-    "size": "M",
-    "movement": 12,
-    "morale": 9,
-    "treasure_type": "Individuals Q, scroll",
-    "xp_value": 120,
-    "special_abilities": [
-      "spellcasting"
-    ],
-    "ai_behavior": "defensive",
-    "description": "A robed cultist who has mastered minor magical powers through dark pacts, able to cast low-level spells.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "High",
-      "score_range": "13-14"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (10%)",
-      "percentage": 10
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 2,
+        "max": 1,
         "special": null
       },
       "lair": {
         "min": 1,
-        "max": 4,
+        "max": 1,
         "special": null
       }
     },
     "pct_in_lair": 70,
     "num_attacks": 1,
-    "special_attacks": "Can cast magic missile, sleep, and shield",
+    "special_attacks": "Can summon 1d4 sharks once per day, grants +2 morale to sahuagin allies",
+    "special_defenses": "Waterbreathing, shark empathy",
     "xp_formula": {
-      "base_xp": 120,
-      "xp_per_hp": 4,
-      "dungeon_level": 3
+      "dungeon_level": 4,
+      "base_xp": 270,
+      "xp_per_hp": 4
     }
   },
-  "cultist_scribe": {
-    "name": "Cult Scribe",
-    "hit_dice": "1d8",
-    "ac": 8,
-    "thac0": 20,
-    "damage": "1d4",
+  "cultist_guard": {
+    "name": "Cultist Guard",
+    "hit_dice": "2d8+2",
+    "ac": 5,
+    "thac0": 19,
+    "damage": "1d8",
     "size": "M",
     "movement": 12,
-    "morale": 6,
-    "treasure_type": "Individuals P, scroll",
-    "xp_value": 15,
+    "morale": 9,
+    "treasure_type": "Individual (P)",
+    "xp_value": 35,
     "special_abilities": [],
     "ai_behavior": "defensive",
-    "description": "A scholarly cultist who transcribes dark rituals and maintains the cult's records. Weak in combat but holds valuable knowledge.",
-    "alignment": "Chaotic Evil",
+    "description": "A cult warrior assigned to guard contraband and valuable artifacts. Better equipped and trained than typical cultists.",
+    "alignment": "Lawful Evil",
     "intelligence": {
-      "category": "High",
-      "score_range": "12-13"
+      "category": "Average",
+      "score_range": "8-10"
     },
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Uncommon (15%)",
+      "description": "Common (15%)",
       "percentage": 15
     },
     "no_appearing": {
       "wilderness": {
-        "min": 1,
-        "max": 2,
+        "min": 2,
+        "max": 6,
         "special": null
       },
       "lair": {
-        "min": 1,
-        "max": 3,
+        "min": 2,
+        "max": 12,
         "special": null
       }
     },
-    "pct_in_lair": 80,
+    "pct_in_lair": 60,
     "num_attacks": 1,
     "special_attacks": "None",
+    "special_defenses": "None",
     "xp_formula": {
-      "base_xp": 15,
-      "xp_per_hp": 1,
-      "dungeon_level": 1
-    }
-  },
-  "cultist_torturer": {
-    "name": "Cult Torturer",
-    "hit_dice": "2d8",
-    "ac": 6,
-    "thac0": 19,
-    "damage": "1d6+1",
-    "size": "M",
-    "movement": 12,
-    "morale": 9,
-    "treasure_type": "Individuals P",
-    "xp_value": 35,
-    "special_abilities": ["intimidation"],
-    "ai_behavior": "aggressive",
-    "description": "A brutal cultist who specializes in extracting information and breaking the will of prisoners through pain.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "9-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      }
-    },
-    "pct_in_lair": 90,
-    "num_attacks": 1,
-    "special_attacks": "Intimidation: -1 to target morale",
-    "xp_formula": {
+      "dungeon_level": 2,
       "base_xp": 35,
-      "xp_per_hp": 2,
-      "dungeon_level": 2
+      "xp_per_hp": 2
     }
   },
-  "cult_pyromancer_transformed": {
-    "name": "Transformed Pyromancer",
-    "hit_dice": "5d8",
-    "ac": 4,
-    "thac0": 16,
-    "damage": "2d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 10,
-    "treasure_type": "Q, potion",
-    "xp_value": 270,
-    "special_abilities": [
-      "fire_immunity",
-      "burning_touch"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A cultist whose body has been warped by elemental fire, wreathed in flames and immune to heat.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 3,
-        "special": null
-      }
-    },
-    "pct_in_lair": 80,
-    "num_attacks": 1,
-    "special_attacks": "Touch inflicts 1d6 fire damage",
-    "special_defenses": "Immune to fire damage",
-    "xp_formula": {
-      "base_xp": 270,
-      "xp_per_hp": 5,
-      "dungeon_level": 5
-    }
-  },
-  "cult_hydromancer_transformed": {
-    "name": "Transformed Hydromancer",
-    "hit_dice": "5d8",
-    "ac": 4,
-    "thac0": 16,
-    "damage": "2d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 10,
-    "treasure_type": "Q, potion",
-    "xp_value": 270,
-    "special_abilities": [
-      "water_breathing",
-      "cold_attack"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A cultist transformed by water magic, their skin blue and scaled, able to breathe underwater and summon freezing sprays.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 3,
-        "special": null
-      }
-    },
-    "pct_in_lair": 80,
-    "num_attacks": 1,
-    "special_attacks": "Can spray frost for 1d8 cold damage",
-    "special_defenses": "Waterbreathing, resistant to cold",
-    "xp_formula": {
-      "base_xp": 270,
-      "xp_per_hp": 5,
-      "dungeon_level": 5
-    }
-  },
-  "cult_geomancer_transformed": {
-    "name": "Transformed Geomancer",
-    "hit_dice": "6d8",
+  "giant_crab": {
+    "name": "Giant Crab",
+    "hit_dice": "3d8",
     "ac": 3,
-    "thac0": 15,
-    "damage": "2d8",
-    "size": "M",
+    "thac0": 18,
+    "damage": "2d6/2d6",
+    "size": "L",
     "movement": 9,
-    "morale": 11,
-    "treasure_type": "Q, gems",
-    "xp_value": 420,
+    "morale": 7,
+    "treasure_type": "Nil",
+    "xp_value": 65,
     "special_abilities": [
-      "stone_skin",
-      "earth_glide"
+      "pincer_grab"
     ],
-    "ai_behavior": "defensive",
-    "description": "A cultist whose flesh has turned to living stone, tremendously strong and nearly impervious to normal weapons.",
-    "alignment": "Chaotic Evil",
+    "ai_behavior": "territorial",
+    "description": "A massive crab with thick shell armor and crushing pincers. Common in underwater ruins where they make lairs.",
+    "alignment": "Neutral",
     "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
+      "category": "Animal",
+      "score_range": "1"
     },
     "magic_resistance": "Standard",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
+      "description": "Uncommon (10%)",
+      "percentage": 10
     },
     "no_appearing": {
       "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      }
-    },
-    "pct_in_lair": 90,
-    "num_attacks": 1,
-    "special_defenses": "Takes half damage from non-magical weapons",
-    "xp_formula": {
-      "base_xp": 420,
-      "xp_per_hp": 6,
-      "dungeon_level": 6
-    }
-  },
-  "cult_aeromancer_transformed": {
-    "name": "Transformed Aeromancer",
-    "hit_dice": "5d8",
-    "ac": 2,
-    "thac0": 16,
-    "damage": "1d10",
-    "size": "M",
-    "movement": 18,
-    "morale": 9,
-    "treasure_type": "Q",
-    "xp_value": 270,
-    "special_abilities": [
-      "levitation",
-      "lightning_bolt"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A cultist infused with air magic, able to levitate and hurl bolts of lightning, their body crackling with static.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      },
-      "lair": {
         "min": 1,
         "max": 3,
         "special": null
-      }
-    },
-    "pct_in_lair": 80,
-    "num_attacks": 1,
-    "special_attacks": "Lightning bolt 1d10 damage, 30 foot range",
-    "special_defenses": "Can levitate at will",
-    "xp_formula": {
-      "base_xp": 270,
-      "xp_per_hp": 5,
-      "dungeon_level": 5
-    }
-  },
-  "high_priest_defender": {
-    "name": "High Priest Defender",
-    "hit_dice": "6d8",
-    "ac": 3,
-    "thac0": 15,
-    "damage": "2d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 13,
-    "treasure_type": "Q, magic items",
-    "xp_value": 650,
-    "special_abilities": [
-      "spellcasting",
-      "turn_undead"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "An elite guardian priest of the Serpent Eye cult, clad in dark robes and wielding powerful divine magic.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Very",
-      "score_range": "15-16"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Very rare (3%)",
-      "percentage": 3
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
       },
       "lair": {
         "min": 1,
-        "max": 2,
+        "max": 4,
         "special": null
       }
     },
-    "pct_in_lair": 95,
-    "num_attacks": 1,
-    "special_attacks": "6th level cleric spells",
+    "pct_in_lair": 40,
+    "num_attacks": 2,
+    "special_attacks": "On hit with both pincers (20), automatically grabs and crushes for 2d6 damage per round",
+    "special_defenses": "Thick shell (+2 AC)",
     "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 7,
-      "dungeon_level": 6
+      "dungeon_level": 3,
+      "base_xp": 65,
+      "xp_per_hp": 3
     }
   },
-  "high_priest_korvash": {
-    "name": "High Priest Korvash",
-    "hit_dice": "8d8",
-    "ac": 2,
-    "thac0": 13,
-    "damage": "2d8",
-    "size": "M",
-    "movement": 12,
-    "morale": 15,
-    "treasure_type": "Q, X, magic items",
-    "xp_value": 975,
-    "special_abilities": [
-      "spellcasting",
-      "command_undead",
-      "serpent_blessing"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "A powerful high priest of the cult, able to command both the living and the dead with dark divine authority.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Genius",
-      "score_range": "17-18"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Unique",
-      "percentage": 1
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 100,
-    "num_attacks": 1,
-    "special_attacks": "8th level cleric spells, can command undead",
-    "xp_formula": {
-      "base_xp": 975,
-      "xp_per_hp": 9,
-      "dungeon_level": 8
-    }
-  },
-  "morvathis_high_priest": {
-    "name": "High Priest Morvathis",
-    "hit_dice": "9d8",
-    "ac": 1,
-    "thac0": 12,
-    "damage": "3d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 16,
-    "treasure_type": "Q, X, multiple magic items",
-    "xp_value": 1400,
-    "special_abilities": [
-      "spellcasting",
-      "unholy_aura",
-      "serpent_transformation"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "The supreme high priest of the Serpent Eye cult, possessing terrifying magical power and able to transform into a giant serpent.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Genius",
-      "score_range": "18"
-    },
-    "magic_resistance": "20%",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Unique",
-      "percentage": 1
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 100,
-    "num_attacks": 1,
-    "special_attacks": "9th level cleric spells, can transform into giant serpent (10 HD, 3d8 damage)",
-    "special_defenses": "20% magic resistance, +3 or better weapons to hit",
-    "xp_formula": {
-      "base_xp": 1400,
-      "xp_per_hp": 12,
-      "dungeon_level": 9
-    }
-  },
-  "valerius_krane": {
-    "name": "Valerius Krane, Cult Leader",
-    "hit_dice": "10d8",
-    "ac": 0,
-    "thac0": 11,
+  "stone_golem_guardian": {
+    "name": "Stone Golem Guardian",
+    "hit_dice": "14d8",
+    "ac": 5,
+    "thac0": 7,
     "damage": "3d8",
-    "size": "M",
-    "movement": 12,
-    "morale": 18,
-    "treasure_type": "Q, X, Y, legendary items",
+    "size": "L",
+    "movement": 6,
+    "morale": 12,
+    "treasure_type": "Nil",
     "xp_value": 2000,
     "special_abilities": [
-      "spellcasting",
-      "legendary_resistance",
-      "dual_casting"
+      "construct",
+      "magic_immunity",
+      "slow"
     ],
-    "ai_behavior": "intelligent",
-    "description": "The charismatic founder and absolute leader of the Serpent Eye cult, a master of both arcane and divine magic.",
-    "alignment": "Chaotic Evil",
+    "ai_behavior": "defensive",
+    "description": "An ancient stone golem crafted by royal wizards to guard the throne of Ys'Thara. Immensely powerful and nearly indestructible.",
+    "alignment": "Neutral",
     "intelligence": {
-      "category": "Supra-genius",
-      "score_range": "19+"
+      "category": "Non-intelligent",
+      "score_range": "0"
     },
-    "magic_resistance": "30%",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Unique",
-      "percentage": 1
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 100,
-    "num_attacks": 2,
-    "special_attacks": "Can cast both 8th level magic-user spells AND 8th level cleric spells. Two attacks per round.",
-    "special_defenses": "30% magic resistance, regenerates 3 HP per round, +3 or better weapons to hit",
-    "xp_formula": {
-      "base_xp": 2000,
-      "xp_per_hp": 15,
-      "dungeon_level": 10
-    }
-  },
-  "barbed_devil": {
-    "name": "Barbed Devil (Hamatula)",
-    "hit_dice": "8d8",
-    "ac": 0,
-    "thac0": 13,
-    "damage": "2d8",
-    "size": "L",
-    "movement": 15,
-    "morale": 14,
-    "treasure_type": "Individuals Q",
-    "xp_value": 975,
-    "special_abilities": [
-      "barbed_embrace",
-      "fear_aura",
-      "summoning"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A towering devil covered in razor-sharp barbs, radiating an aura of terror and able to impale foes in a deadly embrace.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Very",
-      "score_range": "15-16"
-    },
-    "magic_resistance": "40%",
+    "magic_resistance": "Immune to most magic",
     "psionic_ability": "Nil",
     "frequency": {
       "description": "Very rare (2%)",
@@ -11635,50 +13795,52 @@
     "no_appearing": {
       "wilderness": {
         "min": 1,
-        "max": 2,
+        "max": 1,
         "special": null
       },
       "lair": {
         "min": 1,
-        "max": 3,
+        "max": 2,
         "special": null
       }
     },
-    "pct_in_lair": 50,
-    "num_attacks": 2,
-    "special_attacks": "Fear aura (save vs spell or flee), barbed embrace (2d6 additional damage if both attacks hit)",
-    "special_defenses": "40% magic resistance, +1 or better weapons to hit, regenerates 1 HP/round",
+    "pct_in_lair": 100,
+    "num_attacks": 1,
+    "special_attacks": "Slow spell effect in 10-foot radius (save vs spell or move at half speed for 2d6 rounds)",
+    "special_defenses": "Can only be hit by +2 or better weapons. Immune to most spells (only Move Earth, Earthquake, Transmute Rock to Mud, and similar affect it)",
     "xp_formula": {
-      "base_xp": 975,
-      "xp_per_hp": 10,
-      "dungeon_level": 8
+      "dungeon_level": 8,
+      "base_xp": 2000,
+      "xp_per_hp": 14
     }
   },
-  "elemental_herald": {
-    "name": "Elemental Herald",
-    "hit_dice": "10d8",
-    "ac": 0,
-    "thac0": 11,
-    "damage": "4d6",
+  "aboleth_ancient": {
+    "name": "Ancient Aboleth",
+    "hit_dice": "12d8",
+    "ac": 2,
+    "thac0": 9,
+    "damage": "2d6",
     "size": "L",
-    "movement": 18,
+    "movement": 3,
     "morale": 16,
-    "treasure_type": "Special (elemental gems)",
+    "treasure_type": "Special (H+I+Q x5)",
     "xp_value": 1400,
     "special_abilities": [
-      "elemental_mastery",
-      "immune_to_element",
-      "summon_elementals"
+      "water_breathing",
+      "psionics",
+      "enslavement",
+      "mucus_cloud",
+      "telepathy"
     ],
-    "ai_behavior": "intelligent",
-    "description": "A being of pure elemental power, able to command all four elements and summon lesser elementals to its aid.",
-    "alignment": "Neutral",
+    "ai_behavior": "genius",
+    "description": "An ancient aboleth, the creature that destroyed Ys'Thara. Its psychic power is immense, and it has enslaved countless victims over the centuries. This optional boss is extremely dangerous.",
+    "alignment": "Lawful Evil",
     "intelligence": {
-      "category": "Very",
-      "score_range": "15-16"
+      "category": "Genius",
+      "score_range": "17-18"
     },
-    "magic_resistance": "30%",
-    "psionic_ability": "Nil",
+    "magic_resistance": "Standard",
+    "psionic_ability": "Attack/Defense modes (100 PSPs)",
     "frequency": {
       "description": "Very rare (1%)",
       "percentage": 1
@@ -11695,295 +13857,478 @@
         "special": null
       }
     },
-    "pct_in_lair": 90,
-    "num_attacks": 2,
-    "special_attacks": "Can summon 1d4 lesser elementals once per day, elemental attacks (fire/cold/acid/lightning)",
-    "special_defenses": "30% magic resistance, immune to one elemental type (varies), +2 or better weapons to hit",
+    "pct_in_lair": 100,
+    "num_attacks": 4,
+    "special_attacks": "Enslavement (save vs spell at -2 or be dominated permanently). Mucus cloud (30-foot radius: save vs poison or lose air-breathing for 4 hours). Psionics (domination, mind blast, psychic crush)",
+    "special_defenses": "Waterbreathing, telepathy (1000-foot range), can create illusions at will",
     "xp_formula": {
       "base_xp": 1400,
       "xp_per_hp": 12,
-      "dungeon_level": 9
+      "dungeon_level": 7
     }
   },
-  "fire_elemental": {
-    "name": "Fire Elemental",
-    "hit_dice": "8d8",
-    "ac": 2,
-    "thac0": 13,
-    "damage": "3d8",
-    "size": "L",
+  "skeleton_champion": {
+    "name": "Skeleton Champion",
+    "hit_dice": "4d8",
+    "ac": 3,
+    "thac0": 17,
+    "damage": "1d8+2",
+    "size": "M",
     "movement": 12,
-    "morale": 14,
-    "treasure_type": "Nil",
-    "xp_value": 650,
-    "special_abilities": [
-      "fire_immunity",
-      "ignite"
-    ],
+    "alignment": "NE",
+    "type": "undead",
+    "description": "An elite skeletal warrior, armored and wielding masterwork weapons. These are the remains of ancient champions, reanimated to serve their dark master.",
     "ai_behavior": "aggressive",
-    "description": "A churning mass of living flame, radiating intense heat and able to ignite anything it touches.",
-    "alignment": "Neutral",
-    "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
+    "treasure_type": "P (15%), Q (10%)",
+    "number_appearing": {
+      "dungeon": {
         "min": 1,
-        "max": 1,
+        "max": 2,
         "special": null
       },
       "lair": {
         "min": 1,
-        "max": 1,
+        "max": 4,
         "special": null
       }
     },
-    "pct_in_lair": 0,
-    "num_attacks": 1,
-    "special_attacks": "Ignites flammable materials on contact",
-    "special_defenses": "Immune to fire damage, takes double damage from water/cold",
+    "pct_in_lair": 25,
+    "num_attacks": 2,
+    "special_attacks": "Can command lesser skeletons (1-4 skeletons follow champion)",
+    "special_defenses": "Undead immunities (poison, charm, sleep, hold), half damage from slashing/piercing, immune to cold",
     "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 8,
-      "dungeon_level": 7
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 4
     }
   },
-  "water_elemental": {
-    "name": "Water Elemental",
-    "hit_dice": "8d8",
+  "mummy_guardian": {
+    "name": "Mummy Guardian",
+    "hit_dice": "6d8+3",
     "ac": 2,
-    "thac0": 13,
-    "damage": "3d8",
-    "size": "L",
+    "thac0": 15,
+    "damage": "1d12",
+    "size": "M",
     "movement": 6,
-    "morale": 14,
-    "treasure_type": "Nil",
-    "xp_value": 650,
-    "special_abilities": [
-      "water_breathing",
-      "drowning_grasp"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A swirling vortex of living water, able to engulf and drown its victims in its liquid form.",
-    "alignment": "Neutral",
-    "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 0,
-    "num_attacks": 1,
-    "special_attacks": "Can attempt to engulf and drown opponents (save vs paralysis or take 2d8 damage/round)",
-    "special_defenses": "Immune to water damage, takes double damage from fire",
-    "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 8,
-      "dungeon_level": 7
-    }
-  },
-  "earth_elemental": {
-    "name": "Earth Elemental",
-    "hit_dice": "8d8",
-    "ac": 0,
-    "thac0": 13,
-    "damage": "4d8",
-    "size": "L",
-    "movement": 6,
-    "morale": 15,
-    "treasure_type": "Nil",
-    "xp_value": 650,
-    "special_abilities": [
-      "earth_glide",
-      "stone_fist"
-    ],
+    "alignment": "LE",
+    "type": "undead",
+    "description": "An ancient mummy bound to guard treasure vaults. More powerful than common mummies, these elite guardians were priests or warriors in life.",
     "ai_behavior": "defensive",
-    "description": "A hulking mass of animated earth and stone, tremendously strong and nearly impervious to physical harm.",
-    "alignment": "Neutral",
-    "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
+    "treasure_type": "D (x5)",
+    "number_appearing": {
+      "dungeon": {
         "min": 1,
         "max": 1,
         "special": null
       },
       "lair": {
         "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 0,
-    "num_attacks": 1,
-    "special_attacks": "Can move through earth and stone at will",
-    "special_defenses": "Immune to earth/stone attacks, takes double damage from air/wind magic",
-    "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 8,
-      "dungeon_level": 7
-    }
-  },
-  "air_elemental": {
-    "name": "Air Elemental",
-    "hit_dice": "8d8",
-    "ac": 2,
-    "thac0": 13,
-    "damage": "2d10",
-    "size": "L",
-    "movement": 36,
-    "morale": 13,
-    "treasure_type": "Nil",
-    "xp_value": 650,
-    "special_abilities": [
-      "flying",
-      "whirlwind"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "An invisible whirlwind of sentient air, nearly impossible to see and able to create devastating windstorms.",
-    "alignment": "Neutral",
-    "intelligence": {
-      "category": "Low",
-      "score_range": "5-7"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 0,
-    "num_attacks": 1,
-    "special_attacks": "Whirlwind form can sweep up opponents (save vs breath weapon or take 3d6 damage and be flung)",
-    "special_defenses": "Immune to air/wind attacks, difficult to see (-2 to hit), takes double damage from earth magic",
-    "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 8,
-      "dungeon_level": 7
-    }
-  },
-  "serpents_voice": {
-    "name": "The Serpent's Voice",
-    "hit_dice": "9d8",
-    "ac": -1,
-    "thac0": 12,
-    "damage": "3d6",
-    "size": "L",
-    "movement": 15,
-    "morale": 17,
-    "treasure_type": "Q, X, magic items",
-    "xp_value": 1400,
-    "special_abilities": [
-      "telepathy",
-      "mind_control",
-      "serpent_summoning"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "A mysterious entity claiming to speak for the Serpent God, able to control minds and summon serpents from the void.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Genius",
-      "score_range": "18"
-    },
-    "magic_resistance": "50%",
-    "psionic_ability": "Attack/Defense modes",
-    "frequency": {
-      "description": "Unique",
-      "percentage": 1
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
+        "max": 2,
         "special": null
       }
     },
     "pct_in_lair": 100,
     "num_attacks": 1,
-    "special_attacks": "Mind control (save vs spell -2 or be dominated for 1d6 rounds), summon 1d4 giant serpents",
-    "special_defenses": "50% magic resistance, telepathy, +2 or better weapons to hit",
+    "special_attacks": "Mummy rot (touch causes disease, -2 to hit, half healing, fatal in 1d6 months without cure disease). Fear aura (save vs spell or flee for 1d4 rounds)",
+    "special_defenses": "Undead immunities, magic weapons required to hit, fire damage only (immune to normal weapons)",
     "xp_formula": {
-      "base_xp": 1400,
-      "xp_per_hp": 14,
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 6
+    }
+  },
+  "cultist_warrior": {
+    "name": "Cultist Warrior",
+    "hit_dice": "3d8",
+    "ac": 5,
+    "thac0": 18,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 12,
+    "alignment": "LE",
+    "type": "humanoid",
+    "description": "A trained cult soldier, equipped with quality weapons and armor. These warriors have abandoned their former lives to serve the cult full-time.",
+    "ai_behavior": "aggressive",
+    "treasure_type": "P (10%), Q (5%), (J,K)",
+    "number_appearing": {
+      "dungeon": {
+        "min": 2,
+        "max": 4,
+        "special": null
+      },
+      "lair": {
+        "min": 3,
+        "max": 18,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 1,
+    "special_attacks": "Trained combatant (+1 to hit)",
+    "special_defenses": "None",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 2,
+      "dungeon_level": 3
+    }
+  },
+  "cultist_archer": {
+    "name": "Cultist Archer",
+    "hit_dice": "2d8",
+    "ac": 6,
+    "thac0": 19,
+    "damage": "1d8",
+    "size": "M",
+    "movement": 12,
+    "alignment": "LE",
+    "type": "humanoid",
+    "description": "A cult member trained in ranged combat. Archers provide cover fire for melee warriors and pick off targets from range.",
+    "ai_behavior": "defensive",
+    "treasure_type": "P (5%), Q (5%)",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      }
+    },
+    "pct_in_lair": 40,
+    "num_attacks": 2,
+    "special_attacks": "Longbow attack (60/120/180 range, 2 attacks per round)",
+    "special_defenses": "None",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 2,
+      "dungeon_level": 2
+    }
+  },
+  "cultist_sergeant": {
+    "name": "Cultist Sergeant",
+    "hit_dice": "4d8",
+    "ac": 4,
+    "thac0": 17,
+    "damage": "1d8+1",
+    "size": "M",
+    "movement": 12,
+    "alignment": "LE",
+    "type": "humanoid",
+    "description": "A veteran cult warrior who commands guards and soldiers. Sergeants are battle-hardened leaders with years of experience.",
+    "ai_behavior": "aggressive",
+    "treasure_type": "P (15%), Q (10%), (J,K,M)",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 60,
+    "num_attacks": 2,
+    "special_attacks": "Command presence (allies within 30 feet gain +1 to morale and attack rolls)",
+    "special_defenses": "None",
+    "xp_formula": {
+      "base_xp": 120,
+      "xp_per_hp": 3,
+      "dungeon_level": 4
+    }
+  },
+  "cultist_quartermaster": {
+    "name": "Cultist Quartermaster",
+    "hit_dice": "2d8+2",
+    "ac": 6,
+    "thac0": 19,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "alignment": "LE",
+    "type": "humanoid",
+    "description": "The cult's supply master, responsible for logistics and equipment. Not as combat-focused as warriors, but cunning and resourceful.",
+    "ai_behavior": "flee_low_hp",
+    "treasure_type": "P (20%), Q (15%), (J,K,M,N)",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 1,
+    "special_attacks": "Can summon 1d4 cultist guards as reinforcements",
+    "special_defenses": "Has escape route planned (25% chance to flee successfully)",
+    "xp_formula": {
+      "base_xp": 35,
+      "xp_per_hp": 2,
+      "dungeon_level": 2
+    }
+  },
+  "imp_advisor": {
+    "name": "Imp Advisor",
+    "hit_dice": "3d8",
+    "ac": 2,
+    "thac0": 18,
+    "damage": "1d4",
+    "size": "S",
+    "movement": 18,
+    "alignment": "LE",
+    "type": "devil",
+    "description": "A slightly more powerful imp that serves Krane as an advisor and spy. These devils have enhanced intelligence and cunning.",
+    "ai_behavior": "flee_low_hp",
+    "treasure_type": "C (devil trinkets)",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      }
+    },
+    "pct_in_lair": 80,
+    "num_attacks": 1,
+    "special_attacks": "Poison sting (save vs poison or take 1 hp damage per round for 1d4 rounds). Can cast detect magic, invisibility at will",
+    "special_defenses": "Regenerate 1 hp/round, immune to fire and poison, magic weapons required to hit, can become invisible",
+    "xp_formula": {
+      "base_xp": 120,
+      "xp_per_hp": 3,
+      "dungeon_level": 3
+    }
+  },
+  "flesh_golem": {
+    "name": "Flesh Golem",
+    "hit_dice": "9d8",
+    "ac": 9,
+    "thac0": 12,
+    "damage": "2d8",
+    "size": "L",
+    "movement": 8,
+    "alignment": "N",
+    "type": "construct",
+    "description": "An alchemical construct of stitched corpses, animated by dark magic. This creation of Krane's experiments is a mindless killing machine.",
+    "ai_behavior": "aggressive",
+    "treasure_type": "None",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 2,
+    "special_attacks": "Berserk (10% chance per round of going berserk, attacking nearest creature friend or foe)",
+    "special_defenses": "Immune to mind-affecting, poison, disease. Only hit by +1 or better weapons. Immune to lightning (heals 1 hp per die of damage). Fire and cold do half damage",
+    "xp_formula": {
+      "base_xp": 2000,
+      "xp_per_hp": 10,
       "dungeon_level": 9
     }
   },
-  "summoned_demon": {
-    "name": "Summoned Demon (Vrock)",
-    "hit_dice": "8d8",
-    "ac": 0,
-    "thac0": 13,
-    "damage": "1d8",
-    "size": "L",
+  "mutated_cultist": {
+    "name": "Mutated Cultist",
+    "hit_dice": "4d8",
+    "ac": 5,
+    "thac0": 17,
+    "damage": "1d10",
+    "size": "M",
+    "movement": 9,
+    "alignment": "CE",
+    "type": "aberration",
+    "description": "A failed alchemical experiment. Once human, now twisted by dark magic and mutagenic potions. Deformed, insane, and dangerously unpredictable.",
+    "ai_behavior": "aggressive",
+    "treasure_type": "None",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 2,
+    "special_attacks": "Claw/claw attacks, can't be reasoned with (insane)",
+    "special_defenses": "Resist poison (saves at +4), regenerate 1 hp per round",
+    "xp_formula": {
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 4
+    }
+  },
+  "bearded_devil": {
+    "name": "Bearded Devil (Barbazu)",
+    "hit_dice": "6d8",
+    "ac": 1,
+    "thac0": 15,
+    "damage": "2d4",
+    "size": "M",
     "movement": 12,
-    "morale": 14,
-    "treasure_type": "Individuals Q",
-    "xp_value": 975,
+    "alignment": "LE",
+    "type": "devil",
+    "description": "An infernal warrior from the Nine Hells. Bearded devils are savage fighters with faces covered in writhing, venomous tendrils.",
+    "ai_behavior": "aggressive",
+    "treasure_type": "C (infernal)",
+    "number_appearing": {
+      "dungeon": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 12,
+        "special": null
+      }
+    },
+    "pct_in_lair": 50,
+    "num_attacks": 3,
+    "special_attacks": "Glaive attack (2d4 damage) + beard tentacles (1d4 + infernal wound: bleeding 1 hp/round unless cure spell or healing potion). Can summon another bearded devil 30% chance",
+    "special_defenses": "Immune to fire and poison. Magic weapons required to hit. Regenerate 1 hp/round. Telepathy 100 feet",
+    "xp_formula": {
+      "base_xp": 900,
+      "xp_per_hp": 8,
+      "dungeon_level": 6
+    }
+  },
+  "lemure": {
+    "name": "Lemure",
+    "hit_dice": "3d8",
+    "ac": 7,
+    "thac0": 18,
+    "damage": "1d3",
+    "size": "M",
+    "movement": 3,
+    "alignment": "LE",
+    "type": "devil",
+    "description": "The lowest form of devil—a blob of damned souls melted together. Mindless, slow, but relentless. These are the currency of Hell.",
+    "ai_behavior": "aggressive",
+    "treasure_type": "None",
+    "number_appearing": {
+      "dungeon": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 10,
+        "max": 40,
+        "special": null
+      }
+    },
+    "pct_in_lair": 30,
+    "num_attacks": 1,
+    "special_attacks": "None",
+    "special_defenses": "Immune to fire, poison, charm, sleep, hold. Regenerate 1 hp/round. Magic weapons required to hit. Can only be permanently destroyed by holy water",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 2,
+      "dungeon_level": 3
+    }
+  },
+  "magma_elemental": {
+    "name": "Magma Elemental",
+    "hit_dice": "8d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "3d8",
+    "size": "L",
+    "movement": 6,
+    "morale": 20,
+    "treasure_type": "None",
+    "xp_value": 650,
     "special_abilities": [
-      "flying",
-      "spore_cloud",
-      "teleport"
+      "fire_immunity",
+      "heat_aura"
     ],
     "ai_behavior": "aggressive",
-    "description": "A vulture-headed demon summoned from the Abyss, able to fly and release deadly spore clouds.",
-    "alignment": "Chaotic Evil",
+    "description": "A hybrid creature born where fire and earth elementals merge in the Elemental Chaos. Its body is molten stone, dripping lava and radiating intense heat. Anything that touches it risks being burned.",
+    "alignment": "Neutral",
     "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
+      "category": "Low",
+      "score_range": "5-7"
     },
-    "magic_resistance": "50%",
+    "magic_resistance": "None",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Very rare (2%)",
-      "percentage": 2
+      "description": "Rare (elemental planes only)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Heat aura deals 1d6 fire damage to anyone within 10 feet",
+    "special_defenses": "Immune to fire, +2 or better weapon to hit",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 5
+    }
+  },
+  "storm_elemental": {
+    "name": "Storm Elemental",
+    "hit_dice": "7d8",
+    "ac": 2,
+    "thac0": 14,
+    "damage": "2d10",
+    "size": "L",
+    "movement": 24,
+    "morale": 18,
+    "treasure_type": "None",
+    "xp_value": 450,
+    "special_abilities": [
+      "lightning_form",
+      "wind_blast"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A fusion of air and water elementals, manifesting as a violent thunderstorm given sentience. Lightning arcs through rain and wind, striking at intruders.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "None",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (elemental planes only)",
+      "percentage": 5
     },
     "no_appearing": {
       "wilderness": {
@@ -11997,145 +14342,495 @@
         "special": null
       }
     },
-    "pct_in_lair": 40,
-    "num_attacks": 3,
-    "special_attacks": "Spore cloud (once per day, 15 foot radius, save vs poison or take 1d8 damage and be stunned for 1 round)",
-    "special_defenses": "50% magic resistance, +1 or better weapons to hit, can teleport without error",
+    "pct_in_lair": 0,
+    "num_attacks": 2,
+    "special_attacks": "Lightning strike (3d6 damage, save vs breath for half)",
+    "special_defenses": "Immune to lightning and cold, +1 or better weapon to hit",
     "xp_formula": {
-      "base_xp": 975,
-      "xp_per_hp": 10,
-      "dungeon_level": 8
+      "base_xp": 450,
+      "xp_per_hp": 6,
+      "dungeon_level": 4
     }
   },
-  "duergar": {
-    "name": "Duergar (Gray Dwarf)",
-    "hit_dice": "1d8+1",
+  "chaos_spawn": {
+    "name": "Chaos Spawn",
+    "hit_dice": "6d8",
     "ac": 4,
-    "thac0": 19,
+    "thac0": 15,
+    "damage": "2d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 15,
+    "treasure_type": "None",
+    "xp_value": 270,
+    "special_abilities": [
+      "reality_distortion",
+      "unstable_form"
+    ],
+    "ai_behavior": "erratic",
+    "description": "A creature born from the raw chaos of the Elemental Chaos. Its form constantly shifts—sometimes humanoid, sometimes bestial, sometimes geometric impossibilities. Reality bends around it.",
+    "alignment": "Chaotic Neutral",
+    "intelligence": {
+      "category": "Animal",
+      "score_range": "2-4"
+    },
+    "magic_resistance": "20%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very Rare (chaos realms only)",
+      "percentage": 3
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 3,
+        "special": null
+      },
+      "lair": {
+        "min": 2,
+        "max": 5,
+        "special": null
+      }
+    },
+    "pct_in_lair": 10,
+    "num_attacks": 2,
+    "special_attacks": "Reality distortion: target must save vs spell or be confused for 1d4 rounds",
+    "special_defenses": "20% magic resistance, form changes grant +2 AC bonus randomly",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 4,
+      "dungeon_level": 3
+    }
+  },
+  "elemental_guardian": {
+    "name": "Elemental Guardian",
+    "hit_dice": "9d8",
+    "ac": 1,
+    "thac0": 12,
+    "damage": "3d6",
+    "size": "L",
+    "movement": 9,
+    "morale": 20,
+    "treasure_type": "None",
+    "xp_value": 900,
+    "special_abilities": [
+      "elemental_resistance",
+      "magic_immunity"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A construct of stone and metal infused with elemental power, created by the cult to guard the keystones. It cannot be reasoned with, bribed, or intimidated—it exists only to destroy intruders.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Non-intelligent",
+      "score_range": "0"
+    },
+    "magic_resistance": "50%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very Rare (cult creations)",
+      "percentage": 2
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 90,
+    "num_attacks": 2,
+    "special_attacks": "None",
+    "special_defenses": "Immune to mind-affecting spells, 50% magic resistance, +2 or better weapon to hit",
+    "xp_formula": {
+      "base_xp": 900,
+      "xp_per_hp": 10,
+      "dungeon_level": 6
+    }
+  },
+  "cultist_elementalist": {
+    "name": "Cultist Elementalist",
+    "hit_dice": "5d8",
+    "ac": 5,
+    "thac0": 16,
     "damage": "1d8",
     "size": "M",
-    "movement": 9,
-    "morale": 10,
-    "treasure_type": "Individuals Q, K",
-    "xp_value": 35,
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "Individual",
+    "xp_value": 175,
     "special_abilities": [
-      "invisibility",
-      "enlarge"
+      "spellcasting",
+      "partial_transformation"
     ],
-    "ai_behavior": "aggressive",
-    "description": "A gray-skinned dwarf from the Underdark, able to turn invisible and grow to giant size.",
-    "alignment": "Lawful Evil",
+    "ai_behavior": "intelligent",
+    "description": "A cultist in the early stages of elemental transformation. Their skin shows patches of stone, flame, water, or wind. They can cast minor elemental spells but haven't yet lost their humanity.",
+    "alignment": "Neutral Evil",
     "intelligence": {
       "category": "Average",
       "score_range": "8-10"
     },
-    "magic_resistance": "Standard",
+    "magic_resistance": "None",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Rare (10%)",
+      "description": "Uncommon (cult strongholds)",
       "percentage": 10
     },
     "no_appearing": {
       "wilderness": {
-        "min": 2,
-        "max": 12,
+        "min": 1,
+        "max": 3,
         "special": null
       },
       "lair": {
-        "min": 5,
-        "max": 30,
+        "min": 2,
+        "max": 8,
         "special": null
       }
     },
-    "pct_in_lair": 50,
+    "pct_in_lair": 60,
     "num_attacks": 1,
-    "special_attacks": "Can turn invisible or enlarge self (once per day each)",
+    "special_attacks": "Can cast burning hands or shocking grasp 3/day",
+    "special_defenses": "Partial resistance to one element (takes half damage)",
     "xp_formula": {
-      "base_xp": 35,
-      "xp_per_hp": 2,
+      "base_xp": 175,
+      "xp_per_hp": 4,
+      "dungeon_level": 3
+    }
+  },
+  "primal_wisp": {
+    "name": "Primal Wisp",
+    "hit_dice": "3d8",
+    "ac": 6,
+    "thac0": 18,
+    "damage": "1d6",
+    "size": "S",
+    "movement": 18,
+    "morale": 10,
+    "treasure_type": "None",
+    "xp_value": 65,
+    "special_abilities": [
+      "incorporeal",
+      "elemental_touch"
+    ],
+    "ai_behavior": "skittish",
+    "description": "A fragment of elemental energy given minimal sentience. Wisps drift through the Elemental Chaos, sometimes attacking intruders, sometimes fleeing. They appear as glowing orbs of fire, water, air, or earth.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Animal",
+      "score_range": "1-2"
+    },
+    "magic_resistance": "None",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Common (elemental planes)",
+      "percentage": 30
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 4,
+        "max": 16,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Elemental touch (fire/cold/acid/lightning, 1d6 damage)",
+    "special_defenses": "Incorporeal (half damage from non-magical weapons)",
+    "xp_formula": {
+      "base_xp": 65,
+      "xp_per_hp": 3,
       "dungeon_level": 2
     }
   },
-  "duergar_elite": {
-    "name": "Duergar Elite Guard",
-    "hit_dice": "3d8+3",
-    "ac": 2,
-    "thac0": 18,
-    "damage": "2d6",
+  "cult_champion": {
+    "name": "Cult Champion",
+    "hit_dice": "10d8",
+    "ac": 0,
+    "thac0": 11,
+    "damage": "2d8+2",
     "size": "M",
-    "movement": 9,
-    "morale": 12,
-    "treasure_type": "Individuals Q, K, magic items",
-    "xp_value": 120,
+    "movement": 12,
+    "morale": 20,
+    "treasure_type": "Individual + magic items",
+    "xp_value": 1200,
     "special_abilities": [
-      "invisibility",
-      "enlarge",
-      "poison_resistance"
+      "weapon_mastery",
+      "serpent_blessing"
     ],
-    "ai_behavior": "defensive",
-    "description": "A veteran duergar warrior, better equipped and more skilled in their innate magical abilities.",
-    "alignment": "Lawful Evil",
+    "ai_behavior": "aggressive",
+    "description": "The cult's greatest warrior, chosen to test the worthiness of those who would face the Serpent's Voice. Clad in serpent-scale armor and wielding a cursed greatsword, they fight with fanatic zeal and supernatural skill.",
+    "alignment": "Chaotic Evil",
     "intelligence": {
       "category": "Average",
-      "score_range": "8-10"
+      "score_range": "10-12"
     },
-    "magic_resistance": "Standard",
+    "magic_resistance": "20%",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Rare (5%)",
+      "description": "Very Rare (cult strongholds)",
+      "percentage": 1
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 95,
+    "num_attacks": 2,
+    "special_attacks": "Serpent blessing grants +2 to hit and damage. Can make two attacks per round.",
+    "special_defenses": "20% magic resistance, AC 0 from serpent-scale armor",
+    "xp_formula": {
+      "base_xp": 1200,
+      "xp_per_hp": 10,
+      "dungeon_level": 7
+    }
+  },
+  "serpent_abomination": {
+    "name": "Serpent Abomination",
+    "hit_dice": "9d8",
+    "ac": 2,
+    "thac0": 12,
+    "damage": "2d6/1d8",
+    "size": "L",
+    "movement": 15,
+    "morale": 18,
+    "treasure_type": "None",
+    "xp_value": 900,
+    "special_abilities": [
+      "constrict",
+      "poison_bite",
+      "regeneration"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A cultist who underwent the ultimate transformation—fusion with a giant serpent. The result is a grotesque horror: human torso melded to serpentine coils, retaining twisted intelligence but losing all humanity. They attack with fangs dripping venom and crushing coils.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "6-8"
+    },
+    "magic_resistance": "None",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (cult rituals)",
       "percentage": 5
     },
     "no_appearing": {
       "wilderness": {
         "min": 1,
-        "max": 6,
+        "max": 2,
         "special": null
       },
       "lair": {
-        "min": 2,
-        "max": 12,
+        "min": 1,
+        "max": 3,
+        "special": null
+      }
+    },
+    "pct_in_lair": 75,
+    "num_attacks": 2,
+    "special_attacks": "Poison bite (save vs poison or take 2d6 additional damage), constrict (1d8 automatic damage per round if hit)",
+    "special_defenses": "Regenerates 1 hp/round, only fire or acid stops regeneration",
+    "xp_formula": {
+      "base_xp": 900,
+      "xp_per_hp": 9,
+      "dungeon_level": 6
+    }
+  },
+  "ritual_guardian": {
+    "name": "Ritual Guardian",
+    "hit_dice": "8d8",
+    "ac": 1,
+    "thac0": 13,
+    "damage": "2d10",
+    "size": "L",
+    "movement": 9,
+    "morale": 20,
+    "treasure_type": "None",
+    "xp_value": 800,
+    "special_abilities": [
+      "magic_immunity",
+      "construct"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A stone and metal construct animated by dark magic to protect the cult's most sacred rituals. Serpent runes cover its body, glowing with malevolent energy. It follows simple commands: destroy all intruders.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Non-intelligent",
+      "score_range": "0"
+    },
+    "magic_resistance": "100%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Very Rare (cult creations)",
+      "percentage": 2
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      }
+    },
+    "pct_in_lair": 100,
+    "num_attacks": 2,
+    "special_attacks": "None",
+    "special_defenses": "Immune to all magic, immune to mind-affecting, +2 or better weapon to hit",
+    "xp_formula": {
+      "base_xp": 800,
+      "xp_per_hp": 8,
+      "dungeon_level": 5
+    }
+  },
+  "serpent_invoker": {
+    "name": "Serpent Invoker",
+    "hit_dice": "7d8",
+    "ac": 4,
+    "thac0": 14,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 14,
+    "treasure_type": "Individual + scrolls",
+    "xp_value": 450,
+    "special_abilities": [
+      "spellcasting_7th",
+      "serpent_summoning"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A high-ranking cult mage who has mastered the art of invoking serpentine power. They can summon serpent spirits, cast devastating spells, and channel the Serpent Eye's power directly. Robes marked with glowing serpent runes.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Very",
+      "score_range": "15-16"
+    },
+    "magic_resistance": "None",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (cult leadership)",
+      "percentage": 10
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 2,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 4,
         "special": null
       }
     },
     "pct_in_lair": 70,
     "num_attacks": 1,
-    "special_attacks": "Can turn invisible or enlarge self (twice per day each)",
-    "special_defenses": "Resistant to poison (+4 to saves)",
+    "special_attacks": "Can cast fireball, lightning bolt, hold person 3/day. Can summon 1d3 giant poisonous snakes once per day.",
+    "special_defenses": "None",
     "xp_formula": {
-      "base_xp": 120,
-      "xp_per_hp": 4,
+      "base_xp": 450,
+      "xp_per_hp": 6,
       "dungeon_level": 4
     }
   },
-  "grathak_the_soulless": {
-    "name": "Grathak the Soulless",
-    "hit_dice": "7d8+7",
-    "ac": 1,
-    "thac0": 14,
-    "damage": "3d6",
+  "serpent_fanatic": {
+    "name": "Serpent Fanatic",
+    "hit_dice": "6d8",
+    "ac": 6,
+    "thac0": 15,
+    "damage": "2d4",
     "size": "M",
-    "movement": 9,
-    "morale": 15,
-    "treasure_type": "Q, X, magic items",
-    "xp_value": 650,
+    "movement": 15,
+    "morale": 20,
+    "treasure_type": "Individual",
+    "xp_value": 270,
     "special_abilities": [
-      "invisibility",
-      "enlarge",
-      "soul_drain",
-      "undead_command"
+      "berserker_rage",
+      "poison_immunity"
     ],
-    "ai_behavior": "intelligent",
-    "description": "A legendary duergar necromancer who sold his soul for power, now able to command the undead and drain the life from his foes.",
-    "alignment": "Lawful Evil",
+    "ai_behavior": "berserk",
+    "description": "Cultists who have given themselves entirely to the Serpent's will. They fight with no regard for their own safety, fueled by religious ecstasy and serpent venom. Their eyes glow with unholy light, and they laugh as they charge into battle.",
+    "alignment": "Chaotic Evil",
     "intelligence": {
-      "category": "Genius",
-      "score_range": "17-18"
+      "category": "Low",
+      "score_range": "6-8"
     },
-    "magic_resistance": "30%",
+    "magic_resistance": "None",
     "psionic_ability": "Nil",
     "frequency": {
-      "description": "Unique",
-      "percentage": 1
+      "description": "Uncommon (cult strongholds)",
+      "percentage": 15
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 2,
+        "max": 8,
+        "special": null
+      },
+      "lair": {
+        "min": 4,
+        "max": 16,
+        "special": null
+      }
+    },
+    "pct_in_lair": 60,
+    "num_attacks": 1,
+    "special_attacks": "When reduced below 50% HP, enters berserk rage: +2 to hit, +4 to damage, but AC worsens by 4",
+    "special_defenses": "Immune to poison",
+    "xp_formula": {
+      "base_xp": 270,
+      "xp_per_hp": 4,
+      "dungeon_level": 3
+    }
+  },
+  "awakened_serpent": {
+    "name": "Awakened Serpent",
+    "hit_dice": "12d8",
+    "ac": -2,
+    "thac0": 9,
+    "damage": "3d8",
+    "size": "H",
+    "movement": 18,
+    "morale": 20,
+    "treasure_type": "Special",
+    "xp_value": 2000,
+    "special_abilities": [
+      "reality_warp",
+      "chaos_aura",
+      "regeneration"
+    ],
+    "ai_behavior": "intelligent",
+    "description": "A fragment of the Serpent Eye given physical form. It appears as a massive serpent wreathed in reality-distorting energy. Where it moves, the laws of physics break down. It exists partially in multiple dimensions at once, making it nearly impossible to strike.",
+    "alignment": "Chaotic Evil",
+    "intelligence": {
+      "category": "Exceptional",
+      "score_range": "17-18"
+    },
+    "magic_resistance": "50%",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Unique (ritual manifestation)",
+      "percentage": 0
     },
     "no_appearing": {
       "wilderness": {
@@ -12150,460 +14845,13 @@
       }
     },
     "pct_in_lair": 100,
-    "num_attacks": 1,
-    "special_attacks": "Soul drain (touch drains 1 level), can command undead, 7th level magic-user spells",
-    "special_defenses": "30% magic resistance, can turn invisible or enlarge (at will)",
-    "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 8,
-      "dungeon_level": 7
-    }
-  },
-  "cult_general_malakar": {
-    "name": "General Malakar",
-    "hit_dice": "8d10+8",
-    "ac": 1,
-    "thac0": 12,
-    "damage": "3d8",
-    "size": "M",
-    "movement": 12,
-    "morale": 16,
-    "treasure_type": "Q, X, legendary weapon",
-    "xp_value": 975,
-    "special_abilities": [
-      "multiple_attacks",
-      "battle_fury",
-      "command_presence"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "The supreme military commander of the Serpent Eye cult, a legendary warrior whose presence inspires fanatical devotion.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Very",
-      "score_range": "15-16"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Unique",
-      "percentage": 1
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 90,
-    "num_attacks": 3,
-    "special_attacks": "Three attacks per round, all allies within 30 feet gain +2 to morale and attack rolls",
-    "special_defenses": "Battle fury (when below 25% HP, gains +4 to attack and damage)",
-    "xp_formula": {
-      "base_xp": 975,
-      "xp_per_hp": 10,
-      "dungeon_level": 8
-    }
-  },
-  "marsh_zombie": {
-    "name": "Marsh Zombie",
-    "hit_dice": "2d8",
-    "ac": 8,
-    "thac0": 19,
-    "damage": "1d8",
-    "size": "M",
-    "movement": 6,
-    "morale": 20,
-    "treasure_type": "Nil",
-    "xp_value": 20,
-    "special_abilities": [
-      "undead",
-      "disease"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A waterlogged corpse animated by dark magic, shambling from the swamps with diseased claws.",
-    "alignment": "Neutral Evil",
-    "intelligence": {
-      "category": "Non-intelligent",
-      "score_range": "0"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Common (40%)",
-      "percentage": 40
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 2,
-        "max": 12,
-        "special": null
-      },
-      "lair": {
-        "min": 3,
-        "max": 24,
-        "special": null
-      }
-    },
-    "pct_in_lair": 30,
-    "num_attacks": 1,
-    "special_attacks": "Diseased touch (save vs poison or contract marsh fever)",
-    "special_defenses": "Immune to poison, sleep, charm, hold",
-    "xp_formula": {
-      "base_xp": 20,
-      "xp_per_hp": 2,
-      "dungeon_level": 2
-    }
-  },
-  "sahuagin": {
-    "name": "Sahuagin (Sea Devil)",
-    "hit_dice": "2d8+2",
-    "ac": 5,
-    "thac0": 18,
-    "damage": "1d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 10,
-    "treasure_type": "Individuals K, Lair D",
-    "xp_value": 35,
-    "special_abilities": [
-      "water_breathing",
-      "blood_frenzy"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A shark-like humanoid from the depths, able to breathe underwater and driven into a frenzy by the scent of blood.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (20%)",
-      "percentage": 20
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 2,
-        "max": 20,
-        "special": null
-      },
-      "lair": {
-        "min": 5,
-        "max": 50,
-        "special": null
-      }
-    },
-    "pct_in_lair": 40,
-    "num_attacks": 3,
-    "special_attacks": "Blood frenzy (if any opponent is bloodied, gains +1 to attack and damage)",
-    "special_defenses": "Waterbreathing",
-    "xp_formula": {
-      "base_xp": 35,
-      "xp_per_hp": 3,
-      "dungeon_level": 3
-    }
-  },
-  "giant_octopus": {
-    "name": "Giant Octopus",
-    "hit_dice": "8d8",
-    "ac": 7,
-    "thac0": 13,
-    "damage": "1d3",
-    "size": "L",
-    "movement": 9,
-    "morale": 8,
-    "treasure_type": "Nil",
-    "xp_value": 650,
-    "special_abilities": [
-      "water_breathing",
-      "constriction",
-      "ink_cloud"
-    ],
-    "ai_behavior": "defensive",
-    "description": "A massive octopus with tentacles thick as tree trunks, able to constrict prey and release blinding ink clouds.",
-    "alignment": "Neutral",
-    "intelligence": {
-      "category": "Animal",
-      "score_range": "1"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (10%)",
-      "percentage": 10
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      }
-    },
-    "pct_in_lair": 25,
-    "num_attacks": 8,
-    "special_attacks": "Constriction (any hit with tentacle grapples, dealing 2d6 automatic damage per round). Ink cloud (once per day, 20 foot radius, blinds for 1d6 rounds)",
-    "xp_formula": {
-      "base_xp": 650,
-      "xp_per_hp": 8,
-      "dungeon_level": 7
-    }
-  },
-  "cultist_diver": {
-    "name": "Cultist Diver",
-    "hit_dice": "2d8",
-    "ac": 6,
-    "thac0": 19,
-    "damage": "1d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 9,
-    "treasure_type": "Individuals P",
-    "xp_value": 35,
-    "special_abilities": [
-      "water_breathing"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A cultist equipped with magical water-breathing gear, able to operate underwater to guard the cult's submerged facilities.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Uncommon (15%)",
-      "percentage": 15
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 2,
-        "max": 8,
-        "special": null
-      },
-      "lair": {
-        "min": 3,
-        "max": 12,
-        "special": null
-      }
-    },
-    "pct_in_lair": 60,
-    "num_attacks": 1,
-    "special_defenses": "Waterbreathing (via magic item)",
-    "xp_formula": {
-      "base_xp": 35,
-      "xp_per_hp": 2,
-      "dungeon_level": 3
-    }
-  },
-  "aboleth_spawn": {
-    "name": "Aboleth Spawn",
-    "hit_dice": "6d8",
-    "ac": 4,
-    "thac0": 15,
-    "damage": "1d6",
-    "size": "L",
-    "movement": 3,
-    "morale": 12,
-    "treasure_type": "Special (enslaved treasure)",
-    "xp_value": 420,
-    "special_abilities": [
-      "water_breathing",
-      "enslavement",
-      "mucus_cloud"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "A lesser aboleth, a fish-like creature with three eyes and four tentacles, able to enslave minds and secrete enslaving mucus.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Genius",
-      "score_range": "17-18"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Attack/Defense modes",
-    "frequency": {
-      "description": "Very rare (3%)",
-      "percentage": 3
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 2,
-        "special": null
-      }
-    },
-    "pct_in_lair": 90,
-    "num_attacks": 4,
-    "special_attacks": "Enslavement (save vs spell or be dominated permanently). Mucus cloud (any creature within 10 feet must save vs poison or lose ability to breathe air for 3 hours - can only breathe water)",
-    "special_defenses": "Waterbreathing, telepathy",
-    "xp_formula": {
-      "base_xp": 420,
-      "xp_per_hp": 6,
-      "dungeon_level": 6
-    }
-  },
-  "silas_bodyguard": {
-    "name": "Silas's Bodyguard",
-    "hit_dice": "4d10+4",
-    "ac": 3,
-    "thac0": 17,
-    "damage": "2d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 13,
-    "treasure_type": "Individuals Q, magic items",
-    "xp_value": 175,
-    "special_abilities": [
-      "defensive_stance",
-      "bodyguard_training"
-    ],
-    "ai_behavior": "defensive",
-    "description": "An elite mercenary hired to protect the cult lieutenant Silas, trained to intercept attacks and defend their charge.",
-    "alignment": "Neutral Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Rare (5%)",
-      "percentage": 5
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 2,
-        "max": 4,
-        "special": null
-      },
-      "lair": {
-        "min": 2,
-        "max": 6,
-        "special": null
-      }
-    },
-    "pct_in_lair": 90,
-    "num_attacks": 1,
-    "special_attacks": "Can intercept one attack per round against Silas (if within 10 feet)",
-    "xp_formula": {
-      "base_xp": 175,
-      "xp_per_hp": 4,
-      "dungeon_level": 4
-    }
-  },
-  "grukk_hobgoblin_chief": {
-    "name": "Grukk, Hobgoblin Chieftain",
-    "hit_dice": "6d8+6",
-    "ac": 3,
-    "thac0": 15,
-    "damage": "2d8",
-    "size": "M",
-    "movement": 9,
-    "morale": 14,
-    "treasure_type": "Q, X, magic weapon",
-    "xp_value": 420,
-    "special_abilities": [
-      "command_presence",
-      "tactical_genius"
-    ],
-    "ai_behavior": "intelligent",
-    "description": "A cunning hobgoblin warlord allied with the cult, leading his tribe with brutal efficiency and tactical brilliance.",
-    "alignment": "Lawful Evil",
-    "intelligence": {
-      "category": "Very",
-      "score_range": "15-16"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Unique",
-      "percentage": 1
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      },
-      "lair": {
-        "min": 1,
-        "max": 1,
-        "special": null
-      }
-    },
-    "pct_in_lair": 85,
     "num_attacks": 2,
-    "special_attacks": "All hobgoblins within 30 feet gain +1 to attack and morale. Two attacks per round.",
+    "special_attacks": "Chaos aura: all within 20 feet save vs spell each round or be confused. Reality warp: can teleport 30 feet at will.",
+    "special_defenses": "AC -2, 50% magic resistance, regenerates 3 hp/round, can only be permanently killed by destroying ritual focus",
     "xp_formula": {
-      "base_xp": 420,
-      "xp_per_hp": 6,
-      "dungeon_level": 6
-    }
-  },
-  "bloodfang_orc": {
-    "name": "Bloodfang Orc Warrior",
-    "hit_dice": "3d8+3",
-    "ac": 5,
-    "thac0": 18,
-    "damage": "2d6",
-    "size": "M",
-    "movement": 12,
-    "morale": 11,
-    "treasure_type": "Individuals K, L",
-    "xp_value": 65,
-    "special_abilities": [
-      "blood_rage",
-      "night_vision"
-    ],
-    "ai_behavior": "aggressive",
-    "description": "A member of the fearsome Bloodfang orc tribe, known for their red war paint and savage battle fury.",
-    "alignment": "Chaotic Evil",
-    "intelligence": {
-      "category": "Average",
-      "score_range": "8-10"
-    },
-    "magic_resistance": "Standard",
-    "psionic_ability": "Nil",
-    "frequency": {
-      "description": "Common (30%)",
-      "percentage": 30
-    },
-    "no_appearing": {
-      "wilderness": {
-        "min": 2,
-        "max": 12,
-        "special": null
-      },
-      "lair": {
-        "min": 5,
-        "max": 30,
-        "special": null
-      }
-    },
-    "pct_in_lair": 50,
-    "num_attacks": 1,
-    "special_attacks": "Blood rage (when below 50% HP, gains +2 to damage)",
-    "xp_formula": {
-      "base_xp": 65,
-      "xp_per_hp": 3,
-      "dungeon_level": 3
+      "base_xp": 2000,
+      "xp_per_hp": 12,
+      "dungeon_level": 8
     }
   }
 }

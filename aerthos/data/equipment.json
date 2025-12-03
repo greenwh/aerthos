@@ -1,4 +1,144 @@
 {
+  "abandoned_contraband": {
+    "name": "Abandoned Contraband",
+    "type": "treasure",
+    "cost_gp": 25,
+    "weight_gp": 20,
+    "description": "A small cache of illegal goods left behind: drugs, stolen jewelry, and forbidden texts."
+  },
+  "ale_mug": {
+    "name": "Ale Mug",
+    "type": "equipment",
+    "cost_gp": 0.1,
+    "weight_gp": 5,
+    "description": "A half-empty mug of ale. Still warm."
+  },
+  "ale_quart": {
+    "name": "Ale (per quart)",
+    "type": "consumable",
+    "cost_gp": 0.05,
+    "weight_gp": 30,
+    "description": "A quart of common ale or beer."
+  },
+  "amber_beads": {
+    "name": "Amber Prayer Beads",
+    "type": "treasure",
+    "cost_gp": 100,
+    "weight_gp": 5,
+    "description": "Prayer beads carved from amber, used in orcish spiritual rituals."
+  },
+  "amulet_waterbreathing": {
+    "name": "Amulet of Waterbreathing",
+    "type": "magic_equipment",
+    "cost_gp": 1500,
+    "weight_gp": 0.1,
+    "properties": [
+      "magic",
+      "waterbreathing"
+    ],
+    "grants_waterbreathing": true,
+    "description": "A magical amulet that allows the wearer to breathe underwater indefinitely."
+  },
+  "ancestor_tablets": {
+    "name": "Ancestor Memorial Tablets",
+    "type": "quest_item",
+    "cost_gp": 25,
+    "weight_gp": 20,
+    "properties": [
+      "quest",
+      "dwarven",
+      "cultural",
+      "religious"
+    ],
+    "description": "Stone tablets engraved with the names of honored ancestors. Sacred to the clan. Recovering these would be a great service to surviving dwarves."
+  },
+  "ancestral_blessing": {
+    "name": "Ancestral Blessing Token",
+    "type": "magic_item",
+    "cost_gp": 100,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "dwarven",
+      "religious",
+      "blessing"
+    ],
+    "description": "A small iron token blessed by the ancestors. Carrying it grants a sense of courage and protection. (Game effect: +1 to saving throws vs. fear)"
+  },
+  "ancestral_skull": {
+    "name": "Ancestral Champion Skull",
+    "type": "quest",
+    "cost_gp": 100,
+    "weight_gp": 15,
+    "description": "The skull of a revered Bloodfang ancestor. Sacred and must be protected."
+  },
+  "ancestral_weapon_rack": {
+    "name": "Ancestral Weapon Collection",
+    "type": "treasure",
+    "cost_gp": 400,
+    "weight_gp": 200,
+    "description": "A collection of weapons from fallen Bloodfang heroes. Each bears the marks of countless battles."
+  },
+  "ancient_amulet": {
+    "name": "Ancient Amulet",
+    "type": "magic_item",
+    "cost_gp": 100,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "ancient",
+      "jewelry"
+    ],
+    "description": "A jade amulet carved with protective symbols. Radiates faint magic. (Game effect: +1 to AC)"
+  },
+  "ancient_potion": {
+    "name": "Ancient Potion",
+    "type": "consumable",
+    "cost_gp": 100,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "ancient"
+    ],
+    "description": "A clay bottle containing a glowing liquid of unknown origin. The stopper is sealed with wax. Effect unknown\u2014could be beneficial or dangerous."
+  },
+  "ancient_scroll": {
+    "name": "Ancient Scroll",
+    "type": "lore_item",
+    "cost_gp": 50,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "ancient"
+    ],
+    "description": "An ancient scroll written in archaic script. Contains religious texts and historical accounts."
+  },
+  "ancient_spirits": {
+    "name": "Ancient Dwarven Spirits",
+    "type": "consumable",
+    "cost_gp": 50,
+    "weight_gp": 20,
+    "properties": [
+      "consumable",
+      "dwarven",
+      "rare",
+      "valuable"
+    ],
+    "description": "A bottle of spirits aged for over a century. The label indicates it was brewed during the reign of King Thorin III. Extremely valuable to collectors."
+  },
+  "ancient_tablets": {
+    "name": "Ancient Stone Tablets",
+    "type": "lore_item",
+    "cost_gp": 50,
+    "weight_gp": 20,
+    "properties": [
+      "lore",
+      "ancient",
+      "historical"
+    ],
+    "description": "Heavy stone tablets inscribed with ancient text in a dead language. Predate the cult by centuries. Would be valuable to historians or temples."
+  },
   "backpack": {
     "name": "Backpack",
     "type": "container",
@@ -7,106 +147,299 @@
     "capacity_gp": 400,
     "description": "A leather backpack with straps and buckles. Can hold up to 400 gp of weight."
   },
-  "rope_50ft": {
-    "name": "Rope, 50 feet",
-    "type": "equipment",
-    "cost_gp": 1,
-    "weight_gp": 50,
-    "description": "50 feet of sturdy hemp rope."
-  },
-  "rope_100ft": {
-    "name": "Rope, 100 feet",
-    "type": "equipment",
-    "cost_gp": 2,
-    "weight_gp": 100,
-    "description": "100 feet of sturdy hemp rope."
-  },
-  "grappling_hook": {
-    "name": "Grappling Hook",
-    "type": "equipment",
-    "cost_gp": 1,
-    "weight_gp": 80,
-    "description": "An iron hook with multiple prongs for securing ropes."
-  },
-  "crowbar": {
-    "name": "Crowbar",
-    "type": "tool",
-    "cost_gp": 1,
-    "weight_gp": 50,
-    "description": "An iron bar for prying open doors or containers. +2 bonus to force doors."
-  },
-  "hammer": {
-    "name": "Hammer",
-    "type": "tool",
-    "cost_gp": 1,
-    "weight_gp": 10,
-    "description": "A small hammer for driving spikes and pitons."
-  },
-  "piton": {
-    "name": "Iron Spike/Piton",
-    "type": "equipment",
-    "cost_gp": 0.01,
-    "weight_gp": 5,
-    "description": "An iron spike for securing ropes or wedging doors."
-  },
-  "torch": {
-    "name": "Torch",
-    "type": "light_source",
-    "cost_gp": 0.01,
-    "weight_gp": 10,
-    "burn_time_turns": 6,
-    "light_radius": 30,
-    "description": "A wooden stick wrapped in oil-soaked cloth. Burns for 1 hour (6 turns)."
-  },
-  "lantern_hooded": {
-    "name": "Lantern, Hooded",
-    "type": "light_source",
-    "cost_gp": 7,
-    "weight_gp": 20,
-    "burn_time_turns": 24,
-    "light_radius": 30,
-    "description": "An oil-burning lantern with a hood. Burns for 4 hours per flask of oil."
-  },
-  "lantern_bullseye": {
-    "name": "Lantern, Bullseye",
-    "type": "light_source",
-    "cost_gp": 12,
-    "weight_gp": 30,
-    "burn_time_turns": 24,
-    "light_radius": 60,
-    "description": "A directional lantern with focused beam. Burns for 4 hours per flask of oil."
-  },
-  "oil_flask": {
-    "name": "Oil, Flask (1 pint)",
-    "type": "consumable",
-    "cost_gp": 2,
-    "weight_gp": 10,
-    "burn_time_turns": 24,
-    "description": "A flask of lamp oil. Burns for 4 hours in a lantern. Can be used as a weapon (thrown, 1d8 fire damage if lit)."
-  },
-  "waterskin": {
-    "name": "Waterskin",
+  "barrel": {
+    "name": "Barrel",
     "type": "container",
-    "cost_gp": 1,
-    "weight_gp": 5,
-    "capacity_gp": 40,
-    "description": "A leather skin for carrying water or wine. Holds 1 quart when full."
+    "cost_gp": 2,
+    "weight_gp": 300,
+    "capacity_gp": 3000,
+    "description": "A wooden barrel for storing liquids or goods. Holds 40 gallons."
   },
-  "sack_small": {
-    "name": "Sack, Small",
-    "type": "container",
+  "bedroll": {
+    "name": "Bedroll",
+    "type": "equipment",
     "cost_gp": 0.5,
-    "weight_gp": 5,
-    "capacity_gp": 200,
-    "description": "A small cloth or leather sack. Can hold up to 200 gp of weight."
+    "weight_gp": 50,
+    "description": "A blanket and sleeping mat rolled together."
   },
-  "sack_large": {
-    "name": "Sack, Large",
-    "type": "container",
+  "betrayal_letter": {
+    "name": "Letter of Betrayal",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "A letter from the traitorous dwarf who sold out Ironfast. Written to the duergar, it details guard rotations, supply room locations, and the location of the secret entrance. The signature has been torn off, but the handwriting is distinctly dwarven."
+  },
+  "binding_chains": {
+    "name": "Demon Binding Chains",
+    "type": "equipment",
+    "cost_gp": 100,
+    "weight_gp": 200,
+    "properties": [
+      "magic",
+      "rare"
+    ],
+    "description": "Enchanted chains inscribed with binding runes, designed to restrain demonic entities."
+  },
+  "blackmail_letters": {
+    "name": "Blackmail Letters",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "Letters containing blackmail material on town officials and wealthy merchants. Silas had insurance against betrayal."
+  },
+  "blood_chalk": {
+    "name": "Blood Chalk",
+    "type": "equipment",
+    "cost_gp": 10,
+    "weight_gp": 1,
+    "properties": [
+      "magic",
+      "cursed"
+    ],
+    "description": "Red chalk made from dried blood, used to draw ritual circles."
+  },
+  "bloodfang_history": {
+    "name": "Bloodfang Clan Chronicle",
+    "type": "lore",
+    "cost_gp": 50,
+    "weight_gp": 30,
+    "description": "A leather-bound tome detailing 200 years of Bloodfang Clan history. Includes raids, treaties, and ancestral legends."
+  },
+  "bloodstained_journal": {
+    "name": "Bloodstained Journal",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult"
+    ],
+    "description": "A journal documenting sacrificial rituals. The pages are stained with blood and filled with disturbing details about the cult's victims."
+  },
+  "boat_manifest": {
+    "name": "Boat Manifest",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "Shipping records for goods arriving via the underground river. Shows connections to multiple cities."
+  },
+  "bolts": {
+    "name": "Crossbow Bolts (20)",
+    "type": "ammunition",
     "cost_gp": 2,
     "weight_gp": 10,
-    "capacity_gp": 600,
-    "description": "A large cloth or leather sack. Can hold up to 600 gp of weight."
+    "ammo_type": "quarrel",
+    "quantity": 20,
+    "description": "A quiver of 20 iron-tipped crossbow bolts."
+  },
+  "boots": {
+    "name": "Boots",
+    "type": "clothing",
+    "cost_gp": 1,
+    "weight_gp": 20,
+    "description": "A sturdy pair of leather boots."
+  },
+  "boots_levitation": {
+    "name": "Boots of Levitation",
+    "type": "magic_equipment",
+    "cost_gp": 1500,
+    "weight_gp": 2,
+    "properties": [
+      "magic",
+      "levitation"
+    ],
+    "description": "Enchanted boots that allow the wearer to levitate at will, rising or descending up to 20 feet per round."
+  },
+  "boots_riding": {
+    "name": "Boots, Riding",
+    "type": "clothing",
+    "cost_gp": 3,
+    "weight_gp": 30,
+    "description": "High leather boots designed for riding."
+  },
+  "bottle_glass": {
+    "name": "Bottle, Glass",
+    "type": "container",
+    "cost_gp": 2,
+    "weight_gp": 1,
+    "capacity_gp": 10,
+    "description": "A glass bottle with a cork stopper."
+  },
+  "bribe_receipts": {
+    "name": "Bribe Receipts",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "Receipts showing bribes paid to town guards, customs officials, and even the harbor master. Names every corrupt official."
+  },
+  "broken_beam": {
+    "name": "Broken Support Beam",
+    "type": "equipment",
+    "cost_gp": 0,
+    "weight_gp": 200,
+    "description": "A heavy wooden beam that's cracked and splintered. Evidence of structural failure."
+  },
+  "broken_holy_relic": {
+    "name": "Broken Holy Relic",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 5,
+    "properties": [
+      "quest",
+      "religious",
+      "dwarven",
+      "broken"
+    ],
+    "description": "The shattered remains of a sacred dwarven relic - a hammer blessed by the god Moradin. Desecrated and broken by the duergar. A cleric might be able to reconsecrate it."
+  },
+  "broken_spear": {
+    "name": "Broken Orcish Spear",
+    "type": "misc",
+    "cost_gp": 0,
+    "weight_gp": 40,
+    "description": "A spear broken in battle. Symbol of the fierce fighting that took place here."
+  },
+  "burial_mask": {
+    "name": "Ancient Burial Mask",
+    "type": "treasure",
+    "cost_gp": 75,
+    "weight_gp": 2,
+    "properties": [
+      "treasure",
+      "ancient",
+      "funeral"
+    ],
+    "description": "A bronze funeral mask from an ancient priest. Solemn and beautiful, despite the tarnish of centuries."
+  },
+  "cage_keys": {
+    "name": "Iron Cage Keys",
+    "type": "key",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "key",
+      "quest"
+    ],
+    "description": "A ring of heavy iron keys for the slave pen cages. Could free any surviving prisoners."
+  },
+  "candle": {
+    "name": "Candle",
+    "type": "light_source",
+    "cost_gp": 0.01,
+    "weight_gp": 1,
+    "burn_time_turns": 6,
+    "light_radius": 5,
+    "description": "A wax candle. Burns for 1 hour. Provides dim light."
+  },
+  "cargo_hook": {
+    "name": "Cargo Hook",
+    "type": "tool",
+    "cost_gp": 2,
+    "weight_gp": 30,
+    "description": "A large metal hook used for moving heavy cargo. Could be used as an improvised weapon in desperation."
+  },
+  "cart": {
+    "name": "Cart",
+    "type": "transport",
+    "cost_gp": 50,
+    "weight_gp": 4000,
+    "carrying_capacity_gp": 4000,
+    "description": "A two-wheeled cart. Requires horse or mule to pull. Can carry up to 4000 gp weight."
+  },
+  "cart_wheel": {
+    "name": "Cart Wheel",
+    "type": "equipment",
+    "cost_gp": 5,
+    "weight_gp": 150,
+    "description": "A heavy wooden wheel from a smuggler's cart."
+  },
+  "cell_key": {
+    "name": "Prison Cell Key",
+    "type": "key",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": [
+      "key",
+      "quest"
+    ],
+    "description": "An iron key that opens the prison cells where the captives are held."
+  },
+  "ceremonial_axe": {
+    "name": "Ceremonial War Axe",
+    "type": "weapon",
+    "cost_gp": 100,
+    "weight_gp": 60,
+    "damage": "1d8",
+    "properties": [
+      "ceremonial",
+      "dwarven",
+      "valuable"
+    ],
+    "description": "An ornate dwarven war axe with gold inlay and runes of honor. Too valuable and symbolic to be a practical weapon, but could function as one in a pinch."
+  },
+  "ceremonial_bowl": {
+    "name": "Ceremonial Bowl",
+    "type": "equipment",
+    "cost_gp": 10,
+    "weight_gp": 5,
+    "properties": [
+      "religious",
+      "serpent_cult"
+    ],
+    "description": "A stone bowl used in serpent cult rituals. Carved with serpent imagery and stained with old offerings."
+  },
+  "ceremonial_dagger": {
+    "name": "Ceremonial Serpent Dagger",
+    "type": "weapon",
+    "cost_gp": 50,
+    "weight_gp": 10,
+    "damage": "1d4",
+    "properties": [
+      "ceremonial",
+      "quest"
+    ],
+    "description": "An ornate dagger with a serpent-shaped hilt. Used in cult blood rituals, but functions as a weapon."
+  },
+  "chain_10ft": {
+    "name": "Chain, 10 feet",
+    "type": "equipment",
+    "cost_gp": 30,
+    "weight_gp": 30,
+    "description": "10 feet of iron chain. Stronger than rope."
+  },
+  "chalk": {
+    "name": "Chalk",
+    "type": "equipment",
+    "cost_gp": 0.01,
+    "weight_gp": 1,
+    "description": "A piece of chalk for marking walls and doors."
+  },
+  "charred_bones": {
+    "name": "Charred Bones",
+    "type": "misc",
+    "cost_gp": 0,
+    "weight_gp": 10,
+    "description": "Bones burned by intense heat. Grim reminder of those who fell to the cult."
   },
   "chest": {
     "name": "Chest",
@@ -116,48 +449,52 @@
     "capacity_gp": 1000,
     "description": "A wooden chest with iron bands and a lock."
   },
-  "pouch_belt": {
-    "name": "Pouch, Belt",
-    "type": "container",
-    "cost_gp": 1,
-    "weight_gp": 5,
-    "capacity_gp": 50,
-    "description": "A small leather pouch worn on the belt. Can hold up to 50 gp of weight."
-  },
-  "rations_standard": {
-    "name": "Rations, Standard (per day)",
-    "type": "consumable",
-    "cost_gp": 0.5,
-    "weight_gp": 20,
-    "description": "One day's worth of preserved food (dried meat, hard bread, cheese)."
-  },
-  "rations_iron": {
-    "name": "Rations, Iron (per day)",
-    "type": "consumable",
-    "cost_gp": 1,
+  "clan_banner": {
+    "name": "Ironfast Clan Banner",
+    "type": "quest_item",
+    "cost_gp": 50,
     "weight_gp": 10,
-    "description": "One day's worth of dried rations. Lasts 3 months without spoiling."
+    "properties": [
+      "quest",
+      "dwarven",
+      "cultural",
+      "valuable"
+    ],
+    "description": "The torn and bloodied banner of Clan Ironfast. Bears their proud symbol - a hammer striking an anvil with sparks flying. Recovering this would mean much to any surviving members of the clan."
   },
-  "trail_rations": {
-    "name": "Trail Rations (per week)",
-    "type": "consumable",
-    "cost_gp": 5,
-    "weight_gp": 140,
-    "description": "One week's worth of trail rations for wilderness travel."
+  "clan_battle_standard": {
+    "name": "Bloodfang Battle Standard",
+    "type": "treasure",
+    "cost_gp": 250,
+    "weight_gp": 40,
+    "description": "The clan's battle standard\u2014a massive banner depicting a snarling wolf wreathed in flames."
   },
-  "wine_quart": {
-    "name": "Wine (per quart)",
-    "type": "consumable",
-    "cost_gp": 0.2,
-    "weight_gp": 30,
-    "description": "A quart of common wine."
+  "clan_history": {
+    "name": "Clan Ironfast Chronicle",
+    "type": "lore",
+    "cost_gp": 50,
+    "weight_gp": 10,
+    "properties": [
+      "lore",
+      "dwarven",
+      "historical",
+      "valuable"
+    ],
+    "description": "A massive tome recording the history of Clan Ironfast from its founding 800 years ago. Chronicles wars, alliances, great works, and the lineage of every clan leader."
   },
-  "ale_quart": {
-    "name": "Ale (per quart)",
-    "type": "consumable",
-    "cost_gp": 0.05,
-    "weight_gp": 30,
-    "description": "A quart of common ale or beer."
+  "clan_signet": {
+    "name": "Chieftain's Signet Ring",
+    "type": "quest",
+    "cost_gp": 500,
+    "weight_gp": 1,
+    "description": "The chieftain's signet ring, symbol of clan authority. Urgot asks you to recover it from the vault."
+  },
+  "cloak": {
+    "name": "Cloak",
+    "type": "clothing",
+    "cost_gp": 0.5,
+    "weight_gp": 10,
+    "description": "A hooded woolen cloak."
   },
   "clothing_common": {
     "name": "Clothing, Common",
@@ -173,204 +510,435 @@
     "weight_gp": 40,
     "description": "A set of fine clothes suitable for nobility."
   },
-  "cloak": {
-    "name": "Cloak",
-    "type": "clothing",
-    "cost_gp": 0.5,
-    "weight_gp": 10,
-    "description": "A hooded woolen cloak."
-  },
-  "boots": {
-    "name": "Boots",
-    "type": "clothing",
-    "cost_gp": 1,
+  "cold_coal": {
+    "name": "Cold Forge Coal",
+    "type": "equipment",
+    "cost_gp": 0,
     "weight_gp": 20,
-    "description": "A sturdy pair of leather boots."
+    "properties": [
+      "mundane",
+      "evidence"
+    ],
+    "description": "Coal from the forges, long since gone cold. Evidence of how long the fortress has been occupied."
   },
-  "boots_riding": {
-    "name": "Boots, Riding",
-    "type": "clothing",
-    "cost_gp": 3,
-    "weight_gp": 30,
-    "description": "High leather boots designed for riding."
-  },
-  "thieves_tools": {
-    "name": "Thieves' Tools",
-    "type": "tool",
-    "cost_gp": 30,
-    "weight_gp": 10,
-    "description": "A set of lockpicks, files, and other tools for thiefwork. Required for picking locks and disarming traps."
-  },
-  "healers_kit": {
-    "name": "Healer's Kit",
-    "type": "tool",
-    "cost_gp": 25,
-    "weight_gp": 30,
-    "description": "Bandages, herbs, and medical tools. Grants +2 bonus to healing checks."
-  },
-  "mining_pick": {
-    "name": "Mining Pick",
-    "type": "tool",
-    "cost_gp": 3,
-    "weight_gp": 100,
-    "description": "A heavy iron pick for mining and digging through stone."
-  },
-  "shovel": {
-    "name": "Shovel",
-    "type": "tool",
+  "copper_ore": {
+    "name": "Copper Ore",
+    "type": "equipment",
     "cost_gp": 2,
-    "weight_gp": 80,
-    "description": "A wooden-handled shovel with iron blade."
-  },
-  "holy_symbol_wood": {
-    "name": "Holy Symbol, Wooden",
-    "type": "religious",
-    "cost_gp": 1,
-    "weight_gp": 1,
-    "description": "A wooden holy symbol. Required for clerics to turn undead."
-  },
-  "holy_symbol_silver": {
-    "name": "Holy Symbol, Silver",
-    "type": "religious",
-    "cost_gp": 25,
-    "weight_gp": 1,
-    "description": "A silver holy symbol. Required for clerics to turn undead."
-  },
-  "holy_water": {
-    "name": "Holy Water, Vial",
-    "type": "consumable",
-    "cost_gp": 25,
-    "weight_gp": 1,
-    "description": "A vial of blessed water. Deals 2d4 damage to undead when thrown."
-  },
-  "mirror_small": {
-    "name": "Mirror, Small Steel",
-    "type": "equipment",
-    "cost_gp": 20,
-    "weight_gp": 5,
-    "description": "A small polished steel mirror. Useful for seeing around corners or detecting certain monsters."
-  },
-  "pole_10ft": {
-    "name": "Pole, 10 feet",
-    "type": "equipment",
-    "cost_gp": 0.2,
-    "weight_gp": 100,
-    "description": "A 10-foot wooden pole. Useful for probing for traps or testing floors."
-  },
-  "chain_10ft": {
-    "name": "Chain, 10 feet",
-    "type": "equipment",
-    "cost_gp": 30,
-    "weight_gp": 30,
-    "description": "10 feet of iron chain. Stronger than rope."
-  },
-  "lock_good": {
-    "name": "Lock, Good",
-    "type": "equipment",
-    "cost_gp": 100,
-    "weight_gp": 10,
-    "description": "A high-quality lock with key. Difficult to pick (-10% to thief skill)."
-  },
-  "lock_poor": {
-    "name": "Lock, Poor",
-    "type": "equipment",
-    "cost_gp": 20,
-    "weight_gp": 10,
-    "description": "A simple lock with key. Easy to pick (+10% to thief skill)."
-  },
-  "manacles": {
-    "name": "Manacles",
-    "type": "equipment",
-    "cost_gp": 15,
-    "weight_gp": 20,
-    "description": "Iron shackles with a lock. Used to restrain prisoners."
-  },
-  "candle": {
-    "name": "Candle",
-    "type": "light_source",
-    "cost_gp": 0.01,
-    "weight_gp": 1,
-    "burn_time_turns": 6,
-    "light_radius": 5,
-    "description": "A wax candle. Burns for 1 hour. Provides dim light."
-  },
-  "chalk": {
-    "name": "Chalk",
-    "type": "equipment",
-    "cost_gp": 0.01,
-    "weight_gp": 1,
-    "description": "A piece of chalk for marking walls and doors."
-  },
-  "parchment": {
-    "name": "Parchment (per sheet)",
-    "type": "equipment",
-    "cost_gp": 1,
-    "weight_gp": 1,
-    "description": "A sheet of parchment for writing."
-  },
-  "ink_vial": {
-    "name": "Ink, Vial",
-    "type": "equipment",
-    "cost_gp": 8,
-    "weight_gp": 1,
-    "description": "A vial of black ink for writing."
-  },
-  "quill": {
-    "name": "Quill",
-    "type": "equipment",
-    "cost_gp": 0.01,
-    "weight_gp": 0,
-    "description": "A writing quill."
-  },
-  "spellbook_blank": {
-    "name": "Spellbook, Blank",
-    "type": "equipment",
-    "cost_gp": 15,
-    "weight_gp": 30,
-    "description": "A blank spellbook with 100 pages. Required for magic-users to record spells."
-  },
-  "scroll_case": {
-    "name": "Scroll Case",
-    "type": "container",
-    "cost_gp": 1,
-    "weight_gp": 5,
-    "capacity_gp": 10,
-    "description": "A leather or wooden tube for storing scrolls and maps."
-  },
-  "bedroll": {
-    "name": "Bedroll",
-    "type": "equipment",
-    "cost_gp": 0.5,
     "weight_gp": 50,
-    "description": "A blanket and sleeping mat rolled together."
+    "properties": [
+      "material",
+      "ore"
+    ],
+    "description": "Copper ore with a distinctive reddish tint. Used in bronze-making."
   },
-  "tent_small": {
-    "name": "Tent, Small",
+  "corrupted_crystal": {
+    "name": "Corrupted Crystal",
+    "type": "magic_item",
+    "cost_gp": 200,
+    "weight_gp": 5,
+    "properties": [
+      "magic",
+      "cursed"
+    ],
+    "description": "A crystal infused with demonic energy. Radiates corruption and malevolence."
+  },
+  "crowbar": {
+    "name": "Crowbar",
+    "type": "tool",
+    "cost_gp": 1,
+    "weight_gp": 50,
+    "description": "An iron bar for prying open doors or containers. +2 bonus to force doors."
+  },
+  "crushed_crate": {
+    "name": "Crushed Crate",
+    "type": "container",
+    "cost_gp": 0,
+    "weight_gp": 50,
+    "description": "A crate smashed by falling rubble. Whatever was inside is destroyed."
+  },
+  "cult_documents": {
+    "name": "Cult Documents",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "A collection of letters, maps, and documents detailing the cult's structure, goals, and connections to larger conspiracy."
+  },
+  "cult_journal": {
+    "name": "Cult Journal",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult"
+    ],
+    "description": "A journal kept by a cult member documenting their activities and the temple's operations."
+  },
+  "cult_orders": {
+    "name": "Serpent Eye Cult Orders",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "Orders from the Serpent Eye cult to the duergar. Commands: 'Secure the deep passage,' 'Convert or eliminate all dwarves,' and 'Prepare the altar for the awakening ritual.'"
+  },
+  "cult_scripture": {
+    "name": "Cult Scripture",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "Religious texts of the Serpent Eye cult, describing their beliefs about 'the awakening' and the power of the Serpent."
+  },
+  "cult_serpent_banner": {
+    "name": "Serpent Cult Banner",
+    "type": "misc",
+    "cost_gp": 0,
+    "weight_gp": 30,
+    "description": "A cult banner depicting a coiled serpent. Hated symbol of the enemy."
+  },
+  "cult_supply_manifest": {
+    "name": "Cult Supply Manifest",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "description": "A manifest of cult supplies and reinforcements. Reveals the extent of their occupation force."
+  },
+  "cultist_personal_effects": {
+    "name": "Cultist Personal Effects",
     "type": "equipment",
     "cost_gp": 5,
-    "weight_gp": 200,
-    "description": "A small tent for 1-2 people."
+    "weight_gp": 2,
+    "properties": [
+      "mundane"
+    ],
+    "description": "Personal belongings of cultists: letters from home, small tokens, basic supplies. Humanizing but sad."
   },
-  "tent_large": {
-    "name": "Tent, Large",
+  "cultist_robes": {
+    "name": "Serpent Eye Robes",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 3,
+    "properties": [
+      "clothing",
+      "serpent_cult",
+      "disguise"
+    ],
+    "description": "Dark hooded robes worn by cult members. Embroidered with serpent symbols. Could be used as a disguise."
+  },
+  "cultist_roster": {
+    "name": "Cultist Roster",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A list of cult members' names and ranks. Many names are recognizable as Oakhaven citizens."
+  },
+  "dark_grimoire": {
+    "name": "Dark Grimoire",
+    "type": "book",
+    "cost_gp": 0,
+    "weight_gp": 30,
+    "properties": [
+      "lore",
+      "magic",
+      "cursed",
+      "dangerous"
+    ],
+    "description": "A leather-bound book of dark rituals. Reading it reveals how to create cursed items, but at great risk to one's soul."
+  },
+  "dark_relics": {
+    "name": "Dark Serpent Relics",
+    "type": "magic_item",
+    "cost_gp": 75,
+    "weight_gp": 15,
+    "properties": [
+      "magic",
+      "cursed",
+      "evil",
+      "religious"
+    ],
+    "description": "Unholy artifacts used in serpent worship: obsidian serpent figurines, blood chalices, cursed amulets. Radiates malevolence. Should probably be destroyed."
+  },
+  "demonic_grimoire": {
+    "name": "Demonic Grimoire",
+    "type": "book",
+    "cost_gp": 0,
+    "weight_gp": 40,
+    "properties": [
+      "lore",
+      "magic",
+      "cursed",
+      "dangerous"
+    ],
+    "description": "A tome bound in what appears to be demon skin. Contains instructions for summoning and binding demons. Extremely dangerous."
+  },
+  "demonic_tome": {
+    "name": "Demonic Tome",
+    "type": "book",
+    "cost_gp": 0,
+    "weight_gp": 50,
+    "properties": [
+      "lore",
+      "magic",
+      "cursed",
+      "dangerous"
+    ],
+    "description": "An ancient tome detailing the hierarchy of demons and how to bargain with them. Reading it is perilous."
+  },
+  "disguised_crate": {
+    "name": "Disguised Crate",
+    "type": "container",
+    "cost_gp": 5,
+    "weight_gp": 50,
+    "description": "A crate labeled 'Textiles' that actually contains cursed amulets. Classic smuggling technique."
+  },
+  "dropped_coin_pouch": {
+    "name": "Dropped Coin Pouch",
+    "type": "treasure",
+    "cost_gp": 15,
+    "weight_gp": 2,
+    "description": "A leather pouch dropped by Silas in his flight. Contains 15 gold pieces."
+  },
+  "drowned_corpse_loot": {
+    "name": "Drowned Victim's Belongings",
+    "type": "treasure",
+    "cost_gp": 15,
+    "weight_gp": 3,
+    "properties": [
+      "treasure",
+      "grim"
+    ],
+    "description": "Personal effects recovered from a drowned corpse: a few coins, a soggy pouch, a corroded dagger. A grim reminder of the dangers."
+  },
+  "duergar_orders": {
+    "name": "Duergar Military Orders",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "military"
+    ],
+    "description": "Official orders to the duergar garrison. Commands them to 'maintain control of the fortress,' 'extract information from prisoners,' and 'hold the passage for the coming darkness.'"
+  },
+  "duergar_supplies": {
+    "name": "Duergar Military Supplies",
     "type": "equipment",
     "cost_gp": 25,
-    "weight_gp": 500,
-    "description": "A large tent for 4-6 people."
+    "weight_gp": 40,
+    "properties": [
+      "equipment",
+      "duergar",
+      "military"
+    ],
+    "description": "A crate of duergar supplies: rations (mostly dried mushrooms and cave fish), oil, rope, and other gear. All of dark make."
   },
-  "tinderbox": {
-    "name": "Tinderbox (flint & steel)",
+  "dwarven_artifacts": {
+    "name": "Ancient Dwarven Artifacts",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 30,
+    "properties": [
+      "treasure",
+      "dwarven",
+      "historical",
+      "valuable"
+    ],
+    "description": "Historical artifacts from Ironfast's founding: ancient weapons, crown jewels, and ceremonial objects. Priceless to dwarven culture."
+  },
+  "dwarven_battle_standard": {
+    "name": "Ironfast Battle Standard",
+    "type": "quest_item",
+    "cost_gp": 75,
+    "weight_gp": 30,
+    "properties": [
+      "quest",
+      "dwarven",
+      "military",
+      "cultural"
+    ],
+    "description": "The battle standard carried into war by Ironfast's warriors. Torn and bloodied but still bearing the proud clan symbol. Recovering this would restore hope to the clan's survivors."
+  },
+  "dwarven_casualty_list": {
+    "name": "Dwarven Casualty List",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": [
+      "lore",
+      "evidence",
+      "tragic"
+    ],
+    "description": "A grim list of fallen defenders, hastily scrawled in the last hours of the battle. Over two hundred names. Some entries note 'taken alive' - prisoners dragged to the slave pens below."
+  },
+  "dwarven_prayer_book": {
+    "name": "Dwarven Prayer Book",
+    "type": "lore",
+    "cost_gp": 10,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "religious",
+      "dwarven"
+    ],
+    "description": "A book of prayers to Moradin, the dwarven god of creation and smithing. Written in Dwarvish with beautiful illuminated pages."
+  },
+  "eighth_key": {
+    "name": "Eighth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 8."
+  },
+  "emerald_eyes": {
+    "name": "Emerald Serpent Eyes",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 1,
+    "properties": [
+      "treasure",
+      "valuable",
+      "gems"
+    ],
+    "description": "Two large emeralds carved to resemble serpent eyes, taken from a cult statue. Extremely valuable."
+  },
+  "emergency_cache": {
+    "name": "Emergency Supply Cache",
+    "type": "treasure",
+    "cost_gp": 75,
+    "weight_gp": 30,
+    "properties": [
+      "treasure",
+      "valuable",
+      "mixed"
+    ],
+    "description": "A hidden stash containing emergency supplies: coin pouches, gemstones, healing potions, and a scroll of divine protection. The dwarves prepared for siege."
+  },
+  "emergency_gold": {
+    "name": "Emergency Gold Stash",
+    "type": "treasure",
+    "cost_gp": 150,
+    "weight_gp": 15,
+    "description": "A hidden pouch containing 150 gold pieces for emergencies."
+  },
+  "enchanted_bracers": {
+    "name": "Bracers of Defense",
+    "type": "magic_item",
+    "cost_gp": 200,
+    "weight_gp": 2,
+    "properties": [
+      "magic",
+      "armor",
+      "ancient"
+    ],
+    "description": "Silver bracers engraved with protective runes. (Game effect: +1 to AC)"
+  },
+  "enchanted_stone": {
+    "name": "Enchanted Stone",
+    "type": "magic_item",
+    "cost_gp": 50,
+    "weight_gp": 1,
+    "properties": [
+      "magic",
+      "ancient"
+    ],
+    "description": "A smooth stone that glows faintly with magical energy. Purpose unknown, but clearly valuable."
+  },
+  "escape_supplies": {
+    "name": "Emergency Escape Supplies",
     "type": "equipment",
-    "cost_gp": 1,
+    "cost_gp": 50,
+    "weight_gp": 100,
+    "description": "A cache of emergency supplies: rations, water, rope, lockpicks, and a disguise. Silas's insurance policy."
+  },
+  "false_manifest": {
+    "name": "False Shipping Manifest",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A forged manifest listing innocent goods while hiding the real cursed cargo."
+  },
+  "feast_plate": {
+    "name": "Silver Feast Plate",
+    "type": "treasure",
+    "cost_gp": 30,
+    "weight_gp": 15,
+    "properties": [
+      "treasure",
+      "dwarven",
+      "valuable"
+    ],
+    "description": "An ornate silver serving platter from the great hall's feasts. Bears the clan symbol and could fetch a good price."
+  },
+  "fifth_key": {
+    "name": "Fifth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 5."
+  },
+  "fire_opal": {
+    "name": "Fire Opal",
+    "type": "treasure",
+    "cost_gp": 300,
+    "weight_gp": 1,
+    "description": "A shimmering opal with dancing flames visible within its depths."
+  },
+  "fire_resistance_potion": {
+    "name": "Potion of Fire Resistance",
+    "type": "consumable",
+    "cost_gp": 100,
     "weight_gp": 5,
-    "description": "Flint, steel, and tinder for starting fires."
+    "description": "A red potion that grants resistance to fire damage for 1 hour."
   },
-  "whetstone": {
-    "name": "Whetstone",
+  "fire_resistant_cloak": {
+    "name": "Fire-Resistant Cloak",
     "type": "equipment",
-    "cost_gp": 0.02,
-    "weight_gp": 10,
-    "description": "A stone for sharpening bladed weapons."
+    "cost_gp": 50,
+    "weight_gp": 30,
+    "description": "A heavy cloak treated with fireproofing alchemy. Provides some protection against heat and flames."
+  },
+  "first_key": {
+    "name": "First Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 1."
   },
   "fishhook": {
     "name": "Fishhook",
@@ -386,42 +954,39 @@
     "weight_gp": 50,
     "description": "A fishing net, 5 feet by 5 feet."
   },
-  "ladder_10ft": {
-    "name": "Ladder, 10 feet",
+  "forge_hammer": {
+    "name": "Masterwork Forge Hammer",
     "type": "equipment",
-    "cost_gp": 0.5,
-    "weight_gp": 200,
-    "description": "A wooden ladder, 10 feet long."
+    "cost_gp": 100,
+    "weight_gp": 50,
+    "description": "A perfectly balanced forge hammer. Bloodfang smiths create legendary weapons with tools like this."
   },
-  "barrel": {
-    "name": "Barrel",
-    "type": "container",
-    "cost_gp": 2,
-    "weight_gp": 300,
-    "capacity_gp": 3000,
-    "description": "A wooden barrel for storing liquids or goods. Holds 40 gallons."
+  "forge_tools": {
+    "name": "Master Forge Tools",
+    "type": "tool",
+    "cost_gp": 75,
+    "weight_gp": 100,
+    "properties": [
+      "tool",
+      "dwarven",
+      "valuable",
+      "smithing"
+    ],
+    "description": "A complete set of dwarven smithing tools: hammers, tongs, chisels, and files. Of exceptional quality. A smith would treasure these."
   },
-  "bottle_glass": {
-    "name": "Bottle, Glass",
-    "type": "container",
-    "cost_gp": 2,
-    "weight_gp": 1,
-    "capacity_gp": 10,
-    "description": "A glass bottle with a cork stopper."
+  "fortress_blueprints": {
+    "name": "Fortress Architectural Plans",
+    "type": "lore",
+    "cost_gp": 50,
+    "weight_gp": 10,
+    "description": "Detailed blueprints of the Scorched Fortress. Shows secret passages, the volcanic vents, and vault location."
   },
-  "horn_signal": {
-    "name": "Signal Horn",
-    "type": "equipment",
-    "cost_gp": 1,
-    "weight_gp": 20,
-    "description": "A horn for signaling. Can be heard up to 1 mile away."
-  },
-  "wolfsbane": {
-    "name": "Wolfsbane (bunch)",
-    "type": "consumable",
-    "cost_gp": 10,
-    "weight_gp": 1,
-    "description": "A bunch of wolfsbane herb. Repels lycanthropes."
+  "fourth_key": {
+    "name": "The Fourth Key",
+    "type": "quest",
+    "cost_gp": 0,
+    "weight_gp": 10,
+    "description": "The Fourth Serpent Key\u2014a blackened iron key still hot from volcanic energies. Malakar died trying to claim it."
   },
   "garlic": {
     "name": "Garlic (bunch)",
@@ -429,6 +994,325 @@
     "cost_gp": 0.05,
     "weight_gp": 1,
     "description": "A bunch of garlic. Repels vampires."
+  },
+  "gems_500": {
+    "name": "Precious Gemstones",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 2,
+    "properties": [
+      "treasure",
+      "gems",
+      "valuable"
+    ],
+    "description": "A collection of valuable gemstones: rubies, sapphires, and emeralds. Worth approximately 500 gold pieces to a buyer."
+  },
+  "genealogy_scroll": {
+    "name": "Genealogy Scroll",
+    "type": "lore_item",
+    "cost_gp": 10,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "historical"
+    ],
+    "description": "Records of ancient priest families who served the temple. Some family lines may still exist in the region."
+  },
+  "gold_100": {
+    "name": "100 Gold Pieces",
+    "type": "treasure",
+    "cost_gp": 100,
+    "weight_gp": 10,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A pouch containing 100 gold pieces."
+  },
+  "gold_1000": {
+    "name": "1000 Gold Pieces",
+    "type": "treasure",
+    "cost_gp": 1000,
+    "weight_gp": 100,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A very heavy chest containing 1000 gold pieces. A fortune!"
+  },
+  "gold_150": {
+    "name": "150 Gold Pieces",
+    "type": "treasure",
+    "cost_gp": 150,
+    "weight_gp": 15,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A pouch containing 150 gold pieces."
+  },
+  "gold_200": {
+    "name": "200 Gold Pieces",
+    "type": "treasure",
+    "cost_gp": 200,
+    "weight_gp": 20,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A pouch containing 200 gold pieces."
+  },
+  "gold_300": {
+    "name": "Gold Pouch (300gp)",
+    "type": "treasure",
+    "description": "A heavy pouch of gold coins",
+    "weight": 6.0,
+    "cost": 300
+  },
+  "gold_50": {
+    "name": "50 Gold Pieces",
+    "type": "treasure",
+    "cost_gp": 50,
+    "weight_gp": 5,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A pouch containing 50 gold pieces."
+  },
+  "gold_500": {
+    "name": "500 Gold Pieces",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 50,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A heavy pouch containing 500 gold pieces."
+  },
+  "gold_chalice": {
+    "name": "Gold Chalice",
+    "type": "treasure",
+    "cost_gp": 150,
+    "weight_gp": 20,
+    "properties": [
+      "treasure",
+      "valuable"
+    ],
+    "description": "An ornate gold chalice used in cult rituals. Bears serpent engravings."
+  },
+  "gold_coins": {
+    "name": "Gold Coins",
+    "type": "treasure",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A pile of gold coins. Value varies."
+  },
+  "gold_torc": {
+    "name": "Gold Torc of Leadership",
+    "type": "treasure",
+    "cost_gp": 350,
+    "weight_gp": 25,
+    "description": "A heavy gold neck torc worn by clan chieftains. Engraved with runes of power."
+  },
+  "grappling_hook": {
+    "name": "Grappling Hook",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 80,
+    "description": "An iron hook with multiple prongs for securing ropes."
+  },
+  "grathak_journal": {
+    "name": "Grathak's Personal Journal",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "important",
+      "boss"
+    ],
+    "description": "The journal of Grathak the Soulless, duergar warlord. Reveals his orders came from 'the Serpent Eye cult in the surface world' and that he was promised 'the fortress and all its wealth' in exchange for securing the deep tunnels for cult use."
+  },
+  "grave_offerings": {
+    "name": "Grave Offerings",
+    "type": "treasure",
+    "cost_gp": 50,
+    "weight_gp": 5,
+    "properties": [
+      "treasure",
+      "ancient",
+      "funeral"
+    ],
+    "description": "Items left in graves: small statues, jewelry, coins. Valuable but grave-robbing feels wrong."
+  },
+  "greater_healing_potion": {
+    "name": "Potion of Greater Healing",
+    "type": "consumable",
+    "cost_gp": 200,
+    "weight_gp": 5,
+    "description": "A potent healing potion. Restores 4d4+4 hit points."
+  },
+  "guard_roster": {
+    "name": "Guard Roster",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A list of all guards employed by Silas, including their pay rates and loyalties."
+  },
+  "guard_schedule": {
+    "name": "Guard Rotation Schedule",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A parchment detailing the cultist guard rotations and patrol routes throughout the sewers."
+  },
+  "guard_schedules": {
+    "name": "Guard Rotation Schedules",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": [
+      "lore",
+      "tactical"
+    ],
+    "description": "Schedules showing when guards patrol the warehouse. Knowledge is power."
+  },
+  "guardian_fragment": {
+    "name": "Guardian Stone Fragment",
+    "type": "treasure",
+    "cost_gp": 25,
+    "weight_gp": 5,
+    "properties": [
+      "magic",
+      "construct",
+      "ancient"
+    ],
+    "description": "A fragment of enchanted stone from a destroyed guardian. Still radiates faint protective magic."
+  },
+  "hammer": {
+    "name": "Hammer",
+    "type": "tool",
+    "cost_gp": 1,
+    "weight_gp": 10,
+    "description": "A small hammer for driving spikes and pitons."
+  },
+  "healers_kit": {
+    "name": "Healer's Kit",
+    "type": "tool",
+    "cost_gp": 25,
+    "weight_gp": 30,
+    "description": "Bandages, herbs, and medical tools. Grants +2 bonus to healing checks."
+  },
+  "healing_potion": {
+    "name": "Potion of Healing",
+    "type": "consumable",
+    "cost_gp": 50,
+    "weight_gp": 2,
+    "properties": [
+      "consumable",
+      "healing"
+    ],
+    "healing": "2d4+2",
+    "description": "A red liquid in a glass vial. Drinking this potion heals 2d4+2 hit points."
+  },
+  "heat_resistant_gloves": {
+    "name": "Heat-Resistant Gloves",
+    "type": "equipment",
+    "cost_gp": 25,
+    "weight_gp": 10,
+    "description": "Thick leather gloves treated with special oils to resist heat. Essential for forge work."
+  },
+  "heroism_potion": {
+    "name": "Potion of Heroism",
+    "type": "consumable",
+    "cost_gp": 250,
+    "weight_gp": 5,
+    "description": "Grants temporary hit points and +2 to attack rolls for 1 hour. Favored by Bloodfang warriors."
+  },
+  "hidden_contraband": {
+    "name": "Hidden Contraband",
+    "type": "treasure",
+    "cost_gp": 50,
+    "weight_gp": 30,
+    "description": "Illegal goods hidden inside mundane merchandise: stolen weapons, banned substances, and forged documents."
+  },
+  "hidden_gold_75": {
+    "name": "75 Gold Pieces (Hidden)",
+    "type": "treasure",
+    "cost_gp": 75,
+    "weight_gp": 7.5,
+    "properties": [
+      "treasure",
+      "coins",
+      "hidden"
+    ],
+    "description": "A hidden stash of 75 gold pieces discovered through careful searching."
+  },
+  "hold_map": {
+    "name": "Ironfast Hold Map",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "map",
+      "dwarven"
+    ],
+    "description": "A detailed architectural map of Ironfast Hold showing all levels, passages, and defensive positions. Marked with red X's by the duergar showing their infiltration routes and control points."
+  },
+  "holy_symbol": {
+    "name": "Holy Symbol",
+    "type": "religious",
+    "cost_gp": 5,
+    "weight_gp": 2,
+    "properties": [
+      "religious",
+      "divine"
+    ],
+    "description": "A wooden holy symbol blessed by a temple priest. Required for clerics to turn undead and cast some divine spells."
+  },
+  "holy_symbol_silver": {
+    "name": "Holy Symbol, Silver",
+    "type": "religious",
+    "cost_gp": 25,
+    "weight_gp": 1,
+    "description": "A silver holy symbol. Required for clerics to turn undead."
+  },
+  "holy_symbol_wood": {
+    "name": "Holy Symbol, Wooden",
+    "type": "religious",
+    "cost_gp": 1,
+    "weight_gp": 1,
+    "description": "A wooden holy symbol. Required for clerics to turn undead."
+  },
+  "holy_water": {
+    "name": "Holy Water, Vial",
+    "type": "consumable",
+    "cost_gp": 25,
+    "weight_gp": 1,
+    "description": "A vial of blessed water. Deals 2d4 damage to undead when thrown."
+  },
+  "horn_signal": {
+    "name": "Signal Horn",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 20,
+    "description": "A horn for signaling. Can be heard up to 1 mile away."
   },
   "horse_riding": {
     "name": "Horse, Riding",
@@ -448,14 +1332,354 @@
     "carrying_capacity_gp": 4000,
     "description": "A heavy warhorse trained for combat. Movement 18\", can carry up to 4000 gp weight."
   },
-  "pony": {
-    "name": "Pony",
-    "type": "animal",
-    "cost_gp": 30,
+  "incense": {
+    "name": "Ritual Incense",
+    "type": "consumable",
+    "cost_gp": 5,
+    "weight_gp": 1,
+    "properties": [
+      "consumable",
+      "ritual"
+    ],
+    "description": "Strange-smelling incense used in cult rituals. Burns with an acrid, green smoke."
+  },
+  "incriminating_ledger": {
+    "name": "Incriminating Ledger",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 3,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "A ledger recording every illegal transaction, bribe, and shipment. This alone could convict Silas."
+  },
+  "ink_vial": {
+    "name": "Ink, Vial",
+    "type": "equipment",
+    "cost_gp": 8,
+    "weight_gp": 1,
+    "description": "A vial of black ink for writing."
+  },
+  "interrogation_notes": {
+    "name": "Interrogation Records",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "disturbing"
+    ],
+    "description": "Cruel records of prisoner interrogations. Lists what information each dwarf revealed under torture. Most entries end with 'sent to pens' or 'sent to altar.'"
+  },
+  "invasion_report": {
+    "name": "Cult Invasion Report",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "description": "A detailed report of the cult's assault on the fortress. Lists casualties, breach points, and mentions General Malakar by name."
+  },
+  "iron_chains": {
+    "name": "Iron Chains",
+    "type": "equipment",
+    "cost_gp": 3,
+    "weight_gp": 30,
+    "description": "Heavy iron chains used to restrain prisoners."
+  },
+  "iron_ingots": {
+    "name": "Iron Ingots",
+    "type": "equipment",
+    "cost_gp": 25,
+    "weight_gp": 100,
+    "description": "Refined iron ingots ready for forging. High quality orcish iron."
+  },
+  "iron_ore": {
+    "name": "Iron Ore",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 50,
+    "properties": [
+      "material",
+      "ore"
+    ],
+    "description": "Chunks of iron ore ready for smelting. Common but useful."
+  },
+  "iron_spikes": {
+    "name": "Iron Spikes (12)",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 60,
+    "description": "A dozen iron spikes for securing ropes or wedging doors."
+  },
+  "ironfast_ale": {
+    "name": "Ironfast Dark Ale",
+    "type": "consumable",
+    "cost_gp": 2,
+    "weight_gp": 30,
+    "properties": [
+      "consumable",
+      "dwarven",
+      "alcohol"
+    ],
+    "description": "A bottle of the fortress's signature dark ale. Strong, bitter, and excellent. Dwarves would pay well for authentic Ironfast brew."
+  },
+  "jade_serpent_idol": {
+    "name": "Jade Serpent Idol",
+    "type": "treasure",
+    "cost_gp": 300,
+    "weight_gp": 10,
+    "properties": [
+      "treasure",
+      "ancient",
+      "serpent_cult",
+      "religious"
+    ],
+    "description": "A large idol carved from a single piece of jade. Depicts a coiled serpent with ruby eyes. Incredibly valuable."
+  },
+  "jade_statue": {
+    "name": "Jade Statue",
+    "type": "treasure",
+    "cost_gp": 100,
+    "weight_gp": 5,
+    "properties": [
+      "treasure",
+      "art"
+    ],
+    "description": "A small statue carved from jade. Depicts a serpent coiled around an altar."
+  },
+  "jade_wolf": {
+    "name": "Jade Wolf Figurine",
+    "type": "treasure",
+    "cost_gp": 200,
+    "weight_gp": 15,
+    "description": "A wolf carved from green jade, eyes set with tiny rubies. A clan symbol."
+  },
+  "korvash_correspondence": {
+    "name": "Korvash's Correspondence",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult",
+      "critical"
+    ],
+    "description": "Letters between High Priest Korvash and other cult leaders. Discusses the key locations, the ritual timeline, and mentions 'The Sanctum' in the eastern wastes."
+  },
+  "kranes_journal": {
+    "name": "Krane's Journal",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "quest",
+      "lore"
+    ],
+    "description": "The personal journal of Valerius Krane, detailing his dark plans and the cult's hierarchy."
+  },
+  "ladder_10ft": {
+    "name": "Ladder, 10 feet",
+    "type": "equipment",
+    "cost_gp": 0.5,
+    "weight_gp": 200,
+    "description": "A wooden ladder, 10 feet long."
+  },
+  "lantern_bullseye": {
+    "name": "Lantern, Bullseye",
+    "type": "light_source",
+    "cost_gp": 12,
+    "weight_gp": 30,
+    "burn_time_turns": 24,
+    "light_radius": 60,
+    "description": "A directional lantern with focused beam. Burns for 4 hours per flask of oil."
+  },
+  "lantern_hooded": {
+    "name": "Lantern, Hooded",
+    "type": "light_source",
+    "cost_gp": 7,
+    "weight_gp": 20,
+    "burn_time_turns": 24,
+    "light_radius": 30,
+    "description": "An oil-burning lantern with a hood. Burns for 4 hours per flask of oil."
+  },
+  "lava_stone": {
+    "name": "Cooled Lava Stone",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 30,
+    "description": "A chunk of hardened lava. Porous and lightweight despite its size. Can be carved or used as building material."
+  },
+  "legendary_deeds_scroll": {
+    "name": "Scroll of Legendary Deeds",
+    "type": "lore",
+    "cost_gp": 25,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "dwarven",
+      "inspiring"
+    ],
+    "description": "A scroll commemorating the greatest heroes of Clan Ironfast. Reading it fills you with determination and respect for those who came before."
+  },
+  "legendary_weapon_choice": {
+    "name": "Legendary Weapon (Player's Choice)",
+    "type": "quest_reward",
+    "cost_gp": 0,
     "weight_gp": 0,
-    "movement_rate": 12,
-    "carrying_capacity_gp": 2000,
-    "description": "A small pony. Movement 12\", can carry up to 2000 gp weight."
+    "properties": [
+      "legendary",
+      "choice"
+    ],
+    "description": "A token representing the player's choice of one legendary weapon as a reward for completing the campaign."
+  },
+  "lock_good": {
+    "name": "Lock, Good",
+    "type": "equipment",
+    "cost_gp": 100,
+    "weight_gp": 10,
+    "description": "A high-quality lock with key. Difficult to pick (-10% to thief skill)."
+  },
+  "lock_poor": {
+    "name": "Lock, Poor",
+    "type": "equipment",
+    "cost_gp": 20,
+    "weight_gp": 10,
+    "description": "A simple lock with key. Easy to pick (+10% to thief skill)."
+  },
+  "malakar_battle_plans": {
+    "name": "Malakar's Battle Plans",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "description": "General Malakar's plans for the Scorched Fortress. Reveals the cult's strategy to awaken the dormant volcano beneath."
+  },
+  "manacles": {
+    "name": "Manacles",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 20,
+    "description": "Iron shackles with a lock. Used to restrain prisoners."
+  },
+  "master_ledger": {
+    "name": "Master Ledger",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 5,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "The master ledger containing every transaction of Silas's smuggling empire. Names, dates, amounts, and destinations."
+  },
+  "masterwork_tools": {
+    "name": "Masterwork Smith's Tools",
+    "type": "tool",
+    "cost_gp": 150,
+    "weight_gp": 80,
+    "properties": [
+      "tool",
+      "dwarven",
+      "masterwork",
+      "valuable"
+    ],
+    "description": "Precision tools used for creating masterwork weapons and armor. These alone could teach a human smith techniques lost for centuries."
+  },
+  "merchant_ledger": {
+    "name": "The Merchant's Ledger",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "A ledger tracking shipments from 'The Merchant' (Silas) to the cult. Records weapons, supplies, and ritual components."
+  },
+  "merchant_letters": {
+    "name": "Letters from The Merchant",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "Correspondence between the cult leader and 'The Merchant.' Discusses 'the awakening,' gathering sacrifices, and 'the ten keys.'"
+  },
+  "merchant_seal": {
+    "name": "Merchant Seal",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 1,
+    "properties": [
+      "valuable"
+    ],
+    "description": "An ornate wax seal used by merchants to authenticate official documents."
+  },
+  "mining_cart": {
+    "name": "Mining Cart",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 300,
+    "properties": [
+      "equipment",
+      "dwarven",
+      "mining"
+    ],
+    "description": "A sturdy wooden cart with iron wheels, used for transporting ore. Too heavy to take, but interesting."
+  },
+  "mining_pick": {
+    "name": "Mining Pick",
+    "type": "tool",
+    "cost_gp": 3,
+    "weight_gp": 100,
+    "description": "A heavy iron pick for mining and digging through stone."
+  },
+  "mining_tools": {
+    "name": "Dwarven Mining Tools",
+    "type": "tool",
+    "cost_gp": 25,
+    "weight_gp": 120,
+    "properties": [
+      "tool",
+      "dwarven",
+      "mining"
+    ],
+    "description": "Picks, hammers, chisels, and other tools for mining. Of dwarven make and quality."
+  },
+  "mirror_small": {
+    "name": "Mirror, Small Steel",
+    "type": "equipment",
+    "cost_gp": 20,
+    "weight_gp": 5,
+    "description": "A small polished steel mirror. Useful for seeing around corners or detecting certain monsters."
+  },
+  "mithril_ingot": {
+    "name": "Mithril Ingot",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 10,
+    "properties": [
+      "treasure",
+      "dwarven",
+      "rare",
+      "valuable",
+      "metal"
+    ],
+    "description": "A bar of pure mithril - the legendary dwarven silver-steel. Lighter than steel but harder than dragon scales. Extraordinarily valuable."
+  },
+  "moldy_rope": {
+    "name": "Moldy Rope",
+    "type": "equipment",
+    "cost_gp": 0,
+    "weight_gp": 30,
+    "description": "Rope that's been exposed to moisture. Weak and unreliable."
   },
   "mule": {
     "name": "Mule",
@@ -466,13 +1690,1149 @@
     "carrying_capacity_gp": 2000,
     "description": "A pack mule. Movement 12\", can carry up to 2000 gp weight."
   },
-  "cart": {
-    "name": "Cart",
-    "type": "transport",
+  "mysterious_key": {
+    "name": "Mysterious Serpent Key",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An unusual key found in the hidden shrine. Its purpose is unclear, but it bears the serpent symbol."
+  },
+  "ninth_key": {
+    "name": "Ninth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 9."
+  },
+  "obsidian_blade": {
+    "name": "Obsidian Ceremonial Blade",
+    "type": "treasure",
+    "cost_gp": 150,
+    "weight_gp": 20,
+    "description": "A blade carved from volcanic glass, used in orcish coming-of-age rituals. Razor-sharp and beautifully crafted."
+  },
+  "officer_insignia": {
+    "name": "Officer's Insignia",
+    "type": "treasure",
+    "cost_gp": 25,
+    "weight_gp": 0.5,
+    "properties": [
+      "treasure",
+      "dwarven",
+      "military"
+    ],
+    "description": "A silver badge bearing the hammer-and-anvil symbol of Ironfast's officer corps. Could be sold or returned to surviving dwarves as a token of respect."
+  },
+  "oil_flask": {
+    "name": "Oil, Flask (1 pint)",
+    "type": "consumable",
+    "cost_gp": 2,
+    "weight_gp": 10,
+    "burn_time_turns": 24,
+    "description": "A flask of lamp oil. Burns for 4 hours in a lantern. Can be used as a weapon (thrown, 1d8 fire damage if lit)."
+  },
+  "orc_holy_symbol": {
+    "name": "Bloodfang Holy Symbol",
+    "type": "quest",
     "cost_gp": 50,
-    "weight_gp": 4000,
-    "carrying_capacity_gp": 4000,
-    "description": "A two-wheeled cart. Requires horse or mule to pull. Can carry up to 4000 gp weight."
+    "weight_gp": 5,
+    "description": "A crude iron wolf symbol sacred to the Bloodfang. Desecrated by the cultists."
+  },
+  "orc_prison_log": {
+    "name": "Prisoner Registry",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "description": "A log of captured orcs. Many names are crossed out with 'sacrificed' noted beside them."
+  },
+  "orcish_rations": {
+    "name": "Orcish Rations",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 10,
+    "description": "Dried meat, hard bread, and spicy peppers. Sustains an orc warrior for days."
+  },
+  "ore_manifest": {
+    "name": "Ore Storage Manifest",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "dwarven",
+      "inventory"
+    ],
+    "description": "A detailed inventory of ore stockpiles. Shows Ironfast was mining mithril, adamantine, and other rare metals before the attack."
+  },
+  "packing_materials": {
+    "name": "Packing Materials",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 10,
+    "description": "Straw, cloth, and wrapping materials for packing fragile goods."
+  },
+  "parchment": {
+    "name": "Parchment (per sheet)",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 1,
+    "description": "A sheet of parchment for writing."
+  },
+  "pay_records": {
+    "name": "Pay Records",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "Financial records showing payments to guards, smugglers, and corrupt officials."
+  },
+  "phosphorescent_fungus": {
+    "name": "Phosphorescent Fungus",
+    "type": "equipment",
+    "cost_gp": 5,
+    "weight_gp": 1,
+    "properties": [
+      "material",
+      "underdark",
+      "light"
+    ],
+    "description": "A clump of glowing blue-green fungus from the Underdark. Provides dim light for several hours and is used in alchemical preparations."
+  },
+  "piton": {
+    "name": "Iron Spike/Piton",
+    "type": "equipment",
+    "cost_gp": 0.01,
+    "weight_gp": 5,
+    "description": "An iron spike for securing ropes or wedging doors."
+  },
+  "platinum_coins": {
+    "name": "Platinum Coins",
+    "type": "treasure",
+    "cost_gp": 200,
+    "weight_gp": 10,
+    "description": "A pouch of 20 platinum coins from various kingdoms\u2014spoils of successful raids."
+  },
+  "platinum_ring": {
+    "name": "Platinum Clan Ring",
+    "type": "treasure",
+    "cost_gp": 200,
+    "weight_gp": 0.1,
+    "properties": [
+      "treasure",
+      "dwarven",
+      "valuable",
+      "jewelry"
+    ],
+    "description": "A platinum ring bearing the seal of Clan Ironfast. Likely belonged to a high-ranking member. Extremely valuable."
+  },
+  "playing_cards": {
+    "name": "Playing Cards",
+    "type": "equipment",
+    "cost_gp": 0.5,
+    "weight_gp": 0.2,
+    "description": "A worn deck of playing cards left on a table mid-game."
+  },
+  "pole_10ft": {
+    "name": "Pole, 10 feet",
+    "type": "equipment",
+    "cost_gp": 0.2,
+    "weight_gp": 100,
+    "description": "A 10-foot wooden pole. Useful for probing for traps or testing floors."
+  },
+  "pony": {
+    "name": "Pony",
+    "type": "animal",
+    "cost_gp": 30,
+    "weight_gp": 0,
+    "movement_rate": 12,
+    "carrying_capacity_gp": 2000,
+    "description": "A small pony. Movement 12\", can carry up to 2000 gp weight."
+  },
+  "potion_greater_healing": {
+    "name": "Potion of Greater Healing",
+    "type": "consumable",
+    "cost_gp": 200,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "healing"
+    ],
+    "description": "A powerful healing potion that glows with golden light. (Game effect: Restores 4d4+4 HP)"
+  },
+  "pouch_belt": {
+    "name": "Pouch, Belt",
+    "type": "container",
+    "cost_gp": 1,
+    "weight_gp": 5,
+    "capacity_gp": 50,
+    "description": "A small leather pouch worn on the belt. Can hold up to 50 gp of weight."
+  },
+  "prayer_beads": {
+    "name": "Serpent Prayer Beads",
+    "type": "quest_item",
+    "cost_gp": 5,
+    "weight_gp": 0.5,
+    "properties": [
+      "quest",
+      "religious"
+    ],
+    "description": "Prayer beads carved with serpent symbols, used by cultists during meditation."
+  },
+  "precious_gems": {
+    "name": "Precious Gemstones",
+    "type": "treasure",
+    "cost_gp": 300,
+    "weight_gp": 2,
+    "properties": [
+      "treasure",
+      "gems",
+      "valuable"
+    ],
+    "description": "A collection of rubies, sapphires, and emeralds. Exquisitely cut by dwarven gem-smiths."
+  },
+  "precision_hammer": {
+    "name": "Precision Smithing Hammer",
+    "type": "tool",
+    "cost_gp": 50,
+    "weight_gp": 30,
+    "properties": [
+      "tool",
+      "dwarven",
+      "masterwork"
+    ],
+    "description": "A perfectly balanced hammer with a mithril head. Used for the finest detail work in weaponsmithing."
+  },
+  "preserved_organs": {
+    "name": "Preserved Organs",
+    "type": "equipment",
+    "cost_gp": 25,
+    "weight_gp": 3,
+    "properties": [
+      "serpent_cult",
+      "disturbing",
+      "magic"
+    ],
+    "description": "Human organs preserved by dark magic for ritual use. Deeply unsettling."
+  },
+  "prison_keys": {
+    "name": "Prison Cell Keys",
+    "type": "quest",
+    "cost_gp": 0,
+    "weight_gp": 10,
+    "description": "A ring of keys to the cult's prison cells. Free the captured orcs to gain their aid."
+  },
+  "prisoner_belongings": {
+    "name": "Prisoner's Belongings",
+    "type": "treasure",
+    "description": "Personal effects of enslaved victims - tragic mementos",
+    "weight": 2.0,
+    "cost": 15
+  },
+  "quill": {
+    "name": "Quill",
+    "type": "equipment",
+    "cost_gp": 0.01,
+    "weight_gp": 0,
+    "description": "A writing quill."
+  },
+  "quill_and_ink": {
+    "name": "Quill and Ink",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 0.5,
+    "properties": [
+      "writing",
+      "tool"
+    ],
+    "description": "A feather quill and a small ink pot. Standard writing implements."
+  },
+  "rat_pelt": {
+    "name": "Giant Rat Pelt",
+    "type": "trophy",
+    "cost_gp": 1,
+    "weight_gp": 5,
+    "properties": [
+      "trophy",
+      "sellable"
+    ],
+    "description": "The pelt of a giant rat. Has minimal value but can be sold."
+  },
+  "rations": {
+    "name": "Standard Rations (1 day)",
+    "type": "consumable",
+    "cost_gp": 0.5,
+    "weight_gp": 10,
+    "description": "One day's worth of preserved food - bread, dried meat, cheese."
+  },
+  "rations_iron": {
+    "name": "Rations, Iron (per day)",
+    "type": "consumable",
+    "cost_gp": 1,
+    "weight_gp": 10,
+    "description": "One day's worth of dried rations. Lasts 3 months without spoiling."
+  },
+  "rations_standard": {
+    "name": "Rations, Standard (per day)",
+    "type": "consumable",
+    "cost_gp": 0.5,
+    "weight_gp": 20,
+    "description": "One day's worth of preserved food (dried meat, hard bread, cheese)."
+  },
+  "recent_shipping_notice": {
+    "name": "Recent Shipping Notice",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A notice about a recent shipment scheduled for tonight. The warehouse is still active!"
+  },
+  "regional_map": {
+    "name": "Marked Regional Map",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "A map of the region marked with serpent symbols at various locations. Shows cult activity extending far beyond Oakhaven."
+  },
+  "ritual_blueprint": {
+    "name": "Ritual Blueprint",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult",
+      "critical"
+    ],
+    "description": "Detailed diagrams and instructions for the awakening ritual. Shows exactly what will happen when all ten keys are brought together at The Sanctum."
+  },
+  "ritual_calendar": {
+    "name": "Ritual Calendar",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult"
+    ],
+    "description": "A calendar marking important dates for serpent cult rituals. Shows the timing of key ceremonies and the convergence date when all ten keys must be brought together."
+  },
+  "ritual_chains": {
+    "name": "Ritual Chains",
+    "type": "equipment",
+    "cost_gp": 25,
+    "weight_gp": 15,
+    "properties": [
+      "tool",
+      "sinister",
+      "serpent_cult"
+    ],
+    "description": "Heavy iron chains used to bind sacrificial victims. Stained with blood and corroded."
+  },
+  "ritual_components": {
+    "name": "Ritual Components",
+    "type": "equipment",
+    "cost_gp": 75,
+    "weight_gp": 5,
+    "properties": [
+      "magic",
+      "serpent_cult",
+      "dark"
+    ],
+    "description": "Rare and disturbing components used in serpent cult rituals: powdered bones, preserved organs, dark herbs. Worth money to the right (wrong?) buyer."
+  },
+  "ritual_dagger": {
+    "name": "Ritual Dagger",
+    "type": "weapon",
+    "cost_gp": 10,
+    "weight_gp": 10,
+    "damage": "1d4",
+    "properties": [
+      "ritual",
+      "weapon"
+    ],
+    "description": "A simple dagger used in blood sacrifices. Bloodstained but functional."
+  },
+  "ritual_incense": {
+    "name": "Ritual Incense",
+    "type": "equipment",
+    "cost_gp": 5,
+    "weight_gp": 0.5,
+    "properties": [
+      "religious",
+      "consumable",
+      "serpent_cult"
+    ],
+    "description": "Strong-smelling incense used in cult ceremonies. The smoke forms serpent-like shapes."
+  },
+  "ritual_notes": {
+    "name": "Ritual Notes",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult"
+    ],
+    "description": "Notes describing serpent cult rituals and ceremonies. Evidence of dark practices."
+  },
+  "ritual_robes": {
+    "name": "Ritual Robes",
+    "type": "equipment",
+    "cost_gp": 25,
+    "weight_gp": 3,
+    "properties": [
+      "clothing",
+      "religious",
+      "serpent_cult"
+    ],
+    "description": "Elaborate robes worn during important cult ceremonies. Embroidered with gold thread and serpent scales."
+  },
+  "ritual_scroll": {
+    "name": "Ritual Scroll",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A scroll describing a dark ritual for summoning serpentine entities."
+  },
+  "ritual_scroll_darkness": {
+    "name": "Ritual Scroll: Darkness",
+    "type": "scroll",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "spell": "darkness",
+    "properties": [
+      "scroll",
+      "magic",
+      "quest"
+    ],
+    "description": "A dark ritual scroll that can cast the 'Darkness' spell once when read."
+  },
+  "rope": {
+    "name": "Rope, 50 feet",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 50,
+    "description": "50 feet of sturdy hemp rope."
+  },
+  "rope_100ft": {
+    "name": "Rope, 100 feet",
+    "type": "equipment",
+    "cost_gp": 2,
+    "weight_gp": 100,
+    "description": "100 feet of sturdy hemp rope."
+  },
+  "rope_50ft": {
+    "name": "Rope, 50 feet",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 50,
+    "description": "50 feet of sturdy hemp rope."
+  },
+  "rope_ladder": {
+    "name": "Rope Ladder",
+    "type": "equipment",
+    "cost_gp": 5,
+    "weight_gp": 80,
+    "description": "A portable rope ladder for descending into sewers or climbing out of pits."
+  },
+  "rotted_timber": {
+    "name": "Rotted Support Timber",
+    "type": "equipment",
+    "cost_gp": 0,
+    "weight_gp": 100,
+    "properties": [
+      "mundane",
+      "hazard"
+    ],
+    "description": "A piece of rotted wood from collapsed tunnel supports. Evidence of poor maintenance or sabotage."
+  },
+  "sack_large": {
+    "name": "Sack, Large",
+    "type": "container",
+    "cost_gp": 2,
+    "weight_gp": 10,
+    "capacity_gp": 600,
+    "description": "A large cloth or leather sack. Can hold up to 600 gp of weight."
+  },
+  "sack_small": {
+    "name": "Sack, Small",
+    "type": "container",
+    "cost_gp": 0.5,
+    "weight_gp": 5,
+    "capacity_gp": 200,
+    "description": "A small cloth or leather sack. Can hold up to 200 gp of weight."
+  },
+  "sacrificial_dagger": {
+    "name": "Serpent Sacrificial Dagger",
+    "type": "weapon",
+    "cost_gp": 50,
+    "weight_gp": 10,
+    "damage": "1d4",
+    "properties": [
+      "weapon",
+      "cursed",
+      "evil",
+      "religious"
+    ],
+    "description": "A wickedly curved dagger with a serpent-shaped hilt. Stained with the blood of innocents. Cursed, but functions as a weapon."
+  },
+  "scorched_parchment": {
+    "name": "Scorched Parchment",
+    "type": "misc",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "description": "Parchment damaged by heat. Edges are blackened and brittle."
+  },
+  "scroll_case": {
+    "name": "Scroll Case",
+    "type": "container",
+    "cost_gp": 1,
+    "weight_gp": 5,
+    "capacity_gp": 10,
+    "description": "A leather or wooden tube for storing scrolls and maps."
+  },
+  "second_key": {
+    "name": "Second Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 2."
+  },
+  "serpent_codex": {
+    "name": "Serpent Codex",
+    "type": "lore_item",
+    "cost_gp": 200,
+    "weight_gp": 5,
+    "properties": [
+      "lore",
+      "serpent_cult",
+      "valuable",
+      "ancient"
+    ],
+    "description": "An ancient tome describing serpent worship dating back millennia. Contains historical accounts, rituals, and prophecies. Valuable to scholars or collectors."
+  },
+  "serpent_crown": {
+    "name": "Crown of the Serpent King",
+    "type": "magic_item",
+    "cost_gp": 500,
+    "weight_gp": 3,
+    "properties": [
+      "magic",
+      "ancient",
+      "royal",
+      "serpent_cult"
+    ],
+    "description": "A golden crown shaped like a coiled serpent. Worn by ancient serpent kings. Radiates power and authority. (Game effect: +2 Charisma, command serpents)"
+  },
+  "serpent_eye_medallion": {
+    "name": "Serpent Eye Medallion",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": [
+      "quest",
+      "evidence"
+    ],
+    "description": "A medallion worn by members of the Serpent Eye cult, proving their allegiance."
+  },
+  "serpent_holy_symbol": {
+    "name": "Serpent Eye Holy Symbol",
+    "type": "quest_item",
+    "cost_gp": 25,
+    "weight_gp": 2,
+    "properties": [
+      "quest",
+      "religious",
+      "evil"
+    ],
+    "description": "A silver serpent eye symbol worn by high-ranking cultists. Radiates malevolence."
+  },
+  "serpent_idol": {
+    "name": "Serpent Idol",
+    "type": "quest_item",
+    "cost_gp": 25,
+    "weight_gp": 3,
+    "properties": [
+      "quest",
+      "religious",
+      "sellable"
+    ],
+    "description": "A small statue of a coiled serpent with ruby eyes. Used in cult devotions."
+  },
+  "serpent_ritual_texts": {
+    "name": "Serpent Cult Ritual Texts",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 3,
+    "properties": [
+      "lore",
+      "evil",
+      "religious",
+      "important"
+    ],
+    "description": "Blasphemous texts describing the cult's rituals for binding souls to serpent entities. Written in multiple languages including Undercommon and Common."
+  },
+  "serpent_robes": {
+    "name": "Serpent Eye Robes",
+    "type": "clothing",
+    "cost_gp": 10,
+    "weight_gp": 30,
+    "properties": [
+      "clothing",
+      "disguise"
+    ],
+    "description": "Hooded robes worn by Serpent Eye cultists, embroidered with serpent symbols. Could be used as a disguise."
+  },
+  "serpent_slayer_title": {
+    "name": "Title: Serpent Slayer",
+    "type": "quest_reward",
+    "cost_gp": 0,
+    "weight_gp": 0,
+    "properties": [
+      "quest",
+      "title",
+      "reward",
+      "permanent"
+    ],
+    "description": "The prestigious title 'Serpent Slayer' has been bestowed upon you for defeating the Serpent Eye cult and saving the realm from darkness."
+  },
+  "serpent_slayer_title_scroll": {
+    "name": "Scroll of the Serpent Slayer",
+    "type": "quest_reward",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "title",
+      "reward"
+    ],
+    "description": "An official proclamation granting the bearer the title 'Serpent Slayer' for defeating the cult and saving the realm."
+  },
+  "serpents_fang": {
+    "name": "The Serpent's Fang",
+    "type": "artifact",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "artifact",
+      "cursed",
+      "unique"
+    ],
+    "description": "A crystallized serpent fang pulsing with dark energy. Said to be a fragment of the Serpent God's power."
+  },
+  "seventh_key": {
+    "name": "Seventh Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 7."
+  },
+  "sewer_map": {
+    "name": "Sewer System Map",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.2,
+    "properties": [
+      "lore",
+      "map"
+    ],
+    "description": "A detailed map of Oakhaven's sewer system, showing how it connects to various buildings."
+  },
+  "shaman_amulet": {
+    "name": "Shaman's Protective Amulet",
+    "type": "quest",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "description": "A blessed amulet from the Bloodfang shaman. Provides protection from fire."
+  },
+  "shaman_prophecy": {
+    "name": "Shaman's Prophecy Scroll",
+    "type": "lore",
+    "cost_gp": 100,
+    "weight_gp": 1,
+    "description": "A prophecy from the Bloodfang shaman warning of the Serpent's coming. Written months before the cult attack."
+  },
+  "shipping_manifests": {
+    "name": "Shipping Manifests",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "Detailed manifests tracking every shipment through Silas's warehouse. Incriminating evidence."
+  },
+  "shipping_schedule": {
+    "name": "Shipping Schedule",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "A detailed schedule showing deliveries to Ironfast Outpost, Mire's Edge, and even the capital Eldoria. The conspiracy is vast!"
+  },
+  "shovel": {
+    "name": "Shovel",
+    "type": "tool",
+    "cost_gp": 2,
+    "weight_gp": 80,
+    "description": "A wooden-handled shovel with iron blade."
+  },
+  "silas_journal": {
+    "name": "Silas's Personal Journal",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "important"
+    ],
+    "description": "Silas's private journal detailing his dealings with the cult, his growing fear, and his escape plans. Confirms he was coerced but complicit."
+  },
+  "silas_seal": {
+    "name": "Silas's Merchant Seal",
+    "type": "quest_item",
+    "cost_gp": 25,
+    "weight_gp": 1,
+    "properties": [
+      "quest",
+      "valuable"
+    ],
+    "description": "Silas's official seal used to authenticate documents and shipments. Could be useful evidence."
+  },
+  "silver_50": {
+    "name": "50 Silver Pieces",
+    "type": "treasure",
+    "cost_gp": 5,
+    "weight_gp": 5,
+    "properties": [
+      "treasure",
+      "coins"
+    ],
+    "description": "A pouch containing 50 silver pieces (worth 5 gold)."
+  },
+  "silver_ingots": {
+    "name": "Silver Ingots",
+    "type": "treasure",
+    "cost_gp": 100,
+    "weight_gp": 50,
+    "properties": [
+      "treasure",
+      "metal",
+      "valuable"
+    ],
+    "description": "Bars of refined silver stamped with the Ironfast seal. Heavy but valuable."
+  },
+  "silver_ore": {
+    "name": "Silver Ore",
+    "type": "treasure",
+    "cost_gp": 10,
+    "weight_gp": 50,
+    "properties": [
+      "treasure",
+      "material",
+      "ore",
+      "valuable"
+    ],
+    "description": "High-quality silver ore. More valuable than common metals."
+  },
+  "silver_war_horn": {
+    "name": "Silver War Horn",
+    "type": "treasure",
+    "cost_gp": 175,
+    "weight_gp": 30,
+    "description": "A war horn made of silver, used to rally the clan. Its call once struck fear into settlers' hearts."
+  },
+  "sixth_key": {
+    "name": "Sixth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 6."
+  },
+  "slave_manifest": {
+    "name": "Slave Registry",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "disturbing"
+    ],
+    "description": "A ledger tracking enslaved dwarves. Lists names, ages, skills, and disposition. Some marked 'sent to dark altar' or 'transported to cult compound.'"
+  },
+  "smelting_tools": {
+    "name": "Smelting Equipment",
+    "type": "tool",
+    "cost_gp": 50,
+    "weight_gp": 150,
+    "properties": [
+      "tool",
+      "dwarven",
+      "smithing"
+    ],
+    "description": "Crucibles, ladles, and molds for smelting and refining ore. Heavy but valuable to a metalworker."
+  },
+  "smithing_tongs": {
+    "name": "Smithing Tongs",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 20,
+    "description": "Heavy iron tongs for handling hot metal in the forge."
+  },
+  "smuggler_codes": {
+    "name": "Smuggler's Code Book",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "tactical"
+    ],
+    "description": "A small book containing the coded symbols used by smugglers to mark safe routes and storage locations."
+  },
+  "smuggler_manifest": {
+    "name": "Smuggler's Manifest",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A manifest for a smuggling run, listing contraband and delivery routes."
+  },
+  "soul_gem": {
+    "name": "Soul Gem",
+    "type": "magic_item",
+    "cost_gp": 500,
+    "weight_gp": 1,
+    "properties": [
+      "magic",
+      "cursed",
+      "valuable"
+    ],
+    "description": "A black crystal that pulses with trapped souls. Worth a fortune to the right (wrong) buyer, but cursed."
+  },
+  "spell_scroll_cure_light_wounds": {
+    "name": "Spell Scroll: Cure Light Wounds",
+    "type": "scroll",
+    "cost_gp": 100,
+    "weight_gp": 0.1,
+    "spell": "cure_light_wounds",
+    "properties": [
+      "scroll",
+      "magic",
+      "healing"
+    ],
+    "description": "A divine scroll that can cast 'Cure Light Wounds' once when read by a cleric."
+  },
+  "spellbook_blank": {
+    "name": "Spellbook, Blank",
+    "type": "equipment",
+    "cost_gp": 15,
+    "weight_gp": 30,
+    "description": "A blank spellbook with 100 pages. Required for magic-users to record spells."
+  },
+  "stolen_goods": {
+    "name": "Stolen Goods",
+    "type": "treasure",
+    "cost_gp": 35,
+    "weight_gp": 25,
+    "description": "A collection of stolen items: jewelry, silverware, and fine textiles."
+  },
+  "strength_potion": {
+    "name": "Potion of Strength",
+    "type": "consumable",
+    "cost_gp": 150,
+    "weight_gp": 5,
+    "description": "A potion that temporarily increases strength by 2 for 1 hour."
+  },
+  "strongbox_key": {
+    "name": "Strongbox Key",
+    "type": "key",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "key",
+      "quest"
+    ],
+    "description": "A small brass key that opens the foreman's strongbox."
+  },
+  "sulfur_powder": {
+    "name": "Sulfur Powder",
+    "type": "equipment",
+    "cost_gp": 10,
+    "weight_gp": 5,
+    "description": "Yellow sulfur powder collected from volcanic vents. Highly flammable."
+  },
+  "supreme_leader_letter": {
+    "name": "Letter from the Supreme Leader",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult",
+      "critical"
+    ],
+    "description": "A personal letter from Valerius Krane, supreme leader of the Serpent Eye cult. Gives direct orders to Korvash and reveals the scope of the cult's plans."
+  },
+  "temple_history": {
+    "name": "Temple History Scroll",
+    "type": "lore_item",
+    "cost_gp": 25,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "historical",
+      "religious"
+    ],
+    "description": "A scroll documenting the temple's history: its construction, the earthquake that buried it, and its recent raising by the cult."
+  },
+  "tent_large": {
+    "name": "Tent, Large",
+    "type": "equipment",
+    "cost_gp": 25,
+    "weight_gp": 500,
+    "description": "A large tent for 4-6 people."
+  },
+  "tent_small": {
+    "name": "Tent, Small",
+    "type": "equipment",
+    "cost_gp": 5,
+    "weight_gp": 200,
+    "description": "A small tent for 1-2 people."
+  },
+  "tenth_key": {
+    "name": "Tenth Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "The final key bearing the serpent symbol, obtained from completing Episode 10."
+  },
+  "thieves_tools": {
+    "name": "Thieves' Tools",
+    "type": "tool",
+    "cost_gp": 30,
+    "weight_gp": 10,
+    "description": "A set of lockpicks, files, and other tools for thiefwork. Required for picking locks and disarming traps."
+  },
+  "third_key": {
+    "name": "Third Key of the Serpent",
+    "type": "quest_item",
+    "cost_gp": 0,
+    "weight_gp": 0.1,
+    "properties": [
+      "quest",
+      "key"
+    ],
+    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 3."
+  },
+  "thrain_logbook": {
+    "name": "Commander Thrain's Logbook",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "important",
+      "dwarven"
+    ],
+    "description": "The personal logbook of Ironfast's commander. Contains daily entries, troop movements, and notes about 'troubling reports from the deep mines.' The last entry, dated three weeks ago, mentions a meeting with a merchant who 'promised solutions to our supply problems.'"
+  },
+  "tinderbox": {
+    "name": "Tinderbox (flint & steel)",
+    "type": "equipment",
+    "cost_gp": 1,
+    "weight_gp": 5,
+    "description": "Flint, steel, and tinder for starting fires."
+  },
+  "torch": {
+    "name": "Torch",
+    "type": "light_source",
+    "cost_gp": 0.01,
+    "weight_gp": 10,
+    "burn_time_turns": 6,
+    "light_radius": 30,
+    "description": "A wooden stick wrapped in oil-soaked cloth. Burns for 1 hour (6 turns)."
+  },
+  "torture_notes": {
+    "name": "Torture Documentation",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "properties": [
+      "lore",
+      "evidence",
+      "disturbing"
+    ],
+    "description": "Disturbing notes detailing interrogation techniques and results. Lists prisoners and what information was extracted."
+  },
+  "trail_rations": {
+    "name": "Trail Rations (per week)",
+    "type": "consumable",
+    "cost_gp": 5,
+    "weight_gp": 140,
+    "description": "One week's worth of trail rations for wilderness travel."
+  },
+  "translation_notes": {
+    "name": "Translation Notes",
+    "type": "lore_item",
+    "cost_gp": 0,
+    "weight_gp": 2,
+    "properties": [
+      "lore",
+      "evidence",
+      "serpent_cult"
+    ],
+    "description": "Scholarly notes translating ancient serpent texts into common tongue. Reveals details about the ten keys and the ritual to awaken the Serpent Eye."
+  },
+  "tribal_war_mask": {
+    "name": "Bloodfang War Mask",
+    "type": "treasure",
+    "cost_gp": 200,
+    "weight_gp": 30,
+    "description": "An ornate war mask worn by Bloodfang champions. Painted in blood and ash, adorned with fangs and feathers."
+  },
+  "underdark_map": {
+    "name": "Underdark Passage Map",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "lore",
+      "map",
+      "underdark",
+      "important"
+    ],
+    "description": "A crude map showing the tunnel connecting Ironfast to the Underdark. Marked with duergar waystations and notes about 'reinforcements arriving weekly.'"
+  },
+  "unholy_symbol": {
+    "name": "Unholy Serpent Symbol",
+    "type": "equipment",
+    "cost_gp": 50,
+    "weight_gp": 1,
+    "properties": [
+      "religious",
+      "evil",
+      "serpent_cult"
+    ],
+    "description": "A dark iron symbol of the Serpent Eye cult. Radiates a faint aura of evil. Evil clerics could use this as an unholy symbol."
+  },
+  "urgot_treaty_offer": {
+    "name": "Urgot's Treaty Proposal",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "description": "The formal alliance offer from War-Chief Urgot. Sealed with his personal mark\u2014a bloody handprint."
+  },
+  "urgot_war_message": {
+    "name": "War-Chief Urgot's Message",
+    "type": "lore",
+    "cost_gp": 0,
+    "weight_gp": 1,
+    "description": "A message from Urgot: 'Hold the line. The alliance will prevail. Death to the Serpent Cult.' Written in blood on scorched parchment."
+  },
+  "urgot_warbanner": {
+    "name": "Urgot's Personal Banner",
+    "type": "quest",
+    "cost_gp": 0,
+    "weight_gp": 30,
+    "description": "Urgot's personal war banner. Planting this signals the Bloodfang to charge."
+  },
+  "vault_key": {
+    "name": "Clan Vault Key",
+    "type": "quest",
+    "cost_gp": 0,
+    "weight_gp": 5,
+    "description": "A massive iron key to the Bloodfang clan vault. Hot to the touch from volcanic heat."
+  },
+  "volcanic_coal": {
+    "name": "Volcanic Coal",
+    "type": "equipment",
+    "cost_gp": 10,
+    "weight_gp": 50,
+    "description": "Coal infused with volcanic minerals. Burns hotter and longer than normal coal."
+  },
+  "volcanic_diamond": {
+    "name": "Volcanic Diamond",
+    "type": "treasure",
+    "cost_gp": 1000,
+    "weight_gp": 1,
+    "description": "A flawless diamond formed deep within volcanic pressure. Worth a fortune."
+  },
+  "volcanic_glass_shard": {
+    "name": "Volcanic Glass Shards",
+    "type": "equipment",
+    "cost_gp": 5,
+    "weight_gp": 10,
+    "description": "Sharp obsidian shards from volcanic eruptions. Can be used for cutting or as arrowheads."
+  },
+  "volcanic_ritual_text": {
+    "name": "Volcanic Ritual Scroll",
+    "type": "lore",
+    "cost_gp": 25,
+    "weight_gp": 1,
+    "description": "Instructions for a dark ritual to awaken volcanic fury. Written in serpent cultist cipher."
+  },
+  "volcanic_ruby": {
+    "name": "Volcanic Ruby",
+    "type": "treasure",
+    "cost_gp": 500,
+    "weight_gp": 1,
+    "description": "A massive ruby with an inner glow like flowing lava. Warm to the touch even hours after leaving volcanic heat."
   },
   "wagon": {
     "name": "Wagon",
@@ -482,422 +2842,1668 @@
     "carrying_capacity_gp": 15000,
     "description": "A four-wheeled wagon. Requires 2 horses or 4 mules to pull. Can carry up to 15000 gp weight."
   },
-  "boots_levitation": {
-    "name": "Boots of Levitation",
-    "type": "magic_equipment",
-    "cost_gp": 1500,
-    "weight_gp": 2,
-    "properties": ["magic", "levitation"],
-    "description": "Enchanted boots that allow the wearer to levitate at will, rising or descending up to 20 feet per round."
-  },
-  "amulet_waterbreathing": {
-    "name": "Amulet of Waterbreathing",
-    "type": "magic_equipment",
-    "cost_gp": 1500,
-    "weight_gp": 0.1,
-    "properties": ["magic", "waterbreathing"],
-    "grants_waterbreathing": true,
-    "description": "A magical amulet that allows the wearer to breathe underwater indefinitely."
-  },
-  "serpents_fang": {
-    "name": "The Serpent's Fang",
-    "type": "artifact",
-    "cost_gp": 0,
-    "weight_gp": 0.5,
-    "properties": ["artifact", "cursed", "unique"],
-    "description": "A crystallized serpent fang pulsing with dark energy. Said to be a fragment of the Serpent God's power."
-  },
-  "legendary_weapon_choice": {
-    "name": "Legendary Weapon (Player's Choice)",
-    "type": "quest_reward",
-    "cost_gp": 0,
-    "weight_gp": 0,
-    "properties": ["legendary", "choice"],
-    "description": "A token representing the player's choice of one legendary weapon as a reward for completing the campaign."
-  },
-  "first_key": {
-    "name": "First Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 1."
-  },
-  "second_key": {
-    "name": "Second Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 2."
-  },
-  "third_key": {
-    "name": "Third Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 3."
-  },
-  "fourth_key": {
-    "name": "Fourth Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 4."
-  },
-  "fifth_key": {
-    "name": "Fifth Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 5."
-  },
-  "sixth_key": {
-    "name": "Sixth Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 6."
-  },
-  "seventh_key": {
-    "name": "Seventh Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 7."
-  },
-  "eighth_key": {
-    "name": "Eighth Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 8."
-  },
-  "ninth_key": {
-    "name": "Ninth Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "An ornate key bearing the serpent symbol, obtained from completing Episode 9."
-  },
-  "tenth_key": {
-    "name": "Tenth Key of the Serpent",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["quest", "key"],
-    "description": "The final key bearing the serpent symbol, obtained from completing Episode 10."
-  },
-  "serpent_eye_medallion": {
-    "name": "Serpent Eye Medallion",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.2,
-    "properties": ["quest", "evidence"],
-    "description": "A medallion worn by members of the Serpent Eye cult, proving their allegiance."
-  },
-  "kranes_journal": {
-    "name": "Krane's Journal",
-    "type": "quest_item",
+  "warehouse_inventory_list": {
+    "name": "Warehouse Inventory List",
+    "type": "lore",
     "cost_gp": 0,
     "weight_gp": 1,
-    "properties": ["quest", "lore"],
-    "description": "The personal journal of Valerius Krane, detailing his dark plans and the cult's hierarchy."
+    "properties": [
+      "lore",
+      "evidence"
+    ],
+    "description": "A detailed list of goods stored in the warehouse, including coded references to cursed items."
   },
-  "ritual_notes": {
-    "name": "Ritual Notes",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.5,
-    "properties": ["quest", "lore"],
-    "description": "Detailed notes describing the cult's dark rituals and summoning procedures."
-  },
-  "serpent_slayer_title_scroll": {
-    "name": "Scroll of the Serpent Slayer",
-    "type": "quest_reward",
+  "warning_scroll": {
+    "name": "Warning Scroll",
+    "type": "lore",
     "cost_gp": 0,
     "weight_gp": 0.1,
-    "properties": ["quest", "title", "reward"],
-    "description": "An official proclamation granting the bearer the title 'Serpent Slayer' for defeating the cult and saving the realm."
+    "properties": [
+      "lore",
+      "warning"
+    ],
+    "description": "A scroll warning not to enter the cursed vault without proper wards. The warning came too late."
   },
-  "serpent_slayer_title": {
-    "name": "Title: Serpent Slayer",
-    "type": "quest_reward",
-    "cost_gp": 0,
-    "weight_gp": 0,
-    "properties": ["quest", "title", "reward", "permanent"],
-    "description": "The prestigious title 'Serpent Slayer' has been bestowed upon you for defeating the Serpent Eye cult and saving the realm from darkness."
-  },
-  "healing_potion": {
-    "name": "Potion of Healing",
-    "type": "consumable",
-    "cost_gp": 50,
-    "weight_gp": 2,
-    "properties": ["consumable", "healing"],
-    "healing": "2d4+2",
-    "description": "A red liquid in a glass vial. Drinking this potion heals 2d4+2 hit points."
-  },
-  "bolts": {
-    "name": "Crossbow Bolts (20)",
-    "type": "ammunition",
-    "cost_gp": 2,
-    "weight_gp": 10,
-    "ammo_type": "quarrel",
-    "quantity": 20,
-    "description": "A quiver of 20 iron-tipped crossbow bolts."
-  },
-  "gold_coins": {
-    "name": "Gold Coins",
-    "type": "treasure",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["treasure", "coins"],
-    "description": "A pile of gold coins. Value varies."
-  },
-  "rat_pelt": {
-    "name": "Giant Rat Pelt",
-    "type": "trophy",
+  "waterlogged_crate": {
+    "name": "Waterlogged Crate",
+    "type": "equipment",
     "cost_gp": 1,
-    "weight_gp": 5,
-    "properties": ["trophy", "sellable"],
-    "description": "The pelt of a giant rat. Has minimal value but can be sold."
+    "weight_gp": 10,
+    "properties": [
+      "mundane",
+      "damaged"
+    ],
+    "description": "A wooden crate that's been submerged too long. Contents ruined, but the wood could be salvaged for something."
   },
   "waterlogged_journal": {
     "name": "Waterlogged Journal",
     "type": "lore",
     "cost_gp": 0,
     "weight_gp": 2,
-    "properties": ["lore", "quest"],
+    "properties": [
+      "lore",
+      "quest"
+    ],
     "description": "A badly water-damaged journal belonging to a long-dead adventurer. Describes the sewers and mentions 'something lurking in the deep water.'"
   },
-  "guard_schedule": {
-    "name": "Guard Rotation Schedule",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "properties": ["lore", "evidence"],
-    "description": "A parchment detailing the cultist guard rotations and patrol routes throughout the sewers."
-  },
-  "cult_scripture": {
-    "name": "Cult Scripture",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 2,
-    "properties": ["lore", "evidence"],
-    "description": "Religious texts of the Serpent Eye cult, describing their beliefs about 'the awakening' and the power of the Serpent."
-  },
-  "ritual_scroll": {
-    "name": "Ritual Scroll",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 0.5,
-    "properties": ["lore", "evidence"],
-    "description": "A scroll describing a dark ritual for summoning serpentine entities."
-  },
-  "quill_and_ink": {
-    "name": "Quill and Ink",
+  "waterskin": {
+    "name": "Waterskin",
     "type": "equipment",
     "cost_gp": 1,
-    "weight_gp": 1,
-    "description": "A feather quill and ink pot for writing."
+    "weight_gp": 4,
+    "properties": [
+      "mundane",
+      "container"
+    ],
+    "description": "A leather waterskin for carrying water. Holds about a gallon."
   },
-  "prayer_beads": {
-    "name": "Serpent Prayer Beads",
-    "type": "quest_item",
+  "weapon_blueprints": {
+    "name": "Dwarven Weapon Blueprints",
+    "type": "lore",
+    "cost_gp": 100,
+    "weight_gp": 5,
+    "properties": [
+      "lore",
+      "dwarven",
+      "valuable",
+      "technical"
+    ],
+    "description": "Detailed schematics for crafting dwarven weapons: axes, hammers, and the famous dwarven waraxe. A master smith could learn much from these."
+  },
+  "weapon_oil": {
+    "name": "Weapon Maintenance Oil",
+    "type": "equipment",
     "cost_gp": 5,
-    "weight_gp": 0.5,
-    "properties": ["quest", "religious"],
-    "description": "Prayer beads carved with serpent symbols, used by cultists during meditation."
+    "weight_gp": 5,
+    "description": "Oil for cleaning and maintaining weapons. Prevents rust and keeps edges sharp."
   },
-  "emerald_eyes": {
-    "name": "Emerald Serpent Eyes",
-    "type": "treasure",
-    "cost_gp": 500,
-    "weight_gp": 1,
-    "properties": ["treasure", "valuable", "gems"],
-    "description": "Two large emeralds carved to resemble serpent eyes, taken from a cult statue. Extremely valuable."
-  },
-  "gold_chalice": {
-    "name": "Gold Chalice",
-    "type": "treasure",
-    "cost_gp": 150,
-    "weight_gp": 20,
-    "properties": ["treasure", "valuable"],
-    "description": "An ornate gold chalice used in cult rituals. Bears serpent engravings."
-  },
-  "mysterious_key": {
-    "name": "Mysterious Serpent Key",
-    "type": "quest_item",
-    "cost_gp": 0,
-    "weight_gp": 0.5,
-    "properties": ["quest", "key"],
-    "description": "An unusual key found in the hidden shrine. Its purpose is unclear, but it bears the serpent symbol."
-  },
-  "cultist_roster": {
-    "name": "Cultist Roster",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 0.5,
-    "properties": ["lore", "evidence"],
-    "description": "A list of cult members' names and ranks. Many names are recognizable as Oakhaven citizens."
-  },
-  "merchant_ledger": {
-    "name": "The Merchant's Ledger",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 2,
-    "properties": ["lore", "evidence", "important"],
-    "description": "A ledger tracking shipments from 'The Merchant' (Silas) to the cult. Records weapons, supplies, and ritual components."
-  },
-  "torture_notes": {
-    "name": "Torture Documentation",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 1,
-    "properties": ["lore", "evidence", "disturbing"],
-    "description": "Disturbing notes detailing interrogation techniques and results. Lists prisoners and what information was extracted."
-  },
-  "incense": {
-    "name": "Ritual Incense",
-    "type": "consumable",
-    "cost_gp": 5,
-    "weight_gp": 1,
-    "properties": ["consumable", "ritual"],
-    "description": "Strange-smelling incense used in cult rituals. Burns with an acrid, green smoke."
-  },
-  "merchant_letters": {
-    "name": "Letters from The Merchant",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 0.5,
-    "properties": ["lore", "evidence", "important"],
-    "description": "Correspondence between the cult leader and 'The Merchant.' Discusses 'the awakening,' gathering sacrifices, and 'the ten keys.'"
-  },
-  "regional_map": {
-    "name": "Marked Regional Map",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 1,
-    "properties": ["lore", "evidence", "important"],
-    "description": "A map of the region marked with serpent symbols at various locations. Shows cult activity extending far beyond Oakhaven."
-  },
-  "serpent_idol": {
-    "name": "Serpent Idol",
-    "type": "quest_item",
-    "cost_gp": 25,
-    "weight_gp": 3,
-    "properties": ["quest", "religious", "sellable"],
-    "description": "A small statue of a coiled serpent with ruby eyes. Used in cult devotions."
-  },
-  "ceremonial_dagger": {
-    "name": "Ceremonial Serpent Dagger",
-    "type": "weapon",
-    "cost_gp": 50,
+  "whetstone": {
+    "name": "Whetstone",
+    "type": "equipment",
+    "cost_gp": 0.02,
     "weight_gp": 10,
-    "damage": "1d4",
-    "properties": ["ceremonial", "quest"],
-    "description": "An ornate dagger with a serpent-shaped hilt. Used in cult blood rituals, but functions as a weapon."
+    "description": "A stone for sharpening bladed weapons."
   },
-  "iron_chains": {
-    "name": "Iron Chains",
+  "whetstones": {
+    "name": "Volcanic Whetstones",
     "type": "equipment",
     "cost_gp": 3,
-    "weight_gp": 30,
-    "description": "Heavy iron chains used to restrain prisoners."
+    "weight_gp": 10,
+    "description": "Whetstones made from volcanic rock. Superior for sharpening blades."
   },
-  "iron_spikes": {
-    "name": "Iron Spikes (12)",
-    "type": "equipment",
-    "cost_gp": 1,
-    "weight_gp": 60,
-    "description": "A dozen iron spikes for securing ropes or wedging doors."
-  },
-  "rope": {
-    "name": "Rope, 50 feet",
-    "type": "equipment",
-    "cost_gp": 1,
-    "weight_gp": 50,
-    "description": "50 feet of sturdy hemp rope."
-  },
-  "rations": {
-    "name": "Standard Rations (1 day)",
+  "wine_quart": {
+    "name": "Wine (per quart)",
     "type": "consumable",
-    "cost_gp": 0.5,
-    "weight_gp": 10,
-    "description": "One day's worth of preserved food - bread, dried meat, cheese."
-  },
-  "ritual_scroll_darkness": {
-    "name": "Ritual Scroll: Darkness",
-    "type": "scroll",
-    "cost_gp": 0,
-    "weight_gp": 0.1,
-    "spell": "darkness",
-    "properties": ["scroll", "magic", "quest"],
-    "description": "A dark ritual scroll that can cast the 'Darkness' spell once when read."
-  },
-  "spell_scroll_cure_light_wounds": {
-    "name": "Spell Scroll: Cure Light Wounds",
-    "type": "scroll",
-    "cost_gp": 100,
-    "weight_gp": 0.1,
-    "spell": "cure_light_wounds",
-    "properties": ["scroll", "magic", "healing"],
-    "description": "A divine scroll that can cast 'Cure Light Wounds' once when read by a cleric."
-  },
-  "serpent_robes": {
-    "name": "Serpent Eye Robes",
-    "type": "clothing",
-    "cost_gp": 10,
+    "cost_gp": 0.2,
     "weight_gp": 30,
-    "properties": ["clothing", "disguise"],
-    "description": "Hooded robes worn by Serpent Eye cultists, embroidered with serpent symbols. Could be used as a disguise."
+    "description": "A quart of common wine."
   },
-  "ritual_dagger": {
-    "name": "Ritual Dagger",
-    "type": "weapon",
+  "wolfsbane": {
+    "name": "Wolfsbane (bunch)",
+    "type": "consumable",
     "cost_gp": 10,
-    "weight_gp": 10,
-    "damage": "1d4",
-    "properties": ["ritual", "weapon"],
-    "description": "A simple dagger used in blood sacrifices. Bloodstained but functional."
+    "weight_gp": 1,
+    "description": "A bunch of wolfsbane herb. Repels lycanthropes."
   },
-  "cult_documents": {
-    "name": "Cult Documents",
-    "type": "lore",
-    "cost_gp": 0,
-    "weight_gp": 2,
-    "properties": ["lore", "evidence", "important"],
-    "description": "A collection of letters, maps, and documents detailing the cult's structure, goals, and connections to larger conspiracy."
+  "residential_map": {
+    "name": "Residential District Map",
+    "type": "document",
+    "description": "A waterlogged map showing the layout of Ys'Thara's residential quarter",
+    "weight": 0.1,
+    "cost": 0
   },
-  "cell_key": {
-    "name": "Prison Cell Key",
-    "type": "key",
-    "cost_gp": 0,
-    "weight_gp": 0.2,
-    "properties": ["key", "quest"],
-    "description": "An iron key that opens the prison cells where the captives are held."
+  "family_locket": {
+    "name": "Family Locket",
+    "type": "treasure",
+    "description": "A silver locket with faded portraits of a family long dead",
+    "weight": 0.1,
+    "cost": 15
   },
-  "holy_symbol": {
-    "name": "Holy Symbol",
-    "type": "religious",
-    "cost_gp": 5,
-    "weight_gp": 2,
-    "properties": ["religious", "divine"],
-    "description": "A wooden holy symbol blessed by a temple priest. Required for clerics to turn undead and cast some divine spells."
+  "ghostly_diary": {
+    "name": "Ghostly Diary",
+    "type": "document",
+    "description": "The final journal of a Ys'Tharan citizen, describing the night the city sank",
+    "weight": 0.5,
+    "cost": 0
   },
-  "serpent_holy_symbol": {
-    "name": "Serpent Eye Holy Symbol",
+  "noble_signet_ring": {
+    "name": "Noble's Signet Ring",
+    "type": "treasure",
+    "description": "A gold ring bearing the seal of a Ys'Tharan merchant house",
+    "weight": 0.1,
+    "cost": 200
+  },
+  "preserved_painting": {
+    "name": "Preserved Painting",
+    "type": "treasure",
+    "description": "A remarkably preserved painting of Ys'Thara in its glory days",
+    "weight": 2.0,
+    "cost": 400
+  },
+  "merchant_ledger_ancient": {
+    "name": "Ancient Merchant Ledger",
+    "type": "document",
+    "description": "Trading records from a thousand years ago, showing the city's wealth",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "excavation_orders": {
+    "name": "Cult Excavation Orders",
+    "type": "document",
+    "description": "Detailed instructions from the cult leadership on artifact retrieval priorities",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "artifact_manifest": {
+    "name": "Artifact Manifest",
+    "type": "document",
+    "description": "A list of artifacts already recovered by the cult - reveals their goals",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "historical_tablets": {
+    "name": "Historical Stone Tablets",
+    "type": "document",
+    "description": "Waterproof tablets recording the complete history of Ys'Thara",
+    "weight": 5.0,
+    "cost": 0
+  },
+  "kings_final_decree": {
+    "name": "The King's Final Decree",
+    "type": "document",
+    "description": "The last king's proclamation, written the day before the city sank",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "aboleth_pact_scroll": {
+    "name": "Aboleth Pact Scroll",
+    "type": "document",
+    "description": "The actual contract between King Thalassar and the aboleth - sealed in blood",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "city_history_tome": {
+    "name": "City History Tome",
+    "type": "document",
+    "description": "A comprehensive history of Ys'Thara from founding to destruction",
+    "weight": 3.0,
+    "cost": 0
+  },
+  "aboleth_control_sigil": {
+    "name": "Aboleth Control Sigil",
     "type": "quest_item",
-    "cost_gp": 25,
-    "weight_gp": 2,
-    "properties": ["quest", "religious", "evil"],
-    "description": "A silver serpent eye symbol worn by high-ranking cultists. Radiates malevolence."
+    "description": "A psychic symbol used by the aboleth to mark its thralls",
+    "weight": 0.1,
+    "cost": 0
+  },
+  "cult_supply_crate": {
+    "name": "Cult Supply Crate",
+    "type": "container",
+    "description": "A waterproof crate containing diving supplies and rations",
+    "weight": 10.0,
+    "cost": 50
+  },
+  "silver_cutlery": {
+    "name": "Ancient Silver Cutlery",
+    "type": "treasure",
+    "description": "Tarnished but valuable silverware from a noble household",
+    "weight": 2.0,
+    "cost": 40
+  },
+  "old_coins_100": {
+    "name": "Old Gold Coins (100gp)",
+    "type": "treasure",
+    "description": "Ancient Ys'Tharan coins, valuable to collectors",
+    "weight": 2.0,
+    "cost": 100
+  },
+  "pearl_necklace_ancient": {
+    "name": "Ancient Pearl Necklace",
+    "type": "treasure",
+    "description": "A necklace of perfectly preserved black pearls",
+    "weight": 0.2,
+    "cost": 500
+  },
+  "market_coins_150": {
+    "name": "Market Coins (150gp)",
+    "type": "treasure",
+    "description": "Coins scattered throughout the old market",
+    "weight": 3.0,
+    "cost": 150
+  },
+  "stolen_chalice": {
+    "name": "Stolen Ceremonial Chalice",
+    "type": "treasure",
+    "description": "An ornate chalice stolen from a temple",
+    "weight": 1.0,
+    "cost": 200
+  },
+  "smuggled_gems_400": {
+    "name": "Smuggled Gemstones (400gp)",
+    "type": "treasure",
+    "description": "A pouch of valuable gems hidden by smugglers",
+    "weight": 0.5,
+    "cost": 400
+  },
+  "ancient_jewelry_500": {
+    "name": "Ancient Jewelry Collection (500gp)",
+    "type": "treasure",
+    "description": "Rings, bracelets, and necklaces from a smuggler's hoard",
+    "weight": 1.0,
+    "cost": 500
+  },
+  "royal_treasury_gold_1000": {
+    "name": "Royal Treasury Gold (1000gp)",
+    "type": "treasure",
+    "description": "A portion of the king's remaining treasure",
+    "weight": 20.0,
+    "cost": 1000
+  },
+  "platinum_ingots_500": {
+    "name": "Platinum Ingots (500gp)",
+    "type": "treasure",
+    "description": "Bars of pure platinum from the royal mint",
+    "weight": 5.0,
+    "cost": 500
+  },
+  "kings_treasure": {
+    "name": "The King's Personal Treasure",
+    "type": "treasure",
+    "description": "Royal regalia and priceless heirlooms",
+    "weight": 10.0,
+    "cost": 2000
+  },
+  "psionic_gem_1000": {
+    "name": "Psionic Crystal (1000gp)",
+    "type": "treasure",
+    "description": "A crystal that glows with psychic energy",
+    "weight": 0.5,
+    "cost": 1000
+  },
+  "cell_keys": {
+    "name": "Prison Cell Keys",
+    "type": "quest_item",
+    "description": "Keys to the mind-control cells",
+    "weight": 0.2,
+    "cost": 0
+  },
+  "coral_crown": {
+    "name": "Coral Crown of Ys'Thara",
+    "type": "treasure",
+    "description": "The king's crown, grown from living coral",
+    "weight": 1.0,
+    "cost": 1500
+  },
+  "royal_scepter": {
+    "name": "Royal Scepter",
+    "type": "treasure",
+    "description": "The king's ceremonial scepter, topped with a pearl",
+    "weight": 2.0,
+    "cost": 800
+  },
+  "throne_room_tapestry": {
+    "name": "Throne Room Tapestry",
+    "type": "treasure",
+    "description": "A magically preserved tapestry depicting the city's founding",
+    "weight": 5.0,
+    "cost": 600
+  },
+  "ancient_artifact": {
+    "name": "Ancient Magical Artifact",
+    "type": "magic_item",
+    "description": "A mysterious artifact of great power",
+    "weight": 1.0,
+    "cost": 5000
+  },
+  "aboleth_treasure_hoard": {
+    "name": "Aboleth's Treasure Hoard",
+    "type": "treasure",
+    "description": "Centuries of accumulated wealth and magical items",
+    "weight": 50.0,
+    "cost": 5000
+  },
+  "ancient_aboleth_artifact": {
+    "name": "Ancient Aboleth Artifact",
+    "type": "magic_item",
+    "description": "A psionic artifact created by the aboleth",
+    "weight": 2.0,
+    "cost": 3000
+  },
+  "mind_control_crown": {
+    "name": "Crown of Mind Control",
+    "type": "magic_item",
+    "description": "A crown that grants limited psionic powers (cursed - slowly enslaves wearer)",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "diving_equipment": {
+    "name": "Professional Diving Equipment",
+    "type": "equipment",
+    "description": "High-quality diving gear including weights, hoses, and tanks",
+    "weight": 20.0,
+    "cost": 100
+  },
+  "repair_tools": {
+    "name": "Diving Equipment Repair Tools",
+    "type": "equipment",
+    "description": "Tools for maintaining and repairing diving gear",
+    "weight": 5.0,
+    "cost": 25
+  },
+  "air_bladder": {
+    "name": "Air Bladder",
+    "type": "equipment",
+    "description": "An inflatable bladder for emergency ascent",
+    "weight": 2.0,
+    "cost": 15
+  },
+  "ancient_spices": {
+    "name": "Preserved Ancient Spices",
+    "type": "trade_goods",
+    "description": "Rare spices perfectly preserved by the cold water",
+    "weight": 1.0,
+    "cost": 50
+  },
+  "preserved_cloth": {
+    "name": "Preserved Silk Cloth",
+    "type": "trade_goods",
+    "description": "Bolts of silk still vibrant after a thousand years",
+    "weight": 3.0,
+    "cost": 75
+  },
+  "illegal_weapons_cache": {
+    "name": "Cache of Illegal Weapons",
+    "type": "equipment",
+    "description": "Smuggled military-grade weapons",
+    "weight": 50.0,
+    "cost": 500
+  },
+  "alchemical_substances": {
+    "name": "Illegal Alchemical Substances",
+    "type": "equipment",
+    "description": "Dangerous alchemical compounds banned on the surface",
+    "weight": 10.0,
+    "cost": 200
+  },
+  "smuggler_treasure_chest": {
+    "name": "Smuggler's Treasure Chest",
+    "type": "container",
+    "description": "A waterproof chest containing a smuggler's life savings",
+    "weight": 20.0,
+    "cost": 1000
+  },
+  "waterproof_scroll_case": {
+    "name": "Waterproof Scroll Case",
+    "type": "container",
+    "description": "A sealed case containing ancient scrolls",
+    "weight": 1.0,
+    "cost": 50
+  },
+  "bioluminescent_plant": {
+    "name": "Bioluminescent Kelp",
+    "type": "trade_goods",
+    "description": "Glowing underwater plants, valuable to alchemists",
+    "weight": 0.5,
+    "cost": 30
+  },
+  "palace_fountain_coin": {
+    "name": "Palace Fountain Coins",
+    "type": "treasure",
+    "description": "Coins tossed in the royal fountains for luck",
+    "weight": 0.5,
+    "cost": 25
+  },
+  "magic_ring": {
+    "name": "Magical Ring (unidentified)",
+    "type": "magic_item",
+    "description": "A ring with magical properties (needs identification)",
+    "weight": 0.1,
+    "cost": 500
+  },
+  "magic_trident": {
+    "name": "Trident of the Depths",
+    "type": "magic_item",
+    "description": "A +2 trident that grants waterbreathing to its wielder",
+    "weight": 4.0,
+    "cost": 3000
+  },
+  "waterbreathing_potion": {
+    "name": "Potion of Waterbreathing",
+    "type": "consumable",
+    "description": "Grants the ability to breathe underwater for 4 hours",
+    "weight": 0.1,
+    "cost": 300
+  },
+  "expensive_wine": {
+    "name": "Expensive Wine Bottles",
+    "type": "treasure",
+    "description": "Rare vintages from Krane's private collection",
+    "weight": 3.0,
+    "cost": 200
+  },
+  "cellar_key": {
+    "name": "Wine Cellar Key",
+    "type": "quest_item",
+    "description": "Key to Krane's wine cellar and secret entrance",
+    "weight": 0.1,
+    "cost": 1
+  },
+  "scattered_bones": {
+    "name": "Scattered Bones",
+    "type": "lore",
+    "description": "Human remains scattered throughout the catacombs",
+    "weight": 2.0,
+    "cost": 0
+  },
+  "tattered_robes": {
+    "name": "Tattered Robes",
+    "type": "lore",
+    "description": "Moth-eaten burial shrouds and cultist robes",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "defaced_tomb_marker": {
+    "name": "Defaced Tomb Marker",
+    "type": "lore",
+    "description": "Noble tomb markers vandalized with cult symbols",
+    "weight": 5.0,
+    "cost": 10
+  },
+  "family_crest": {
+    "name": "Noble Family Crest",
+    "type": "treasure",
+    "description": "Heraldic symbols of Eldoria's founding families",
+    "weight": 1.0,
+    "cost": 50
+  },
+  "noble_ring": {
+    "name": "Noble's Signet Ring",
+    "type": "treasure",
+    "description": "Gold ring bearing a merchant house seal",
+    "weight": 0.1,
+    "cost": 100
+  },
+  "bone_art": {
+    "name": "Bone Artwork",
+    "type": "lore",
+    "description": "Macabre geometric patterns made from thousands of bones",
+    "weight": 0.0,
+    "cost": 0
+  },
+  "death_god_idol": {
+    "name": "Death God Idol",
+    "type": "quest_item",
+    "description": "Statue of a forgotten deity, repurposed for serpent worship",
+    "weight": 3.0,
+    "cost": 150
+  },
+  "ancient_scroll_case": {
+    "name": "Ancient Scroll Case",
+    "type": "treasure",
+    "description": "Waterproofed case containing pre-Eldorian texts",
+    "weight": 0.5,
+    "cost": 75
+  },
+  "ancient_treasure_hoard": {
+    "name": "Ancient Treasure Hoard",
+    "type": "treasure",
+    "description": "Pre-Eldorian artifacts and treasures from the city that came before",
+    "weight": 10.0,
+    "cost": 600
+  },
+  "pre_eldorian_artifacts": {
+    "name": "Pre-Eldorian Artifacts",
+    "type": "lore",
+    "description": "Relics from the civilization that existed before Eldoria was founded",
+    "weight": 5.0,
+    "cost": 400
+  },
+  "magic_scroll": {
+    "name": "Ancient Magic Scroll",
+    "type": "magic_item",
+    "description": "A scroll with a random arcane spell",
+    "weight": 0.1,
+    "cost": 500
+  },
+  "guard_roster": {
+    "name": "Guard Roster",
+    "type": "lore",
+    "description": "Patrol schedules and duty assignments for cult guards",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "patrol_schedule": {
+    "name": "Patrol Schedule",
+    "type": "lore",
+    "description": "Detailed timing of guard patrols throughout the catacombs",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "practice_weapons": {
+    "name": "Practice Weapons",
+    "type": "equipment",
+    "description": "Wooden training weapons used by cultist warriors",
+    "weight": 3.0,
+    "cost": 5
+  },
+  "combat_training_manual": {
+    "name": "Combat Training Manual",
+    "type": "lore",
+    "description": "Military tactics and combat techniques taught to cult members",
+    "weight": 1.0,
+    "cost": 25
+  },
+  "quality_sword": {
+    "name": "Quality Longsword",
+    "type": "weapon",
+    "description": "Well-crafted steel longsword from the cult armory",
+    "weight": 4.0,
+    "cost": 25
+  },
+  "military_weapons_cache": {
+    "name": "Military Weapons Cache",
+    "type": "equipment",
+    "description": "Large stockpile of military-grade weapons and armor",
+    "weight": 50.0,
+    "cost": 1000
+  },
+  "stolen_guard_equipment": {
+    "name": "Stolen City Guard Equipment",
+    "type": "lore",
+    "description": "Weapons and armor stolen from Eldoria's city guard armory",
+    "weight": 30.0,
+    "cost": 500
+  },
+  "supply_manifest": {
+    "name": "Supply Manifest",
+    "type": "lore",
+    "description": "Detailed inventory of cult equipment and supplies",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "masterwork_armor": {
+    "name": "Masterwork Chainmail",
+    "type": "armor",
+    "description": "Expertly crafted chainmail (+1 AC bonus)",
+    "weight": 40.0,
+    "cost": 300
+  },
+  "personal_effects": {
+    "name": "Cultist Personal Effects",
+    "type": "lore",
+    "description": "Letters, trinkets, and belongings showing the cultists' former lives",
+    "weight": 2.0,
+    "cost": 10
+  },
+  "cult_recruitment_papers": {
+    "name": "Cult Recruitment Papers",
+    "type": "lore",
+    "description": "Documents detailing how the cult recruits new members",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "barracks_supplies": {
+    "name": "Barracks Supplies",
+    "type": "equipment",
+    "description": "Food, water, bedding, and basic supplies for cult members",
+    "weight": 10.0,
+    "cost": 50
+  },
+  "emergency_supplies": {
+    "name": "Emergency Supplies",
+    "type": "equipment",
+    "description": "Rations, rope, torches for Krane's emergency escape",
+    "weight": 5.0,
+    "cost": 25
+  },
+  "sewer_map": {
+    "name": "Eldoria Sewer Map",
+    "type": "lore",
+    "description": "Detailed map of the city's underground sewer system",
+    "weight": 0.5,
+    "cost": 50
+  },
+  "rope_ladder": {
+    "name": "Rope Ladder",
+    "type": "equipment",
+    "description": "Sturdy rope ladder for climbing",
+    "weight": 5.0,
+    "cost": 10
+  },
+  "supply_crates": {
+    "name": "Supply Crates",
+    "type": "equipment",
+    "description": "Large crates filled with food, weapons, and equipment",
+    "weight": 100.0,
+    "cost": 300
+  },
+  "multi_city_manifest": {
+    "name": "Multi-City Supply Manifest",
+    "type": "lore",
+    "description": "Supply chain documents revealing cult operations across three cities",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "alchemical_reagents": {
+    "name": "Alchemical Reagents",
+    "type": "equipment",
+    "description": "Chemical components for potions and alchemical experiments",
+    "weight": 3.0,
+    "cost": 150
+  },
+  "spell_components": {
+    "name": "Spell Components",
+    "type": "equipment",
+    "description": "Arcane materials needed for spellcasting",
+    "weight": 2.0,
+    "cost": 100
+  },
+  "prisoner_testimonies": {
+    "name": "Prisoner Testimonies",
+    "type": "lore",
+    "description": "Confessions extracted through torture",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "torture_instruments": {
+    "name": "Torture Instruments",
+    "type": "equipment",
+    "description": "Cruel devices used to inflict pain",
+    "weight": 20.0,
+    "cost": 50
+  },
+  "prison_keys": {
+    "name": "Prison Cell Keys",
+    "type": "quest_item",
+    "description": "Keys to the torture chamber cells",
+    "weight": 0.5,
+    "cost": 5
+  },
+  "dark_spellbooks": {
+    "name": "Dark Spellbooks",
+    "type": "lore",
+    "description": "Tomes of forbidden magic and summoning rituals",
+    "weight": 5.0,
+    "cost": 500
+  },
+  "ley_line_map": {
+    "name": "Ley Line Map",
+    "type": "lore",
+    "description": "Map showing magical ley lines converging beneath Eldoria",
+    "weight": 0.5,
+    "cost": 200
+  },
+  "ritual_notes": {
+    "name": "Ritual Notes",
+    "type": "lore",
+    "description": "Detailed instructions for dark magical rituals",
+    "weight": 1.0,
+    "cost": 100
+  },
+  "kranes_correspondence": {
+    "name": "Krane's Correspondence",
+    "type": "lore",
+    "description": "Letters revealing Krane's political machinations and conspiracies",
+    "weight": 2.0,
+    "cost": 0
+  },
+  "blackmail_evidence": {
+    "name": "Blackmail Evidence",
+    "type": "lore",
+    "description": "Compromising information on every noble family in Eldoria",
+    "weight": 3.0,
+    "cost": 0
+  },
+  "conspiracy_timeline": {
+    "name": "Conspiracy Timeline",
+    "type": "lore",
+    "description": "Documents tracing Krane's thirty-year rise to power",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "devil_contract_copy": {
+    "name": "Devil Contract (Copy)",
+    "type": "lore",
+    "description": "A copy of Krane's infernal pact",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "political_intelligence": {
+    "name": "Political Intelligence Reports",
+    "type": "lore",
+    "description": "Spy reports on Eldoria's government and nobility",
+    "weight": 2.0,
+    "cost": 0
+  },
+  "alchemical_equipment": {
+    "name": "Alchemical Equipment",
+    "type": "equipment",
+    "description": "Alembics, retorts, and apparatus for dark alchemy",
+    "weight": 15.0,
+    "cost": 400
+  },
+  "mutation_notes": {
+    "name": "Mutation Experiment Notes",
+    "type": "lore",
+    "description": "Horrifying records of Krane's experiments on living subjects",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "domination_potion": {
+    "name": "Potion of Domination",
+    "type": "consumable",
+    "description": "Mind-control potion (victim makes Will save DC 16 or be charmed for 8 hours)",
+    "weight": 0.5,
+    "cost": 800
+  },
+  "experimental_elixir": {
+    "name": "Experimental Mutagen",
+    "type": "consumable",
+    "description": "Unstable potion with unknown effects (+4 STR for 1 hour, then fatigued)",
+    "weight": 0.5,
+    "cost": 200
+  },
+  "platinum_bars": {
+    "name": "Platinum Ingots",
+    "type": "treasure",
+    "description": "Refined platinum bars from Krane's fortune",
+    "weight": 10.0,
+    "cost": 800
+  },
+  "gem_collection_1000": {
+    "name": "Gem Collection",
+    "type": "treasure",
+    "description": "Assortment of precious gemstones",
+    "weight": 1.0,
+    "cost": 1000
+  },
+  "art_treasures": {
+    "name": "Art Treasures",
+    "type": "treasure",
+    "description": "Paintings, sculptures, and objets d'art",
+    "weight": 20.0,
+    "cost": 600
+  },
+  "magic_ring_plus_2": {
+    "name": "Ring of Protection +2",
+    "type": "magic_item",
+    "description": "Grants +2 bonus to AC and saving throws",
+    "weight": 0.1,
+    "cost": 8000
+  },
+  "stolen_city_treasury": {
+    "name": "Stolen City Treasury Funds",
+    "type": "treasure",
+    "description": "Gold embezzled from Eldoria's public coffers",
+    "weight": 50.0,
+    "cost": 2000
+  },
+  "summoning_components": {
+    "name": "Summoning Components",
+    "type": "equipment",
+    "description": "Silver, blood, and rare materials for summoning devils",
+    "weight": 5.0,
+    "cost": 300
+  },
+  "infernal_runes": {
+    "name": "Infernal Rune Inscriptions",
+    "type": "lore",
+    "description": "Permanent magical inscriptions binding devils to service",
+    "weight": 0.0,
+    "cost": 0
+  },
+  "banishment_scroll": {
+    "name": "Scroll of Banishment",
+    "type": "magic_item",
+    "description": "Can banish a devil back to the Nine Hells (one use)",
+    "weight": 0.1,
+    "cost": 1000
+  },
+  "imp_binding_scroll": {
+    "name": "Imp Binding Scroll",
+    "type": "magic_item",
+    "description": "Magical contract for enslaving imps",
+    "weight": 0.1,
+    "cost": 500
+  },
+  "devil_cage": {
+    "name": "Devil Containment Cage",
+    "type": "equipment",
+    "description": "Iron cage inscribed with binding runes",
+    "weight": 100.0,
+    "cost": 1000
+  },
+  "imp_control_amulet": {
+    "name": "Imp Control Amulet",
+    "type": "magic_item",
+    "description": "Amulet that grants command over bound imps",
+    "weight": 0.5,
+    "cost": 600
+  },
+  "original_devil_contract": {
+    "name": "Original Devil Contract",
+    "type": "quest_item",
+    "description": "The true infernal pact binding Krane's soul to Hell",
+    "weight": 0.1,
+    "cost": 0
+  },
+  "kranes_signature": {
+    "name": "Krane's Blood Signature",
+    "type": "lore",
+    "description": "Krane's signature written in his own blood on the contract",
+    "weight": 0.0,
+    "cost": 0
+  },
+  "witness_seals": {
+    "name": "Devil Witness Seals",
+    "type": "lore",
+    "description": "Infernal seals from the devils who witnessed the pact",
+    "weight": 0.1,
+    "cost": 0
+  },
+  "soul_deed": {
+    "name": "Soul Deed",
+    "type": "quest_item",
+    "description": "Legal document transferring ownership of Krane's soul",
+    "weight": 0.1,
+    "cost": 0
+  },
+  "infernal_treasure": {
+    "name": "Infernal Treasure",
+    "type": "treasure",
+    "description": "Hell-forged coins and devil-made artifacts",
+    "weight": 5.0,
+    "cost": 1200
+  },
+  "resistance_charm_fire": {
+    "name": "Charm of Fire Resistance",
+    "type": "magic_item",
+    "description": "A small charm given by Archmage Elara. Reduces fire damage by 50% for 1 hour when activated.",
+    "weight": 0.1,
+    "cost": 500
+  },
+  "resistance_charm_cold": {
+    "name": "Charm of Cold Resistance",
+    "type": "magic_item",
+    "description": "A small charm that protects against extreme cold. Reduces cold damage by 50% for 1 hour.",
+    "weight": 0.1,
+    "cost": 500
+  },
+  "scroll_protection_elementals": {
+    "name": "Scroll of Protection from Elementals",
+    "type": "magic_item",
+    "description": "Creates a barrier that elementals cannot cross for 10 minutes. One use.",
+    "weight": 0.1,
+    "cost": 800
+  },
+  "journal_pyromancer_transformation": {
+    "name": "Pyromancer's Transformation Journal",
+    "type": "lore",
+    "description": "A cultist's diary detailing the painful process of transforming into living flame. 'Day 14: My skin burns. Day 30: I no longer feel pain. Day 50: I no longer feel anything but fire.'",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "potion_fire_resistance": {
+    "name": "Potion of Fire Resistance",
+    "type": "consumable",
+    "description": "Grants immunity to fire damage for 1 turn (10 minutes).",
+    "weight": 0.3,
+    "cost": 400
+  },
+  "flameblade_unfinished": {
+    "name": "Unfinished Flameblade",
+    "type": "weapon",
+    "description": "A sword still being forged in the elemental forge. The blade is half-molten, useless as a weapon but valuable to collectors.",
+    "weight": 3.0,
+    "cost": 300
+  },
+  "fire_elemental_gem": {
+    "name": "Fire Elemental Gem",
+    "type": "treasure",
+    "description": "A ruby that pulses with inner flame. Warm to the touch. Worth a fortune to mages.",
+    "weight": 0.2,
+    "cost": 800
+  },
+  "forge_notes": {
+    "name": "Elemental Forge Notes",
+    "type": "lore",
+    "description": "Instructions for crafting weapons infused with elemental power. The cult planned to arm an entire army.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "fire_keystone_shard": {
+    "name": "Fire Keystone Shard",
+    "type": "quest_item",
+    "description": "A fragment of the destroyed Fire Keystone. It still radiates heat. Evidence that one of the four anchors is broken.",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "staff_flame": {
+    "name": "Staff of Flame",
+    "type": "magic_item",
+    "description": "A staff that can cast Burning Hands 3 times per day. The Pyromancer's personal weapon.",
+    "weight": 4.0,
+    "cost": 1200
+  },
+  "robe_firewalking": {
+    "name": "Robe of Firewalking",
+    "type": "armor",
+    "description": "Robes that grant immunity to fire damage. AC bonus: +1. The Pyromancer wore these before he became flame itself.",
+    "weight": 2.0,
+    "cost": 1500
+  },
+  "journal_hydromancer_rituals": {
+    "name": "Hydromancer's Ritual Book",
+    "type": "lore",
+    "description": "Water-stained pages detail rituals to merge with water elementals. 'Breathe the ocean. Become the ocean. The Prince's waters will drown the world.'",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "pearl_giant": {
+    "name": "Giant Pearl",
+    "type": "treasure",
+    "description": "A pearl the size of a fist, perfectly smooth and luminous. Worth a king's ransom.",
+    "weight": 0.5,
+    "cost": 1000
+  },
+  "potion_water_breathing": {
+    "name": "Potion of Water Breathing",
+    "type": "consumable",
+    "description": "Allows breathing underwater for 1 hour. Tastes like the ocean.",
+    "weight": 0.3,
+    "cost": 300
+  },
+  "coral_branch_magical": {
+    "name": "Magical Coral Branch",
+    "type": "treasure",
+    "description": "A branch of living coral that glows softly in darkness. Valuable to underwater dwellers.",
+    "weight": 1.0,
+    "cost": 400
+  },
+  "trident_waves": {
+    "name": "Trident of the Waves",
+    "type": "weapon",
+    "description": "A trident that returns when thrown and deals +2 damage underwater. The Hydromancer's weapon.",
+    "weight": 4.0,
+    "cost": 1000
+  },
+  "shell_whispering": {
+    "name": "Whispering Shell",
+    "type": "magic_item",
+    "description": "A conch shell that, when held to the ear, whispers secrets of the deep. Can answer one question per day.",
+    "weight": 0.5,
+    "cost": 600
+  },
+  "water_keystone_shard": {
+    "name": "Water Keystone Shard",
+    "type": "quest_item",
+    "description": "A fragment of the destroyed Water Keystone. Water droplets bead on its surface endlessly.",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "cloak_waterbreathing": {
+    "name": "Cloak of Water breathing",
+    "type": "armor",
+    "description": "A cloak that allows the wearer to breathe underwater indefinitely. AC bonus: +1.",
+    "weight": 1.0,
+    "cost": 1800
+  },
+  "potion_healing_greater": {
+    "name": "Greater Potion of Healing",
+    "type": "consumable",
+    "description": "Restores 4d4+4 hit points when consumed.",
+    "weight": 0.3,
+    "cost": 500
+  },
+  "journal_geomancer_meditations": {
+    "name": "Geomancer's Meditations",
+    "type": "lore",
+    "description": "Stone tablets carved with the Geomancer's thoughts. 'To become stone is to become eternal. Flesh decays. Stone endures.'",
+    "weight": 5.0,
+    "cost": 0
+  },
+  "gem_earth_elemental": {
+    "name": "Earth Elemental Gem",
+    "type": "treasure",
+    "description": "A topaz that seems to contain moving grains of sand. Highly valued by geomancers.",
+    "weight": 0.3,
+    "cost": 700
+  },
+  "stone_gravity_anchor": {
+    "name": "Gravity Anchor Stone",
+    "type": "magic_item",
+    "description": "A stone that, when held, prevents the bearer from being moved by external forces. Useful in the Elemental Chaos.",
+    "weight": 2.0,
+    "cost": 600
+  },
+  "crystal_prism_large": {
+    "name": "Large Crystal Prism",
+    "type": "treasure",
+    "description": "A massive prism that refracts light into impossible colors. Mages would pay dearly for this.",
+    "weight": 3.0,
+    "cost": 900
+  },
+  "hammer_earthshatter": {
+    "name": "Earthshatter Hammer",
+    "type": "weapon",
+    "description": "A warhammer that deals +2 damage and shatters stone on a natural 20. The Geomancer's weapon.",
+    "weight": 8.0,
+    "cost": 1100
+  },
+  "gem_diamond_huge": {
+    "name": "Huge Diamond",
+    "type": "treasure",
+    "description": "A flawless diamond the size of a hen's egg. One of the most valuable gems in existence.",
+    "weight": 0.2,
+    "cost": 1500
+  },
+  "earth_keystone_shard": {
+    "name": "Earth Keystone Shard",
+    "type": "quest_item",
+    "description": "A fragment of the destroyed Earth Keystone. Heavy as lead, hard as diamond.",
+    "weight": 1.5,
+    "cost": 0
+  },
+  "belt_stone_giant_strength": {
+    "name": "Belt of Stone Giant Strength",
+    "type": "magic_item",
+    "description": "Grants the wearer Strength 20 (stone giant strength). The Geomancer's belt.",
+    "weight": 1.0,
+    "cost": 2000
+  },
+  "shield_crystal": {
+    "name": "Crystal Shield",
+    "type": "armor",
+    "description": "A shield made of hardened crystal. AC bonus: +2. Reflects light in dazzling patterns.",
+    "weight": 8.0,
+    "cost": 800
+  },
+  "journal_aeromancer_flight": {
+    "name": "Aeromancer's Flight Journal",
+    "type": "lore",
+    "description": "Pages that flutter constantly as if in a breeze. 'I am becoming air. My body grows light. Soon I will fly forever.'",
+    "weight": 0.2,
+    "cost": 0
+  },
+  "feather_giant_eagle": {
+    "name": "Giant Eagle Feather",
+    "type": "treasure",
+    "description": "A feather from a giant eagle, as long as a sword. Light as air. Collectors prize these.",
+    "weight": 0.1,
+    "cost": 300
+  },
+  "rope_cloud_walking": {
+    "name": "Cloud-Walking Rope",
+    "type": "magic_item",
+    "description": "A rope that becomes solid when thrown, creating a bridge through the air. 50 feet long.",
+    "weight": 2.0,
+    "cost": 700
+  },
+  "lightning_rod_charged": {
+    "name": "Charged Lightning Rod",
+    "type": "magic_item",
+    "description": "A metal rod crackling with electricity. Can cast Lightning Bolt once before discharging.",
+    "weight": 1.5,
+    "cost": 800
+  },
+  "storm_gem": {
+    "name": "Storm Gem",
+    "type": "treasure",
+    "description": "An opal that contains a miniature thunderstorm. Lightning flickers inside it constantly.",
+    "weight": 0.2,
+    "cost": 850
+  },
+  "cloak_wind_walker": {
+    "name": "Cloak of the Wind Walker",
+    "type": "armor",
+    "description": "A cloak that billows constantly. Grants Feather Fall at will. AC bonus: +1.",
+    "weight": 0.5,
+    "cost": 1600
+  },
+  "air_keystone_shard": {
+    "name": "Air Keystone Shard",
+    "type": "quest_item",
+    "description": "A fragment of the destroyed Air Keystone. It floats if not held down.",
+    "weight": 0.1,
+    "cost": 0
+  },
+  "bow_wind": {
+    "name": "Wind Bow",
+    "type": "weapon",
+    "description": "A bow made of solidified air. Arrows fired from it never miss due to wind. +2 to hit. The Aeromancer's weapon.",
+    "weight": 2.0,
+    "cost": 1300
+  },
+  "arrows_lightning": {
+    "name": "Lightning Arrows (20)",
+    "type": "ammunition",
+    "description": "Arrows that crackle with electricity. Deal +1d6 lightning damage. Quiver of 20.",
+    "weight": 1.0,
+    "cost": 400
+  },
+  "research_notes_transformation": {
+    "name": "Transformation Research Notes",
+    "type": "lore",
+    "description": "Horrifying notes on the cult's experiments. 'Subject 47: Transformation to fire successful. Subject 48: Transformation to water failed—drowned in own body. Subject 49: Partial earth transformation—subject still screaming but cannot speak.'",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "vial_elemental_essence": {
+    "name": "Vial of Elemental Essence",
+    "type": "magic_item",
+    "description": "A vial containing pure elemental energy. Swirling fire, water, earth, and air. Dangerously unstable.",
+    "weight": 0.3,
+    "cost": 1000
+  },
+  "journal_mad_cultist": {
+    "name": "Mad Cultist's Journal",
+    "type": "lore",
+    "description": "Increasingly deranged writings. 'The Prince will remake us all. Flesh is weakness. The elements are purity. I welcome the transformation. I WELCOME IT!'",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "scroll_polymorph": {
+    "name": "Scroll of Polymorph",
+    "type": "magic_item",
+    "description": "A spell scroll containing the Polymorph spell. One use.",
+    "weight": 0.1,
+    "cost": 600
+  },
+  "potion_healing": {
+    "name": "Potion of Healing",
+    "type": "consumable",
+    "description": "Restores 2d4+2 hit points when consumed.",
+    "weight": 0.3,
+    "cost": 200
+  },
+  "sword_elemental_fury": {
+    "name": "Sword of Elemental Fury",
+    "type": "weapon",
+    "description": "A longsword that shifts between fire, water, earth, and air. +2 weapon. Can change damage type as a free action.",
+    "weight": 4.0,
+    "cost": 2500
+  },
+  "armor_elemental_plate": {
+    "name": "Elemental Plate Armor",
+    "type": "armor",
+    "description": "Plate mail infused with all four elements. AC 18 (-2). Grants resistance to fire, cold, lightning, and acid.",
+    "weight": 50.0,
+    "cost": 3000
+  },
+  "shield_chaos": {
+    "name": "Shield of Chaos",
+    "type": "armor",
+    "description": "A shield that shifts appearance constantly. AC bonus: +3. Once per day, can reflect a spell back at its caster.",
+    "weight": 10.0,
+    "cost": 2000
+  },
+  "gloves_elemental_command": {
+    "name": "Gloves of Elemental Command",
+    "type": "magic_item",
+    "description": "Gloves that allow the wearer to command one type of elemental (choose fire, water, earth, or air when found). +4 to all checks to command that element type.",
+    "weight": 0.5,
+    "cost": 1800
+  },
+  "crown_elemental_mastery": {
+    "name": "Crown of Elemental Mastery",
+    "type": "magic_item",
+    "description": "A crown that grants the wearer +2 to all saves against elemental effects and the ability to cast Conjure Elemental once per day.",
+    "weight": 1.0,
+    "cost": 3500
+  },
+  "orb_chaos": {
+    "name": "Orb of Chaos",
+    "type": "magic_item",
+    "description": "An orb that contains a fragment of the Elemental Chaos. Gazing into it shows impossible realities. Can cast Confusion once per day.",
+    "weight": 2.0,
+    "cost": 2500
+  },
+  "gem_planar_essence": {
+    "name": "Gem of Planar Essence",
+    "type": "treasure",
+    "description": "A gem that contains the essence of the Elemental Plane. Invaluable to planar scholars and worth a fortune.",
+    "weight": 0.5,
+    "cost": 2000
+  },
+  "staff_four_winds": {
+    "name": "Staff of the Four Winds",
+    "type": "magic_item",
+    "description": "A staff that can summon wind, rain, lightning, or fog at will. +1 weapon. Usable by wizards and clerics.",
+    "weight": 4.0,
+    "cost": 2800
+  },
+  "herald_crown": {
+    "name": "Herald's Crown",
+    "type": "magic_item",
+    "description": "The crown worn by the Elemental Herald. Grants immunity to one element type (choose when attuned) and +3 to AC. A powerful artifact.",
+    "weight": 1.5,
+    "cost": 4000
+  },
+  "healing_potion_greater": {
+    "name": "Greater Potion of Healing",
+    "type": "consumable",
+    "description": "A superior healing potion. Restores 4d4+4 hit points when consumed.",
+    "weight": 0.3,
+    "cost": 500
+  },
+  "resistance_charm_poison": {
+    "name": "Charm of Poison Resistance",
+    "type": "magic_item",
+    "description": "A protective charm. Grants +4 bonus to saving throws vs poison while worn.",
+    "weight": 0.1,
+    "cost": 600
+  },
+  "map_temple_layout": {
+    "name": "Temple Layout Map",
+    "type": "lore",
+    "description": "A detailed map of the temple complex showing the major chambers and passages. The cultists used this for navigation.",
+    "weight": 0.2,
+    "cost": 0
+  },
+  "journal_cultist_final_days": {
+    "name": "Cultist's Final Journal",
+    "type": "lore",
+    "description": "The last journal of a cultist. 'Tonight is the night. The ritual is prepared. The Serpent Eye will awaken and the world will change forever. I am honored to witness this moment.'",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "cult_records_complete": {
+    "name": "Complete Cult Records",
+    "type": "lore",
+    "description": "Comprehensive records of the cult's operations across Aerthos. Details of kidnappings, ritual sacrifices, and political manipulation spanning decades. The full scope is staggering.",
+    "weight": 3.0,
+    "cost": 0
+  },
+  "list_cult_members": {
+    "name": "List of Cult Members",
+    "type": "lore",
+    "description": "A list of all cult members across Aerthos. Names, locations, ranks. Some names are shocking—nobles, merchants, even town officials. The conspiracy ran deep.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "evidence_conspiracy": {
+    "name": "Conspiracy Evidence",
+    "type": "quest_item",
+    "description": "Damning evidence of the cult's conspiracy. Letters, contracts, and confessions implicating powerful figures. This could shake the foundations of Aerthos society.",
+    "weight": 2.0,
+    "cost": 0
+  },
+  "scroll_dispel_magic": {
+    "name": "Scroll of Dispel Magic",
+    "type": "magic_item",
+    "description": "A spell scroll containing the Dispel Magic spell. One use. Cancels magical effects and dispels summoned creatures.",
+    "weight": 0.1,
+    "cost": 700
+  },
+  "book_serpent_prophecy": {
+    "name": "The Serpent Eye - History and Prophecy",
+    "type": "lore",
+    "description": "An ancient book detailing the entity's imprisonment millennia ago and prophecies of its return. 'When the ten keys are reunited, the prison shall shatter, and chaos shall reign eternal.'",
+    "weight": 2.0,
+    "cost": 0
+  },
+  "tome_forbidden_summoning": {
+    "name": "Tome of Forbidden Summoning",
+    "type": "lore",
+    "description": "A dangerous book containing rituals for summoning and binding entities from beyond. The knowledge within should have been destroyed centuries ago.",
+    "weight": 3.0,
+    "cost": 0
+  },
+  "scroll_protection_evil": {
+    "name": "Scroll of Protection from Evil",
+    "type": "magic_item",
+    "description": "A spell scroll containing the Protection from Evil spell. One use. Creates a barrier against evil creatures.",
+    "weight": 0.1,
+    "cost": 400
+  },
+  "staff_serpent_command": {
+    "name": "Staff of Serpent Command",
+    "type": "magic_item",
+    "description": "A staff topped with a serpent's head. Grants the ability to command snakes and serpentine creatures. +1 weapon. Usable by wizards and clerics.",
+    "weight": 4.0,
+    "cost": 1800
+  },
+  "vial_vision_water": {
+    "name": "Vial of Vision Water",
+    "type": "consumable",
+    "description": "Water from the scrying pool. Drinking it grants brief visions of other worlds and realities. May provide insight, or drive one mad.",
+    "weight": 0.2,
+    "cost": 300
+  },
+  "meditation_cushion_silk": {
+    "name": "Silk Meditation Cushion",
+    "type": "treasure",
+    "description": "An expensive silk cushion used for meditation. Worth a good sum to the right buyer.",
+    "weight": 2.0,
+    "cost": 50
+  },
+  "incense_rare": {
+    "name": "Rare Incense",
+    "type": "treasure",
+    "description": "Exotic incense from distant lands. The scent is intoxicating and valuable.",
+    "weight": 0.5,
+    "cost": 100
+  },
+  "serpent_idol_gold": {
+    "name": "Golden Serpent Idol",
+    "type": "treasure",
+    "description": "A solid gold idol of a coiled serpent. Heavy and valuable. The eyes are set with rubies.",
+    "weight": 10.0,
+    "cost": 1000
+  },
+  "offering_bowl_enchanted": {
+    "name": "Enchanted Offering Bowl",
+    "type": "magic_item",
+    "description": "A ceremonial bowl with protective enchantments. Grants +2 to saving throws vs poison when carried.",
+    "weight": 2.0,
+    "cost": 800
+  },
+  "prayer_beads_serpent": {
+    "name": "Serpent Prayer Beads",
+    "type": "treasure",
+    "description": "Prayer beads carved with serpent motifs. Made of jade and onyx. Valuable to collectors.",
+    "weight": 0.3,
+    "cost": 150
+  },
+  "ritual_dagger_serpent": {
+    "name": "Serpent Ritual Dagger",
+    "type": "weapon",
+    "description": "A ceremonial dagger with a serpent-wrapped hilt. Sharp and deadly. +1 weapon. Damage: 1d4+1.",
+    "weight": 1.0,
+    "cost": 500
+  },
+  "ceremonial_robe": {
+    "name": "Ceremonial Robe",
+    "type": "armor",
+    "description": "A fine robe worn for cult rituals. Provides minimal protection but is valuable. AC bonus: +1.",
+    "weight": 3.0,
+    "cost": 100
+  },
+  "chalk_ritual": {
+    "name": "Ritual Chalk",
+    "type": "consumable",
+    "description": "Special chalk for drawing ritual circles and symbols. Infused with powdered silver.",
+    "weight": 0.5,
+    "cost": 50
+  },
+  "notes_final_ritual": {
+    "name": "Final Ritual Notes",
+    "type": "lore",
+    "description": "Detailed notes for the final ritual. Timing, positions, incantations. 'Midnight tonight. Three hours remain. The Serpent Eye awakens.'",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "key_pedestal_empty": {
+    "name": "Empty Key Pedestal",
+    "type": "lore",
+    "description": "One of ten pedestals that once held the keys. Now empty—you carry nine keys, and the tenth is in the inner sanctum.",
+    "weight": 0.0,
+    "cost": 0
+  },
+  "records_key_recovery": {
+    "name": "Key Recovery Records",
+    "type": "lore",
+    "description": "Detailed records of each key's recovery by the cult. Your own adventures are documented here: 'Heroes recovered fourth key—eliminated.' Except you survived.",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "map_all_locations": {
+    "name": "Map of All Key Locations",
+    "type": "lore",
+    "description": "A map showing where all ten keys were originally hidden across Aerthos. A historical document of the cult's decades-long quest.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "longsword_plus_1": {
+    "name": "Longsword +1",
+    "type": "weapon",
+    "description": "A well-crafted longsword with minor enchantment. +1 to hit and damage. Damage: 1d8+1 (S/M) or 1d12+1 (L).",
+    "weight": 4.0,
+    "cost": 1000
+  },
+  "shield_serpent": {
+    "name": "Shield of the Serpent",
+    "type": "armor",
+    "description": "A shield emblazoned with the serpent cult symbol. Well-made despite its origin. AC bonus: +1.",
+    "weight": 10.0,
+    "cost": 200
+  },
+  "chainmail_plus_1": {
+    "name": "Chainmail +1",
+    "type": "armor",
+    "description": "Enchanted chainmail armor. Provides excellent protection. AC 14 (AC 4 in AD&D). Armor bonus: +1.",
+    "weight": 40.0,
+    "cost": 1500
+  },
+  "arrows_20": {
+    "name": "20 Arrows",
+    "type": "ammunition",
+    "description": "A quiver of 20 arrows. Standard ammunition for longbows and shortbows.",
+    "weight": 1.5,
+    "cost": 2
+  },
+  "training_manual": {
+    "name": "Combat Training Manual",
+    "type": "lore",
+    "description": "The cult's training manual for combat drills. Detailed instructions on formations, weapon techniques, and tactics. Explains their discipline.",
+    "weight": 2.0,
+    "cost": 0
+  },
+  "whetstone": {
+    "name": "Whetstone",
+    "type": "consumable",
+    "description": "A stone for sharpening blades. Keeps weapons in good condition.",
+    "weight": 0.5,
+    "cost": 1
+  },
+  "weapon_oil": {
+    "name": "Weapon Oil",
+    "type": "consumable",
+    "description": "Oil for maintaining weapons. Prevents rust and keeps blades sharp.",
+    "weight": 0.3,
+    "cost": 5
+  },
+  "torture_implements": {
+    "name": "Torture Implements",
+    "type": "lore",
+    "description": "Horrific tools of torture. You choose not to take them, but their presence is evidence of the cult's cruelty.",
+    "weight": 0.0,
+    "cost": 0
+  },
+  "bloodstained_notes": {
+    "name": "Bloodstained Notes",
+    "type": "lore",
+    "description": "Notes from torture sessions. Names, confessions extracted under duress, broken wills. Grim reading.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "cell_keys": {
+    "name": "Prison Cell Keys",
+    "type": "quest_item",
+    "description": "Keys to the prison cells. You used these to free the captives. A small victory amidst the horror.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "prisoner_testimony": {
+    "name": "Prisoner Testimony",
+    "type": "lore",
+    "description": "Testimony from freed prisoners. Accounts of kidnappings, torture, and the cult's plans. Valuable evidence.",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "serpent_scale_armor": {
+    "name": "Serpent Scale Armor",
+    "type": "armor",
+    "description": "Armor made from actual serpent scales, enchanted for protection. AC 16 (AC 2 in AD&D). Grants resistance to poison. +2 armor.",
+    "weight": 35.0,
+    "cost": 3000
+  },
+  "greatsword_cursed": {
+    "name": "Cursed Greatsword",
+    "type": "weapon",
+    "description": "A powerful greatsword wreathed in dark energy. +2 weapon, but cursed—wielder takes 1 damage per hit delivered. Damage: 2d6+2.",
+    "weight": 10.0,
+    "cost": 1500
+  },
+  "champion_trophy": {
+    "name": "Champion's Trophy",
+    "type": "treasure",
+    "description": "A trophy awarded to the cult champion. Proof of your victory. Gold and jewels.",
+    "weight": 3.0,
+    "cost": 500
+  },
+  "staff_high_priest": {
+    "name": "High Priest's Staff",
+    "type": "magic_item",
+    "description": "The staff wielded by the cult's high priest. +2 weapon. Grants +1 to spell save DCs. Usable by clerics.",
+    "weight": 4.0,
+    "cost": 2500
+  },
+  "ward_breaker_scroll": {
+    "name": "Ward Breaker Scroll",
+    "type": "magic_item",
+    "description": "A scroll for breaking magical wards and barriers. One use. Dispels wards up to 10th level.",
+    "weight": 0.1,
+    "cost": 800
+  },
+  "voice_journal": {
+    "name": "The Serpent's Voice - Personal Journal",
+    "type": "lore",
+    "description": "The cult leader's personal journal. Thirty years of obsession. 'I discovered the truth—the Serpent Eye exists, and I will free it. This world deserves chaos. I will be its herald.'",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "serpent_crown": {
+    "name": "Crown of the Serpent's Voice",
+    "type": "magic_item",
+    "description": "The crown worn by the cult leader. Grants +2 to Charisma and immunity to charm effects. A symbol of dark authority.",
+    "weight": 1.5,
+    "cost": 2000
+  },
+  "robe_voice": {
+    "name": "Robe of the Serpent's Voice",
+    "type": "armor",
+    "description": "The ceremonial robe of the cult leader. Provides magical protection. AC 15 (AC 3 in AD&D). Grants +2 to all saving throws.",
+    "weight": 4.0,
+    "cost": 2500
+  },
+  "treasure_hoard": {
+    "name": "Treasure Hoard",
+    "type": "treasure",
+    "description": "A massive collection of gold, gems, jewelry, and art objects. The cult's accumulated wealth. Worth 5000 gold pieces.",
+    "weight": 50.0,
+    "cost": 5000
+  },
+  "legendary_weapon_choice": {
+    "name": "Legendary Weapon of Your Choice",
+    "type": "magic_item",
+    "description": "A legendary weapon forged to slay the Serpent Eye. Choose: Longsword, Greatsword, Warhammer, or Battleaxe. +3 weapon. Deals double damage to chaotic evil creatures. The ultimate reward.",
+    "weight": 5.0,
+    "cost": 5000
+  },
+  "serpent_slayer_title_scroll": {
+    "name": "Serpent Slayer Title Scroll",
+    "type": "quest_item",
+    "description": "An official scroll proclaiming you as the 'Serpent Slayer'—the hero who prevented the apocalypse. Your deeds will be remembered forever.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "tenth_key_shattered": {
+    "name": "The Tenth Key (Shattered)",
+    "type": "quest_item",
+    "description": "The shattered remains of the tenth key. You destroyed it in the final battle, ensuring the Serpent Eye can never fully awaken. The prison is sealed forever.",
+    "weight": 1.0,
+    "cost": 0
+  },
+  "serpent_eye_fragment": {
+    "name": "Fragment of the Serpent Eye",
+    "type": "quest_item",
+    "description": "A small fragment of the entity's power, severed during the battle. It pulses with chaotic energy. Scholars will study this for centuries.",
+    "weight": 0.5,
+    "cost": 0
+  },
+  "treasure_ultimate": {
+    "name": "Ultimate Treasure Cache",
+    "type": "treasure",
+    "description": "The ultimate treasure—everything the cult accumulated for decades. Gold, platinum, gems, artifacts, magic items. Worth 10,000 gold pieces. You saved the world and earned this.",
+    "weight": 100.0,
+    "cost": 10000
+  },
+  "gold_150": {
+    "name": "150 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 150 gold pieces.",
+    "weight": 1.5,
+    "cost": 150
+  },
+  "gold_200": {
+    "name": "200 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 200 gold pieces.",
+    "weight": 2.0,
+    "cost": 200
+  },
+  "gold_250": {
+    "name": "250 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 250 gold pieces.",
+    "weight": 2.5,
+    "cost": 250
+  },
+  "gold_300": {
+    "name": "300 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 300 gold pieces.",
+    "weight": 3.0,
+    "cost": 300
+  },
+  "gold_350": {
+    "name": "350 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 350 gold pieces.",
+    "weight": 3.5,
+    "cost": 350
+  },
+  "gold_400": {
+    "name": "400 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 400 gold pieces.",
+    "weight": 4.0,
+    "cost": 400
+  },
+  "gold_500": {
+    "name": "500 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 500 gold pieces.",
+    "weight": 5.0,
+    "cost": 500
+  },
+  "gold_600": {
+    "name": "600 Gold Pieces",
+    "type": "treasure",
+    "description": "A pouch containing 600 gold pieces.",
+    "weight": 6.0,
+    "cost": 600
+  },
+  "gold_1000": {
+    "name": "1000 Gold Pieces",
+    "type": "treasure",
+    "description": "A heavy pouch containing 1000 gold pieces.",
+    "weight": 10.0,
+    "cost": 1000
+  },
+  "gold_2000": {
+    "name": "2000 Gold Pieces",
+    "type": "treasure",
+    "description": "A large chest containing 2000 gold pieces.",
+    "weight": 20.0,
+    "cost": 2000
+  },
+  "hidden_gold_300": {
+    "name": "Hidden 300 Gold Pieces",
+    "type": "treasure",
+    "description": "A hidden cache of 300 gold pieces, discovered among the prisoners' belongings.",
+    "weight": 3.0,
+    "cost": 300
   }
 }

@@ -8,26 +8,28 @@
     "secret_entrance": {
       "id": "secret_entrance",
       "title": "Secret Entrance - Wine Cellar",
-      "description": "Krane's estate wine cellar. A hidden door behind a wine rack leads down into darkness. The smell of brimstone wafts up from below.",
+      "description": "Krane's estate wine cellar. Expensive bottles line the walls—a facade of respectability. A hidden door behind a wine rack leads down into darkness. The smell of brimstone wafts up from below, mixing with aged vintages.",
       "light_level": "dim",
       "exits": {
         "down": "upper_catacombs"
       },
-      "items": [],
+      "items": ["expensive_wine", "cellar_key"],
       "encounters": [],
       "safe_rest": false
     },
     "upper_catacombs": {
       "id": "upper_catacombs",
-      "title": "Upper Catacombs",
-      "description": "Ancient burial niches line the walls, their occupants long since turned to dust. Fresher corpses lie scattered about—Krane's failed experiments and sacrifices.",
+      "title": "Upper Catacombs - Hall of Bones",
+      "description": "Ancient burial niches line the walls, their occupants long since turned to dust. Fresher corpses lie scattered about—Krane's failed experiments and sacrifices. Passages branch in multiple directions, deeper into the catacombs.",
       "light_level": "dark",
       "exits": {
         "up": "secret_entrance",
         "north": "guard_post",
-        "south": "ritual_preparation"
+        "south": "ritual_preparation",
+        "east": "noble_tombs",
+        "west": "cult_barracks"
       },
-      "items": [],
+      "items": ["scattered_bones", "tattered_robes"],
       "encounters": [
         {
           "type": "combat",
@@ -37,34 +39,202 @@
       ],
       "safe_rest": false
     },
+    "noble_tombs": {
+      "id": "noble_tombs",
+      "title": "Noble Tombs - Ancient Nobility",
+      "description": "Ornate tombs of Eldoria's founding families. Marble sarcophagi bear the names of merchant princes and war heroes from centuries past. Someone has defaced them with cult symbols, and the tombs have been looted. Spectral guardians still linger, angry at the desecration.",
+      "light_level": "dark",
+      "exits": {
+        "west": "upper_catacombs",
+        "south": "ossuary"
+      },
+      "items": ["defaced_tomb_marker", "family_crest", "noble_ring"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["wraith", "wraith"],
+          "description": "Spectral nobles materialize, their faces twisted in fury at the desecration of their resting places!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ossuary": {
+      "id": "ossuary",
+      "title": "The Great Ossuary",
+      "description": "A vast chamber where thousands of bones have been arranged in geometric patterns on the walls—skulls, femurs, ribs all creating macabre art. In the center, a shrine to some forgotten death god has been repurposed for serpent worship. The bones whisper in the darkness.",
+      "light_level": "dark",
+      "exits": {
+        "north": "noble_tombs",
+        "west": "collapsed_passage"
+      },
+      "items": ["bone_art", "death_god_idol", "ancient_scroll_case"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["skeleton_champion", "skeleton", "skeleton", "skeleton"],
+          "description": "A skeletal champion and its minions attack! The bones animate and swarm!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "collapsed_passage": {
+      "id": "collapsed_passage",
+      "title": "Collapsed Passage - Ancient Vault",
+      "description": "Part of the catacombs has collapsed here, but someone has dug through the rubble. Beyond lies an ancient vault that predates the catacombs themselves—perhaps a tomb from the city that stood here before Eldoria. Strange runes glow faintly on the walls, and treasure glints in the darkness.",
+      "light_level": "dark",
+      "exits": {
+        "east": "ossuary"
+      },
+      "items": ["ancient_treasure_hoard", "pre_eldorian_artifacts", "gold_800", "magic_scroll"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["mummy", "mummy_guardian"],
+          "description": "Ancient mummies stir to defend their treasure! Dust and decay fill the air!"
+        }
+      ],
+      "safe_rest": false
+    },
     "guard_post": {
       "id": "guard_post",
-      "title": "Cult Guard Post",
-      "description": "A chamber converted into a guardroom. Weapons, armor, and supplies are stacked here. Cultist guards rest between patrols.",
+      "title": "Cult Guard Post - Checkpoint",
+      "description": "A chamber converted into a guardroom. Weapons, armor, and supplies are stacked here. A roster on the wall lists patrol schedules and guard rotations. Cultist guards rest between patrols, playing dice and drinking wine stolen from Krane's cellars.",
       "light_level": "bright",
       "exits": {
-        "south": "upper_catacombs"
+        "south": "upper_catacombs",
+        "east": "training_chamber"
       },
-      "items": ["healing_potion", "antidote"],
+      "items": ["healing_potion", "antidote", "guard_roster", "patrol_schedule"],
       "encounters": [
         {
           "type": "combat",
           "monsters": ["cultist_guard", "cultist_guard", "cultist_guard"],
-          "description": "Cultist guards leap to their feet!"
+          "description": "Cultist guards leap to their feet, grabbing weapons!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "training_chamber": {
+      "id": "training_chamber",
+      "title": "Training Chamber - Cult Warriors",
+      "description": "An underground training hall where cultists practice swordplay and combat magic. Training dummies are torn apart, targets are riddled with arrows, and scorch marks scar the walls. A weapons rack holds quality steel—Krane equips his followers well.",
+      "light_level": "bright",
+      "exits": {
+        "west": "guard_post",
+        "south": "armory"
+      },
+      "items": ["practice_weapons", "combat_training_manual", "quality_sword"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_warrior", "cultist_warrior", "cultist_archer"],
+          "description": "Cultist warriors interrupt their training to attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Cult Armory - Equipment Storage",
+      "description": "Racks of weapons and armor line the walls. Krane has been arming his cult with military-grade equipment—swords, crossbows, chainmail, shields. Enough gear to outfit a small army. Supply crates bear marks from the city guard armory. Krane's corruption runs deep.",
+      "light_level": "bright",
+      "exits": {
+        "north": "training_chamber",
+        "west": "cult_barracks"
+      },
+      "items": ["military_weapons_cache", "stolen_guard_equipment", "supply_manifest", "masterwork_armor"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_sergeant", "cultist_guard", "cultist_guard"],
+          "description": "A cult sergeant and guards defend the armory!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "cult_barracks": {
+      "id": "cult_barracks",
+      "title": "Cult Barracks - Living Quarters",
+      "description": "Rows of bunks line this converted crypt. Cult members live down here full-time, isolated from the city above. Personal effects reveal they come from all walks of life—merchants, soldiers, scholars, even priests. All seduced by Krane's promises of power. A supply tunnel leads to a hidden safe area.",
+      "light_level": "dim",
+      "exits": {
+        "east": "upper_catacombs",
+        "south": "supply_depot",
+        "north": "armory",
+        "west": "escape_tunnel"
+      },
+      "items": ["personal_effects", "cult_recruitment_papers", "barracks_supplies"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist", "cultist"],
+          "description": "Off-duty cultists scramble for weapons!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "escape_tunnel": {
+      "id": "escape_tunnel",
+      "title": "Escape Tunnel - Hidden Refuge",
+      "description": "A secret tunnel that leads to the city sewers—Krane's emergency exit if the cult is discovered. It's clean, dry, and quiet, far from the main cult operations. You can rest here safely without alerting Krane's forces. A ladder leads up to a sewer grate.",
+      "light_level": "dim",
+      "exits": {
+        "east": "cult_barracks"
+      },
+      "items": ["emergency_supplies", "sewer_map", "rope_ladder"],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "supply_depot": {
+      "id": "supply_depot",
+      "title": "Supply Depot - Logistics Hub",
+      "description": "Crates and barrels are stacked floor to ceiling. Food, water, alchemical components, spell reagents, weapons, armor—everything needed to run a hidden cult. Manifests reveal a supply chain stretching across three cities. The cult is larger than you thought.",
+      "light_level": "bright",
+      "exits": {
+        "north": "cult_barracks",
+        "south": "torture_chamber"
+      },
+      "items": ["supply_crates", "multi_city_manifest", "alchemical_reagents", "spell_components"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_quartermaster", "cultist", "cultist"],
+          "description": "The cult quartermaster and assistants attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "torture_chamber": {
+      "id": "torture_chamber",
+      "title": "Torture Chamber - Interrogation Room",
+      "description": "A chamber of horrors. Torture devices line the walls—racks, iron maidens, braziers of hot coals. Blood stains everything. This is where Krane extracts information from his enemies and punishes traitors. Some prisoners still hang in chains, barely alive, driven mad by pain and dark magic.",
+      "light_level": "dim",
+      "exits": {
+        "north": "supply_depot",
+        "east": "ritual_preparation"
+      },
+      "items": ["prisoner_testimonies", "torture_instruments", "prison_keys"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_torturer", "cultist_guard", "hell_hound"],
+          "description": "A cult torturer with his guard and a hell hound attack!"
         }
       ],
       "safe_rest": false
     },
     "ritual_preparation": {
       "id": "ritual_preparation",
-      "title": "Ritual Preparation Chamber",
-      "description": "Tables covered with ritual implements, dark tomes, and alchemical equipment. This is where Krane prepares his dark magic.",
+      "title": "Ritual Preparation Chamber - Dark Laboratory",
+      "description": "Tables covered with ritual implements, dark tomes, and alchemical equipment. This is where Krane prepares his dark magic. Spell books lie open to summoning rituals. Vials of blood are labeled by victim. A map shows ley lines converging beneath Eldoria. Stairs descend to the infernal wing.",
       "light_level": "dim",
       "exits": {
         "north": "upper_catacombs",
-        "down": "devils_sanctum"
+        "west": "torture_chamber",
+        "south": "kranes_study",
+        "down": "summoning_circle"
       },
-      "items": ["scroll_protection_evil", "potion_resistance"],
+      "items": ["scroll_protection_evil", "potion_resistance", "dark_spellbooks", "ley_line_map", "ritual_notes"],
       "encounters": [
         {
           "type": "combat",
@@ -74,20 +244,128 @@
       ],
       "safe_rest": false
     },
-    "devils_sanctum": {
-      "id": "devils_sanctum",
-      "title": "Devil's Sanctum",
-      "description": "The deepest chamber, where Krane made his pact. A pentagram of iron is burned into the floor. The air reeks of sulfur. Syndic Valerius Krane stands in the center, a horned devil at his side. Two keys rest on a pedestal behind them.",
+    "kranes_study": {
+      "id": "kranes_study",
+      "title": "Krane's Private Study - Noble's Library",
+      "description": "Krane's personal library and office. Bookshelves hold volumes on politics, history, magic, and demonology. His desk is covered with correspondence—blackmail material on every noble family in Eldoria. A hidden compartment contains evidence of his thirty-year conspiracy. This is where the merchant prince became a devil's pawn.",
       "light_level": "bright",
       "exits": {
-        "up": "ritual_preparation"
+        "north": "ritual_preparation",
+        "east": "alchemical_laboratory"
       },
-      "items": ["sixth_key", "seventh_key", "ring_spell_turning", "cloak_protection_plus_2", "kranes_journal", "gold_900"],
+      "items": ["kranes_correspondence", "blackmail_evidence", "conspiracy_timeline", "devil_contract_copy", "political_intelligence"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["imp_advisor", "imp", "imp"],
+          "description": "Krane's imp advisors attack to protect their master's secrets!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "alchemical_laboratory": {
+      "id": "alchemical_laboratory",
+      "title": "Alchemical Laboratory - Experiment Chamber",
+      "description": "A sophisticated laboratory with alembics, retorts, and arcane equipment. Krane experiments with dark alchemy here—potions of domination, poisons, transformation elixirs. Caged creatures show signs of mutation. Notes describe experiments to create devil-touched servants. Some experiments are still... active.",
+      "light_level": "bright",
+      "exits": {
+        "west": "kranes_study",
+        "south": "treasure_vault"
+      },
+      "items": ["alchemical_equipment", "mutation_notes", "domination_potion", "experimental_elixir"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["flesh_golem", "mutated_cultist"],
+          "description": "An alchemical flesh golem and mutated cultist attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "treasure_vault": {
+      "id": "treasure_vault",
+      "title": "Krane's Treasure Vault - Private Wealth",
+      "description": "Krane's personal fortune. Gold, platinum, gems, art, magic items—the accumulated wealth of thirty years ruling Eldoria. This is how he bought loyalty and funded the cult. Traps protect the most valuable items. An iron door leads down to the infernal sanctum.",
+      "light_level": "bright",
+      "exits": {
+        "north": "alchemical_laboratory",
+        "down": "contract_chamber"
+      },
+      "items": ["gold_1500", "platinum_bars", "gem_collection_1000", "art_treasures", "magic_ring_plus_2", "stolen_city_treasury"],
+      "encounters": [
+        {
+          "type": "trap",
+          "description": "Poison needle traps! DEX save DC 16 or take 2d6 poison damage and be poisoned for 1 hour."
+        }
+      ],
+      "safe_rest": false
+    },
+    "summoning_circle": {
+      "id": "summoning_circle",
+      "title": "Summoning Circle - Infernal Gateway",
+      "description": "A permanent summoning circle etched in silver and blood. The air shimmers with heat. This is where Krane summons devils from the Nine Hells. Scorch marks show dozens of summonings. The circle thrums with infernal power, and portals occasionally flicker open, revealing glimpses of fire and torment.",
+      "light_level": "bright",
+      "exits": {
+        "up": "ritual_preparation",
+        "south": "imp_kennels",
+        "east": "contract_chamber"
+      },
+      "items": ["summoning_components", "infernal_runes", "banishment_scroll"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["bearded_devil", "lemure", "lemure", "lemure"],
+          "description": "Devils emerge from the summoning circle!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "imp_kennels": {
+      "id": "imp_kennels",
+      "title": "Imp Kennels - Devil Servants",
+      "description": "Small cells hold bound imps—lesser devils enslaved to Krane's service. They spy, deliver messages, and serve as familiars for cult sorcerers. The imps screech and hiss, straining against their magical bindings. Some have been here for decades.",
+      "light_level": "dim",
+      "exits": {
+        "north": "summoning_circle"
+      },
+      "items": ["imp_binding_scroll", "devil_cage", "imp_control_amulet"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["imp", "imp", "imp", "imp", "imp"],
+          "description": "The imps break free and swarm you!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "contract_chamber": {
+      "id": "contract_chamber",
+      "title": "Contract Chamber - Devil's Bargain",
+      "description": "The original pact chamber. Thirty years ago, Valerius Krane—then a minor noble—made his bargain here. The contract is written in blood on parchment that never ages: wealth, power, and long life in exchange for his soul and service to the cult. Witnessing devils signed it. A passage leads to Krane's final sanctum.",
+      "light_level": "dim",
+      "exits": {
+        "west": "summoning_circle",
+        "up": "treasure_vault",
+        "south": "devils_sanctum"
+      },
+      "items": ["original_devil_contract", "kranes_signature", "witness_seals", "soul_deed"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "devils_sanctum": {
+      "id": "devils_sanctum",
+      "title": "Devil's Sanctum - Krane's Final Stand",
+      "description": "The deepest chamber, where Krane made his pact. A pentagram of iron is burned into the floor, and infernal flames burn without consuming. Syndic Valerius Krane stands in the center, robed in crimson and black, dark magic crackling around his hands. A massive barbed devil looms beside him—his patron and jailer. Two serpent keys rest on a pedestal behind them. 'You've come far, fools,' Krane sneers. 'But you cannot stop what's already begun. The rift is opening, and Eldoria will burn!'",
+      "light_level": "bright",
+      "exits": {
+        "north": "contract_chamber"
+      },
+      "items": ["sixth_key", "seventh_key", "ring_spell_turning", "cloak_protection_plus_2", "kranes_journal", "gold_900", "infernal_treasure"],
       "encounters": [
         {
           "type": "combat",
           "monsters": ["valerius_krane", "barbed_devil", "cultist_elite", "cultist_elite"],
-          "description": "Syndic Krane turns to face you, dark magic crackling around his hands! 'You've meddled in affairs far beyond your understanding!' he snarls. 'Terminate them!' he commands the devil!",
+          "description": "Syndic Krane turns to face you, dark magic crackling around his hands! 'You've meddled in affairs far beyond your understanding!' he snarls. The barbed devil roars, its chains rattling as it advances! 'Terminate them!' Krane commands!",
           "boss": true
         }
       ],

@@ -11,7 +11,7 @@ Aerthos is a faithful recreation of AD&D 1e mechanics as a single-player text ad
 - Flask (optional, for web UI only)
 - No other external dependencies (core game uses standard library only)
 
-**Project Status:** Active development - core systems complete, recent work on session management and party systems
+**Project Status:** Active development - Phase 4 content expansion in progress (44% complete). Campaign system with 10 episodes implemented, Episodes 1-5 fully expanded.
 
 **Project Location:** `/mnt/d/Development/aerthos`
 
@@ -75,12 +75,13 @@ self.save_dir = Path(SAVE_DIR)
 python main.py
 
 # Main menu options:
-# 1. New Game (Quick Play - temp character & dungeon)
+# 1. New Game (Quick Play - temp character & procedurally generated dungeon)
 # 2. Load Game (Quick Save)
 # 3. Character Roster (create, view, delete persistent characters)
 # 4. Party Manager (create, view, delete parties)
 # 5. Scenario Library (save, view, delete dungeons)
 # 6. Session Manager (create, load, delete game sessions)
+# 7. Campaign Mode (10-episode story campaign with persistent progression)
 ```
 
 ### Web UI (Requires Flask)
@@ -143,7 +144,7 @@ python3 -m unittest tests.test_combat -v
 - Broken tests = broken game for users
 - Passing tests = both UIs work correctly
 
-**Current Test Status:** 374/374 tests passing (100%)
+**Current Test Status:** 504/504 tests passing (100%)
 - ✅ All unit tests passing
 - ✅ All integration tests passing
 - ✅ Multi-level dungeon tests passing
@@ -292,14 +293,21 @@ aerthos/
 ├── data/            # JSON data files
 │   ├── classes.json        # 4 classes (Fighter, Cleric, Magic-User, Thief)
 │   ├── races.json          # 4 races (Human, Elf, Dwarf, Halfling)
-│   ├── monsters.json       # Monster stat blocks
+│   ├── monsters.json       # Monster stat blocks (280 monsters)
 │   ├── items.json          # Items & equipment
-│   ├── spells.json         # Spell definitions
+│   ├── spells.json         # Spell definitions (332 spells)
 │   ├── shops.json          # Shop inventories
 │   ├── inns.json           # Inn/tavern data
 │   ├── guilds.json         # Guild data
-│   └── dungeons/
-│       └── starter_dungeon.json  # 10-room fixed dungeon
+│   ├── episodes/           # Episode configurations (10 episodes)
+│   │   └── episode_01.json through episode_10.json
+│   └── dungeons/           # Campaign dungeons (11 dungeons)
+│       ├── goblin_caves.json        # Episode 1 (15 rooms)
+│       ├── oakhaven_sewers.json     # Episode 2 (18 rooms)
+│       ├── silas_warehouse.json     # Episode 3 (18 rooms)
+│       ├── duergar_hold.json        # Episode 4 (18 rooms)
+│       ├── sunken_temple.json       # Episode 5 (18 rooms)
+│       └── ... # Episodes 6-10 (stubs, 5-7 rooms each)
 │
 └── ui/              # User interface
     ├── display.py              # Text formatting & output
@@ -461,19 +469,27 @@ Hit if: roll >= (THAC0 - target AC)
 
 ## Dungeon Types
 
-### 1. Fixed Dungeon: "The Abandoned Mine"
+### 1. Campaign Dungeons (Primary Content)
 
-**Features:**
-- Hand-crafted 10-room dungeon
-- Linear progression with branching paths
+**10-Episode Campaign:**
+- 11 hand-crafted dungeons across 5 city hubs
+- Episodes 1-5: Fully expanded (15-18 rooms each) with multiple exploration paths
+- Episodes 6-10: Functional stubs (5-7 rooms, expansion in progress)
+- Thematic variety: Goblin caves, sewers, warehouses, dwarven holds, sunken temples, coastal strongholds, underwater ruins
+- Progressive difficulty scaling
+- Narrative continuity with serpent cult storyline
+
+**Episode 1 Example: "Goblin Caves"**
+- 15 rooms with branching paths
 - Multiple enemy types (kobolds, goblins, skeletons, giant rats, ogre boss)
 - Traps, puzzles, treasure
 - Safe rooms for resting
-- Recommended for first playthrough
+- Tutorial-friendly for first playthrough
 
-**Location:** `aerthos/data/dungeons/starter_dungeon.json`
+**Location:** `aerthos/data/dungeons/` (one JSON file per dungeon)
+**Episode Configs:** `aerthos/data/episodes/episode_01.json` through `episode_10.json`
 
-### 2. Generated Dungeons
+### 2. Generated Dungeons (Quick Play Mode)
 
 **Presets:**
 - **Easy:** 8 rooms, low encounter density
@@ -487,8 +503,9 @@ Hit if: roll >= (THAC0 - target AC)
 - Monster pool selection
 - Difficulty scaling
 
-**Implementation:** `aerthos/generator/dungeon_generator.py`
+**Use Case:** Quick play without campaign context, testing, procedural variety
 
+**Implementation:** `aerthos/generator/dungeon_generator.py`
 **Configuration:** `aerthos/generator/config.py`
 
 ---
@@ -705,30 +722,31 @@ cat ~/.aerthos/sessions/*.json
 
 ### Latest Changes
 
-**Alignment System (November 2025):**
-- ✅ Implemented AD&D 1e nine-point alignment system
-- ✅ Added class-specific alignment restrictions (Paladin=LG, Druid=TN, Ranger=any Good, etc.)
-- ✅ Updated CLI and Web UI character creation with alignment selection
-- ✅ Grayed-out unavailable alignments based on class restrictions
-- ✅ Backward-compatible character save/load (defaults to True Neutral for old saves)
-- ✅ All 374 tests passing - no regressions
-- ⏳ Monster alignment data pending merge from monsters_enhanced.json
+**Campaign Content Expansion (December 2025 - Sessions 1-6):**
+- ✅ **Phase 1 Complete:** Campaign fully playable end-to-end (10 episodes, 5 city hubs)
+- ✅ **Phase 2: 80% Complete:** UI synchronization between CLI and Web UI
+- 🔄 **Phase 4: 44% Complete:** Content expansion - 4 of 9 dungeons fully expanded
+  - ✅ Episode 2: Oakhaven Sewers (5 → 18 rooms, +260% content)
+  - ✅ Episode 3: Silas's Warehouse (6 → 18 rooms, +200% content)
+  - ✅ Episode 4: Duergar Hold (6 → 18 rooms, +200% content)
+  - ✅ Episode 5: Sunken Temple (6 → 18 rooms, +200% content)
+  - ⏳ Episodes 6-10: Stub dungeons (5-7 rooms each, awaiting expansion)
+- ✅ Added 49 new monsters (231 → 280 total)
+- ✅ Added 201 new items across all categories
+- ✅ Added 49 new dungeon rooms with thematic encounters
+- ✅ All 504/504 tests passing throughout development
 
-**Previous Work (from git log):**
-```
-42b2e8d - Fix save_party parameter order in solo session creation
-07dc4c3 - Improve solo session error messages and input validation
-c0729ea - Fix solo session creation - show actual errors
-9c46e3b - Add solo character session creation to CLI
-72baf4c - Align party gameplay with single-player gameplay
-```
+**Core Systems (Completed Earlier):**
+- ✅ Alignment system with class restrictions (November 2025)
+- ✅ Campaign progression system with episode completion tracking
+- ✅ City hub interfaces (shops, inns, temples)
+- ✅ Waterbreathing mechanic for Episode 7 underwater content
+- ✅ Session management and party systems
+- ✅ Comprehensive automated test framework
 
-**Focus Areas:**
-- Character alignment system
-- Session management system refinement
-- Party system integration
-- Error handling and validation improvements
-- CLI and Web UI parity
+**Current Focus:**
+- Expanding remaining stub dungeons (Episodes 6-10) to full content
+- See `SESSION_ROADMAP.md` for detailed progress and next steps
 
 ### Active Features
 
@@ -736,30 +754,37 @@ c0729ea - Fix solo session creation - show actual errors
 - ✅ Complete core systems (combat, magic, saves, skills)
 - ✅ Character creation (4 classes, 4 races)
 - ✅ Nine-point alignment system with class restrictions
-- ✅ 10-room hand-crafted starter dungeon
+- ✅ **Campaign System:**
+  - 10 episodes across 5 city hubs
+  - Episode progression with completion tracking
+  - 11 dungeons (Episodes 1-5 fully expanded to 15-18 rooms each)
+  - 280 monsters with varied abilities and behaviors
+  - Multi-level dungeon support
+  - Reputation tracking system
 - ✅ Procedural dungeon generator with presets
 - ✅ Auto-mapping
 - ✅ Save/load system (5-tier persistence)
 - ✅ Character roster management
-- ✅ Party management
+- ✅ Party management (1-6 characters)
 - ✅ Session management
 - ✅ Web UI with Gold Box style interface
-- ✅ Village system (shops, inns, guilds)
+- ✅ Village system (shops, inns, guilds, temples)
 
-**Potential Expansions:**
+**Potential Future Expansions:**
 - **Monster alignment behaviors:**
   - Detect Evil/Good spells revealing alignment auras
   - Protection from Evil affecting evil creatures in combat
   - Evil clerics commanding undead instead of turning them
   - Alignment-based creature reactions (good creatures less hostile to good parties)
   - Holy weapons dealing extra damage to evil creatures
-- Additional dungeons
-- More spells and monsters
-- Higher character levels (currently level 1-3)
-- Additional classes (Ranger, Paladin, Druid, Bard)
+- Complete dungeon expansion (Episodes 6-10 from stubs to full content)
+- Side quests and optional content within episodes
+- Reputation effects (shop discounts, faction support, special rewards)
+- Multiple endings for Episode 10 based on player choices
+- Additional classes (Ranger, Paladin, Druid, Bard, Monk, etc.)
+- Higher character levels (currently supports level 1-10, most content is level 1-5)
 - Wilderness/overworld map
-- Multi-level dungeons
-- Quest system
+- Random encounter system
 
 ---
 
@@ -1235,37 +1260,45 @@ python web_ui/app.py
 - Single player only (party management is player controlling multiple PCs)
 - Turn-based only (no real-time mode)
 - Text-only (no graphics except ASCII map)
-- Limited to low-level play (1-3 currently)
-- Simplified components system
-- Monster HP hidden from player
+- Most content designed for levels 1-5 (system supports 1-10)
+- Simplified components system (no granular spell component tracking)
+- Monster HP hidden from player (classic DM screen behavior)
 
-### Technical Debt
+### Current State & Technical Debt
 
-- No comprehensive unit tests yet
-- Parser could be more sophisticated (ML-based?)
-- Dungeon generator is basic (room+corridor, no complex shapes)
-- No multi-level dungeon support yet
-- Save system doesn't compress (JSON text files)
+**What's Working:**
+- ✅ Comprehensive test suite (504/504 tests)
+- ✅ Multi-level dungeon support implemented
+- ✅ Character levels 1-10 supported
+- ✅ Reputation tracking system implemented
+
+**Remaining Technical Debt:**
+- Parser could be more sophisticated (ML-based natural language?)
+- Dungeon generator is functional but basic (room+corridor, no complex architectural shapes)
+- Save system doesn't compress (plain JSON text files, could be optimized)
+- Episodes 6-10 need content expansion (currently functional stubs)
 
 ### Future Enhancements
 
-**High Priority:**
-- Multi-level dungeons
-- More character levels (4-10)
-- Additional classes/races
-- Wilderness exploration
+**High Priority (Phase 4 - In Progress):**
+- ✅ Complete dungeon expansion (4/9 done, Episodes 6-10 remaining)
+- Add side quests and optional content within episodes
+- Implement reputation effects (discounts, faction support, rewards)
+- Multiple endings for Episode 10 based on player choices
 
 **Medium Priority:**
-- Quest system
-- NPC dialogue
-- Faction reputation
-- Crafting system
+- Additional character classes (Ranger, Paladin, Druid, Bard, Monk, Assassin, Illusionist)
+- Wilderness/overworld exploration map
+- Random encounter system
+- Enhanced NPC dialogue trees
 
 **Low Priority:**
+- Procedural quest generation
+- Crafting/alchemy system
 - Multiplayer support
 - Graphical tile-based mode
-- Sound effects
-- Achievements
+- Sound effects and music
+- Achievement system
 
 ---
 
@@ -1303,17 +1336,23 @@ python web_ui/app.py
 - Low-dependency Python project
 
 **Evolution:**
-- Started with combat and character systems
+- Started with combat and character systems (2024)
 - Added dungeon generator with configuration
 - Implemented persistence layers (roster, party, sessions)
 - Created web UI for visual interface
 - Expanded to village/shop/inn systems
+- Built campaign system with 10 episodes (November 2025)
+- Content expansion phase: expanding stub dungeons to full content (December 2025)
 
-**Current State:**
-- Fully playable core game
-- Multiple play modes (quick play, persistent)
-- CLI and web UI options
-- Active refinement of session management
+**Current State (December 2025):**
+- Fully playable 10-episode campaign with narrative continuity
+- 280 monsters, 332 spells, comprehensive item database
+- Episodes 1-5 fully expanded (15-18 rooms each)
+- Episodes 6-10 functional stubs (expansion in progress)
+- Multiple play modes: campaign mode, quick play, persistent sessions
+- CLI and web UI with synchronized features
+- 504/504 automated tests ensuring stability
+- Active development: Phase 4 content expansion (44% complete)
 
 ---
 

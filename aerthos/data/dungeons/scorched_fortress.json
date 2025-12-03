@@ -8,27 +8,67 @@
     "outer_walls": {
       "id": "outer_walls",
       "title": "Breached Outer Wall",
-      "description": "The fortress walls are blackened stone, built to withstand siege. A gaping hole shows where the cultists breached. Urgot and his Bloodfang warriors wait nearby, ready to charge when you give the signal. Heat radiates from the volcanic rock beneath.",
+      "description": "The fortress walls are blackened stone, built to withstand siege. A gaping hole shows where the cultists breached. Urgot and his Bloodfang warriors wait nearby, ready to charge when you give the signal. Heat radiates from the volcanic rock beneath. The air shimmers with waves of heat, and the scent of sulfur is strong.",
       "light_level": "bright",
       "exits": {
-        "north": "courtyard"
+        "north": "courtyard",
+        "east": "guard_post"
       },
-      "items": [],
+      "items": ["urgot_war_message", "orcish_rations", "urgot_warbanner"],
       "encounters": [],
       "safe_rest": true
+    },
+    "guard_post": {
+      "id": "guard_post",
+      "title": "Defensive Guard Post",
+      "description": "A fortified position overlooking the breach. Arrow slits provide cover. The cultists have set up their own guard here. Bodies of slain orc defenders lie where they fell, weapons still in hand.",
+      "light_level": "dim",
+      "exits": {
+        "west": "outer_walls",
+        "north": "watchtower"
+      },
+      "items": ["broken_spear", "orcish_axe"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist_pyromancer"],
+          "description": "Three cultists, including a pyromancer, stand guard!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "watchtower": {
+      "id": "watchtower",
+      "title": "Watchtower",
+      "description": "A tall stone tower with a commanding view of the surrounding wastes. Signal fires once burned here to warn of approaching enemies. Now cultist banners hang from the battlements. You can see the volcanic landscape stretching for miles—blackened earth, rivers of lava, and plumes of smoke.",
+      "light_level": "bright",
+      "exits": {
+        "south": "guard_post",
+        "west": "courtyard"
+      },
+      "items": ["fortress_blueprints", "cult_serpent_banner", "regional_maps"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Two cultist lookouts attack!"
+        }
+      ],
+      "safe_rest": false
     },
     "courtyard": {
       "id": "courtyard",
       "title": "Fortress Courtyard",
-      "description": "The courtyard is littered with orcish and cultist bodies. The battle here was brutal. Scorch marks scar the ground from magical attacks. Passages lead into the fortress proper.",
+      "description": "The courtyard is littered with orcish and cultist bodies. The battle here was brutal. Scorch marks scar the ground from magical attacks. Blood pools have dried to dark rust. Passages lead into the fortress proper—north to the great hall, east to the barracks, west to the armory, and south back to the outer walls.",
       "light_level": "bright",
       "exits": {
         "south": "outer_walls",
         "north": "great_hall",
         "east": "barracks",
-        "west": "war_room"
+        "west": "armory",
+        "southeast": "watchtower"
       },
-      "items": [],
+      "items": ["charred_bones", "scorched_parchment"],
       "encounters": [
         {
           "type": "combat",
@@ -41,12 +81,13 @@
     "barracks": {
       "id": "barracks",
       "title": "Orcish Barracks",
-      "description": "Crude bunks and weapon racks line the walls. The cultists have defiled this place, painting serpent symbols over the orcish clan markings.",
+      "description": "Crude bunks and weapon racks line the walls. The cultists have defiled this place, painting serpent symbols over the orcish clan markings. Personal effects of the slain orcs remain—carved totems, prayer beads, weapons being sharpened for battles they'll never fight.",
       "light_level": "dim",
       "exits": {
-        "west": "courtyard"
+        "west": "courtyard",
+        "north": "war_room"
       },
-      "items": ["orcish_axe", "healing_potion"],
+      "items": ["orcish_axe", "healing_potion", "amber_beads", "weapon_oil"],
       "encounters": [
         {
           "type": "combat",
@@ -59,25 +100,67 @@
     "war_room": {
       "id": "war_room",
       "title": "War Planning Chamber",
-      "description": "Maps of the region are pinned to the walls. The cultists have marked strategic locations with serpent tokens. Battle plans and correspondence litter a stone table.",
+      "description": "Maps of the region are pinned to the walls. The cultists have marked strategic locations with serpent tokens—villages to raid, allies to convert, strongholds to seize. Battle plans and correspondence litter a stone table. This room shows the scope of the cult's ambitions.",
       "light_level": "bright",
       "exits": {
-        "east": "courtyard"
+        "south": "barracks",
+        "west": "great_hall"
       },
-      "items": ["cult_battle_plans", "regional_maps"],
+      "items": ["cult_battle_plans", "regional_maps", "malakar_battle_plans", "cult_supply_manifest"],
       "encounters": [],
+      "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Fortress Armory",
+      "description": "Racks of weapons line every wall—axes, spears, swords, and shields. The Bloodfang were preparing for war even before the cult attacked. Many weapons have been taken, but a substantial arsenal remains. The cultists have added their own supplies: flame-enchanted weapons and serpent-emblazoned shields.",
+      "light_level": "dim",
+      "exits": {
+        "east": "courtyard",
+        "north": "weapon_storage"
+      },
+      "items": ["orcish_axe", "orcish_axe", "shield", "spear", "longsword", "whetstones", "weapon_oil"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist_elite"],
+          "description": "Cultists guarding the armory attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "weapon_storage": {
+      "id": "weapon_storage",
+      "title": "Weapon Storage Vault",
+      "description": "A reinforced chamber where the clan stores their finest weapons—trophies from defeated enemies, ancestral blades, and masterwork creations from the forge. The cultists have broken open several weapon crates, stealing what they could carry.",
+      "light_level": "dim",
+      "exits": {
+        "south": "armory",
+        "east": "great_hall"
+      },
+      "items": ["ancestral_weapon_rack", "obsidian_blade", "tribal_war_mask", "iron_ingots"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elite", "cultist"],
+          "description": "Elite cultists guarding valuable weapons!"
+        }
+      ],
       "safe_rest": false
     },
     "great_hall": {
       "id": "great_hall",
       "title": "Great Hall of the Bloodfang",
-      "description": "The clan's gathering hall. Trophies of past victories hang on the walls. The cultists have set up their own altar here, a serpent idol placed on the chief's throne. The heat is oppressive—volcanic vents have been opened, turning this place into a furnace.",
+      "description": "The clan's gathering hall, where warriors feast and chieftains hold court. Trophies of past victories hang on the walls—skulls, banners, and weapons taken from defeated foes. The cultists have set up their own altar here, a serpent idol placed on the chief's throne. The heat is oppressive—volcanic vents have been opened, turning this place into a furnace. Lava glows through cracks in the floor.",
       "light_level": "dim",
       "exits": {
         "south": "courtyard",
-        "north": "vault_entrance"
+        "east": "war_room",
+        "west": "weapon_storage",
+        "north": "chieftain_quarters",
+        "northwest": "dining_hall"
       },
-      "items": [],
+      "items": ["clan_battle_standard", "silver_war_horn"],
       "encounters": [
         {
           "type": "combat",
@@ -87,33 +170,154 @@
       ],
       "safe_rest": false
     },
-    "vault_entrance": {
-      "id": "vault_entrance",
-      "title": "Vault Entrance",
-      "description": "Massive iron doors stand open, their locks shattered by dark magic. Beyond lies the clan vault. General Malakar's voice echoes from within: 'The Fourth Key is ours! The Serpent's will shall be done!'",
+    "chieftain_quarters": {
+      "id": "chieftain_quarters",
+      "title": "War-Chief's Quarters",
+      "description": "Urgot's personal chambers. Sparse and utilitarian—a bed, a weapon rack, a table covered with maps and reports. A wolf pelt hangs on the wall, and trophies from successful raids line the shelves. The cultists ransacked this room looking for the vault key, scattering everything.",
       "light_level": "dim",
       "exits": {
         "south": "great_hall",
+        "east": "shaman_shrine"
+      },
+      "items": ["urgot_treaty_offer", "bloodfang_history", "gold_torc", "jade_wolf", "clan_signet"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "shaman_shrine": {
+      "id": "shaman_shrine",
+      "title": "Shaman's Shrine",
+      "description": "A spiritual sanctuary where the Bloodfang shaman communes with ancestral spirits. Incense and herbs hang from the ceiling. Animal bones arranged in prophetic patterns cover the floor. The cultists avoided this place—superstition or fear, you're not sure. The air here feels calm despite the chaos outside, and a faint protective aura lingers.",
+      "light_level": "dim",
+      "exits": {
+        "west": "chieftain_quarters"
+      },
+      "items": ["shaman_prophecy", "shaman_amulet", "orc_holy_symbol", "ancestral_skull", "amber_beads", "healing_potion"],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "dining_hall": {
+      "id": "dining_hall",
+      "title": "Clan Dining Hall",
+      "description": "Long tables where the clan gathers for communal meals. Food still sits rotting on plates—the cultists attacked during a feast. Benches are overturned, and blood stains the floor. The cultists use this area to store supplies now.",
+      "light_level": "dim",
+      "exits": {
+        "southeast": "great_hall",
+        "west": "forge_room"
+      },
+      "items": ["orcish_rations", "orcish_rations", "orcish_rations", "ale_mug", "broken_spear"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Cultist supply guards!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "forge_room": {
+      "id": "forge_room",
+      "title": "Volcanic Forge",
+      "description": "A massive forge built directly over a volcanic vent. Lava flows through channels beneath iron grates, providing endless heat for metalworking. This is where the Bloodfang smiths create their legendary weapons. The forge is cold now—the cultists lack the skill to use it. Tools lie scattered, and half-finished weapons sit abandoned on anvils.",
+      "light_level": "bright",
+      "exits": {
+        "east": "dining_hall",
+        "south": "volcanic_descent"
+      },
+      "items": ["forge_hammer", "smithing_tongs", "volcanic_coal", "iron_ingots", "heat_resistant_gloves", "whetstones"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_pyromancer"],
+          "description": "A pyromancer is experimenting with the forge's power!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "volcanic_descent": {
+      "id": "volcanic_descent",
+      "title": "Volcanic Descent",
+      "description": "Stone stairs descending deep into the volcanic underbelly of the fortress. Heat intensifies with every step. The walls glow with volcanic energy, and the sound of bubbling lava echoes from below. The cultists have carved serpent glyphs into the walls, channeling dark magic into the volcano itself.",
+      "light_level": "dim",
+      "exits": {
+        "north": "forge_room",
+        "down": "lava_chamber"
+      },
+      "items": ["volcanic_ritual_text", "sulfur_powder", "lava_stone"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "ash_wraith"],
+          "description": "A cultist and an ash wraith bar your descent!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "lava_chamber": {
+      "id": "lava_chamber",
+      "title": "Lava Chamber",
+      "description": "A massive cavern filled with rivers of molten lava. Narrow stone bridges cross the fiery flows. The heat is nearly unbearable—without protection, prolonged exposure would be fatal. In the center, the cultists have drawn a massive summoning circle, attempting to bind volcanic elementals to their will. Two magma elementals guard the ritual site.",
+      "light_level": "bright",
+      "exits": {
+        "up": "volcanic_descent",
+        "north": "cult_prison",
+        "east": "vault_entrance"
+      },
+      "items": ["volcanic_ruby", "fire_opal", "volcanic_diamond", "lava_stone", "fire_resistance_potion"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["magma_elemental", "lava_serpent"],
+          "description": "A magma elemental and lava serpent emerge from the lava flows! Extreme heat deals 1d6 fire damage per round to all combatants without fire resistance!",
+          "boss": false
+        }
+      ],
+      "safe_rest": false
+    },
+    "cult_prison": {
+      "id": "cult_prison",
+      "title": "Cult Prison",
+      "description": "A makeshift prison where the cultists hold captured orcs. Iron cages line the walls, and the sounds of suffering echo in the darkness. Many cages are empty—their occupants already sacrificed. A few surviving orcs remain, beaten but not broken. They recognize you as Urgot's allies and beg for release.",
+      "light_level": "dim",
+      "exits": {
+        "south": "lava_chamber"
+      },
+      "items": ["prison_keys", "orc_prison_log", "invasion_report", "iron_chains", "platinum_coins"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_torturer", "cultist", "cultist"],
+          "description": "The cult torturer and his guards attack to prevent the prisoners' escape!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "vault_entrance": {
+      "id": "vault_entrance",
+      "title": "Vault Entrance",
+      "description": "Massive iron doors stand open, their locks shattered by dark magic. Serpent carvings have been burned into the metal. Beyond lies the clan vault, the most sacred place in the fortress. General Malakar's voice echoes from within: 'The Fourth Key is ours! The Serpent's will shall be done!' The heat is intense—the vault sits directly above the heart of the volcano.",
+      "light_level": "dim",
+      "exits": {
+        "west": "lava_chamber",
         "north": "clan_vault"
       },
-      "items": [],
+      "items": ["vault_key", "fire_resistant_cloak"],
       "encounters": [],
       "safe_rest": false
     },
     "clan_vault": {
       "id": "clan_vault",
       "title": "Bloodfang Clan Vault",
-      "description": "The sacred vault of the Bloodfang Orcs. Tribal treasures, weapons of legend, and the bones of honored ancestors line the walls. In the center, General Malakar stands before the opened inner vault, the Fourth Key in his hand. Lava flows through channels in the floor, filling the room with hellish heat and light. Elite cultist guards surround him.",
+      "description": "The sacred vault of the Bloodfang Orcs. Tribal treasures, weapons of legend, and the bones of honored ancestors line the walls. In the center, General Malakar stands before the opened inner vault, the Fourth Key clutched in his gauntleted hand. Lava flows through channels in the floor, filling the room with hellish heat and light. Elite cultist guards surround him, and the air shimmers with dark magic. This is where the alliance will be won or lost.",
       "light_level": "bright",
       "exits": {
         "south": "vault_entrance"
       },
-      "items": ["fourth_key", "orcish_greataxe_plus_2", "tribal_treasures", "gold_600"],
+      "items": ["fourth_key", "orcish_greataxe_plus_2", "ancestral_weapon_rack", "volcanic_ruby", "fire_opal", "platinum_coins", "gold_600", "greater_healing_potion", "strength_potion", "heroism_potion"],
       "encounters": [
         {
           "type": "combat",
           "monsters": ["cult_general_malakar", "cultist_elite", "cultist_elite", "cultist_elite"],
-          "description": "General Malakar turns to face you, eyes burning with fanatical fire! 'You've interfered for the last time!' he roars, raising his flaming sword! His elite guards charge!",
+          "description": "General Malakar turns to face you, eyes burning with fanatical fire! 'You've interfered for the last time!' he roars, raising his flaming sword! His elite guards charge! The heat from the lava deals 1d4 fire damage per round to all combatants without fire resistance!",
           "boss": true
         }
       ],

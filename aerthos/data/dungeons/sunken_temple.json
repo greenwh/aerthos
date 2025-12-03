@@ -20,13 +20,15 @@
     "outer_sanctum": {
       "id": "outer_sanctum",
       "title": "Outer Sanctum",
-      "description": "A circular chamber with a flooded floor. Green light emanates from beneath the water. Ancient pillars carved with serpents rise from the depths. Passages lead deeper.",
+      "description": "A circular chamber with a flooded floor. Green light emanates from beneath the water. Ancient pillars carved with serpents rise from the depths. Passages lead deeper into the temple's four wings, and stairs descend into darkness.",
       "light_level": "dim",
       "exits": {
         "up": "temple_entrance",
         "north": "hall_of_coils",
         "east": "offering_chamber",
-        "west": "drowned_library"
+        "west": "drowned_library",
+        "south": "cultist_quarters",
+        "down": "ancient_crypt"
       },
       "items": [],
       "encounters": [
@@ -41,10 +43,12 @@
     "offering_chamber": {
       "id": "offering_chamber",
       "title": "Chamber of Offerings",
-      "description": "Stone altars stained with old blood line the walls. Recent offerings—coins, weapons, jewelry—lie scattered about. Something valuable glints in the shadows.",
+      "description": "Stone altars stained with old blood line the walls. Recent offerings—coins, weapons, jewelry—lie scattered about. Something valuable glints in the shadows. A passage north leads deeper into the ritual wing, and another east continues to more sacred chambers.",
       "light_level": "dark",
       "exits": {
-        "west": "outer_sanctum"
+        "west": "outer_sanctum",
+        "north": "purification_pool",
+        "east": "sacrifice_altar"
       },
       "items": ["gold_200", "silver_dagger", "jade_statue"],
       "encounters": [
@@ -60,10 +64,12 @@
     "drowned_library": {
       "id": "drowned_library",
       "title": "Drowned Library",
-      "description": "Shelves of waterlogged books and scrolls. Most are ruined, but some texts remain readable, written in ancient scripts. Cultist notes and maps are scattered on a stone table.",
+      "description": "Shelves of waterlogged books and scrolls. Most are ruined, but some texts remain readable, written in ancient scripts. Cultist notes and maps are scattered on a stone table. Passages lead west to more archives and north to a working scriptorium.",
       "light_level": "dim",
       "exits": {
-        "east": "outer_sanctum"
+        "east": "outer_sanctum",
+        "west": "hall_of_records",
+        "north": "scriptorium"
       },
       "items": ["ancient_scroll", "cult_journal", "ritual_notes"],
       "encounters": [],
@@ -72,11 +78,11 @@
     "hall_of_coils": {
       "id": "hall_of_coils",
       "title": "Hall of Serpent Coils",
-      "description": "A long hall lined with massive serpent statues. Their coils wrap around pillars reaching to the vaulted ceiling. The floor is covered in knee-deep water that reflects the eerie green light.",
+      "description": "A long hall lined with massive serpent statues. Their coils wrap around pillars reaching to the vaulted ceiling. The floor is covered in knee-deep water that reflects the eerie green light. A massive door to the north guards the temple's inner chambers.",
       "light_level": "dim",
       "exits": {
         "south": "outer_sanctum",
-        "north": "inner_sanctum"
+        "north": "guardian_chamber"
       },
       "items": [],
       "encounters": [
@@ -94,7 +100,7 @@
       "description": "The temple's central chamber. A massive pool of dark water fills the center, glowing with unnatural light. The serpent altar rises from the pool's center. High Priest Korvash stands before it, arms raised, chanting in a language that makes your ears bleed. Around the pool, cultists join in the ritual.",
       "light_level": "bright",
       "exits": {
-        "south": "hall_of_coils"
+        "south": "guardian_chamber"
       },
       "items": ["third_key", "staff_serpents", "ritual_robes", "gold_500"],
       "encounters": [
@@ -103,6 +109,231 @@
           "monsters": ["high_priest_korvash", "cultist", "cultist", "cultist", "marsh_zombie"],
           "description": "High Priest Korvash turns from his ritual, dark magic swirling around him! 'You are too late! The key is ours!' His followers surge forward!",
           "boss": true
+        }
+      ],
+      "safe_rest": false
+    },
+    "purification_pool": {
+      "id": "purification_pool",
+      "title": "Purification Pool",
+      "description": "A circular chamber with a large ceremonial pool at its center. The water glows with a faint green luminescence. Stone benches line the walls where cultists would have prepared for rituals. Wet footprints lead north toward sounds of chanting.",
+      "light_level": "dim",
+      "exits": {
+        "south": "offering_chamber",
+        "north": "blood_reservoir"
+      },
+      "items": ["ceremonial_bowl", "ritual_incense", "cultist_robes"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_ritualist", "cultist"],
+          "description": "Two cultists performing a cleansing ritual turn to attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "sacrifice_altar": {
+      "id": "sacrifice_altar",
+      "title": "Altar of Sacrifice",
+      "description": "A grim chamber dominated by a massive stone altar carved with serpent imagery. Fresh and old bloodstains cover the altar and floor. Chains hang from the ceiling, and ritual implements are scattered about. The air reeks of death and dark magic.",
+      "light_level": "dark",
+      "exits": {
+        "west": "offering_chamber"
+      },
+      "items": ["sacrificial_dagger", "ritual_chains", "unholy_symbol", "bloodstained_journal", "gold_150"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["serpent_priest", "cultist_ritualist", "marsh_zombie"],
+          "description": "A serpent priest and his followers are in the middle of a dark ritual! They turn on you with fanatical fury!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "blood_reservoir": {
+      "id": "blood_reservoir",
+      "title": "Blood Reservoir",
+      "description": "A flooded chamber where the temple stores ritual components. Large clay vessels float in dark water that has a disturbing reddish tint. The smell is overwhelming. Ancient preservation magic keeps the contents from spoiling.",
+      "light_level": "dark",
+      "exits": {
+        "south": "purification_pool"
+      },
+      "items": ["ritual_components", "preserved_organs", "ancient_potion", "gold_100"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "disease_water",
+          "description": "The tainted water carries a virulent disease! Wading through exposes you to infection!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "scriptorium": {
+      "id": "scriptorium",
+      "title": "Temple Scriptorium",
+      "description": "A working chamber where cultist scholars translate ancient texts. Desks are covered with scrolls, quills, and ink pots. Some texts describe the ritual to awaken the Serpent Eye, others detail the locations of the ten keys.",
+      "light_level": "bright",
+      "exits": {
+        "south": "drowned_library",
+        "north": "priests_study"
+      },
+      "items": ["translation_notes", "serpent_codex", "quill_and_ink", "ritual_calendar"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_ritualist", "cultist_ritualist"],
+          "description": "Two scholarly cultists grab daggers from their desks and attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "hall_of_records": {
+      "id": "hall_of_records",
+      "title": "Hall of Records",
+      "description": "Ancient temple archives line the walls from floor to ceiling. Stone tablets, clay cylinders, and waterproofed scrolls document centuries of serpent worship. Much of it is in dead languages, but recent cult additions are readable.",
+      "light_level": "dim",
+      "exits": {
+        "east": "drowned_library"
+      },
+      "items": ["ancient_tablets", "temple_history", "genealogy_scroll", "silver_50"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "priests_study": {
+      "id": "priests_study",
+      "title": "High Priest's Study",
+      "description": "A personal chamber for the temple's highest clergy. Luxurious furnishings mix with scholarly materials. Korvash's personal notes are spread across a desk, detailing his communication with the cult's supreme leader and the plan to raise the temple from the marsh.",
+      "light_level": "bright",
+      "exits": {
+        "south": "scriptorium"
+      },
+      "items": ["korvash_correspondence", "supreme_leader_letter", "ritual_blueprint", "masterwork_dagger", "platinum_ring", "gold_300"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "magic_ward",
+          "description": "Magical wards protect the high priest's secrets! Energy crackles as you enter!",
+          "save_type": "spell"
+        }
+      ],
+      "safe_rest": false
+    },
+    "guardian_chamber": {
+      "id": "guardian_chamber",
+      "title": "Guardian Chamber",
+      "description": "A ceremonial antechamber before the inner sanctum. Four massive stone serpent statues stand in alcoves at the cardinal directions. As you enter, their eyes begin to glow green, and they animate with grinding stone sounds. They exist to prevent the unworthy from reaching the temple's heart.",
+      "light_level": "bright",
+      "exits": {
+        "south": "hall_of_coils",
+        "north": "inner_sanctum"
+      },
+      "items": ["guardian_fragment", "enchanted_stone"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["temple_guardian", "temple_guardian"],
+          "description": "Two serpent guardians animate and block your path! Stone grinds against stone as they move to destroy you!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "cultist_quarters": {
+      "id": "cultist_quarters",
+      "title": "Cultist Living Quarters",
+      "description": "A cramped room with bedrolls, personal belongings, and crude furnishings. The cultists who tend the temple live here in squalid conditions, their devotion to the serpent overriding any need for comfort. Food stores and water barrels line one wall.",
+      "light_level": "dim",
+      "exits": {
+        "north": "outer_sanctum",
+        "south": "armory",
+        "east": "flooded_passage"
+      },
+      "items": ["rations", "waterskin", "cultist_personal_effects", "hidden_gold_75"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist", "cultist"],
+          "description": "Three off-duty cultists scramble for their weapons!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Temple Armory",
+      "description": "Weapon racks and armor stands line the walls. The cult has stockpiled weapons here—swords, spears, bows, and shields bearing the serpent eye symbol. Some items are well-maintained, others are ancient temple relics pressed back into service.",
+      "light_level": "dim",
+      "exits": {
+        "north": "cultist_quarters"
+      },
+      "items": ["temple_spear", "serpent_shield", "cultist_sword", "studded_leather_armor", "arrows"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist", "cultist"],
+          "description": "Two cultist guards stationed at the armory attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "flooded_passage": {
+      "id": "flooded_passage",
+      "title": "Flooded Passage",
+      "description": "This connecting passage has completely flooded with murky swamp water. The ceiling is only a foot above the water line, forcing you to wade through chest-deep water. Things move beneath the surface. The passage is treacherous and partially collapsed.",
+      "light_level": "dark",
+      "exits": {
+        "west": "cultist_quarters"
+      },
+      "items": ["waterlogged_crate", "drowned_corpse_loot"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["marsh_troll"],
+          "description": "A massive marsh troll lurks in the flooded passage! It roars and attacks, its regenerating flesh already healing old wounds!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ancient_crypt": {
+      "id": "ancient_crypt",
+      "title": "Ancient Burial Crypt",
+      "description": "Deep beneath the temple lie the crypts of the original serpent priests. Stone sarcophagi line the walls, many with their lids pushed aside from within. The air is cold and still. Ancient grave goods glitter in the darkness, but the dead do not rest easy here.",
+      "light_level": "dark",
+      "exits": {
+        "up": "outer_sanctum",
+        "west": "vault_of_serpents"
+      },
+      "items": ["burial_mask", "ancient_amulet", "grave_offerings", "gold_200"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["swamp_wraith", "swamp_wraith", "marsh_zombie"],
+          "description": "Ghostly wraiths rise from the disturbed graves, screaming with rage! Zombies shamble forward!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "vault_of_serpents": {
+      "id": "vault_of_serpents",
+      "title": "Vault of Serpents - Hidden Treasury",
+      "description": "The temple's most sacred treasury. Golden serpent statues coil around pillars of jade and obsidian. Treasure chests overflow with coins, gems, and magical items accumulated over centuries. But deadly traps and guardian magic protect this wealth—only the most skilled or desperate would dare enter.",
+      "light_level": "bright",
+      "exits": {
+        "east": "ancient_crypt"
+      },
+      "items": ["serpent_crown", "jade_serpent_idol", "gems_500", "gold_1000", "enchanted_bracers", "potion_greater_healing"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "blade_gauntlet",
+          "description": "Hidden blades swing from the walls in a deadly gauntlet! Pressure plates trigger scything blades that slice through the air!",
+          "save_type": "dexterity"
+        },
+        {
+          "type": "trap",
+          "trap_type": "poison_dart",
+          "description": "Poison darts launch from serpent mouths carved into the walls!",
+          "save_type": "dexterity"
         }
       ],
       "safe_rest": false

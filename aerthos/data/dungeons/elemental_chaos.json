@@ -8,12 +8,12 @@
     "portal_chamber": {
       "id": "portal_chamber",
       "title": "Portal Chamber",
-      "description": "The Archmage's portal flickers unstably. Through it, you see a realm of impossible geometries and conflicting elements. Fire flows upward like water. Stone floats. The very air screams with primal energy.",
+      "description": "The Archmage's portal flickers unstably. Through it, you see a realm of impossible geometries and conflicting elements. Fire flows upward like water. Stone floats. The very air screams with primal energy. This is your last chance to turn back—beyond lies the Elemental Chaos, where reality itself has no meaning.",
       "light_level": "bright",
       "exits": {
         "through": "chaos_nexus"
       },
-      "items": [],
+      "items": ["resistance_charm_fire", "resistance_charm_cold"],
       "encounters": [],
       "safe_rest": true,
       "note": "Last safe point before entering the Chaos"
@@ -21,20 +21,60 @@
     "chaos_nexus": {
       "id": "chaos_nexus",
       "title": "Chaos Nexus",
-      "description": "The center of the pocket dimension. Four paths lead to the elemental keystones. The Herald's voice echoes from everywhere and nowhere: 'You dare intrude upon the Prince's domain? You will be unmade!'",
+      "description": "The center of the pocket dimension. Four paths lead to the elemental keystones, each one pulsing with distinct energy. The Herald's voice echoes from everywhere and nowhere: 'You dare intrude upon the Prince's domain? You will be unmade!' Reality shifts here—the floor is sometimes ceiling, walls sometimes vanish. A passageway to the south leads to what looks like a laboratory, while an eastern tunnel seems to lead to an armory.",
       "light_level": "variable",
       "exits": {
-        "north": "fire_keystone",
-        "south": "water_keystone",
-        "east": "earth_keystone",
-        "west": "air_keystone"
+        "north": "fire_approach",
+        "south": "cultist_laboratory",
+        "east": "elemental_armory",
+        "west": "air_platforms",
+        "down": "water_depths",
+        "up": "earth_caverns"
       },
-      "items": [],
+      "items": ["scroll_protection_elementals", "gold_500"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["fire_elemental", "water_elemental"],
+          "monsters": ["primal_wisp", "primal_wisp", "chaos_spawn"],
           "description": "Elementals clash in the nexus, catching you in their battle!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "fire_approach": {
+      "id": "fire_approach",
+      "title": "Approach to the Inferno",
+      "description": "Rivers of lava flow upward, defying gravity. The heat is intense—your skin blisters just from proximity. Flames freeze into solid crystal, then shatter and reform as liquid fire. Cultist elementalists work at forges ahead, their bodies already showing signs of transformation. They're crafting weapons of elemental fire.",
+      "light_level": "bright",
+      "exits": {
+        "north": "fire_forge",
+        "south": "chaos_nexus"
+      },
+      "items": ["journal_pyromancer_transformation", "potion_fire_resistance", "gold_200"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elementalist", "primal_wisp"],
+          "description": "Cultists in the process of transformation attack, fire dancing on their fingertips!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "fire_forge": {
+      "id": "fire_forge",
+      "title": "Elemental Forge",
+      "description": "A massive forge where the cult creates weapons infused with elemental fire. Anvils float in mid-air. Hammers strike themselves. The forge-master was once human, but now his entire body is living flame. He shapes molten metal with his bare hands, cackling as weapons take form. The keystone chamber lies beyond.",
+      "light_level": "bright",
+      "exits": {
+        "north": "fire_keystone",
+        "south": "fire_approach"
+      },
+      "items": ["flameblade_unfinished", "fire_elemental_gem", "forge_notes", "gold_300"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elementalist", "fire_elemental", "magma_elemental"],
+          "description": "The forge-master and his elemental servants defend their workshop!"
         }
       ],
       "safe_rest": false
@@ -42,17 +82,56 @@
     "fire_keystone": {
       "id": "fire_keystone",
       "title": "Chamber of Flame",
-      "description": "A realm of eternal fire. Lava flows upward. Flames freeze solid then shatter. The Fire Keystone hovers in the center, guarded by a cult pyromancer who has transformed into living flame.",
+      "description": "A realm of eternal fire. Lava flows upward into impossible spirals. Flames freeze solid then shatter like glass. The Fire Keystone hovers in the center, a ruby the size of a human head, pulsing with heat. The Transformed Pyromancer stands before it, his body now entirely composed of living flame. 'You cannot withstand the Prince's fire!' he roars.",
       "light_level": "bright",
       "exits": {
-        "south": "chaos_nexus"
+        "south": "fire_forge"
       },
-      "items": ["fire_keystone_shard"],
+      "items": ["fire_keystone_shard", "staff_flame", "robe_firewalking", "gold_400"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cult_pyromancer_transformed", "fire_elemental"],
+          "monsters": ["cult_pyromancer_transformed", "fire_elemental", "fire_elemental"],
           "description": "The Pyromancer laughs, flames erupting from his body!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "First of four keystones - destroying it weakens the rift"
+    },
+    "water_depths": {
+      "id": "water_depths",
+      "title": "Drowning Halls",
+      "description": "Water exists in impossible states here. Spheres of ocean float in mid-air. You can breathe underwater but drown in air. Gravity pulls in random directions. Cultists swim through the air, their bodies taking on aquatic features—gills, fins, scales. They're guarding the path to the Water Keystone.",
+      "light_level": "dim",
+      "exits": {
+        "down": "water_abyss",
+        "up": "chaos_nexus"
+      },
+      "items": ["journal_hydromancer_rituals", "pearl_giant", "potion_water_breathing", "gold_250"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elementalist", "cultist_elementalist", "primal_wisp"],
+          "description": "Cultists glide through floating water spheres, attacking from impossible angles!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "water_abyss": {
+      "id": "water_abyss",
+      "title": "The Infinite Abyss",
+      "description": "An ocean suspended in space, extending infinitely in all directions. Pressure crushes from all sides, yet you can still move. Strange aquatic creatures—or are they water elementals?—drift past. The Water Keystone is visible ahead, a sapphire suspended in a massive sphere of water. The Hydromancer waits within, her body now more water than flesh.",
+      "light_level": "dim",
+      "exits": {
+        "down": "water_keystone",
+        "up": "water_depths"
+      },
+      "items": ["coral_branch_magical", "trident_waves", "shell_whispering", "gold_350"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["storm_elemental", "water_elemental"],
+          "description": "A storm elemental manifests, lightning arcing through the water!"
         }
       ],
       "safe_rest": false
@@ -60,17 +139,56 @@
     "water_keystone": {
       "id": "water_keystone",
       "title": "Chamber of Depths",
-      "description": "An impossible ocean suspended in mid-air. Water spheres float and merge. The Water Keystone sits at the center, defended by a transformed cult hydromancer.",
+      "description": "An impossible ocean suspended in mid-air. Water spheres float and merge, forming temporary seas that vanish moments later. The Water Keystone sits at the center, defended by the Transformed Hydromancer. She flows like water itself, reforming when struck, her laughter bubbling like a stream. 'The Prince's waters will drown your world,' she whispers.",
       "light_level": "dim",
       "exits": {
-        "north": "chaos_nexus"
+        "up": "water_abyss"
       },
-      "items": ["water_keystone_shard"],
+      "items": ["water_keystone_shard", "cloak_waterbreathing", "potion_healing_greater", "gold_450"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cult_hydromancer_transformed", "water_elemental"],
-          "description": "The Hydromancer emerges from a sphere of water!"
+          "monsters": ["cult_hydromancer_transformed", "water_elemental", "storm_elemental"],
+          "description": "The Hydromancer emerges from a sphere of water, her form shifting fluidly!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Second of four keystones - destroying it further weakens the rift"
+    },
+    "earth_caverns": {
+      "id": "earth_caverns",
+      "title": "Caverns of Floating Stone",
+      "description": "A maze of floating boulders and inverted caverns. Gravity shifts unpredictably—one moment you're walking on the ceiling, the next you're falling upward. Cultists move through the stone as if swimming, their bodies hardening into living rock. Crystal formations grow and shatter in impossible patterns.",
+      "light_level": "dim",
+      "exits": {
+        "up": "earth_crystal",
+        "down": "chaos_nexus"
+      },
+      "items": ["journal_geomancer_meditations", "gem_earth_elemental", "stone_gravity_anchor", "gold_275"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elementalist", "cultist_elementalist", "earth_elemental"],
+          "description": "Cultists emerge from the stone itself, their skin turning to rock before your eyes!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "earth_crystal": {
+      "id": "earth_crystal",
+      "title": "Crystal Labyrinth",
+      "description": "A maze of massive crystal formations, each one reflecting and refracting reality. You see yourself from impossible angles. Paths that should exist don't; paths that shouldn't do. The crystals sing with a deep, resonant hum. Elemental guardians made of stone and metal patrol here, tireless and merciless. The keystone chamber lies beyond.",
+      "light_level": "bright",
+      "exits": {
+        "up": "earth_keystone",
+        "down": "earth_caverns"
+      },
+      "items": ["crystal_prism_large", "hammer_earthshatter", "gem_diamond_huge", "gold_400"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["elemental_guardian", "earth_elemental"],
+          "description": "A massive elemental guardian blocks your path, its stone fists crackling with power!"
         }
       ],
       "safe_rest": false
@@ -78,17 +196,56 @@
     "earth_keystone": {
       "id": "earth_keystone",
       "title": "Chamber of Stone",
-      "description": "A maze of floating boulders and crystal formations. Gravity shifts randomly. The Earth Keystone is embedded in a massive crystal, guarded by a cult geomancer merged with living stone.",
+      "description": "A maze of floating boulders and crystal formations. Gravity shifts randomly—walking becomes swimming becomes falling becomes flying. The Earth Keystone is embedded in a massive crystal at the chamber's center, a topaz the size of a shield. The Transformed Geomancer guards it, his body now entirely composed of living stone. He moves with grinding, inevitable force.",
       "light_level": "dim",
       "exits": {
-        "west": "chaos_nexus"
+        "down": "earth_crystal"
       },
-      "items": ["earth_keystone_shard"],
+      "items": ["earth_keystone_shard", "belt_stone_giant_strength", "shield_crystal", "gold_500"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cult_geomancer_transformed", "earth_elemental"],
-          "description": "The stone itself attacks!"
+          "monsters": ["cult_geomancer_transformed", "earth_elemental", "magma_elemental"],
+          "description": "The stone itself attacks—the Geomancer is indistinguishable from the chamber!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Third of four keystones - destroying it nearly closes the rift"
+    },
+    "air_platforms": {
+      "id": "air_platforms",
+      "title": "Floating Platforms",
+      "description": "Platforms of solidified air drift through an endless sky. Below is nothing—infinite void. Above, storm clouds swirl. Wind howls from all directions at once, sometimes lifting you, sometimes trying to hurl you into the abyss. Cultists ride the winds, their bodies becoming lighter, more insubstantial. They laugh as they soar past.",
+      "light_level": "bright",
+      "exits": {
+        "west": "air_tempest",
+        "east": "chaos_nexus"
+      },
+      "items": ["journal_aeromancer_flight", "feather_giant_eagle", "rope_cloud_walking", "gold_225"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elementalist", "primal_wisp", "air_elemental"],
+          "description": "Cultists attack from above, riding winds you cannot see!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "air_tempest": {
+      "id": "air_tempest",
+      "title": "Heart of the Tempest",
+      "description": "An eternal storm given physical form. Lightning arcs between clouds. Thunder shakes reality. You stand at the eye of a hurricane that extends infinitely in all directions. Storm elementals circle overhead, crackling with electricity. The Aeromancer is somewhere within the storm, or perhaps he is the storm itself now. The keystone chamber lies ahead.",
+      "light_level": "variable",
+      "exits": {
+        "west": "air_keystone",
+        "east": "air_platforms"
+      },
+      "items": ["lightning_rod_charged", "storm_gem", "cloak_wind_walker", "gold_375"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["storm_elemental", "air_elemental", "air_elemental"],
+          "description": "A massive storm elemental descends, lightning and wind given terrible purpose!"
         }
       ],
       "safe_rest": false
@@ -96,40 +253,98 @@
     "air_keystone": {
       "id": "air_keystone",
       "title": "Chamber of Storms",
-      "description": "Eternal tempests rage. Lightning arcs between floating platforms. The Air Keystone spins in a tornado, defended by a cult aeromancer who has become wind itself.",
+      "description": "Eternal tempests rage. Lightning arcs between floating platforms of solidified cloud. The Air Keystone spins in a tornado's heart, an opal that glows with inner light. The Transformed Aeromancer defends it—or perhaps he is it. His body is now wind and lightning, barely visible, constantly shifting. 'The Prince's storms will scour your world clean!' his voice thunders.",
       "light_level": "bright",
       "exits": {
-        "east": "chaos_nexus"
+        "east": "air_tempest"
       },
-      "items": ["air_keystone_shard"],
+      "items": ["air_keystone_shard", "bow_wind", "arrows_lightning", "gold_475"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cult_aeromancer_transformed", "air_elemental"],
-          "description": "The wind screams and takes humanoid form!"
+          "monsters": ["cult_aeromancer_transformed", "air_elemental", "storm_elemental"],
+          "description": "The wind screams and takes humanoid form—the Aeromancer attacks!"
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "note": "Fourth of four keystones - destroying it seals the rift and opens path to Herald"
+    },
+    "cultist_laboratory": {
+      "id": "cultist_laboratory",
+      "title": "Laboratory of Transformation",
+      "description": "A chamber where the cult conducts its terrible experiments. Crystalline vats hold victims in various stages of elemental transformation—skin turning to stone, bodies becoming water, flesh transmuting to flame. Research notes are scattered everywhere. The cult's goal is clear: to transform all of humanity into elemental servants for their Prince. The horror of it makes you sick.",
+      "light_level": "dim",
+      "exits": {
+        "north": "chaos_nexus"
+      },
+      "items": ["research_notes_transformation", "vial_elemental_essence", "journal_mad_cultist", "scroll_polymorph", "potion_healing", "gold_150"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elementalist", "chaos_spawn", "chaos_spawn"],
+          "description": "Failed experiments—chaos spawns—attack mindlessly, their forms unstable and horrifying!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Optional lore area - reveals cult's true goals"
+    },
+    "elemental_armory": {
+      "id": "elemental_armory",
+      "title": "Armory of the Elements",
+      "description": "Weapons and armor crafted from pure elemental energy hang on walls that shift between solid and liquid. A sword of living fire. A shield of flowing water. Armor made of wind. The cult has been arming itself for war. An elemental guardian stands watch, ready to destroy anyone who tries to take the weapons without the proper authorization—which you certainly don't have.",
+      "light_level": "bright",
+      "exits": {
+        "west": "chaos_nexus"
+      },
+      "items": ["sword_elemental_fury", "armor_elemental_plate", "shield_chaos", "gloves_elemental_command", "gold_600"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["elemental_guardian", "magma_elemental"],
+          "description": "The elemental guardian activates, its stone body crackling with elemental power!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Optional treasure area - high-risk, high-reward"
+    },
+    "convergence_vault": {
+      "id": "convergence_vault",
+      "title": "Vault of Elemental Convergence",
+      "description": "A chamber where all four elements clash simultaneously. Fire burns water. Earth crushes air. Reality tears itself apart trying to reconcile the contradictions. The cult used this place to store their most valuable treasures—items that could only be created where all elements converge. But the guardians here are powerful beyond measure: hybrid elementals born of the convergence itself.",
+      "light_level": "variable",
+      "exits": {
+        "out": "chaos_nexus"
+      },
+      "items": ["crown_elemental_mastery", "orb_chaos", "gem_planar_essence", "staff_four_winds", "gold_800"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["magma_elemental", "storm_elemental", "elemental_guardian"],
+          "description": "Hybrid elementals attack in perfect coordination—this is the ultimate test!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Optional vault - unlocks after destroying 2+ keystones. Most dangerous optional encounter."
     },
     "herald_chamber": {
       "id": "herald_chamber",
       "title": "Herald's Chamber",
-      "description": "The pocket dimension collapses inward to this point. The Elemental Prince's Herald materializes—a being of pure elemental chaos. The Eighth and Ninth Keys hover behind it. 'You have destroyed the keystones,' it intones. 'But you will not leave this place alive!'",
+      "description": "The pocket dimension collapses inward to this point. All four elements swirl in a maelstrom of chaos. The Elemental Prince's Herald materializes—a being of pure elemental chaos, shifting between fire, water, earth, and air with each moment. The Eighth and Ninth Keys hover behind it, protected by an elemental shield. 'You have destroyed the keystones,' it intones, its voice like thunder and avalanche and wildfire and flood all at once. 'But you will not leave this place alive! The Prince's will shall be done!'",
       "light_level": "bright",
       "exits": {
-        "south": "chaos_nexus"
+        "out": "chaos_nexus"
       },
-      "items": ["eighth_key", "ninth_key", "staff_elemental_mastery", "boots_levitation", "gold_1000"],
+      "items": ["eighth_key", "ninth_key", "staff_elemental_mastery", "boots_levitation", "herald_crown", "gold_1200"],
       "encounters": [
         {
           "type": "combat",
           "monsters": ["elemental_herald", "fire_elemental", "water_elemental", "earth_elemental", "air_elemental"],
-          "description": "The Herald manifests with all four elements at its command! This is the ultimate test!",
+          "description": "The Herald manifests with all four elements at its command! This is the ultimate test of your might!",
           "boss": true
         }
       ],
       "safe_rest": false,
-      "note": "This room becomes accessible after destroying all four keystones"
+      "note": "This room becomes accessible after destroying all four keystones. Final boss of Episode 9."
     }
   }
 }

@@ -127,6 +127,15 @@
       "max_attacks_blocked": 3,
       "allowed_classes": ["Fighter", "Ranger", "Paladin", "Cleric", "Assassin", "Bard"],
       "description": "Large shield, blocks 3 attacks per round (not usable by Druids - too heavy/metal)"
+    },
+    "serpent_shield": {
+      "name": "Serpent Eye Shield",
+      "ac_bonus": 1,
+      "cost_gp": 25,
+      "weight_gp": 10,
+      "max_attacks_blocked": 2,
+      "allowed_classes": ["Fighter", "Ranger", "Paladin", "Cleric", "Assassin", "Bard"],
+      "description": "A medium shield emblazoned with the serpent eye symbol. Used by cult guards. Functionally identical to a standard medium shield."
     }
   },
   "helmets": {

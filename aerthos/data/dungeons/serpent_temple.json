@@ -8,17 +8,17 @@
     "outer_courtyard": {
       "id": "outer_courtyard",
       "title": "Burning Courtyard",
-      "description": "Oakhaven burns around you. The temple courtyard is filled with cultists preparing for the final ritual. In the distance, you hear the sounds of battle—your allies creating a distraction. The temple doors stand open, serpent banners flying above.",
+      "description": "Oakhaven burns around you. The temple courtyard is filled with smoke and the sounds of battle echo from the town. The temple doors stand open, serpent banners flying above, stained with blood. Bodies of defenders lie scattered—the town fought hard, but the cult was too strong. Your allies create a distraction in the distance. This is it. The final battle begins now.",
       "light_level": "bright",
       "exits": {
         "north": "temple_entrance"
       },
-      "items": [],
+      "items": ["healing_potion_greater", "resistance_charm_poison", "gold_200"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist", "cultist", "cultist", "cultist"],
-          "description": "Cultist guards rush to stop you! This is it—the final battle begins!"
+          "monsters": ["cultist", "cultist", "cultist", "serpent_fanatic"],
+          "description": "Cultist guards rush to stop you! A fanatic screams 'For the Serpent Eye!' and charges!"
         }
       ],
       "safe_rest": false
@@ -26,39 +26,135 @@
     "temple_entrance": {
       "id": "temple_entrance",
       "title": "Corrupted Temple Hall",
-      "description": "What was once a place of worship is now desecrated. Serpent idols replace holy symbols. The walls run with blood. Cultist elite guard the path forward.",
+      "description": "What was once Oakhaven's place of worship is now a monument to desecration. Serpent idols tower where holy symbols once stood. The walls are painted with blood-red runes. The stench of incense and death fills the air. Passages lead east and west, while the path north leads deeper into the temple complex.",
       "light_level": "dim",
       "exits": {
         "south": "outer_courtyard",
-        "north": "antechamber",
-        "east": "treasury",
+        "north": "serpent_shrine",
+        "east": "cult_archives",
         "west": "barracks"
       },
-      "items": [],
+      "items": ["map_temple_layout", "journal_cultist_final_days", "gold_300"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_elite", "cultist_elite", "cultist_sorcerer"],
-          "description": "The cult's elite forces bar your way!"
+          "monsters": ["cultist_elite", "cultist_elite", "serpent_invoker"],
+          "description": "Elite guards and a serpent invoker bar your way! The invoker begins channeling dark magic!"
         }
       ],
       "safe_rest": false
     },
-    "treasury": {
-      "id": "treasury",
-      "title": "Plundered Treasury",
-      "description": "The town's wealth, stolen and hoarded by the cult. Gold and gems are piled high, but they mean nothing if the ritual succeeds.",
-      "light_level": "bright",
+    "cult_archives": {
+      "id": "cult_archives",
+      "title": "Archives of the Serpent",
+      "description": "Shelves upon shelves of scrolls and books document the cult's activities across Aerthos. Records of kidnappings, ritual sacrifices, political manipulation. The full scope of their operation is staggering—this was never just about one town. It was a conspiracy spanning decades, infiltrating every level of society. Reading these fills you with cold dread... and determination.",
+      "light_level": "dim",
       "exits": {
-        "west": "temple_entrance"
+        "west": "temple_entrance",
+        "north": "serpent_library"
       },
-      "items": ["gold_2000", "gems", "minor_magic_items"],
+      "items": ["cult_records_complete", "list_cult_members", "evidence_conspiracy", "scroll_dispel_magic", "gold_250"],
       "encounters": [
         {
-          "type": "trap",
-          "trap_type": "poison_gas",
-          "description": "Green gas hisses from vents!",
-          "save_type": "constitution"
+          "type": "combat",
+          "monsters": ["cultist_scribe", "cultist_scribe", "ritual_guardian"],
+          "description": "Scribes and a ritual guardian defend the archives!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "serpent_library": {
+      "id": "serpent_library",
+      "title": "Library of Forbidden Knowledge",
+      "description": "Books that should have been burned centuries ago line these shelves. Texts on summoning, transformation, planar breaches. The cult's knowledge came from sources both ancient and alien. One book lies open on a reading stand: 'The Serpent Eye—History and Prophecy.' You skim it quickly. The entity was imprisoned millenn ago by a coalition of heroes. The keys were meant to keep it sealed forever. But prophecy spoke of its return...",
+      "light_level": "bright",
+      "exits": {
+        "south": "cult_archives",
+        "north": "meditation_chamber"
+      },
+      "items": ["book_serpent_prophecy", "tome_forbidden_summoning", "scroll_protection_evil", "staff_serpent_command", "gold_400"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["serpent_invoker", "serpent_abomination"],
+          "description": "An invoker and a serpent abomination guard the forbidden texts!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "meditation_chamber": {
+      "id": "meditation_chamber",
+      "title": "Chamber of Communion",
+      "description": "This is where cultists meditate to commune with the Serpent Eye. Cushions arranged in a circle around a scrying pool. The water shows visions of other worlds—realities where the Serpent Eye broke free and consumed everything. You see civilizations fall, worlds crack apart, reality itself unravel into chaos. This is what you're fighting to prevent.",
+      "light_level": "dim",
+      "exits": {
+        "south": "serpent_library",
+        "west": "serpent_shrine"
+      },
+      "items": ["vial_vision_water", "meditation_cushion_silk", "incense_rare", "gold_200"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_sorcerer", "cultist_sorcerer", "serpent_fanatic"],
+          "description": "Sorcerers deep in meditation snap to attention and attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "serpent_shrine": {
+      "id": "serpent_shrine",
+      "title": "Shrine of the Serpent Eye",
+      "description": "A massive stone serpent coils around a central altar. Its eyes are empty sockets, waiting to be filled with the power of the awakened entity. Offerings of gold, jewels, and blood cover the altar. This is where cultists come to worship. The air thrums with dark energy. You can feel the Serpent Eye's attention even through its prison—it knows you're here, and it hungers.",
+      "light_level": "bright",
+      "exits": {
+        "south": "temple_entrance",
+        "east": "meditation_chamber",
+        "north": "ritual_preparation"
+      },
+      "items": ["serpent_idol_gold", "offering_bowl_enchanted", "prayer_beads_serpent", "gold_500"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["high_priest_defender", "serpent_fanatic", "serpent_fanatic"],
+          "description": "A high priest and fanatic worshippers attack to defend their shrine!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ritual_preparation": {
+      "id": "ritual_preparation",
+      "title": "Ritual Preparation Chamber",
+      "description": "Where the cult prepares for major rituals. Tables are laden with ceremonial knives, chalices, robes marked with serpent symbols. Diagrams show the ritual circle's layout. Notes detail the timing—midnight tonight. You check your timepiece. Three hours remain. There's still time to stop this.",
+      "light_level": "dim",
+      "exits": {
+        "south": "serpent_shrine",
+        "north": "hall_of_keys"
+      },
+      "items": ["ritual_dagger_serpent", "ceremonial_robe", "chalk_ritual", "notes_final_ritual", "gold_300"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elite", "serpent_invoker", "ritual_guardian"],
+          "description": "Ritual preparers and a guardian attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "hall_of_keys": {
+      "id": "hall_of_keys",
+      "title": "Hall of the Nine Keys",
+      "description": "This chamber once held all ten keys. Nine pedestals stand empty—you carry those keys. The tenth pedestal holds a glowing key pulsing with power. But it's already been moved to the inner sanctum for the ritual. The cult is meticulous—they kept detailed records here of each key's recovery. You see your own adventures documented: 'Heroes recovered fourth key—eliminated.' Except you survived. Now you're here to finish it.",
+      "light_level": "bright",
+      "exits": {
+        "south": "ritual_preparation",
+        "north": "champion_arena"
+      },
+      "items": ["key_pedestal_empty", "records_key_recovery", "map_all_locations", "gold_400"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["ritual_guardian", "ritual_guardian"],
+          "description": "Two ritual guardians stand eternal watch over the key chamber!"
         }
       ],
       "safe_rest": false
@@ -66,59 +162,179 @@
     "barracks": {
       "id": "barracks",
       "title": "Cult Barracks",
-      "description": "Where the cult's army rests. Most are at the ritual, but a few guards remain.",
+      "description": "Where the cult's army rests between battles. Bunks line the walls. Most cultists are at the ritual or fighting in the town, but a rear guard remains. Weapons and armor are stacked neatly. These aren't random fanatics—this is a trained, disciplined force. You're fighting an army, not just a cult.",
       "light_level": "dim",
       "exits": {
-        "east": "temple_entrance"
+        "east": "temple_entrance",
+        "north": "armory"
       },
-      "items": ["healing_potions", "weapons"],
+      "items": ["healing_potion", "healing_potion", "rations", "gold_150"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist", "cultist"],
-          "description": "Cultists attack from their bunks!"
+          "monsters": ["cultist", "cultist", "cultist_elite"],
+          "description": "Cultists in the barracks grab weapons and attack!"
         }
       ],
       "safe_rest": false
+    },
+    "armory": {
+      "id": "armory",
+      "title": "Cult Armory",
+      "description": "Racks of weapons and armor—enough to equip hundreds. Swords, spears, bows, chainmail, shields. All marked with the serpent symbol. The cult wasn't just preparing for a ritual; they were preparing for war. If you fail tonight, this army will march across Aerthos unopposed.",
+      "light_level": "bright",
+      "exits": {
+        "south": "barracks",
+        "north": "training_hall"
+      },
+      "items": ["longsword_plus_1", "shield_serpent", "chainmail_plus_1", "arrows_20", "gold_350"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_elite", "cultist_elite", "serpent_fanatic"],
+          "description": "Elite warriors guarding the armory attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "training_hall": {
+      "id": "training_hall",
+      "title": "Combat Training Hall",
+      "description": "A large chamber where cultists train for battle. Training dummies, weapon racks, combat circles marked on the floor. The cult doesn't just indoctrinate—they drill their members relentlessly. Every cultist you've faced was trained here. This explains their discipline and skill.",
+      "light_level": "bright",
+      "exits": {
+        "south": "armory",
+        "north": "torture_chamber"
+      },
+      "items": ["training_manual", "whetstone", "weapon_oil", "gold_200"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_sergeant", "cultist", "cultist", "cultist"],
+          "description": "A training sergeant and recruits attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "torture_chamber": {
+      "id": "torture_chamber",
+      "title": "Chamber of Torment",
+      "description": "The horror of this place hits you like a physical blow. Torture implements line the walls. Bloodstains cover the floor. Screams echo from deeper in—prisoners are still here, still alive. The cult tortured anyone who opposed them, extracting information and breaking wills. You hear voices crying for help. You can't leave them here.",
+      "light_level": "dim",
+      "exits": {
+        "south": "training_hall",
+        "north": "prison_cells"
+      },
+      "items": ["torture_implements", "bloodstained_notes", "gold_100"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_torturer", "cultist_torturer", "serpent_fanatic"],
+          "description": "Torturers, still at their grim work, turn to face you with cruel smiles!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "prison_cells": {
+      "id": "prison_cells",
+      "title": "Prisoner Cells",
+      "description": "Barred cells hold the cult's prisoners—townsfolk, travelers, anyone who stood against them. You unlock the cells. Weak, malnourished prisoners stumble out. 'Thank you,' they whisper. 'We thought no one would come.' You direct them to flee through the rear exit. Not everyone dies tonight. Some will survive because of you. That has to count for something.",
+      "light_level": "dim",
+      "exits": {
+        "south": "torture_chamber",
+        "escape": "outer_courtyard"
+      },
+      "items": ["cell_keys", "prisoner_testimony", "hidden_gold_300"],
+      "encounters": [
+        {
+          "type": "choice",
+          "description": "Free the prisoners? (They will help create a distraction if freed)",
+          "choice_type": "rescue_prisoners"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Optional heroic content - freeing prisoners may provide benefits"
+    },
+    "champion_arena": {
+      "id": "champion_arena",
+      "title": "Arena of the Serpent Champion",
+      "description": "A circular arena surrounded by stone benches. This is where the cult's champion tests those deemed 'worthy' to face the Serpent's Voice. The champion stands in the center, clad in serpent-scale armor, wielding a massive greatsword wreathed in dark energy. 'You've come far,' they say. 'But your journey ends here. Prove your worth—or die like the rest.'",
+      "light_level": "bright",
+      "exits": {
+        "south": "hall_of_keys",
+        "north": "antechamber"
+      },
+      "items": ["serpent_scale_armor", "greatsword_cursed", "champion_trophy", "gold_600"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cult_champion", "serpent_fanatic", "serpent_fanatic"],
+          "description": "The Cult Champion challenges you! This is a fight to the death!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false,
+      "note": "Optional mini-boss - defeating the champion grants powerful equipment"
     },
     "antechamber": {
       "id": "antechamber",
       "title": "Ritual Antechamber",
-      "description": "The chamber before the inner sanctum. Powerful wards block the way. The cult's high priest guards the passage, channeling dark magic.",
+      "description": "The chamber before the inner sanctum. Powerful wards crackle in the air, serpent runes glowing on every surface. The cult's high priest guards the passage, staff raised, channeling power from the ritual beyond. 'None shall pass!' he roars. 'The Serpent awakens! The age of chaos begins! You are too late—the ritual is nearly complete!'",
       "light_level": "dim",
       "exits": {
-        "south": "temple_entrance",
-        "north": "inner_sanctum"
+        "south": "champion_arena",
+        "north": "voice_chamber"
       },
-      "items": [],
+      "items": ["staff_high_priest", "ward_breaker_scroll", "gold_400"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["high_priest_defender", "cultist_elite", "cultist_elite"],
-          "description": "The High Priest raises his staff! 'None shall pass! The Serpent awakens!'"
+          "monsters": ["high_priest_defender", "cultist_elite", "cultist_elite", "serpent_invoker"],
+          "description": "The High Priest and elite guards make their final stand!"
         }
       ],
       "safe_rest": false
     },
-    "inner_sanctum": {
-      "id": "inner_sanctum",
-      "title": "The Serpent's Eye - Final Ritual Chamber",
-      "description": "The heart of it all. A massive chamber carved with serpent runes that glow with sickly green light. In the center, a ritual circle contains all ten keys, arranged in a pattern. The Serpent's Voice stands at the altar, arms raised, chanting in a language that predates humanity. Behind them, reality itself cracks—a glimpse of the prison breaking, of something vast and terrible beginning to emerge.\n\nThe Voice turns to face you. 'You're too late. The keys are in place. The Serpent Eye awakens. All your struggles, all your victories—they were meaningless. This world ends tonight, and a new age begins in blood and chaos!'\n\nThis is it. Everything has led to this moment.",
+    "voice_chamber": {
+      "id": "voice_chamber",
+      "title": "The Serpent's Voice - Personal Sanctum",
+      "description": "The personal chamber of the cult's leader. Luxurious furnishings contrast with the horror beyond. Books on ancient prophecies lie open. A journal details the Voice's journey—how they discovered the Serpent Eye's existence, became obsessed, built the cult from nothing over thirty years. This was one person's mad vision, and thousands died for it. They're not here—they're in the ritual chamber, conducting the final ceremony.",
       "light_level": "bright",
       "exits": {
-        "south": "antechamber"
+        "south": "antechamber",
+        "north": "inner_sanctum"
       },
-      "items": ["legendary_weapon_choice", "serpent_slayer_title_scroll", "gold_2000", "all_ten_keys_shattered"],
+      "items": ["voice_journal", "serpent_crown", "robe_voice", "treasure_hoard", "gold_1000"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["serpents_voice", "cultist_elite", "cultist_elite", "cultist_elite", "summoned_demon"],
-          "description": "The Serpent's Voice channels the power of the awakening entity! Dark energy surrounds them! Elite cultists and a summoned demon join the battle! This is the final stand—win or lose, it ends here!",
+          "monsters": ["serpent_abomination", "serpent_abomination", "ritual_guardian"],
+          "description": "The Voice's personal guardians—serpent abominations and a construct—defend the chamber!"
+        }
+      ],
+      "safe_rest": false,
+      "note": "Last room before final boss - prepare here"
+    },
+    "inner_sanctum": {
+      "id": "inner_sanctum",
+      "title": "The Serpent's Eye - Final Ritual Chamber",
+      "description": "The heart of it all. A massive chamber carved with serpent runes that pulse with sickly green light. In the center, a ritual circle contains all ten keys, arranged in a pattern of ultimate power. The Serpent's Voice stands at the altar, arms raised, chanting in a language that predates humanity. Behind them, reality itself cracks—a glimpse of the prison breaking, of something vast and terrible beginning to emerge. The Awakened Serpent—a fragment of the entity given form—coils around the altar, reality warping in its presence.\n\nThe Voice turns to face you, and you see their face for the first time. They're smiling. 'You're too late. The keys are in place. The Serpent Eye awakens. All your struggles, all your victories—they were meaningless. This world ends tonight, and a new age begins in blood and chaos!'\n\nThe Awakened Serpent roars. Elite cultists move to flank the Voice. This is it. Everything has led to this moment. The fate of Aerthos—of reality itself—rests on this battle.\n\nYou raise your weapon. 'Not while I still draw breath.'",
+      "light_level": "bright",
+      "exits": {
+        "south": "voice_chamber"
+      },
+      "items": ["legendary_weapon_choice", "serpent_slayer_title_scroll", "tenth_key_shattered", "serpent_eye_fragment", "gold_2000", "treasure_ultimate"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["serpents_voice", "awakened_serpent", "cultist_elite", "cultist_elite", "serpent_invoker"],
+          "description": "THE FINAL BATTLE! The Serpent's Voice, the Awakened Serpent, elite guards, and an invoker attack as one! This is the ultimate test! Win here, or the world ends! FIGHT!",
           "boss": true,
           "final_boss": true
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "note": "FINAL BOSS - Campaign conclusion depends on this battle"
     }
   }
 }

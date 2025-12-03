@@ -1,0 +1,13 @@
+In the root of my development environment. Working in aerthos, continue project in @aerthos/SESSION_ROADMAP.md,
+  looking for the START point for this session.
+
+  Use TodoWrite tool to track tasks throughout the session. Run test suite (python3 run_tests.py --no-web) before
+  and after changes to verify no regressions (expect 504/504 passing).
+
+  Keep SESSION_ROADMAP.md updated with progress summaries: update header percentages, Phase 4 progress tracker,
+  completed expansions list, and 'Next Session Goals' section.
+
+  Record full details in SESSION_ARCHIVE.md: dungeon maps, room descriptions, monster/item tables, and files
+  modified. Details not required for cold start go here.
+
+  SESSION_ROADMAP.md should provide enough context for cold start of next session.

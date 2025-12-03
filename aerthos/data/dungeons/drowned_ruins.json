@@ -20,13 +20,15 @@
     "outer_ruins": {
       "id": "outer_ruins",
       "title": "Outer Ruins - Flooded Plaza",
-      "description": "Crumbling buildings loom out of the murk. Fish dart between broken columns. The water here is thick with silt and old magic. Passages lead deeper into the city.",
+      "description": "Crumbling buildings loom out of the murk. Fish dart between broken columns. The water here is thick with silt and old magic. Passages lead deeper into the city in all directions.",
       "tags": ["underwater"],
       "light_level": "dim",
       "exits": {
         "up": "diving_point",
-        "north": "collapsed_district",
-        "east": "temple_approach"
+        "north": "residential_quarter",
+        "east": "temple_approach",
+        "west": "collapsed_district",
+        "south": "cult_excavation"
       },
       "items": [],
       "encounters": [
@@ -41,11 +43,12 @@
     "collapsed_district": {
       "id": "collapsed_district",
       "title": "Collapsed District",
-      "description": "Buildings have fallen here, creating a maze of rubble. Something large has made a lair among the debris.",
+      "description": "Buildings have fallen here, creating a maze of rubble. Something large has made a lair among the debris. A dark fissure leads deeper into the abyss below.",
       "tags": ["underwater"],
       "light_level": "dark",
       "exits": {
-        "south": "outer_ruins"
+        "east": "outer_ruins",
+        "down": "aboleth_lair"
       },
       "items": ["ancient_treasure", "waterlogged_scroll"],
       "encounters": [
@@ -60,12 +63,13 @@
     "temple_approach": {
       "id": "temple_approach",
       "title": "Temple Approach",
-      "description": "A wide avenue leads to the Temple of the Serpent's Fang. Statues of ancient rulers line the path, their faces eroded by time and water. Cultist divers work at the temple entrance.",
+      "description": "A wide avenue leads to the Temple of the Serpent's Fang. Statues of ancient rulers line the path, their faces eroded by time and water. Cultist divers work at the temple entrance. To the north, the old market district beckons.",
       "tags": ["underwater"],
       "light_level": "dim",
       "exits": {
         "west": "outer_ruins",
-        "east": "temple_entrance"
+        "east": "temple_entrance",
+        "north": "market_ruins"
       },
       "items": [],
       "encounters": [
@@ -80,12 +84,13 @@
     "temple_entrance": {
       "id": "temple_entrance",
       "title": "Serpent Temple - Outer Chamber",
-      "description": "The temple interior is eerily preserved. Green bioluminescent algae provides ghostly light. Serpent carvings cover every surface. Water flows through channels in the floor.",
+      "description": "The temple interior is eerily preserved. Green bioluminescent algae provides ghostly light. Serpent carvings cover every surface. Water flows through channels in the floor. To the east, an ornate archway leads toward what was once the royal palace.",
       "tags": ["underwater"],
       "light_level": "dim",
       "exits": {
         "west": "temple_approach",
-        "north": "ritual_chamber"
+        "north": "ritual_chamber",
+        "east": "palace_gardens"
       },
       "items": ["holy_symbol_serpent"],
       "encounters": [
@@ -112,6 +117,257 @@
           "type": "combat",
           "monsters": ["morvathis_high_priest", "cultist", "cultist", "aboleth_spawn"],
           "description": "High Priest Morvathis turns from his ritual! 'You're too late! The Fang is mine, and soon the Serpent will rise!' An aboleth spawn emerges from the depths to aid him!",
+          "boss": true
+        }
+      ],
+      "safe_rest": false
+    },
+    "residential_quarter": {
+      "id": "residential_quarter",
+      "title": "Residential Quarter - Central Street",
+      "description": "Ancient homes line this flooded street, their windows dark and empty. Kelp grows through doorways, and small fish dart in and out of broken windows. The buildings are eerily preserved, as if the residents simply vanished.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "south": "outer_ruins",
+        "north": "ancient_homes",
+        "east": "nobles_villa"
+      },
+      "items": ["residential_map", "family_locket"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "ancient_homes": {
+      "id": "ancient_homes",
+      "title": "Ancient Homes - Haunted Dwellings",
+      "description": "Several homes cluster together here. Inside, furniture remains in place, covered in silt. Ghostly echoes whisper through the water—the drowned spirits of Ys'Thara, unable to move on. They don't attack, but their presence is deeply unsettling.",
+      "tags": ["underwater"],
+      "light_level": "dark",
+      "exits": {
+        "south": "residential_quarter"
+      },
+      "items": ["ghostly_diary", "silver_cutlery", "old_coins_100"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["drowned_spirit", "drowned_spirit"],
+          "description": "Drowned spirits materialize from the walls, their eyes filled with ancient sorrow and rage!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "nobles_villa": {
+      "id": "nobles_villa",
+      "title": "Noble's Villa - Preserved Estate",
+      "description": "This grand villa belonged to a wealthy merchant lord. Unlike other buildings, it has been magically preserved—carpets still plush, paintings still vibrant. A protective enchantment kept the water at bay... until recently. The cult has looted much, but secrets remain.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "west": "residential_quarter"
+      },
+      "items": ["noble_signet_ring", "preserved_painting", "merchant_ledger_ancient", "gold_300", "pearl_necklace_ancient"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["animated_armor", "animated_armor"],
+          "description": "Two suits of ornate armor animate and attack—the villa's guardians still defend their lord's treasures!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "cult_excavation": {
+      "id": "cult_excavation",
+      "title": "Cult Excavation Site - Operations Hub",
+      "description": "The cult has established a base here. Ropes and pulleys connect to the surface, and crates of artifacts are staged for retrieval. A foreman oversees work crews sorting treasures and ancient texts. This is the logistical heart of the cult's underwater operation.",
+      "tags": ["underwater"],
+      "light_level": "bright",
+      "exits": {
+        "north": "outer_ruins",
+        "south": "diving_bell_chamber",
+        "east": "prisoner_holding"
+      },
+      "items": ["excavation_orders", "artifact_manifest", "cult_supply_crate"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_foreman", "cultist_diver", "cultist_diver"],
+          "description": "The cult foreman shouts orders! 'Intruders! Protect the artifacts!' Divers rush to attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "diving_bell_chamber": {
+      "id": "diving_bell_chamber",
+      "title": "Diving Bell Chamber - Equipment Storage",
+      "description": "Large diving bells hang suspended in the water, connected to air hoses leading to the surface. Shelves hold diving equipment, waterbreathing potions, and underwater tools. This is how the cult has been able to work at such depths for extended periods.",
+      "tags": ["underwater"],
+      "light_level": "bright",
+      "exits": {
+        "north": "cult_excavation"
+      },
+      "items": ["diving_equipment", "waterbreathing_potion", "repair_tools", "air_bladder"],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "prisoner_holding": {
+      "id": "prisoner_holding",
+      "title": "Prisoner Holding - Mind-Control Cells",
+      "description": "Iron cages hold a dozen victims—fisherfolk and divers who got too close to the ruins. But they're not prisoners anymore... they're thralls. The aboleth has touched their minds, and they serve the cult willingly now, their eyes glazed and empty.",
+      "tags": ["underwater"],
+      "light_level": "dark",
+      "exits": {
+        "west": "cult_excavation"
+      },
+      "items": ["prisoner_belongings", "cell_keys", "aboleth_control_sigil"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["mind_controlled_diver", "mind_controlled_diver", "mind_controlled_diver"],
+          "description": "The thralls turn toward you with dead eyes. They attack without hesitation, slaves to an alien will!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "market_ruins": {
+      "id": "market_ruins",
+      "title": "Market Ruins - Sunken Bazaar",
+      "description": "Stalls and shop fronts line this once-bustling market square. Goods still sit on shelves, perfectly preserved by the cold water—spices, fabrics, trinkets. Sahuagin have claimed this area, using it to store salvage and trophies from their raids.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "south": "temple_approach",
+        "north": "warehouse_ruins"
+      },
+      "items": ["ancient_spices", "preserved_cloth", "market_coins_150"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["sahuagin_chieftain", "sahuagin", "sahuagin"],
+          "description": "A sahuagin chieftain and his warriors defend their territory!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "warehouse_ruins": {
+      "id": "warehouse_ruins",
+      "title": "Warehouse Ruins - Contraband Storage",
+      "description": "This massive warehouse once stored merchant goods. Now it's filled with contraband—smuggled weapons, illegal alchemical substances, and stolen artifacts. The cult has been using it to store items they don't want on the surface.",
+      "tags": ["underwater"],
+      "light_level": "dark",
+      "exits": {
+        "south": "market_ruins",
+        "west": "smugglers_grotto"
+      },
+      "items": ["illegal_weapons_cache", "alchemical_substances", "stolen_chalice", "smuggled_gems_400"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["cultist_guard", "cultist_guard"],
+          "description": "Cult guards protecting the contraband spot you and attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "smugglers_grotto": {
+      "id": "smugglers_grotto",
+      "title": "Smuggler's Grotto - Hidden Cache",
+      "description": "A hidden cave behind false barrels. This was the smuggler's true treasure vault—not cult related, but ancient. Coins, jewelry, and a few magical items are sealed in waterproof chests. A skeleton in fine clothes suggests the smuggler never made it out to retrieve his fortune.",
+      "tags": ["underwater"],
+      "light_level": "dark",
+      "exits": {
+        "east": "warehouse_ruins"
+      },
+      "items": ["smuggler_treasure_chest", "ancient_jewelry_500", "waterproof_scroll_case", "magic_ring"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "palace_gardens": {
+      "id": "palace_gardens",
+      "title": "Royal Palace - Drowned Gardens",
+      "description": "Once beautiful gardens now grow wild underwater. Kelp forests replace manicured hedges, and bioluminescent plants create an eerie, beautiful glow. Aquatic creatures have made homes in the fountains and ponds. The palace itself looms to the north, its bronze doors still sealed.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "west": "temple_entrance",
+        "north": "throne_room",
+        "east": "royal_archives"
+      },
+      "items": ["bioluminescent_plant", "palace_fountain_coin"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["giant_crab", "giant_crab"],
+          "description": "Massive crabs defend their garden territory!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "throne_room": {
+      "id": "throne_room",
+      "title": "Royal Throne Room - Hall of Kings",
+      "description": "The throne of Ys'Thara sits upon a dais, a skeleton still seated upon it wearing a coral crown. Murals depict the city's glory days. Two massive stone golems flank the throne—ancient guardians that still function after a thousand years.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "south": "palace_gardens",
+        "north": "treasury_vault"
+      },
+      "items": ["coral_crown", "royal_scepter", "throne_room_tapestry"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["stone_golem_guardian", "stone_golem_guardian"],
+          "description": "The stone golems activate with grinding sounds! Their eyes glow red as they move to defend the throne!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "treasury_vault": {
+      "id": "treasury_vault",
+      "title": "Royal Treasury - Vault of Ys'Thara",
+      "description": "The royal treasury. Gold, platinum, gems, and magical artifacts fill this chamber. But the cult has gotten here first—many treasures are gone. What remains is still valuable, but deadly traps protect it. The floor is littered with skeletal remains of looters who failed.",
+      "tags": ["underwater"],
+      "light_level": "bright",
+      "exits": {
+        "south": "throne_room"
+      },
+      "items": ["royal_treasury_gold_1000", "platinum_ingots_500", "ancient_artifact", "magic_trident", "kings_treasure"],
+      "encounters": [
+        {
+          "type": "trap",
+          "description": "Pressure plates trigger poison dart traps! Roll DEX save (DC 18) or take 3d6 poison damage and be poisoned for 1 hour."
+        }
+      ],
+      "safe_rest": false
+    },
+    "royal_archives": {
+      "id": "royal_archives",
+      "title": "Royal Archives - Hall of Knowledge",
+      "description": "Waterproof stone tablets and sealed scroll cases line the walls. The history of Ys'Thara is recorded here—including the truth of why it sank. The last king made a pact with an aboleth, trading the city for immortality. The aboleth kept its bargain... in a way.",
+      "tags": ["underwater"],
+      "light_level": "dim",
+      "exits": {
+        "west": "palace_gardens"
+      },
+      "items": ["historical_tablets", "kings_final_decree", "aboleth_pact_scroll", "city_history_tome"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "aboleth_lair": {
+      "id": "aboleth_lair",
+      "title": "The Abyss - Aboleth's Domain",
+      "description": "You descend into crushing darkness. The water here is ancient and wrong—thick with psychic energy. An enormous aboleth floats in the void, its three eyes glowing with malevolent intelligence. This is the creature that sank Ys'Thara, and it guards treasures beyond measure. Fighting it here, in its domain, is extremely dangerous.",
+      "tags": ["underwater"],
+      "light_level": "dark",
+      "exits": {
+        "up": "collapsed_district"
+      },
+      "items": ["aboleth_treasure_hoard", "psionic_gem_1000", "ancient_aboleth_artifact", "mind_control_crown"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["aboleth_ancient"],
+          "description": "The ancient aboleth turns its terrible gaze upon you! Its psychic voice reverberates in your skull: 'You dare enter my domain? Join the city in eternal servitude!' This is an optional boss fight—extremely dangerous!",
           "boss": true
         }
       ],

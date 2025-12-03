@@ -19,16 +19,18 @@
     },
     "upper_hall": {
       "id": "upper_hall",
-      "title": "Upper Hall",
-      "description": "A wide hall carved from living stone. Dwarven carvings depicting battles and forges line the walls. Signs of recent combat are everywhere—blood, broken weapons, scorched stone.",
+      "title": "Upper Hall - Main Corridor",
+      "description": "A wide hall carved from living stone, the pride of dwarven craftsmanship. Intricate carvings depict legendary battles and master forges, now marred by recent combat. Blood stains the floor, broken weapons litter the corners, and scorch marks from dark magic scar the walls. The hall branches in multiple directions—the dwarves built Ironfast to last, but the duergar knew exactly where to strike.",
       "light_level": "dim",
       "exits": {
         "south": "barricade",
         "north": "forge_level",
+        "northeast": "great_hall",
         "east": "armory",
-        "west": "barracks"
+        "west": "barracks",
+        "northwest": "officers_quarters"
       },
-      "items": [],
+      "items": ["broken_warhammer", "dwarven_battle_standard"],
       "encounters": [
         {
           "type": "combat",
@@ -70,14 +72,17 @@
     },
     "forge_level": {
       "id": "forge_level",
-      "title": "The Great Forge",
-      "description": "A massive chamber housing the dwarven forge. The fires are cold now, the anvils silent. The duergar have desecrated this sacred place.",
+      "title": "The Great Forge - Central Hall",
+      "description": "A massive vaulted chamber housing the legendary Great Forge of Ironfast. The central furnace, normally roaring with white-hot flames, stands cold and silent—a devastating blow to dwarven pride. Massive anvils, each named after a dwarven ancestor, line the walls. The smell of coal and hot metal still lingers. The duergar have set up crude camps here, defiling centuries of craftsmanship. Passages lead to the smelting room, smithy, and storage areas.",
       "light_level": "dim",
       "exits": {
         "south": "upper_hall",
-        "north": "deep_vault"
+        "north": "deep_vault",
+        "east": "smelting_room",
+        "west": "smithy_workshop",
+        "down": "ore_storage"
       },
-      "items": ["masterwork_hammer"],
+      "items": ["masterwork_hammer", "cold_coal", "forge_tools"],
       "encounters": [
         {
           "type": "combat",
@@ -89,22 +94,307 @@
     },
     "deep_vault": {
       "id": "deep_vault",
-      "title": "Deep Vault of Ironfast",
-      "description": "The deepest chamber of the hold, where the dwarves kept their greatest treasures. Grathak the Soulless stands before the open vault, a serpent amulet glowing on his chest. Behind him, duergar warriors form a shield wall.",
+      "title": "Deep Vault of Ironfast - Grathak's Throne",
+      "description": "The deepest chamber of the hold, where the dwarves kept their greatest treasures and heirlooms. The massive vault door has been torn from its hinges by dark magic. Grathak the Soulless sits on a makeshift throne of dwarven bones and broken shields, a serpent amulet glowing ominously on his chest. Behind him, elite duergar warriors form a shield wall. The chamber reeks of death and sulfur from the Underdark below.",
       "light_level": "bright",
       "exits": {
-        "south": "forge_level"
+        "south": "forge_level",
+        "west": "underdark_passage",
+        "east": "torture_chamber"
       },
-      "items": ["second_key", "dwarven_waraxe_plus_1", "plate_mail", "gold_400"],
+      "items": ["second_key", "dwarven_waraxe_plus_1", "plate_mail", "gold_400", "grathak_journal", "duergar_orders"],
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["grathak_soulless", "duergar", "duergar", "duergar"],
-          "description": "Grathak the Soulless and his elite guard turn to face you! Dark energy crackles around Grathak's war pick!",
+          "monsters": ["grathak_soulless", "duergar_elite", "duergar_elite", "duergar_cleric"],
+          "description": "Grathak the Soulless and his elite guard turn to face you! Dark energy crackles around Grathak's war pick, and the serpent amulet pulses with unholy power!",
           "boss": true
         }
       ],
       "safe_rest": false
+    },
+    "officers_quarters": {
+      "id": "officers_quarters",
+      "title": "Officers' Quarters",
+      "description": "The private chambers of Ironfast's commanding officers. Bunks are overturned, personal belongings scattered. On a desk, you find Commander Thrain's logbook and correspondence—evidence of the betrayal that led to this attack. Maps of the hold are pinned to the walls, with duergar marks showing their infiltration routes.",
+      "light_level": "dim",
+      "exits": {
+        "southeast": "upper_hall"
+      },
+      "items": ["thrain_logbook", "betrayal_letter", "hold_map", "officer_insignia", "gold_50"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "great_hall": {
+      "id": "great_hall",
+      "title": "Great Hall of Clan Ironfoot",
+      "description": "The ceremonial heart of Ironfast Outpost. Long tables where hundreds of dwarves once feasted now lie splintered. Clan banners hang torn from the rafters. The floor is carpeted with bodies—dwarves and duergar alike fell here in desperate battle. A hidden stairway descends to the wine cellar. The desecrated clan shrine stands to the north, its doors smashed open.",
+      "light_level": "dim",
+      "exits": {
+        "southwest": "upper_hall",
+        "north": "clan_shrine",
+        "down": "wine_cellar"
+      },
+      "items": ["clan_banner", "dwarven_casualty_list", "feast_plate", "ceremonial_axe"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar", "corrupted_dwarf"],
+          "description": "Duergar warriors and a mind-controlled dwarf attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "clan_shrine": {
+      "id": "clan_shrine",
+      "title": "Shrine of Moradin - Desecrated",
+      "description": "The sacred shrine to Moradin, the dwarven god of forges and creation. The holy altar has been defiled with serpent symbols painted in blood. Sacred relics lie smashed on the floor. Duergar have erected a crude counter-shrine to their dark gods. The desecration of this place is a wound to every dwarf's soul.",
+      "light_level": "bright",
+      "exits": {
+        "south": "great_hall"
+      },
+      "items": ["broken_holy_relic", "dwarven_prayer_book", "serpent_defacement"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar_cleric", "duergar", "duergar"],
+          "description": "A duergar dark priest and his guards defend their blasphemous shrine!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "wine_cellar": {
+      "id": "wine_cellar",
+      "title": "Ancient Wine Cellar",
+      "description": "A hidden cellar accessible only from the great hall. Racks of ancient dwarven spirits line the walls—some bottles centuries old. The duergar haven't found this place yet. Barrels of Ironfast ale and mead stand undisturbed. Among the wine racks, you spot a hidden cache of valuables the dwarves stashed for emergencies.",
+      "light_level": "dark",
+      "exits": {
+        "up": "great_hall"
+      },
+      "items": ["ironfast_ale", "ancient_spirits", "emergency_cache", "gold_150", "platinum_ring"],
+      "encounters": [],
+      "safe_rest": true
+    },
+    "smelting_room": {
+      "id": "smelting_room",
+      "title": "Smelting Chamber",
+      "description": "The room where raw ore was smelted into pure metal. The furnaces still radiate oppressive heat—the duergar have kept them running to forge weapons. The air shimmers, and pools of molten slag bubble dangerously. Working here without protection risks severe burns. Duergar smiths toil at the furnaces, reforging dwarven weapons into crude implements.",
+      "light_level": "bright",
+      "exits": {
+        "west": "forge_level",
+        "south": "cooling_pools"
+      },
+      "items": ["raw_ore", "dwarven_ingots", "smelting_tools"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar", "cave_troll"],
+          "description": "Duergar smiths and their trained cave troll attack!"
+        },
+        {
+          "type": "trap",
+          "trap_type": "extreme_heat",
+          "description": "The intense heat from active furnaces sears exposed skin!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "smithy_workshop": {
+      "id": "smithy_workshop",
+      "title": "Master Smithy Workshop",
+      "description": "The personal workshop of Ironfast's master smiths. Precision tools hang from pegs—hammers, tongs, files, and measuring devices of legendary craftsmanship. Half-finished masterwork weapons rest on benches. The duergar have ransacked the place but lack the skill to appreciate what they've destroyed. Blueprints for legendary weapons are scattered about.",
+      "light_level": "bright",
+      "exits": {
+        "east": "forge_level"
+      },
+      "items": ["masterwork_tools", "weapon_blueprints", "precision_hammer", "mithril_ingot", "gold_100"],
+      "encounters": [],
+      "safe_rest": false
+    },
+    "ore_storage": {
+      "id": "ore_storage",
+      "title": "Ore Storage Vaults",
+      "description": "Deep underground storage chambers where raw ore and refined metals were kept. The air is cool and dry. Carts sit abandoned on mining tracks. The duergar have been systematically looting the ore to fuel their war machine. Piles of iron, copper, silver, and even mithril ore fill wooden bins. A mining shaft leads deeper into the mountain.",
+      "light_level": "dark",
+      "exits": {
+        "up": "forge_level",
+        "west": "mining_shaft",
+        "south": "treasury_vault"
+      },
+      "items": ["iron_ore", "copper_ore", "silver_ore", "mining_cart", "ore_manifest"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar"],
+          "description": "Duergar ore thieves attack!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "cooling_pools": {
+      "id": "cooling_pools",
+      "title": "Quenching Pools",
+      "description": "Stone pools filled with water where hot metal was quenched and cooled. The pools still function, fed by an underground spring. Steam rises from the water where duergar have dumped hot slag. The room is humid and slippery. Some pools have been contaminated with toxic runoff from the smelting process, turning the water a sickly green.",
+      "light_level": "dim",
+      "exits": {
+        "north": "smelting_room"
+      },
+      "items": ["quenching_tongs", "water_bucket"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "toxic_water",
+          "description": "Contaminated water vapor fills the room, causing nausea and dizziness!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "underdark_passage": {
+      "id": "underdark_passage",
+      "title": "Underdark Supply Tunnel",
+      "description": "A rough-hewn tunnel descending into the Underdark. This is how the duergar entered Ironfast—through old mining tunnels the dwarves thought sealed. The walls are slick with moisture and phosphorescent fungi provide eerie illumination. The smell of sulfur and rot wafts up from below. Footprints and drag marks show heavy traffic—the duergar are using this as a supply line.",
+      "light_level": "dim",
+      "exits": {
+        "east": "deep_vault",
+        "down": "slave_pens"
+      },
+      "items": ["phosphorescent_fungus", "underdark_map", "duergar_supplies"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar", "duergar", "duergar"],
+          "description": "Duergar reinforcements emerge from the Underdark!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "torture_chamber": {
+      "id": "torture_chamber",
+      "title": "Chamber of Interrogation",
+      "description": "A nightmare room where the duergar torture captured dwarves for information. Chains hang from the ceiling, blood stains the floor, and implements of pain line the walls. Several dwarves are chained here, barely alive. The duergar torturer looks up from his grisly work, annoyed at the interruption. This is a place of pure suffering.",
+      "light_level": "bright",
+      "exits": {
+        "west": "deep_vault"
+      },
+      "items": ["torture_implements", "interrogation_notes", "dwarven_prisoner_list"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar_slaver", "duergar", "duergar"],
+          "description": "The duergar torturer and his assistants attack! The chained dwarves cry out for help!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "slave_pens": {
+      "id": "slave_pens",
+      "title": "Slave Holding Pens",
+      "description": "Crude cages where the duergar hold captured dwarves before transporting them to the Underdark as slaves. Dozens of emaciated dwarves are crammed into iron cages, their eyes hollow with despair. The stench is overwhelming. A dark altar to the serpent cult stands at the far end—the duergar are preparing these prisoners for dark rituals as well as slavery.",
+      "light_level": "dim",
+      "exits": {
+        "up": "underdark_passage",
+        "south": "dark_altar"
+      },
+      "items": ["slave_manifest", "cage_keys", "prisoner_belongings"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar_slaver", "duergar_slaver", "duergar"],
+          "description": "Duergar slavers attack to protect their captives!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "dark_altar": {
+      "id": "dark_altar",
+      "title": "Serpent Cult Dark Altar",
+      "description": "A blasphemous shrine to the Serpent Eye cult, erected in the deepest part of Ironfast. The altar is carved from black stone and covered in serpent imagery. Ritual implements and cult texts are scattered about. This is where the duergar perform their dark ceremonies, binding captured dwarves to the cult's will through blood magic. The air crackles with malevolent energy.",
+      "light_level": "bright",
+      "exits": {
+        "north": "slave_pens"
+      },
+      "items": ["serpent_ritual_texts", "cult_orders", "dark_relics", "sacrificial_dagger", "gold_200"],
+      "encounters": [
+        {
+          "type": "combat",
+          "monsters": ["duergar_cleric", "duergar_cleric", "corrupted_dwarf", "corrupted_dwarf"],
+          "description": "Duergar dark priests and their mind-controlled dwarf servants defend the unholy altar!"
+        }
+      ],
+      "safe_rest": false
+    },
+    "mining_shaft": {
+      "id": "mining_shaft",
+      "title": "Flooded Mining Shaft",
+      "description": "An abandoned mining shaft that the dwarves were excavating before the attack. Water has flooded the lower levels from an underground river. The wooden supports are rotting and unstable. Rats and worse things have made homes in the dark water. Wading through here risks disease, and the entire structure could collapse at any moment.",
+      "light_level": "dark",
+      "exits": {
+        "east": "ore_storage",
+        "north": "collapsed_tunnel"
+      },
+      "items": ["mining_tools", "rotted_timber", "diseased_rat_corpse"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "flooded_shaft",
+          "description": "The contaminated water threatens disease, and rotting supports groan ominously!",
+          "save_type": "constitution"
+        }
+      ],
+      "safe_rest": false
+    },
+    "collapsed_tunnel": {
+      "id": "collapsed_tunnel",
+      "title": "Collapsed Access Tunnel",
+      "description": "A tunnel that partially collapsed during the duergar siege. Rubble blocks most of the passage, but a narrow gap allows passage for those willing to risk it. The remaining supports are cracked and unstable—any loud noise or impact could bring down the rest of the ceiling. This passage offers a dangerous shortcut back to the upper levels.",
+      "light_level": "dark",
+      "exits": {
+        "south": "mining_shaft",
+        "north": "barracks"
+      },
+      "items": ["fallen_rubble", "crushed_dwarf_corpse"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "collapsing_ceiling",
+          "description": "The tunnel groans and shifts! Rocks rain from above!",
+          "save_type": "dexterity"
+        }
+      ],
+      "safe_rest": false
+    },
+    "treasury_vault": {
+      "id": "treasury_vault",
+      "title": "Ironfast Treasury",
+      "description": "The clan treasury, hidden deep in the ore storage level. The vault door is intact—the dwarves died before revealing its location. Inside, centuries of accumulated wealth gleam in the torchlight: gold coins, silver ingots, precious gems, and masterwork dwarven artifacts. But the dwarves were clever—the treasury is trapped with deadly precision.",
+      "light_level": "bright",
+      "exits": {
+        "north": "ore_storage"
+      },
+      "items": ["gold_500", "silver_ingots", "precious_gems", "dwarven_artifacts", "clan_heirlooms", "platinum_bars"],
+      "encounters": [
+        {
+          "type": "trap",
+          "trap_type": "blade_trap_deadly",
+          "description": "Hidden pressure plates trigger razor-sharp blade traps and poison darts!",
+          "save_type": "dexterity"
+        }
+      ],
+      "safe_rest": false
+    },
+    "ancestor_hall": {
+      "id": "ancestor_hall",
+      "title": "Hall of Ancestors",
+      "description": "A sacred hall where the dwarves honored their dead. Stone tablets line the walls, inscribed with the names and deeds of every dwarf who served Ironfast over the centuries. Statues of legendary heroes stand in alcoves. The duergar haven't desecrated this place—even gray dwarves fear disturbing the ancestral dead. The hall is eerily peaceful, a refuge from the horror above.",
+      "light_level": "bright",
+      "exits": {
+        "south": "wine_cellar"
+      },
+      "items": ["ancestor_tablets", "clan_history", "legendary_deeds_scroll", "ancestral_blessing"],
+      "encounters": [],
+      "safe_rest": true
     }
   }
 }
