@@ -3,6 +3,7 @@ Base Character class for all entities (PCs and Monsters)
 Implements core AD&D 1e attributes and combat stats
 """
 
+import uuid
 from typing import List, Optional
 from dataclasses import dataclass, field
 
@@ -55,6 +56,7 @@ class Character:
     name: str
     race: str
     char_class: str
+    id: str = field(default_factory=lambda: str(uuid.uuid4())[:8]) # Unique ID for saving/loading
     level: int = 1
     title: str = "Adventurer"  # Level title (e.g., "Veteran", "Hero")
     alignment: str = "True Neutral"  # AD&D 1e nine-point alignment

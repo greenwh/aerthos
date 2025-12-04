@@ -17,17 +17,19 @@ class ShopInterface:
     across party members in a campaign context.
     """
 
-    def __init__(self, shop: Shop, party: Party, price_modifier: float = 1.0, buy_rate: float = 0.4):
+    def __init__(self, shop: Shop, party: Party, all_items_data: Dict, price_modifier: float = 1.0, buy_rate: float = 0.4):
         """Initialize shop interface
 
         Args:
             shop: The shop instance
             party: The party doing the shopping
+            all_items_data: Dictionary of all game items
             price_modifier: Price multiplier (e.g., 1.5 = 50% more expensive)
             buy_rate: How much shop pays for items (default 40%)
         """
         self.shop = shop
         self.party = party
+        self.all_items_data = all_items_data
         self.price_modifier = price_modifier
         self.buy_rate = buy_rate
         self.active_character_index = 0
@@ -90,7 +92,7 @@ class ShopInterface:
             return False, "Item not found."
 
         # Check if character can afford it (in gold pieces)
-        if self.active_character.get_total_money() < price:
+        if self.active_character.get_total_gold_value() < price:
             return False, f"Not enough gold. Need {price}gp, have {self.active_character.get_total_money():.1f}gp."
 
         # Create the item from item factory
@@ -113,7 +115,7 @@ class ShopInterface:
                 pass  # Successfully subtracted
             else:
                 # Need to convert coins
-                total_gp_value = self.active_character.get_total_money()
+                total_gp_value = self.active_character.get_total_gold_value()
                 if total_gp_value >= price:
                     # Convert all to gold and subtract
                     self.active_character.copper_pieces = 0
@@ -128,10 +130,10 @@ class ShopInterface:
             self.shop.buy_item(item_id)
 
             # Add to inventory
-            self.active_character.inventory.add_item(item_id, item_data)
+            created_item = self.item_factory.create_item(item_id, item_data) # Create an Item object
+            self.active_character.inventory.add_item(created_item)
 
             return True, f"Purchased {item_data['name']} for {price}gp."
-
         except Exception as e:
             # Rollback not possible with coin conversion, so just report error
             return False, f"Error purchasing item: {e}"
@@ -213,7 +215,7 @@ class InnInterface:
         total_cost = self.rate_per_night * nights * len(living_members)
 
         # Check if party has enough gold
-        party_gold = sum(m.get_total_money() for m in self.party.members)
+        party_gold = sum(m.get_total_gold_value() for m in self.party.members)
         if party_gold < total_cost:
             return False, f"Not enough gold. Need {total_cost}gp for {nights} night(s)."
 
@@ -223,7 +225,7 @@ class InnInterface:
             if remaining_cost <= 0:
                 break
 
-            member_gold = member.get_total_money()
+            member_gold = member.get_total_gold_value()
             deduct = min(member_gold, remaining_cost)
 
             # Try to subtract exact gold pieces first
@@ -244,7 +246,7 @@ class InnInterface:
             member.hp_current = member.hp_max
             # Restore all spell slots
             if hasattr(member, 'spells_memorized'):
-                member.restore_all_spells()
+                member.restore_spells()
 
         return True, f"Rested for {nights} night(s). Party fully restored. Cost: {total_cost}gp"
 
@@ -355,7 +357,7 @@ class TempleInterface:
         cost = paid_amount if self.donation_based and paid_amount is not None else service['cost']
 
         # Check if party can afford
-        party_gold = sum(m.get_total_money() for m in self.party.members)
+        party_gold = sum(m.get_total_gold_value() for m in self.party.members)
         if party_gold < cost:
             return False, f"Not enough gold. Need {cost}gp."
 
@@ -364,7 +366,7 @@ class TempleInterface:
         for member in self.party.members:
             if remaining <= 0:
                 break
-            member_gold = member.get_total_money()
+            member_gold = member.get_total_gold_value()
             deduct = min(member_gold, remaining)
 
             # Try to subtract exact gold pieces first

@@ -1,0 +1,3306 @@
+[
+  {
+    "asset_id": "human_fighter_padded",
+    "name": "Human Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_leather",
+    "name": "Human Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_studded_leather",
+    "name": "Human Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_ring_mail",
+    "name": "Human Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_scale_mail",
+    "name": "Human Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_chain_mail",
+    "name": "Human Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_splint_mail",
+    "name": "Human Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_banded_mail",
+    "name": "Human Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_fighter_plate_mail",
+    "name": "Human Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_padded",
+    "name": "Human Ranger - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_leather",
+    "name": "Human Ranger - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_studded_leather",
+    "name": "Human Ranger - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_ring_mail",
+    "name": "Human Ranger - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_scale_mail",
+    "name": "Human Ranger - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_chain_mail",
+    "name": "Human Ranger - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_splint_mail",
+    "name": "Human Ranger - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_banded_mail",
+    "name": "Human Ranger - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_ranger_plate_mail",
+    "name": "Human Ranger - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Ranger",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Ranger wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_padded",
+    "name": "Human Paladin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_leather",
+    "name": "Human Paladin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_studded_leather",
+    "name": "Human Paladin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_ring_mail",
+    "name": "Human Paladin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_scale_mail",
+    "name": "Human Paladin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_chain_mail",
+    "name": "Human Paladin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_splint_mail",
+    "name": "Human Paladin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_banded_mail",
+    "name": "Human Paladin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_paladin_plate_mail",
+    "name": "Human Paladin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Paladin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Paladin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior dedicated to law and good, champion of justice.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_padded",
+    "name": "Human Cleric - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_leather",
+    "name": "Human Cleric - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_studded_leather",
+    "name": "Human Cleric - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_ring_mail",
+    "name": "Human Cleric - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_scale_mail",
+    "name": "Human Cleric - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_chain_mail",
+    "name": "Human Cleric - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_splint_mail",
+    "name": "Human Cleric - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_banded_mail",
+    "name": "Human Cleric - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_cleric_plate_mail",
+    "name": "Human Cleric - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Cleric",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Cleric wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_druid_padded",
+    "name": "Human Druid - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Druid",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Druid wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A priest of nature who protects the balance of the natural world.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_druid_leather",
+    "name": "Human Druid - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Druid",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Druid wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A priest of nature who protects the balance of the natural world.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_magic_user_robes",
+    "name": "Human Magic-User - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Magic-User",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Magic-User wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A scholar of arcane magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_illusionist_robes",
+    "name": "Human Illusionist - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Illusionist",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Illusionist wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A specialist in illusion and phantasm magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_thief_padded",
+    "name": "Human Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_thief_leather",
+    "name": "Human Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_padded",
+    "name": "Human Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_leather",
+    "name": "Human Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_studded_leather",
+    "name": "Human Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_ring_mail",
+    "name": "Human Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_scale_mail",
+    "name": "Human Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_chain_mail",
+    "name": "Human Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_splint_mail",
+    "name": "Human Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_banded_mail",
+    "name": "Human Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_assassin_plate_mail",
+    "name": "Human Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_monk_monk_robes",
+    "name": "Human Monk - Monk Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Monk",
+      "Monk Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Monk wearing Monk Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A martial artist who achieves perfection through discipline.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_bard_padded",
+    "name": "Human Bard - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Bard",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Bard wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_bard_leather",
+    "name": "Human Bard - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Bard",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Bard wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_bard_studded_leather",
+    "name": "Human Bard - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Bard",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Bard wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "human_bard_ring_mail",
+    "name": "Human Bard - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Human",
+      "Bard",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Human Bard wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Versatile and ambitious, humans are the most common race. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_padded",
+    "name": "Elf Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_leather",
+    "name": "Elf Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_studded_leather",
+    "name": "Elf Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_ring_mail",
+    "name": "Elf Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_scale_mail",
+    "name": "Elf Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_chain_mail",
+    "name": "Elf Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_splint_mail",
+    "name": "Elf Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_banded_mail",
+    "name": "Elf Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_fighter_plate_mail",
+    "name": "Elf Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_padded",
+    "name": "Elf Ranger - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_leather",
+    "name": "Elf Ranger - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_studded_leather",
+    "name": "Elf Ranger - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_ring_mail",
+    "name": "Elf Ranger - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_scale_mail",
+    "name": "Elf Ranger - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_chain_mail",
+    "name": "Elf Ranger - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_splint_mail",
+    "name": "Elf Ranger - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_banded_mail",
+    "name": "Elf Ranger - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_ranger_plate_mail",
+    "name": "Elf Ranger - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Ranger",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Ranger wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_magic_user_robes",
+    "name": "Elf Magic-User - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Magic-User",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Magic-User wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A scholar of arcane magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_illusionist_robes",
+    "name": "Elf Illusionist - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Illusionist",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Illusionist wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A specialist in illusion and phantasm magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_thief_padded",
+    "name": "Elf Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_thief_leather",
+    "name": "Elf Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_padded",
+    "name": "Elf Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_leather",
+    "name": "Elf Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_studded_leather",
+    "name": "Elf Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_ring_mail",
+    "name": "Elf Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_scale_mail",
+    "name": "Elf Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_chain_mail",
+    "name": "Elf Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_splint_mail",
+    "name": "Elf Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_banded_mail",
+    "name": "Elf Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_assassin_plate_mail",
+    "name": "Elf Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_bard_padded",
+    "name": "Elf Bard - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Bard",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Bard wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_bard_leather",
+    "name": "Elf Bard - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Bard",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Bard wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_bard_studded_leather",
+    "name": "Elf Bard - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Bard",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Bard wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "elf_bard_ring_mail",
+    "name": "Elf Bard - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Elf",
+      "Bard",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Elf Bard wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Graceful and long-lived, elves are skilled with magic and bow. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_padded",
+    "name": "Dwarf Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_leather",
+    "name": "Dwarf Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_studded_leather",
+    "name": "Dwarf Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_ring_mail",
+    "name": "Dwarf Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_scale_mail",
+    "name": "Dwarf Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_chain_mail",
+    "name": "Dwarf Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_splint_mail",
+    "name": "Dwarf Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_banded_mail",
+    "name": "Dwarf Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_fighter_plate_mail",
+    "name": "Dwarf Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_padded",
+    "name": "Dwarf Cleric - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_leather",
+    "name": "Dwarf Cleric - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_studded_leather",
+    "name": "Dwarf Cleric - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_ring_mail",
+    "name": "Dwarf Cleric - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_scale_mail",
+    "name": "Dwarf Cleric - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_chain_mail",
+    "name": "Dwarf Cleric - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_splint_mail",
+    "name": "Dwarf Cleric - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_banded_mail",
+    "name": "Dwarf Cleric - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_cleric_plate_mail",
+    "name": "Dwarf Cleric - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Cleric",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Cleric wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_thief_padded",
+    "name": "Dwarf Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_thief_leather",
+    "name": "Dwarf Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_padded",
+    "name": "Dwarf Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_leather",
+    "name": "Dwarf Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_studded_leather",
+    "name": "Dwarf Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_ring_mail",
+    "name": "Dwarf Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_scale_mail",
+    "name": "Dwarf Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_chain_mail",
+    "name": "Dwarf Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_splint_mail",
+    "name": "Dwarf Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_banded_mail",
+    "name": "Dwarf Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "dwarf_assassin_plate_mail",
+    "name": "Dwarf Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Dwarf",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Dwarf Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Stout and sturdy, dwarves are master craftsmen and warriors. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_padded",
+    "name": "Halfling Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_leather",
+    "name": "Halfling Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_studded_leather",
+    "name": "Halfling Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_ring_mail",
+    "name": "Halfling Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_scale_mail",
+    "name": "Halfling Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_chain_mail",
+    "name": "Halfling Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_splint_mail",
+    "name": "Halfling Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_banded_mail",
+    "name": "Halfling Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_fighter_plate_mail",
+    "name": "Halfling Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_thief_padded",
+    "name": "Halfling Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_thief_leather",
+    "name": "Halfling Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_padded",
+    "name": "Halfling Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_leather",
+    "name": "Halfling Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_studded_leather",
+    "name": "Halfling Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_ring_mail",
+    "name": "Halfling Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_scale_mail",
+    "name": "Halfling Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_chain_mail",
+    "name": "Halfling Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_splint_mail",
+    "name": "Halfling Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_banded_mail",
+    "name": "Halfling Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "halfling_assassin_plate_mail",
+    "name": "Halfling Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Halfling",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Halfling Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Small and nimble, halflings are peaceful folk who avoid danger. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_padded",
+    "name": "Half-Elf Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_leather",
+    "name": "Half-Elf Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_studded_leather",
+    "name": "Half-Elf Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_ring_mail",
+    "name": "Half-Elf Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_scale_mail",
+    "name": "Half-Elf Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_chain_mail",
+    "name": "Half-Elf Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_splint_mail",
+    "name": "Half-Elf Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_banded_mail",
+    "name": "Half-Elf Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_fighter_plate_mail",
+    "name": "Half-Elf Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_padded",
+    "name": "Half-Elf Ranger - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_leather",
+    "name": "Half-Elf Ranger - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_studded_leather",
+    "name": "Half-Elf Ranger - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_ring_mail",
+    "name": "Half-Elf Ranger - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_scale_mail",
+    "name": "Half-Elf Ranger - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_chain_mail",
+    "name": "Half-Elf Ranger - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_splint_mail",
+    "name": "Half-Elf Ranger - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_banded_mail",
+    "name": "Half-Elf Ranger - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_ranger_plate_mail",
+    "name": "Half-Elf Ranger - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Ranger",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Ranger wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A skilled woodsman and tracker, protector of good.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_padded",
+    "name": "Half-Elf Cleric - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_leather",
+    "name": "Half-Elf Cleric - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_studded_leather",
+    "name": "Half-Elf Cleric - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_ring_mail",
+    "name": "Half-Elf Cleric - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_scale_mail",
+    "name": "Half-Elf Cleric - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_chain_mail",
+    "name": "Half-Elf Cleric - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_splint_mail",
+    "name": "Half-Elf Cleric - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_banded_mail",
+    "name": "Half-Elf Cleric - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_cleric_plate_mail",
+    "name": "Half-Elf Cleric - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Cleric",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Cleric wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_druid_padded",
+    "name": "Half-Elf Druid - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Druid",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Druid wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A priest of nature who protects the balance of the natural world.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_druid_leather",
+    "name": "Half-Elf Druid - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Druid",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Druid wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A priest of nature who protects the balance of the natural world.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_magic_user_robes",
+    "name": "Half-Elf Magic-User - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Magic-User",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Magic-User wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A scholar of arcane magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_illusionist_robes",
+    "name": "Half-Elf Illusionist - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Illusionist",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Illusionist wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A specialist in illusion and phantasm magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_thief_padded",
+    "name": "Half-Elf Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_thief_leather",
+    "name": "Half-Elf Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_padded",
+    "name": "Half-Elf Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_leather",
+    "name": "Half-Elf Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_studded_leather",
+    "name": "Half-Elf Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_ring_mail",
+    "name": "Half-Elf Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_scale_mail",
+    "name": "Half-Elf Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_chain_mail",
+    "name": "Half-Elf Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_splint_mail",
+    "name": "Half-Elf Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_banded_mail",
+    "name": "Half-Elf Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_assassin_plate_mail",
+    "name": "Half-Elf Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_bard_padded",
+    "name": "Half-Elf Bard - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Bard",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Bard wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_bard_leather",
+    "name": "Half-Elf Bard - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Bard",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Bard wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_bard_studded_leather",
+    "name": "Half-Elf Bard - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Bard",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Bard wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_elf_bard_ring_mail",
+    "name": "Half-Elf Bard - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Elf",
+      "Bard",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Elf Bard wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Children of both human and elven heritage, combining traits of both races. A wandering minstrel with magical abilities and legendary knowledge.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_padded",
+    "name": "Half-Orc Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_leather",
+    "name": "Half-Orc Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_studded_leather",
+    "name": "Half-Orc Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_ring_mail",
+    "name": "Half-Orc Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_scale_mail",
+    "name": "Half-Orc Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_chain_mail",
+    "name": "Half-Orc Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_splint_mail",
+    "name": "Half-Orc Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_banded_mail",
+    "name": "Half-Orc Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_fighter_plate_mail",
+    "name": "Half-Orc Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_padded",
+    "name": "Half-Orc Cleric - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_leather",
+    "name": "Half-Orc Cleric - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_studded_leather",
+    "name": "Half-Orc Cleric - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_ring_mail",
+    "name": "Half-Orc Cleric - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_scale_mail",
+    "name": "Half-Orc Cleric - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_chain_mail",
+    "name": "Half-Orc Cleric - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_splint_mail",
+    "name": "Half-Orc Cleric - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_banded_mail",
+    "name": "Half-Orc Cleric - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_cleric_plate_mail",
+    "name": "Half-Orc Cleric - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Cleric",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Cleric wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A holy warrior who channels divine power.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_thief_padded",
+    "name": "Half-Orc Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_thief_leather",
+    "name": "Half-Orc Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_padded",
+    "name": "Half-Orc Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_leather",
+    "name": "Half-Orc Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_studded_leather",
+    "name": "Half-Orc Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_ring_mail",
+    "name": "Half-Orc Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_scale_mail",
+    "name": "Half-Orc Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_chain_mail",
+    "name": "Half-Orc Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_splint_mail",
+    "name": "Half-Orc Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_banded_mail",
+    "name": "Half-Orc Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "half_orc_assassin_plate_mail",
+    "name": "Half-Orc Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Half-Orc",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Half-Orc Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Strong and hardy, half-orcs combine orcish strength with human adaptability. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_padded",
+    "name": "Gnome Fighter - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_leather",
+    "name": "Gnome Fighter - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_studded_leather",
+    "name": "Gnome Fighter - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_ring_mail",
+    "name": "Gnome Fighter - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_scale_mail",
+    "name": "Gnome Fighter - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_chain_mail",
+    "name": "Gnome Fighter - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_splint_mail",
+    "name": "Gnome Fighter - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_banded_mail",
+    "name": "Gnome Fighter - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_fighter_plate_mail",
+    "name": "Gnome Fighter - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Fighter",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Fighter wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A warrior skilled in combat and the use of arms.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_illusionist_robes",
+    "name": "Gnome Illusionist - Wizard Robes",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Illusionist",
+      "Wizard Robes"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Illusionist wearing Wizard Robes. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A specialist in illusion and phantasm magic.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_thief_padded",
+    "name": "Gnome Thief - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Thief",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Thief wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_thief_leather",
+    "name": "Gnome Thief - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Thief",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Thief wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A cunning rogue skilled in stealth and deception.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_padded",
+    "name": "Gnome Assassin - Padded Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Padded Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Padded Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_leather",
+    "name": "Gnome Assassin - Leather Armor",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Leather Armor"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Leather Armor. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_studded_leather",
+    "name": "Gnome Assassin - Studded Leather",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Studded Leather"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Studded Leather. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_ring_mail",
+    "name": "Gnome Assassin - Ring Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Ring Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Ring Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_scale_mail",
+    "name": "Gnome Assassin - Scale Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Scale Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Scale Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_chain_mail",
+    "name": "Gnome Assassin - Chain Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Chain Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Chain Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_splint_mail",
+    "name": "Gnome Assassin - Splint Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Splint Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Splint Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_banded_mail",
+    "name": "Gnome Assassin - Banded Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Banded Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Banded Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  },
+  {
+    "asset_id": "gnome_assassin_plate_mail",
+    "name": "Gnome Assassin - Plate Mail",
+    "type": "PlayerCharacter",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "Gnome",
+      "Assassin",
+      "Plate Mail"
+    ],
+    "image_prompt": "Full body fantasy character portrait of a Gnome Assassin wearing Plate Mail. Visual style: Realistic fantasy oil painting, detailed, cinematic lighting. Background: A dark, atmospheric dungeon environment. Character details: Clever and curious, gnomes are skilled tinkers and illusionists. A deadly killer who strikes from the shadows.",
+    "view_context": "Player Character Generation"
+  }
+]

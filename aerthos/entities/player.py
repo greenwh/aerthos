@@ -126,6 +126,10 @@ class Inventory:
         """Check if over weight limit"""
         return self.current_weight > self.max_weight
 
+    def can_carry(self, weight: float) -> bool:
+        """Check if adding weight would exceed capacity"""
+        return (self.current_weight + weight) <= self.max_weight
+
     def add_item(self, item: Item) -> bool:
         """Add item to inventory"""
         self.items.append(item)

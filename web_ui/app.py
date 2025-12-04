@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, jsonify, session
 import json
 import sys
 import os
+from datetime import datetime
 
 # Add parent directory to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -51,6 +52,82 @@ def save_party_members(party, character_ids):
         if idx < len(character_ids):
             char_id = character_ids[idx]
             roster.save_character(member, char_id)
+
+
+def get_character_image_url(character):
+    """
+    Resolve image URL for a character based on Race + Class + Armor
+    Path: static/images/players/{race}_{class}_{armor}.jpeg
+    Accepts Character object or dictionary.
+    """
+    if not character:
+        return None
+    
+    # Handle dict or object
+    if isinstance(character, dict):
+        race = character.get('race', '')
+        char_class = character.get('char_class', character.get('class', ''))
+        # Try to find armor in equipment dict
+        equipment = character.get('equipment', {})
+        armor = equipment.get('armor') # Could be None, or dict, or string depending on storage
+        # In JSON storage, equipment.armor is likely a dict or None
+        armor_name = ""
+        if isinstance(armor, dict):
+            armor_name = armor.get('name', '')
+    else:
+        race = character.race
+        char_class = character.char_class
+        armor_name = ""
+        if hasattr(character, 'equipment') and character.equipment.armor:
+            armor_name = character.equipment.armor.name
+
+    safe_race = race.lower().replace('-', '_').replace(' ', '_')
+    safe_class = char_class.lower().replace('-', '_').replace(' ', '_')
+    
+    # Determine armor tag
+    safe_armor = "none" # Default
+    
+    # Special cases for robes (Magic-User, Monk)
+    if char_class in ["Magic-User", "Illusionist"]:
+        safe_armor = "robes"
+    elif char_class == "Monk":
+        safe_armor = "monk_robes"
+    elif armor_name:
+        # Map armor name to filename key
+        armor_name = armor_name.lower()
+        if "studded" in armor_name: safe_armor = "studded_leather"
+        elif "leather" in armor_name: safe_armor = "leather"
+        elif "padded" in armor_name: safe_armor = "padded"
+        elif "ring" in armor_name: safe_armor = "ring_mail"
+        elif "scale" in armor_name: safe_armor = "scale_mail"
+        elif "chain" in armor_name: safe_armor = "chain_mail"
+        elif "splint" in armor_name: safe_armor = "splint_mail"
+        elif "banded" in armor_name: safe_armor = "banded_mail"
+        elif "plate" in armor_name: safe_armor = "plate_mail"
+        else:
+            safe_armor = armor_name.replace(' ', '_')
+
+    # Construct filename
+    filename = f"{safe_race}_{safe_class}_{safe_armor}.jpeg"
+    
+    # Check if file exists
+    # Images are generated into a subdirectory based on the prompt filename (player_prompts.json -> player_prompts/)
+    # Path: web_ui/static/images/players/player_prompts/{filename}
+    
+    # Check specific subfolder first
+    rel_path_subdir = f"images/players/player_prompts/{filename}"
+    abs_path_subdir = os.path.join(os.path.dirname(__file__), 'static', rel_path_subdir)
+    
+    # Check root folder (fallback)
+    rel_path_root = f"images/players/{filename}"
+    abs_path_root = os.path.join(os.path.dirname(__file__), 'static', rel_path_root)
+    
+    if os.path.exists(abs_path_subdir):
+        return rel_path_subdir
+    elif os.path.exists(abs_path_root):
+        return rel_path_root
+    
+    return None
 
 
 @app.route('/')
@@ -364,8 +441,9 @@ def get_hub_menu(campaign_id):
                 'level': member.level,
                 'hp_current': member.hp_current,
                 'hp_max': member.hp_max,
-                'gold': member.gold,
-                'is_alive': member.is_alive
+                'gold': int(member.get_total_gold_value()),  # Use total gold value
+                'is_alive': member.is_alive,
+                'image_url': get_character_image_url(member)
             })
 
         return jsonify({
@@ -739,7 +817,7 @@ def get_inn_info(campaign_id):
                 'name': member.name,
                 'hp_current': member.hp_current,
                 'hp_max': member.hp_max,
-                'gold': member.gold,
+                'gold': int(member.get_total_gold_value()),  # Use total gold value
                 'is_alive': member.is_alive
             })
 
@@ -903,7 +981,7 @@ def get_shop_info(campaign_id, shop_id):
             party_data.append({
                 'index': idx,
                 'name': member.name,
-                'gold': member.gold,
+                'gold': int(member.get_total_gold_value()),  # Use total gold value
                 'inventory': inventory_items,
                 'is_alive': member.is_alive
             })
@@ -972,6 +1050,25 @@ def shop_buy(campaign_id):
 
         # Build shop data dict from shop_config
         game_data = GameData.load_all()
+        
+        # Load all item data files (consistent with get_shop_info)
+        data_dir = "aerthos/data"
+        all_items = {}
+
+        if os.path.exists(f"{data_dir}/equipment.json"):
+            with open(f"{data_dir}/equipment.json") as f:
+                all_items.update(json.load(f))
+        if os.path.exists(f"{data_dir}/weapons.json"):
+            with open(f"{data_dir}/weapons.json") as f:
+                all_items.update(json.load(f))
+        if os.path.exists(f"{data_dir}/armor.json"):
+            with open(f"{data_dir}/armor.json") as f:
+                # Armor has nested 'armor' and 'shields' keys, need to merge
+                armor_data = json.load(f)
+                all_items.update(armor_data.get('armor', {}))
+                all_items.update(armor_data.get('shields', {}))
+                all_items.update(armor_data.get('helmets', {}))
+        
         shop_data = {
             'name': shop_config.name,
             'type': shop_config.type,
@@ -979,23 +1076,23 @@ def shop_buy(campaign_id):
             'items': []
         }
 
-        # Add items from inventory with prices from game_data
+        # Add items from inventory with prices from all_items
         for item_id_in_inv in shop_config.inventory:
-            if item_id_in_inv in game_data.items:
-                item_data = game_data.items[item_id_in_inv]
+            if item_id_in_inv in all_items:
+                item_data = all_items[item_id_in_inv]
                 shop_data['items'].append({
                     'id': item_id_in_inv,
-                    'price': item_data.get('cost', 10),
+                    'price': item_data.get('cost_gp', item_data.get('cost', 10)),
                     'stock': 10  # Default stock
                 })
 
         shop = Shop(shop_config.id, shop_data)
-        shop_interface = ShopInterface(shop, party,
+        shop_interface = ShopInterface(shop, party, all_items,  # Pass all_items
                                       price_modifier=shop_config.price_modifier,
                                       buy_rate=shop_config.buy_rate)
 
         shop_interface.set_active_character(character_index)
-        success, message = shop_interface.buy_item(item_id, game_data)
+        success, message = shop_interface.buy_item(item_id)
 
         if success:
             # Save party members (gold and inventory were modified)
@@ -1068,6 +1165,25 @@ def shop_sell(campaign_id):
 
         # Build shop data dict from shop_config
         game_data = GameData.load_all()
+        
+        # Load all item data files (consistent with get_shop_info)
+        data_dir = "aerthos/data"
+        all_items = {}
+
+        if os.path.exists(f"{data_dir}/equipment.json"):
+            with open(f"{data_dir}/equipment.json") as f:
+                all_items.update(json.load(f))
+        if os.path.exists(f"{data_dir}/weapons.json"):
+            with open(f"{data_dir}/weapons.json") as f:
+                all_items.update(json.load(f))
+        if os.path.exists(f"{data_dir}/armor.json"):
+            with open(f"{data_dir}/armor.json") as f:
+                # Armor has nested 'armor' and 'shields' keys, need to merge
+                armor_data = json.load(f)
+                all_items.update(armor_data.get('armor', {}))
+                all_items.update(armor_data.get('shields', {}))
+                all_items.update(armor_data.get('helmets', {}))
+
         shop_data = {
             'name': shop_config.name,
             'type': shop_config.type,
@@ -1075,18 +1191,18 @@ def shop_sell(campaign_id):
             'items': []
         }
 
-        # Add items from inventory with prices from game_data
+        # Add items from inventory with prices from all_items
         for item_id_in_inv in shop_config.inventory:
-            if item_id_in_inv in game_data.items:
-                item_data = game_data.items[item_id_in_inv]
+            if item_id_in_inv in all_items:
+                item_data = all_items[item_id_in_inv]
                 shop_data['items'].append({
                     'id': item_id_in_inv,
-                    'price': item_data.get('cost', 10),
+                    'price': item_data.get('cost_gp', item_data.get('cost', 10)),
                     'stock': 10  # Default stock
                 })
 
         shop = Shop(shop_config.id, shop_data)
-        shop_interface = ShopInterface(shop, party,
+        shop_interface = ShopInterface(shop, party, all_items,  # Pass all_items
                                       price_modifier=shop_config.price_modifier,
                                       buy_rate=shop_config.buy_rate)
 
@@ -1169,7 +1285,7 @@ def get_temple_info(campaign_id):
                 'name': member.name,
                 'hp_current': member.hp_current,
                 'hp_max': member.hp_max,
-                'gold': member.gold,
+                'gold': int(member.get_total_gold_value()),  # Use total gold value
                 'is_alive': member.is_alive
             })
 
@@ -1290,6 +1406,8 @@ def save_campaign_checkpoint(campaign_id):
         party_result = party_mgr.load_party(campaign.party_id)
         if isinstance(party_result, tuple):
             party, _ = party_result
+        elif isinstance(party_result, dict) and 'party' in party_result:
+            party = party_result['party']
         else:
             party = party_result
 
@@ -1298,7 +1416,8 @@ def save_campaign_checkpoint(campaign_id):
         campaign_mgr.save_campaign(campaign)
 
         # Save party state
-        party_mgr.save_party(party)
+        character_ids = [char.id for char in party.members] if party and party.members else []
+        party_mgr.save_party(party.name, character_ids, party.formation, party.id)
 
         # If session exists, save session state
         try:
@@ -1540,7 +1659,7 @@ def get_game_state_json(game_state):
                 'ac': member.get_effective_ac(),
                 'thac0': member.thac0,
                 'xp': member.xp,
-                'gold': member.gold,  # Deprecated - kept for backward compat
+                'gold': int(member.get_total_gold_value()),  # Use total gold value
                 'money': member_money,  # New money breakdown
                 'is_alive': member.is_alive,
                 'weight': member.inventory.current_weight,
@@ -1549,7 +1668,8 @@ def get_game_state_json(game_state):
                 'inventory': inventory_items,
                 'equipped': equipped,
                 'spell_slots': spell_slots,  # Memorized spells (for casting)
-                'spells_known': spells_known  # Known spells (for memorizing)
+                'spells_known': spells_known,  # Known spells (for memorizing)
+                'image_url': get_character_image_url(member)
             })
 
     # Get map data
@@ -1764,6 +1884,11 @@ def get_characters():
     try:
         roster = CharacterRoster()
         characters = roster.list_characters()
+        
+        # Inject image URLs
+        for char in characters:
+            char['image_url'] = get_character_image_url(char)
+            
         return jsonify({'success': True, 'characters': characters})
     except Exception as e:
         import traceback
@@ -1956,7 +2081,8 @@ def get_character(char_id):
             'spells_known': spells_known,
             'spells_memorized': spells_memorized,
             'saving_throws': saving_throws,
-            'thief_skills': thief_skills
+            'thief_skills': thief_skills,
+            'image_url': get_character_image_url(character)
         }
 
         return jsonify({'success': True, 'character': char_data})
@@ -2894,7 +3020,7 @@ def list_parties():
             formatted_parties.append({
                 'id': party['id'],
                 'name': party['name'],
-                'members': party.get('character_ids', [])
+                'members': party.get('members', [])
             })
 
         return jsonify({

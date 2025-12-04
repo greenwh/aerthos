@@ -356,9 +356,16 @@
 
             listEl.innerHTML = characters.map(char => `
                 <div class="character-card">
-                    <div class="char-name">${char.name}</div>
-                    <div class="char-info">${char.race} ${char.char_class}</div>
-                    <div class="char-info">Level ${char.level} | XP: ${char.xp}</div>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 80px; height: 80px; background-color: #000; border: 1px solid #0a0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #888;">
+                            ${char.image_url ? `<img src="/static/${char.image_url}" style="width: 100%; height: 100%; object-fit: cover;" alt="Character Thumbnail">` : 'NO IMG'}
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="char-name">${char.name}</div>
+                            <div class="char-info">${char.race} ${char.char_class}</div>
+                            <div class="char-info">Level ${char.level} | XP: ${char.xp}</div>
+                        </div>
+                    </div>
                     <div class="char-stats">
                         <div class="stat">HP: ${char.hp_current}/${char.hp_max}</div>
                         <div class="stat">AC: ${char.ac}</div>
@@ -429,7 +436,15 @@
 
                         let html = '<div style="line-height: 1.6;">';
 
-                        // === BASIC INFO ===
+                        // === HEADER WITH IMAGE ===
+                        html += '<div style="display: flex; gap: 20px; margin-bottom: 20px;">';
+                        if (char.image_url) {
+                            html += `<div style="width: 200px; flex-shrink: 0; border: 2px solid #0f0;">
+                                <img src="/static/${char.image_url}" style="width: 100%; display: block;">
+                            </div>`;
+                        }
+                        
+                        html += '<div style="flex: 1;">';
                         html += '<div style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #0a0;">';
                         html += `<p><strong>Race:</strong> ${char.race} | <strong>Class:</strong> ${char.char_class} | <strong>Alignment:</strong> ${char.alignment}</p>`;
                         html += `<p><strong>Level:</strong> ${char.level} | <strong>XP:</strong> ${char.xp} / ${char.xp_to_next_level}</p>`;
@@ -450,7 +465,7 @@
                         } else {
                             html += `<p><strong>Money:</strong> 0 gp | <strong>Weight:</strong> ${char.weight.toFixed(1)} / ${char.weight_max} lbs</p>`;
                         }
-                        html += '</div>';
+                        html += '</div></div></div>'; // End info div, End header flex div
 
                         // === ABILITY SCORES ===
                         html += '<div style="margin-bottom: 15px;">';

@@ -152,6 +152,16 @@ class CharacterRoster:
             try:
                 with open(filepath, 'r') as f:
                     data = json.load(f)
+
+                    # Calculate total gold value for display
+                    total_gold = (
+                        data.get('copper_pieces', 0) * 0.01 +
+                        data.get('silver_pieces', 0) * 0.1 +
+                        data.get('electrum_pieces', 0) * 0.5 +
+                        data.get('gold_pieces', 0) +
+                        data.get('platinum_pieces', 0) * 5
+                    )
+                    
                     characters.append({
                         'id': data['id'],
                         'name': data['name'],
@@ -164,7 +174,11 @@ class CharacterRoster:
                         'hp_max': data['hp_max'],
                         'ac': data.get('ac', 10),
                         'thac0': data.get('thac0', 20),
-                        'gold': data.get('gold', 0),
+                        'gold': int(total_gold), # Calculated total value
+                        'copper_pieces': data.get('copper_pieces', 0),                        'silver_pieces': data.get('silver_pieces', 0),
+                        'electrum_pieces': data.get('electrum_pieces', 0),
+                        'gold_pieces': data.get('gold_pieces', 0),
+                        'platinum_pieces': data.get('platinum_pieces', 0),
                         'created': data['created'],
                         # Also include full stats for detail view
                         'strength': data.get('strength', 10),
@@ -174,6 +188,7 @@ class CharacterRoster:
                         'wisdom': data.get('wisdom', 10),
                         'charisma': data.get('charisma', 10),
                         'inventory': self._extract_item_names(data.get('inventory', [])),
+                        'equipment': data.get('equipped', {}),  # Include equipment for UI images
                         'spells': data.get('spells', []),
                         'experience_points': data.get('xp', 0)
                     })
@@ -374,6 +389,7 @@ class CharacterRoster:
 
         # Create character
         character = PlayerCharacter(
+            id=data['id'],  # Pass the ID from the loaded data
             name=data['name'],
             race=data['race'],
             char_class=data['class'],

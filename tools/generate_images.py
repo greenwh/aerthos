@@ -45,7 +45,7 @@ def generate_image(prompt, output_path, model_name):
         print(f"  Failed: {e}")
         return False
 
-def process_file(file_path, model_name):
+def process_file(file_path, model_name, limit=0):
     try:
         with open(file_path, 'r') as f:
             prompts = json.load(f)
@@ -62,7 +62,12 @@ def process_file(file_path, model_name):
     
     print(f"Processing {filename} -> {output_dir}/")
 
+    count = 0
     for item in prompts:
+        if limit > 0 and count >= limit:
+            print(f"Reached limit of {limit} images.")
+            break
+
         asset_id = item.get('asset_id')
         prompt_text = item.get('image_prompt')
         
@@ -77,6 +82,7 @@ def process_file(file_path, model_name):
             
         success = generate_image(prompt_text, output_image_path, model_name)
         if success:
+            count += 1
             # Sleep briefly to avoid hitting rate limits too hard
             time.sleep(4) 
 
@@ -84,6 +90,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate images from JSON prompts using Gemini API.")
     parser.add_argument("path", help="File or directory path containing prompt JSONs")
     parser.add_argument("--model", default="gemini-3-pro-image-preview", help="Model name to use")
+    parser.add_argument("--limit", type=int, default=0, help="Max number of images to generate (0 for no limit)")
     
     args = parser.parse_args()
     
@@ -91,13 +98,13 @@ def main():
     
     path = Path(args.path)
     if path.is_file():
-        process_file(path, args.model)
+        process_file(path, args.model, args.limit)
     elif path.is_dir():
         # Look for .json files
         files = glob.glob(os.path.join(args.path, "*.json"))
         print(f"Found {len(files)} JSON files in {args.path}")
         for f in files:
-            process_file(f, args.model)
+            process_file(f, args.model, args.limit)
     else:
         print(f"Invalid path: {path}")
 

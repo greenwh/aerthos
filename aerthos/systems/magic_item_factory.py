@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 from typing import Dict, Optional, Union
 
-from ..entities.player import Item, Weapon, Armor, Shield
+from ..entities.player import Item, Weapon, Armor, Shield, LightSource
 from ..entities.magic_items import Potion, Scroll, Ring, Wand, Staff, MiscMagic
 
 
@@ -64,6 +64,70 @@ class MagicItemFactory:
 
         with open(magic_items_path, 'r') as f:
             self.magic_items = json.load(f)
+
+    def create_item(self, item_id: str, item_data: Dict) -> Item:
+        """
+        Create a game Item from data dict
+
+        Args:
+            item_id: Item identifier
+            item_data: Dictionary of item properties
+
+        Returns:
+            Item (or subclass) instance
+        """
+        name = item_data.get('name', item_id)
+        weight = item_data.get('weight_gp', item_data.get('weight', 10)) / 10.0 # Convert gp weight to lbs if needed
+
+        # Determine type based on properties
+        if 'damage_sm' in item_data:
+            # Weapon
+            return Weapon(
+                name=name,
+                weight=weight,
+                damage_sm=item_data.get('damage_sm', '1d4'),
+                damage_l=item_data.get('damage_l', '1d4'),
+                speed_factor=item_data.get('speed_factor', 5),
+                magic_bonus=item_data.get('magic_bonus', 0)
+            )
+        elif 'ac' in item_data:
+            # Armor
+            return Armor(
+                name=name,
+                weight=weight,
+                ac=item_data.get('ac', 10),
+                armor_type=item_data.get('armor_type', 'light'),
+                movement_rate=item_data.get('movement_rate', 12),
+                magic_bonus=item_data.get('magic_bonus', 0)
+            )
+        elif 'ac_bonus' in item_data:
+            # Shield
+            return Shield(
+                name=name,
+                weight=weight,
+                ac_bonus=item_data.get('ac_bonus', 1),
+                magic_bonus=item_data.get('magic_bonus', 0)
+            )
+        elif 'burn_time_turns' in item_data:
+            # Light Source
+            return LightSource(
+                name=name,
+                weight=weight,
+                burn_time_turns=item_data.get('burn_time_turns', 60),
+                light_radius=item_data.get('light_radius', 30)
+            )
+        
+        # Check if it's a magic item from treasure table structure
+        if 'type' in item_data and item_data['type'] in ['potion', 'scroll', 'ring', 'wand', 'staff', 'rod']:
+             return self.create_from_treasure(item_data)
+
+        # Generic Item
+        return Item(
+            name=name,
+            weight=weight,
+            item_type=item_data.get('type', 'generic'),
+            description=item_data.get('description', '')
+        )
 
     def create_from_treasure(self, treasure_dict: Dict) -> Union[Item, Potion, Scroll, Ring, Wand, Staff, MiscMagic]:
         """

@@ -34,15 +34,34 @@ class InnService:
 class Inn:
     """Represents an inn where players can rest and recover"""
 
-    def __init__(self, inn_id: str, data: Dict):
+    def __init__(self, inn_id: str = "generic_inn", data: Dict = None, **kwargs):
         self.inn_id = inn_id
-        self.name = data['name']
-        self.quality = data['quality']
-        self.description = data['description']
-        self.rooms = [InnRoom(**room) for room in data.get('rooms', [])]
-        self.food_drink = [FoodDrink(**item) for item in data.get('food_drink', [])]
-        self.services = [InnService(**svc) for svc in data.get('services', [])]
-        self.rest_benefits = data.get('rest_benefits', {})
+        
+        # Handle dictionary initialization (from JSON)
+        if data:
+            self.name = data.get('name', 'Unknown Inn')
+            self.quality = data.get('quality', 'Standard')
+            self.description = data.get('description', '')
+            self.rooms = [InnRoom(**room) for room in data.get('rooms', [])]
+            self.food_drink = [FoodDrink(**item) for item in data.get('food_drink', [])]
+            self.services = [InnService(**svc) for svc in data.get('services', [])]
+            self.rest_benefits = data.get('rest_benefits', {})
+        
+        # Handle direct keyword initialization (simple mode)
+        else:
+            self.name = kwargs.get('name', 'Unknown Inn')
+            self.quality = kwargs.get('quality', 'Standard')
+            self.description = kwargs.get('description', '')
+            
+            # Create a default room if rate provided
+            rate = kwargs.get('rate_per_night')
+            self.rooms = []
+            if rate is not None:
+                self.rooms.append(InnRoom(type="Standard", price=rate, description="Standard room"))
+                
+            self.food_drink = []
+            self.services = []
+            self.rest_benefits = {}
 
     def get_room_price(self, room_type: str) -> Optional[int]:
         """Get the price of a room"""

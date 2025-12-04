@@ -448,7 +448,8 @@ class CharacterCreator:
         player.inventory.add_item(torch2)
         player.inventory.add_item(ration1)
         player.inventory.add_item(ration2)
-        player.gold = 30  # Starting gold
+        # Add 100 starting gold pieces
+        player.gold_pieces += 100
 
         # Class-specific equipment
         if char_class in ['Fighter', 'Ranger', 'Paladin']:
