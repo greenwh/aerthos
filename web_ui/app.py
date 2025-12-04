@@ -149,10 +149,10 @@ def episode_complete_screen(campaign_id, episode_id):
 
 @app.route('/campaign/<campaign_id>/episodes/<episode_id>/select_character')
 def episode_select_character(campaign_id, episode_id):
-    """Character selection for episode (redirects to existing episodes page with character selection)"""
-    # This route serves as a transition from intro to character selection
-    # The campaign_episodes.html template already has character selection functionality
-    return render_template('campaign_episodes.html')
+    """Character selection for episode"""
+    return render_template('campaign_character_select.html',
+                         campaign_id=campaign_id,
+                         episode_id=episode_id)
 
 
 @app.route('/campaign/<campaign_id>/inn')
