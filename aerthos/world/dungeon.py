@@ -11,7 +11,8 @@ from .room import Room
 class Dungeon:
     """Manages the dungeon layout and navigation"""
 
-    def __init__(self, name: str, start_room_id: str, rooms: Dict[str, Room], room_data: Dict = None):
+    def __init__(self, name: str, start_room_id: str, rooms: Dict[str, Room], room_data: Dict = None, dungeon_id: str = None):
+        self.id = dungeon_id or name.lower().replace(' ', '_')
         self.name = name
         self.start_room_id = start_room_id
         self.rooms = rooms
@@ -33,6 +34,7 @@ class Dungeon:
             data = json.load(f)
 
         name = data.get('name', 'Unknown Dungeon')
+        dungeon_id = data.get('id', name.lower().replace(' ', '_'))
         start_room_id = data['start_room']
 
         # Load all rooms
@@ -49,7 +51,7 @@ class Dungeon:
             )
             rooms[room_id] = room
 
-        return cls(name, start_room_id, rooms, data['rooms'])
+        return cls(name, start_room_id, rooms, data['rooms'], dungeon_id)
 
     @classmethod
     def load_from_generator(cls, dungeon_data: Dict) -> 'Dungeon':
@@ -63,6 +65,7 @@ class Dungeon:
             Dungeon instance
         """
         name = dungeon_data.get('name', 'Generated Dungeon')
+        dungeon_id = dungeon_data.get('id', name.lower().replace(' ', '_'))
         # Handle both old and new key names for backward compatibility
         start_room_id = dungeon_data.get('start_room_id') or dungeon_data.get('start_room')
 
@@ -80,7 +83,7 @@ class Dungeon:
             )
             rooms[room_id] = room
 
-        return cls(name, start_room_id, rooms, dungeon_data['rooms'])
+        return cls(name, start_room_id, rooms, dungeon_data['rooms'], dungeon_id)
 
     def get_room(self, room_id: str) -> Optional[Room]:
         """Get a room by ID"""

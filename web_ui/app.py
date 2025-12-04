@@ -1566,11 +1566,24 @@ def get_game_state_json(game_state):
     if game_state.in_combat and hasattr(game_state, 'active_monsters'):
         for monster in game_state.active_monsters:
             if monster.is_alive:
+                # Determine monster image
+                monster_id = monster.race.lower().replace(' ', '_')
+                image_url = "images/monsters/generic_monster.jpeg" # Default
+
+                # Check for specific image
+                # Priority 1: Campaign specific
+                if os.path.exists(f"web_ui/static/images/monsters/campaign_monsters/{monster_id}.jpeg"):
+                    image_url = f"images/monsters/campaign_monsters/{monster_id}.jpeg"
+                # Priority 2: Generic monster image
+                elif os.path.exists(f"web_ui/static/images/monsters/{monster_id}.jpeg"):
+                    image_url = f"images/monsters/{monster_id}.jpeg"
+                
                 active_monsters.append({
                     'name': monster.name,
                     'hp': monster.hp_current,
                     'hp_max': monster.hp_max,
-                    'status': 'wounded' if monster.hp_current < monster.hp_max * 0.5 else 'healthy'
+                    'status': 'wounded' if monster.hp_current < monster.hp_max * 0.5 else 'healthy',
+                    'image_url': image_url
                 })
 
     # Get available spells for active character (for "cast" actions)
@@ -1604,6 +1617,43 @@ def get_game_state_json(game_state):
                     })
                 break  # Only get spells from first living caster with spells
 
+    # Determine room image
+    room_image_url = None
+    
+    # Get actual dungeon object (handle MultiLevelDungeon)
+    dungeon_obj = game_state.dungeon
+    if hasattr(dungeon_obj, 'get_current_dungeon'):
+        dungeon_obj = dungeon_obj.get_current_dungeon()
+
+    if hasattr(dungeon_obj, 'id'):
+        dungeon_id = dungeon_obj.id
+        room_id = game_state.current_room.id
+        
+        # Construct path: images/world/{dungeon_id}_images/{dungeon_id}_{room_id}.jpeg
+        # Note: room_id in DB often includes dungeon prefix, but image filename definitely does
+        # Case 1: Room ID matches filename suffix (e.g. room_id="aboleth_lair" -> "drowned_ruins_aboleth_lair.jpeg")
+        # Case 2: Room ID is full name (e.g. room_id="drowned_ruins_aboleth_lair" -> "drowned_ruins_aboleth_lair.jpeg")
+        
+        # Try constructing standard filename first
+        # Images are in folders named like "drowned_ruins_images"
+        folder_name = f"{dungeon_id}_images"
+        
+        # Try full ID first (if room_id already contains dungeon_id)
+        filename_1 = f"{room_id}.jpeg"
+        path_1 = f"web_ui/static/images/world/{folder_name}/{filename_1}"
+        
+        # Try prefixed ID (if room_id is short)
+        filename_2 = f"{dungeon_id}_{room_id}.jpeg"
+        path_2 = f"web_ui/static/images/world/{folder_name}/{filename_2}"
+        
+        if os.path.exists(path_1):
+            room_image_url = f"images/world/{folder_name}/{filename_1}"
+        elif os.path.exists(path_2):
+            room_image_url = f"images/world/{folder_name}/{filename_2}"
+        else:
+            # Fallback to generic
+            room_image_url = "images/world/generic_dungeon.jpeg"
+            
     return {
         'room': {
             'id': game_state.current_room.id,
@@ -1611,7 +1661,8 @@ def get_game_state_json(game_state):
             'description': game_state.current_room.description,
             'exits': game_state.current_room.exits,
             'light_level': game_state.current_room.light_level,
-            'items': room_items  # NEW: Items in room for context-aware actions
+            'items': room_items,  # NEW: Items in room for context-aware actions
+            'image_url': room_image_url
         },
         'party': party_data,
         'in_combat': game_state.in_combat,

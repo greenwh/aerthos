@@ -564,6 +564,53 @@
             margin-bottom: 0;
         }
 
+        .scene-view {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+            border: 2px solid #0f0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scene-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .combat-view {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .monster-sprite {
+            height: 80%;
+            max-width: 30%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
         .map-canvas {
             font-size: 14px;
             line-height: 1.5;
@@ -1008,12 +1055,23 @@
 
         <!-- Center: Map + Text Output -->
         <div class="main-display">
-            <div class="map-view">
-                <div class="section-title">MAP (2D Layout)</div>
-                <div class="map-canvas" id="map-canvas">
-                    <div style="text-align: center; padding: 20px;">[Map will appear here]</div>
+            <!-- Visual Area (Scene or Map) -->
+            <div id="visual-display" class="scene-view">
+                <img id="scene-image" class="scene-image" src="" alt="Scene">
+                <div id="combat-view" class="combat-view" style="display: none;"></div>
+                
+                <!-- Map Overlay (Hidden by default) -->
+                <div id="map-overlay" class="map-view" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 20; background: rgba(0,20,0,0.9);">
+                    <div class="section-title">MAP (2D Layout)</div>
+                    <div class="map-canvas" id="map-canvas">
+                        <div style="text-align: center; padding: 20px;">[Map will appear here]</div>
+                    </div>
+                    <button onclick="toggleMap()" style="position: absolute; top: 10px; right: 10px; background: #000; border: 1px solid #0f0; color: #0f0; cursor: pointer;">✕</button>
                 </div>
+                
+                <button onclick="toggleMap()" style="position: absolute; top: 10px; right: 10px; z-index: 15; background: rgba(0,0,0,0.5); border: 1px solid #0f0; color: #0f0; cursor: pointer; padding: 2px 5px; font-size: 10px;">🗺️ MAP</button>
             </div>
+
             <div class="text-output" id="text-output">
                 <div class="room-title">Welcome to AERTHOS</div>
                 <div class="room-description">
@@ -1407,6 +1465,33 @@
                 <div class="room-description">${state.room.description}</div>
                 ${message ? '<div class="game-message">' + message.replace(/\n/g, '<br>') + '</div>' : ''}
             `;
+
+            // Update Scene Image
+            const imgEl = document.getElementById('scene-image');
+            if (state.room.image_url) {
+                imgEl.src = '/static/' + state.room.image_url;
+                imgEl.style.display = 'block';
+            } else {
+                imgEl.style.display = 'none';
+            }
+
+            // Update Combat Sprites
+            const combatContainer = document.getElementById('combat-view');
+            combatContainer.innerHTML = '';
+            if (state.in_combat && state.active_monsters && state.active_monsters.length > 0) {
+                state.active_monsters.forEach(monster => {
+                     if (monster.image_url) {
+                         const sprite = document.createElement('img');
+                         sprite.src = '/static/' + monster.image_url;
+                         sprite.className = 'monster-sprite';
+                         sprite.title = monster.name + ' (' + monster.status + ')';
+                         combatContainer.appendChild(sprite);
+                     }
+                });
+                combatContainer.style.display = 'flex';
+            } else {
+                combatContainer.style.display = 'none';
+            }
 
             // Update party roster
             updatePartyDisplay();
@@ -1906,6 +1991,17 @@
             html += '</table>';
 
             document.getElementById('map-canvas').innerHTML = html;
+        }
+
+        function toggleMap() {
+            const mapOverlay = document.getElementById('map-overlay');
+            if (mapOverlay.style.display === 'none') {
+                mapOverlay.style.display = 'flex';
+                mapOverlay.style.alignItems = 'center';
+                mapOverlay.style.justifyContent = 'center';
+            } else {
+                mapOverlay.style.display = 'none';
+            }
         }
 
         function appendMessage(msg) {
