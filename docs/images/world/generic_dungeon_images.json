@@ -1,0 +1,282 @@
+[
+  {
+    "asset_id": "generic_dungeon_corridor_stone",
+    "name": "Generic Dungeon - Corridor Stone",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A long, dark stone corridor in a dungeon. Torchlight flickers on the damp walls. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_corridor_arched",
+    "name": "Generic Dungeon - Corridor Arched",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of An arched hallway made of ancient brick. Shadows dance in the distance. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_corridor_cobwebs",
+    "name": "Generic Dungeon - Corridor Cobwebs",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A narrow dungeon passage filled with thick cobwebs. Dusty and abandoned. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_intersection_4way",
+    "name": "Generic Dungeon - Intersection 4Way",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A four-way intersection in a stone dungeon. Dark passages lead in all directions. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_intersection_t",
+    "name": "Generic Dungeon - Intersection T",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A T-junction in a dungeon corridor. The stone floor is worn smooth. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_room_empty_stone",
+    "name": "Generic Dungeon - Room Empty Stone",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of An empty square room with stone walls and floor. Cold and silent. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_room_columns",
+    "name": "Generic Dungeon - Room Columns",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A large dungeon chamber supported by thick stone columns. Debris litters the floor. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_room_rubble",
+    "name": "Generic Dungeon - Room Rubble",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A ruined dungeon room filled with piles of rubble and collapsed masonry. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_room_pool",
+    "name": "Generic Dungeon - Room Pool",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A dark dungeon chamber with a stagnant pool of black water in the center. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_door_iron",
+    "name": "Generic Dungeon - Door Iron",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A heavy iron-reinforced door set into a stone archway. Rusty and imposing. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_door_wooden",
+    "name": "Generic Dungeon - Door Wooden",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A rotting wooden door with iron hinges, slightly ajar. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_stairs_down",
+    "name": "Generic Dungeon - Stairs Down",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A stone staircase spiraling down into the darkness. Damp and slippery. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_stairs_up",
+    "name": "Generic Dungeon - Stairs Up",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A narrow flight of stone steps leading upward, covered in moss. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_dead_end",
+    "name": "Generic Dungeon - Dead End",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A dead end in a dungeon corridor. The wall is solid stone. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_alcove",
+    "name": "Generic Dungeon - Alcove",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A small alcove in the dungeon wall, perhaps for a statue that is no longer there. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_bridge_chasm",
+    "name": "Generic Dungeon - Bridge Chasm",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A narrow stone bridge spanning a dark chasm in the dungeon. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_prison_cells",
+    "name": "Generic Dungeon - Prison Cells",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A row of rusted iron bars forming prison cells in a damp dungeon block. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_torchlit_hall",
+    "name": "Generic Dungeon - Torchlit Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A hallway lined with sconces, though only a few torches still burn. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_ancient_statue",
+    "name": "Generic Dungeon - Ancient Statue",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A crumbling statue of a forgotten deity standing in a dusty corner. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  },
+  {
+    "asset_id": "generic_dungeon_collapsed_tunnel",
+    "name": "Generic Dungeon - Collapsed Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "generic",
+      "interior",
+      "realistic"
+    ],
+    "image_prompt": "Fantasy concept art of A tunnel blocked by a massive cave-in of rocks and earth. Realistic fantasy oil painting style, detailed textures, atmospheric lighting.",
+    "view_context": "Generic dungeon fallback image"
+  }
+]

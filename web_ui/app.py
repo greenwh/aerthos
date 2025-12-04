@@ -1404,10 +1404,16 @@ def save_campaign_checkpoint(campaign_id):
 
         # Load party
         party_result = party_mgr.load_party(campaign.party_id)
+        
+        party_name = "Unknown Party"
+        party_id = campaign.party_id
+
         if isinstance(party_result, tuple):
             party, _ = party_result
         elif isinstance(party_result, dict) and 'party' in party_result:
             party = party_result['party']
+            party_name = party_result.get('name', party_name)
+            party_id = party_result.get('id', party_id)
         else:
             party = party_result
 
@@ -1417,7 +1423,7 @@ def save_campaign_checkpoint(campaign_id):
 
         # Save party state
         character_ids = [char.id for char in party.members] if party and party.members else []
-        party_mgr.save_party(party.name, character_ids, party.formation, party.id)
+        party_mgr.save_party(party_name, character_ids, party.formation, party_id)
 
         # If session exists, save session state
         try:
@@ -1772,7 +1778,25 @@ def get_game_state_json(game_state):
             room_image_url = f"images/world/{folder_name}/{filename_2}"
         else:
             # Fallback to generic
-            room_image_url = "images/world/generic_dungeon.jpeg"
+            room_image_url = "images/world/generic_dungeon.jpeg" # Default if collection missing
+            
+            # Check for generic images in generic_dungeon_images/
+            generic_dir_rel = "images/world/generic_dungeon_images"
+            # Construct absolute path to check existence (web_ui/static/...)
+            generic_dir_abs = os.path.join(os.path.dirname(__file__), 'static', generic_dir_rel)
+            
+            if os.path.exists(generic_dir_abs):
+                # List compatible image files
+                generic_images = [f for f in os.listdir(generic_dir_abs) 
+                                 if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+                
+                if generic_images:
+                    # Deterministic selection based on room ID
+                    # We use a stable hash so the same room always gets the same generic image
+                    import hashlib
+                    hash_val = int(hashlib.md5(str(room_id).encode('utf-8')).hexdigest(), 16)
+                    selected_image = generic_images[hash_val % len(generic_images)]
+                    room_image_url = f"{generic_dir_rel}/{selected_image}"
             
     return {
         'room': {
