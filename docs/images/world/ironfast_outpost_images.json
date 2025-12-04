@@ -1,0 +1,76 @@
+[
+  {
+    "asset_id": "ironfast_outpost",
+    "name": "Ironfast Outpost",
+    "type": "City",
+    "visual_tags": [
+      "city",
+      "fantasy",
+      "exterior"
+    ],
+    "image_prompt": "Fantasy concept art of Ironfast Outpost. A dwarven military fortress carved into the mountainside. Stone halls echo with the ring of hammers and the march of disciplined boots. Discipline is absolute, trust is earned.",
+    "view_context": "aerthos/data/cities/ironfast_outpost.json"
+  },
+  {
+    "asset_id": "ironfast_outpost_dwarven_forge",
+    "name": "Master Durin's Forge",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named Master Durin's Forge. Specialty: Dwarven-crafted arms and armor of exceptional quality. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/ironfast_outpost.json - Shop: dwarven_forge"
+  },
+  {
+    "asset_id": "ironfast_outpost_shrine_moradin",
+    "name": "Shrine to Moradin Soulforger",
+    "type": "Temple",
+    "visual_tags": [
+      "temple",
+      "fantasy",
+      "shrine",
+      "religious"
+    ],
+    "image_prompt": "A fantasy shrine or temple named Shrine to Moradin Soulforger, dedicated to Moradin (Dwarven god of creation). Peaceful, divine atmosphere.",
+    "view_context": "aerthos/data/cities/ironfast_outpost.json - Temple: shrine_moradin"
+  },
+  {
+    "asset_id": "ironfast_outpost_npc_commander_thrain",
+    "name": "Commander Thrain Ironfoot",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Commander Thrain Ironfoot, Military Commander. A grizzled dwarf with a braided white beard and scars from countless battles. His eyes are hard but fair.",
+    "view_context": "aerthos/data/cities/ironfast_outpost.json - NPC: commander_thrain"
+  },
+  {
+    "asset_id": "ironfast_outpost_npc_master_durin",
+    "name": "Master Durin Hammerhand",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Master Durin Hammerhand, Master Smith. A broad-shouldered dwarf whose arms are thick as tree trunks. His hammer never stops ringing against the anvil.",
+    "view_context": "aerthos/data/cities/ironfast_outpost.json - NPC: master_durin"
+  },
+  {
+    "asset_id": "ironfast_outpost_npc_scout_brunhild",
+    "name": "Scout Brunhild Stoneye",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Scout Brunhild Stoneye, Scout/Ranger. A lean dwarven woman with close-cropped hair and keen eyes. She moves with surprising grace for her kind.",
+    "view_context": "aerthos/data/cities/ironfast_outpost.json - NPC: scout_brunhild"
+  }
+]

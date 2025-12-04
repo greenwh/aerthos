@@ -1,0 +1,77 @@
+[
+  {
+    "asset_id": "oakhaven",
+    "name": "Oakhaven",
+    "type": "City",
+    "visual_tags": [
+      "city",
+      "fantasy",
+      "exterior"
+    ],
+    "image_prompt": "Fantasy concept art of Oakhaven. A fortified wooden palisade town at the foot of the Shattered Peaks. The gateway to adventure\u2014and exploitation.",
+    "view_context": "aerthos/data/cities/oakhaven.json"
+  },
+  {
+    "asset_id": "oakhaven_silas_shop",
+    "name": "Silas's Equipment Emporium",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named Silas's Equipment Emporium. Specialty: Adventuring supplies at 'fair' prices. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/oakhaven.json - Shop: silas_shop"
+  },
+  {
+    "asset_id": "oakhaven_dirty_mug",
+    "name": "The Dirty Mug",
+    "type": "Inn",
+    "visual_tags": [
+      "inn",
+      "tavern",
+      "fantasy",
+      "interior"
+    ],
+    "image_prompt": "Interior of a fantasy tavern named The Dirty Mug. A rough tavern catering to adventurers. The ale is watered, the beds are lumpy, but the rumors are priceless. Warm hearth fire, wooden tables, lively atmosphere.",
+    "view_context": "aerthos/data/cities/oakhaven.json - Inn: dirty_mug"
+  },
+  {
+    "asset_id": "oakhaven_temple_of_light",
+    "name": "Temple of Light",
+    "type": "Temple",
+    "visual_tags": [
+      "temple",
+      "fantasy",
+      "shrine",
+      "religious"
+    ],
+    "image_prompt": "A fantasy shrine or temple named Temple of Light, dedicated to Pelor (equivalent). Peaceful, divine atmosphere.",
+    "view_context": "aerthos/data/cities/oakhaven.json - Temple: temple_of_light"
+  },
+  {
+    "asset_id": "oakhaven_npc_silas",
+    "name": "Silas",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Silas, Merchant. An immaculately dressed man with cold, calculating eyes. He buys low and sells high\u2014always.",
+    "view_context": "aerthos/data/cities/oakhaven.json - NPC: silas"
+  },
+  {
+    "asset_id": "oakhaven_npc_the_guide",
+    "name": "The Guide",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of The Guide, Quest Giver. A weathered man who knows every trail and ruin within a hundred miles. Information has a price.",
+    "view_context": "aerthos/data/cities/oakhaven.json - NPC: the_guide"
+  }
+]

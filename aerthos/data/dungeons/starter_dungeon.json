@@ -1,5 +1,6 @@
 {
   "name": "The Abandoned Mine",
+  "description": "An old copper mine abandoned decades ago after a cave-in. Recently, monsters have moved in: kobolds, goblins, and worse. The mine's treasures still lie within, guarded by creatures that now call it home. A perfect test for beginning adventurers.",
   "start_room": "room_001",
   "rooms": {
     "room_001": {

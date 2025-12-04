@@ -1,39 +1,47 @@
 # Aerthos - AD&D 1e Text Adventure
 
-A faithful recreation of Advanced Dungeons & Dragons 1st Edition as a single-player text adventure game.
+A faithful recreation of Advanced Dungeons & Dragons 1st Edition as a complete single-player campaign.
 
 ## Features
 
 - **Authentic AD&D 1e Mechanics**
   - THAC0 combat system with descending AC
-  - Vancian magic with spell memorization
+  - Vancian magic with spell memorization and 332 spells
   - 5-category saving throws
   - Thief skills with percentile rolls
-  - Resource management (light sources, rations)
+  - Resource management (light sources, rations, encumbrance)
+  - Nine-point alignment system with class restrictions
 
-- **Four Classic Classes**
-  - Fighter - Master of combat
-  - Cleric - Divine spellcaster
-  - Magic-User - Arcane spellcaster
-  - Thief - Cunning rogue with special skills
+- **11 Character Classes**
+  - **Warriors:** Fighter, Ranger, Paladin
+  - **Priests:** Cleric, Druid
+  - **Wizards:** Magic-User, Illusionist
+  - **Rogues:** Thief, Assassin
+  - **Special:** Monk, Bard
 
-- **Four Races**
+- **Four Classic Races**
   - Human - Versatile and balanced
   - Elf - Graceful and magical
   - Dwarf - Tough and resilient
   - Halfling - Small and nimble
 
-- **The Abandoned Mine**
-  - Hand-crafted 10-room starter dungeon
-  - Multiple enemy types (kobolds, goblins, skeletons, giant rats, ogre boss)
-  - Traps, puzzles, and treasure
-  - Safe rooms for resting
+- **10-Episode Campaign: "Rise of the Serpent Cult"**
+  - 11 hand-crafted dungeons across 5 city hubs
+  - Episodes 1-10 with narrative continuity
+  - 280+ monsters with varied abilities
+  - Progressive difficulty (levels 1-10)
+  - 20 side quests with unique rewards
+  - Underwater episodes with waterbreathing mechanics
+  - Reputation system tracking your standing in each city
 
-- **Game Systems**
+- **Comprehensive Game Systems**
   - Auto-mapping that reveals as you explore
-  - Save/load system for checkpoints
+  - Multiple save systems (quick save, character roster, party manager, session manager)
+  - City hubs with shops, inns, temples, and guilds
+  - Quest system with optional side content
   - Time tracking with resource depletion
   - Flexible natural language parser
+  - CLI and Web UI interfaces
   - Character death is permanent (restore from saves)
 
 ## Installation
@@ -107,25 +115,36 @@ Aerthos follows these AD&D 1e principles:
 
 ## Development Status
 
-**Current Version**: 1.0 (MVP)
+**Current Version**: 2.0 - Campaign Complete
+**Status**: ✅ **READY FOR RELEASE**
+**Test Coverage**: 541/541 tests passing (100%)
 
-This is a pilot implementation with:
-- ✅ Complete core systems
-- ✅ Character creation
-- ✅ Full THAC0 combat
-- ✅ Vancian magic (7 spells)
-- ✅ Thief skills
-- ✅ 10-room starter dungeon
-- ✅ Auto-mapping
-- ✅ Save/load system
+**Completed Features:**
+- ✅ Full 10-episode campaign (Episodes 1-10)
+- ✅ 11 character classes with unique abilities
+- ✅ 11 hand-crafted dungeons (15-18 rooms each)
+- ✅ 280+ monsters with varied abilities and behaviors
+- ✅ 332 spells across all caster classes
+- ✅ 20 side quests with unique rewards
+- ✅ Reputation system tracking
+- ✅ City hub system (5 cities with shops, inns, temples, guilds)
+- ✅ Complete combat, magic, and skill systems
+- ✅ Auto-mapping and navigation
+- ✅ Comprehensive save/load systems
+- ✅ CLI and Web UI interfaces
+- ✅ Full test coverage (541 automated tests)
 
-**Future Expansions** (if pilot is successful):
-- Additional dungeons
-- More monsters and spells
-- Party management (multiple PCs)
-- Procedural dungeon generator
-- More character levels
-- Additional classes (Ranger, Paladin, Druid, etc.)
+**Campaign Stats:**
+- **XP Available**: 464,305 (main story) + 15,100 (side quests) = 479,405 total
+- **Character Progression**: Level 1 → Level 9-10
+- **Gold Available**: ~27,925 gp (main story) + quest rewards
+- **Playtime**: 15-20 hours for full campaign completion
+
+**Optional Future Enhancements:**
+- Reputation effects (shop discounts, faction bonuses)
+- Multiple endings for Episode 10 based on player choices
+- Additional episodes expanding the campaign
+- Wilderness/overworld map system
 
 ## License
 

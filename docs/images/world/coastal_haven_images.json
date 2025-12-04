@@ -1,0 +1,90 @@
+[
+  {
+    "asset_id": "coastal_haven",
+    "name": "Coastal Haven",
+    "type": "City",
+    "visual_tags": [
+      "city",
+      "fantasy",
+      "exterior"
+    ],
+    "image_prompt": "Fantasy concept art of Coastal Haven. A bustling port city where merchant ships dock alongside fishing vessels. The smell of salt and fish permeates everything. Beyond the harbor, the drowned ruins of Ys'Thara shimmer beneath the waves.",
+    "view_context": "aerthos/data/cities/coastal_haven.json"
+  },
+  {
+    "asset_id": "coastal_haven_deep_diver_supply",
+    "name": "The Deep Diver's Supply",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named The Deep Diver's Supply. Specialty: Underwater adventuring equipment and magic. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/coastal_haven.json - Shop: deep_diver_supply"
+  },
+  {
+    "asset_id": "coastal_haven_maritime_arms",
+    "name": "Maritime Arms & Armor",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named Maritime Arms & Armor. Specialty: Weapons effective underwater. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/coastal_haven.json - Shop: maritime_arms"
+  },
+  {
+    "asset_id": "coastal_haven_sailors_rest",
+    "name": "The Sailor's Rest",
+    "type": "Inn",
+    "visual_tags": [
+      "inn",
+      "tavern",
+      "fantasy",
+      "interior"
+    ],
+    "image_prompt": "Interior of a fantasy tavern named The Sailor's Rest. A rowdy tavern frequented by sailors, merchants, and the occasional pirate. The ale flows freely and tales grow taller with each round. Warm hearth fire, wooden tables, lively atmosphere.",
+    "view_context": "aerthos/data/cities/coastal_haven.json - Inn: sailors_rest"
+  },
+  {
+    "asset_id": "coastal_haven_shrine_sea_goddess",
+    "name": "Shrine to the Sea Mother",
+    "type": "Temple",
+    "visual_tags": [
+      "temple",
+      "fantasy",
+      "shrine",
+      "religious"
+    ],
+    "image_prompt": "A fantasy shrine or temple named Shrine to the Sea Mother, dedicated to Oceanic Goddess. Peaceful, divine atmosphere.",
+    "view_context": "aerthos/data/cities/coastal_haven.json - Temple: shrine_sea_goddess"
+  },
+  {
+    "asset_id": "coastal_haven_npc_captain_thessa",
+    "name": "Captain Thessa Waveborn",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Captain Thessa Waveborn, Harbor Master / Quest Giver. A weathered sea captain with salt-gray hair and eyes that have seen too many storms. She knows every current and reef along the coast.",
+    "view_context": "aerthos/data/cities/coastal_haven.json - NPC: captain_thessa"
+  },
+  {
+    "asset_id": "coastal_haven_npc_master_diver_kael",
+    "name": "Master Diver Kael",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Master Diver Kael, Diving Equipment Merchant. A taciturn man with scars from shark bites and tentacle marks. He's been to the bottom and back more times than anyone.",
+    "view_context": "aerthos/data/cities/coastal_haven.json - NPC: master_diver_kael"
+  }
+]

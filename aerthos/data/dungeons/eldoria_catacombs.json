@@ -33,8 +33,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["skeleton", "skeleton", "zombie"],
-          "description": "The dead rise to defend their master!"
+          "monsters": ["skeleton", "skeleton", "zombie", "wight"],
+          "description": "The dead rise to defend their master! A wight emerges from the shadows!"
         }
       ],
       "safe_rest": false
@@ -52,7 +52,7 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["wraith", "wraith"],
+          "monsters": ["wraith", "wraith", "wraith"],
           "description": "Spectral nobles materialize, their faces twisted in fury at the desecration of their resting places!"
         }
       ],
@@ -71,8 +71,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["skeleton_champion", "skeleton", "skeleton", "skeleton"],
-          "description": "A skeletal champion and its minions attack! The bones animate and swarm!"
+          "monsters": ["skeleton_champion", "skeleton", "skeleton", "skeleton", "wight"],
+          "description": "A skeletal champion and its minions attack! The bones animate and swarm! A wight joins the fray!"
         }
       ],
       "safe_rest": false
@@ -108,8 +108,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_guard", "cultist_guard", "cultist_guard"],
-          "description": "Cultist guards leap to their feet, grabbing weapons!"
+          "monsters": ["cultist_warrior", "cultist_warrior", "cultist_warrior"],
+          "description": "Cultist warriors leap to their feet, grabbing weapons!"
         }
       ],
       "safe_rest": false
@@ -127,7 +127,7 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_warrior", "cultist_warrior", "cultist_archer"],
+          "monsters": ["cultist_warrior", "cultist_warrior", "cultist_warrior"],
           "description": "Cultist warriors interrupt their training to attack!"
         }
       ],
@@ -146,8 +146,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_sergeant", "cultist_guard", "cultist_guard"],
-          "description": "A cult sergeant and guards defend the armory!"
+          "monsters": ["cultist_sergeant", "cultist_warrior", "cultist_warrior"],
+          "description": "A cult sergeant and warriors defend the armory!"
         }
       ],
       "safe_rest": false
@@ -167,8 +167,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist", "cultist", "cultist", "cultist"],
-          "description": "Off-duty cultists scramble for weapons!"
+          "monsters": ["cultist_guard", "cultist_guard", "cultist_guard", "cultist_guard"],
+          "description": "Off-duty cult guards scramble for weapons!"
         }
       ],
       "safe_rest": false
@@ -198,8 +198,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_quartermaster", "cultist", "cultist"],
-          "description": "The cult quartermaster and assistants attack!"
+          "monsters": ["cultist_quartermaster", "cultist_warrior", "cultist_warrior"],
+          "description": "The cult quartermaster and warrior assistants attack!"
         }
       ],
       "safe_rest": false
@@ -217,8 +217,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_torturer", "cultist_guard", "hell_hound"],
-          "description": "A cult torturer with his guard and a hell hound attack!"
+          "monsters": ["cultist_sorcerer", "cultist_warrior", "hell_hound"],
+          "description": "A cult sorcerer with his warrior guard and a hell hound attack!"
         }
       ],
       "safe_rest": false
@@ -238,8 +238,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["cultist_sorcerer", "imp"],
-          "description": "A cult sorcerer and his imp familiar attack!"
+          "monsters": ["cultist_sorcerer", "imp", "imp"],
+          "description": "A cult sorcerer and his imp familiars attack!"
         }
       ],
       "safe_rest": false
@@ -257,8 +257,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["imp_advisor", "imp", "imp"],
-          "description": "Krane's imp advisors attack to protect their master's secrets!"
+          "monsters": ["imp_advisor", "imp", "imp", "cultist_sorcerer"],
+          "description": "Krane's imp advisors and a cult sorcerer attack to protect their master's secrets!"
         }
       ],
       "safe_rest": false
@@ -276,8 +276,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["flesh_golem", "mutated_cultist"],
-          "description": "An alchemical flesh golem and mutated cultist attack!"
+          "monsters": ["flesh_golem", "mutated_cultist", "mutated_cultist"],
+          "description": "An alchemical flesh golem and mutated cultists attack!"
         }
       ],
       "safe_rest": false
@@ -314,8 +314,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["bearded_devil", "lemure", "lemure", "lemure"],
-          "description": "Devils emerge from the summoning circle!"
+          "monsters": ["bearded_devil", "hell_hound", "hell_hound", "lemure"],
+          "description": "Devils and hell hounds emerge from the summoning circle!"
         }
       ],
       "safe_rest": false
@@ -332,8 +332,8 @@
       "encounters": [
         {
           "type": "combat",
-          "monsters": ["imp", "imp", "imp", "imp", "imp"],
-          "description": "The imps break free and swarm you!"
+          "monsters": ["imp_advisor", "imp_advisor", "imp_advisor", "imp_advisor", "imp_advisor"],
+          "description": "The imp advisors break free and swarm you!"
         }
       ],
       "safe_rest": false

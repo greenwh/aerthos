@@ -1,0 +1,293 @@
+[
+  {
+    "asset_id": "drowned_ruins_map",
+    "name": "Map of Drowned Ruins of Ys'Thara",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Drowned Ruins of Ys'Thara. An ancient city beneath the waves, filled with dark magic and aquatic horrors.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json"
+  },
+  {
+    "asset_id": "drowned_ruins_diving_point",
+    "name": "Surface - Diving Point",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Surface - Diving Point. Your boat rocks gently above the ruins. Below, green-lit structures shimmer in the depths. You don your diving gear and descend into the cold, dark water. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: diving_point"
+  },
+  {
+    "asset_id": "drowned_ruins_outer_ruins",
+    "name": "Outer Ruins - Flooded Plaza",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Outer Ruins - Flooded Plaza. Crumbling buildings loom out of the murk. Fish dart between broken columns. The water here is thick with silt and old magic. Passages lead deeper into the city in all directions. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: outer_ruins"
+  },
+  {
+    "asset_id": "drowned_ruins_collapsed_district",
+    "name": "Collapsed District",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Collapsed District. Buildings have fallen here, creating a maze of rubble. Something large has made a lair among the debris. A dark fissure leads deeper into the abyss below. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: collapsed_district"
+  },
+  {
+    "asset_id": "drowned_ruins_temple_approach",
+    "name": "Temple Approach",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Temple Approach. A wide avenue leads to the Temple of the Serpent's Fang. Statues of ancient rulers line the path, their faces eroded by time and water. Cultist divers work at the temple entrance. To the north, the old market district beckons. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: temple_approach"
+  },
+  {
+    "asset_id": "drowned_ruins_temple_entrance",
+    "name": "Serpent Temple - Outer Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Serpent Temple - Outer Chamber. The temple interior is eerily preserved. Green bioluminescent algae provides ghostly light. Serpent carvings cover every surface. Water flows through channels in the floor. To the east, an ornate archway leads toward what was once the royal palace. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: temple_entrance"
+  },
+  {
+    "asset_id": "drowned_ruins_ritual_chamber",
+    "name": "Ritual Chamber of the Fang",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Ritual Chamber of the Fang. The heart of the temple. A massive altar carved from black coral dominates the chamber. High Priest Morvathis stands before it, the Fifth Key in one hand and the Serpent's Fang in the other. His eyes glow with unnatural power as he completes his incantation. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: ritual_chamber"
+  },
+  {
+    "asset_id": "drowned_ruins_residential_quarter",
+    "name": "Residential Quarter - Central Street",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Residential Quarter - Central Street. Ancient homes line this flooded street, their windows dark and empty. Kelp grows through doorways, and small fish dart in and out of broken windows. The buildings are eerily preserved, as if the residents simply vanished. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: residential_quarter"
+  },
+  {
+    "asset_id": "drowned_ruins_ancient_homes",
+    "name": "Ancient Homes - Haunted Dwellings",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Ancient Homes - Haunted Dwellings. Several homes cluster together here. Inside, furniture remains in place, covered in silt. Ghostly echoes whisper through the water\u2014the drowned spirits of Ys'Thara, unable to move on. They don't attack, but their presence is deeply unsettling. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: ancient_homes"
+  },
+  {
+    "asset_id": "drowned_ruins_nobles_villa",
+    "name": "Noble's Villa - Preserved Estate",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Noble's Villa - Preserved Estate. This grand villa belonged to a wealthy merchant lord. Unlike other buildings, it has been magically preserved\u2014carpets still plush, paintings still vibrant. A protective enchantment kept the water at bay... until recently. The cult has looted much, but secrets remain. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: nobles_villa"
+  },
+  {
+    "asset_id": "drowned_ruins_cult_excavation",
+    "name": "Cult Excavation Site - Operations Hub",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Excavation Site - Operations Hub. The cult has established a base here. Ropes and pulleys connect to the surface, and crates of artifacts are staged for retrieval. A foreman oversees work crews sorting treasures and ancient texts. This is the logistical heart of the cult's underwater operation. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: cult_excavation"
+  },
+  {
+    "asset_id": "drowned_ruins_diving_bell_chamber",
+    "name": "Diving Bell Chamber - Equipment Storage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Diving Bell Chamber - Equipment Storage. Large diving bells hang suspended in the water, connected to air hoses leading to the surface. Shelves hold diving equipment, waterbreathing potions, and underwater tools. This is how the cult has been able to work at such depths for extended periods. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: diving_bell_chamber"
+  },
+  {
+    "asset_id": "drowned_ruins_prisoner_holding",
+    "name": "Prisoner Holding - Mind-Control Cells",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Prisoner Holding - Mind-Control Cells. Iron cages hold a dozen victims\u2014fisherfolk and divers who got too close to the ruins. But they're not prisoners anymore... they're thralls. The aboleth has touched their minds, and they serve the cult willingly now, their eyes glazed and empty. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: prisoner_holding"
+  },
+  {
+    "asset_id": "drowned_ruins_market_ruins",
+    "name": "Market Ruins - Sunken Bazaar",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Market Ruins - Sunken Bazaar. Stalls and shop fronts line this once-bustling market square. Goods still sit on shelves, perfectly preserved by the cold water\u2014spices, fabrics, trinkets. Sahuagin have claimed this area, using it to store salvage and trophies from their raids. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: market_ruins"
+  },
+  {
+    "asset_id": "drowned_ruins_warehouse_ruins",
+    "name": "Warehouse Ruins - Contraband Storage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Warehouse Ruins - Contraband Storage. This massive warehouse once stored merchant goods. Now it's filled with contraband\u2014smuggled weapons, illegal alchemical substances, and stolen artifacts. The cult has been using it to store items they don't want on the surface. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: warehouse_ruins"
+  },
+  {
+    "asset_id": "drowned_ruins_smugglers_grotto",
+    "name": "Smuggler's Grotto - Hidden Cache",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Smuggler's Grotto - Hidden Cache. A hidden cave behind false barrels. This was the smuggler's true treasure vault\u2014not cult related, but ancient. Coins, jewelry, and a few magical items are sealed in waterproof chests. A skeleton in fine clothes suggests the smuggler never made it out to retrieve his fortune. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: smugglers_grotto"
+  },
+  {
+    "asset_id": "drowned_ruins_palace_gardens",
+    "name": "Royal Palace - Drowned Gardens",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Royal Palace - Drowned Gardens. Once beautiful gardens now grow wild underwater. Kelp forests replace manicured hedges, and bioluminescent plants create an eerie, beautiful glow. Aquatic creatures have made homes in the fountains and ponds. The palace itself looms to the north, its bronze doors still sealed. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: palace_gardens"
+  },
+  {
+    "asset_id": "drowned_ruins_throne_room",
+    "name": "Royal Throne Room - Hall of Kings",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Royal Throne Room - Hall of Kings. The throne of Ys'Thara sits upon a dais, a skeleton still seated upon it wearing a coral crown. Murals depict the city's glory days. Two massive stone golems flank the throne\u2014ancient guardians that still function after a thousand years. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: throne_room"
+  },
+  {
+    "asset_id": "drowned_ruins_treasury_vault",
+    "name": "Royal Treasury - Vault of Ys'Thara",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Royal Treasury - Vault of Ys'Thara. The royal treasury. Gold, platinum, gems, and magical artifacts fill this chamber. But the cult has gotten here first\u2014many treasures are gone. What remains is still valuable, but deadly traps protect it. The floor is littered with skeletal remains of looters who failed. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: treasury_vault"
+  },
+  {
+    "asset_id": "drowned_ruins_royal_archives",
+    "name": "Royal Archives - Hall of Knowledge",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of Royal Archives - Hall of Knowledge. Waterproof stone tablets and sealed scroll cases line the walls. The history of Ys'Thara is recorded here\u2014including the truth of why it sank. The last king made a pact with an aboleth, trading the city for immortality. The aboleth kept its bargain... in a way. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: royal_archives"
+  },
+  {
+    "asset_id": "drowned_ruins_aboleth_lair",
+    "name": "The Abyss - Aboleth's Domain",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting",
+      "underwater"
+    ],
+    "image_prompt": "Fantasy concept art of The Abyss - Aboleth's Domain. You descend into crushing darkness. The water here is ancient and wrong\u2014thick with psychic energy. An enormous aboleth floats in the void, its three eyes glowing with malevolent intelligence. This is the creature that sank Ys'Thara, and it guards treasures beyond measure. Fighting it here, in its domain, is extremely dangerous. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/drowned_ruins.json - Room: aboleth_lair"
+  }
+]

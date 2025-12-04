@@ -5,11 +5,11 @@
   "act": 1,
   "recommended_level": 2,
   "hub_id": "oakhaven",
-  "intro_text": "The goblin threat has ended, but a new darkness plagues Oakhaven. Over the past month, seven townsfolk have vanished without a trace. The town guard claims it's deserters and runaways, but the families know better.\n\nOld Marta, the herbalist, swears she saw hooded figures near the abandoned well at midnight. The well connects to the old sewers beneath Oakhaven—tunnels that haven't been used in decades. The serpent medallion you found grows cold in your possession whenever you pass near that well.\n\nSomething evil lurks beneath the town.",
+  "intro_text": "The goblin threat has ended, but a new darkness plagues Oakhaven. Over the past month, seven townsfolk have vanished without a trace. The town guard claims it's deserters and runaways, but the families know better.\n\nOld Marta, the herbalist, swears she saw hooded figures near the abandoned well at midnight. The well connects to the old sewers beneath Oakhaven\u2014tunnels that haven't been used in decades. The serpent medallion you found grows cold in your possession whenever you pass near that well.\n\nSomething evil lurks beneath the town.",
   "briefing": {
     "quest_giver": "The Guide",
     "location": "The Dirty Mug tavern",
-    "dialogue": "People are vanishing from the streets at night. The militia's useless—half of them are probably in on it. Old Marta saw hooded figures near the old sewer entrance. She mentioned chanting, strange symbols. I've seen that serpent medallion you carry. I'd wager whatever's down there is connected to whoever drove those goblins out of the mountains. Be careful—if they're taking prisoners, they might still be alive down there."
+    "dialogue": "People are vanishing from the streets at night. The militia's useless\u2014half of them are probably in on it. Old Marta saw hooded figures near the old sewer entrance. She mentioned chanting, strange symbols. I've seen that serpent medallion you carry. I'd wager whatever's down there is connected to whoever drove those goblins out of the mountains. Be careful\u2014if they're taking prisoners, they might still be alive down there."
   },
   "dungeon": {
     "type": "hand_crafted",
@@ -25,16 +25,26 @@
   },
   "completion_text": "The cultist fanatic falls, his dying words a curse against you and a prayer to the Serpent Eye. The captured townsfolk, emaciated and terrified, huddle in their cages. You free them and guide them back to the surface.\n\nAmong the cult's ritual chamber, you find disturbing evidence: maps of the region marked with serpent symbols, letters from someone called 'The Merchant,' and references to 'the awakening' and 'the ten keys.' The cult was gathering sacrifices to power some dark ritual.\n\nYou've stopped this cell, but the conspiracy runs deeper. The letters mention Silas, the merchant whose shop you've been frequenting. Could he be involved?",
   "rewards": {
-    "xp_bonus": 750,
+    "xp_bonus": 3750,
     "gold_bonus": 150,
-    "items": ["mace_plus_1"],
-    "unlocks": ["episode_03"],
-    "story_flags": ["rescued_prisoners", "found_cult_evidence", "silas_implicated"]
+    "items": [
+      "mace_plus_1"
+    ],
+    "unlocks": [
+      "episode_03"
+    ],
+    "story_flags": [
+      "rescued_prisoners",
+      "found_cult_evidence",
+      "silas_implicated"
+    ]
   },
   "rumors": [
     "The sewers were sealed decades ago after the plague. What made them open them again?",
     "Silas's shop has been getting strange deliveries at night. Hooded figures.",
     "One of the disappeared was an acolyte at the Temple. The priests won't talk about it."
   ],
-  "prerequisites": ["episode_01"]
+  "prerequisites": [
+    "episode_01"
+  ]
 }

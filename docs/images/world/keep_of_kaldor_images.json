@@ -1,0 +1,144 @@
+[
+  {
+    "asset_id": "keep_of_kaldor_map",
+    "name": "Map of Keep of Kaldor",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Keep of Kaldor. An abandoned keep now overrun by desperate goblin refugees, led by the hobgoblin chief Grukk.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json"
+  },
+  {
+    "asset_id": "keep_of_kaldor_entrance",
+    "name": "Ruined Gatehouse",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ruined Gatehouse. The massive oak doors hang broken on their hinges. Arrow slits in the walls stare down like empty eyes. Fresh goblin tracks mar the dusty floor. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: entrance"
+  },
+  {
+    "asset_id": "keep_of_kaldor_guard_room",
+    "name": "Guard Post",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Guard Post. Rusty weapons and rotting leather armor hang on the walls. A wooden table lies overturned. Signs of recent use\u2014someone has been camping here. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: guard_room"
+  },
+  {
+    "asset_id": "keep_of_kaldor_courtyard",
+    "name": "Overgrown Courtyard",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Overgrown Courtyard. Weeds push through cracked flagstones. A dry fountain stands in the center, its statue worn beyond recognition. The keep's main hall looms to the north. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: courtyard"
+  },
+  {
+    "asset_id": "keep_of_kaldor_armory",
+    "name": "Ruined Armory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ruined Armory. Weapon racks stand empty, their contents long since looted. Rust stains and cobwebs are all that remain. A trap door in the floor leads down. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: armory"
+  },
+  {
+    "asset_id": "keep_of_kaldor_great_hall",
+    "name": "Great Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Great Hall. A vast hall with a vaulted ceiling. Tattered banners hang from the walls. Long tables lie scattered about, now serving as crude goblin bedding. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: great_hall"
+  },
+  {
+    "asset_id": "keep_of_kaldor_chapel",
+    "name": "Defiled Chapel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Defiled Chapel. Broken pews and shattered holy symbols litter the floor. The altar has been defaced. A strange serpent symbol is painted on the wall in what looks like blood. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: chapel"
+  },
+  {
+    "asset_id": "keep_of_kaldor_throne_room",
+    "name": "Throne Room",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Throne Room. A stone throne sits on a raised dais. The hobgoblin chief Grukk lounges on it, a cruel grin on his scarred face. Around his neck hangs a serpent medallion. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: throne_room"
+  },
+  {
+    "asset_id": "keep_of_kaldor_storage_cellar",
+    "name": "Storage Cellar",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Storage Cellar. Moldy crates and barrels fill this damp cellar. Most are empty or rotten, but some contain stolen goods from the caravan raids. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: storage_cellar"
+  },
+  {
+    "asset_id": "keep_of_kaldor_wine_cellar",
+    "name": "Wine Cellar",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Wine Cellar. Broken wine racks and shattered bottles cover the floor. The smell of sour wine mingles with something worse\u2014something dead. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: wine_cellar"
+  },
+  {
+    "asset_id": "keep_of_kaldor_plague_room",
+    "name": "Sealed Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Sealed Chamber. This room was sealed with planks and warnings of plague. The goblins broke it open in desperation. Bodies lie inside\u2014not goblins, but humans in ancient armor. Something killed them long ago. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/keep_of_kaldor.json - Room: plague_room"
+  }
+]

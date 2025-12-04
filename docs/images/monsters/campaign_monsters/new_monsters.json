@@ -3664,5 +3664,75 @@
       "xp_per_hp": 3,
       "dungeon_level": 2
     }
-  
+  air/wind attacks, difficult to see (-2 to hit), takes double damage from earth magic",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "thug": {
+    "name": "Thug",
+    "hit_dice": "2d8",
+    "ac": 7,
+    "thac0": 19,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 8,
+    "treasure_type": "Individuals P",
+    "xp_value": 100,
+    "special_abilities": [],
+    "description": "A common criminal enforcer or hired muscle, skilled with clubs and daggers."
+  },
+  "silas_merchant": {
+    "name": "Silas the Corrupt Merchant",
+    "hit_dice": "5d8",
+    "ac": 5,
+    "thac0": 16,
+    "damage": "1d8+2",
+    "size": "M",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "Q, X, magic items",
+    "xp_value": 1500,
+    "special_abilities": [
+      "cunning_defense",
+      "poison_dagger"
+    ],
+    "description": "A wealthy merchant corrupted by the cult, Silas uses his resources and connections to further the serpent cult's goals. He fights with a poisoned dagger and tactical cunning."
+  },
+  "grathak_soulless": {
+    "name": "Grathak the Soulless",
+    "hit_dice": "7d8+7",
+    "ac": 3,
+    "thac0": 14,
+    "damage": "2d6+3",
+    "size": "M",
+    "movement": 9,
+    "morale": 14,
+    "treasure_type": "Q, X, magic weapon, magic armor",
+    "xp_value": 2500,
+    "special_abilities": [
+      "duergar_invisibility",
+      "command_presence",
+      "dark_magic"
+    ],
+    "description": "The soulless duergar chieftain who sold his people to the cult. Grathak wields dark magic and a massive warhammer, and can turn invisible like all duergar."
+  },
+  "giant_snake": {
+    "name": "Giant Constrictor Snake",
+    "hit_dice": "4d8",
+    "ac": 5,
+    "thac0": 16,
+    "damage": "1d6",
+    "size": "L",
+    "movement": 9,
+    "morale": 7,
+    "treasure_type": "None",
+    "xp_value": 600,
+    "special_abilities": [
+      " 
 }
+
+missing a handfull from like ep 9 or 10

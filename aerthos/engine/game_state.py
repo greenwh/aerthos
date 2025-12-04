@@ -102,9 +102,21 @@ class GameState:
         # Game data
         self.game_data: Optional[GameData] = None
 
+        # Quest system (optional - for campaign mode)
+        self.episode_runner = None
+
     def load_game_data(self, data_dir: str = "aerthos/data") -> None:
         """Load all game data"""
         self.game_data = GameData.load_all(data_dir)
+
+    def set_episode_runner(self, episode_runner) -> None:
+        """
+        Set episode runner for quest integration (campaign mode only)
+
+        Args:
+            episode_runner: EpisodeRunner instance with quest manager
+        """
+        self.episode_runner = episode_runner
 
     def execute_command(self, command: Command) -> Dict:
         """
@@ -242,6 +254,14 @@ class GameState:
             messages.append(encounter_msg)
         messages.extend(time_messages)
 
+        # Check quest triggers when entering room (campaign mode only)
+        if self.episode_runner and hasattr(self.episode_runner, 'check_quest_triggers'):
+            quest_notifications = self.episode_runner.check_quest_triggers(
+                'enter_room',
+                {'room_id': self.current_room.id}
+            )
+            messages.extend(quest_notifications)
+
         return {'success': True, 'message': '\n\n'.join(messages)}
 
     def _handle_attack(self, command: Command) -> Dict:
@@ -301,14 +321,24 @@ class GameState:
 
             # Award XP to party or player
             if hasattr(self, 'party') and self.party:
+                from ..constants import XP_DIVIDE_AMONG_PARTY
+
                 living_members = self.party.get_living_members()
                 if living_members:
-                    xp_per_member = target.xp_value // len(living_members)
+                    if XP_DIVIDE_AMONG_PARTY:
+                        xp_per_member = target.xp_value // len(living_members)
+                    else:
+                        xp_per_member = target.xp_value  # Each member gets full amount
+
                     for member in living_members:
                         level_up_msg = member.gain_xp(xp_per_member)
                         if level_up_msg:
                             messages.append(f"{member.name}: {level_up_msg}")
-                    messages.append(f"Party gains {target.xp_value} XP! ({xp_per_member} each)")
+
+                    if XP_DIVIDE_AMONG_PARTY:
+                        messages.append(f"Party gains {target.xp_value} XP! ({xp_per_member} each)")
+                    else:
+                        messages.append(f"Party gains {target.xp_value} XP! (each member)")
                 else:
                     # Party wiped out - no XP awarded
                     messages.append(f"The party has fallen! No XP awarded.")
@@ -317,6 +347,13 @@ class GameState:
                 messages.append(f"You gain {target.xp_value} XP!")
                 if level_up_msg:
                     messages.append(level_up_msg)
+
+            # Update quest objectives when killing monster (campaign mode only)
+            if self.episode_runner and hasattr(self.episode_runner, 'update_quest_objectives'):
+                # Extract monster ID from target name (lowercase, no spaces)
+                monster_id = target.name.lower().replace(' ', '_')
+                quest_updates = self.episode_runner.update_quest_objectives('kill_monster', monster_id)
+                messages.extend(quest_updates)
 
             # Check if combat over
             if not any(m.is_alive for m in self.active_monsters):
@@ -532,7 +569,16 @@ class GameState:
         self.player.inventory.add_item(item)
         self.current_room.remove_item(item_name)
 
-        return {'success': True, 'message': f"You take the {item.name}."}
+        messages = [f"You take the {item.name}."]
+
+        # Update quest objectives when collecting item (campaign mode only)
+        if self.episode_runner and hasattr(self.episode_runner, 'update_quest_objectives'):
+            # Extract item ID from item name (lowercase, no spaces)
+            item_id = item.name.lower().replace(' ', '_')
+            quest_updates = self.episode_runner.update_quest_objectives('collect_item', item_id)
+            messages.extend(quest_updates)
+
+        return {'success': True, 'message': '\n'.join(messages)}
 
     def _handle_drop(self, command: Command) -> Dict:
         """Handle dropping items"""
@@ -769,14 +815,24 @@ class GameState:
 
                 # Award XP to party or player
                 if hasattr(self, 'party') and self.party:
+                    from ..constants import XP_DIVIDE_AMONG_PARTY
+
                     living_members = self.party.get_living_members()
                     if living_members:
-                        xp_per_member = monster.xp_value // len(living_members)
+                        if XP_DIVIDE_AMONG_PARTY:
+                            xp_per_member = monster.xp_value // len(living_members)
+                        else:
+                            xp_per_member = monster.xp_value  # Each member gets full amount
+
                         for member in living_members:
                             level_up_msg = member.gain_xp(xp_per_member)
                             if level_up_msg:
                                 messages.append(f"{member.name}: {level_up_msg}")
-                        messages.append(f"Party gains {monster.xp_value} XP! ({xp_per_member} each)")
+
+                        if XP_DIVIDE_AMONG_PARTY:
+                            messages.append(f"Party gains {monster.xp_value} XP! ({xp_per_member} each)")
+                        else:
+                            messages.append(f"Party gains {monster.xp_value} XP! (each member)")
                     else:
                         # Party wiped out - no XP awarded
                         messages.append(f"The party has fallen! No XP awarded.")
@@ -846,6 +902,21 @@ class GameState:
         # Advance time (searching takes time)
         time_messages = self.time_tracker.advance_turn(self.player)
         messages.extend(time_messages)
+
+        # Check quest triggers/updates when searching room (campaign mode only)
+        if self.episode_runner:
+            # Check for quest triggers
+            if hasattr(self.episode_runner, 'check_quest_triggers'):
+                quest_notifications = self.episode_runner.check_quest_triggers(
+                    'search_room',
+                    {'room_id': self.current_room.id}
+                )
+                messages.extend(quest_notifications)
+
+            # Update quest objectives for searching
+            if hasattr(self.episode_runner, 'update_quest_objectives'):
+                quest_updates = self.episode_runner.update_quest_objectives('search_room', self.current_room.id)
+                messages.extend(quest_updates)
 
         return {'success': True, 'message': '\n'.join(messages)}
 

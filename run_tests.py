@@ -191,7 +191,10 @@ def main():
             ('Campaign Manager Tests', 'test_campaign_manager.py'),
             ('Hub Menu System Tests', 'test_hub_menu.py'),
             ('Episode Runner Tests', 'test_episode_runner.py'),
-            ('Campaign Playthrough Tests', 'test_campaign_playthrough.py')
+            ('Campaign Playthrough Tests', 'test_campaign_playthrough.py'),
+            ('Side Quest Tests', 'test_side_quest.py'),
+            ('Quest Manager Tests', 'test_quest_manager.py'),
+            ('Quest Integration Tests', 'test_quest_integration.py')
         ]
 
         for suite_name, pattern in unit_tests:

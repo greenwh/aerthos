@@ -4,12 +4,13 @@ Episode Runner - Manages episode flow from intro to completion
 Connects campaign episodes with hand-crafted dungeons and GameState.
 """
 
-from typing import Dict, Optional, Tuple, Any
+from typing import Dict, Optional, Tuple, Any, List
 from dataclasses import dataclass
 from pathlib import Path
 
 from .episode import Episode
 from .campaign import Campaign
+from .quest_manager import QuestManager
 from ..entities.party import Party
 from ..entities.player import PlayerCharacter
 from ..engine.game_state import GameState, GameData
@@ -52,6 +53,7 @@ class EpisodeRunner:
         self.party = party
         self.game_state: Optional[GameState] = None
         self.dungeon: Optional[Dungeon] = None
+        self.quest_manager: Optional[QuestManager] = None
 
         # Episode state
         self.state = EpisodeState(
@@ -60,6 +62,13 @@ class EpisodeRunner:
             party_id=campaign.party_id,  # Use campaign's party_id
             phase='intro'
         )
+
+        # Initialize quest manager
+        try:
+            self.quest_manager = QuestManager()
+        except Exception:
+            # Quest system not available yet - continue without it
+            self.quest_manager = None
 
     def get_intro_text(self) -> str:
         """Get formatted intro text
@@ -156,6 +165,8 @@ class EpisodeRunner:
         try:
             self.game_state = GameState(active_character, self.dungeon)
             self.game_state.load_game_data()
+            # Connect quest system for campaign mode
+            self.game_state.set_episode_runner(self)
             return True, "Game state initialized."
         except Exception as e:
             return False, f"Error creating game state: {e}"
@@ -288,3 +299,177 @@ class EpisodeRunner:
             True if episode is completed
         """
         return self.state.phase == 'completed'
+
+    # ========================================================================
+    # QUEST SYSTEM INTEGRATION
+    # ========================================================================
+
+    def check_quest_triggers(self, event_type: str, event_data: Dict[str, Any]) -> List[str]:
+        """
+        Check if any quests should be triggered by an event
+
+        Args:
+            event_type: Type of event (enter_room, find_item, etc.)
+            event_data: Event-specific data
+
+        Returns:
+            List of quest notification messages
+        """
+        if not self.quest_manager:
+            return []
+
+        triggered = self.quest_manager.check_triggers(event_type, event_data, self.episode.id)
+
+        notifications = []
+        for quest in triggered:
+            notifications.append(self._format_quest_discovered(quest))
+
+        return notifications
+
+    def update_quest_objectives(self, objective_type: str, target: Optional[str] = None) -> List[str]:
+        """
+        Update quest objectives based on game events
+
+        Args:
+            objective_type: Type of objective (kill_monster, collect_item, etc.)
+            target: Target of objective (monster ID, item ID, etc.)
+
+        Returns:
+            List of quest update messages
+        """
+        if not self.quest_manager:
+            return []
+
+        updated = self.quest_manager.update_quest_objectives(objective_type, target)
+
+        notifications = []
+        for quest, objective_ids in updated:
+            for obj_id in objective_ids:
+                # Find the objective
+                for obj in quest.objectives:
+                    if obj.id == obj_id and obj.completed:
+                        notifications.append(f"[QUEST UPDATE] {quest.title}: {obj.description} ({obj.current}/{obj.count})")
+
+        # Check for quest completions
+        completed = self.quest_manager.check_completions()
+        for quest in completed:
+            notifications.append(self._format_quest_complete(quest))
+            # Award quest rewards
+            self._award_quest_rewards(quest)
+
+        return notifications
+
+    def _award_quest_rewards(self, quest) -> None:
+        """Award rewards from completed quest to party"""
+        if not quest.completed:
+            return
+
+        rewards = quest.rewards
+
+        # Award XP to all living party members
+        if rewards.xp > 0:
+            for member in self.party.members:
+                if member.is_alive:
+                    member.xp += rewards.xp
+
+        # Award gold to party leader
+        if rewards.gold > 0:
+            self.party.members[0].gold += rewards.gold
+
+        # Award reputation (would integrate with reputation system)
+        if rewards.reputation > 0:
+            # For now, just track in campaign
+            pass
+
+        # Award items to party leader
+        for item_id in rewards.items:
+            # Would create actual items and add to inventory
+            # For now, just track the item IDs
+            pass
+
+    def _format_quest_discovered(self, quest) -> str:
+        """Format quest discovered notification"""
+        lines = [
+            "",
+            "╔" + "═" * 68 + "╗",
+            "║" + " " * 20 + "SIDE QUEST DISCOVERED" + " " * 27 + "║",
+            "╠" + "═" * 68 + "╣",
+            f"║  {quest.title:<64}  ║",
+            "║" + " " * 68 + "║",
+        ]
+
+        # Wrap description to fit in box
+        desc_lines = self._wrap_text(quest.description, 64)
+        for line in desc_lines:
+            lines.append(f"║  {line:<64}  ║")
+
+        lines.append("╚" + "═" * 68 + "╝")
+        lines.append("")
+
+        return "\n".join(lines)
+
+    def _format_quest_complete(self, quest) -> str:
+        """Format quest complete notification"""
+        lines = [
+            "",
+            "╔" + "═" * 68 + "╗",
+            "║" + " " * 22 + "SIDE QUEST COMPLETE!" + " " * 25 + "║",
+            "╠" + "═" * 68 + "╣",
+            f"║  {quest.title:<64}  ║",
+            "║" + " " * 68 + "║",
+            "║  Rewards:" + " " * 57 + "║",
+            f"║    • +{quest.rewards.xp} XP{' ' * (59 - len(str(quest.rewards.xp)))}║",
+        ]
+
+        if quest.rewards.gold > 0:
+            gold_str = f"{quest.rewards.gold} gold"
+            lines.append(f"║    • {gold_str}{' ' * (62 - len(gold_str))}║")
+
+        if quest.rewards.reputation > 0:
+            rep_str = f"+{quest.rewards.reputation} Reputation"
+            lines.append(f"║    • {rep_str}{' ' * (62 - len(rep_str))}║")
+
+        if quest.rewards.items:
+            for item in quest.rewards.items:
+                item_str = item.replace('_', ' ').title()
+                lines.append(f"║    • {item_str}{' ' * (62 - len(item_str))}║")
+
+        lines.append("╚" + "═" * 68 + "╝")
+        lines.append("")
+
+        return "\n".join(lines)
+
+    def _wrap_text(self, text: str, width: int) -> List[str]:
+        """Wrap text to fit within specified width"""
+        words = text.split()
+        lines = []
+        current_line = []
+        current_length = 0
+
+        for word in words:
+            if current_length + len(word) + len(current_line) > width:
+                lines.append(' '.join(current_line))
+                current_line = [word]
+                current_length = len(word)
+            else:
+                current_line.append(word)
+                current_length += len(word)
+
+        if current_line:
+            lines.append(' '.join(current_line))
+
+        return lines
+
+    def get_active_quests(self) -> List:
+        """Get list of active quests for this episode"""
+        if not self.quest_manager:
+            return []
+        return [q for q in self.quest_manager.get_active_quests()
+                if q.episode_id == self.episode.id]
+
+    def get_completed_quests(self) -> List:
+        """Get list of completed quests for this episode"""
+        if not self.quest_manager:
+            return []
+        return [q for q in self.quest_manager.get_completed_quests()
+                if q.episode_id == self.episode.id]

@@ -1,0 +1,102 @@
+[
+  {
+    "asset_id": "mires_edge",
+    "name": "Mire's Edge",
+    "type": "City",
+    "visual_tags": [
+      "city",
+      "fantasy",
+      "exterior"
+    ],
+    "image_prompt": "Fantasy concept art of Mire's Edge. A frontier settlement built on wooden platforms above the Whispering Marshes. The air reeks of decay and possibility. Smugglers, outcasts, and fortune-seekers all find refuge here\u2014for a price.",
+    "view_context": "aerthos/data/cities/mires_edge.json"
+  },
+  {
+    "asset_id": "mires_edge_garricks_goods",
+    "name": "Garrick's General Goods",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named Garrick's General Goods. Specialty: Survival supplies and marsh gear. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/mires_edge.json - Shop: garricks_goods"
+  },
+  {
+    "asset_id": "mires_edge_black_market",
+    "name": "The Black Market",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named The Black Market. Specialty: Questionable goods, no questions asked. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/mires_edge.json - Shop: black_market"
+  },
+  {
+    "asset_id": "mires_edge_driftwood_rest",
+    "name": "The Driftwood Rest",
+    "type": "Inn",
+    "visual_tags": [
+      "inn",
+      "tavern",
+      "fantasy",
+      "interior"
+    ],
+    "image_prompt": "Interior of a fantasy tavern named The Driftwood Rest. A ramshackle tavern that tilts slightly to the left. The ale is cheap, the beds cheaper, but the rumors flow freely. Warm hearth fire, wooden tables, lively atmosphere.",
+    "view_context": "aerthos/data/cities/mires_edge.json - Inn: driftwood_rest"
+  },
+  {
+    "asset_id": "mires_edge_shrine_nature",
+    "name": "Shrine to the Green Mother",
+    "type": "Temple",
+    "visual_tags": [
+      "temple",
+      "fantasy",
+      "shrine",
+      "religious"
+    ],
+    "image_prompt": "A fantasy shrine or temple named Shrine to the Green Mother, dedicated to Nature Goddess (neutral alignment). Peaceful, divine atmosphere.",
+    "view_context": "aerthos/data/cities/mires_edge.json - Temple: shrine_nature"
+  },
+  {
+    "asset_id": "mires_edge_npc_harbormaster_garrick",
+    "name": "Harbormaster Garrick",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Harbormaster Garrick, Quest Giver / Merchant. A weathered man in his fifties with salt-and-pepper hair and scars from a hundred close calls. He's seen things in the marsh that would drive others mad.",
+    "view_context": "aerthos/data/cities/mires_edge.json - NPC: harbormaster_garrick"
+  },
+  {
+    "asset_id": "mires_edge_npc_urgot_warchief",
+    "name": "War-Chief Urgot",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of War-Chief Urgot, Orc Emissary. A massive orc with ritualistic scars and iron-gray hair braided with bones. His eyes hold brutal intelligence.",
+    "view_context": "aerthos/data/cities/mires_edge.json - NPC: urgot_warchief"
+  },
+  {
+    "asset_id": "mires_edge_npc_widow_marla",
+    "name": "Widow Marla",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Widow Marla, Smuggler Contact. A sharp-eyed woman who runs the Driftwood Rest. Nothing happens in Mire's Edge without her knowing.",
+    "view_context": "aerthos/data/cities/mires_edge.json - NPC: widow_marla"
+  }
+]

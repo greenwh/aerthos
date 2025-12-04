@@ -122,17 +122,22 @@ class Party:
 
     def distribute_xp(self, xp_amount: int) -> None:
         """
-        Distribute XP equally among living party members
+        Distribute XP to living party members
 
         Args:
-            xp_amount: Total XP to distribute
+            xp_amount: Total XP to distribute (or XP per member, depending on XP_DIVIDE_AMONG_PARTY)
         """
+        from ..constants import XP_DIVIDE_AMONG_PARTY
+
         living = self.get_living_members()
         if not living:
             # No living members to award XP
             return
 
-        xp_per_member = xp_amount // len(living)
+        if XP_DIVIDE_AMONG_PARTY:
+            xp_per_member = xp_amount // len(living)
+        else:
+            xp_per_member = xp_amount  # Each member gets full amount
 
         for member in living:
             member.gain_xp(xp_per_member)

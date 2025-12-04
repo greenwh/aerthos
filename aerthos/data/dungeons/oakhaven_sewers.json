@@ -78,7 +78,7 @@
       "exits": {
         "south": "east_junction"
       },
-      "items": ["silver_dagger", "gold_coins", "rat_pelt"],
+      "items": ["silver_dagger", "gold_50", "rat_pelt"],
       "encounters": [
         {
           "type": "combat",
@@ -116,7 +116,7 @@
       "exits": {
         "north": "flooded_passage"
       },
-      "items": ["longsword_plus_1", "plate_mail", "waterlogged_journal"],
+      "items": ["longsword_plus_1", "plate_mail", "waterlogged_journal", "gold_50"],
       "encounters": [
         {
           "type": "combat",
@@ -200,7 +200,7 @@
       "exits": {
         "north": "meditation_cells"
       },
-      "items": ["emerald_eyes", "gold_chalice", "serpent_holy_symbol", "mysterious_key"],
+      "items": ["emerald_eyes", "gold_chalice", "serpent_holy_symbol", "mysterious_key", "gold_100"],
       "encounters": [
         {
           "type": "trap",
@@ -252,7 +252,7 @@
         "west": "torture_chamber",
         "east": "ritual_antechamber"
       },
-      "items": ["cell_key"],
+      "items": ["cell_key", "gold_100"],
       "encounters": [
         {
           "type": "combat",
@@ -307,7 +307,7 @@
       "exits": {
         "south": "ritual_antechamber"
       },
-      "items": ["serpent_robes", "ritual_dagger", "cult_documents", "merchant_letters", "regional_map", "ritual_scroll_darkness"],
+      "items": ["serpent_robes", "ritual_dagger", "cult_documents", "merchant_letters", "regional_map", "ritual_scroll_darkness", "gold_150"],
       "encounters": [
         {
           "type": "combat",

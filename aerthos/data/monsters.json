@@ -9,7 +9,7 @@
     "movement": 3,
     "morale": 12,
     "treasure_type": "Special (enslaved treasure)",
-    "xp_value": 420,
+    "xp_value": 2100,
     "special_abilities": [
       "water_breathing",
       "enslavement",
@@ -60,7 +60,7 @@
     "movement": 24,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 3550,
+    "xp_value": 17750,
     "special_abilities": [
       "invisibility",
       "constriction",
@@ -111,7 +111,7 @@
     "movement": 36,
     "morale": 13,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "flying",
       "whirlwind"
@@ -209,7 +209,7 @@
     "movement": 18,
     "morale": 7,
     "treasure_type": "Q (x3), S",
-    "xp_value": 28,
+    "xp_value": 140,
     "special_abilities": [
       "poison_attack"
     ],
@@ -257,7 +257,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "C",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, strong primate found in jungles and wild areas, usually neutral but aggressive if disturbed.",
@@ -303,7 +303,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "Nil",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "incorporeal",
       "fire_immunity",
@@ -354,7 +354,7 @@
     "movement": 18,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A tall, flightless, ostrich-like bird with a sharp, heavy beak, known for its speed and territorial aggression.",
@@ -399,7 +399,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 10,
+    "xp_value": 50,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A common, intelligent primate that often attacks in noisy, overwhelming packs.",
@@ -445,7 +445,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A small, fierce digging mammal that, when giant, poses a significant threat with its teeth and claws.",
@@ -490,7 +490,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 2250,
+    "xp_value": 11250,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "An enormous, extinct rhinoceros-like mammal, one of the largest land creatures, highly dangerous when angered.",
@@ -535,7 +535,7 @@
     "movement": 15,
     "morale": 14,
     "treasure_type": "Individuals Q",
-    "xp_value": 975,
+    "xp_value": 4875,
     "special_abilities": [
       "barbed_embrace",
       "fear_aura",
@@ -631,7 +631,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "F",
-    "xp_value": 725,
+    "xp_value": 3625,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A reptile known for its deadly gaze that can turn victims to stone and its venomous bite.",
@@ -724,7 +724,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "C",
-    "xp_value": 60,
+    "xp_value": 300,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "An unusually large version of the common aquatic rodent, capable of felling large trees and building massive dams.",
@@ -818,7 +818,7 @@
     "movement": 3,
     "morale": 11,
     "treasure_type": "I, S, T",
-    "xp_value": 12750,
+    "xp_value": 63750,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A terrifying, spherical creature with one central eye and numerous eyestalks, each projecting a different magical power.",
@@ -865,7 +865,7 @@
     "movement": 9,
     "morale": 14,
     "treasure_type": "H",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "breath_weapon",
       "flying",
@@ -915,7 +915,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 1650,
+    "xp_value": 8250,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive, mobile, black glob of corrosive ooze that dissolves organic and metal substances alike.",
@@ -962,7 +962,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "C",
-    "xp_value": 130,
+    "xp_value": 650,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A dog-like creature with the ability to teleport short distances (blink) as part of its attack and defense maneuvers.",
@@ -1009,7 +1009,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "Individuals K, L",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "blood_rage",
       "night_vision"
@@ -1058,7 +1058,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A wild swine known for its relentless, charging attacks and tusks.",
@@ -1104,7 +1104,7 @@
     "movement": 12,
     "morale": 15,
     "treasure_type": "None",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "magic_resistance",
       "fire_immunity",
@@ -1155,7 +1155,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 5,
+    "xp_value": 25,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A subterranean mammal known for burrowing into the skulls of victims and consuming their brains.",
@@ -1201,7 +1201,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "O,P,Q",
-    "xp_value": 125,
+    "xp_value": 625,
     "special_abilities": [
       "invisibility"
     ],
@@ -1250,7 +1250,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A large, powerful herd animal, usually peaceful but extremely dangerous when stampeding or protecting its young.",
@@ -1297,7 +1297,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Individuals J, K, L, M; B in lair",
-    "xp_value": 135,
+    "xp_value": 675,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, hairy, goblinoid creature known for its stealth and preference for ambushes.",
@@ -1343,7 +1343,7 @@
     "movement": 14,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 1400,
+    "xp_value": 7000,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, plated monster known as the \u2018land shark\u2019 due to its ability to leap out of the ground and devour targets.",
@@ -1389,7 +1389,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 50,
+    "xp_value": 250,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A powerful male bovine known for its charging attack and sheer physical strength.",
@@ -1435,7 +1435,7 @@
     "movement": 21,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "An aggressive, unruly variety of camel found in deserts, capable of spitting foul substances.",
@@ -1481,7 +1481,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "B",
-    "xp_value": 130,
+    "xp_value": 650,
     "special_abilities": [
       "paralysis_touch"
     ],
@@ -1529,7 +1529,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "C",
-    "xp_value": 475,
+    "xp_value": 2375,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A sluggish, swamp-dwelling beast whose foul breath or gaze can cause death or paralysis.",
@@ -1621,7 +1621,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "D",
-    "xp_value": 420,
+    "xp_value": 2100,
     "special_abilities": [
       "regeneration",
       "rend_attack",
@@ -1671,7 +1671,7 @@
     "movement": 18,
     "morale": 7,
     "treasure_type": "M, Q, with each; D, I, T in lair",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A creature with the upper body of a human and the lower body of a horse, usually peaceful forest dwellers.",
@@ -1717,7 +1717,7 @@
     "movement": 15,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 30,
+    "xp_value": 150,
     "special_abilities": [
       "poison_attack"
     ],
@@ -1814,7 +1814,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "F",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [
       "breath_weapon"
     ],
@@ -1862,7 +1862,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "D",
-    "xp_value": 185,
+    "xp_value": 925,
     "special_abilities": [
       "petrifying_gaze"
     ],
@@ -1910,7 +1910,7 @@
     "movement": 9,
     "morale": 20,
     "treasure_type": "None",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [
       "mindless_obedience",
       "feel_no_pain",
@@ -1960,7 +1960,7 @@
     "movement": 6,
     "morale": 9,
     "treasure_type": "B, I",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "constriction",
       "poison_attack"
@@ -2010,7 +2010,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "Massive crustaceans found near water, capable of crushing foes with their large claws.",
@@ -2055,7 +2055,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 90,
+    "xp_value": 450,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "Large, freshwater lobsters that inhabit rivers and lakes, known for their powerful, snapping pincers.",
@@ -2100,7 +2100,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, scaly, amphibious reptile found in tropical waters, known for its death roll attack.",
@@ -2145,7 +2145,7 @@
     "movement": 18,
     "morale": 9,
     "treasure_type": "Q",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "levitation",
       "lightning_bolt"
@@ -2195,7 +2195,7 @@
     "movement": 12,
     "morale": 16,
     "treasure_type": "Q, X, legendary weapon",
-    "xp_value": 975,
+    "xp_value": 4875,
     "special_abilities": [
       "multiple_attacks",
       "battle_fury",
@@ -2246,7 +2246,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "Q, gems",
-    "xp_value": 420,
+    "xp_value": 2100,
     "special_abilities": [
       "stone_skin",
       "earth_glide"
@@ -2295,7 +2295,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Q, potion",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "water_breathing",
       "cold_attack"
@@ -2345,7 +2345,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Q, potion",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "fire_immunity",
       "burning_touch"
@@ -2395,7 +2395,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Individuals P",
-    "xp_value": 15,
+    "xp_value": 75,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A fanatical follower of the Serpent Eye cult, wielding simple weapons and chanting dark prayers.",
@@ -2440,7 +2440,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "Individuals P",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [
       "water_breathing"
     ],
@@ -2488,7 +2488,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "Individuals P, Q",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A veteran cultist, better armed and armored than their lesser brethren, displaying unwavering devotion.",
@@ -2533,7 +2533,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "Individuals Q",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "fanatical_fury"
     ],
@@ -2580,7 +2580,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Individuals P, Q, X",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "fire_magic",
       "fire_resistance"
@@ -2630,7 +2630,7 @@
     "movement": 12,
     "morale": 14,
     "treasure_type": "Individual",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "spellcaster_minor",
       "ritual_magic",
@@ -2680,7 +2680,7 @@
     "movement": 12,
     "morale": 6,
     "treasure_type": "Individuals P, scroll",
-    "xp_value": 15,
+    "xp_value": 75,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A scholarly cultist who transcribes dark rituals and maintains the cult's records. Weak in combat but holds valuable knowledge.",
@@ -2726,7 +2726,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "Individuals Q, scroll",
-    "xp_value": 120,
+    "xp_value": 600,
     "special_abilities": [
       "spellcasting"
     ],
@@ -2774,7 +2774,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "Individuals P",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [
       "intimidation"
     ],
@@ -2822,7 +2822,7 @@
     "movement": 9,
     "morale": 20,
     "treasure_type": "None",
-    "xp_value": 120,
+    "xp_value": 600,
     "special_abilities": [
       "immunity_normal_weapons",
       "curse_aura",
@@ -3012,7 +3012,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "D",
-    "xp_value": 425,
+    "xp_value": 2125,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A feline predator with two tentacles on its shoulders, constantly surrounded by an illusion that makes it appear to be a few feet from its actual location.",
@@ -3058,7 +3058,7 @@
     "movement": 9,
     "morale": 9,
     "treasure_type": "Nil",
-    "xp_value": 600,
+    "xp_value": 3000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A benevolent elemental spirit of air, often powerful, intelligent, and capable of granting limited wishes.",
@@ -3104,7 +3104,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 15,
+    "xp_value": 75,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A common domesticated canine, ranging from loyal companions to dangerous feral hunters.",
@@ -3149,7 +3149,7 @@
     "movement": 30,
     "morale": 11,
     "treasure_type": "Nil",
-    "xp_value": 50,
+    "xp_value": 250,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "An intelligent, friendly aquatic mammal, highly valued for its helpful nature and ability to communicate.",
@@ -3195,7 +3195,7 @@
     "movement": 9,
     "morale": 10,
     "treasure_type": "E",
-    "xp_value": 240,
+    "xp_value": 1200,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A cunning humanoid creature capable of magically assuming the appearance and voice of any person it chooses.",
@@ -3290,7 +3290,7 @@
     "movement": 3,
     "morale": 10,
     "treasure_type": "B, R, S, T, V",
-    "xp_value": 2250,
+    "xp_value": 11250,
     "special_abilities": [
       "breath_weapon"
     ],
@@ -3338,7 +3338,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "B, S, T",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [
       "paralysis_touch"
     ],
@@ -3386,7 +3386,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "M (x100), Q (x10)",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A beautiful female spirit tied to a specific tree, which dies if the tree is destroyed, known for charming travelers.",
@@ -3433,7 +3433,7 @@
     "movement": 9,
     "morale": 10,
     "treasure_type": "Individuals Q, K",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [
       "invisibility",
       "enlarge"
@@ -3482,7 +3482,7 @@
     "movement": 12,
     "morale": 13,
     "treasure_type": "Individuals M, R",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "divine_magic",
       "invisibility",
@@ -3533,7 +3533,7 @@
     "movement": 12,
     "morale": 14,
     "treasure_type": "Individuals L, Q",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "invisibility",
       "enlarge_self",
@@ -3584,7 +3584,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "Individuals L, M",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "invisibility",
       "torture_expertise",
@@ -3634,7 +3634,7 @@
     "movement": 6,
     "morale": 11,
     "treasure_type": "Individuals M (x5); G, Q (x20), R",
-    "xp_value": 14,
+    "xp_value": 70,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A short, stout humanoid race known for their skill in mining, stonework, and craftsmanship.",
@@ -3681,7 +3681,7 @@
     "movement": 3,
     "morale": 8,
     "treasure_type": "Q, C (magic only)",
-    "xp_value": 60,
+    "xp_value": 300,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "An enormous bird of prey often used as a majestic mount or powerful ally in high mountain ranges.",
@@ -3728,7 +3728,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 5,
+    "xp_value": 25,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A tiny, flying parasitic creature that attempts to burrow into the ear canal to reach the brain.",
@@ -3774,7 +3774,7 @@
     "movement": 6,
     "morale": 15,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "earth_glide",
       "stone_fist"
@@ -3872,7 +3872,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "Nil",
-    "xp_value": 1450,
+    "xp_value": 7250,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A malicious elemental spirit of fire, known for its immense size, fiery appearance, and aggressive nature.",
@@ -3957,7 +3957,7 @@
   },
   "elemental_herald": {
     "name": "Elemental Herald",
-    "hit_dice": "10d8",
+    "hit_dice": "8d8",
     "ac": 0,
     "thac0": 11,
     "damage": "4d6",
@@ -3965,7 +3965,7 @@
     "movement": 18,
     "morale": 16,
     "treasure_type": "Special (elemental gems)",
-    "xp_value": 1400,
+    "xp_value": 6000,
     "special_abilities": [
       "elemental_mastery",
       "immune_to_element",
@@ -4016,7 +4016,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Special (tusks)",
-    "xp_value": 925,
+    "xp_value": 4625,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A massive, powerful, intelligent terrestrial mammal, usually gentle but dangerous when enraged or threatened.",
@@ -4061,7 +4061,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "Individuals N; G, S, T in lair",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [
       "invisibility"
     ],
@@ -4110,7 +4110,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "Individual O, C, Y in lair",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, two-headed giant known for its low intelligence and perpetual squabbling between its heads.",
@@ -4156,7 +4156,7 @@
     "movement": 30,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 5,
+    "xp_value": 25,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A magical, detached eyeball that drifts through the air, often used as a scout or alarm by powerful wizards.",
@@ -4202,7 +4202,7 @@
     "movement": 6,
     "morale": 11,
     "treasure_type": "R",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A large, terrifying aquatic Beholder relative that guards deep sea tunnels and treasures.",
@@ -4248,7 +4248,7 @@
     "movement": 12,
     "morale": 14,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "fire_immunity",
       "ignite"
@@ -4298,7 +4298,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "E+10000gp",
-    "xp_value": 2650,
+    "xp_value": 13250,
     "special_abilities": [
       "boulder_throw",
       "immune_to_fire"
@@ -4439,7 +4439,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "E+5000gp",
-    "xp_value": 2050,
+    "xp_value": 10250,
     "special_abilities": [
       "boulder_throw",
       "immune_to_cold"
@@ -4487,7 +4487,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [
       "poison_attack"
     ],
@@ -4535,7 +4535,7 @@
     "movement": 30,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 240,
+    "xp_value": 1200,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive, predatory freshwater fish with long, toothed jaws, found in large rivers and lakes.",
@@ -4581,7 +4581,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Individuals M (x10), C in lair",
-    "xp_value": 165,
+    "xp_value": 825,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A magical, winged creature sculpted from stone, known for blending in with architecture and ambushing passersby.",
@@ -4627,7 +4627,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 75,
+    "xp_value": 375,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A floating orb that looks exactly like a Beholder but is actually a fragile fungus that explodes upon impact, releasing deadly spores.",
@@ -4674,7 +4674,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "J, K, L, M, N, Q, plus a potion or dagger",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, transparent, amorphous ooze that silently glides through dungeons, dissolving organic matter and trapping treasure within its body.",
@@ -4721,7 +4721,7 @@
     "movement": 15,
     "morale": 9,
     "treasure_type": "B, Q, R, S, T",
-    "xp_value": 250,
+    "xp_value": 1250,
     "special_abilities": [
       "poison_attack"
     ],
@@ -4770,7 +4770,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "E, S",
-    "xp_value": 2400,
+    "xp_value": 12000,
     "special_abilities": [
       "silver_to_hit"
     ],
@@ -4819,7 +4819,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "B, T",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "immune_to_charm",
       "immune_to_sleep",
@@ -4917,7 +4917,7 @@
     "movement": 9,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "water_breathing",
       "constriction",
@@ -4967,7 +4967,7 @@
     "movement": 12,
     "morale": 5,
     "treasure_type": "C",
-    "xp_value": 5,
+    "xp_value": 25,
     "special_abilities": [
       "disease_bite"
     ],
@@ -5014,7 +5014,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Individuals L, M; D, Q (x5), S in lair",
-    "xp_value": 28,
+    "xp_value": 140,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A hyena-headed, vicious humanoid race known for their raiding, scavenging, and cruelty.",
@@ -5059,7 +5059,7 @@
     "movement": 6,
     "morale": 11,
     "treasure_type": "Individuals M (x3); C, Q (x20) in lair",
-    "xp_value": 10,
+    "xp_value": 50,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A small, industrious humanoid race known for their love of inventions, intricate mechanics, and gems.",
@@ -5106,7 +5106,7 @@
     "movement": 18,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A monstrously large version of the common caprine, dangerous for its massive, charging head-butts.",
@@ -5152,7 +5152,7 @@
     "movement": 6,
     "morale": 9,
     "treasure_type": "Individuals K, Lair C",
-    "xp_value": 10,
+    "xp_value": 50,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A small, green-skinned, malicious humanoid race, known for their large numbers and cowardice.",
@@ -5247,7 +5247,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "E",
-    "xp_value": 600,
+    "xp_value": 3000,
     "special_abilities": [
       "petrifying_gaze",
       "breath_weapon"
@@ -5296,7 +5296,7 @@
     "movement": 9,
     "morale": 15,
     "treasure_type": "Q, X, magic items",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "invisibility",
       "enlarge",
@@ -5348,7 +5348,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 200,
+    "xp_value": 1000,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A type of amorphous creature that corrodes metal, often lurking silently in stagnant pools.",
@@ -5395,7 +5395,7 @@
     "movement": 9,
     "morale": 15,
     "treasure_type": "H",
-    "xp_value": 2500,
+    "xp_value": 12500,
     "special_abilities": [
       "breath_weapon",
       "flying",
@@ -5444,7 +5444,7 @@
     "movement": 0,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 165,
+    "xp_value": 825,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A dangerous, creeping mold that instantly dissolves flesh and is immune to most weapons, requiring fire to destroy.",
@@ -5491,7 +5491,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "C, S",
-    "xp_value": 350,
+    "xp_value": 1750,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A magnificent hybrid creature with the body of a lion and the head and wings of an eagle, often used as a noble mount.",
@@ -5536,7 +5536,7 @@
     "movement": 15,
     "morale": 9,
     "treasure_type": "D",
-    "xp_value": 1100,
+    "xp_value": 5500,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A type of terrifying female ghost (Banshee) whose wailing can instantly cause death.",
@@ -5583,7 +5583,7 @@
     "movement": 9,
     "morale": 14,
     "treasure_type": "Q, X, magic weapon",
-    "xp_value": 420,
+    "xp_value": 2100,
     "special_abilities": [
       "command_presence",
       "tactical_genius"
@@ -5632,7 +5632,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "Individuals K, B in lair",
-    "xp_value": 7,
+    "xp_value": 35,
     "special_abilities": [
       "invisibility"
     ],
@@ -5681,7 +5681,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "C",
-    "xp_value": 135,
+    "xp_value": 675,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A monstrous creature with the body of a vulture and the upper torso of a woman, known for enchanting sailors with its song.",
@@ -5777,7 +5777,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "C",
-    "xp_value": 240,
+    "xp_value": 1200,
     "special_abilities": [
       "breath_weapon",
       "detect_invisible"
@@ -5871,7 +5871,7 @@
     "movement": 12,
     "morale": 13,
     "treasure_type": "Q, magic items",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "spellcasting",
       "turn_undead"
@@ -5920,7 +5920,7 @@
     "movement": 12,
     "morale": 15,
     "treasure_type": "Q, X, magic items",
-    "xp_value": 975,
+    "xp_value": 4875,
     "special_abilities": [
       "spellcasting",
       "command_undead",
@@ -5970,7 +5970,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "D+5000gp",
-    "xp_value": 850,
+    "xp_value": 4250,
     "special_abilities": [
       "boulder_throw"
     ],
@@ -6017,7 +6017,7 @@
     "movement": 24,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 60,
+    "xp_value": 300,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A beautiful marine creature with the front quarters of a horse and the tail of a fish, sometimes ridden by tritons.",
@@ -6062,7 +6062,7 @@
     "movement": 18,
     "morale": 8,
     "treasure_type": "Q (x5)",
-    "xp_value": 110,
+    "xp_value": 550,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A magnificent hybrid creature with the front quarters of an eagle and the body of a horse, often used as a swift, loyal mount.",
@@ -6107,7 +6107,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 240,
+    "xp_value": 1200,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, semi-aquatic mammal, highly territorial and aggressive when its space is invaded.",
@@ -6153,7 +6153,7 @@
     "movement": 9,
     "morale": 9,
     "treasure_type": "Individuals J, M, D, Q (x5) in lair",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A larger, more disciplined, and militaristic cousin of the goblin, highly organized in warfare.",
@@ -6198,7 +6198,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A small, artificial, winged humanoid constructed by a wizard to serve as a familiar and spy.",
@@ -6338,7 +6338,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A common scavenging mammal, often found in packs and associated with the gnoll race.",
@@ -6383,7 +6383,7 @@
     "movement": 6,
     "morale": 9,
     "treasure_type": "Q",
-    "xp_value": 265,
+    "xp_value": 1325,
     "special_abilities": [
       "silver_to_hit",
       "poison_attack",
@@ -6434,7 +6434,7 @@
     "movement": 15,
     "morale": 9,
     "treasure_type": "D",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A small, brain-like creature that can consume a victim\u2019s brain and take over its body, masquerading as the host.",
@@ -6481,7 +6481,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Nil",
-    "xp_value": 1100,
+    "xp_value": 5500,
     "special_abilities": [
       "invisibility"
     ],
@@ -6530,7 +6530,7 @@
     "movement": 18,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive, prehistoric species of deer known for its enormous antlers.",
@@ -6575,7 +6575,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "See below",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A type of intelligent, evil manta-ray like aquatic monster that uses a psychic suggestion to lure prey.",
@@ -6621,7 +6621,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 7,
+    "xp_value": 35,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A common scavenging canine, often found in arid regions and deserts.",
@@ -6666,7 +6666,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "C",
-    "xp_value": 165,
+    "xp_value": 825,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A lycanthrope that transforms into a jackal or a hybrid form, usually found in desert cultures.",
@@ -6713,7 +6713,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 125,
+    "xp_value": 625,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A large, solitary spotted cat, known for its strength and ability to climb and swim.",
@@ -6760,7 +6760,7 @@
     "movement": 24,
     "morale": 9,
     "treasure_type": "I, S, T",
-    "xp_value": 7000,
+    "xp_value": 35000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A majestic, benevolent, and highly intelligent celestial creature, resembling a large, winged unicorn or deer.",
@@ -6807,7 +6807,7 @@
     "movement": 6,
     "morale": 9,
     "treasure_type": "Individuals J, O, Q (x5) in lair",
-    "xp_value": 5,
+    "xp_value": 25,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A small, reptilian humanoid known for their traps, warrens, and worship of dragons.",
@@ -6852,7 +6852,7 @@
     "movement": 24,
     "morale": 9,
     "treasure_type": "D",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [
       "energy_drain"
     ],
@@ -6900,7 +6900,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "R, S, T",
-    "xp_value": 1100,
+    "xp_value": 5500,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A benevolent celestial creature with the body of a lion, the wings of an eagle, and a human head.",
@@ -6947,7 +6947,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 30,
+    "xp_value": 150,
     "special_abilities": [
       "energy_drain"
     ],
@@ -6995,7 +6995,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 10,
+    "xp_value": 50,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "The initial, worm-like stage of development for certain planar evil outsiders, such as demons and devils.",
@@ -7040,7 +7040,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "Nil",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "fire_immunity",
       "poison",
@@ -7139,7 +7139,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A common spotted great cat, known for its stealth and ability to hunt from trees.",
@@ -7186,7 +7186,7 @@
     "movement": 15,
     "morale": 10,
     "treasure_type": "F",
-    "xp_value": 225,
+    "xp_value": 1125,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A diminutive, whimsical faerie of Irish folklore, known for hiding pots of gold and their trickery.",
@@ -7233,7 +7233,7 @@
     "movement": 18,
     "morale": 7,
     "treasure_type": "D",
-    "xp_value": 475,
+    "xp_value": 2375,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A monstrous hybrid of a giant badger and a stag, known for imitating human voices to lure prey.",
@@ -7280,7 +7280,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "A",
-    "xp_value": 7000,
+    "xp_value": 35000,
     "special_abilities": [
       "immune_to_charm",
       "undead",
@@ -7332,7 +7332,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 200,
+    "xp_value": 1000,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "The majestic king of beasts, a powerful, tawny great cat often found in pride groups.",
@@ -7428,7 +7428,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "D",
-    "xp_value": 50,
+    "xp_value": 250,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A primitive, scaled humanoid race found in swamps and marshes, known for their tribal life and simple weapons.",
@@ -7474,7 +7474,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "A",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "An aquatic humanoid with fish-like features, usually organized in tribes in tropical seas.",
@@ -7519,7 +7519,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "C, Y",
-    "xp_value": 1100,
+    "xp_value": 5500,
     "special_abilities": [
       "constriction"
     ],
@@ -7616,7 +7616,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "An enormous version of the wild cat, highly dangerous with sharp claws and stealth.",
@@ -7663,7 +7663,7 @@
     "movement": 9,
     "morale": 14,
     "treasure_type": "Special (volcanic gems)",
-    "xp_value": 1400,
+    "xp_value": 7000,
     "special_abilities": [
       "fire_immunity",
       "ignite",
@@ -7715,7 +7715,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A massive, shaggy-haired prehistoric elephant found in cold climates.",
@@ -7760,7 +7760,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "E",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A monstrous hybrid with a human-like head, the body of a lion, and the wings of a dragon, capable of shooting razor-sharp tail spikes.",
@@ -7806,7 +7806,7 @@
     "movement": 12,
     "morale": 18,
     "treasure_type": "Standard",
-    "xp_value": 420,
+    "xp_value": 2100,
     "special_abilities": [
       "regeneration",
       "swamp_stalker",
@@ -7857,7 +7857,7 @@
     "movement": 6,
     "morale": 20,
     "treasure_type": "Nil",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [
       "undead",
       "disease"
@@ -7907,7 +7907,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, multi-legged, predatory insectoid creature that relies on crushing its prey with its bulk.",
@@ -7953,7 +7953,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 1650,
+    "xp_value": 8250,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A large, extinct elephant-like mammal, known for its tusks and heavy frame.",
@@ -7998,7 +7998,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "P, Q (x10), X, Y",
-    "xp_value": 975,
+    "xp_value": 4875,
     "special_abilities": [
       "poison_attack"
     ],
@@ -8093,7 +8093,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Individuals L, M",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A professional hired guard in Silas's employ. Better trained and equipped than common thugs, these guards are loyal to coin rather than the cult. They wear leather armor and wield longswords with competence.",
@@ -8139,7 +8139,7 @@
     "movement": 1,
     "morale": 10,
     "treasure_type": "C, R",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A male aquatic humanoid with the upper body of a man and the lower body of a fish.",
@@ -8185,7 +8185,7 @@
     "movement": 3,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 1100,
+    "xp_value": 5500,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A highly intelligent, predatory creature capable of perfectly impersonating inanimate objects, such as chests or doors, to ambush prey.",
@@ -8232,7 +8232,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "B, S, T, X",
-    "xp_value": 2950,
+    "xp_value": 14750,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A highly intelligent, evil, tentacled humanoid creature that consumes the brains of sentient beings for sustenance.",
@@ -8278,7 +8278,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "C",
-    "xp_value": 500,
+    "xp_value": 2500,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A monstrous hybrid with the head of a bull and the body of a man, known for its immense strength and maze-dwelling habits.",
@@ -8324,7 +8324,7 @@
     "movement": 0,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 50,
+    "xp_value": 250,
     "special_abilities": [
       "poison_attack"
     ],
@@ -8373,7 +8373,7 @@
     "movement": 18,
     "morale": 9,
     "treasure_type": "G",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A bizarre, highly intelligent aquatic creature that builds complicated, deadly dimensional mazes to trap victims.",
@@ -8420,7 +8420,7 @@
     "movement": 12,
     "morale": 16,
     "treasure_type": "Q, X, multiple magic items",
-    "xp_value": 1400,
+    "xp_value": 7000,
     "special_abilities": [
       "spellcasting",
       "unholy_aura",
@@ -8471,7 +8471,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A sterile hybrid of a donkey and a horse, valued for its stubborn endurance and sure-footedness.",
@@ -8516,7 +8516,7 @@
     "movement": 6,
     "morale": 9,
     "treasure_type": "D",
-    "xp_value": 975,
+    "xp_value": 4875,
     "special_abilities": [
       "immune_to_charm",
       "undead",
@@ -8617,7 +8617,7 @@
     "movement": 6,
     "morale": 10,
     "treasure_type": "See below",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A massive, predatory aquatic blob with a huge maw, known for its ability to dissolve prey instantly.",
@@ -8664,7 +8664,7 @@
     "movement": 9,
     "morale": 10,
     "treasure_type": "Nil",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "energy_drain",
       "silver_to_hit"
@@ -8714,7 +8714,7 @@
     "movement": 15,
     "morale": 10,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "breath_weapon"
     ],
@@ -8763,7 +8763,7 @@
     "movement": 6,
     "morale": 10,
     "treasure_type": "C, Q",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "breath_weapon"
     ],
@@ -8811,7 +8811,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Q (x10), X",
-    "xp_value": 200,
+    "xp_value": 1000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A beautiful, benevolent female spirit tied to a specific natural location (e.g., spring, forest), known for their radiant beauty and protective nature.",
@@ -8858,7 +8858,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, sluggish, yellow-orange amorphous ooze that dissolves flesh and is capable of splitting when struck by lightning.",
@@ -8905,7 +8905,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "R",
-    "xp_value": 600,
+    "xp_value": 3000,
     "special_abilities": [
       "constriction"
     ],
@@ -8954,7 +8954,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Individuals M (x10), Q, B, S in lair",
-    "xp_value": 90,
+    "xp_value": 450,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, brutish, and dim-witted humanoid giant known for its appetite for human flesh and crude weapons.",
@@ -8999,7 +8999,7 @@
     "movement": 9,
     "morale": 11,
     "treasure_type": "G (magic), R, S",
-    "xp_value": 575,
+    "xp_value": 2875,
     "special_abilities": [
       "regeneration"
     ],
@@ -9048,7 +9048,7 @@
     "movement": 9,
     "morale": 9,
     "treasure_type": "Individuals I; C, D, Q (x10), S in lair",
-    "xp_value": 10,
+    "xp_value": 50,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A brutish, aggressive, and numerous humanoid race known for their green skin, tusks, and warlike culture.",
@@ -9094,7 +9094,7 @@
     "movement": 9,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "An unusually large version of the playful, semi-aquatic mammal, known for its sharp teeth and surprising strength.",
@@ -9186,7 +9186,7 @@
     "movement": 3,
     "morale": 10,
     "treasure_type": "Q (x5), X",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A massive nocturnal bird of prey, known for its silent flight and powerful talons.",
@@ -9232,7 +9232,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "C",
-    "xp_value": 225,
+    "xp_value": 1125,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A monstrous hybrid with the head of an owl and the body of a bear, known for its short temper and aggressive behavior.",
@@ -9278,7 +9278,7 @@
     "movement": 24,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A beautiful, winged horse, highly intelligent and often serving as a noble mount for good-aligned heroes.",
@@ -9323,7 +9323,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "B",
-    "xp_value": 200,
+    "xp_value": 1000,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A monstrous hybrid with the body of a stag and the wings and head of a giant eagle, known for eating human hearts and casting a human shadow.",
@@ -9416,7 +9416,7 @@
     "movement": 36,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 60,
+    "xp_value": 300,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive, carnivorous freshwater fish with a powerful bite, found in deep, cold lakes.",
@@ -9462,7 +9462,7 @@
     "movement": 6,
     "morale": 10,
     "treasure_type": "R, S, T, X",
-    "xp_value": 225,
+    "xp_value": 1125,
     "special_abilities": [
       "invisibility"
     ],
@@ -9511,7 +9511,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive rodent covered in deadly, barbed quills that it can fire at attackers.",
@@ -9607,7 +9607,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "Q (x10)",
-    "xp_value": 165,
+    "xp_value": 825,
     "special_abilities": [
       "invisibility",
       "poison_attack"
@@ -9657,7 +9657,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "B, Q (x5), X",
-    "xp_value": 3600,
+    "xp_value": 18000,
     "special_abilities": [
       "poison_attack"
     ],
@@ -9705,7 +9705,7 @@
     "movement": 15,
     "morale": 7,
     "treasure_type": "Q (x3)",
-    "xp_value": 225,
+    "xp_value": 1125,
     "special_abilities": [
       "energy_drain",
       "regeneration"
@@ -9755,7 +9755,7 @@
     "movement": 15,
     "morale": 11,
     "treasure_type": "F",
-    "xp_value": 925,
+    "xp_value": 4625,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A powerful, cunning evil fiend from the lower planes, resembling a tiger with hands that bend backward, known for its illusions and magic.",
@@ -9802,7 +9802,7 @@
     "movement": 15,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 60,
+    "xp_value": 300,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive mountain sheep, dangerous for its powerful horns and charging attack.",
@@ -9848,7 +9848,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "C",
-    "xp_value": 7,
+    "xp_value": 35,
     "special_abilities": [
       "poison_attack"
     ],
@@ -9945,7 +9945,7 @@
     "movement": 9,
     "morale": 14,
     "treasure_type": "H",
-    "xp_value": 1250,
+    "xp_value": 6250,
     "special_abilities": [
       "breath_weapon",
       "flying",
@@ -10042,7 +10042,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 240,
+    "xp_value": 1200,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A large, thick-skinned mammal with one or two horns, known for its massive charging attack.",
@@ -10088,7 +10088,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "C",
-    "xp_value": 4000,
+    "xp_value": 20000,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A gigantic, mythical bird of prey, large enough to carry elephants and often nesting on inaccessible mountain peaks.",
@@ -10134,7 +10134,7 @@
     "movement": 3,
     "morale": 9,
     "treasure_type": "See below",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "poison_attack"
     ],
@@ -10183,7 +10183,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 5,
+    "xp_value": 25,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "Tiny, flesh-eating worms that burrow into living tissue, requiring fire to remove them before they reach the heart.",
@@ -10229,7 +10229,7 @@
     "movement": 18,
     "morale": 7,
     "treasure_type": "Q (x10)",
-    "xp_value": 185,
+    "xp_value": 925,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "An insectoid creature that feeds exclusively on iron and ferrous metals, causing objects to instantly decay into rust.",
@@ -10275,7 +10275,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Individuals K, Lair D",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [
       "water_breathing",
       "blood_frenzy"
@@ -10325,7 +10325,7 @@
     "movement": 9,
     "morale": 9,
     "treasure_type": "F",
-    "xp_value": 600,
+    "xp_value": 3000,
     "special_abilities": [
       "constriction"
     ],
@@ -10374,7 +10374,7 @@
     "movement": 18,
     "morale": 10,
     "treasure_type": "I, S, X",
-    "xp_value": 225,
+    "xp_value": 1125,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A benevolent humanoid with the legs and horns of a goat, known for their love of music, dancing, and revelry.",
@@ -10421,7 +10421,7 @@
     "movement": 15,
     "morale": 7,
     "treasure_type": "D",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "poison_attack"
     ],
@@ -10469,7 +10469,7 @@
     "movement": 15,
     "morale": 7,
     "treasure_type": "C, Y",
-    "xp_value": 225,
+    "xp_value": 1125,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A hideous, evil aquatic humanoid (a type of hag) known for its ugliness and ability to paralyze with its horrifying gaze.",
@@ -10561,7 +10561,7 @@
     "movement": 18,
     "morale": 8,
     "treasure_type": "B",
-    "xp_value": 275,
+    "xp_value": 1375,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A large marine mammal, usually harmless but capable of defending itself fiercely.",
@@ -10606,7 +10606,7 @@
     "movement": 12,
     "morale": 16,
     "treasure_type": "Individual + magic",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "spellcaster",
       "serpent_summoning",
@@ -10657,7 +10657,7 @@
     "movement": 15,
     "morale": 17,
     "treasure_type": "Q, X, magic items",
-    "xp_value": 1400,
+    "xp_value": 7000,
     "special_abilities": [
       "telepathy",
       "mind_control",
@@ -10708,7 +10708,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "F",
-    "xp_value": 165,
+    "xp_value": 825,
     "special_abilities": [
       "energy_drain",
       "immune_to_charm",
@@ -10853,7 +10853,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "G",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A benevolent celestial creature resembling a winged bull or lion with a human head, often guarding temples and portals.",
@@ -10900,7 +10900,7 @@
     "movement": 1,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 20,
+    "xp_value": 100,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A type of sedentary fungal growth that lets out a painful, deafening shriek when approached by light or movement.",
@@ -10946,7 +10946,7 @@
     "movement": 12,
     "morale": 13,
     "treasure_type": "Individuals Q, R",
-    "xp_value": 120,
+    "xp_value": 600,
     "special_abilities": [
       "shield_wall",
       "loyal_unto_death"
@@ -10995,7 +10995,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 14,
+    "xp_value": 70,
     "special_abilities": [
       "immune_to_charm",
       "immune_to_sleep",
@@ -11045,7 +11045,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 85,
+    "xp_value": 425,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive version of the black-and-white mammal, capable of spraying a blinding, highly noxious musk over a wide area.",
@@ -11092,7 +11092,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "C",
-    "xp_value": 185,
+    "xp_value": 925,
     "special_abilities": [
       "energy_drain",
       "paralysis_touch"
@@ -11142,7 +11142,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 1650,
+    "xp_value": 8250,
     "special_abilities": [
       "acid_attack"
     ],
@@ -11241,7 +11241,7 @@
     "movement": 15,
     "morale": 11,
     "treasure_type": "Q (x3), X, Y",
-    "xp_value": 1400,
+    "xp_value": 7000,
     "special_abilities": [
       "energy_drain",
       "immune_to_charm",
@@ -11390,7 +11390,7 @@
     "movement": 9,
     "morale": 10,
     "treasure_type": "C",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [
       "invisibility",
       "poison_attack"
@@ -11440,7 +11440,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "A",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "constriction"
     ],
@@ -11534,7 +11534,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "D",
-    "xp_value": 36,
+    "xp_value": 180,
     "special_abilities": [
       "energy_drain"
     ],
@@ -11628,7 +11628,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "C, Y",
-    "xp_value": 475,
+    "xp_value": 2375,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A small, cat-like creature with a prehensile tail, possessing powerful psychic abilities that drain the mental energy of its victims.",
@@ -11674,7 +11674,7 @@
     "movement": 12,
     "morale": 14,
     "treasure_type": "Individuals Q",
-    "xp_value": 975,
+    "xp_value": 4875,
     "special_abilities": [
       "flying",
       "spore_cloud",
@@ -11725,7 +11725,7 @@
     "movement": 12,
     "morale": 20,
     "treasure_type": "Individual",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "undead",
       "energy_drain",
@@ -11777,7 +11777,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Q (x10), X",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [
       "invisibility"
     ],
@@ -11826,7 +11826,7 @@
     "movement": 6,
     "morale": 20,
     "treasure_type": "None",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "construct",
       "immune_poison",
@@ -11878,7 +11878,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 350,
+    "xp_value": 1750,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A small, invisible, reptilian creature that feeds on the mental energy (intelligence) of sentient beings.",
@@ -11925,7 +11925,7 @@
     "movement": 3,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "energy_drain"
     ],
@@ -11973,7 +11973,7 @@
     "movement": 12,
     "morale": 8,
     "treasure_type": "Nil",
-    "xp_value": 275,
+    "xp_value": 1375,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A solitary, striped great cat, known for its stealth and immense power.",
@@ -12020,7 +12020,7 @@
     "movement": 21,
     "morale": 7,
     "treasure_type": "E, Q (x10), R",
-    "xp_value": 7000,
+    "xp_value": 35000,
     "special_abilities": [
       "invisibility"
     ],
@@ -12069,7 +12069,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 1650,
+    "xp_value": 8250,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive, extinct rhinoceros-like mammal, known for the large bony knobs on its snout.",
@@ -12163,7 +12163,7 @@
     "movement": 3,
     "morale": 10,
     "treasure_type": "G",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A carnivorous creature that lies on the floor of a dungeon, perfectly mimicking stone, wood, or packed earth to trap unsuspecting victims.",
@@ -12257,7 +12257,7 @@
     "movement": 15,
     "morale": 10,
     "treasure_type": "C, R, S, T, X",
-    "xp_value": 50,
+    "xp_value": 250,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "An aquatic humanoid race with the upper body of a man and the lower body of a fish, known for protecting the seas.",
@@ -12304,7 +12304,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "A",
-    "xp_value": 28,
+    "xp_value": 140,
     "special_abilities": [
       "poison_attack"
     ],
@@ -12353,7 +12353,7 @@
     "movement": 12,
     "morale": 7,
     "treasure_type": "D",
-    "xp_value": 525,
+    "xp_value": 2625,
     "special_abilities": [
       "regeneration"
     ],
@@ -12449,7 +12449,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "G",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A massive, four-armed subterranean insectoid creature whose eyes cause confusion in those who meet its gaze.",
@@ -12495,7 +12495,7 @@
     "movement": 24,
     "morale": 7,
     "treasure_type": "X",
-    "xp_value": 200,
+    "xp_value": 1000,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A beautiful, equine creature with a spiraling horn, known for its purity, healing powers, and avoidance of evil.",
@@ -12542,7 +12542,7 @@
     "movement": 12,
     "morale": 18,
     "treasure_type": "Q, X, Y, legendary items",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "spellcasting",
       "legendary_resistance",
@@ -12593,7 +12593,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "F",
-    "xp_value": 3800,
+    "xp_value": 19000,
     "special_abilities": [
       "energy_drain",
       "undead",
@@ -12646,7 +12646,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "Individuals M, Q",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "leadership"
     ],
@@ -12694,7 +12694,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Q (x20)",
-    "xp_value": 150,
+    "xp_value": 750,
     "special_abilities": [
       "poison_attack",
       "paralysis_touch"
@@ -12743,7 +12743,7 @@
     "movement": 6,
     "morale": 14,
     "treasure_type": "Nil",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "water_breathing",
       "drowning_grasp"
@@ -12793,7 +12793,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "I, O, P, Y",
-    "xp_value": 185,
+    "xp_value": 925,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A malevolent elemental creature composed of animated water, typically found in lakes or deep pools, that attempts to drown its victims.",
@@ -12840,7 +12840,7 @@
     "movement": 15,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 125,
+    "xp_value": 625,
     "special_abilities": [
       "energy_drain"
     ],
@@ -12888,7 +12888,7 @@
     "movement": 18,
     "morale": 8,
     "treasure_type": "See below",
-    "xp_value": 7000,
+    "xp_value": 35000,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "Any of a variety of massive marine mammals, including aggressive and territorial killer whales.",
@@ -12934,7 +12934,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "B",
-    "xp_value": 280,
+    "xp_value": 1400,
     "special_abilities": [
       "energy_drain",
       "silver_to_hit",
@@ -12988,7 +12988,7 @@
     "movement": 18,
     "morale": 9,
     "treasure_type": "Z",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A small, floating ball of light that lures travelers to their deaths in bogs and dangerous areas.",
@@ -13035,7 +13035,7 @@
     "movement": 15,
     "morale": 10,
     "treasure_type": "C, R",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [],
     "ai_behavior": "intelligent",
     "description": "A powerful elemental creature of air, resembling a translucent humanoid, known for moving at great speeds.",
@@ -13177,7 +13177,7 @@
     "movement": 12,
     "morale": 11,
     "treasure_type": "E",
-    "xp_value": 575,
+    "xp_value": 2875,
     "special_abilities": [
       "energy_drain",
       "silver_to_hit",
@@ -13231,7 +13231,7 @@
     "movement": 6,
     "morale": 8,
     "treasure_type": "E",
-    "xp_value": 400,
+    "xp_value": 2000,
     "special_abilities": [
       "poison_attack"
     ],
@@ -13279,7 +13279,7 @@
     "movement": 9,
     "morale": 8,
     "treasure_type": "O, P, Q (x5), X, Y",
-    "xp_value": 1300,
+    "xp_value": 6500,
     "special_abilities": [],
     "ai_behavior": "aggressive",
     "description": "A creature from the Elemental Plane of Earth that is capable of phasing through stone and earth, known for its appetite for minerals and gems.",
@@ -13326,7 +13326,7 @@
     "movement": 15,
     "morale": 8,
     "treasure_type": "D",
-    "xp_value": 280,
+    "xp_value": 1400,
     "special_abilities": [
       "invisibility",
       "paralysis_touch"
@@ -13376,7 +13376,7 @@
     "movement": 6,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 28,
+    "xp_value": 140,
     "special_abilities": [
       "immune_to_charm",
       "immune_to_sleep",
@@ -13427,7 +13427,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "Nil",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "undead",
       "incorporeal",
@@ -13478,7 +13478,7 @@
     "movement": 6,
     "morale": 12,
     "treasure_type": "Nil",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "construct",
       "immune_to_mind_effects"
@@ -13528,7 +13528,7 @@
     "movement": 12,
     "morale": 10,
     "treasure_type": "Individual (P+Q)",
-    "xp_value": 120,
+    "xp_value": 600,
     "special_abilities": [
       "leadership"
     ],
@@ -13577,7 +13577,7 @@
     "movement": 9,
     "morale": 12,
     "treasure_type": "Individual (minimal)",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [
       "fearless"
     ],
@@ -13626,7 +13626,7 @@
     "movement": 12,
     "morale": 14,
     "treasure_type": "Individual (P+Q), Lair (C)",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "water_breathing",
       "leadership",
@@ -13677,7 +13677,7 @@
     "movement": 12,
     "morale": 9,
     "treasure_type": "Individual (P)",
-    "xp_value": 35,
+    "xp_value": 175,
     "special_abilities": [],
     "ai_behavior": "defensive",
     "description": "A cult warrior assigned to guard contraband and valuable artifacts. Better equipped and trained than typical cultists.",
@@ -13724,7 +13724,7 @@
     "movement": 9,
     "morale": 7,
     "treasure_type": "Nil",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "pincer_grab"
     ],
@@ -13773,7 +13773,7 @@
     "movement": 6,
     "morale": 12,
     "treasure_type": "Nil",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "construct",
       "magic_immunity",
@@ -13824,7 +13824,7 @@
     "movement": 3,
     "morale": 16,
     "treasure_type": "Special (H+I+Q x5)",
-    "xp_value": 1400,
+    "xp_value": 7000,
     "special_abilities": [
       "water_breathing",
       "psionics",
@@ -14227,7 +14227,7 @@
     "movement": 3,
     "alignment": "LE",
     "type": "devil",
-    "description": "The lowest form of devil—a blob of damned souls melted together. Mindless, slow, but relentless. These are the currency of Hell.",
+    "description": "The lowest form of devil\u2014a blob of damned souls melted together. Mindless, slow, but relentless. These are the currency of Hell.",
     "ai_behavior": "aggressive",
     "treasure_type": "None",
     "number_appearing": {
@@ -14252,8 +14252,8 @@
       "dungeon_level": 3
     }
   },
-  "magma_elemental": {
-    "name": "Magma Elemental",
+  "chaos_magma_elemental": {
+    "name": "Chaos Magma Elemental",
     "hit_dice": "8d8",
     "ac": 2,
     "thac0": 13,
@@ -14262,7 +14262,7 @@
     "movement": 6,
     "morale": 20,
     "treasure_type": "None",
-    "xp_value": 650,
+    "xp_value": 3250,
     "special_abilities": [
       "fire_immunity",
       "heat_aura"
@@ -14312,7 +14312,7 @@
     "movement": 24,
     "morale": 18,
     "treasure_type": "None",
-    "xp_value": 450,
+    "xp_value": 2250,
     "special_abilities": [
       "lightning_form",
       "wind_blast"
@@ -14362,13 +14362,13 @@
     "movement": 12,
     "morale": 15,
     "treasure_type": "None",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "reality_distortion",
       "unstable_form"
     ],
     "ai_behavior": "erratic",
-    "description": "A creature born from the raw chaos of the Elemental Chaos. Its form constantly shifts—sometimes humanoid, sometimes bestial, sometimes geometric impossibilities. Reality bends around it.",
+    "description": "A creature born from the raw chaos of the Elemental Chaos. Its form constantly shifts\u2014sometimes humanoid, sometimes bestial, sometimes geometric impossibilities. Reality bends around it.",
     "alignment": "Chaotic Neutral",
     "intelligence": {
       "category": "Animal",
@@ -14412,13 +14412,13 @@
     "movement": 9,
     "morale": 20,
     "treasure_type": "None",
-    "xp_value": 900,
+    "xp_value": 4500,
     "special_abilities": [
       "elemental_resistance",
       "magic_immunity"
     ],
     "ai_behavior": "defensive",
-    "description": "A construct of stone and metal infused with elemental power, created by the cult to guard the keystones. It cannot be reasoned with, bribed, or intimidated—it exists only to destroy intruders.",
+    "description": "A construct of stone and metal infused with elemental power, created by the cult to guard the keystones. It cannot be reasoned with, bribed, or intimidated\u2014it exists only to destroy intruders.",
     "alignment": "Neutral",
     "intelligence": {
       "category": "Non-intelligent",
@@ -14462,7 +14462,7 @@
     "movement": 12,
     "morale": 12,
     "treasure_type": "Individual",
-    "xp_value": 175,
+    "xp_value": 875,
     "special_abilities": [
       "spellcasting",
       "partial_transformation"
@@ -14512,7 +14512,7 @@
     "movement": 18,
     "morale": 10,
     "treasure_type": "None",
-    "xp_value": 65,
+    "xp_value": 325,
     "special_abilities": [
       "incorporeal",
       "elemental_touch"
@@ -14562,7 +14562,7 @@
     "movement": 12,
     "morale": 20,
     "treasure_type": "Individual + magic items",
-    "xp_value": 1200,
+    "xp_value": 6000,
     "special_abilities": [
       "weapon_mastery",
       "serpent_blessing"
@@ -14612,14 +14612,14 @@
     "movement": 15,
     "morale": 18,
     "treasure_type": "None",
-    "xp_value": 900,
+    "xp_value": 4500,
     "special_abilities": [
       "constrict",
       "poison_bite",
       "regeneration"
     ],
     "ai_behavior": "aggressive",
-    "description": "A cultist who underwent the ultimate transformation—fusion with a giant serpent. The result is a grotesque horror: human torso melded to serpentine coils, retaining twisted intelligence but losing all humanity. They attack with fangs dripping venom and crushing coils.",
+    "description": "A cultist who underwent the ultimate transformation\u2014fusion with a giant serpent. The result is a grotesque horror: human torso melded to serpentine coils, retaining twisted intelligence but losing all humanity. They attack with fangs dripping venom and crushing coils.",
     "alignment": "Chaotic Evil",
     "intelligence": {
       "category": "Low",
@@ -14663,7 +14663,7 @@
     "movement": 9,
     "morale": 20,
     "treasure_type": "None",
-    "xp_value": 800,
+    "xp_value": 4000,
     "special_abilities": [
       "magic_immunity",
       "construct"
@@ -14713,7 +14713,7 @@
     "movement": 12,
     "morale": 14,
     "treasure_type": "Individual + scrolls",
-    "xp_value": 450,
+    "xp_value": 2250,
     "special_abilities": [
       "spellcasting_7th",
       "serpent_summoning"
@@ -14763,7 +14763,7 @@
     "movement": 15,
     "morale": 20,
     "treasure_type": "Individual",
-    "xp_value": 270,
+    "xp_value": 1350,
     "special_abilities": [
       "berserker_rage",
       "poison_immunity"
@@ -14813,7 +14813,7 @@
     "movement": 18,
     "morale": 20,
     "treasure_type": "Special",
-    "xp_value": 2000,
+    "xp_value": 10000,
     "special_abilities": [
       "reality_warp",
       "chaos_aura",
@@ -14853,5 +14853,270 @@
       "xp_per_hp": 12,
       "dungeon_level": 8
     }
+  },
+  "lesser_fire_elemental": {
+    "name": "Fire Elemental (Lesser)",
+    "hit_dice": "6d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "3d8",
+    "size": "L",
+    "movement": 12,
+    "morale": 14,
+    "treasure_type": "Nil",
+    "xp_value": 2100,
+    "special_abilities": [
+      "fire_immunity",
+      "ignite"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A weaker manifestation of churning mass of living flame, radiating intense heat and able to ignite anything it touches.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Ignites flammable materials on contact",
+    "special_defenses": "Immune to fire damage, takes double damage from water/cold",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "lesser_water_elemental": {
+    "name": "Water Elemental (Lesser)",
+    "hit_dice": "6d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "3d8",
+    "size": "L",
+    "movement": 6,
+    "morale": 14,
+    "treasure_type": "Nil",
+    "xp_value": 2100,
+    "special_abilities": [
+      "water_breathing",
+      "drowning_grasp"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A weaker manifestation of swirling vortex of living water, able to engulf and drown its victims in its liquid form.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Can attempt to engulf and drown opponents (save vs paralysis or take 2d8 damage/round)",
+    "special_defenses": "Immune to water damage, takes double damage from fire",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "lesser_earth_elemental": {
+    "name": "Earth Elemental (Lesser)",
+    "hit_dice": "6d8",
+    "ac": 0,
+    "thac0": 13,
+    "damage": "4d8",
+    "size": "L",
+    "movement": 6,
+    "morale": 15,
+    "treasure_type": "Nil",
+    "xp_value": 2100,
+    "special_abilities": [
+      "earth_glide",
+      "stone_fist"
+    ],
+    "ai_behavior": "defensive",
+    "description": "A weaker manifestation of hulking mass of animated earth and stone, tremendously strong and nearly impervious to physical harm.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Can move through earth and stone at will",
+    "special_defenses": "Immune to earth/stone attacks, takes double damage from air/wind magic",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "lesser_air_elemental": {
+    "name": "Air Elemental (Lesser)",
+    "hit_dice": "6d8",
+    "ac": 2,
+    "thac0": 13,
+    "damage": "2d10",
+    "size": "L",
+    "movement": 36,
+    "morale": 13,
+    "treasure_type": "Nil",
+    "xp_value": 2100,
+    "special_abilities": [
+      "flying",
+      "whirlwind"
+    ],
+    "ai_behavior": "aggressive",
+    "description": "A weaker manifestation of  invisible whirlwind of sentient air, nearly impossible to see and able to create devastating windstorms.",
+    "alignment": "Neutral",
+    "intelligence": {
+      "category": "Low",
+      "score_range": "5-7"
+    },
+    "magic_resistance": "Standard",
+    "psionic_ability": "Nil",
+    "frequency": {
+      "description": "Rare (5%)",
+      "percentage": 5
+    },
+    "no_appearing": {
+      "wilderness": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      },
+      "lair": {
+        "min": 1,
+        "max": 1,
+        "special": null
+      }
+    },
+    "pct_in_lair": 0,
+    "num_attacks": 1,
+    "special_attacks": "Whirlwind form can sweep up opponents (save vs breath weapon or take 3d6 damage and be flung)",
+    "special_defenses": "Immune to air/wind attacks, difficult to see (-2 to hit), takes double damage from earth magic",
+    "xp_formula": {
+      "base_xp": 650,
+      "xp_per_hp": 8,
+      "dungeon_level": 7
+    }
+  },
+  "thug": {
+    "name": "Thug",
+    "hit_dice": "2d8",
+    "ac": 7,
+    "thac0": 19,
+    "damage": "1d6",
+    "size": "M",
+    "movement": 12,
+    "morale": 8,
+    "treasure_type": "Individuals P",
+    "xp_value": 100,
+    "special_abilities": [],
+    "description": "A common criminal enforcer or hired muscle, skilled with clubs and daggers."
+  },
+  "silas_merchant": {
+    "name": "Silas the Corrupt Merchant",
+    "hit_dice": "5d8",
+    "ac": 5,
+    "thac0": 16,
+    "damage": "1d8+2",
+    "size": "M",
+    "movement": 12,
+    "morale": 12,
+    "treasure_type": "Q, X, magic items",
+    "xp_value": 1500,
+    "special_abilities": [
+      "cunning_defense",
+      "poison_dagger"
+    ],
+    "description": "A wealthy merchant corrupted by the cult, Silas uses his resources and connections to further the serpent cult's goals. He fights with a poisoned dagger and tactical cunning."
+  },
+  "grathak_soulless": {
+    "name": "Grathak the Soulless",
+    "hit_dice": "7d8+7",
+    "ac": 3,
+    "thac0": 14,
+    "damage": "2d6+3",
+    "size": "M",
+    "movement": 9,
+    "morale": 14,
+    "treasure_type": "Q, X, magic weapon, magic armor",
+    "xp_value": 2500,
+    "special_abilities": [
+      "duergar_invisibility",
+      "command_presence",
+      "dark_magic"
+    ],
+    "description": "The soulless duergar chieftain who sold his people to the cult. Grathak wields dark magic and a massive warhammer, and can turn invisible like all duergar."
+  },
+  "giant_snake": {
+    "name": "Giant Constrictor Snake",
+    "hit_dice": "4d8",
+    "ac": 5,
+    "thac0": 16,
+    "damage": "1d6",
+    "size": "L",
+    "movement": 9,
+    "morale": 7,
+    "treasure_type": "None",
+    "xp_value": 600,
+    "special_abilities": [
+      "constrict"
+    ],
+    "description": "A massive serpent that crushes prey in its coils. After a successful hit, it constricts for automatic 2d4 damage per round until the victim escapes."
   }
 }

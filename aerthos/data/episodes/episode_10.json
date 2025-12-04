@@ -5,11 +5,11 @@
   "act": 4,
   "recommended_level": 10,
   "hub_id": "oakhaven_besieged",
-  "intro_text": "You return to where it all began: Oakhaven, the frontier town where you first learned of the Serpent Eye cult. But the town you knew is gone. Walls burn, the palisade is breached in three places, and cultist banners fly above the mayor's hall.\n\nThe Guide, wounded but alive, greets you at the hidden refugee camp in the forest. 'They came three days ago. Hundreds of them. We held them off as long as we could, but they're too many. They've turned the old temple into their stronghold—the very place where we prayed for deliverance. Now it's their Serpent Temple, and they're conducting the final ritual.'\n\nYou have nine keys. The cult has the tenth. If they complete the ritual, the Serpent Eye—an ancient entity of chaos and destruction—will break free from its prison. Reality itself will unravel.\n\nThis is the end. All roads have led here. You must storm the Serpent Temple, fight through the cult's remaining forces, confront their supreme leader, and stop the awakening. The fate of Aerthos rests on your shoulders.",
+  "intro_text": "You return to where it all began: Oakhaven, the frontier town where you first learned of the Serpent Eye cult. But the town you knew is gone. Walls burn, the palisade is breached in three places, and cultist banners fly above the mayor's hall.\n\nThe Guide, wounded but alive, greets you at the hidden refugee camp in the forest. 'They came three days ago. Hundreds of them. We held them off as long as we could, but they're too many. They've turned the old temple into their stronghold\u2014the very place where we prayed for deliverance. Now it's their Serpent Temple, and they're conducting the final ritual.'\n\nYou have nine keys. The cult has the tenth. If they complete the ritual, the Serpent Eye\u2014an ancient entity of chaos and destruction\u2014will break free from its prison. Reality itself will unravel.\n\nThis is the end. All roads have led here. You must storm the Serpent Temple, fight through the cult's remaining forces, confront their supreme leader, and stop the awakening. The fate of Aerthos rests on your shoulders.",
   "briefing": {
     "quest_giver": "The Guide",
     "location": "Refugee Camp - Outside Oakhaven",
-    "dialogue": "I always knew you were special. From that first day when you walked into the Dirty Mug, looking for work. You've come so far, faced so much. Now it ends here, where it began. The cult's leader is in the temple—some call them the Serpent's Voice. They're powerful, ancient, and utterly mad. The ritual is nearly complete. You need to stop them before midnight, or it's over. We'll create a distraction, draw away as many cultists as we can. But the temple itself... that's yours to take. Win or lose, we go down fighting. For Oakhaven. For Aerthos. For everyone who's counting on us."
+    "dialogue": "I always knew you were special. From that first day when you walked into the Dirty Mug, looking for work. You've come so far, faced so much. Now it ends here, where it began. The cult's leader is in the temple\u2014some call them the Serpent's Voice. They're powerful, ancient, and utterly mad. The ritual is nearly complete. You need to stop them before midnight, or it's over. We'll create a distraction, draw away as many cultists as we can. But the temple itself... that's yours to take. Win or lose, we go down fighting. For Oakhaven. For Aerthos. For everyone who's counting on us."
   },
   "dungeon": {
     "type": "hand_crafted",
@@ -25,17 +25,27 @@
   },
   "completion_text": "The Serpent's Voice falls, their mortal form consumed by the very power they sought to unleash. The ritual chamber collapses, the ten keys shattering simultaneously. The Serpent Eye, partially awakened, howls in rage as it is pulled back into its prison.\n\nBut the victory is not without cost. Oakhaven is scarred, its people scattered. The cult's remnants flee into the wilderness, leaderless but not destroyed. The threat is diminished, but not eliminated.\n\nAs dawn breaks over the ruins, the survivors emerge. The Guide clasps your hand. 'You did it. You actually did it. Aerthos is safe, thanks to you.'\n\nThe campaign is complete. The Serpent Eye sleeps once more, and the Free Lands of Aerthos endure. But the scars remain, and whispers speak of other cults, other threats, other adventures yet to come.\n\n**THE END**\n\n(For now...)",
   "rewards": {
-    "xp_bonus": 5000,
+    "xp_bonus": 25000,
     "gold_bonus": 2000,
-    "items": ["legendary_weapon_choice", "serpent_slayer_title"],
+    "items": [
+      "legendary_weapon_choice",
+      "serpent_slayer_title"
+    ],
     "unlocks": [],
-    "story_flags": ["campaign_complete", "serpent_defeated", "oakhaven_liberated", "hero_of_aerthos"],
+    "story_flags": [
+      "campaign_complete",
+      "serpent_defeated",
+      "oakhaven_liberated",
+      "hero_of_aerthos"
+    ],
     "reputation_changes": {
       "all_factions": 50
     }
   },
   "rumors": [],
-  "prerequisites": ["episode_09"],
+  "prerequisites": [
+    "episode_09"
+  ],
   "final_episode": true,
   "multiple_endings": {
     "heroic_victory": {

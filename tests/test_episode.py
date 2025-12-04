@@ -50,7 +50,7 @@ class TestEpisode(unittest.TestCase):
         """Test rewards structure"""
         episode = Episode.load('episode_01')
 
-        self.assertEqual(episode.rewards.xp_bonus, 500)
+        self.assertEqual(episode.rewards.xp_bonus, 2500)  # Updated for 5x XP multiplier
         self.assertEqual(episode.rewards.gold_bonus, 100)
         self.assertIn('dagger_plus_1', episode.rewards.items)
         self.assertIn('episode_02', episode.rewards.unlocks)

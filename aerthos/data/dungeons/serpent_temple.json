@@ -72,7 +72,7 @@
         "south": "cult_archives",
         "north": "meditation_chamber"
       },
-      "items": ["book_serpent_prophecy", "tome_forbidden_summoning", "scroll_protection_evil", "staff_serpent_command", "gold_400"],
+      "items": ["book_serpent_prophecy", "tome_forbidden_summoning", "scroll_protection_evil", "staff_serpent_command", "gold_350"],
       "encounters": [
         {
           "type": "combat",
@@ -111,7 +111,7 @@
         "east": "meditation_chamber",
         "north": "ritual_preparation"
       },
-      "items": ["serpent_idol_gold", "offering_bowl_enchanted", "prayer_beads_serpent", "gold_500"],
+      "items": ["serpent_idol_gold", "offering_bowl_enchanted", "prayer_beads_serpent", "gold_450"],
       "encounters": [
         {
           "type": "combat",
@@ -264,7 +264,7 @@
         "south": "hall_of_keys",
         "north": "antechamber"
       },
-      "items": ["serpent_scale_armor", "greatsword_cursed", "champion_trophy", "gold_600"],
+      "items": ["serpent_scale_armor", "greatsword_cursed", "champion_trophy", "gold_500"],
       "encounters": [
         {
           "type": "combat",
@@ -304,7 +304,7 @@
         "south": "antechamber",
         "north": "inner_sanctum"
       },
-      "items": ["voice_journal", "serpent_crown", "robe_voice", "treasure_hoard", "gold_1000"],
+      "items": ["voice_journal", "serpent_crown", "robe_voice", "treasure_hoard", "gold_850"],
       "encounters": [
         {
           "type": "combat",
@@ -323,7 +323,7 @@
       "exits": {
         "south": "voice_chamber"
       },
-      "items": ["legendary_weapon_choice", "serpent_slayer_title_scroll", "tenth_key_shattered", "serpent_eye_fragment", "gold_2000", "treasure_ultimate"],
+      "items": ["legendary_weapon_choice", "serpent_slayer_title_scroll", "tenth_key_shattered", "serpent_eye_fragment", "gold_1000", "treasure_ultimate"],
       "encounters": [
         {
           "type": "combat",

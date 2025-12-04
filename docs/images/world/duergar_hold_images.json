@@ -1,0 +1,300 @@
+[
+  {
+    "asset_id": "duergar_hold_map",
+    "name": "Map of Duergar-Occupied Hold",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Duergar-Occupied Hold. The lower halls of Ironfast Outpost, now controlled by gray dwarves.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json"
+  },
+  {
+    "asset_id": "duergar_hold_barricade",
+    "name": "Dwarven Barricade",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Dwarven Barricade. The dwarves have erected a hasty barricade of rubble and iron beams. Beyond, the dark halls are controlled by the duergar. Commander Thrain nods grimly as you prepare to breach. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: barricade"
+  },
+  {
+    "asset_id": "duergar_hold_upper_hall",
+    "name": "Upper Hall - Main Corridor",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Upper Hall - Main Corridor. A wide hall carved from living stone, the pride of dwarven craftsmanship. Intricate carvings depict legendary battles and master forges, now marred by recent combat. Blood stains the floor, broken weapons litter the corners, and scorch marks from dark magic scar the walls. The hall branches in multiple directions\u2014the dwarves built Ironfast to last, but the duergar knew exactly where to strike. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: upper_hall"
+  },
+  {
+    "asset_id": "duergar_hold_armory",
+    "name": "Ransacked Armory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ransacked Armory. The dwarven armory has been thoroughly looted. Empty weapon racks and shattered display cases are all that remain. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: armory"
+  },
+  {
+    "asset_id": "duergar_hold_barracks",
+    "name": "Slaughter Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Slaughter Hall. The dwarven barracks. Bunks are overturned, and the floor is stained with blood. The dwarves fought desperately here. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: barracks"
+  },
+  {
+    "asset_id": "duergar_hold_forge_level",
+    "name": "The Great Forge - Central Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of The Great Forge - Central Hall. A massive vaulted chamber housing the legendary Great Forge of Ironfast. The central furnace, normally roaring with white-hot flames, stands cold and silent\u2014a devastating blow to dwarven pride. Massive anvils, each named after a dwarven ancestor, line the walls. The smell of coal and hot metal still lingers. The duergar have set up crude camps here, defiling centuries of craftsmanship. Passages lead to the smelting room, smithy, and storage areas. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: forge_level"
+  },
+  {
+    "asset_id": "duergar_hold_deep_vault",
+    "name": "Deep Vault of Ironfast - Grathak's Throne",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Deep Vault of Ironfast - Grathak's Throne. The deepest chamber of the hold, where the dwarves kept their greatest treasures and heirlooms. The massive vault door has been torn from its hinges by dark magic. Grathak the Soulless sits on a makeshift throne of dwarven bones and broken shields, a serpent amulet glowing ominously on his chest. Behind him, elite duergar warriors form a shield wall. The chamber reeks of death and sulfur from the Underdark below. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: deep_vault"
+  },
+  {
+    "asset_id": "duergar_hold_officers_quarters",
+    "name": "Officers' Quarters",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Officers' Quarters. The private chambers of Ironfast's commanding officers. Bunks are overturned, personal belongings scattered. On a desk, you find Commander Thrain's logbook and correspondence\u2014evidence of the betrayal that led to this attack. Maps of the hold are pinned to the walls, with duergar marks showing their infiltration routes. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: officers_quarters"
+  },
+  {
+    "asset_id": "duergar_hold_great_hall",
+    "name": "Great Hall of Clan Ironfoot",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Great Hall of Clan Ironfoot. The ceremonial heart of Ironfast Outpost. Long tables where hundreds of dwarves once feasted now lie splintered. Clan banners hang torn from the rafters. The floor is carpeted with bodies\u2014dwarves and duergar alike fell here in desperate battle. A hidden stairway descends to the wine cellar. The desecrated clan shrine stands to the north, its doors smashed open. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: great_hall"
+  },
+  {
+    "asset_id": "duergar_hold_clan_shrine",
+    "name": "Shrine of Moradin - Desecrated",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Shrine of Moradin - Desecrated. The sacred shrine to Moradin, the dwarven god of forges and creation. The holy altar has been defiled with serpent symbols painted in blood. Sacred relics lie smashed on the floor. Duergar have erected a crude counter-shrine to their dark gods. The desecration of this place is a wound to every dwarf's soul. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: clan_shrine"
+  },
+  {
+    "asset_id": "duergar_hold_wine_cellar",
+    "name": "Ancient Wine Cellar",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ancient Wine Cellar. A hidden cellar accessible only from the great hall. Racks of ancient dwarven spirits line the walls\u2014some bottles centuries old. The duergar haven't found this place yet. Barrels of Ironfast ale and mead stand undisturbed. Among the wine racks, you spot a hidden cache of valuables the dwarves stashed for emergencies. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: wine_cellar"
+  },
+  {
+    "asset_id": "duergar_hold_smelting_room",
+    "name": "Smelting Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Smelting Chamber. The room where raw ore was smelted into pure metal. The furnaces still radiate oppressive heat\u2014the duergar have kept them running to forge weapons. The air shimmers, and pools of molten slag bubble dangerously. Working here without protection risks severe burns. Duergar smiths toil at the furnaces, reforging dwarven weapons into crude implements. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: smelting_room"
+  },
+  {
+    "asset_id": "duergar_hold_smithy_workshop",
+    "name": "Master Smithy Workshop",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Master Smithy Workshop. The personal workshop of Ironfast's master smiths. Precision tools hang from pegs\u2014hammers, tongs, files, and measuring devices of legendary craftsmanship. Half-finished masterwork weapons rest on benches. The duergar have ransacked the place but lack the skill to appreciate what they've destroyed. Blueprints for legendary weapons are scattered about. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: smithy_workshop"
+  },
+  {
+    "asset_id": "duergar_hold_ore_storage",
+    "name": "Ore Storage Vaults",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ore Storage Vaults. Deep underground storage chambers where raw ore and refined metals were kept. The air is cool and dry. Carts sit abandoned on mining tracks. The duergar have been systematically looting the ore to fuel their war machine. Piles of iron, copper, silver, and even mithril ore fill wooden bins. A mining shaft leads deeper into the mountain. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: ore_storage"
+  },
+  {
+    "asset_id": "duergar_hold_cooling_pools",
+    "name": "Quenching Pools",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Quenching Pools. Stone pools filled with water where hot metal was quenched and cooled. The pools still function, fed by an underground spring. Steam rises from the water where duergar have dumped hot slag. The room is humid and slippery. Some pools have been contaminated with toxic runoff from the smelting process, turning the water a sickly green. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: cooling_pools"
+  },
+  {
+    "asset_id": "duergar_hold_underdark_passage",
+    "name": "Underdark Supply Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Underdark Supply Tunnel. A rough-hewn tunnel descending into the Underdark. This is how the duergar entered Ironfast\u2014through old mining tunnels the dwarves thought sealed. The walls are slick with moisture and phosphorescent fungi provide eerie illumination. The smell of sulfur and rot wafts up from below. Footprints and drag marks show heavy traffic\u2014the duergar are using this as a supply line. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: underdark_passage"
+  },
+  {
+    "asset_id": "duergar_hold_torture_chamber",
+    "name": "Chamber of Interrogation",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Interrogation. A nightmare room where the duergar torture captured dwarves for information. Chains hang from the ceiling, blood stains the floor, and implements of pain line the walls. Several dwarves are chained here, barely alive. The duergar torturer looks up from his grisly work, annoyed at the interruption. This is a place of pure suffering. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: torture_chamber"
+  },
+  {
+    "asset_id": "duergar_hold_slave_pens",
+    "name": "Slave Holding Pens",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Slave Holding Pens. Crude cages where the duergar hold captured dwarves before transporting them to the Underdark as slaves. Dozens of emaciated dwarves are crammed into iron cages, their eyes hollow with despair. The stench is overwhelming. A dark altar to the serpent cult stands at the far end\u2014the duergar are preparing these prisoners for dark rituals as well as slavery. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: slave_pens"
+  },
+  {
+    "asset_id": "duergar_hold_dark_altar",
+    "name": "Serpent Cult Dark Altar",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Serpent Cult Dark Altar. A blasphemous shrine to the Serpent Eye cult, erected in the deepest part of Ironfast. The altar is carved from black stone and covered in serpent imagery. Ritual implements and cult texts are scattered about. This is where the duergar perform their dark ceremonies, binding captured dwarves to the cult's will through blood magic. The air crackles with malevolent energy. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: dark_altar"
+  },
+  {
+    "asset_id": "duergar_hold_mining_shaft",
+    "name": "Flooded Mining Shaft",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Flooded Mining Shaft. An abandoned mining shaft that the dwarves were excavating before the attack. Water has flooded the lower levels from an underground river. The wooden supports are rotting and unstable. Rats and worse things have made homes in the dark water. Wading through here risks disease, and the entire structure could collapse at any moment. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: mining_shaft"
+  },
+  {
+    "asset_id": "duergar_hold_collapsed_tunnel",
+    "name": "Collapsed Access Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Collapsed Access Tunnel. A tunnel that partially collapsed during the duergar siege. Rubble blocks most of the passage, but a narrow gap allows passage for those willing to risk it. The remaining supports are cracked and unstable\u2014any loud noise or impact could bring down the rest of the ceiling. This passage offers a dangerous shortcut back to the upper levels. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: collapsed_tunnel"
+  },
+  {
+    "asset_id": "duergar_hold_treasury_vault",
+    "name": "Ironfast Treasury",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ironfast Treasury. The clan treasury, hidden deep in the ore storage level. The vault door is intact\u2014the dwarves died before revealing its location. Inside, centuries of accumulated wealth gleam in the torchlight: gold coins, silver ingots, precious gems, and masterwork dwarven artifacts. But the dwarves were clever\u2014the treasury is trapped with deadly precision. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: treasury_vault"
+  },
+  {
+    "asset_id": "duergar_hold_ancestor_hall",
+    "name": "Hall of Ancestors",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hall of Ancestors. A sacred hall where the dwarves honored their dead. Stone tablets line the walls, inscribed with the names and deeds of every dwarf who served Ironfast over the centuries. Statues of legendary heroes stand in alcoves. The duergar haven't desecrated this place\u2014even gray dwarves fear disturbing the ancestral dead. The hall is eerily peaceful, a refuge from the horror above. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/duergar_hold.json - Room: ancestor_hall"
+  }
+]

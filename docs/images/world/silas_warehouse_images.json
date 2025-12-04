@@ -1,0 +1,313 @@
+[
+  {
+    "asset_id": "silas_warehouse_map",
+    "name": "Map of Silas's Hidden Warehouse",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Silas's Hidden Warehouse. A maze of smuggling tunnels and cursed goods beneath the merchant's shop.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json"
+  },
+  {
+    "asset_id": "silas_warehouse_hidden_entrance",
+    "name": "Hidden Staircase",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hidden Staircase. A narrow staircase descends from Silas's shop into darkness. The walls are lined with shelves of mysterious crates. You can hear distant sounds of activity below\u2014the warehouse is not abandoned. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: hidden_entrance"
+  },
+  {
+    "asset_id": "silas_warehouse_main_warehouse",
+    "name": "Main Warehouse - Central Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Main Warehouse - Central Chamber. A vast underground chamber filled with crates, barrels, and mysterious goods. Some items pulse with dark magic. The ceiling is supported by thick stone pillars. Tunnels and passages lead in all directions\u2014this operation is far larger than you imagined. Wagon tracks lead east toward a loading area. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: main_warehouse"
+  },
+  {
+    "asset_id": "silas_warehouse_trapped_vault",
+    "name": "Trapped Vault",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Trapped Vault. A reinforced iron door stands ajar, its lock mechanisms broken. Inside, shelves hold ledgers and documents. A pressure plate trap is visible on the floor. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: trapped_vault"
+  },
+  {
+    "asset_id": "silas_warehouse_smuggler_tunnel",
+    "name": "Main Smuggling Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Main Smuggling Tunnel. A wide smuggling tunnel, tall enough to move goods through on carts. The walls are smooth and well-maintained. Recent footprints and wheel tracks show this route sees heavy use. The tunnel branches in multiple directions\u2014this is clearly the main artery of Silas's smuggling operation. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: smuggler_tunnel"
+  },
+  {
+    "asset_id": "silas_warehouse_cursed_goods",
+    "name": "Cursed Goods Storage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cursed Goods Storage. Crates marked with serpent symbols contain cursed items and dark artifacts. The air feels thick with malevolent energy. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: cursed_goods"
+  },
+  {
+    "asset_id": "silas_warehouse_silas_hideout",
+    "name": "Silas's Final Stand",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Silas's Final Stand. A small chamber with supplies for flight. Silas stands cornered, a poisoned blade in hand and desperation in his eyes. Maps and documents cover a makeshift desk. The smell of fear mixes with expensive cologne. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: silas_hideout"
+  },
+  {
+    "asset_id": "silas_warehouse_loading_dock",
+    "name": "Underground Loading Dock",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Underground Loading Dock. A wide chamber with high ceilings and a subterranean river running through it. A stone dock extends into the dark water where small boats can deliver cargo unseen. Ropes, pulleys, and a crane system suggest heavy goods are moved here regularly. The water flows toward the sewers. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: loading_dock"
+  },
+  {
+    "asset_id": "silas_warehouse_packing_room",
+    "name": "Packing & Sorting Room",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Packing & Sorting Room. Long tables are covered with wrapping materials, straw, and half-packed crates. Shelves hold various containers and disguises for contraband. A shipping schedule on the wall shows deliveries to multiple cities across Aerthos. Some crates bear innocent labels hiding sinister contents. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: packing_room"
+  },
+  {
+    "asset_id": "silas_warehouse_foreman_office",
+    "name": "Foreman's Office",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Foreman's Office. A cramped office with a desk buried under paperwork. Shipping manifests, bribe receipts, and guard rotation schedules cover every surface. A locked strongbox sits beneath the desk. The foreman clearly kept meticulous records\u2014damning evidence of the entire operation. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: foreman_office"
+  },
+  {
+    "asset_id": "silas_warehouse_ritual_workshop",
+    "name": "Cursed Item Workshop",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cursed Item Workshop. A disturbing chamber where cursed items are created. Workbenches hold half-finished amulets, weapons, and talismans, all radiating malevolence. Ritual circles are drawn on the floor in what looks like dried blood. Chanting can be heard from deeper chambers. The very air here feels wrong. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: ritual_workshop"
+  },
+  {
+    "asset_id": "silas_warehouse_cursed_vault_inner",
+    "name": "Inner Cursed Vault",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Inner Cursed Vault. A heavily warded vault containing the most dangerous cursed items. Glass cases hold weapons that whisper promises of power. Chains bind grimoires that rattle and shake. Warning runes cover the walls\u2014this is where Silas stored items too dangerous even for his customers. One case holds what appears to be a pulsing demonic artifact. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: cursed_vault_inner"
+  },
+  {
+    "asset_id": "silas_warehouse_demon_binding_chamber",
+    "name": "Demon Binding Chamber (DANGER)",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Demon Binding Chamber (DANGER). A nightmarish chamber with a massive summoning circle carved into the stone floor. Chains hang from the ceiling, designed to bind otherworldly entities. Scorch marks and claw gouges mar the walls. An ominous presence lingers here. This is clearly where the cult's most dangerous rituals were performed. The air crackles with residual dark energy. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: demon_binding_chamber"
+  },
+  {
+    "asset_id": "silas_warehouse_tunnel_junction",
+    "name": "Tunnel Junction",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Tunnel Junction. A three-way junction where smuggling tunnels meet. Footprints in the dust show recent traffic in multiple directions. Discarded contraband and empty crates litter the corners. Signs on the walls use coded symbols to mark the routes\u2014one leads to the sewers, another to a secret exit. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: tunnel_junction"
+  },
+  {
+    "asset_id": "silas_warehouse_sewer_connection",
+    "name": "Sewer Connection Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Sewer Connection Tunnel. A narrow tunnel that connects to Oakhaven's sewer system. The smell is overwhelming. Water drips from the ceiling, and the sound of flowing sewage echoes from below. This must be how Silas moved goods in and out without being seen\u2014right under the town's nose. Old rat droppings and claw marks suggest this route isn't always safe. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: sewer_connection"
+  },
+  {
+    "asset_id": "silas_warehouse_secret_passage",
+    "name": "Hidden Passage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hidden Passage. A concealed passage behind a false wall. Unlike the working tunnels, this one is clean and well-maintained, with stone flooring and oil lamps. This was clearly Silas's personal escape route. A hidden cache contains emergency supplies and valuables\u2014his insurance policy. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: secret_passage"
+  },
+  {
+    "asset_id": "silas_warehouse_guard_barracks",
+    "name": "Guard Barracks",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Guard Barracks. A long room with bunks, footlockers, and personal belongings of Silas's hired guards. A weapon rack holds spare arms. A card game sits abandoned on a table\u2014the guards left in a hurry when the operation was exposed. Guard rotation schedules and pay records are pinned to the wall. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: guard_barracks"
+  },
+  {
+    "asset_id": "silas_warehouse_armory",
+    "name": "Warehouse Armory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Warehouse Armory. A well-stocked armory containing weapons, armor, and supplies for Silas's guards. Weapon racks line the walls. A few higher-quality pieces suggest Silas armed his people well\u2014loyalty through good equipment. Some items bear maker's marks from distant lands, showing the scope of his trade network. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: armory"
+  },
+  {
+    "asset_id": "silas_warehouse_merchant_office",
+    "name": "Merchant's Office",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Merchant's Office. Silas's personal office beneath his shop. An ornate desk holds correspondence with cult leaders, shipping manifests for cursed goods, and evidence of his crimes. A portrait of Silas in better days hangs on the wall. Hidden compartments in the desk hold blackmail material on town officials. This room contains everything needed to convict him. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: merchant_office"
+  },
+  {
+    "asset_id": "silas_warehouse_trapped_corridor",
+    "name": "Trapped Corridor",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Trapped Corridor. A narrow corridor lined with pressure plates, tripwires, and concealed dart launchers. Silas clearly didn't want anyone reaching his vault easily. Scorch marks and old bloodstains tell the story of failed intrusions. Disabling these traps requires skill and caution. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: trapped_corridor"
+  },
+  {
+    "asset_id": "silas_warehouse_flooded_passage",
+    "name": "Flooded Passage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Flooded Passage. A partially flooded tunnel where the underground river has seeped through cracks in the walls. The water is knee-deep and murky. Discarded crates float in the water\u2014evidence of a smuggling mishap. The water carries a foul smell, likely from sewer contamination. Wading through here carries risks of disease. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: flooded_passage"
+  },
+  {
+    "asset_id": "silas_warehouse_collapsing_storeroom",
+    "name": "Collapsing Storeroom",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Collapsing Storeroom. An unstable storage room where the ceiling has begun to cave in. Broken support beams lean at dangerous angles. Crates are crushed under fallen rubble. The structural damage must have occurred recently\u2014perhaps from all the heavy goods Silas stored here. Dust rains from cracks in the ceiling. This area could fully collapse at any moment. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: collapsing_storeroom"
+  },
+  {
+    "asset_id": "silas_warehouse_storage_annex",
+    "name": "Storage Annex",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Storage Annex. A secondary storage area filled with mundane goods mixed with contraband. Barrels of wine hide compartments of illegal substances. Crates of 'textiles' contain stolen weapons. This is where Silas hid illegal goods among legitimate merchandise\u2014a classic smuggler's trick. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: storage_annex"
+  },
+  {
+    "asset_id": "silas_warehouse_escape_tunnel",
+    "name": "Escape Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Escape Tunnel. A secret escape tunnel leading from the main smuggling route to Silas's final hideout. The walls are smooth, not rough like the working tunnels. Fresh torch sconces line the walls. Footprints in the dust show Silas fled this way recently. The end of the tunnel opens into his bolt-hole where he's making his desperate last stand. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/silas_warehouse.json - Room: escape_tunnel"
+  }
+]

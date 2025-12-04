@@ -116,7 +116,7 @@
           "type": "combat",
           "monsters": ["grukk_hobgoblin_chief", "goblin", "goblin"],
           "description": "Grukk stands, drawing his battle axe. 'More fools come to die!' he bellows. Two goblin guards flank him.",
-          "boss_fight": true
+          "boss": true
         }
       ],
       "safe_rest": false,

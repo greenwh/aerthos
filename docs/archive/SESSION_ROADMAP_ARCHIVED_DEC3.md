@@ -2,8 +2,8 @@
 
 **Project:** Aerthos - AD&D 1e Text Adventure
 **Location:** `/mnt/d/Development/aerthos`
-**Last Updated:** December 2, 2025 - Session 11 Complete
-**Status:** ✅ **PHASE 1 COMPLETE** | ✅ **PHASE 2: 80% COMPLETE** | ✅ **PHASE 4: TASK 1 COMPLETE (9/9 dungeons)**
+**Last Updated:** December 3, 2025 - Phase 3 Complete, XP Fix Applied
+**Status:** ✅ **PHASE 1 COMPLETE** | ✅ **PHASE 2: 80% COMPLETE** | ✅ **PHASE 3: COMPLETE** | ✅ **PHASE 4: TASK 1 & 5 COMPLETE**
 **Test Status:** 504/504 tests passing (100%) ← All tests passing
 
 **For detailed session histories:** See `SESSION_ARCHIVE.md`
@@ -24,10 +24,12 @@
 - ✅ Campaign fully playable (10 episodes, Episodes 1-10 fully expanded)
 - ✅ Phase 1 complete (core gameplay working)
 - ✅ Phase 2 80% complete (UI sync mostly done)
-- ✅ Phase 4 Task 1 COMPLETE (content expansion: 9 of 9 dungeons complete)
-- 📝 Next: Phase 4 Tasks 2-5 (side quests, reputation effects, multiple endings) or Phase 3 (balance & polish)
+- ✅ Phase 3 complete (balance & polish, XP fix applied)
+- ✅ Phase 4 Task 1 COMPLETE (9/9 dungeons expanded)
+- ✅ Phase 4 Task 5 COMPLETE (11 character classes added)
+- 📝 Next: Phase 4 Tasks 2-4 (side quests, reputation effects, multiple endings)
 
-**Development Order:** Phase 2 → Phase 4 → Phase 3 (expand content before balancing)
+**Critical Fix Applied (Dec 3):** XP distribution corrected to match campaign design (each party member gets full XP, not divided)
 
 ---
 
@@ -210,23 +212,27 @@ This is the **optimal sequence** to get from current state to polished, playable
 
 ---
 
-## 📖 **PHASE 3: BALANCE & POLISH** ⚠️ **DO THIS LAST (After Phase 4)**
+## 📖 **PHASE 3: BALANCE & POLISH** ✅ **COMPLETE**
 
 **Time Estimate:** 15 hours
-**Document Reference:** `CAMPAIGN_TODO.md` Priority 2 section
-**Status:** Not started (waiting for Phase 4 completion)
+**Actual Time:** ~6 hours (December 3, 2025)
+**Document Reference:** `PHASE_3_COMPLETE.md`
+**Status:** ✅ **COMPLETE** (All 4 tasks done)
 
-**Why After Phase 4:**
-- Balance all content together after all dungeons are expanded
-- Prevents rebalancing work when new content is added
-- More efficient to tune economy, combat, and XP as a whole
+**Completed Tasks:**
+1. ✅ Economy balance (shop prices, loot drops, episode rewards)
+2. ✅ Combat difficulty tuning for ALL dungeons (smooth progression 1.5 → 4.5 HD average)
+3. ✅ XP curve fix (Applied 5x multiplier, total XP: 91,641 → 464,305)
+4. ✅ Quality pass and bug fixes (data validation, description checks)
 
-**Tasks:**
-1. Economy balance (shop prices, loot drops, episode rewards)
-2. Combat difficulty tuning for ALL dungeons (expanded + original)
-3. XP curve verification for full 1-10 progression
-4. Bug fixes from complete playthrough
-5. Enhanced descriptions for all content
+**Critical Fix (December 3, 2025):**
+- **XP Distribution Corrected:** Added `XP_DIVIDE_AMONG_PARTY = False` flag to `constants.py`
+- Campaign was designed with each party member receiving FULL XP (not divided)
+- Updated 3 locations: `party.py`, `game_state.py` (2x)
+- With full XP: Characters reach level 9-10 by Episode 10 (as designed)
+- With divided XP: Characters only reach level 5-6 (broken progression)
+
+**See:** `PHASE_3_COMPLETE.md`, `PHASE_3_XP_ANALYSIS.md`, `PHASE_3_XP_CHANGES_COMPLETE.md` for details
 
 ---
 
@@ -282,11 +288,14 @@ This is the **optimal sequence** to get from current state to polished, playable
 - Add branching based on choices/reputation
 - Different final confrontations
 
-### Task 5: Add More Character Classes (Optional) ← **NOT STARTED**
+### Task 5: Add More Character Classes ✅ **COMPLETE**
 
-- Currently only 4 classes (Fighter, Cleric, Magic-User, Thief)
-- AD&D 1e has 11+ classes total
-- Add Ranger, Paladin, Druid, etc.
+- ✅ **11 classes implemented:** Fighter, Ranger, Paladin, Cleric, Druid, Magic-User, Illusionist, Thief, Assassin, Monk, Bard
+- ✅ All classes fully integrated into character creation
+- ✅ Alignment restrictions working (Paladin: LG only, Druid: TN only, etc.)
+- ✅ Ability minimums enforced
+- ✅ Special abilities defined in `classes.json`
+- ✅ Class restrictions by race working
 
 ---
 
@@ -517,11 +526,11 @@ At the beginning of each work session:
 - [ ] Open reference documents as needed
 - [ ] Confirm you understand acceptance criteria
 
-**Current Phase:** Phase 4 - Task 1 COMPLETE | Decision point for next phase
-**Current Task:** Choose: Phase 4 Tasks 2-5 (side quests, reputation) OR Phase 3 (Balance & Polish)
-**Last Completed:** Phase 4 Task 1 - Episode 10 Expansion (Session 11, December 2, 2025)
-**Next Action:** Decide between Phase 4 (Tasks 2-5) or Phase 3 (recommended: start Phase 3)
-**Development Order:** Phase 1 ✅ → Phase 2 (80%) → Phase 4 Task 1 ✅ → Phase 3 (recommended next)
+**Current Phase:** Phase 4 - Tasks 2-4 remaining
+**Current Task:** Phase 4 Tasks 2-4 (side quests, reputation effects, multiple endings)
+**Last Completed:** XP Division Fix (December 3, 2025) - Phase 3 Complete
+**Next Action:** Begin Phase 4 Task 2 (Side Quests & Optional Content)
+**Development Order:** Phase 1 ✅ → Phase 2 (80%) ✅ → Phase 3 ✅ → Phase 4 Task 1 ✅ → Phase 4 Task 5 ✅ → Phase 4 Tasks 2-4 (in progress)
 
 ---
 
@@ -584,31 +593,41 @@ At the end of each work session:
 
 ## 🎯 **NEXT SESSION GOALS**
 
-**Primary Goal:** ✅ **PHASE 4 TASK 1 COMPLETE** - All dungeons expanded!
+**Primary Goal:** ✅ **PHASE 3 COMPLETE & XP FIX APPLIED**
 
-**Accomplishment (Session 11):**
-- ✅ Expanded Episode 10 (The Serpent Temple) from 6 → 18 rooms (+200%)
-- ✅ Added 6 new monsters (serpent cult theme, final bosses)
-- ✅ Added 62 new items (lore, treasure, quest items, legendary rewards)
+**Accomplishments (December 3, 2025):**
+- ✅ Phase 3 Balance & Polish completed (economy, combat, XP curve)
+- ✅ **CRITICAL FIX:** XP distribution corrected to match campaign design
+  - Added `XP_DIVIDE_AMONG_PARTY = False` flag to `constants.py`
+  - Updated `party.py` and `game_state.py` (2 locations)
+  - Each party member now receives FULL XP (not divided)
+  - Characters will reach level 9-10 by Episode 10 as designed
 - ✅ All 504/504 tests passing (no regressions)
-- ✅ Phase 4 Task 1 marked COMPLETE in SESSION_ROADMAP.md
+- ✅ SESSION_ROADMAP.md updated with Phase 3 completion
 
-**Decision Point for Next Session:**
-Choose one of the following paths:
+**Next Phase: Phase 4 Tasks 2-4**
 
-**Option A: Continue Phase 4 (Tasks 2-5) - Add Depth**
-- Task 2: Add side quests and optional content within episodes
-- Task 3: Implement reputation effects (shop discounts, faction support)
-- Task 4: Implement multiple endings for Episode 10
-- Task 5: Add more character classes (optional)
+**Task 2: Side Quests & Optional Content** (~8 hours)
+- Optional objectives within episodes
+- Hidden treasures and secret areas
+- NPC interactions and dialogue trees
+- Bonus encounters for exploration
 
-**Option B: Begin Phase 3 - Balance & Polish**
-- Balance economy (shop prices, loot drops, episode rewards)
-- Tune combat difficulty across all 10 episodes
-- Verify XP curve for full 1-10 progression
-- Comprehensive playthrough and bug fixes
+**Task 3: Reputation Effects** (~6 hours)
+- Shop discounts based on reputation
+- Faction support mechanics
+- Reputation-gated content
+- Special rewards for high reputation
 
-**Recommendation:** Start Phase 3 (Balance & Polish) since all content is now in place. Side quests and reputation effects (Phase 4 Tasks 2-5) could come after balancing as additional polish.
+**Task 4: Multiple Endings** (~8 hours)
+- Branching finale for Episode 10
+- Choices affect final confrontation
+- Reputation-based endings
+- Achievement/ending tracking
+
+**Estimated Total:** 22-25 hours for Tasks 2-4
+
+**Recommendation:** Begin with Task 2 (Side Quests) to add optional content depth throughout the campaign.
 
 ---
 

@@ -1,0 +1,235 @@
+[
+  {
+    "asset_id": "serpent_temple_map",
+    "name": "Map of The Serpent Temple",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of The Serpent Temple. The cult's final stronghold in the ruins of Oakhaven's old temple. The site of the apocalyptic ritual.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json"
+  },
+  {
+    "asset_id": "serpent_temple_outer_courtyard",
+    "name": "Burning Courtyard",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Burning Courtyard. Oakhaven burns around you. The temple courtyard is filled with smoke and the sounds of battle echo from the town. The temple doors stand open, serpent banners flying above, stained with blood. Bodies of defenders lie scattered\u2014the town fought hard, but the cult was too strong. Your allies create a distraction in the distance. This is it. The final battle begins now. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: outer_courtyard"
+  },
+  {
+    "asset_id": "serpent_temple_temple_entrance",
+    "name": "Corrupted Temple Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Corrupted Temple Hall. What was once Oakhaven's place of worship is now a monument to desecration. Serpent idols tower where holy symbols once stood. The walls are painted with blood-red runes. The stench of incense and death fills the air. Passages lead east and west, while the path north leads deeper into the temple complex. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: temple_entrance"
+  },
+  {
+    "asset_id": "serpent_temple_cult_archives",
+    "name": "Archives of the Serpent",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Archives of the Serpent. Shelves upon shelves of scrolls and books document the cult's activities across Aerthos. Records of kidnappings, ritual sacrifices, political manipulation. The full scope of their operation is staggering\u2014this was never just about one town. It was a conspiracy spanning decades, infiltrating every level of society. Reading these fills you with cold dread... and determination. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: cult_archives"
+  },
+  {
+    "asset_id": "serpent_temple_serpent_library",
+    "name": "Library of Forbidden Knowledge",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Library of Forbidden Knowledge. Books that should have been burned centuries ago line these shelves. Texts on summoning, transformation, planar breaches. The cult's knowledge came from sources both ancient and alien. One book lies open on a reading stand: 'The Serpent Eye\u2014History and Prophecy.' You skim it quickly. The entity was imprisoned millenn ago by a coalition of heroes. The keys were meant to keep it sealed forever. But prophecy spoke of its return... The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: serpent_library"
+  },
+  {
+    "asset_id": "serpent_temple_meditation_chamber",
+    "name": "Chamber of Communion",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Communion. This is where cultists meditate to commune with the Serpent Eye. Cushions arranged in a circle around a scrying pool. The water shows visions of other worlds\u2014realities where the Serpent Eye broke free and consumed everything. You see civilizations fall, worlds crack apart, reality itself unravel into chaos. This is what you're fighting to prevent. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: meditation_chamber"
+  },
+  {
+    "asset_id": "serpent_temple_serpent_shrine",
+    "name": "Shrine of the Serpent Eye",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Shrine of the Serpent Eye. A massive stone serpent coils around a central altar. Its eyes are empty sockets, waiting to be filled with the power of the awakened entity. Offerings of gold, jewels, and blood cover the altar. This is where cultists come to worship. The air thrums with dark energy. You can feel the Serpent Eye's attention even through its prison\u2014it knows you're here, and it hungers. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: serpent_shrine"
+  },
+  {
+    "asset_id": "serpent_temple_ritual_preparation",
+    "name": "Ritual Preparation Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ritual Preparation Chamber. Where the cult prepares for major rituals. Tables are laden with ceremonial knives, chalices, robes marked with serpent symbols. Diagrams show the ritual circle's layout. Notes detail the timing\u2014midnight tonight. You check your timepiece. Three hours remain. There's still time to stop this. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: ritual_preparation"
+  },
+  {
+    "asset_id": "serpent_temple_hall_of_keys",
+    "name": "Hall of the Nine Keys",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hall of the Nine Keys. This chamber once held all ten keys. Nine pedestals stand empty\u2014you carry those keys. The tenth pedestal holds a glowing key pulsing with power. But it's already been moved to the inner sanctum for the ritual. The cult is meticulous\u2014they kept detailed records here of each key's recovery. You see your own adventures documented: 'Heroes recovered fourth key\u2014eliminated.' Except you survived. Now you're here to finish it. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: hall_of_keys"
+  },
+  {
+    "asset_id": "serpent_temple_barracks",
+    "name": "Cult Barracks",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Barracks. Where the cult's army rests between battles. Bunks line the walls. Most cultists are at the ritual or fighting in the town, but a rear guard remains. Weapons and armor are stacked neatly. These aren't random fanatics\u2014this is a trained, disciplined force. You're fighting an army, not just a cult. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: barracks"
+  },
+  {
+    "asset_id": "serpent_temple_armory",
+    "name": "Cult Armory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Armory. Racks of weapons and armor\u2014enough to equip hundreds. Swords, spears, bows, chainmail, shields. All marked with the serpent symbol. The cult wasn't just preparing for a ritual; they were preparing for war. If you fail tonight, this army will march across Aerthos unopposed. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: armory"
+  },
+  {
+    "asset_id": "serpent_temple_training_hall",
+    "name": "Combat Training Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Combat Training Hall. A large chamber where cultists train for battle. Training dummies, weapon racks, combat circles marked on the floor. The cult doesn't just indoctrinate\u2014they drill their members relentlessly. Every cultist you've faced was trained here. This explains their discipline and skill. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: training_hall"
+  },
+  {
+    "asset_id": "serpent_temple_torture_chamber",
+    "name": "Chamber of Torment",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Torment. The horror of this place hits you like a physical blow. Torture implements line the walls. Bloodstains cover the floor. Screams echo from deeper in\u2014prisoners are still here, still alive. The cult tortured anyone who opposed them, extracting information and breaking wills. You hear voices crying for help. You can't leave them here. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: torture_chamber"
+  },
+  {
+    "asset_id": "serpent_temple_prison_cells",
+    "name": "Prisoner Cells",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Prisoner Cells. Barred cells hold the cult's prisoners\u2014townsfolk, travelers, anyone who stood against them. You unlock the cells. Weak, malnourished prisoners stumble out. 'Thank you,' they whisper. 'We thought no one would come.' You direct them to flee through the rear exit. Not everyone dies tonight. Some will survive because of you. That has to count for something. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: prison_cells"
+  },
+  {
+    "asset_id": "serpent_temple_champion_arena",
+    "name": "Arena of the Serpent Champion",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Arena of the Serpent Champion. A circular arena surrounded by stone benches. This is where the cult's champion tests those deemed 'worthy' to face the Serpent's Voice. The champion stands in the center, clad in serpent-scale armor, wielding a massive greatsword wreathed in dark energy. 'You've come far,' they say. 'But your journey ends here. Prove your worth\u2014or die like the rest.' The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: champion_arena"
+  },
+  {
+    "asset_id": "serpent_temple_antechamber",
+    "name": "Ritual Antechamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ritual Antechamber. The chamber before the inner sanctum. Powerful wards crackle in the air, serpent runes glowing on every surface. The cult's high priest guards the passage, staff raised, channeling power from the ritual beyond. 'None shall pass!' he roars. 'The Serpent awakens! The age of chaos begins! You are too late\u2014the ritual is nearly complete!' The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: antechamber"
+  },
+  {
+    "asset_id": "serpent_temple_voice_chamber",
+    "name": "The Serpent's Voice - Personal Sanctum",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of The Serpent's Voice - Personal Sanctum. The personal chamber of the cult's leader. Luxurious furnishings contrast with the horror beyond. Books on ancient prophecies lie open. A journal details the Voice's journey\u2014how they discovered the Serpent Eye's existence, became obsessed, built the cult from nothing over thirty years. This was one person's mad vision, and thousands died for it. They're not here\u2014they're in the ritual chamber, conducting the final ceremony. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: voice_chamber"
+  },
+  {
+    "asset_id": "serpent_temple_inner_sanctum",
+    "name": "The Serpent's Eye - Final Ritual Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of The Serpent's Eye - Final Ritual Chamber. The heart of it all. A massive chamber carved with serpent runes that pulse with sickly green light. In the center, a ritual circle contains all ten keys, arranged in a pattern of ultimate power. The Serpent's Voice stands at the altar, arms raised, chanting in a language that predates humanity. Behind them, reality itself cracks\u2014a glimpse of the prison breaking, of something vast and terrible beginning to emerge. The Awakened Serpent\u2014a fragment of the entity given form\u2014coils around the altar, reality warping in its presence.\n\nThe Voice turns to face you, and you see their face for the first time. They're smiling. 'You're too late. The keys are in place. The Serpent Eye awakens. All your struggles, all your victories\u2014they were meaningless. This world ends tonight, and a new age begins in blood and chaos!'\n\nThe Awakened Serpent roars. Elite cultists move to flank the Voice. This is it. Everything has led to this moment. The fate of Aerthos\u2014of reality itself\u2014rests on this battle.\n\nYou raise your weapon. 'Not while I still draw breath.' The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/serpent_temple.json - Room: inner_sanctum"
+  }
+]

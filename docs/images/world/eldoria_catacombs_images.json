@@ -1,0 +1,274 @@
+[
+  {
+    "asset_id": "eldoria_catacombs_map",
+    "name": "Map of Eldoria Catacombs",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Eldoria Catacombs. Ancient burial tunnels beneath the city, now corrupted by cult magic and devil-worship.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json"
+  },
+  {
+    "asset_id": "eldoria_catacombs_secret_entrance",
+    "name": "Secret Entrance - Wine Cellar",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Secret Entrance - Wine Cellar. Krane's estate wine cellar. Expensive bottles line the walls\u2014a facade of respectability. A hidden door behind a wine rack leads down into darkness. The smell of brimstone wafts up from below, mixing with aged vintages. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: secret_entrance"
+  },
+  {
+    "asset_id": "eldoria_catacombs_upper_catacombs",
+    "name": "Upper Catacombs - Hall of Bones",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Upper Catacombs - Hall of Bones. Ancient burial niches line the walls, their occupants long since turned to dust. Fresher corpses lie scattered about\u2014Krane's failed experiments and sacrifices. Passages branch in multiple directions, deeper into the catacombs. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: upper_catacombs"
+  },
+  {
+    "asset_id": "eldoria_catacombs_noble_tombs",
+    "name": "Noble Tombs - Ancient Nobility",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Noble Tombs - Ancient Nobility. Ornate tombs of Eldoria's founding families. Marble sarcophagi bear the names of merchant princes and war heroes from centuries past. Someone has defaced them with cult symbols, and the tombs have been looted. Spectral guardians still linger, angry at the desecration. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: noble_tombs"
+  },
+  {
+    "asset_id": "eldoria_catacombs_ossuary",
+    "name": "The Great Ossuary",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of The Great Ossuary. A vast chamber where thousands of bones have been arranged in geometric patterns on the walls\u2014skulls, femurs, ribs all creating macabre art. In the center, a shrine to some forgotten death god has been repurposed for serpent worship. The bones whisper in the darkness. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: ossuary"
+  },
+  {
+    "asset_id": "eldoria_catacombs_collapsed_passage",
+    "name": "Collapsed Passage - Ancient Vault",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Collapsed Passage - Ancient Vault. Part of the catacombs has collapsed here, but someone has dug through the rubble. Beyond lies an ancient vault that predates the catacombs themselves\u2014perhaps a tomb from the city that stood here before Eldoria. Strange runes glow faintly on the walls, and treasure glints in the darkness. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: collapsed_passage"
+  },
+  {
+    "asset_id": "eldoria_catacombs_guard_post",
+    "name": "Cult Guard Post - Checkpoint",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Guard Post - Checkpoint. A chamber converted into a guardroom. Weapons, armor, and supplies are stacked here. A roster on the wall lists patrol schedules and guard rotations. Cultist guards rest between patrols, playing dice and drinking wine stolen from Krane's cellars. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: guard_post"
+  },
+  {
+    "asset_id": "eldoria_catacombs_training_chamber",
+    "name": "Training Chamber - Cult Warriors",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Training Chamber - Cult Warriors. An underground training hall where cultists practice swordplay and combat magic. Training dummies are torn apart, targets are riddled with arrows, and scorch marks scar the walls. A weapons rack holds quality steel\u2014Krane equips his followers well. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: training_chamber"
+  },
+  {
+    "asset_id": "eldoria_catacombs_armory",
+    "name": "Cult Armory - Equipment Storage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Armory - Equipment Storage. Racks of weapons and armor line the walls. Krane has been arming his cult with military-grade equipment\u2014swords, crossbows, chainmail, shields. Enough gear to outfit a small army. Supply crates bear marks from the city guard armory. Krane's corruption runs deep. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: armory"
+  },
+  {
+    "asset_id": "eldoria_catacombs_cult_barracks",
+    "name": "Cult Barracks - Living Quarters",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Barracks - Living Quarters. Rows of bunks line this converted crypt. Cult members live down here full-time, isolated from the city above. Personal effects reveal they come from all walks of life\u2014merchants, soldiers, scholars, even priests. All seduced by Krane's promises of power. A supply tunnel leads to a hidden safe area. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: cult_barracks"
+  },
+  {
+    "asset_id": "eldoria_catacombs_escape_tunnel",
+    "name": "Escape Tunnel - Hidden Refuge",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Escape Tunnel - Hidden Refuge. A secret tunnel that leads to the city sewers\u2014Krane's emergency exit if the cult is discovered. It's clean, dry, and quiet, far from the main cult operations. You can rest here safely without alerting Krane's forces. A ladder leads up to a sewer grate. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: escape_tunnel"
+  },
+  {
+    "asset_id": "eldoria_catacombs_supply_depot",
+    "name": "Supply Depot - Logistics Hub",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Supply Depot - Logistics Hub. Crates and barrels are stacked floor to ceiling. Food, water, alchemical components, spell reagents, weapons, armor\u2014everything needed to run a hidden cult. Manifests reveal a supply chain stretching across three cities. The cult is larger than you thought. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: supply_depot"
+  },
+  {
+    "asset_id": "eldoria_catacombs_torture_chamber",
+    "name": "Torture Chamber - Interrogation Room",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Torture Chamber - Interrogation Room. A chamber of horrors. Torture devices line the walls\u2014racks, iron maidens, braziers of hot coals. Blood stains everything. This is where Krane extracts information from his enemies and punishes traitors. Some prisoners still hang in chains, barely alive, driven mad by pain and dark magic. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: torture_chamber"
+  },
+  {
+    "asset_id": "eldoria_catacombs_ritual_preparation",
+    "name": "Ritual Preparation Chamber - Dark Laboratory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ritual Preparation Chamber - Dark Laboratory. Tables covered with ritual implements, dark tomes, and alchemical equipment. This is where Krane prepares his dark magic. Spell books lie open to summoning rituals. Vials of blood are labeled by victim. A map shows ley lines converging beneath Eldoria. Stairs descend to the infernal wing. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: ritual_preparation"
+  },
+  {
+    "asset_id": "eldoria_catacombs_kranes_study",
+    "name": "Krane's Private Study - Noble's Library",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Krane's Private Study - Noble's Library. Krane's personal library and office. Bookshelves hold volumes on politics, history, magic, and demonology. His desk is covered with correspondence\u2014blackmail material on every noble family in Eldoria. A hidden compartment contains evidence of his thirty-year conspiracy. This is where the merchant prince became a devil's pawn. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: kranes_study"
+  },
+  {
+    "asset_id": "eldoria_catacombs_alchemical_laboratory",
+    "name": "Alchemical Laboratory - Experiment Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Alchemical Laboratory - Experiment Chamber. A sophisticated laboratory with alembics, retorts, and arcane equipment. Krane experiments with dark alchemy here\u2014potions of domination, poisons, transformation elixirs. Caged creatures show signs of mutation. Notes describe experiments to create devil-touched servants. Some experiments are still... active. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: alchemical_laboratory"
+  },
+  {
+    "asset_id": "eldoria_catacombs_treasure_vault",
+    "name": "Krane's Treasure Vault - Private Wealth",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Krane's Treasure Vault - Private Wealth. Krane's personal fortune. Gold, platinum, gems, art, magic items\u2014the accumulated wealth of thirty years ruling Eldoria. This is how he bought loyalty and funded the cult. Traps protect the most valuable items. An iron door leads down to the infernal sanctum. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: treasure_vault"
+  },
+  {
+    "asset_id": "eldoria_catacombs_summoning_circle",
+    "name": "Summoning Circle - Infernal Gateway",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Summoning Circle - Infernal Gateway. A permanent summoning circle etched in silver and blood. The air shimmers with heat. This is where Krane summons devils from the Nine Hells. Scorch marks show dozens of summonings. The circle thrums with infernal power, and portals occasionally flicker open, revealing glimpses of fire and torment. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: summoning_circle"
+  },
+  {
+    "asset_id": "eldoria_catacombs_imp_kennels",
+    "name": "Imp Kennels - Devil Servants",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Imp Kennels - Devil Servants. Small cells hold bound imps\u2014lesser devils enslaved to Krane's service. They spy, deliver messages, and serve as familiars for cult sorcerers. The imps screech and hiss, straining against their magical bindings. Some have been here for decades. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: imp_kennels"
+  },
+  {
+    "asset_id": "eldoria_catacombs_contract_chamber",
+    "name": "Contract Chamber - Devil's Bargain",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Contract Chamber - Devil's Bargain. The original pact chamber. Thirty years ago, Valerius Krane\u2014then a minor noble\u2014made his bargain here. The contract is written in blood on parchment that never ages: wealth, power, and long life in exchange for his soul and service to the cult. Witnessing devils signed it. A passage leads to Krane's final sanctum. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: contract_chamber"
+  },
+  {
+    "asset_id": "eldoria_catacombs_devils_sanctum",
+    "name": "Devil's Sanctum - Krane's Final Stand",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Devil's Sanctum - Krane's Final Stand. The deepest chamber, where Krane made his pact. A pentagram of iron is burned into the floor, and infernal flames burn without consuming. Syndic Valerius Krane stands in the center, robed in crimson and black, dark magic crackling around his hands. A massive barbed devil looms beside him\u2014his patron and jailer. Two serpent keys rest on a pedestal behind them. 'You've come far, fools,' Krane sneers. 'But you cannot stop what's already begun. The rift is opening, and Eldoria will burn!' The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/eldoria_catacombs.json - Room: devils_sanctum"
+  }
+]

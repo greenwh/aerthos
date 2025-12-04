@@ -1,0 +1,248 @@
+[
+  {
+    "asset_id": "elemental_chaos_map",
+    "name": "Map of Elemental Chaos",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Elemental Chaos. A pocket dimension where the primal elements clash in eternal conflict. Reality itself is unstable.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json"
+  },
+  {
+    "asset_id": "elemental_chaos_portal_chamber",
+    "name": "Portal Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Portal Chamber. The Archmage's portal flickers unstably. Through it, you see a realm of impossible geometries and conflicting elements. Fire flows upward like water. Stone floats. The very air screams with primal energy. This is your last chance to turn back\u2014beyond lies the Elemental Chaos, where reality itself has no meaning. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: portal_chamber"
+  },
+  {
+    "asset_id": "elemental_chaos_chaos_nexus",
+    "name": "Chaos Nexus",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "variable lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chaos Nexus. The center of the pocket dimension. Four paths lead to the elemental keystones, each one pulsing with distinct energy. The Herald's voice echoes from everywhere and nowhere: 'You dare intrude upon the Prince's domain? You will be unmade!' Reality shifts here\u2014the floor is sometimes ceiling, walls sometimes vanish. A passageway to the south leads to what looks like a laboratory, while an eastern tunnel seems to lead to an armory. The scene is lit with variable lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: chaos_nexus"
+  },
+  {
+    "asset_id": "elemental_chaos_fire_approach",
+    "name": "Approach to the Inferno",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Approach to the Inferno. Rivers of lava flow upward, defying gravity. The heat is intense\u2014your skin blisters just from proximity. Flames freeze into solid crystal, then shatter and reform as liquid fire. Cultist elementalists work at forges ahead, their bodies already showing signs of transformation. They're crafting weapons of elemental fire. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: fire_approach"
+  },
+  {
+    "asset_id": "elemental_chaos_fire_forge",
+    "name": "Elemental Forge",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Elemental Forge. A massive forge where the cult creates weapons infused with elemental fire. Anvils float in mid-air. Hammers strike themselves. The forge-master was once human, but now his entire body is living flame. He shapes molten metal with his bare hands, cackling as weapons take form. The keystone chamber lies beyond. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: fire_forge"
+  },
+  {
+    "asset_id": "elemental_chaos_fire_keystone",
+    "name": "Chamber of Flame",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Flame. A realm of eternal fire. Lava flows upward into impossible spirals. Flames freeze solid then shatter like glass. The Fire Keystone hovers in the center, a ruby the size of a human head, pulsing with heat. The Transformed Pyromancer stands before it, his body now entirely composed of living flame. 'You cannot withstand the Prince's fire!' he roars. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: fire_keystone"
+  },
+  {
+    "asset_id": "elemental_chaos_water_depths",
+    "name": "Drowning Halls",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Drowning Halls. Water exists in impossible states here. Spheres of ocean float in mid-air. You can breathe underwater but drown in air. Gravity pulls in random directions. Cultists swim through the air, their bodies taking on aquatic features\u2014gills, fins, scales. They're guarding the path to the Water Keystone. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: water_depths"
+  },
+  {
+    "asset_id": "elemental_chaos_water_abyss",
+    "name": "The Infinite Abyss",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of The Infinite Abyss. An ocean suspended in space, extending infinitely in all directions. Pressure crushes from all sides, yet you can still move. Strange aquatic creatures\u2014or are they water elementals?\u2014drift past. The Water Keystone is visible ahead, a sapphire suspended in a massive sphere of water. The Hydromancer waits within, her body now more water than flesh. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: water_abyss"
+  },
+  {
+    "asset_id": "elemental_chaos_water_keystone",
+    "name": "Chamber of Depths",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Depths. An impossible ocean suspended in mid-air. Water spheres float and merge, forming temporary seas that vanish moments later. The Water Keystone sits at the center, defended by the Transformed Hydromancer. She flows like water itself, reforming when struck, her laughter bubbling like a stream. 'The Prince's waters will drown your world,' she whispers. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: water_keystone"
+  },
+  {
+    "asset_id": "elemental_chaos_earth_caverns",
+    "name": "Caverns of Floating Stone",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Caverns of Floating Stone. A maze of floating boulders and inverted caverns. Gravity shifts unpredictably\u2014one moment you're walking on the ceiling, the next you're falling upward. Cultists move through the stone as if swimming, their bodies hardening into living rock. Crystal formations grow and shatter in impossible patterns. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: earth_caverns"
+  },
+  {
+    "asset_id": "elemental_chaos_earth_crystal",
+    "name": "Crystal Labyrinth",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Crystal Labyrinth. A maze of massive crystal formations, each one reflecting and refracting reality. You see yourself from impossible angles. Paths that should exist don't; paths that shouldn't do. The crystals sing with a deep, resonant hum. Elemental guardians made of stone and metal patrol here, tireless and merciless. The keystone chamber lies beyond. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: earth_crystal"
+  },
+  {
+    "asset_id": "elemental_chaos_earth_keystone",
+    "name": "Chamber of Stone",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Stone. A maze of floating boulders and crystal formations. Gravity shifts randomly\u2014walking becomes swimming becomes falling becomes flying. The Earth Keystone is embedded in a massive crystal at the chamber's center, a topaz the size of a shield. The Transformed Geomancer guards it, his body now entirely composed of living stone. He moves with grinding, inevitable force. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: earth_keystone"
+  },
+  {
+    "asset_id": "elemental_chaos_air_platforms",
+    "name": "Floating Platforms",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Floating Platforms. Platforms of solidified air drift through an endless sky. Below is nothing\u2014infinite void. Above, storm clouds swirl. Wind howls from all directions at once, sometimes lifting you, sometimes trying to hurl you into the abyss. Cultists ride the winds, their bodies becoming lighter, more insubstantial. They laugh as they soar past. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: air_platforms"
+  },
+  {
+    "asset_id": "elemental_chaos_air_tempest",
+    "name": "Heart of the Tempest",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "variable lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Heart of the Tempest. An eternal storm given physical form. Lightning arcs between clouds. Thunder shakes reality. You stand at the eye of a hurricane that extends infinitely in all directions. Storm elementals circle overhead, crackling with electricity. The Aeromancer is somewhere within the storm, or perhaps he is the storm itself now. The keystone chamber lies ahead. The scene is lit with variable lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: air_tempest"
+  },
+  {
+    "asset_id": "elemental_chaos_air_keystone",
+    "name": "Chamber of Storms",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Storms. Eternal tempests rage. Lightning arcs between floating platforms of solidified cloud. The Air Keystone spins in a tornado's heart, an opal that glows with inner light. The Transformed Aeromancer defends it\u2014or perhaps he is it. His body is now wind and lightning, barely visible, constantly shifting. 'The Prince's storms will scour your world clean!' his voice thunders. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: air_keystone"
+  },
+  {
+    "asset_id": "elemental_chaos_cultist_laboratory",
+    "name": "Laboratory of Transformation",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Laboratory of Transformation. A chamber where the cult conducts its terrible experiments. Crystalline vats hold victims in various stages of elemental transformation\u2014skin turning to stone, bodies becoming water, flesh transmuting to flame. Research notes are scattered everywhere. The cult's goal is clear: to transform all of humanity into elemental servants for their Prince. The horror of it makes you sick. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: cultist_laboratory"
+  },
+  {
+    "asset_id": "elemental_chaos_elemental_armory",
+    "name": "Armory of the Elements",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Armory of the Elements. Weapons and armor crafted from pure elemental energy hang on walls that shift between solid and liquid. A sword of living fire. A shield of flowing water. Armor made of wind. The cult has been arming itself for war. An elemental guardian stands watch, ready to destroy anyone who tries to take the weapons without the proper authorization\u2014which you certainly don't have. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: elemental_armory"
+  },
+  {
+    "asset_id": "elemental_chaos_convergence_vault",
+    "name": "Vault of Elemental Convergence",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "variable lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Vault of Elemental Convergence. A chamber where all four elements clash simultaneously. Fire burns water. Earth crushes air. Reality tears itself apart trying to reconcile the contradictions. The cult used this place to store their most valuable treasures\u2014items that could only be created where all elements converge. But the guardians here are powerful beyond measure: hybrid elementals born of the convergence itself. The scene is lit with variable lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: convergence_vault"
+  },
+  {
+    "asset_id": "elemental_chaos_herald_chamber",
+    "name": "Herald's Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Herald's Chamber. The pocket dimension collapses inward to this point. All four elements swirl in a maelstrom of chaos. The Elemental Prince's Herald materializes\u2014a being of pure elemental chaos, shifting between fire, water, earth, and air with each moment. The Eighth and Ninth Keys hover behind it, protected by an elemental shield. 'You have destroyed the keystones,' it intones, its voice like thunder and avalanche and wildfire and flood all at once. 'But you will not leave this place alive! The Prince's will shall be done!' The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/elemental_chaos.json - Room: herald_chamber"
+  }
+]

@@ -1,0 +1,248 @@
+[
+  {
+    "asset_id": "sunken_temple_map",
+    "name": "Map of Sunken Temple",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Sunken Temple. An ancient temple rising from the Whispering Marshes, pulsing with serpent-green magic.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json"
+  },
+  {
+    "asset_id": "sunken_temple_temple_entrance",
+    "name": "Temple Threshold",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Temple Threshold. Massive stone doors stand open, revealing stairs descending into green-lit darkness. Water drips from the ceiling. Serpent statues flank the entrance, their eyes seeming to follow your movement. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: temple_entrance"
+  },
+  {
+    "asset_id": "sunken_temple_outer_sanctum",
+    "name": "Outer Sanctum",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Outer Sanctum. A circular chamber with a flooded floor. Green light emanates from beneath the water. Ancient pillars carved with serpents rise from the depths. Passages lead deeper into the temple's four wings, and stairs descend into darkness. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: outer_sanctum"
+  },
+  {
+    "asset_id": "sunken_temple_offering_chamber",
+    "name": "Chamber of Offerings",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Chamber of Offerings. Stone altars stained with old blood line the walls. Recent offerings\u2014coins, weapons, jewelry\u2014lie scattered about. Something valuable glints in the shadows. A passage north leads deeper into the ritual wing, and another east continues to more sacred chambers. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: offering_chamber"
+  },
+  {
+    "asset_id": "sunken_temple_drowned_library",
+    "name": "Drowned Library",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Drowned Library. Shelves of waterlogged books and scrolls. Most are ruined, but some texts remain readable, written in ancient scripts. Cultist notes and maps are scattered on a stone table. Passages lead west to more archives and north to a working scriptorium. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: drowned_library"
+  },
+  {
+    "asset_id": "sunken_temple_hall_of_coils",
+    "name": "Hall of Serpent Coils",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hall of Serpent Coils. A long hall lined with massive serpent statues. Their coils wrap around pillars reaching to the vaulted ceiling. The floor is covered in knee-deep water that reflects the eerie green light. A massive door to the north guards the temple's inner chambers. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: hall_of_coils"
+  },
+  {
+    "asset_id": "sunken_temple_inner_sanctum",
+    "name": "Inner Sanctum - Heart of the Temple",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Inner Sanctum - Heart of the Temple. The temple's central chamber. A massive pool of dark water fills the center, glowing with unnatural light. The serpent altar rises from the pool's center. High Priest Korvash stands before it, arms raised, chanting in a language that makes your ears bleed. Around the pool, cultists join in the ritual. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: inner_sanctum"
+  },
+  {
+    "asset_id": "sunken_temple_purification_pool",
+    "name": "Purification Pool",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Purification Pool. A circular chamber with a large ceremonial pool at its center. The water glows with a faint green luminescence. Stone benches line the walls where cultists would have prepared for rituals. Wet footprints lead north toward sounds of chanting. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: purification_pool"
+  },
+  {
+    "asset_id": "sunken_temple_sacrifice_altar",
+    "name": "Altar of Sacrifice",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Altar of Sacrifice. A grim chamber dominated by a massive stone altar carved with serpent imagery. Fresh and old bloodstains cover the altar and floor. Chains hang from the ceiling, and ritual implements are scattered about. The air reeks of death and dark magic. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: sacrifice_altar"
+  },
+  {
+    "asset_id": "sunken_temple_blood_reservoir",
+    "name": "Blood Reservoir",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Blood Reservoir. A flooded chamber where the temple stores ritual components. Large clay vessels float in dark water that has a disturbing reddish tint. The smell is overwhelming. Ancient preservation magic keeps the contents from spoiling. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: blood_reservoir"
+  },
+  {
+    "asset_id": "sunken_temple_scriptorium",
+    "name": "Temple Scriptorium",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Temple Scriptorium. A working chamber where cultist scholars translate ancient texts. Desks are covered with scrolls, quills, and ink pots. Some texts describe the ritual to awaken the Serpent Eye, others detail the locations of the ten keys. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: scriptorium"
+  },
+  {
+    "asset_id": "sunken_temple_hall_of_records",
+    "name": "Hall of Records",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hall of Records. Ancient temple archives line the walls from floor to ceiling. Stone tablets, clay cylinders, and waterproofed scrolls document centuries of serpent worship. Much of it is in dead languages, but recent cult additions are readable. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: hall_of_records"
+  },
+  {
+    "asset_id": "sunken_temple_priests_study",
+    "name": "High Priest's Study",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of High Priest's Study. A personal chamber for the temple's highest clergy. Luxurious furnishings mix with scholarly materials. Korvash's personal notes are spread across a desk, detailing his communication with the cult's supreme leader and the plan to raise the temple from the marsh. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: priests_study"
+  },
+  {
+    "asset_id": "sunken_temple_guardian_chamber",
+    "name": "Guardian Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Guardian Chamber. A ceremonial antechamber before the inner sanctum. Four massive stone serpent statues stand in alcoves at the cardinal directions. As you enter, their eyes begin to glow green, and they animate with grinding stone sounds. They exist to prevent the unworthy from reaching the temple's heart. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: guardian_chamber"
+  },
+  {
+    "asset_id": "sunken_temple_cultist_quarters",
+    "name": "Cultist Living Quarters",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cultist Living Quarters. A cramped room with bedrolls, personal belongings, and crude furnishings. The cultists who tend the temple live here in squalid conditions, their devotion to the serpent overriding any need for comfort. Food stores and water barrels line one wall. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: cultist_quarters"
+  },
+  {
+    "asset_id": "sunken_temple_armory",
+    "name": "Temple Armory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Temple Armory. Weapon racks and armor stands line the walls. The cult has stockpiled weapons here\u2014swords, spears, bows, and shields bearing the serpent eye symbol. Some items are well-maintained, others are ancient temple relics pressed back into service. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: armory"
+  },
+  {
+    "asset_id": "sunken_temple_flooded_passage",
+    "name": "Flooded Passage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Flooded Passage. This connecting passage has completely flooded with murky swamp water. The ceiling is only a foot above the water line, forcing you to wade through chest-deep water. Things move beneath the surface. The passage is treacherous and partially collapsed. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: flooded_passage"
+  },
+  {
+    "asset_id": "sunken_temple_ancient_crypt",
+    "name": "Ancient Burial Crypt",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ancient Burial Crypt. Deep beneath the temple lie the crypts of the original serpent priests. Stone sarcophagi line the walls, many with their lids pushed aside from within. The air is cold and still. Ancient grave goods glitter in the darkness, but the dead do not rest easy here. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: ancient_crypt"
+  },
+  {
+    "asset_id": "sunken_temple_vault_of_serpents",
+    "name": "Vault of Serpents - Hidden Treasury",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Vault of Serpents - Hidden Treasury. The temple's most sacred treasury. Golden serpent statues coil around pillars of jade and obsidian. Treasure chests overflow with coins, gems, and magical items accumulated over centuries. But deadly traps and guardian magic protect this wealth\u2014only the most skilled or desperate would dare enter. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/sunken_temple.json - Room: vault_of_serpents"
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "asset_id": "generic_shop_general_store",
+    "name": "General Store",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "general"
+    ],
+    "image_prompt": "Interior of a fantasy general shop named General Store. A well-stocked general store with adventuring supplies.",
+    "view_context": "aerthos/data/shops.json - Shop: general_store"
+  },
+  {
+    "asset_id": "generic_shop_weapon_shop",
+    "name": "The Forge",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "weapons"
+    ],
+    "image_prompt": "Interior of a fantasy weapons shop named The Forge. A smithy selling quality weapons and armor.",
+    "view_context": "aerthos/data/shops.json - Shop: weapon_shop"
+  },
+  {
+    "asset_id": "generic_shop_magic_shop",
+    "name": "The Arcane Emporium",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "magic"
+    ],
+    "image_prompt": "Interior of a fantasy magic shop named The Arcane Emporium. A mysterious shop selling magical items and scrolls.",
+    "view_context": "aerthos/data/shops.json - Shop: magic_shop"
+  },
+  {
+    "asset_id": "generic_shop_temple",
+    "name": "Temple of Light",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "temple"
+    ],
+    "image_prompt": "Interior of a fantasy temple shop named Temple of Light. A holy temple offering divine services.",
+    "view_context": "aerthos/data/shops.json - Shop: temple"
+  }
+]

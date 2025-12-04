@@ -1,0 +1,638 @@
+{
+  "goblin_scouts": {
+    "title": "Scout Elimination",
+    "description": "Goblin scouts have been spotted near the cave entrance. Eliminate them before they can warn the others.",
+    "episode_id": "episode_01",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "entrance"
+    },
+    "objectives": [
+      {
+        "id": "kill_scouts",
+        "description": "Defeat all goblin scouts in the outer caves",
+        "type": "kill_monster",
+        "target": "goblin",
+        "count": 3
+      }
+    ],
+    "rewards": {
+      "xp": 250,
+      "gold": 50,
+      "items": [],
+      "reputation": 5
+    },
+    "completion_flag": "scouts_eliminated",
+    "optional": true,
+    "hidden": false
+  },
+
+  "refugees_cache": {
+    "title": "The Refugees' Cache",
+    "description": "The displaced villagers mentioned they hid supplies before fleeing. Search for their cache.",
+    "episode_id": "episode_01",
+    "trigger_type": "search_room",
+    "trigger_conditions": {
+      "room_id": "storage_cave"
+    },
+    "objectives": [
+      {
+        "id": "find_cache",
+        "description": "Discover the hidden supply cache",
+        "type": "search_room",
+        "room_id": "storage_cave",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 300,
+      "gold": 100,
+      "items": ["healing_potion", "rations"],
+      "reputation": 10
+    },
+    "completion_flag": "cache_found",
+    "optional": true,
+    "hidden": true
+  },
+
+  "forgotten_cistern": {
+    "title": "The Forgotten Cistern",
+    "description": "An ancient cistern holds a terrible secret beneath the sewers. Something foul lurks in the depths.",
+    "episode_id": "episode_02",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "old_cistern"
+    },
+    "objectives": [
+      {
+        "id": "defeat_otyugh",
+        "description": "Defeat the Otyugh",
+        "type": "kill_monster",
+        "target": "otyugh",
+        "count": 1
+      },
+      {
+        "id": "search_cistern",
+        "description": "Search the cistern thoroughly",
+        "type": "search_room",
+        "room_id": "old_cistern",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 500,
+      "gold": 100,
+      "items": ["ring_protection_1"],
+      "reputation": 10
+    },
+    "completion_flag": "cistern_explored",
+    "optional": true,
+    "hidden": false
+  },
+
+  "rat_king": {
+    "title": "The Rat King",
+    "description": "The giant rats in the sewers seem organized. Their king must be nearby...",
+    "episode_id": "episode_02",
+    "trigger_type": "kill_monster",
+    "trigger_conditions": {
+      "monster_id": "giant_rat"
+    },
+    "objectives": [
+      {
+        "id": "find_rat_king",
+        "description": "Locate and defeat the Rat King",
+        "type": "kill_monster",
+        "target": "rat_king",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 400,
+      "gold": 150,
+      "items": ["leather_armor_1"],
+      "reputation": 15
+    },
+    "completion_flag": "rat_king_slain",
+    "optional": true,
+    "hidden": true
+  },
+
+  "silas_ledgers": {
+    "title": "Silas's Ledgers",
+    "description": "Find Silas's account ledgers. They may contain evidence of his crimes.",
+    "episode_id": "episode_03",
+    "trigger_type": "find_item",
+    "trigger_conditions": {
+      "item_id": "ledger_1"
+    },
+    "objectives": [
+      {
+        "id": "collect_ledgers",
+        "description": "Collect all three ledgers hidden in the warehouse",
+        "type": "collect_item",
+        "target": "ledger",
+        "count": 3
+      }
+    ],
+    "rewards": {
+      "xp": 750,
+      "gold": 200,
+      "items": [],
+      "reputation": 25
+    },
+    "completion_flag": "ledgers_collected",
+    "optional": true,
+    "hidden": false
+  },
+
+  "cursed_shipment": {
+    "title": "The Cursed Shipment",
+    "description": "A crate marked with strange symbols pulses with dark energy. Best to destroy it.",
+    "episode_id": "episode_03",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "cursed_goods_storage"
+    },
+    "objectives": [
+      {
+        "id": "destroy_crate",
+        "description": "Destroy the cursed crate and defeat its guardian",
+        "type": "kill_monster",
+        "target": "shadow",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 600,
+      "gold": 100,
+      "items": ["cloak_protection_1"],
+      "reputation": 20
+    },
+    "completion_flag": "cursed_crate_destroyed",
+    "optional": true,
+    "hidden": false
+  },
+
+  "rescue_dwarves": {
+    "title": "Rescue the Dwarven Smiths",
+    "description": "Two dwarven prisoners call out from behind iron bars! They are master smiths captured by the duergar.",
+    "episode_id": "episode_04",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "prison_cells"
+    },
+    "objectives": [
+      {
+        "id": "defeat_guards",
+        "description": "Defeat the duergar guards",
+        "type": "kill_monster",
+        "target": "duergar_guard",
+        "count": 2
+      },
+      {
+        "id": "free_dwarves",
+        "description": "Find the prison key and free the dwarves",
+        "type": "search_room",
+        "room_id": "prison_cells",
+        "count": 1
+      },
+      {
+        "id": "escort_dwarves",
+        "description": "Escort the dwarves to the entrance",
+        "type": "visit_room",
+        "room_id": "entrance_hall",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 1000,
+      "gold": 300,
+      "items": ["dwarven_warhammer_plus_2"],
+      "reputation": 30
+    },
+    "completion_flag": "dwarves_rescued",
+    "optional": true,
+    "hidden": false
+  },
+
+  "ancestral_forge": {
+    "title": "The Ancestral Forge",
+    "description": "The dwarven master forge still burns with eternal flames. Perhaps it can be relit...",
+    "episode_id": "episode_04",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "master_forge"
+    },
+    "objectives": [
+      {
+        "id": "find_coals",
+        "description": "Find the sacred coals to relight the forge",
+        "type": "collect_item",
+        "target": "sacred_coal",
+        "count": 1
+      },
+      {
+        "id": "defeat_forge_guardian",
+        "description": "Defeat the corrupted forge guardian",
+        "type": "kill_monster",
+        "target": "fire_elemental_lesser",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 1200,
+      "gold": 0,
+      "items": ["flaming_longsword_plus_1"],
+      "reputation": 25
+    },
+    "completion_flag": "forge_relit",
+    "optional": true,
+    "hidden": true
+  },
+
+  "serpent_eggs": {
+    "title": "Destroy the Serpent Eggs",
+    "description": "A clutch of giant serpent eggs throbs with unnatural life. Destroy them before they hatch!",
+    "episode_id": "episode_05",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "nesting_chamber"
+    },
+    "objectives": [
+      {
+        "id": "destroy_eggs",
+        "description": "Smash all serpent eggs in the nesting chamber",
+        "type": "search_room",
+        "room_id": "nesting_chamber",
+        "count": 1
+      },
+      {
+        "id": "defeat_mother",
+        "description": "Defeat the enraged serpent mother",
+        "type": "kill_monster",
+        "target": "giant_constrictor_serpent",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 1500,
+      "gold": 250,
+      "items": ["serpent_shield_plus_1"],
+      "reputation": 20
+    },
+    "completion_flag": "eggs_destroyed",
+    "optional": true,
+    "hidden": false
+  },
+
+  "temple_library": {
+    "title": "The Forbidden Library",
+    "description": "Ancient texts describe the serpent cult's origins. This knowledge could be valuable.",
+    "episode_id": "episode_05",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "knowledge_wing"
+    },
+    "objectives": [
+      {
+        "id": "collect_texts",
+        "description": "Collect ancient texts from the library",
+        "type": "collect_item",
+        "target": "ancient_text",
+        "count": 3
+      }
+    ],
+    "rewards": {
+      "xp": 800,
+      "gold": 0,
+      "items": ["scroll_protection_evil", "scroll_dispel_magic"],
+      "reputation": 15
+    },
+    "completion_flag": "library_explored",
+    "optional": true,
+    "hidden": false
+  },
+
+  "smugglers_cache": {
+    "title": "The Smuggler's Cache",
+    "description": "Rumors speak of a hidden cache used by smugglers. Finding it could yield valuable contraband.",
+    "episode_id": "episode_06",
+    "trigger_type": "search_room",
+    "trigger_conditions": {
+      "room_id": "old_warehouse"
+    },
+    "objectives": [
+      {
+        "id": "find_cache",
+        "description": "Discover the smuggler's hidden cache",
+        "type": "search_room",
+        "room_id": "old_warehouse",
+        "count": 1
+      },
+      {
+        "id": "defeat_smuggler_leader",
+        "description": "Defeat the smuggler gang leader who arrives",
+        "type": "kill_monster",
+        "target": "bandit_captain",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 700,
+      "gold": 350,
+      "items": ["potion_invisibility"],
+      "reputation": 20
+    },
+    "completion_flag": "cache_found",
+    "optional": true,
+    "hidden": true
+  },
+
+  "sea_hag_lair": {
+    "title": "The Sea Hag's Lair",
+    "description": "A foul sea hag has been terrorizing the coastal waters. Her lair lies within the stronghold.",
+    "episode_id": "episode_06",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "tidal_grotto"
+    },
+    "objectives": [
+      {
+        "id": "defeat_sea_hag",
+        "description": "Slay the sea hag",
+        "type": "kill_monster",
+        "target": "sea_hag",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 600,
+      "gold": 200,
+      "items": ["pearl_of_power"],
+      "reputation": 15
+    },
+    "completion_flag": "hag_slain",
+    "optional": true,
+    "hidden": false
+  },
+
+  "drowned_king": {
+    "title": "The Drowned King",
+    "description": "A spectral figure sits upon a barnacle-encrusted throne. This undead monarch guards terrible secrets.",
+    "episode_id": "episode_07",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "sunken_throne_room"
+    },
+    "objectives": [
+      {
+        "id": "defeat_drowned_king",
+        "description": "Defeat the Drowned King",
+        "type": "kill_monster",
+        "target": "drowned_king",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 800,
+      "gold": 400,
+      "items": ["trident_of_depths_plus_2"],
+      "reputation": 20
+    },
+    "completion_flag": "king_defeated",
+    "optional": true,
+    "hidden": false
+  },
+
+  "tide_stone": {
+    "title": "Recover the Tide Stone",
+    "description": "Ancient murals depict a powerful artifact - the Tide Stone - broken into three pieces and hidden.",
+    "episode_id": "episode_07",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "ancient_shrine"
+    },
+    "objectives": [
+      {
+        "id": "collect_stone_fragments",
+        "description": "Collect all three fragments of the Tide Stone",
+        "type": "collect_item",
+        "target": "tide_stone_fragment",
+        "count": 3
+      }
+    ],
+    "rewards": {
+      "xp": 700,
+      "gold": 0,
+      "items": ["amulet_water_breathing", "ring_water_walking"],
+      "reputation": 25
+    },
+    "completion_flag": "tide_stone_recovered",
+    "optional": true,
+    "hidden": true
+  },
+
+  "crypt_keepers_secret": {
+    "title": "The Crypt Keepers' Secret",
+    "description": "Four braziers surround the central tomb. An ancient inscription hints at their proper sequence.",
+    "episode_id": "episode_08",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "central_crypt"
+    },
+    "objectives": [
+      {
+        "id": "activate_braziers",
+        "description": "Light the four braziers in the correct sequence",
+        "type": "search_room",
+        "room_id": "central_crypt",
+        "count": 1
+      },
+      {
+        "id": "defeat_guardian",
+        "description": "Defeat the tomb guardian that awakens",
+        "type": "kill_monster",
+        "target": "tomb_guardian",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 750,
+      "gold": 300,
+      "items": ["scroll_raise_dead"],
+      "reputation": 15
+    },
+    "completion_flag": "secret_unlocked",
+    "optional": true,
+    "hidden": false
+  },
+
+  "destroy_phylactery": {
+    "title": "Destroy the Phylactery",
+    "description": "A lich's phylactery pulses with dark energy in a hidden chamber. Destroy it to weaken the undead hordes.",
+    "episode_id": "episode_08",
+    "trigger_type": "find_item",
+    "trigger_conditions": {
+      "item_id": "phylactery"
+    },
+    "objectives": [
+      {
+        "id": "destroy_phylactery",
+        "description": "Smash the phylactery upon the altar of good",
+        "type": "search_room",
+        "room_id": "blessed_chapel",
+        "count": 1
+      },
+      {
+        "id": "survive_lich_wrath",
+        "description": "Survive the lich's wrathful attack",
+        "type": "kill_monster",
+        "target": "lich",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 650,
+      "gold": 500,
+      "items": ["staff_striking_plus_2"],
+      "reputation": 30
+    },
+    "completion_flag": "phylactery_destroyed",
+    "optional": true,
+    "hidden": true
+  },
+
+  "captive_knights": {
+    "title": "Free the Captive Knights",
+    "description": "Elite knights from the Order of the Silver Star are imprisoned here. They could aid in the final battle.",
+    "episode_id": "episode_09",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "sacrificial_chamber"
+    },
+    "objectives": [
+      {
+        "id": "defeat_captors",
+        "description": "Defeat the serpent priest guards",
+        "type": "kill_monster",
+        "target": "serpent_priest",
+        "count": 3
+      },
+      {
+        "id": "free_knights",
+        "description": "Free the imprisoned knights",
+        "type": "search_room",
+        "room_id": "sacrificial_chamber",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 1000,
+      "gold": 600,
+      "items": ["holy_avenger_longsword_plus_2"],
+      "reputation": 40
+    },
+    "completion_flag": "knights_freed",
+    "optional": true,
+    "hidden": false
+  },
+
+  "serpent_prophet": {
+    "title": "The Serpent Prophet",
+    "description": "A powerful serpent prophet conducts dark rituals in a hidden sanctum. Stop him before the ritual completes!",
+    "episode_id": "episode_09",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "dark_sanctum"
+    },
+    "objectives": [
+      {
+        "id": "defeat_prophet",
+        "description": "Defeat the Serpent Prophet before the ritual completes",
+        "type": "kill_monster",
+        "target": "serpent_prophet",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 900,
+      "gold": 700,
+      "items": ["serpent_staff_plus_3"],
+      "reputation": 35
+    },
+    "completion_flag": "prophet_defeated",
+    "optional": true,
+    "hidden": false
+  },
+
+  "seal_the_portal": {
+    "title": "Seal the Serpent Portal",
+    "description": "A dimensional portal brings serpent reinforcements. Seal it to make the final battle more manageable.",
+    "episode_id": "episode_10",
+    "trigger_type": "enter_room",
+    "trigger_conditions": {
+      "room_id": "portal_chamber"
+    },
+    "objectives": [
+      {
+        "id": "collect_seal_fragments",
+        "description": "Collect the three seal fragments scattered in the temple",
+        "type": "collect_item",
+        "target": "seal_fragment",
+        "count": 3
+      },
+      {
+        "id": "activate_seal",
+        "description": "Place the seal fragments and close the portal",
+        "type": "search_room",
+        "room_id": "portal_chamber",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 900,
+      "gold": 0,
+      "items": ["ring_spell_storing"],
+      "reputation": 50
+    },
+    "completion_flag": "portal_sealed",
+    "optional": true,
+    "hidden": false
+  },
+
+  "ancient_weapon": {
+    "title": "The Sunblade",
+    "description": "Legends tell of an ancient weapon - the Sunblade - hidden within the temple. It was forged to slay serpent gods.",
+    "episode_id": "episode_10",
+    "trigger_type": "search_room",
+    "trigger_conditions": {
+      "room_id": "armory_vault"
+    },
+    "objectives": [
+      {
+        "id": "find_sunblade",
+        "description": "Locate the legendary Sunblade",
+        "type": "search_room",
+        "room_id": "armory_vault",
+        "count": 1
+      },
+      {
+        "id": "prove_worthy",
+        "description": "Prove worthy by defeating the blade's guardian",
+        "type": "kill_monster",
+        "target": "solar",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "xp": 800,
+      "gold": 0,
+      "items": ["sunblade_plus_3"],
+      "reputation": 45
+    },
+    "completion_flag": "sunblade_claimed",
+    "optional": true,
+    "hidden": true
+  }
+}

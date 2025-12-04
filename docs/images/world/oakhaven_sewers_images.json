@@ -1,0 +1,248 @@
+[
+  {
+    "asset_id": "oakhaven_sewers_map",
+    "name": "Map of Oakhaven Sewers",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Oakhaven Sewers. Dark tunnels beneath the town, filled with filth and cultist activity.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json"
+  },
+  {
+    "asset_id": "oakhaven_sewers_entrance",
+    "name": "Sewer Entrance",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Sewer Entrance. The old well shaft drops into darkness. The smell is overwhelming\u2014a mixture of decay, sewage, and something else... incense? Fresh footprints lead north into the tunnels, disturbing the decades of accumulated filth. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: entrance"
+  },
+  {
+    "asset_id": "oakhaven_sewers_main_tunnel",
+    "name": "Main Sewer Tunnel",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Main Sewer Tunnel. A wide stone tunnel runs east and west. Foul water flows through a central channel. Strange symbols are painted on the walls in dried blood\u2014serpentine shapes that seem to writhe in the torchlight. The stonework is ancient, pre-dating Oakhaven itself. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: main_tunnel"
+  },
+  {
+    "asset_id": "oakhaven_sewers_east_junction",
+    "name": "Eastern Junction",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Eastern Junction. The tunnel branches here. To the north, you hear dripping water and the scurrying of many small feet. To the east, a door marked with a faded 'FILTRATION' sign. To the south, the tunnel slopes downward into darkness. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: east_junction"
+  },
+  {
+    "asset_id": "oakhaven_sewers_filtration_chamber",
+    "name": "Filtration Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Filtration Chamber. Ancient machinery fills this room\u2014rusted gears and clogged filters that once purified the town's water. The mechanisms haven't worked in decades. Something has nested in the corner, surrounded by gnawed bones. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: filtration_chamber"
+  },
+  {
+    "asset_id": "oakhaven_sewers_rat_warren",
+    "name": "Rat Warren",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Rat Warren. The tunnel opens into a disgusting nest of shredded cloth, gnawed wood, and bones. Hundreds of small tunnels riddle the walls. The squeaking is deafening. At the center of the nest, you see a glint of metal\u2014something valuable dragged here. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: rat_warren"
+  },
+  {
+    "asset_id": "oakhaven_sewers_flooded_passage",
+    "name": "Flooded Passage",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Flooded Passage. The tunnel is flooded waist-deep with foul water. Something swims beneath the surface\u2014you see ripples and bubbles. The passage continues south to what looks like a larger chamber. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: flooded_passage"
+  },
+  {
+    "asset_id": "oakhaven_sewers_old_cistern",
+    "name": "Old Cistern",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Old Cistern. A vast chamber with a deep pool of stagnant water. Stone platforms circle the edge. Something large lurks in the murky depths\u2014you see tentacles briefly surface. On the far platform, a skeleton in rusted armor clutches a sword. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: old_cistern"
+  },
+  {
+    "asset_id": "oakhaven_sewers_west_junction",
+    "name": "Western Junction",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Western Junction. A four-way intersection. The cultists clearly use these tunnels frequently\u2014the floor is swept clean and torches burn in wall sconces. Passages lead in all directions. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: west_junction"
+  },
+  {
+    "asset_id": "oakhaven_sewers_guard_post",
+    "name": "Guard Post",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Guard Post. A narrow room with murder holes in the walls and a heavy iron portcullis (currently raised). This is a defensive chokepoint. A table holds dice, cards, and half-eaten food\u2014the guards were recently here. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: guard_post"
+  },
+  {
+    "asset_id": "oakhaven_sewers_scriptorium",
+    "name": "Scriptorium",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Scriptorium. A room lined with shelves holding scrolls, books, and parchments. A writing desk sits in the center, covered with half-finished texts. The documents detail the cult's beliefs\u2014worship of the Serpent Eye, prophecies of 'the awakening,' and instructions for blood rituals. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: scriptorium"
+  },
+  {
+    "asset_id": "oakhaven_sewers_meditation_cells",
+    "name": "Meditation Cells",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Meditation Cells. A hallway with six small cells, each barely large enough for a person to sit cross-legged. Each contains a prayer mat, a serpent idol, and dried blood stains. This is where cultists perform personal devotions. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: meditation_cells"
+  },
+  {
+    "asset_id": "oakhaven_sewers_hidden_shrine",
+    "name": "Hidden Shrine",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Hidden Shrine. A secret shrine hidden behind a false wall in the meditation cells. A massive serpent statue dominates the room, its eyes set with green gemstones. The altar before it is covered with offerings\u2014coins, jewels, and disturbingly fresh blood. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: hidden_shrine"
+  },
+  {
+    "asset_id": "oakhaven_sewers_cultist_quarters",
+    "name": "Cultist Living Quarters",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cultist Living Quarters. A long chamber with crude bunks along both walls. This is where the cult members sleep when not performing rituals. Personal belongings are scattered about\u2014clothing, weapons, rations. A notice board on the wall shows guard rotations and ritual schedules. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: cultist_quarters"
+  },
+  {
+    "asset_id": "oakhaven_sewers_storage_chamber",
+    "name": "Cultist Supply Room",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cultist Supply Room. Crates and barrels are stacked haphazardly. Some contain mundane supplies\u2014food, torches, rope. Others hold disturbing ritual implements\u2014ceremonial daggers, vials of blood, serpent-carved masks. A ledger on the table tracks shipments from 'The Merchant.' The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: storage_chamber"
+  },
+  {
+    "asset_id": "oakhaven_sewers_prison_cells",
+    "name": "Prison Cells",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dark lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Prison Cells. Iron-barred cells line the walls. Seven emaciated prisoners huddle in the shadows, their eyes wide with terror. They've been here for weeks, fed just enough to keep them alive. Buckets of waste and torture implements tell a grim story. The scene is lit with dark lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: prison_cells"
+  },
+  {
+    "asset_id": "oakhaven_sewers_torture_chamber",
+    "name": "Torture Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Torture Chamber. A nightmare room filled with implements of pain\u2014racks, iron maidens, branding irons. The cultists used this place to 'prepare' sacrifices, breaking their will before the final ritual. Blood stains everything. You find partially burned documents detailing interrogation techniques. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: torture_chamber"
+  },
+  {
+    "asset_id": "oakhaven_sewers_ritual_antechamber",
+    "name": "Ritual Antechamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ritual Antechamber. A preparation room before the main ritual chamber. Cultists don their ceremonial robes here and prepare sacrifices. Hooks on the walls hold dozens of serpent-embroidered robes. A table displays ritual implements laid out with care. The air hums with dark energy. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: ritual_antechamber"
+  },
+  {
+    "asset_id": "oakhaven_sewers_ritual_chamber",
+    "name": "Ritual Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Ritual Chamber. A large vaulted chamber with a massive serpent altar in the center. Candles burn with sickly green flame, casting writhing shadows. Blood stains the floor in intricate ritual patterns forming a massive serpent coil. The cultist leader stands before the altar, chanting in a guttural tongue. Maps of the region marked with serpent symbols cover the walls, and letters from 'The Merchant' are scattered on a side table. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/oakhaven_sewers.json - Room: ritual_chamber"
+  }
+]

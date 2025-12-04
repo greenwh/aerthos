@@ -1,0 +1,115 @@
+[
+  {
+    "asset_id": "eldoria",
+    "name": "Eldoria",
+    "type": "City",
+    "visual_tags": [
+      "city",
+      "fantasy",
+      "exterior"
+    ],
+    "image_prompt": "Fantasy concept art of Eldoria. The crown jewel of the Free Cities\u2014a metropolis of white marble towers, gilded domes, and bustling marketplaces. Wealth and power flow through its streets like rivers. But beneath the grandeur, corruption and conspiracy fester.",
+    "view_context": "aerthos/data/cities/eldoria.json"
+  },
+  {
+    "asset_id": "eldoria_grand_bazaar",
+    "name": "The Grand Bazaar",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named The Grand Bazaar. Specialty: Everything a traveler could need. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/eldoria.json - Shop: grand_bazaar"
+  },
+  {
+    "asset_id": "eldoria_arcane_emporium",
+    "name": "The Arcane Emporium",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named The Arcane Emporium. Specialty: Magical items and scrolls. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/eldoria.json - Shop: arcane_emporium"
+  },
+  {
+    "asset_id": "eldoria_master_armorer",
+    "name": "Master Armorer's Forge",
+    "type": "Shop",
+    "visual_tags": [
+      "shop",
+      "fantasy",
+      "interior",
+      "merchant"
+    ],
+    "image_prompt": "Interior of a fantasy shop named Master Armorer's Forge. Specialty: Masterwork and magical arms. Detailed fantasy interior, warm lighting.",
+    "view_context": "aerthos/data/cities/eldoria.json - Shop: master_armorer"
+  },
+  {
+    "asset_id": "eldoria_golden_griffin",
+    "name": "The Golden Griffin",
+    "type": "Inn",
+    "visual_tags": [
+      "inn",
+      "tavern",
+      "fantasy",
+      "interior"
+    ],
+    "image_prompt": "Interior of a fantasy tavern named The Golden Griffin. An upscale establishment catering to wealthy merchants and minor nobility. The rooms are luxurious, the food exquisite, and the information valuable. Warm hearth fire, wooden tables, lively atmosphere.",
+    "view_context": "aerthos/data/cities/eldoria.json - Inn: golden_griffin"
+  },
+  {
+    "asset_id": "eldoria_grand_cathedral",
+    "name": "Grand Cathedral of Light",
+    "type": "Temple",
+    "visual_tags": [
+      "temple",
+      "fantasy",
+      "shrine",
+      "religious"
+    ],
+    "image_prompt": "A fantasy shrine or temple named Grand Cathedral of Light, dedicated to Pantheon of Good Gods. Peaceful, divine atmosphere.",
+    "view_context": "aerthos/data/cities/eldoria.json - Temple: grand_cathedral"
+  },
+  {
+    "asset_id": "eldoria_npc_syndic_brightstar",
+    "name": "Syndic Helena Brightstar",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Syndic Helena Brightstar, Political Leader / Quest Giver. A stern woman in her fifties, one of the few uncorrupted members of the ruling council. Her silver hair and sharp eyes miss nothing.",
+    "view_context": "aerthos/data/cities/eldoria.json - NPC: syndic_brightstar"
+  },
+  {
+    "asset_id": "eldoria_npc_archmage_elara",
+    "name": "Archmage Elara Stormwind",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Archmage Elara Stormwind, Magical Expert. The headmistress of what remains of the Arcane Academy. Her robes are singed, her face haggard, but her resolve is iron.",
+    "view_context": "aerthos/data/cities/eldoria.json - NPC: archmage_elara"
+  },
+  {
+    "asset_id": "eldoria_npc_master_merchant_gavin",
+    "name": "Master Merchant Gavin Goldhand",
+    "type": "NPC",
+    "visual_tags": [
+      "character",
+      "portrait",
+      "fantasy"
+    ],
+    "image_prompt": "Fantasy character portrait of Master Merchant Gavin Goldhand, Merchant Guild Master. A rotund man dripping with jewelry. He controls the flow of trade through Eldoria and knows the value of everything.",
+    "view_context": "aerthos/data/cities/eldoria.json - NPC: master_merchant_gavin"
+  }
+]

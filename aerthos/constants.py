@@ -232,6 +232,13 @@ MAX_PARTY_SIZE = 6
 # EXPERIENCE & LEVELING
 # ============================================================================
 
+# XP Distribution Method
+# IMPORTANT: Campaign was balanced with XP_DIVIDE_AMONG_PARTY = False
+# Phase 3 analysis calculated XP rewards assuming each party member receives full XP
+# Setting this to True will cause severe under-leveling (players reach ~level 5-6 instead of 9-10)
+XP_DIVIDE_AMONG_PARTY = False  # If True: divide XP by party size
+                                # If False: award full XP to each party member (RECOMMENDED)
+
 # XP award percentages
 XP_BONUS_HIGH_PRIME_REQUISITE = 1.10  # 10% bonus
 XP_PENALTY_LOW_PRIME_REQUISITE = 0.90  # 10% penalty

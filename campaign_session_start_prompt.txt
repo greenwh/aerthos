@@ -1,13 +1,36 @@
-In the root of my development environment. Working in aerthos, continue project in @aerthos/SESSION_ROADMAP.md,
-  looking for the START point for this session.
+  1. Navigate to the project
 
-  Use TodoWrite tool to track tasks throughout the session. Run test suite (python3 run_tests.py --no-web) before
-  and after changes to verify no regressions (expect 504/504 passing).
+  cd /mnt/d/Development/aerthos
 
-  Keep SESSION_ROADMAP.md updated with progress summaries: update header percentages, Phase 4 progress tracker,
-  completed expansions list, and 'Next Session Goals' section.
+  2. Read the summary documents
 
-  Record full details in SESSION_ARCHIVE.md: dungeon maps, room descriptions, monster/item tables, and files
-  modified. Details not required for cold start go here.
+  - SESSION_12_SUMMARY.md - Full context from last session (XP fix + quest system 80%)
+  - FINAL_STRETCH_ROADMAP.md - Current roadmap (look at "COLD START QUICK REFERENCE" section at the top)
 
-  SESSION_ROADMAP.md should provide enough context for cold start of next session.
+  3. Check current status
+
+  - Task 2: Side Quests is 50% complete
+  - ✅ Core system implemented
+  - ✅ Integration with GameState complete (just finished this session)
+  - ⏳ Need 10 more quests for Episodes 6-10
+  - ⏳ Need unit/integration tests
+
+  4. Resume work
+
+  - Create 10 quests for Episodes 6-10 (edit aerthos/data/side_quests.json)
+  - Write unit tests for quest system
+
+  ---
+  📁 Key Files to Reference
+
+  Documentation:
+  - FINAL_STRETCH_ROADMAP.md - Overall plan (94% complete)
+  - SESSION_12_SUMMARY.md - Previous session summary
+  - PHASE_4_TASK_2_SIDE_QUESTS_DESIGN.md - Quest system design doc
+
+  Quest System Code:
+  - aerthos/campaign/side_quest.py - Quest data model
+  - aerthos/campaign/quest_manager.py - Quest tracking
+  - aerthos/data/side_quests.json - Quest content (10 quests for Episodes 1-5)
+  - aerthos/campaign/episode_runner.py - Quest integration (lines 301-473)
+  - aerthos/engine/game_state.py - Quest hooks (4 locations)

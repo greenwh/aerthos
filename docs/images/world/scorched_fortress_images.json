@@ -1,0 +1,248 @@
+[
+  {
+    "asset_id": "scorched_fortress_map",
+    "name": "Map of Scorched Fortress",
+    "type": "Map",
+    "visual_tags": [
+      "fantasy map",
+      "dungeon",
+      "blueprint"
+    ],
+    "image_prompt": "A fantasy map of Scorched Fortress. An orcish stronghold built atop volcanic rock, now controlled by the Serpent Cult.. The map should look like aged parchment or a magically projected hologram.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json"
+  },
+  {
+    "asset_id": "scorched_fortress_outer_walls",
+    "name": "Breached Outer Wall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Breached Outer Wall. The fortress walls are blackened stone, built to withstand siege. A gaping hole shows where the cultists breached. Urgot and his Bloodfang warriors wait nearby, ready to charge when you give the signal. Heat radiates from the volcanic rock beneath. The air shimmers with waves of heat, and the scent of sulfur is strong. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: outer_walls"
+  },
+  {
+    "asset_id": "scorched_fortress_guard_post",
+    "name": "Defensive Guard Post",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Defensive Guard Post. A fortified position overlooking the breach. Arrow slits provide cover. The cultists have set up their own guard here. Bodies of slain orc defenders lie where they fell, weapons still in hand. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: guard_post"
+  },
+  {
+    "asset_id": "scorched_fortress_watchtower",
+    "name": "Watchtower",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Watchtower. A tall stone tower with a commanding view of the surrounding wastes. Signal fires once burned here to warn of approaching enemies. Now cultist banners hang from the battlements. You can see the volcanic landscape stretching for miles\u2014blackened earth, rivers of lava, and plumes of smoke. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: watchtower"
+  },
+  {
+    "asset_id": "scorched_fortress_courtyard",
+    "name": "Fortress Courtyard",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Fortress Courtyard. The courtyard is littered with orcish and cultist bodies. The battle here was brutal. Scorch marks scar the ground from magical attacks. Blood pools have dried to dark rust. Passages lead into the fortress proper\u2014north to the great hall, east to the barracks, west to the armory, and south back to the outer walls. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: courtyard"
+  },
+  {
+    "asset_id": "scorched_fortress_barracks",
+    "name": "Orcish Barracks",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Orcish Barracks. Crude bunks and weapon racks line the walls. The cultists have defiled this place, painting serpent symbols over the orcish clan markings. Personal effects of the slain orcs remain\u2014carved totems, prayer beads, weapons being sharpened for battles they'll never fight. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: barracks"
+  },
+  {
+    "asset_id": "scorched_fortress_war_room",
+    "name": "War Planning Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of War Planning Chamber. Maps of the region are pinned to the walls. The cultists have marked strategic locations with serpent tokens\u2014villages to raid, allies to convert, strongholds to seize. Battle plans and correspondence litter a stone table. This room shows the scope of the cult's ambitions. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: war_room"
+  },
+  {
+    "asset_id": "scorched_fortress_armory",
+    "name": "Fortress Armory",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Fortress Armory. Racks of weapons line every wall\u2014axes, spears, swords, and shields. The Bloodfang were preparing for war even before the cult attacked. Many weapons have been taken, but a substantial arsenal remains. The cultists have added their own supplies: flame-enchanted weapons and serpent-emblazoned shields. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: armory"
+  },
+  {
+    "asset_id": "scorched_fortress_weapon_storage",
+    "name": "Weapon Storage Vault",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Weapon Storage Vault. A reinforced chamber where the clan stores their finest weapons\u2014trophies from defeated enemies, ancestral blades, and masterwork creations from the forge. The cultists have broken open several weapon crates, stealing what they could carry. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: weapon_storage"
+  },
+  {
+    "asset_id": "scorched_fortress_great_hall",
+    "name": "Great Hall of the Bloodfang",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Great Hall of the Bloodfang. The clan's gathering hall, where warriors feast and chieftains hold court. Trophies of past victories hang on the walls\u2014skulls, banners, and weapons taken from defeated foes. The cultists have set up their own altar here, a serpent idol placed on the chief's throne. The heat is oppressive\u2014volcanic vents have been opened, turning this place into a furnace. Lava glows through cracks in the floor. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: great_hall"
+  },
+  {
+    "asset_id": "scorched_fortress_chieftain_quarters",
+    "name": "War-Chief's Quarters",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of War-Chief's Quarters. Urgot's personal chambers. Sparse and utilitarian\u2014a bed, a weapon rack, a table covered with maps and reports. A wolf pelt hangs on the wall, and trophies from successful raids line the shelves. The cultists ransacked this room looking for the vault key, scattering everything. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: chieftain_quarters"
+  },
+  {
+    "asset_id": "scorched_fortress_shaman_shrine",
+    "name": "Shaman's Shrine",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Shaman's Shrine. A spiritual sanctuary where the Bloodfang shaman communes with ancestral spirits. Incense and herbs hang from the ceiling. Animal bones arranged in prophetic patterns cover the floor. The cultists avoided this place\u2014superstition or fear, you're not sure. The air here feels calm despite the chaos outside, and a faint protective aura lingers. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: shaman_shrine"
+  },
+  {
+    "asset_id": "scorched_fortress_dining_hall",
+    "name": "Clan Dining Hall",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Clan Dining Hall. Long tables where the clan gathers for communal meals. Food still sits rotting on plates\u2014the cultists attacked during a feast. Benches are overturned, and blood stains the floor. The cultists use this area to store supplies now. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: dining_hall"
+  },
+  {
+    "asset_id": "scorched_fortress_forge_room",
+    "name": "Volcanic Forge",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Volcanic Forge. A massive forge built directly over a volcanic vent. Lava flows through channels beneath iron grates, providing endless heat for metalworking. This is where the Bloodfang smiths create their legendary weapons. The forge is cold now\u2014the cultists lack the skill to use it. Tools lie scattered, and half-finished weapons sit abandoned on anvils. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: forge_room"
+  },
+  {
+    "asset_id": "scorched_fortress_volcanic_descent",
+    "name": "Volcanic Descent",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Volcanic Descent. Stone stairs descending deep into the volcanic underbelly of the fortress. Heat intensifies with every step. The walls glow with volcanic energy, and the sound of bubbling lava echoes from below. The cultists have carved serpent glyphs into the walls, channeling dark magic into the volcano itself. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: volcanic_descent"
+  },
+  {
+    "asset_id": "scorched_fortress_lava_chamber",
+    "name": "Lava Chamber",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Lava Chamber. A massive cavern filled with rivers of molten lava. Narrow stone bridges cross the fiery flows. The heat is nearly unbearable\u2014without protection, prolonged exposure would be fatal. In the center, the cultists have drawn a massive summoning circle, attempting to bind volcanic elementals to their will. Two magma elementals guard the ritual site. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: lava_chamber"
+  },
+  {
+    "asset_id": "scorched_fortress_cult_prison",
+    "name": "Cult Prison",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Cult Prison. A makeshift prison where the cultists hold captured orcs. Iron cages line the walls, and the sounds of suffering echo in the darkness. Many cages are empty\u2014their occupants already sacrificed. A few surviving orcs remain, beaten but not broken. They recognize you as Urgot's allies and beg for release. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: cult_prison"
+  },
+  {
+    "asset_id": "scorched_fortress_vault_entrance",
+    "name": "Vault Entrance",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "dim lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Vault Entrance. Massive iron doors stand open, their locks shattered by dark magic. Serpent carvings have been burned into the metal. Beyond lies the clan vault, the most sacred place in the fortress. General Malakar's voice echoes from within: 'The Fourth Key is ours! The Serpent's will shall be done!' The heat is intense\u2014the vault sits directly above the heart of the volcano. The scene is lit with dim lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: vault_entrance"
+  },
+  {
+    "asset_id": "scorched_fortress_clan_vault",
+    "name": "Bloodfang Clan Vault",
+    "type": "Location",
+    "visual_tags": [
+      "fantasy",
+      "dungeon",
+      "interior",
+      "bright lighting"
+    ],
+    "image_prompt": "Fantasy concept art of Bloodfang Clan Vault. The sacred vault of the Bloodfang Orcs. Tribal treasures, weapons of legend, and the bones of honored ancestors line the walls. In the center, General Malakar stands before the opened inner vault, the Fourth Key clutched in his gauntleted hand. Lava flows through channels in the floor, filling the room with hellish heat and light. Elite cultist guards surround him, and the air shimmers with dark magic. This is where the alliance will be won or lost. The scene is lit with bright lighting. Visual style: Realistic fantasy oil painting.",
+    "view_context": "aerthos/data/dungeons/scorched_fortress.json - Room: clan_vault"
+  }
+]
