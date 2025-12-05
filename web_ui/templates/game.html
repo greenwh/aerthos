@@ -1255,7 +1255,8 @@
     </div>
 
     <script>
-        let sessionId = 'session_' + Date.now();
+        // Initialize game session
+        let sessionId = new URLSearchParams(window.location.search).get('session_id') || 'session_' + Date.now();
         let gameActive = false;
         let activeCharacterIndex = 0;
         let currentParty = [];

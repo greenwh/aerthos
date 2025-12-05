@@ -187,7 +187,32 @@ def campaign_manager():
 @app.route('/campaign/<campaign_id>/hub')
 def campaign_hub(campaign_id):
     """Campaign hub page"""
-    return render_template('campaign_hub.html')
+    # Check for active session to resume
+    active_session_id = None
+    try:
+        campaign_mgr = CampaignManager()
+        campaign = campaign_mgr.load_campaign(campaign_id)
+        
+        if campaign.active_session_id:
+            # Check if session file actually exists
+            session_mgr = SessionManager()
+            session_data = session_mgr.load_session(campaign.active_session_id)
+            
+            if session_data:
+                active_session_id = campaign.active_session_id
+                
+                # Pre-load into active_games if not present
+                if active_session_id not in active_games:
+                    # We need to reconstruct the game state from session data
+                    # This is complex because we need to rebuild GameState, Dungeon, Party, etc.
+                    # For now, we just pass the ID and let the 'Resume' button handle the loading logic via API
+                    pass
+    except Exception as e:
+        print(f"Error checking active session: {e}")
+
+    return render_template('campaign_hub.html', 
+                         campaign_id=campaign_id,
+                         active_session_id=active_session_id)
 
 
 @app.route('/campaign/<campaign_id>/episodes')
@@ -261,21 +286,19 @@ def list_campaigns():
         campaign_mgr = CampaignManager()
         campaigns = campaign_mgr.list_campaigns()
 
-        # Convert Campaign objects to JSON-serializable dicts
+        # Convert Campaign objects (actually CampaignSummary objects) to JSON-serializable dicts
         campaigns_data = []
         for camp in campaigns:
             campaigns_data.append({
                 'id': camp.id,
                 'name': camp.name,
                 'description': camp.description,
-                'party_id': camp.party_id,
                 'current_hub_id': camp.current_hub_id,
-                'current_episode_id': camp.current_episode_id,
+                'current_episode_id': camp.current_episode,
                 'completed_episodes': camp.completed_episodes,
                 'unlocked_episodes': camp.unlocked_episodes,
-                'unlocked_hubs': camp.unlocked_hubs,
-                'story_flags': camp.story_flags,
-                'reputation': camp.reputation
+                'last_played': camp.last_played,
+                'play_time': camp.play_time
             })
 
         return jsonify({
@@ -723,6 +746,40 @@ def init_episode_dungeon(campaign_id, episode_id):
         game_state.episode_runner = runner
 
         active_games[session_id] = game_state
+
+        # Create session file on disk (FIX: session must exist before save_checkpoint can work)
+        session_mgr = SessionManager()
+        try:
+            # For episodes, we create a minimal session file manually
+            # (can't use create_session() because episodes aren't in scenario library)
+            from pathlib import Path
+            from datetime import datetime
+            import json
+
+            session_data = {
+                'id': session_id,
+                'name': f"{campaign.name} - {episode.title}",
+                'created': datetime.now().isoformat(),
+                'last_played': datetime.now().isoformat(),
+                'party_id': campaign.party_id,
+                'scenario_id': episode_id,  # Episode ID stored as scenario_id
+                'turns_elapsed': 0,
+                'total_hours': 0,
+                'current_room_id': None,
+                'is_active': True,
+                'is_episode': True  # Flag to distinguish episodes from regular scenarios
+            }
+
+            session_file = session_mgr.sessions_dir / f"session_{session_id}.json"
+            with open(session_file, 'w') as f:
+                json.dump(session_data, f, indent=2)
+        except Exception as e:
+            print(f"Warning: Failed to create session file: {e}")
+            # Continue anyway - game state is in memory
+
+        # Update campaign's active_session_id (FIX: campaign needs to track active session)
+        campaign.active_session_id = session_id
+        campaign_mgr.save_campaign(campaign)
 
         return jsonify({
             'success': True,
@@ -1419,19 +1476,57 @@ def save_campaign_checkpoint(campaign_id):
 
         # Save campaign state
         campaign.last_played = datetime.now()
+        if session_id:
+            campaign.active_session_id = session_id
+            
         campaign_mgr.save_campaign(campaign)
 
         # Save party state
         character_ids = [char.id for char in party.members] if party and party.members else []
         party_mgr.save_party(party_name, character_ids, party.formation, party_id)
 
-        # If session exists, save session state
-        try:
-            if session_id in session_mgr._sessions:
-                game_state = session_mgr._sessions[session_id]
-                session_mgr.save_session_state(session_id, game_state)
-        except:
-            pass  # Session might not exist yet or might be in a different state
+        # If session exists in memory, save session state to disk
+        if session_id in active_games:
+            game_state = active_games[session_id]
+
+            # FIX: Session file should already exist (created during episode init)
+            # But if it doesn't (e.g., old session), create it now
+            if not session_mgr.load_session(session_id):
+                print(f"Warning: Session file not found for {session_id}, creating now...")
+
+                # For episodes, create session file manually (can't use create_session)
+                episode_id = getattr(game_state, 'episode_id', campaign.current_episode_id)
+
+                session_data = {
+                    'id': session_id,
+                    'name': f"{campaign.name} - {episode_id}",
+                    'created': datetime.now().isoformat(),
+                    'last_played': datetime.now().isoformat(),
+                    'party_id': party_id,
+                    'scenario_id': episode_id,
+                    'turns_elapsed': 0,
+                    'total_hours': 0,
+                    'current_room_id': None,
+                    'is_active': True,
+                    'is_episode': True
+                }
+
+                session_file = session_mgr.sessions_dir / f"session_{session_id}.json"
+                try:
+                    with open(session_file, 'w') as f:
+                        json.dump(session_data, f, indent=2)
+                except Exception as e:
+                    return jsonify({
+                        'success': False,
+                        'error': f'Failed to create session file: {str(e)}'
+                    }), 500
+
+            # Now save the state (FIX: actually check if it succeeds!)
+            if not session_mgr.save_session_state(session_id, game_state):
+                return jsonify({
+                    'success': False,
+                    'error': 'Failed to save session state to disk'
+                }), 500
 
         return jsonify({
             'success': True,
@@ -1566,7 +1661,117 @@ def get_game_state():
         data = request.json
         session_id = data.get('session_id', 'default')
 
+        # Check memory first
         game_state = active_games.get(session_id)
+        
+        # If not in memory, try to load from disk
+        if not game_state:
+            session_mgr = SessionManager()
+            session_data = session_mgr.load_session(session_id)
+            
+            if session_data:
+                # Reconstruct GameState from session data
+                try:
+                    # 1. Load Campaign (if applicable)
+                    # We might not know campaign_id directly unless we store it in session
+                    # But wait, session_data only stores party_id and scenario_id
+                    
+                    # For now, let's try to reconstruct based on what we have
+                    party_mgr = PartyManager()
+                    party_result = party_mgr.load_party(session_data['party_id'])
+                    party = party_result['party']
+                    
+                    # 2. Restore Party State from session_data['party_state'] if available
+                    if 'party_state' in session_data:
+                        party_state = session_data['party_state']
+                        # Restore members
+                        for i, member_data in enumerate(party_state.get('members', [])):
+                            if i < len(party.members):
+                                char = party.members[i]
+                                char.hp_current = member_data.get('hp_current', char.hp_current)
+                                char.xp = member_data.get('xp', char.xp)
+                                # Restore gold/coins
+                                char.copper_pieces = member_data.get('copper_pieces', 0)
+                                char.silver_pieces = member_data.get('silver_pieces', 0)
+                                char.electrum_pieces = member_data.get('electrum_pieces', 0)
+                                char.gold_pieces = member_data.get('gold_pieces', 0)
+                                char.platinum_pieces = member_data.get('platinum_pieces', 0)
+                                
+                                # Fallback for old saves
+                                if 'gold' in member_data and char.gold_pieces == 0:
+                                    char.gold_pieces = member_data['gold']
+
+                    # 3. Load Dungeon/Scenario
+                    # Ideally we need the exact EpisodeRunner logic here
+                    # But for now, let's try to load the dungeon.
+                    # This is tricky because EpisodeRunner handles dungeon loading logic
+                    
+                    # Check if we can find the campaign associated with this session?
+                    # The session doesn't store campaign_id by default in creating_session
+                    # BUT init_episode_dungeon sets game_state.campaign_id
+                    
+                    # Let's see if we can infer it or if we need to modify init to save it
+                    # The game_state object in init_episode_dungeon had campaign_id
+                    
+                    # CRITICAL: We need to know WHICH dungeon to load.
+                    # session_data has 'scenario_id'. For episodes, this is the episode_id?
+                    # In init_episode_dungeon: episode = Episode.load(episode_id)
+                    
+                    # Let's assume scenario_id IS episode_id for now
+                    from aerthos.campaign.episode import Episode
+                    from aerthos.campaign.episode_runner import EpisodeRunner
+                    from aerthos.campaign.campaign_manager import CampaignManager
+                    
+                    # Find campaign for this session (scan campaigns?)
+                    # Or pass campaign_id in session?
+                    # Scan:
+                    camp_mgr = CampaignManager()
+                    campaign = None
+                    for c_summary in camp_mgr.list_campaigns():
+                        c = camp_mgr.load_campaign(c_summary.id)
+                        if c.active_session_id == session_id:
+                            campaign = c
+                            break
+                    
+                    if campaign:
+                        episode = Episode.load(campaign.current_episode_id)
+                        runner = EpisodeRunner(episode, campaign, party)
+                        success, msg = runner.load_dungeon()
+                        
+                        if success:
+                            # Create game state
+                            active_char = party.members[0] # Default
+                            success, msg = runner.create_game_state(active_char)
+                            
+                            if success:
+                                game_state = runner.game_state
+                                game_state.party = party
+                                game_state.campaign_id = campaign.id
+                                game_state.episode_id = episode.id
+                                game_state.episode_runner = runner
+                                
+                                # Restore dungeon state (explored rooms)
+                                if 'dungeon_state' in session_data:
+                                    game_state.dungeon.deserialize(session_data['dungeon_state'])
+                                
+                                # Restore current room
+                                if session_data.get('current_room_id'):
+                                    room = game_state.dungeon.rooms.get(session_data['current_room_id'])
+                                    if room:
+                                        game_state.current_room = room
+                                        
+                                # Restore time
+                                game_state.time_tracker.turns_elapsed = session_data.get('turns_elapsed', 0)
+                                game_state.time_tracker.total_hours = session_data.get('total_hours', 0)
+                                
+                                # Save to active_games
+                                active_games[session_id] = game_state
+                                
+                except Exception as e:
+                    print(f"Error restoring session {session_id}: {e}")
+                    import traceback
+                    traceback.print_exc()
+
         if not game_state:
             return jsonify({'success': False, 'error': 'No active game session found'})
 

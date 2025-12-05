@@ -1,13 +1,1 @@
-
-¦ > In my aerthos AD&D game.  getting some errors:
-
-  1) In the campaign in the shop when I try to buy something I get an error: Error: Error purchasing item: 'Inventory'
-  object has no attribute 'can_carry'
-
-  2) In game when I try to save using the save button in the web_ui I get:
-    File "/mnt/d/Development/aerthos/web_ui/app.py", line 1412, in save_campaign_checkpoint
-      campaign.last_played = datetime.now()
-                             ^^^^^^^^
-  NameError: name 'datetime' is not defined. Did you forget to import 'datetime'
-
-  3) When starting a campaign selecting a party, the party says characters (0) but loads anyway
+You're in the root directory of my development environment.  I have been working on the aerthos project.  It is complete after adding graphics/images to the exploration.  One last stubborn problem dealing with campaign play.  I create a campaign session, and a session ID gets created along with a session file (in my home directory, and not where I specified in constants.py, but that's another trivial bug for later).  I start the episode and in the game you gave me a save button.  I press it and it says it saves successfully.  That where the problem is.  I cannot find a "save" file nor is the previously created session file updated.  When I exit and try to return, I select the session, and the whole thing starts all over.  Can you take a look?

@@ -18,7 +18,11 @@ class CampaignSummary:
     """Summary of a saved campaign for list display"""
     id: str
     name: str
+    description: str
     current_episode: str
+    current_hub_id: str
+    completed_episodes: List[str]
+    unlocked_episodes: List[str]
     play_time: str  # Formatted string
     last_played: str  # Formatted string
 
@@ -36,7 +40,9 @@ class CampaignManager:
             save_dir: Optional custom save directory
         """
         if save_dir is None:
-            self.save_dir = Path.home() / '.aerthos' / 'campaigns'
+            # FIX: Use constants for consistency
+            from ..constants import _AERTHOS_HOME
+            self.save_dir = _AERTHOS_HOME / 'campaigns'
         else:
             self.save_dir = Path(save_dir)
 
@@ -170,7 +176,11 @@ class CampaignManager:
                 summary = CampaignSummary(
                     id=data['id'],
                     name=data['name'],
-                    current_episode=data['current_episode_id'],
+                    description=data.get('description', ''),
+                    current_episode=data.get('current_episode_id', ''),
+                    current_hub_id=data.get('current_hub_id', ''),
+                    completed_episodes=data.get('completed_episodes', []),
+                    unlocked_episodes=data.get('unlocked_episodes', []),
                     play_time=play_time,
                     last_played=last_played_str
                 )

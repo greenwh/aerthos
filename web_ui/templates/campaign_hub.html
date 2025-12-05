@@ -203,11 +203,19 @@
 
         <!-- Hub Menu -->
         <div class="section">
-            <div class="section-title">HUB SERVICES</div>
-            <div id="hub-menu">
-                <div class="loading">Loading hub menu...</div>
+            <div class="section-title">CAMPAIGN MENU</div>
+            
+            {% if active_session_id %}
+            <div class="menu-item" onclick="resumeGame('{{ active_session_id }}')">
+                <div class="menu-item-title">▶ RESUME ADVENTURE</div>
+                <div class="menu-item-desc">Continue your exploration in the dungeon</div>
             </div>
+            {% endif %}
+            
+            <!-- Dynamic Hub Menu (Shop, Inn, Temple, Travel, etc.) -->
+            <div id="hub-menu"></div>
         </div>
+
 
         <a href="/campaign_manager" class="back-link">← Back to Campaign Manager</a>
     </div>
@@ -230,6 +238,10 @@
             setTimeout(() => {
                 msg.className = 'message';
             }, 5000);
+        }
+
+        function resumeGame(sessionId) {
+            window.location.href = `/game?session_id=${sessionId}`;
         }
 
         async function loadHubData() {

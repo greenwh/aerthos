@@ -29,6 +29,7 @@ class Campaign:
     unlocked_hubs: List[str] = field(default_factory=list)
     story_flags: Dict[str, bool] = field(default_factory=dict)
     reputation: Dict[str, int] = field(default_factory=dict)  # Faction reputation scores
+    active_session_id: Optional[str] = None  # ID of the active dungeon session (if any)
     play_time_minutes: int = 0
     created_at: Optional[datetime] = None
     last_played: Optional[datetime] = None
@@ -176,6 +177,7 @@ class Campaign:
             'unlocked_hubs': self.unlocked_hubs,
             'story_flags': self.story_flags,
             'reputation': self.reputation,
+            'active_session_id': self.active_session_id,
             'play_time_minutes': self.play_time_minutes,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'last_played': self.last_played.isoformat() if self.last_played else None,
@@ -212,6 +214,7 @@ class Campaign:
             unlocked_hubs=data.get('unlocked_hubs', []),
             story_flags=data.get('story_flags', {}),
             reputation=data.get('reputation', {}),
+            active_session_id=data.get('active_session_id'),
             play_time_minutes=data.get('play_time_minutes', 0),
             created_at=created_at,
             last_played=last_played,

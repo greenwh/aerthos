@@ -277,15 +277,23 @@ WANDERING_MONSTER_CHANCE = 0.15  # 15% per check
 REST_INTERRUPTION_CHANCE = 0.15  # 15% chance of encounter during rest
 
 # ============================================================================
-# FILE PATHS (relative to project root)
+# FILE PATHS
 # ============================================================================
 
+from pathlib import Path
+
+# Data directory (relative to project root)
 DATA_DIR = "aerthos/data"
-SAVE_DIR = ".aerthos/saves"
-CHARACTER_DIR = ".aerthos/characters"
-PARTY_DIR = ".aerthos/parties"
-SCENARIO_DIR = ".aerthos/scenarios"
-SESSION_DIR = ".aerthos/sessions"
+
+# User data directories (in project root .aerthos folder)
+# Project root is two levels up from this file (aerthos/constants.py -> project root)
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+_AERTHOS_HOME = _PROJECT_ROOT / ".aerthos"
+SAVE_DIR = str(_AERTHOS_HOME / "saves")
+CHARACTER_DIR = str(_AERTHOS_HOME / "characters")
+PARTY_DIR = str(_AERTHOS_HOME / "parties")
+SCENARIO_DIR = str(_AERTHOS_HOME / "scenarios")
+SESSION_DIR = str(_AERTHOS_HOME / "sessions")
 
 # ============================================================================
 # DISPLAY & UI
