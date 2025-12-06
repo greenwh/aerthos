@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import List, Optional, Dict
 from ..entities.player import PlayerCharacter, Weapon, Armor, Shield, LightSource, Item, Spell
 from ..constants import CHARACTER_DIR
+from ..systems.ability_modifiers import AbilityModifierSystem
 
 
 class CharacterRoster:
@@ -161,7 +162,36 @@ class CharacterRoster:
                         data.get('gold_pieces', 0) +
                         data.get('platinum_pieces', 0) * 5
                     )
-                    
+
+                    # Calculate effective AC (with DEX bonus and equipment)
+                    try:
+                        ability_system = AbilityModifierSystem()
+                        dex = data.get('dexterity', 10)
+                        dex_mods = ability_system.get_dexterity_modifiers(dex)
+                        dex_bonus = dex_mods.get('defensive_adj', 0)
+
+                        # Get armor and shield from equipment
+                        equipped = data.get('equipped', {})
+                        base_ac = data.get('ac', 10)
+                        effective_ac = base_ac
+
+                        # If armor is equipped, use armor AC instead of base AC
+                        if equipped.get('armor'):
+                            armor_data = equipped['armor']
+                            effective_ac = armor_data.get('ac', base_ac)
+
+                        # Add shield bonus (negative improves AC)
+                        if equipped.get('shield'):
+                            shield_data = equipped['shield']
+                            effective_ac -= shield_data.get('ac_bonus', 0)
+
+                        # Add DEX bonus (negative improves AC)
+                        effective_ac += dex_bonus
+                    except Exception as e:
+                        # If AC calculation fails, fall back to base AC
+                        print(f"Warning: AC calculation failed for {data.get('name', 'unknown')}: {e}")
+                        effective_ac = data.get('ac', 10)
+
                     characters.append({
                         'id': data['id'],
                         'name': data['name'],
@@ -172,7 +202,7 @@ class CharacterRoster:
                         'alignment': data.get('alignment', 'True Neutral'),  # Backward compatible
                         'hp_current': data['hp_current'],  # Separate current/max
                         'hp_max': data['hp_max'],
-                        'ac': data.get('ac', 10),
+                        'ac': effective_ac,
                         'thac0': data.get('thac0', 20),
                         'gold': int(total_gold), # Calculated total value
                         'copper_pieces': data.get('copper_pieces', 0),                        'silver_pieces': data.get('silver_pieces', 0),

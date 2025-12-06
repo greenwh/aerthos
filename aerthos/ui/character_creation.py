@@ -211,8 +211,8 @@ class CharacterCreator:
         except ValueError:
             char_class = available_classes[0]
 
-        # Handle exceptional strength for Fighters
-        if char_class == 'Fighter' and strength == 18:
+        # Handle exceptional strength for Fighters, Rangers, and Paladins
+        if char_class in ['Fighter', 'Ranger', 'Paladin'] and strength == 18:
             strength_percentile = random.randint(1, 100)
             print(f"\nExceptional Strength! You rolled 18/{strength_percentile:02d}!")
 
@@ -997,8 +997,8 @@ class ManualCharacterCreator:
             try:
                 score = int(score_input)
                 if 3 <= score <= 18:
-                    # Check for exceptional strength
-                    if ability_name == "Strength" and score == 18 and char_class == "Fighter":
+                    # Check for exceptional strength (Fighter, Ranger, Paladin)
+                    if ability_name == "Strength" and score == 18 and char_class in ['Fighter', 'Ranger', 'Paladin']:
                         perc_input = input("Exceptional Strength percentile (01-00, or 0 for none): ").strip()
                         try:
                             percentile = int(perc_input)
@@ -1388,23 +1388,37 @@ class ManualCharacterCreator:
 
         class_data = self.game_data.classes[char_class]
 
-        # Add spell slots for each spell level
-        for spell_level in range(1, 10):  # Spell levels 1-9
-            slot_key = f'spell_slots_level_{level}'
-            if slot_key in class_data:
-                slots_by_level = class_data[slot_key]
-                if spell_level - 1 < len(slots_by_level):
-                    num_slots = slots_by_level[spell_level - 1]
+        # Add spell slots for each spell level based on character level
+        # The slot_key should reference the CHARACTER level, not spell level
+        slot_key = f'spell_slots_level_{level}'
+        if slot_key in class_data:
+            slots_by_level = class_data[slot_key]
+            # slots_by_level is an array where index 0 = 1st level spells, index 1 = 2nd level, etc.
+            for spell_level_idx, num_slots in enumerate(slots_by_level):
+                if num_slots > 0:
+                    spell_level = spell_level_idx + 1  # Convert 0-indexed to 1-indexed
                     for _ in range(num_slots):
                         player.add_spell_slot(spell_level)
 
-        # Add all available spells for class
+        # Add spells that the character can cast at their level
+        # Only add spells up to the highest spell level they have slots for
+        max_spell_level = 0
+        if slot_key in class_data and 'spell_slots_level_' in slot_key:
+            slots_by_level = class_data[slot_key]
+            # Find highest spell level with slots
+            for idx, num_slots in enumerate(slots_by_level):
+                if num_slots > 0:
+                    max_spell_level = idx + 1
+
         for spell_id, spell_data in self.game_data.spells.items():
             if char_class in spell_data.get('class_availability', []):
-                spell = self._create_spell_from_data(spell_data)
-                player.spells_known.append(spell)
+                spell_level = spell_data.get('level', 1)
+                # Only add spells the character can actually cast
+                if spell_level <= max_spell_level:
+                    spell = self._create_spell_from_data(spell_data)
+                    player.spells_known.append(spell)
 
-        print(f"✓ Added {len(player.spells_known)} spells")
+        print(f"✓ Added {len(player.spells_known)} spells (levels 1-{max_spell_level})")
 
     def _manual_select_spells(self, player: PlayerCharacter, char_class: str, level: int):
         """Manually select spells"""

@@ -635,7 +635,7 @@
         }
 
         function setupEventListeners() {
-            // Show exceptional strength field for Fighter with STR 18
+            // Show exceptional strength field for Fighter, Ranger, Paladin with STR 18
             const strInput = document.getElementById('abilityStr');
             const classSelect = document.getElementById('charClass');
             const exceptionalGroup = document.getElementById('exceptionalStrGroup');
@@ -643,7 +643,7 @@
             function checkExceptionalStr() {
                 const str = parseInt(strInput.value);
                 const charClass = classSelect.value;
-                if (charClass === 'Fighter' && str === 18) {
+                if (['Fighter', 'Ranger', 'Paladin'].includes(charClass) && str === 18) {
                     exceptionalGroup.style.display = 'block';
                 } else {
                     exceptionalGroup.style.display = 'none';

@@ -11,7 +11,7 @@ Aerthos is a faithful recreation of AD&D 1e mechanics as a single-player text ad
 - Flask (optional, for web UI only)
 - No other external dependencies (core game uses standard library only)
 
-**Project Status:** ✅ **CORE GAMEPLAY COMPLETE** - Full 10-episode campaign with 20 side quests. 541/541 tests passing. Ready for release!
+**Project Status:** ✅ **CORE GAMEPLAY COMPLETE** - Full 10-episode campaign with 20 side quests. 541/541 tests passing. **Critical bugs fixed 2025-12-06.** Ready for release!
 
 **Project Location:** `/mnt/d/Development/aerthos`
 
@@ -247,6 +247,27 @@ python3 -m unittest tests.test_combat -v
 ---
 
 ## Architecture Overview
+
+### Key Technical Notes
+
+**Critical Architecture Principles:**
+1. **Thin-Layer Design** - CLI (`main.py`) and Web UI (`web_ui/app.py`) are lightweight wrappers around core engine
+2. **Data-Driven** - All content (spells, monsters, items) in JSON files, not hardcoded
+3. **Shared Game Logic** - Both UIs use identical `aerthos/` module calls (see synchronization rules)
+4. **Character ID Tracking** - Web UI stores `game_state.character_ids` to persist party changes to roster
+5. **Auto-Save Pattern** - Party members save to roster after every web UI command
+
+**Critical Files for Common Tasks:**
+- XP/Party Persistence: `web_ui/app.py` (save_party_members function, /api/command endpoint)
+- Spell System: `systems/magic.py` (spell handlers), `ui/character_creation.py` (spell assignment)
+- Combat/XP Awards: `engine/game_state.py` (combat resolution, XP distribution)
+- Session Management: `storage/session_manager.py`, `web_ui/app.py` (exit_session endpoint)
+- Character/Party Storage: `storage/character_roster.py`, `storage/party_manager.py`
+
+**Recent Architectural Changes (Dec 2025):**
+- Web UI now tracks character_ids in game_state for automatic roster persistence
+- Exit session endpoint added to cleanly save and exit games
+- Party member changes (XP, HP, gold, inventory) auto-save after each command
 
 ### Component Structure
 
@@ -722,6 +743,21 @@ cat ~/.aerthos/sessions/*.json
 
 ### Latest Changes
 
+**Critical Bug Fixes (December 6, 2025):**
+- ✅ **XP Persistence Fixed** - XP now saves to character roster after every command
+  - Added `game_state.character_ids` tracking in web UI
+  - Party members persist to roster automatically (XP, HP, gold, inventory)
+  - Location: `web_ui/app.py` lines 747, 1645-1648, 1758, 3587
+- ✅ **Exit Session Added** - New exit button with save confirmation
+  - Endpoint: `/api/exit_session` saves progress and returns to main menu
+  - Location: `web_ui/app.py` lines 1663-1696, `game.html` lines 1246, 1365-1395
+- ✅ **Imported Character Spell Bug Fixed** - Spell slots and spell lists now correct
+  - Fixed spell level loop using wrong variable
+  - Limited spells_known to castable levels only
+  - Location: `character_creation.py` lines 1391-1421
+- ✅ **Session Restore Verified** - Load session already working via session manager UI
+- See `ROADMAP.md` for complete issue tracking
+
 **Campaign Complete (December 2025 - Sessions 1-13):**
 - ✅ **Phase 1 Complete:** Campaign fully playable end-to-end (10 episodes, 5 city hubs)
 - ✅ **Phase 2 Complete:** UI synchronization between CLI and Web UI (80%)
@@ -843,11 +879,19 @@ aerthos-MS_Client_ID.txt          # MS client ID (gitignored)
 ```
 README.md                    # Player-facing documentation
 SETUP.md                     # Installation guide
+ROADMAP.md                   # Current development roadmap and issue tracking
+CLAUDE.md                    # This file - development guide
 ITEMS_REFERENCE.md          # Item database reference
 aerthos_tech_spec.md        # Technical specification
 aerthos_claude_code_prompt.md  # Implementation guide
-CLAUDE.md                    # This file - development guide
 ```
+
+**Active Planning Documents:**
+- `ROADMAP.md` - **Primary issue tracker** for bugs, features, and improvements
+- `FINAL_STRETCH_ROADMAP.md` - Phase 4 completion tracking
+
+**Archived Technical Documentation:**
+- `docs/archive/TECHNICAL_BREAKDOWN_ARCHIVED_DEC6.md` - Deep technical architecture (outdated but useful for reference)
 
 ### Documentation Archival Policy
 
@@ -866,9 +910,10 @@ CLAUDE.md                    # This file - development guide
 **Keep Active:**
 - Current feature plans (in progress)
 - Living documentation (README.md, SETUP.md, CLAUDE.md)
-- Reference documents (ITEMS_REFERENCE.md, API_REFERENCE.md, ARCHITECTURE.md)
+- Current roadmap and issue tracking (ROADMAP.md)
+- Reference documents (ITEMS_REFERENCE.md, API_REFERENCE.md)
 - Test documentation (TEST_SUITE_README.md, TESTING.md)
-- Active planning documents (CAMPAIGN_IMPLEMENTATION_PLAN.md if in progress)
+- Active planning documents (FINAL_STRETCH_ROADMAP.md)
 
 **How to Archive:**
 ```bash

@@ -1243,6 +1243,7 @@
                 <button class="button" onclick="quickCommand('status')">Status</button>
                 <button class="button" onclick="quickCommand('spells')">Spells</button>
                 <button class="button button-save" id="save-button" onclick="saveCheckpoint()" title="Save Campaign Progress">💾 Save</button>
+                <button class="button" onclick="exitSession()" title="Exit and return to menu">🚪 Exit</button>
             </div>
             <div class="input-row">
                 <input type="text" id="command-box" class="command-box" list="command-suggestions" placeholder="Type command here or use buttons above..." onkeypress="handleKeyPress(event)" oninput="updateAutocomplete()">
@@ -1358,6 +1359,38 @@
                 appendMessage(`Save error: ${err.message}`);
                 saveButton.textContent = '💾 Save';
                 saveButton.disabled = false;
+            });
+        }
+
+        function exitSession() {
+            if (!gameActive) {
+                window.location.href = '/';
+                return;
+            }
+
+            if (!confirm('Exit and save progress? This will return you to the main menu.')) {
+                return;
+            }
+
+            fetch('/api/exit_session', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({session_id: sessionId})
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    appendMessage(`✓ ${data.message}`);
+                    // Wait briefly then redirect to home
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                } else {
+                    appendMessage(`Exit failed: ${data.error}`);
+                }
+            })
+            .catch(err => {
+                appendMessage(`Exit error: ${err.message}`);
             });
         }
 

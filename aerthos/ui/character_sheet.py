@@ -183,7 +183,7 @@ class CharacterSheet:
                 hp_pct = int((member.hp_current / member.hp_max) * 100) if member.hp_max > 0 else 0
                 hp_bar = CharacterSheet._format_hp_bar(hp_pct)
                 lines.append(f"  {status} {member.name} ({member.char_class}-{member.level})")
-                lines.append(f"    HP: {member.hp_current}/{member.hp_max} {hp_bar} | AC: {member.ac} | THAC0: {member.thac0}")
+                lines.append(f"    HP: {member.hp_current}/{member.hp_max} {hp_bar} | AC: {member.get_effective_ac()} | THAC0: {member.thac0}")
 
         # Display back line
         if back_line:
@@ -194,7 +194,7 @@ class CharacterSheet:
                 hp_pct = int((member.hp_current / member.hp_max) * 100) if member.hp_max > 0 else 0
                 hp_bar = CharacterSheet._format_hp_bar(hp_pct)
                 lines.append(f"  {status} {member.name} ({member.char_class}-{member.level})")
-                lines.append(f"    HP: {member.hp_current}/{member.hp_max} {hp_bar} | AC: {member.ac} | THAC0: {member.thac0}")
+                lines.append(f"    HP: {member.hp_current}/{member.hp_max} {hp_bar} | AC: {member.get_effective_ac()} | THAC0: {member.thac0}")
 
         lines.append("")
         lines.append("═" * 70)

@@ -1,0 +1,36 @@
+  1. Navigate to the project
+
+  cd /mnt/d/Development/aerthos
+
+  2. Read the summary documents
+
+  - SESSION_12_SUMMARY.md - Full context from last session (XP fix + quest system 80%)
+  - FINAL_STRETCH_ROADMAP.md - Current roadmap (look at "COLD START QUICK REFERENCE" section at the top)
+
+  3. Check current status
+
+  - Task 2: Side Quests is 50% complete
+  - ✅ Core system implemented
+  - ✅ Integration with GameState complete (just finished this session)
+  - ⏳ Need 10 more quests for Episodes 6-10
+  - ⏳ Need unit/integration tests
+
+  4. Resume work
+
+  - Create 10 quests for Episodes 6-10 (edit aerthos/data/side_quests.json)
+  - Write unit tests for quest system
+
+  ---
+  📁 Key Files to Reference
+
+  Documentation:
+  - FINAL_STRETCH_ROADMAP.md - Overall plan (94% complete)
+  - SESSION_12_SUMMARY.md - Previous session summary
+  - PHASE_4_TASK_2_SIDE_QUESTS_DESIGN.md - Quest system design doc
+
+  Quest System Code:
+  - aerthos/campaign/side_quest.py - Quest data model
+  - aerthos/campaign/quest_manager.py - Quest tracking
+  - aerthos/data/side_quests.json - Quest content (10 quests for Episodes 1-5)
+  - aerthos/campaign/episode_runner.py - Quest integration (lines 301-473)
+  - aerthos/engine/game_state.py - Quest hooks (4 locations)

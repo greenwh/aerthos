@@ -744,6 +744,7 @@ def init_episode_dungeon(campaign_id, episode_id):
         game_state.campaign_id = campaign_id
         game_state.episode_id = episode_id
         game_state.episode_runner = runner
+        game_state.character_ids = party_result['character_ids']  # Track character IDs for saving
 
         active_games[session_id] = game_state
 
@@ -1641,11 +1642,52 @@ def execute_command():
 
         result = game_state.execute_command(command)
 
+        # Save party members to roster after command execution (persists XP, HP, gold, etc.)
+        if hasattr(game_state, 'party') and hasattr(game_state, 'character_ids'):
+            if game_state.party and game_state.character_ids:
+                save_party_members(game_state.party, game_state.character_ids)
+
         return jsonify({
             'success': True,
             'message': result.get('message', ''),
             'state': get_game_state_json(game_state),
             'active_character': active_character_index
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)})
+
+
+@app.route('/api/exit_session', methods=['POST'])
+def exit_session():
+    """Exit current session and return to main menu"""
+    try:
+        data = request.json
+        session_id = data.get('session_id', 'default')
+
+        game_state = active_games.get(session_id)
+        if not game_state:
+            return jsonify({'success': False, 'error': 'No active game'})
+
+        # Save party members to roster (persist XP, HP, gold, etc.)
+        if hasattr(game_state, 'party') and hasattr(game_state, 'character_ids'):
+            if game_state.party and game_state.character_ids:
+                save_party_members(game_state.party, game_state.character_ids)
+
+        # Save session state if it's a campaign session
+        if hasattr(game_state, 'campaign_id') and hasattr(game_state, 'episode_id'):
+            session_mgr = SessionManager()
+            session_mgr.save_session_state(session_id, game_state)
+
+        # Remove from active games
+        if session_id in active_games:
+            del active_games[session_id]
+
+        return jsonify({
+            'success': True,
+            'message': 'Session saved and exited successfully'
         })
 
     except Exception as e:
@@ -1749,21 +1791,22 @@ def get_game_state():
                                 game_state.campaign_id = campaign.id
                                 game_state.episode_id = episode.id
                                 game_state.episode_runner = runner
-                                
+                                game_state.character_ids = party_result['character_ids']  # Track character IDs for saving
+
                                 # Restore dungeon state (explored rooms)
                                 if 'dungeon_state' in session_data:
                                     game_state.dungeon.deserialize(session_data['dungeon_state'])
-                                
+
                                 # Restore current room
                                 if session_data.get('current_room_id'):
                                     room = game_state.dungeon.rooms.get(session_data['current_room_id'])
                                     if room:
                                         game_state.current_room = room
-                                        
+
                                 # Restore time
                                 game_state.time_tracker.turns_elapsed = session_data.get('turns_elapsed', 0)
                                 game_state.time_tracker.total_hours = session_data.get('total_hours', 0)
-                                
+
                                 # Save to active_games
                                 active_games[session_id] = game_state
                                 
@@ -3149,8 +3192,11 @@ def import_manual_character():
                     print(f"DEBUG: Added magic item to inventory: {magic_item.name}")
 
         # Add thief skills if thief
-        if 'Thief' in char_class or char_class in ['Assassin', 'Acrobat']:
-            player.thief_skills = data.get('thief_skills', creator._get_thief_skills(level))
+        if char_class in ['Thief', 'Assassin', 'Bard']:
+            player.thief_skills = class_data.get('skills', {}).copy()
+            # Apply level bonuses
+            for skill in player.thief_skills:
+                player.thief_skills[skill] += (level - 1) * 5  # +5% per level (simplified)
 
         # Save to roster
         print(f"DEBUG: Before saving - inventory count: {len(player.inventory.items)}")
@@ -3574,6 +3620,7 @@ def load_session(session_id):
         # Create game state
         game_state = GameState(party.members[0], dungeon)
         game_state.party = party
+        game_state.character_ids = party_data['character_ids']  # Track character IDs for saving
         game_state.load_game_data()
 
         # Restore session state if it exists
