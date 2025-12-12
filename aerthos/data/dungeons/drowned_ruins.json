@@ -120,7 +120,12 @@
           "boss": true
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "treasure": {
+        "gold": 1200,
+        "gems": 7,
+        "magic_items": ["potion_superior_healing", "potion_superior_healing", "trident_plus2", "cloak_manta_ray", "pearl_power"]
+      }
     },
     "residential_quarter": {
       "id": "residential_quarter",
@@ -371,7 +376,12 @@
           "boss": true
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "treasure": {
+        "gold": 2500,
+        "gems": 10,
+        "magic_items": ["potion_superior_healing", "potion_superior_healing", "staff_power", "ring_mind_shielding", "helm_telepathy", "trident_plus3", "boots_speed"]
+      }
     }
   }
 }

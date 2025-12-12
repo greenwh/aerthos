@@ -321,7 +321,12 @@
           "boss": true
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "treasure": {
+        "gold": 1500,
+        "gems": 8,
+        "magic_items": ["potion_superior_healing", "potion_fire_resistance", "potion_fire_resistance", "flaming_longsword_plus2", "plate_mail_plus2", "ring_fire_resistance", "gauntlets_dexterity"]
+      }
     }
   }
 }

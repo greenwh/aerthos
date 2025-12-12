@@ -120,6 +120,11 @@
         }
       ],
       "safe_rest": false,
+      "treasure": {
+        "gold": 1000,
+        "gems": 6,
+        "magic_items": ["potion_superior_healing", "potion_extra_healing", "battleaxe_plus2", "chainmail_plus1", "gauntlets_ogre_power"]
+      },
       "special": "This is the final confrontation. Grukk wears the serpent medallion—proof of a darker conspiracy."
     },
     "storage_cellar": {

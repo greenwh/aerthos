@@ -111,7 +111,12 @@
           "boss": true
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "treasure": {
+        "gold": 800,
+        "gems": 5,
+        "magic_items": ["potion_extra_healing", "potion_extra_healing", "staff_striking", "ring_protection_plus2", "boots_levitation"]
+      }
     },
     "purification_pool": {
       "id": "purification_pool",

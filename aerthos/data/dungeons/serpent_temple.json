@@ -274,6 +274,11 @@
         }
       ],
       "safe_rest": false,
+      "treasure": {
+        "gold": 1800,
+        "gems": 8,
+        "magic_items": ["potion_superior_healing", "potion_superior_healing", "greatsword_plus3", "serpent_scale_armor_plus2", "ring_regeneration"]
+      },
       "note": "Optional mini-boss - defeating the champion grants powerful equipment"
     },
     "antechamber": {
@@ -334,6 +339,11 @@
         }
       ],
       "safe_rest": false,
+      "treasure": {
+        "gold": 5000,
+        "gems": 15,
+        "magic_items": ["potion_supreme_healing", "potion_supreme_healing", "holy_avenger_longsword_plus5", "staff_archmagi", "ring_wishes", "robe_archmagi", "vorpal_blade", "ring_three_wishes", "amulet_proof_vs_detection", "sword_sharpness"]
+      },
       "note": "FINAL BOSS - Campaign conclusion depends on this battle"
     }
   }

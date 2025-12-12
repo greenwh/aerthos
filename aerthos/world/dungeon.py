@@ -159,7 +159,8 @@ class Dungeon:
                     'exits': room.exits,
                     'items': room.items,
                     'safe_rest': room.is_safe_for_rest,
-                    'encounters': self.room_data.get(room_id, {}).get('encounters', []) if self.room_data else []
+                    'encounters': self.room_data.get(room_id, {}).get('encounters', []) if self.room_data else [],
+                    'treasure': self.room_data.get(room_id, {}).get('treasure') if self.room_data else None
                 }
                 for room_id, room in self.rooms.items()
             }

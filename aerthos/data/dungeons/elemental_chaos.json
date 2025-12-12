@@ -501,6 +501,11 @@
         }
       ],
       "safe_rest": false,
+      "treasure": {
+        "gold": 3000,
+        "gems": 12,
+        "magic_items": ["potion_supreme_healing", "potion_supreme_healing", "staff_elemental_mastery", "ring_elemental_command", "robe_stars", "cloak_protection_plus3", "elemental_gem_fire", "elemental_gem_water", "elemental_gem_earth", "elemental_gem_air"]
+      },
       "note": "This room becomes accessible after destroying all four keystones. Final boss of Episode 9."
     }
   }

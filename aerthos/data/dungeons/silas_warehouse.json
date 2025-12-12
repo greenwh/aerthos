@@ -115,7 +115,12 @@
           "boss": true
         }
       ],
-      "safe_rest": false
+      "safe_rest": false,
+      "treasure": {
+        "gold": 500,
+        "gems": 3,
+        "magic_items": ["potion_healing", "potion_extra_healing", "dagger_plus1", "cloak_protection_plus1"]
+      }
     },
     "loading_dock": {
       "id": "loading_dock",
