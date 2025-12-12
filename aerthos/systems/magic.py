@@ -72,7 +72,8 @@ class MagicSystem:
             'protection_from_evil': self._spell_protection_from_evil,
             'detect_magic': self._spell_detect_magic,
             'burning_hands': self._spell_burning_hands,
-            'charm_person': self._spell_charm_person
+            'charm_person': self._spell_charm_person,
+            'fireball': self._spell_fireball
         }
 
         handler = handlers.get(spell_key)
@@ -266,4 +267,55 @@ class MagicSystem:
         return {
             'narrative': narrative,
             'affected': [target.name] if not save_result['success'] else []
+        }
+
+    def _spell_fireball(self, spell: Spell, caster: PlayerCharacter,
+                        targets: List[Character]) -> Dict:
+        """Fireball: Explodes for 1d6 damage per caster level (max 10d6), save for half"""
+
+        # Calculate damage: 1d6 per caster level, max 10d6
+        num_dice = min(caster.level, 10)
+        total_damage = sum(random.randint(1, 6) for _ in range(num_dice))
+
+        if not targets:
+            return {
+                'narrative': "The fireball explodes harmlessly in the air!",
+                'affected': [],
+                'total_damage': 0
+            }
+
+        # Apply damage to all targets in area (20-foot radius)
+        affected = []
+        total_kills = 0
+
+        for target in targets:
+            if target.is_alive:
+                # Saving throw for half damage
+                save_result = self.save_resolver.save_for_half_damage(
+                    target, total_damage, 'spell'
+                )
+
+                final_damage = save_result['final_damage']
+                saved = save_result['success']
+
+                # Check if target died
+                if not target.is_alive:
+                    affected.append(f"{target.name} ({final_damage} dmg - SLAIN!)")
+                    total_kills += 1
+                else:
+                    save_str = " (saved)" if saved else ""
+                    affected.append(f"{target.name} ({final_damage} dmg{save_str})")
+
+        # Build narrative
+        narrative = f"A massive fireball explodes for {total_damage} damage!\n"
+        narrative += '\n'.join(f"  • {entry}" for entry in affected)
+
+        if total_kills > 0:
+            narrative += f"\n\n💀 {total_kills} {'enemy' if total_kills == 1 else 'enemies'} slain!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'total_damage': total_damage,
+            'kills': total_kills
         }
