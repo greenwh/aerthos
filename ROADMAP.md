@@ -158,34 +158,55 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 
 ### Implementation Summary
 - **Total Spells in Database**: 332 spells
-- **Implemented**: 8 spells (2.4%)
-- **Missing**: 324 spells (97.6%)
+- **Implemented**: 17 spells (5.1%)
+- **Missing**: 315 spells (94.9%)
 
-### Implemented Spells ✅ (8 total)
-1. **Sleep** (Level 1, Enchantment) - Affects 2d4 HD of creatures
-2. **Magic Missile** (Level 1, Evocation) - Auto-hit, 1d4+1 per missile
-3. **Cure Light Wounds** (Level 1, Necromancy) - Heals 1d8 HP
-4. **Protection from Evil** (Level 1, Abjuration) - +2 AC/saves vs evil
-5. **Detect Magic** (Level 1, Divination) - Reveals magical auras
-6. **Burning Hands** (Level 1, Evocation) - Cone of fire, save for half
-7. **Charm Person** (Level 1, Enchantment) - Make humanoid friendly
-8. **Fireball** (Level 3, Evocation) - ✅ Just implemented! 1d6/level damage, save for half
+### Implemented Spells ✅ (17 total)
+
+**Level 1 Spells:**
+1. **Sleep** (Enchantment) - Affects 2d4 HD of creatures
+2. **Magic Missile** (Evocation) - Auto-hit, 1d4+1 per missile
+3. **Cure Light Wounds** (Necromancy) - Heals 1d8 HP
+4. **Protection from Evil** (Abjuration) - +2 AC/saves vs evil
+5. **Detect Magic** (Divination) - Reveals magical auras
+6. **Burning Hands** (Evocation) - Cone of fire, save for half
+7. **Charm Person** (Enchantment) - Make humanoid friendly
+8. **Bless** (Conjuration) - ✅ NEW! Party-wide +1 to attacks
+
+**Level 2 Spells:**
+9. **Web** (Evocation) - ✅ NEW! Entangles creatures, save to avoid
+10. **Hold Person** (Enchantment) - ✅ NEW! Paralyzes 1-4 humanoids, save negates
+
+**Level 3 Spells:**
+11. **Fireball** (Evocation) - 1d6/level damage (max 10d6), save for half
+12. **Lightning Bolt** (Evocation) - ✅ NEW! 1d6/level damage (max 10d6), save for half
+13. **Haste** (Alteration) - ✅ NEW! Double movement/attacks, +1 AC
+14. **Slow** (Alteration) - ✅ NEW! Half movement/attacks, -1 AC, save negates
+
+**Level 4 Spells:**
+15. **Cure Serious Wounds** (Necromancy) - ✅ NEW! Heals 2d8+1 HP
+
+**Level 5 Spells:**
+16. **Cone of Cold** (Evocation) - ✅ NEW! (1d4+1)/level cold damage, save for half
+
+**Level 6 Spells:**
+17. **Heal** (Necromancy) - ✅ NEW! Fully restores HP, removes conditions
 
 ### Missing Spells by Priority Category
 
-**🔥 Combat Damage Spells (61 missing) - HIGH PRIORITY**
-- Lightning Bolt, Cone of Cold, Chain Lightning, Cloudkill
+**🔥 Combat Damage Spells (58 missing) - HIGH PRIORITY**
+- ~~Lightning Bolt~~ ✅, ~~Cone of Cold~~ ✅, Chain Lightning, Cloudkill
 - Meteor Swarm, Ice Storm, Flame Strike, Call Lightning
-- Web, Stinking Cloud, Ray of Enfeeblement, Phantasmal Force
+- ~~Web~~ ✅, Stinking Cloud, Ray of Enfeeblement, Phantasmal Force
 
-**💚 Healing Spells (12 missing) - HIGH PRIORITY**
-- Cure Serious Wounds, Cure Critical Wounds, Heal
+**💚 Healing Spells (10 missing) - HIGH PRIORITY**
+- ~~Cure Serious Wounds~~ ✅, Cure Critical Wounds, ~~Heal~~ ✅
 - Raise Dead, Resurrection, Regenerate, Restoration
 - Neutralize Poison, Cure Disease, Cure Blindness
 
-**⚔️ Buff/Debuff Spells (49 missing) - MEDIUM PRIORITY**
-- Haste, Slow, Bless, Prayer
-- Hold Person, Strength, Barkskin, Stoneskin
+**⚔️ Buff/Debuff Spells (45 missing) - MEDIUM PRIORITY**
+- ~~Haste~~ ✅, ~~Slow~~ ✅, ~~Bless~~ ✅, Prayer
+- ~~Hold Person~~ ✅, Strength, Barkskin, Stoneskin
 - Enlarge, Reduce, Shield, Wall of Force
 
 **🔮 Utility/Exploration Spells (117 missing) - MEDIUM PRIORITY**
@@ -200,18 +221,18 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 **📚 Other/Miscellaneous (77 missing) - VARIES**
 
 ### Recommended Implementation Order (Top 15)
-1. **Lightning Bolt** (3) - Classic area damage spell
-2. **Cone of Cold** (5) - Major cold damage spell
-3. **Cure Serious Wounds** (4) - Critical mid-level healing
-4. **Heal** (6) - Major healing spell
-5. **Haste** (3) - Combat buff - extra attacks
-6. **Slow** (3) - Combat debuff - reduces enemy attacks
-7. **Bless** (1) - Party-wide attack bonus
-8. **Web** (2) - Area control - restricts movement
-9. **Hold Person** (2) - Disables humanoid enemies
-10. **Invisibility** (2) - Stealth and escape
-11. **Knock** (2) - Bypass locked doors
-12. **Find Traps** (2) - Dungeon exploration
+1. ~~**Lightning Bolt** (3)~~ - ✅ IMPLEMENTED (2025-12-12)
+2. ~~**Cone of Cold** (5)~~ - ✅ IMPLEMENTED (2025-12-12)
+3. ~~**Cure Serious Wounds** (4)~~ - ✅ IMPLEMENTED (2025-12-12)
+4. ~~**Heal** (6)~~ - ✅ IMPLEMENTED (2025-12-12)
+5. ~~**Haste** (3)~~ - ✅ IMPLEMENTED (2025-12-12)
+6. ~~**Slow** (3)~~ - ✅ IMPLEMENTED (2025-12-12)
+7. ~~**Bless** (1)~~ - ✅ IMPLEMENTED (2025-12-12)
+8. ~~**Web** (2)~~ - ✅ IMPLEMENTED (2025-12-12)
+9. ~~**Hold Person** (2)~~ - ✅ IMPLEMENTED (2025-12-12)
+10. **Invisibility** (2) - Stealth and escape - NEXT UP
+11. **Knock** (2) - Bypass locked doors - NEXT UP
+12. **Find Traps** (2) - Dungeon exploration - NEXT UP
 13. **Cloudkill** (5) - Area denial damage
 14. **Chain Lightning** (6) - Multi-target damage
 15. **Raise Dead** (5) - Party member revival
@@ -247,13 +268,28 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
   - Spell audit ✅
   - Boss treasure ✅
 - **Medium Priority**: 1 of 4 complete (torch switching confirmed working)
-- **Spell Effects**: 8 of 332 implemented (2.4%) - Full audit complete
+- **Spell Effects**: 17 of 332 implemented (5.1%)
+  - 9 new spells added (2025-12-12)
+  - Top 9 priority spells complete
+  - 6 more spells to reach top 15
 
 ---
 
 ## 🔄 Change Log
 
-### 2025-12-12
+### 2025-12-12 (Evening Update)
+- ✅ Implemented 9 high-priority spells (top 9 from recommended order)
+  - **Combat Damage**: Lightning Bolt, Cone of Cold, Web
+  - **Healing**: Cure Serious Wounds, Heal
+  - **Buff/Debuff**: Haste, Slow, Bless, Hold Person
+- ✅ Fixed treasure preservation bug in dungeon save/load
+  - Dungeon.to_dict() now preserves treasure field
+  - Scenarios saved to library now retain boss treasure
+  - Verified through save/load cycle testing
+- 📈 **Spell implementation increased from 8 to 17 (112% increase)**
+- All 571 tests still passing
+
+### 2025-12-12 (Morning Update)
 - ✅ Added treasure to ALL 13 boss rooms across 11 campaign dungeons
   - Total treasure: 20,550 gold, 92 gems, 75 magic items
   - Treasure scaled by episode difficulty (150-5000 gold per boss)
