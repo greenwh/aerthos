@@ -35,6 +35,7 @@ class DungeonConfig:
 
     # Difficulty
     party_level: int = 1
+    dungeon_level: int = 1  # For treasure table calculations (defaults to party_level)
     lethality_factor: float = 1.0  # Multiplier for encounter difficulty
 
     # Monster selection
@@ -135,6 +136,7 @@ class DungeonConfig:
         config_params = {
             **base_config,
             'party_level': party_level,
+            'dungeon_level': party_level,  # Default dungeon level to party level
             'monster_pool': monster_pool,
             'boss_monster': boss_monster,
             **kwargs
@@ -215,6 +217,7 @@ EASY_DUNGEON = DungeonConfig(
     combat_frequency=0.5,
     trap_frequency=0.1,
     party_level=1,
+    dungeon_level=1,
     lethality_factor=0.8,
     monster_pool=['kobold', 'giant_rat'],
     treasure_level='low',
@@ -227,6 +230,7 @@ STANDARD_DUNGEON = DungeonConfig(
     combat_frequency=0.6,
     trap_frequency=0.2,
     party_level=1,
+    dungeon_level=1,
     lethality_factor=1.0,
     monster_pool=['kobold', 'goblin', 'giant_rat', 'skeleton'],
     treasure_level='medium',
@@ -240,6 +244,7 @@ HARD_DUNGEON = DungeonConfig(
     trap_frequency=0.3,
     empty_room_frequency=0.1,
     party_level=2,
+    dungeon_level=2,
     lethality_factor=1.3,
     monster_pool=['goblin', 'orc', 'skeleton', 'ogre'],
     treasure_level='high',

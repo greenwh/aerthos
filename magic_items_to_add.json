@@ -1,0 +1,820 @@
+{
+  "leather_armor_plus_1": {
+    "name": "Leather Armor +1",
+    "type": "magic_item",
+    "cost_gp": 2500,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 500,
+    "description": "Enchanted leather armor. See armor.json for full stats. AC 7."
+  },
+  "leather_armor_plus_2": {
+    "name": "Leather Armor +2",
+    "type": "magic_item",
+    "cost_gp": 5000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 1000,
+    "description": "Enchanted leather armor. See armor.json for full stats. AC 6."
+  },
+  "chain_mail_plus_1": {
+    "name": "Chain Mail +1",
+    "type": "magic_item",
+    "cost_gp": 2500,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 500,
+    "description": "Enchanted chain mail. See armor.json for full stats. AC 4."
+  },
+  "chain_mail_plus_2": {
+    "name": "Chain Mail +2",
+    "type": "magic_item",
+    "cost_gp": 5000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 1000,
+    "description": "Enchanted chain mail. See armor.json for full stats. AC 3."
+  },
+  "chain_mail_plus_3": {
+    "name": "Chain Mail +3",
+    "type": "magic_item",
+    "cost_gp": 7500,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 1500,
+    "description": "Enchanted chain mail. See armor.json for full stats. AC 2."
+  },
+  "plate_mail_plus_1": {
+    "name": "Plate Mail +1",
+    "type": "magic_item",
+    "cost_gp": 5000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 800,
+    "description": "Enchanted plate mail. See armor.json for full stats. AC 2."
+  },
+  "plate_mail_plus_2": {
+    "name": "Plate Mail +2",
+    "type": "magic_item",
+    "cost_gp": 10000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 1600,
+    "description": "Enchanted plate mail. See armor.json for full stats. AC 1."
+  },
+  "plate_mail_plus_3": {
+    "name": "Plate Mail +3",
+    "type": "magic_item",
+    "cost_gp": 15000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 2400,
+    "description": "Enchanted plate mail. See armor.json for full stats. AC 0."
+  },
+  "plate_mail_plus_4": {
+    "name": "Plate Mail +4",
+    "type": "magic_item",
+    "cost_gp": 20000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "armor"
+    ],
+    "xp_value": 3200,
+    "description": "Enchanted plate mail. See armor.json for full stats. AC -1."
+  },
+  "shield_plus_1": {
+    "name": "Shield +1",
+    "type": "magic_item",
+    "cost_gp": 2500,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "shield"
+    ],
+    "xp_value": 500,
+    "description": "Enchanted shield. See armor.json for full stats. AC bonus: +2."
+  },
+  "shield_plus_2": {
+    "name": "Shield +2",
+    "type": "magic_item",
+    "cost_gp": 5000,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "shield"
+    ],
+    "xp_value": 1000,
+    "description": "Enchanted shield. See armor.json for full stats. AC bonus: +3."
+  },
+  "shield_plus_3": {
+    "name": "Shield +3",
+    "type": "magic_item",
+    "cost_gp": 7500,
+    "weight_gp": 0,
+    "properties": [
+      "magic",
+      "shield"
+    ],
+    "xp_value": 1500,
+    "description": "Enchanted shield. See armor.json for full stats. AC bonus: +4."
+  },
+  "longsword_plus_1": {
+    "name": "Longsword +1",
+    "type": "magic_item",
+    "cost_gp": 2000,
+    "weight_gp": 60,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 400,
+    "description": "Enchanted longsword. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "longsword_plus_2": {
+    "name": "Longsword +2",
+    "type": "magic_item",
+    "cost_gp": 4000,
+    "weight_gp": 60,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 800,
+    "description": "Enchanted longsword. See weapons.json for full stats. +2 to attack and damage."
+  },
+  "longsword_plus_3": {
+    "name": "Longsword +3",
+    "type": "magic_item",
+    "cost_gp": 7000,
+    "weight_gp": 60,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 1400,
+    "description": "Enchanted longsword. See weapons.json for full stats. +3 to attack and damage."
+  },
+  "short_sword_plus_1": {
+    "name": "Short Sword +1",
+    "type": "magic_item",
+    "cost_gp": 2000,
+    "weight_gp": 10,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 400,
+    "description": "Enchanted short sword. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "broad_sword_plus_1": {
+    "name": "Broad Sword +1",
+    "type": "magic_item",
+    "cost_gp": 2000,
+    "weight_gp": 75,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 400,
+    "description": "Enchanted broad sword. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "bastard_sword_plus_1": {
+    "name": "Bastard Sword +1",
+    "type": "magic_item",
+    "cost_gp": 2000,
+    "weight_gp": 100,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 400,
+    "description": "Enchanted bastard sword. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "two_handed_sword_plus_1": {
+    "name": "Two Handed Sword +1",
+    "type": "magic_item",
+    "cost_gp": 2000,
+    "weight_gp": 250,
+    "properties": [
+      "magic",
+      "weapon",
+      "sword"
+    ],
+    "xp_value": 400,
+    "description": "Enchanted two handed sword. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "dagger_plus_1": {
+    "name": "Dagger +1",
+    "type": "magic_item",
+    "cost_gp": 1000,
+    "weight_gp": 10,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 200,
+    "description": "Enchanted dagger. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "dagger_plus_2": {
+    "name": "Dagger +2",
+    "type": "magic_item",
+    "cost_gp": 2000,
+    "weight_gp": 10,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 400,
+    "description": "Enchanted dagger. See weapons.json for full stats. +2 to attack and damage."
+  },
+  "mace_plus_1": {
+    "name": "Mace +1",
+    "type": "magic_item",
+    "cost_gp": 1500,
+    "weight_gp": 100,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 300,
+    "description": "Enchanted mace. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "mace_plus_2": {
+    "name": "Mace +2",
+    "type": "magic_item",
+    "cost_gp": 3000,
+    "weight_gp": 100,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 600,
+    "description": "Enchanted mace. See weapons.json for full stats. +2 to attack and damage."
+  },
+  "battle_axe_plus_1": {
+    "name": "Battle Axe +1",
+    "type": "magic_item",
+    "cost_gp": 1500,
+    "weight_gp": 75,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 300,
+    "description": "Enchanted battle axe. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "battle_axe_plus_2": {
+    "name": "Battle Axe +2",
+    "type": "magic_item",
+    "cost_gp": 3000,
+    "weight_gp": 75,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 600,
+    "description": "Enchanted battle axe. See weapons.json for full stats. +2 to attack and damage."
+  },
+  "hammer_plus_1": {
+    "name": "War Hammer +1",
+    "type": "magic_item",
+    "cost_gp": 1500,
+    "weight_gp": 50,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 300,
+    "description": "Enchanted hammer. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "hammer_plus_2": {
+    "name": "War Hammer +2",
+    "type": "magic_item",
+    "cost_gp": 3000,
+    "weight_gp": 50,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 600,
+    "description": "Enchanted hammer. See weapons.json for full stats. +2 to attack and damage."
+  },
+  "spear_plus_1": {
+    "name": "Spear +1",
+    "type": "magic_item",
+    "cost_gp": 1500,
+    "weight_gp": 50,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 300,
+    "description": "Enchanted spear. See weapons.json for full stats. +1 to attack and damage."
+  },
+  "spear_plus_2": {
+    "name": "Spear +2",
+    "type": "magic_item",
+    "cost_gp": 3000,
+    "weight_gp": 50,
+    "properties": [
+      "magic",
+      "weapon"
+    ],
+    "xp_value": 600,
+    "description": "Enchanted spear. See weapons.json for full stats. +2 to attack and damage."
+  },
+  "long_bow_plus_1": {
+    "name": "Long Bow +1",
+    "type": "magic_item",
+    "cost_gp": 2500,
+    "weight_gp": 100,
+    "properties": [
+      "magic",
+      "weapon",
+      "bow"
+    ],
+    "xp_value": 500,
+    "description": "Enchanted longbow. See weapons.json for full stats. +1 to attack rolls."
+  },
+  "potion_extra_healing": {
+    "name": "Potion of Extra-Healing",
+    "type": "consumable",
+    "cost_gp": 800,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "healing"
+    ],
+    "effect": {
+      "type": "heal",
+      "amount": "3d8+3",
+      "duration": "instant"
+    },
+    "xp_value": 400,
+    "description": "A potent red liquid that restores 3d8+3 hit points when consumed. More powerful than a standard healing potion."
+  },
+  "potion_giant_strength": {
+    "name": "Potion of Giant Strength",
+    "type": "consumable",
+    "cost_gp": 1000,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "strength"
+    ],
+    "effect": {
+      "type": "ability_boost",
+      "ability": "strength",
+      "strength_type": "random",
+      "damage_bonus_range": [
+        7,
+        12
+      ],
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 600,
+    "description": "A thick, viscous potion that grants the strength of a giant. Type determined randomly: Hill (+7 damage), Stone (+8), Frost (+9), Fire (+10), Cloud (+11), or Storm (+12). Duration: 4+1d4 turns."
+  },
+  "potion_speed": {
+    "name": "Potion of Speed",
+    "type": "consumable",
+    "cost_gp": 900,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "haste"
+    ],
+    "effect": {
+      "type": "haste",
+      "movement_multiplier": 2,
+      "attacks_multiplier": 2,
+      "duration_rounds": "5d4",
+      "side_effect": "ages_1_year"
+    },
+    "xp_value": 450,
+    "description": "A silvery potion that doubles movement and attacks for 5-20 rounds. Side effect: ages the drinker 1 year permanently."
+  },
+  "potion_heroism": {
+    "name": "Potion of Heroism",
+    "type": "consumable",
+    "cost_gp": 500,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "enhancement"
+    ],
+    "effect": {
+      "type": "temporary_levels",
+      "levels_by_current": {
+        "0": {
+          "levels": 4,
+          "hp": "4d10"
+        },
+        "1-3": {
+          "levels": 3,
+          "hp": "3d10+1"
+        },
+        "4-6": {
+          "levels": 2,
+          "hp": "2d10+2"
+        },
+        "7-9": {
+          "levels": 1,
+          "hp": "1d10+3"
+        }
+      },
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 300,
+    "description": "A golden potion that grants temporary levels and HP. 0-level gains 4 levels (4d10 HP), 1st-3rd gain 3 levels (3d10+1 HP), 4th-6th gain 2 levels (2d10+2 HP), 7th-9th gain 1 level (1d10+3 HP). Duration: 4+1d4 turns."
+  },
+  "potion_flying": {
+    "name": "Potion of Flying",
+    "type": "consumable",
+    "cost_gp": 750,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "flight"
+    ],
+    "effect": {
+      "type": "flight",
+      "movement_rate": "as_fly_spell",
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 500,
+    "description": "A feather-light potion that grants the ability to fly as per the 3rd level magic-user spell. Duration: 4+1d4 turns."
+  },
+  "potion_levitation": {
+    "name": "Potion of Levitation",
+    "type": "consumable",
+    "cost_gp": 400,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "levitation"
+    ],
+    "effect": {
+      "type": "levitation",
+      "max_weight_gp": 6000,
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 250,
+    "description": "A light blue potion that allows levitation as per the 2nd level magic-user spell. Max weight: 6,000 gp (600 lbs). Duration: 4+1d4 turns."
+  },
+  "potion_climbing": {
+    "name": "Potion of Climbing",
+    "type": "consumable",
+    "cost_gp": 500,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "climbing"
+    ],
+    "effect": {
+      "type": "climbing",
+      "base_fail_chance": 1,
+      "weight_penalty_per_100gp": 1,
+      "armor_penalties": {
+        "studded_leather": 1.5,
+        "ring_mail": 1.5,
+        "scale_mail": 4,
+        "chain_mail": 7,
+        "plate_mail": 10
+      },
+      "duration_turns": 1,
+      "duration_rounds": "1d4+1"
+    },
+    "xp_value": 300,
+    "description": "A sticky potion that grants superior climbing ability. Base 1% fail chance + 1% per 100gp weight + armor penalties. Duration: 1 turn + 1d4+1 rounds."
+  },
+  "potion_invisibility": {
+    "name": "Potion of Invisibility",
+    "type": "consumable",
+    "cost_gp": 500,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "invisibility"
+    ],
+    "effect": {
+      "type": "invisibility",
+      "breaks_on_attack": true,
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 250,
+    "description": "A clear, shimmering potion that grants invisibility as per the spell. Breaks when attacking. Duration: 4+1d4 turns (or 3-6 turns if drunk in one gulp)."
+  },
+  "potion_esp": {
+    "name": "Potion of ESP",
+    "type": "consumable",
+    "cost_gp": 850,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "telepathy"
+    ],
+    "effect": {
+      "type": "esp",
+      "duration_rounds": "5d8"
+    },
+    "xp_value": 500,
+    "description": "A purple potion that grants ESP (telepathy) as per the spell. Duration: 5-40 rounds."
+  },
+  "potion_clairaudience": {
+    "name": "Potion of Clairaudience",
+    "type": "consumable",
+    "cost_gp": 400,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "divination"
+    ],
+    "effect": {
+      "type": "clairaudience",
+      "range_inches": 3,
+      "duration_turns": 2
+    },
+    "xp_value": 250,
+    "description": "A potion that grants the ability to hear unknown areas within 3\" (30 yards). Duration: 2 turns."
+  },
+  "potion_clairvoyance": {
+    "name": "Potion of Clairvoyance",
+    "type": "consumable",
+    "cost_gp": 500,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "divination"
+    ],
+    "effect": {
+      "type": "clairvoyance",
+      "range_inches": 3,
+      "duration_turns": 1
+    },
+    "xp_value": 300,
+    "description": "A crystal-clear potion that grants the ability to see unknown areas up to 3\" (30 yards) distant. Duration: 1 turn."
+  },
+  "potion_diminution": {
+    "name": "Potion of Diminution",
+    "type": "consumable",
+    "cost_gp": 500,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "transformation"
+    ],
+    "effect": {
+      "type": "size_change",
+      "size_percent": 5,
+      "duration_turns": "6+2d4+1"
+    },
+    "xp_value": 300,
+    "description": "A shrinking potion that reduces the drinker to 5% of normal size. Duration: 6 + 2-5 additional turns."
+  },
+  "potion_gaseous_form": {
+    "name": "Potion of Gaseous Form",
+    "type": "consumable",
+    "cost_gp": 400,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "transformation"
+    ],
+    "effect": {
+      "type": "gaseous_form",
+      "movement_rate_inches": 3,
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 300,
+    "description": "A smoky potion that transforms the drinker into gaseous form. Movement: 3\"/round. Can enter any non-airtight space. Duration: 4+1d4 turns."
+  },
+  "potion_animal_control": {
+    "name": "Potion of Animal Control",
+    "type": "consumable",
+    "cost_gp": 400,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "control"
+    ],
+    "effect": {
+      "type": "animal_control",
+      "animals_controlled": "5-20 giant rats, 3-12 man-sized, or 1-4 weighing 1/2 ton+",
+      "animal_type_d20": {
+        "1-4": "Mammal/Marsupial",
+        "5-8": "Avian",
+        "9-12": "Reptile/Amphibian",
+        "13-15": "Fish",
+        "16-17": "Mammal/Avian",
+        "18-19": "Reptile/Fish",
+        "20": "All"
+      },
+      "save_intelligence_5_plus": true,
+      "duration_turns": "4+1d4"
+    },
+    "xp_value": 250,
+    "description": "A musky potion that allows control over animals. Controls 5-20 small, 3-12 man-sized, or 1-4 large animals. Type determined by d20 roll. Animals with INT 5+ get a save. Duration: 4+1d4 turns."
+  },
+  "potion_water_breathing": {
+    "name": "Potion of Water Breathing",
+    "type": "consumable",
+    "cost_gp": 900,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "waterbreathing"
+    ],
+    "effect": {
+      "type": "water_breathing",
+      "duration_minutes": 60,
+      "duration_rounds_per_dose": "1d10",
+      "doses": "75% 2 doses, 25% 4 doses"
+    },
+    "xp_value": 400,
+    "description": "A blue-green potion that allows breathing underwater. Duration: 1 hour + 1-10 rounds per dose. 75% chance of 2 doses, 25% chance of 4 doses."
+  },
+  "potion_poison": {
+    "name": "Potion of Poison",
+    "type": "consumable",
+    "cost_gp": 0,
+    "weight_gp": 0.5,
+    "properties": [
+      "magic",
+      "potion",
+      "poison",
+      "cursed"
+    ],
+    "effect": {
+      "type": "poison",
+      "effect": "death",
+      "save_modifiers": {
+        "weak": 4,
+        "average": 0,
+        "deadly": -4
+      }
+    },
+    "xp_value": 0,
+    "description": "A deadly poisonous potion disguised as a beneficial one. Effect: Death. Save varies: Weak (+4), Average (normal), or Deadly (-4)."
+  },
+  "scroll_protection_demons": {
+    "name": "Scroll of Protection from Demons",
+    "type": "scroll",
+    "cost_gp": 1000,
+    "weight_gp": 0.1,
+    "properties": [
+      "magic",
+      "scroll",
+      "protection"
+    ],
+    "effect": {
+      "type": "protection_circle",
+      "radius_feet": 10,
+      "duration_rounds": "1d4+1",
+      "protection_from": [
+        "demons"
+      ],
+      "moves_with_reader": true
+    },
+    "xp_value": 2500,
+    "description": "Creates a 10-foot radius circle that demons cannot enter. Duration: 5-20 rounds. Circle moves with the reader."
+  },
+  "scroll_protection_devils": {
+    "name": "Scroll of Protection from Devils",
+    "type": "scroll",
+    "cost_gp": 1500,
+    "weight_gp": 0.1,
+    "properties": [
+      "magic",
+      "scroll",
+      "protection"
+    ],
+    "effect": {
+      "type": "protection_circle",
+      "radius_feet": 10,
+      "duration_rounds": "1d4+1",
+      "protection_from": [
+        "devils"
+      ],
+      "moves_with_reader": true
+    },
+    "xp_value": 2500,
+    "description": "Creates a 10-foot radius circle that devils cannot enter. Duration: 5-20 rounds. Circle moves with the reader."
+  },
+  "scroll_protection_lycanthropes": {
+    "name": "Scroll of Protection from Lycanthropes",
+    "type": "scroll",
+    "cost_gp": 1000,
+    "weight_gp": 0.1,
+    "properties": [
+      "magic",
+      "scroll",
+      "protection"
+    ],
+    "effect": {
+      "type": "protection_circle",
+      "radius_feet": 10,
+      "duration_rounds": "1d6+5",
+      "protection_from": [
+        "lycanthropes"
+      ],
+      "max_hd": 49,
+      "moves_with_reader": true
+    },
+    "xp_value": 1000,
+    "description": "Creates a 10-foot radius circle that lycanthropes cannot enter. Affects up to 49 HD of lycanthropes. Duration: 5-30 rounds. Circle moves with the reader."
+  },
+  "scroll_protection_magic": {
+    "name": "Scroll of Protection from Magic",
+    "type": "scroll",
+    "cost_gp": 2500,
+    "weight_gp": 0.1,
+    "properties": [
+      "magic",
+      "scroll",
+      "protection"
+    ],
+    "effect": {
+      "type": "protection_circle",
+      "radius_feet": 5,
+      "duration_rounds": "1d6+5",
+      "protection_from": [
+        "all_magic"
+      ],
+      "blocks_outgoing": true,
+      "drains_magic_items_50_percent": true,
+      "moves_with_reader": true
+    },
+    "xp_value": 1500,
+    "description": "Creates a 5-foot radius circle that blocks ALL magic (in and out). Magic items touching the globe must save (50%) or be drained. Duration: 5-30 rounds."
+  },
+  "scroll_protection_undead": {
+    "name": "Scroll of Protection from Undead",
+    "type": "scroll",
+    "cost_gp": 1000,
+    "weight_gp": 0.1,
+    "properties": [
+      "magic",
+      "scroll",
+      "protection"
+    ],
+    "effect": {
+      "type": "protection_circle",
+      "radius_feet": 5,
+      "duration_rounds": "10d8",
+      "protection_from": [
+        "undead"
+      ],
+      "max_hd": 35,
+      "moves_with_reader": true
+    },
+    "xp_value": 1500,
+    "description": "Creates a 5-foot radius circle that restrains up to 35 HD of undead. Duration: 10-80 rounds. Circle moves with the reader."
+  }
+}

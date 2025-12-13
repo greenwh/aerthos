@@ -12,6 +12,44 @@ from ..systems.narrator import DMNarrator, NarrativeContext
 from ..systems.environment_filter import EnvironmentMonsterFilter, EnvironmentContext
 
 
+# Item ID mapping: generator logical names → database IDs
+# This ensures dungeon-generated items match database entries
+ITEM_ID_MAP = {
+    # Basic weapons
+    'dagger': 'dagger',
+    'shortsword': 'short_sword',
+    'longsword': 'long_sword',
+    'mace': 'footmans_mace',
+
+    # Basic armor
+    'leather_armor': 'leather',
+    'chain_mail': 'chain_mail',
+    'plate_mail': 'plate_mail',
+    'shield': 'shield_medium',
+
+    # Magic weapons (verified to exist in database)
+    'dagger_plus1': 'dagger_plus_1',
+    'longsword_plus1': 'longsword_plus_1',
+    'mace_plus1': 'mace_plus_1',
+
+    # Note: The following items don't exist in database and are NOT mapped:
+    # - short_sword_plus_1
+    # - longsword_plus_2
+    # - chain_mail_plus_1
+    # - plate_mail_plus_1
+    # - shield_plus_1
+    # These have been removed from treasure generation to prevent phantom items
+
+    # Consumables
+    'potion_healing': 'potion_healing',
+
+    # Basic gear
+    'rope_50ft': 'rope_50ft',
+    'torch': 'torch',
+    'rations': 'rations'
+}
+
+
 class DungeonGenerator:
     """
     Procedural dungeon generation
@@ -113,6 +151,18 @@ class DungeonGenerator:
                 ]
             }
         }
+
+    def _map_item_id(self, logical_id: str) -> str:
+        """
+        Convert generator logical item ID to database ID
+
+        Args:
+            logical_id: Generator's item name (e.g., 'longsword_plus1')
+
+        Returns:
+            Database item ID (e.g., 'longsword_plus_1')
+        """
+        return ITEM_ID_MAP.get(logical_id, logical_id)
 
     def generate(self, config: DungeonConfig) -> Dict:
         """
@@ -534,22 +584,26 @@ class DungeonGenerator:
         # Basic items (rations, rope, etc.)
         basic_items = ['rations', 'rope_50ft', 'torch']
         if self.rng.random() < 0.3:
-            items.append(self.rng.choice(basic_items))
+            items.append(self._map_item_id(self.rng.choice(basic_items)))
 
         # Weapons/armor (based on treasure level)
         if self.rng.random() < 0.4:
             if config.treasure_level == 'low':
-                items.append(self.rng.choice(['dagger', 'shortsword', 'leather_armor']))
+                item = self.rng.choice(['dagger', 'shortsword', 'leather_armor'])
             elif config.treasure_level == 'medium':
-                items.append(self.rng.choice(['longsword', 'mace', 'chain_mail', 'shield']))
+                item = self.rng.choice(['longsword', 'mace', 'chain_mail', 'shield'])
             else:  # high
-                items.append(self.rng.choice(['longsword', 'plate_mail', 'shield']))
+                item = self.rng.choice(['longsword', 'plate_mail', 'shield'])
+            items.append(self._map_item_id(item))
 
-        # Magic items (rare)
+        # Magic items (rare) - use comprehensive treasure tables
         if self.rng.random() < config.magic_item_chance:
-            magic_items = ['longsword_plus1', 'shortsword_plus1', 'dagger_plus1',
-                          'chain_mail_plus1', 'shield_plus1', 'potion_healing']
-            items.append(self.rng.choice(magic_items))
+            from ..treasure_tables import generate_magic_item
+            # Use dungeon level from config, default to 1
+            dungeon_level = getattr(config, 'dungeon_level', 1)
+            magic_item = generate_magic_item(dungeon_level)
+            if magic_item:
+                items.append(self._map_item_id(magic_item))
 
         return items
 
@@ -691,12 +745,11 @@ class DungeonGenerator:
         treasure_gold = 100 * config.party_level
         treasure_gems = self.rng.randint(1, 5)
 
-        magic_items_in_treasure = ['potion_healing']
+        magic_items_in_treasure = [self._map_item_id('potion_healing')]
         if self.rng.random() < 0.5:
-            magic_items_in_treasure.append(self.rng.choice([
-                'longsword_plus1', 'longsword_plus2', 'chain_mail_plus1',
-                'plate_mail_plus1', 'shield_plus1'
-            ]))
+            # Only items verified to exist in database
+            magic_item = self.rng.choice(['longsword_plus1', 'dagger_plus1', 'mace_plus1'])
+            magic_items_in_treasure.append(self._map_item_id(magic_item))
 
         rooms[final_room]['treasure'] = {
             'gold': treasure_gold,
