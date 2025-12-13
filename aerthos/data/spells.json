@@ -3870,6 +3870,21 @@
       "Magic-User"
     ]
   },
+  "chain_lightning": {
+    "name": "Chain Lightning",
+    "level": 6,
+    "school": "evocation",
+    "casting_time": "6 segments",
+    "range": "40 feet + 10 feet/level",
+    "duration": "Instantaneous",
+    "area": "Special",
+    "saving_throw": "Half damage",
+    "components": "standard",
+    "description": "Releases a powerful stroke of electrical energy that inflicts 1d6 damage per level of the caster (max 12d6) to the primary target. The bolt then arcs to one secondary target per caster level, each taking half the damage of the previous target. Saving throw for half damage on each target.",
+    "class_availability": [
+      "Magic-User"
+    ]
+  },
   "death_spell": {
     "name": "Death Spell",
     "level": 6,

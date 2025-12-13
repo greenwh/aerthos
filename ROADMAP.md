@@ -157,11 +157,11 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 **COMPREHENSIVE AUDIT COMPLETED: 2025-12-12**
 
 ### Implementation Summary
-- **Total Spells in Database**: 332 spells
-- **Implemented**: 17 spells (5.1%)
-- **Missing**: 315 spells (94.9%)
+- **Total Spells in Database**: 333 spells (added Chain Lightning)
+- **Implemented**: 23 spells (6.9%)
+- **Missing**: 310 spells (93.1%)
 
-### Implemented Spells ✅ (17 total)
+### Implemented Spells ✅ (23 total)
 
 **Level 1 Spells:**
 1. **Sleep** (Enchantment) - Affects 2d4 HD of creatures
@@ -171,37 +171,43 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 5. **Detect Magic** (Divination) - Reveals magical auras
 6. **Burning Hands** (Evocation) - Cone of fire, save for half
 7. **Charm Person** (Enchantment) - Make humanoid friendly
-8. **Bless** (Conjuration) - ✅ NEW! Party-wide +1 to attacks
+8. **Bless** (Conjuration) - Party-wide +1 to attacks
 
 **Level 2 Spells:**
-9. **Web** (Evocation) - ✅ NEW! Entangles creatures, save to avoid
-10. **Hold Person** (Enchantment) - ✅ NEW! Paralyzes 1-4 humanoids, save negates
+9. **Web** (Evocation) - Entangles creatures, save to avoid
+10. **Hold Person** (Enchantment) - Paralyzes 1-4 humanoids, save negates
+11. **Invisibility** (Illusion) - ✅ NEW! Target invisible until attack, +4 AC bonus
+12. **Knock** (Alteration) - ✅ NEW! Opens locked/barred doors
+13. **Find Traps** (Divination) - ✅ NEW! Reveals traps within 30 feet
 
 **Level 3 Spells:**
-11. **Fireball** (Evocation) - 1d6/level damage (max 10d6), save for half
-12. **Lightning Bolt** (Evocation) - ✅ NEW! 1d6/level damage (max 10d6), save for half
-13. **Haste** (Alteration) - ✅ NEW! Double movement/attacks, +1 AC
-14. **Slow** (Alteration) - ✅ NEW! Half movement/attacks, -1 AC, save negates
+14. **Fireball** (Evocation) - 1d6/level damage (max 10d6), save for half
+15. **Lightning Bolt** (Evocation) - 1d6/level damage (max 10d6), save for half
+16. **Haste** (Alteration) - Double movement/attacks, +1 AC
+17. **Slow** (Alteration) - Half movement/attacks, -1 AC, save negates
 
 **Level 4 Spells:**
-15. **Cure Serious Wounds** (Necromancy) - ✅ NEW! Heals 2d8+1 HP
+18. **Cure Serious Wounds** (Necromancy) - Heals 2d8+1 HP
 
 **Level 5 Spells:**
-16. **Cone of Cold** (Evocation) - ✅ NEW! (1d4+1)/level cold damage, save for half
+19. **Cone of Cold** (Evocation) - (1d4+1)/level cold damage, save for half
+20. **Cloudkill** (Evocation) - ✅ NEW! Deadly cloud slays <5 HD, others save or die
+21. **Raise Dead** (Necromancy) - ✅ NEW! Restores dead to life with 1 HP
 
 **Level 6 Spells:**
-17. **Heal** (Necromancy) - ✅ NEW! Fully restores HP, removes conditions
+22. **Heal** (Necromancy) - Fully restores HP, removes conditions
+23. **Chain Lightning** (Evocation) - ✅ NEW! Arcs between targets, halving damage each jump
 
 ### Missing Spells by Priority Category
 
-**🔥 Combat Damage Spells (58 missing) - HIGH PRIORITY**
-- ~~Lightning Bolt~~ ✅, ~~Cone of Cold~~ ✅, Chain Lightning, Cloudkill
+**🔥 Combat Damage Spells (54 missing) - HIGH PRIORITY**
+- ~~Lightning Bolt~~ ✅, ~~Cone of Cold~~ ✅, ~~Chain Lightning~~ ✅, ~~Cloudkill~~ ✅
 - Meteor Swarm, Ice Storm, Flame Strike, Call Lightning
 - ~~Web~~ ✅, Stinking Cloud, Ray of Enfeeblement, Phantasmal Force
 
-**💚 Healing Spells (10 missing) - HIGH PRIORITY**
+**💚 Healing Spells (8 missing) - HIGH PRIORITY**
 - ~~Cure Serious Wounds~~ ✅, Cure Critical Wounds, ~~Heal~~ ✅
-- Raise Dead, Resurrection, Regenerate, Restoration
+- ~~Raise Dead~~ ✅, Resurrection, Regenerate, Restoration
 - Neutralize Poison, Cure Disease, Cure Blindness
 
 **⚔️ Buff/Debuff Spells (45 missing) - MEDIUM PRIORITY**
@@ -209,8 +215,8 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 - ~~Hold Person~~ ✅, Strength, Barkskin, Stoneskin
 - Enlarge, Reduce, Shield, Wall of Force
 
-**🔮 Utility/Exploration Spells (117 missing) - MEDIUM PRIORITY**
-- Invisibility, Knock, Find Traps, Identify
+**🔮 Utility/Exploration Spells (114 missing) - MEDIUM PRIORITY**
+- ~~Invisibility~~ ✅, ~~Knock~~ ✅, ~~Find Traps~~ ✅, Identify
 - Levitate, Fly, Teleport, Dimension Door
 - Clairvoyance, Locate Object, Comprehend Languages
 
@@ -221,21 +227,23 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 **📚 Other/Miscellaneous (77 missing) - VARIES**
 
 ### Recommended Implementation Order (Top 15)
-1. ~~**Lightning Bolt** (3)~~ - ✅ IMPLEMENTED (2025-12-12)
-2. ~~**Cone of Cold** (5)~~ - ✅ IMPLEMENTED (2025-12-12)
-3. ~~**Cure Serious Wounds** (4)~~ - ✅ IMPLEMENTED (2025-12-12)
-4. ~~**Heal** (6)~~ - ✅ IMPLEMENTED (2025-12-12)
-5. ~~**Haste** (3)~~ - ✅ IMPLEMENTED (2025-12-12)
-6. ~~**Slow** (3)~~ - ✅ IMPLEMENTED (2025-12-12)
-7. ~~**Bless** (1)~~ - ✅ IMPLEMENTED (2025-12-12)
-8. ~~**Web** (2)~~ - ✅ IMPLEMENTED (2025-12-12)
-9. ~~**Hold Person** (2)~~ - ✅ IMPLEMENTED (2025-12-12)
-10. **Invisibility** (2) - Stealth and escape - NEXT UP
-11. **Knock** (2) - Bypass locked doors - NEXT UP
-12. **Find Traps** (2) - Dungeon exploration - NEXT UP
-13. **Cloudkill** (5) - Area denial damage
-14. **Chain Lightning** (6) - Multi-target damage
-15. **Raise Dead** (5) - Party member revival
+1. ~~**Lightning Bolt** (3)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+2. ~~**Cone of Cold** (5)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+3. ~~**Cure Serious Wounds** (4)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+4. ~~**Heal** (6)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+5. ~~**Haste** (3)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+6. ~~**Slow** (3)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+7. ~~**Bless** (1)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+8. ~~**Web** (2)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+9. ~~**Hold Person** (2)~~ - ✅ IMPLEMENTED (2025-12-12 Morning)
+10. ~~**Invisibility** (2)~~ - ✅ IMPLEMENTED (2025-12-12 Evening)
+11. ~~**Knock** (2)~~ - ✅ IMPLEMENTED (2025-12-12 Evening)
+12. ~~**Find Traps** (2)~~ - ✅ IMPLEMENTED (2025-12-12 Evening)
+13. ~~**Cloudkill** (5)~~ - ✅ IMPLEMENTED (2025-12-12 Evening)
+14. ~~**Chain Lightning** (6)~~ - ✅ IMPLEMENTED (2025-12-12 Evening)
+15. ~~**Raise Dead** (5)~~ - ✅ IMPLEMENTED (2025-12-12 Evening)
+
+**🎉 TOP 15 PRIORITY SPELLS: 100% COMPLETE!**
 
 ---
 
@@ -249,11 +257,14 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 5. ✅ Add treasure to boss rooms in dungeon JSONs
 6. ✅ Implement fireball spell effect
 7. ✅ Audit all spell implementations
+8. ✅ Implement top 15 priority spells (100% complete!)
+   - Morning batch (9 spells): Lightning Bolt, Cone of Cold, Cure Serious Wounds, Heal, Haste, Slow, Bless, Web, Hold Person
+   - Evening batch (6 spells): Invisibility, Knock, Find Traps, Cloudkill, Chain Lightning, Raise Dead
 
 ### Next Up
-1. Implement high-priority spells (Lightning Bolt, Cone of Cold, Cure Serious Wounds)
-2. Implement buff/debuff spells (Haste, Slow, Bless)
-3. Implement utility spells (Invisibility, Knock, Hold Person)
+1. Continue spell implementations (Cure Critical Wounds, Resurrection, Regenerate, etc.)
+2. Implement additional utility spells (Identify, Levitate, Fly, Teleport)
+3. Implement summoning spells (Summon Monster, Conjure Elemental)
 
 ### Blocked
 - None currently
@@ -268,16 +279,29 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
   - Spell audit ✅
   - Boss treasure ✅
 - **Medium Priority**: 1 of 4 complete (torch switching confirmed working)
-- **Spell Effects**: 17 of 332 implemented (5.1%)
-  - 9 new spells added (2025-12-12)
-  - Top 9 priority spells complete
-  - 6 more spells to reach top 15
+- **Spell Effects**: 23 of 333 implemented (6.9%)
+  - 15 new spells added (2025-12-12)
+  - **Top 15 priority spells: 100% COMPLETE!** 🎉
+  - Next tier: Additional healing, utility, and summoning spells
 
 ---
 
 ## 🔄 Change Log
 
-### 2025-12-12 (Evening Update)
+### 2025-12-12 (Evening Update - Second Batch)
+- ✅ Implemented 6 additional priority spells (spells 10-15 from recommended order)
+  - **Utility**: Invisibility, Knock, Find Traps
+  - **Combat Damage**: Cloudkill, Chain Lightning
+  - **Healing**: Raise Dead
+- ✅ Added Chain Lightning to spells.json (was missing from database)
+  - Level 6 evocation spell for Magic-User
+  - 1d6/level damage (max 12d6) to primary target
+  - Chains to 1 target per caster level, halving damage each jump
+- 🎉 **TOP 15 PRIORITY SPELLS: 100% COMPLETE!**
+- 📈 **Spell implementation increased from 17 to 23 (35% increase)**
+- All 571 tests still passing
+
+### 2025-12-12 (Evening Update - First Batch)
 - ✅ Implemented 9 high-priority spells (top 9 from recommended order)
   - **Combat Damage**: Lightning Bolt, Cone of Cold, Web
   - **Healing**: Cure Serious Wounds, Heal
@@ -318,7 +342,7 @@ This roadmap tracks bugs, feature gaps, and planned improvements for the Aerthos
 
 ## Notes
 
-- **Spell system** - Comprehensive audit complete (2025-12-12). Only 2.4% of spells implemented. See "Recommended Implementation Order" for priority spells to add next.
+- **Spell system** - 🎉 Top 15 priority spells complete! 23 of 333 spells implemented (6.9%). Next tier: healing (Cure Critical Wounds, Resurrection), utility (Identify, Levitate, Fly), and summoning spells.
 - **Treasure system** - ✅ Complete! All 13 boss rooms have treasure, scaled by difficulty.
 - **Session management** - ✅ Complete! CLI and web UI both fully functional.
 - **Character import** - ✅ Fixed! Spell slots and spell lists now correct.

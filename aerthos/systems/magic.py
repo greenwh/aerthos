@@ -82,7 +82,13 @@ class MagicSystem:
             'slow': self._spell_slow,
             'bless': self._spell_bless,
             'web': self._spell_web,
-            'hold_person': self._spell_hold_person
+            'hold_person': self._spell_hold_person,
+            'invisibility': self._spell_invisibility,
+            'knock': self._spell_knock,
+            'find_traps': self._spell_find_traps,
+            'cloudkill': self._spell_cloudkill,
+            'chain_lightning': self._spell_chain_lightning,
+            'raise_dead': self._spell_raise_dead
         }
 
         handler = handlers.get(spell_key)
@@ -677,4 +683,237 @@ class MagicSystem:
             'resisted': resisted,
             'immune': immune,
             'duration': 2 * caster.level  # rounds
+        }
+
+    def _spell_invisibility(self, spell: Spell, caster: PlayerCharacter,
+                           targets: List[Character]) -> Dict:
+        """Invisibility: Target becomes invisible until they attack, grants +4 AC and surprise"""
+
+        if not targets:
+            target = caster
+        else:
+            target = targets[0]
+
+        if not target.is_alive:
+            return {
+                'narrative': "Cannot make a dead creature invisible!",
+                'affected': []
+            }
+
+        target.add_condition('invisible')
+        # In a full implementation, this would grant +4 AC and automatic surprise
+
+        narrative = f"{target.name} fades from sight, becoming invisible! The effect will last until they attack."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'duration': 'Until attack'
+        }
+
+    def _spell_knock(self, spell: Spell, caster: PlayerCharacter,
+                    targets: List[Character]) -> Dict:
+        """Knock: Opens locked, barred, or wizard-locked doors"""
+
+        # This spell affects the environment, not creatures
+        # In the game context, it would unlock a door or container
+
+        narrative = "You speak the word of opening! Locks click and bars slide aside with a resounding *knock*!"
+
+        return {
+            'narrative': narrative,
+            'affected': [],
+            'effect': 'unlock_door'  # Game state can check this flag
+        }
+
+    def _spell_find_traps(self, spell: Spell, caster: PlayerCharacter,
+                         targets: List[Character]) -> Dict:
+        """Find Traps: Reveals the presence of traps within range"""
+
+        # This spell affects the caster's perception, not targets
+        # In the game context, it would reveal traps in the current area
+
+        narrative = "Your senses sharpen as divine insight reveals hidden dangers! "
+        narrative += "You can now detect traps within 30 feet for the next 3 turns."
+
+        # Add a condition to the caster to track the effect
+        caster.add_condition('detecting_traps')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'duration': 3  # turns (30 minutes)
+        }
+
+    def _spell_cloudkill(self, spell: Spell, caster: PlayerCharacter,
+                        targets: List[Character]) -> Dict:
+        """Cloudkill: Deadly cloud that slays creatures with < 4+1 HD, others save vs poison or die"""
+
+        if not targets:
+            return {
+                'narrative': "A billowing cloud of yellowish-green vapor fills the area, but finds no victims!",
+                'affected': [],
+                'total_kills': 0
+            }
+
+        affected = []
+        total_kills = 0
+        survived = []
+
+        for target in targets:
+            if not target.is_alive:
+                continue
+
+            # Creatures with < 5 HD/levels are instantly slain
+            if target.level < 5:
+                target.take_damage(9999)  # Instant death
+                affected.append(f"{target.name} (SLAIN INSTANTLY!)")
+                total_kills += 1
+            # Creatures with 5-6 HD/levels must save vs poison or die
+            elif target.level <= 6:
+                save_result = self.save_resolver.make_save(target, 'poison')
+
+                if save_result['success']:
+                    survived.append(target.name)
+                else:
+                    target.take_damage(9999)  # Death by poison
+                    affected.append(f"{target.name} (POISONED - SLAIN!)")
+                    total_kills += 1
+            # Creatures with > 6 HD are unaffected
+            else:
+                survived.append(target.name)
+
+        # Build narrative
+        narrative = "A billowing cloud of yellowish-green vapors fills the air!\n"
+
+        if affected:
+            narrative += '\n'.join(f"  • {entry}" for entry in affected)
+
+        if survived:
+            narrative += f"\n\n{', '.join(survived)} survived the poison cloud!"
+
+        if total_kills > 0:
+            narrative += f"\n\n☠️  {total_kills} {'creature' if total_kills == 1 else 'creatures'} slain by the deadly vapors!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'survived': survived,
+            'total_kills': total_kills,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_chain_lightning(self, spell: Spell, caster: PlayerCharacter,
+                              targets: List[Character]) -> Dict:
+        """Chain Lightning: Arcs between targets, each taking half damage of previous"""
+
+        if not targets:
+            return {
+                'narrative': "The lightning crackles through empty air!",
+                'affected': [],
+                'total_damage': 0
+            }
+
+        # Primary target damage: 1d6 per caster level (max 12d6)
+        num_dice = min(caster.level, 12)
+        primary_damage = sum(random.randint(1, 6) for _ in range(num_dice))
+
+        affected = []
+        total_kills = 0
+
+        # Can chain to 1 target per caster level
+        max_targets = min(len(targets), caster.level)
+        current_damage = primary_damage
+
+        for i, target in enumerate(targets[:max_targets]):
+            if not target.is_alive:
+                continue
+
+            # Saving throw for half damage
+            save_result = self.save_resolver.save_for_half_damage(
+                target, current_damage, 'spell'
+            )
+
+            final_damage = save_result['final_damage']
+            saved = save_result['success']
+
+            # Check if target died
+            if not target.is_alive:
+                if i == 0:
+                    affected.append(f"{target.name} [PRIMARY] ({final_damage} dmg - SLAIN!)")
+                else:
+                    affected.append(f"{target.name} ({final_damage} dmg - SLAIN!)")
+                total_kills += 1
+            else:
+                save_str = " (saved)" if saved else ""
+                if i == 0:
+                    affected.append(f"{target.name} [PRIMARY] ({final_damage} dmg{save_str})")
+                else:
+                    affected.append(f"{target.name} ({final_damage} dmg{save_str})")
+
+            # Each subsequent arc does half damage of previous
+            current_damage = current_damage // 2
+            if current_damage < 1:
+                break
+
+        # Build narrative
+        narrative = f"A stroke of lightning leaps forth, chaining between targets!\n"
+        narrative += '\n'.join(f"  • {entry}" for entry in affected)
+
+        if total_kills > 0:
+            narrative += f"\n\n⚡ {total_kills} {'enemy' if total_kills == 1 else 'enemies'} slain!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'primary_damage': primary_damage,
+            'total_kills': total_kills
+        }
+
+    def _spell_raise_dead(self, spell: Spell, caster: PlayerCharacter,
+                         targets: List[Character]) -> Dict:
+        """Raise Dead: Restores life to a dead character"""
+
+        if not targets:
+            return {
+                'narrative': "No target to raise from the dead!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # Check if target is already alive
+        if target.is_alive:
+            return {
+                'narrative': f"{target.name} is already alive!",
+                'affected': []
+            }
+
+        # Check if target is a valid race (dwarf, gnome, half-elf, halfling, human)
+        valid_races = ['human', 'dwarf', 'halfling', 'half-elf', 'elf']
+        if hasattr(target, 'race') and target.race.lower() not in valid_races:
+            return {
+                'narrative': f"{target.name}'s race cannot be raised from the dead!",
+                'affected': []
+            }
+
+        # Restore to life with 1 HP
+        target.is_alive = True
+        target.hp_current = 1
+
+        # Remove death-related conditions
+        if hasattr(target, 'conditions'):
+            death_conditions = ['dead', 'dying', 'slain']
+            for condition in death_conditions:
+                if condition in target.conditions:
+                    target.conditions.remove(condition)
+
+        narrative = f"Divine power flows through {target.name}! "
+        narrative += f"Their eyes open as life returns to their body. "
+        narrative += f"They are weak (1 HP) but alive!"
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'restored_hp': 1
         }

@@ -1574,6 +1574,81 @@ class GameState:
         # Normalize name for matching
         search_lower = item_name.lower().replace('_', ' ')
 
+        # Check for magic items (pattern: base_item_plus1, base_item_plus2, etc.)
+        import re
+        magic_pattern = r'(.+?)_plus(\d+)$'
+        magic_match = re.match(magic_pattern, item_name.lower())
+
+        if magic_match:
+            base_item = magic_match.group(1)
+            magic_bonus = int(magic_match.group(2))
+
+            # Check if it's magic armor
+            armor_types = ['leather', 'studded_leather', 'ring_mail', 'scale_mail',
+                          'chain_mail', 'splint_mail', 'banded_mail', 'plate_mail']
+            if base_item in armor_types:
+                from ..systems.armor_system import ArmorSystem
+                armor_system = ArmorSystem()
+                armor = armor_system.create_armor(base_item, magic_bonus=magic_bonus)
+                if armor:
+                    return armor
+
+            # Check if it's a magic weapon
+            weapon_types = ['longsword', 'long_sword', 'shortsword', 'short_sword',
+                           'dagger', 'mace', 'battle_axe', 'hand_axe', 'spear',
+                           'warhammer', 'morningstar']
+            weapon_base = base_item.replace('_', '')  # longsword or long_sword -> longsword
+
+            if base_item in weapon_types or weapon_base in weapon_types:
+                # Use weapons.json data to create the weapon
+                from ..entities.player import Weapon
+
+                # Map common variants to correct weapon_id
+                weapon_id_map = {
+                    'longsword': 'long_sword',
+                    'shortsword': 'short_sword',
+                    'long sword': 'long_sword',
+                    'short sword': 'short_sword'
+                }
+                weapon_id = weapon_id_map.get(base_item, base_item)
+
+                # Try to load weapon stats from weapons.json
+                weapon_stats = None
+                if self.game_data and hasattr(self.game_data, 'weapons'):
+                    weapon_stats = self.game_data.weapons.get(weapon_id)
+
+                if weapon_stats:
+                    # Create weapon with proper stats
+                    display_name = weapon_stats.get('name', base_item.replace('_', ' ').title())
+                    return Weapon(
+                        name=f"{display_name} +{magic_bonus}",
+                        damage_sm=weapon_stats.get('damage_sm', '1d8'),
+                        damage_l=weapon_stats.get('damage_l', '1d8'),
+                        speed_factor=weapon_stats.get('speed_factor', 5),
+                        magic_bonus=magic_bonus,
+                        weight=weapon_stats.get('weight_gp', 60) / 10.0,
+                        properties={
+                            'xp_value': magic_bonus * 400,
+                            'gp_value': magic_bonus * 2000
+                        },
+                        description=f"A magical {display_name.lower()} with a +{magic_bonus} enchantment."
+                    )
+                else:
+                    # Fallback to generic magic weapon
+                    return Weapon(
+                        name=f"{base_item.replace('_', ' ').title()} +{magic_bonus}",
+                        damage_sm='1d8',
+                        damage_l='1d8',
+                        speed_factor=5,
+                        magic_bonus=magic_bonus,
+                        weight=6.0,
+                        properties={
+                            'xp_value': magic_bonus * 400,
+                            'gp_value': magic_bonus * 2000
+                        },
+                        description=f"A magical weapon with a +{magic_bonus} enchantment."
+                    )
+
         # Common item templates (name patterns -> item creation)
         # Weights are in pounds (10 GP = 1 lb)
 
