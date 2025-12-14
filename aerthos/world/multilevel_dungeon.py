@@ -80,6 +80,30 @@ class MultiLevelDungeon:
         """Get the total number of levels in this dungeon"""
         return len(self.levels)
 
+    @property
+    def room_data(self) -> Dict:
+        """Get room data from the current level's dungeon"""
+        current_dungeon = self.get_current_dungeon()
+        if current_dungeon:
+            return current_dungeon.room_data
+        return {}
+
+    @property
+    def rooms(self) -> Dict[str, Room]:
+        """Get rooms from the current level's dungeon"""
+        current_dungeon = self.get_current_dungeon()
+        if current_dungeon:
+            return current_dungeon.rooms
+        return {}
+
+    @property
+    def start_room_id(self) -> Optional[str]:
+        """Get start room ID from the current level's dungeon"""
+        current_dungeon = self.get_current_dungeon()
+        if current_dungeon:
+            return current_dungeon.start_room_id
+        return None
+
     def get_current_level(self) -> Optional[DungeonLevel]:
         """Get the current dungeon level"""
         return self.levels.get(self.current_level_number)
@@ -111,6 +135,25 @@ class MultiLevelDungeon:
         if level and level.dungeon:
             return level.dungeon.get_room(room_id)
         return None
+
+    def get_room_encounters(self, room_id: str, level_number: Optional[int] = None) -> List:
+        """
+        Get encounter data for a room, optionally from a specific level
+
+        Args:
+            room_id: Room ID
+            level_number: Specific level to search (None = current level)
+
+        Returns:
+            List of encounter dictionaries
+        """
+        if level_number is None:
+            level_number = self.current_level_number
+
+        level = self.get_level(level_number)
+        if level and level.dungeon:
+            return level.dungeon.get_room_encounters(room_id)
+        return []
 
     def move(
         self,

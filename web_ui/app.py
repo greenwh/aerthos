@@ -21,7 +21,7 @@ from aerthos.entities.party import Party
 from aerthos.ui.party_creation import PartyCreator
 from aerthos.ui.character_creation import CharacterCreator, ManualCharacterCreator
 from aerthos.generator.dungeon_generator import DungeonGenerator
-from aerthos.generator.config import DungeonConfig, STANDARD_DUNGEON
+from aerthos.generator.config import DungeonConfig
 from aerthos.storage.character_roster import CharacterRoster
 from aerthos.storage.party_manager import PartyManager
 from aerthos.storage.scenario_library import ScenarioLibrary
@@ -1590,9 +1590,9 @@ def new_game():
 
         party = Party(members=[player1, player2, player3, player4])
 
-        # Generate dungeon
+        # Generate dungeon (demo party is level 1)
         generator = DungeonGenerator(game_data)
-        config = STANDARD_DUNGEON
+        config = DungeonConfig.for_party(party_level=1, party_size=4, difficulty='standard')
         dungeon_data = generator.generate(config)
         dungeon = Dungeon.load_from_generator(dungeon_data)
 
@@ -1799,6 +1799,7 @@ def get_game_state():
 
                                 # Restore current room
                                 if session_data.get('current_room_id'):
+                                    # Both regular Dungeon and MultiLevelDungeon have rooms property
                                     room = game_state.dungeon.rooms.get(session_data['current_room_id'])
                                     if room:
                                         game_state.current_room = room
@@ -2076,18 +2077,24 @@ def build_map_data(game_state):
     # Always start from the dungeon start room for consistency
     explored = {}
     current_id = game_state.current_room.id
+
+    # Both regular Dungeon and MultiLevelDungeon now have these properties
     start_room_id = game_state.dungeon.start_room_id
+    dungeon_rooms = game_state.dungeon.rooms
+
+    if not start_room_id or not dungeon_rooms:
+        return {}  # No valid dungeon
 
     room_positions = {}
     visited = set()
 
     def calculate_positions(room_id, x=0, y=0):
         """Recursively calculate room positions based on exits"""
-        if room_id in visited or room_id not in game_state.dungeon.rooms:
+        if room_id in visited or room_id not in dungeon_rooms:
             return
 
         visited.add(room_id)
-        room = game_state.dungeon.rooms[room_id]
+        room = dungeon_rooms[room_id]
 
         # Store position for all rooms (explored or not)
         room_positions[room_id] = {'x': x, 'y': y, 'room': room}
@@ -2125,7 +2132,7 @@ def build_map_data(game_state):
 
     # Add unexplored but known rooms (exits from explored rooms)
     for room_id, room_data in list(explored.items()):
-        room = game_state.dungeon.rooms[room_id]
+        room = dungeon_rooms[room_id]
         for direction, next_room_id in room.exits.items():
             # If the connected room exists but is not explored, add it as unknown
             if next_room_id in room_positions and next_room_id not in explored:
@@ -3381,22 +3388,18 @@ def create_scenario():
 
         # Types 2-4: Preset dungeons (Easy/Standard/Hard)
         if dungeon_type in ['2', '3', '4']:
-            from aerthos.generator.config import EASY_DUNGEON, STANDARD_DUNGEON, HARD_DUNGEON
-
             party_level = data.get('party_level', 1)
 
+            # Use DungeonConfig.for_party() to properly scale monsters and treasure
             if dungeon_type == '2':
-                config = EASY_DUNGEON
+                config = DungeonConfig.for_party(party_level=party_level, party_size=4, difficulty='easy')
                 difficulty = 'easy'
             elif dungeon_type == '3':
-                config = STANDARD_DUNGEON
+                config = DungeonConfig.for_party(party_level=party_level, party_size=4, difficulty='standard')
                 difficulty = 'medium'
             else:  # '4'
-                config = HARD_DUNGEON
+                config = DungeonConfig.for_party(party_level=party_level, party_size=4, difficulty='hard')
                 difficulty = 'hard'
-
-            # Update config with party level
-            config.party_level = party_level
 
             # Generate single-level dungeon
             dungeon_data = generator.generate(config)
@@ -3625,7 +3628,10 @@ def load_session(session_id):
 
         # Restore session state if it exists
         if session_data.get('current_room_id'):
-            game_state.current_room = dungeon.rooms.get(session_data['current_room_id'])
+            # Both regular Dungeon and MultiLevelDungeon have rooms property
+            room = dungeon.rooms.get(session_data['current_room_id'])
+            if room:
+                game_state.current_room = room
 
         # Store in active games
         web_session_id = 'session_' + session_id

@@ -146,22 +146,37 @@ class MonsterScaler:
         Returns:
             Tuple of (min_hd, max_hd)
         """
-        # Base ranges by level
+        # Base ranges by level (properly scaled for high-level parties)
         if party_level == 1:
             min_hd = 0.5
             max_hd = 1.5
         elif party_level == 2:
             min_hd = 1.0
-            max_hd = 2.0
+            max_hd = 2.5
         elif party_level == 3:
             min_hd = 1.5
             max_hd = 3.5
         elif party_level == 4:
             min_hd = 2.0
-            max_hd = 4.5
-        else:  # Level 5+
-            min_hd = 2.5
-            max_hd = 6.0
+            max_hd = 5.0
+        elif party_level == 5:
+            min_hd = 3.0
+            max_hd = 7.0
+        elif party_level == 6:
+            min_hd = 4.0
+            max_hd = 9.0
+        elif party_level == 7:
+            min_hd = 5.0
+            max_hd = 11.0
+        elif party_level == 8:
+            min_hd = 6.0
+            max_hd = 13.0
+        elif party_level == 9:
+            min_hd = 7.0
+            max_hd = 15.0
+        else:  # Level 10+
+            min_hd = 8.0
+            max_hd = 20.0
 
         # Adjust for party size
         if party_size <= 3:

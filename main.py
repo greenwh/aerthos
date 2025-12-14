@@ -127,18 +127,16 @@ def start_new_game(game_data: GameData) -> tuple:
             # Generate dungeon with appropriate difficulty
             generator = DungeonGenerator(game_data)
 
+            # Use DungeonConfig.for_party() to properly scale monsters and treasure
             if dungeon_choice == '2':
-                config = EASY_DUNGEON
+                config = DungeonConfig.for_party(party_level=player_level, party_size=4, difficulty='easy')
                 print(f"✓ Generating Easy Dungeon (Level {player_level})...")
             elif dungeon_choice == '3':
-                config = STANDARD_DUNGEON
+                config = DungeonConfig.for_party(party_level=player_level, party_size=4, difficulty='standard')
                 print(f"✓ Generating Standard Dungeon (Level {player_level})...")
             else:  # '4'
-                config = HARD_DUNGEON
+                config = DungeonConfig.for_party(party_level=player_level, party_size=4, difficulty='hard')
                 print(f"✓ Generating Hard Dungeon (Level {player_level})...")
-
-            # Update config with player level
-            config.party_level = player_level
 
             # Generate single-level dungeon
             dungeon_data = generator.generate(config)
@@ -166,6 +164,7 @@ def start_new_game(game_data: GameData) -> tuple:
                     dungeon_name=dungeon_name
                 )
                 print(f"✓ Generated: {dungeon.name} ({dungeon.num_levels} levels)")
+                print(f"  Total Rooms: {dungeon.get_total_rooms()}")
             else:
                 # Single-level custom dungeon
                 print(f"✓ Generating Custom Dungeon...")
@@ -958,21 +957,19 @@ def manage_scenarios(game_data: GameData):
                 # Preset dungeons (Easy/Standard/Hard) - Ask for level first
                 player_level = ask_player_level()
 
+                # Use DungeonConfig.for_party() to properly scale monsters and treasure
                 if dungeon_choice == '2':
-                    config = EASY_DUNGEON
+                    config = DungeonConfig.for_party(party_level=player_level, party_size=4, difficulty='easy')
                     difficulty = 'easy'
                     print(f"\nGenerating Easy Dungeon (Level {player_level})...")
                 elif dungeon_choice == '3':
-                    config = STANDARD_DUNGEON
+                    config = DungeonConfig.for_party(party_level=player_level, party_size=4, difficulty='standard')
                     difficulty = 'medium'
                     print(f"\nGenerating Standard Dungeon (Level {player_level})...")
                 else:  # '4'
-                    config = HARD_DUNGEON
+                    config = DungeonConfig.for_party(party_level=player_level, party_size=4, difficulty='hard')
                     difficulty = 'hard'
                     print(f"\nGenerating Hard Dungeon (Level {player_level})...")
-
-                # Update config with player level
-                config.party_level = player_level
 
                 # Generate single-level dungeon
                 dungeon_data = generator.generate(config)
@@ -1000,6 +997,7 @@ def manage_scenarios(game_data: GameData):
                         dungeon_name=dungeon_name
                     )
                     print(f"✓ Generated: {dungeon.name} ({dungeon.num_levels} levels)")
+                    print(f"  Total Rooms: {dungeon.get_total_rooms()}")
                     difficulty = 'multilevel_custom'
                 else:
                     # Single-level custom dungeon
