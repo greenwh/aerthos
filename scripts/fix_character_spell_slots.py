@@ -5,11 +5,18 @@ Fix spell slots in existing save files and character files to match the new spel
 
 import json
 import shutil
+import sys
 from pathlib import Path
 from datetime import datetime
 
+# Add project root to Python path so we can import from aerthos
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent if SCRIPT_DIR.name == 'scripts' else SCRIPT_DIR
+sys.path.insert(0, str(PROJECT_ROOT))
+
 # Load class data to get proper spell slot progression
-with open('aerthos/data/classes.json') as f:
+classes_json = PROJECT_ROOT / 'aerthos' / 'data' / 'classes.json'
+with open(classes_json) as f:
     classes_data = json.load(f)
 
 def get_correct_spell_slots(char_class: str, level: int) -> list:
@@ -167,8 +174,9 @@ def main():
     print("FIXING SPELL SLOTS IN EXISTING CHARACTERS")
     print("=" * 70)
 
-    home = Path.home()
-    aerthos_dir = home / '.aerthos'
+    # Get aerthos data directory from constants.py
+    from aerthos.constants import _AERTHOS_HOME
+    aerthos_dir = Path(_AERTHOS_HOME)
 
     files_fixed = 0
     files_checked = 0
