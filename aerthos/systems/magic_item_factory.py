@@ -328,6 +328,16 @@ class MagicItemFactory:
 
     def _create_magic_armor(self, name: str, xp_value: int, gp_value: int) -> Union[Armor, Shield]:
         """Create magic armor or shield from name"""
+        # First, try to find the item in the magic armor database
+        # Convert name to database ID format: "Plate Mail +1" -> "plate_mail_plus_1"
+        item_id = name.lower().replace(" ", "_").replace("+", "plus_")
+
+        if item_id in self.base_magic_armor:
+            # Found in database! Use the create_item method to get all properties
+            item_data = self.base_magic_armor[item_id]
+            return self.create_item(item_id, item_data)
+
+        # Not in database - fall back to parsing logic for dynamically generated items
         # Parse bonus and type
         # Examples: "Chain Mail +1", "Plate Mail +2", "Shield +1"
 
@@ -389,7 +399,7 @@ class MagicItemFactory:
             name=name,
             ac=base_ac,
             magic_bonus=magic_bonus,
-            weight=25,  # Average armor weight
+            weight=25,  # Average armor weight (fallback for items not in database)
             properties={
                 "xp_value": xp_value,
                 "gp_value": gp_value,
