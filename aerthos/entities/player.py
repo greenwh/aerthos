@@ -23,6 +23,8 @@ class Item:
     weight: float = 0.0
     properties: Dict = field(default_factory=dict)
     description: str = ""
+    xp_value: int = 0  # XP value for magic items
+    gp_value: int = 0  # Gold piece value
 
     def __str__(self):
         return self.name

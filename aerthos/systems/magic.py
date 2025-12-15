@@ -122,7 +122,42 @@ class MagicSystem:
             'neutralize_poison': self._spell_neutralize_poison,
             'regenerate': self._spell_regenerate,
             'blur': self._spell_blur,
-            'barkskin': self._spell_barkskin
+            'barkskin': self._spell_barkskin,
+            # Priority spell implementations
+            'monster_summoning_ii': self._spell_monster_summoning_ii,
+            'water_breathing': self._spell_water_breathing,
+            'remove_curse': self._spell_remove_curse,
+            'monster_summoning_iii': self._spell_monster_summoning_iii,
+            'charm_monster': self._spell_charm_monster,
+            'fire_shield': self._spell_fire_shield,
+            'monster_summoning_v': self._spell_monster_summoning_v,
+            'airy_water': self._spell_airy_water,
+            'bigbys_interposing_hand': self._spell_bigbys_interposing_hand,
+            'chaos': self._spell_chaos,
+            'conjure_elemental': self._spell_conjure_elemental,
+            'hold_monster': self._spell_hold_monster,
+            'wall_of_force': self._spell_wall_of_force,
+            'wall_of_iron': self._spell_wall_of_iron,
+            'wall_of_stone': self._spell_wall_of_stone,
+            'monster_summoning_vi': self._spell_monster_summoning_vi,
+            'death_spell': self._spell_death_spell,
+            'globe_of_invulnerability': self._spell_globe_of_invulnerability,
+            'stone_to_flesh': self._spell_stone_to_flesh,
+            'tensers_transformation': self._spell_tensers_transformation,
+            'delayed_blast_fireball': self._spell_delayed_blast_fireball,
+            'mass_invisibility': self._spell_mass_invisibility,
+            'power_word_stun': self._spell_power_word_stun,
+            'statue': self._spell_statue,
+            'mordenkainens_sword': self._spell_mordenkainens_sword,
+            'resurrection': self._spell_resurrection,
+            'incendiary_cloud': self._spell_incendiary_cloud,
+            'mass_charm': self._spell_mass_charm,
+            'bigbys_clenched_fist': self._spell_bigbys_clenched_fist,
+            'power_word_blind': self._spell_power_word_blind,
+            'ottos_irresistible_dance': self._spell_ottos_irresistible_dance,
+            'wish': self._spell_wish,
+            'shape_change': self._spell_shape_change,
+            'temporal_stasis': self._spell_temporal_stasis
         }
 
         handler = handlers.get(spell_key)
@@ -2021,4 +2056,1060 @@ class MagicSystem:
             'ac_bonus': 1,
             'save_bonus': 1,
             'duration': 'Special'  # Varies in AD&D
+        }
+
+    # ========== PRIORITY SPELL IMPLEMENTATIONS ==========
+
+    def _spell_monster_summoning_ii(self, spell: Spell, caster: PlayerCharacter,
+                                   targets: List[Character]) -> Dict:
+        """Monster Summoning II: Summons 1-6 second level monsters"""
+
+        num_monsters = random.randint(1, 6)
+
+        narrative = f"You chant the words of summoning! {num_monsters} second level monsters appear and obey your commands! "
+        narrative += f"Duration: {caster.level} rounds."
+
+        caster.add_condition('monsters_summoned_ii')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'num_monsters': num_monsters,
+            'monster_level': 2,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_water_breathing(self, spell: Spell, caster: PlayerCharacter,
+                              targets: List[Character]) -> Dict:
+        """Water Breathing: Allows recipient to breathe underwater for 6 turns/level"""
+
+        if not targets:
+            target = caster
+        else:
+            target = targets[0]
+
+        if not target.is_alive:
+            return {
+                'narrative': "Cannot grant water breathing to a dead creature!",
+                'affected': []
+            }
+
+        target.add_condition('water_breathing')
+
+        narrative = f"{target.name} gains the ability to breathe underwater! "
+        narrative += "They can function normally in water as if breathing air. "
+        narrative += f"Duration: {6 * caster.level} turns (60 minutes each)."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'duration': 6 * caster.level  # turns
+        }
+
+    def _spell_remove_curse(self, spell: Spell, caster: PlayerCharacter,
+                           targets: List[Character]) -> Dict:
+        """Remove Curse: Removes one curse from creature or object"""
+
+        if not targets:
+            return {
+                'narrative': "No target to remove curse from!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # Check for curse condition
+        has_curse = hasattr(target, 'conditions') and 'cursed' in target.conditions
+
+        if has_curse:
+            target.conditions.remove('cursed')
+            narrative = f"Divine power flows through {target.name}! "
+            narrative += "The curse is lifted from them, and they are free from its malign influence."
+        else:
+            narrative = f"You invoke divine power over {target.name}, "
+            narrative += "but they are not afflicted with any curse."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name] if has_curse else []
+        }
+
+    def _spell_monster_summoning_iii(self, spell: Spell, caster: PlayerCharacter,
+                                    targets: List[Character]) -> Dict:
+        """Monster Summoning III: Summons 1-4 third level monsters"""
+
+        num_monsters = random.randint(1, 4)
+
+        narrative = f"You chant the words of summoning! {num_monsters} third level monsters appear and obey your commands! "
+        narrative += f"Duration: {caster.level} rounds."
+
+        caster.add_condition('monsters_summoned_iii')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'num_monsters': num_monsters,
+            'monster_level': 3,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_charm_monster(self, spell: Spell, caster: PlayerCharacter,
+                            targets: List[Character]) -> Dict:
+        """Charm Monster: Charms any living creature to regard the caster as friendly"""
+
+        if not targets or not targets[0].is_alive:
+            return {
+                'narrative': "No valid target!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # Saving throw (more difficult than Charm Person)
+        save_result = self.save_resolver.make_save(target, 'spell')
+
+        if save_result['success']:
+            narrative = f"{target.name} resists the charm!"
+        else:
+            target.add_condition('charmed')
+            narrative = f"{target.name} is charmed! They see you as a trusted friend and ally."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name] if not save_result['success'] else []
+        }
+
+    def _spell_fire_shield(self, spell: Spell, caster: PlayerCharacter,
+                          targets: List[Character]) -> Dict:
+        """Fire Shield: Immolates caster with flames, protecting from cold and damaging attackers"""
+
+        caster.add_condition('fire_shield')
+
+        narrative = "You are wreathed in flames that don't harm you! "
+        narrative += "Cold-based attacks deal half damage and you gain +2 to saves vs. cold. "
+        narrative += "Creatures striking you with body or hand-held weapons take double damage! "
+        narrative += f"Duration: {caster.level} rounds."
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'cold_resistance': 'half_damage',
+            'save_bonus': 2,
+            'retribution_damage': 'double',
+            'duration': caster.level  # rounds
+        }
+
+    # ========== LEVEL 5 SPELLS ==========
+
+    def _spell_monster_summoning_v(self, spell: Spell, caster: PlayerCharacter,
+                                  targets: List[Character]) -> Dict:
+        """Monster Summoning V: Summons 1-2 fifth level monsters"""
+
+        num_monsters = random.randint(1, 2)
+
+        narrative = f"You chant powerful words of summoning! {num_monsters} fifth level monsters appear and obey your commands! "
+        narrative += f"Duration: {caster.level} rounds."
+
+        caster.add_condition('monsters_summoned_v')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'num_monsters': num_monsters,
+            'monster_level': 5,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_airy_water(self, spell: Spell, caster: PlayerCharacter,
+                         targets: List[Character]) -> Dict:
+        """Airy Water: Turns water into breathable, less-dense substance"""
+
+        narrative = "You transform the water around you! "
+        narrative += "Normal liquid becomes a less dense, breathable substance within a 2\" diameter sphere. "
+        narrative += "You and others can move and breathe freely underwater! "
+        narrative += f"Duration: {caster.level} turns."
+
+        caster.add_condition('airy_water')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'area': '2\" diameter sphere',
+            'duration': caster.level  # turns
+        }
+
+    def _spell_bigbys_interposing_hand(self, spell: Spell, caster: PlayerCharacter,
+                                      targets: List[Character]) -> Dict:
+        """Bigby's Interposing Hand: Creates a large hand of force that interposes between caster and opponent"""
+
+        narrative = "A giant, disembodied hand of shimmering force materializes before you! "
+        narrative += "The hand interposes itself between you and your chosen opponent, "
+        narrative += "shielding you from attacks and taking damage in your place. "
+        narrative += f"Duration: {caster.level} rounds."
+
+        caster.add_condition('bigbys_interposing_hand')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'protection': 'interposes',
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_chaos(self, spell: Spell, caster: PlayerCharacter,
+                    targets: List[Character]) -> Dict:
+        """Chaos: Causes all creatures in area to become confused"""
+
+        if not targets:
+            return {
+                'narrative': "A wave of chaos ripples through the area, but affects no one!",
+                'affected': []
+            }
+
+        affected = []
+        resisted = []
+
+        for target in targets:
+            if target.is_alive:
+                # Saving throw to resist confusion
+                save_result = self.save_resolver.make_save(target, 'spell')
+
+                if save_result['success']:
+                    resisted.append(target.name)
+                else:
+                    target.add_condition('confused')
+                    affected.append(target.name)
+
+        narrative = "A wave of chaotic energy washes over the area!\n"
+
+        if affected:
+            narrative += f"  • Confused: {', '.join(affected)} (they act randomly!)\n"
+        if resisted:
+            narrative += f"  • Resisted: {', '.join(resisted)}"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'resisted': resisted,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_conjure_elemental(self, spell: Spell, caster: PlayerCharacter,
+                                targets: List[Character]) -> Dict:
+        """Conjure Elemental: Summons a 16 HD elemental (Air, Earth, Fire, or Water)"""
+
+        # Choose elemental type (in a full implementation, caster would choose)
+        elemental_types = ['Air', 'Earth', 'Fire', 'Water']
+        elemental_type = random.choice(elemental_types)
+
+        narrative = f"You summon a {elemental_type} Elemental! "
+        narrative += "A massive 16 HD elemental appears and awaits your commands. "
+        narrative += "⚠️ You must concentrate to maintain control - if your concentration breaks, "
+        narrative += "there's a 5% chance it will turn on you! "
+        narrative += f"Duration: {caster.level} turns."
+
+        caster.add_condition('elemental_summoned')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'elemental_type': elemental_type,
+            'elemental_hd': 16,
+            'duration': caster.level,  # turns
+            'requires_concentration': True
+        }
+
+    def _spell_hold_monster(self, spell: Spell, caster: PlayerCharacter,
+                           targets: List[Character]) -> Dict:
+        """Hold Monster: Paralyzes 1-4 creatures of any type"""
+
+        if not targets:
+            return {
+                'narrative': "No valid targets for Hold Monster!",
+                'affected': []
+            }
+
+        # Can affect 1-4 creatures
+        max_targets = random.randint(1, 4)
+        potential_targets = targets[:max_targets]
+
+        affected = []
+        resisted = []
+
+        for target in potential_targets:
+            if not target.is_alive:
+                continue
+
+            # Saving throw to resist
+            save_result = self.save_resolver.make_save(target, 'spell')
+
+            if save_result['success']:
+                resisted.append(target.name)
+            else:
+                target.add_condition('paralyzed')
+                affected.append(target.name)
+
+        narrative_parts = []
+        if affected:
+            narrative_parts.append(f"{', '.join(affected)} frozen in place, completely paralyzed!")
+        if resisted:
+            narrative_parts.append(f"{', '.join(resisted)} resisted the paralysis!")
+
+        narrative = ' '.join(narrative_parts) if narrative_parts else "The spell fails to paralyze anyone!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'resisted': resisted,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_wall_of_force(self, spell: Spell, caster: PlayerCharacter,
+                            targets: List[Character]) -> Dict:
+        """Wall of Force: Creates an invisible, impervious barrier"""
+
+        narrative = "An invisible barrier of pure force springs into existence! "
+        narrative += f"The wall ({20 * caster.level} square feet) is totally impervious to all magic, "
+        narrative += "spells, blows, and missiles. Nothing can pass through it! "
+        narrative += "Only a *disintegrate* spell can destroy it. "
+        narrative += f"Duration: {caster.level} turns."
+
+        caster.add_condition('wall_of_force_active')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'area': f'{20 * caster.level} square feet',
+            'impervious': True,
+            'duration': caster.level  # turns
+        }
+
+    def _spell_wall_of_iron(self, spell: Spell, caster: PlayerCharacter,
+                           targets: List[Character]) -> Dict:
+        """Wall of Iron: Creates a vertical iron wall"""
+
+        thickness = caster.level / 4  # 1/4 inch per level
+        area = 15 * caster.level  # 15 sq. ft. per level
+
+        narrative = f"A solid iron wall materializes! "
+        narrative += f"The wall is {thickness:.2f}\" thick and covers {area} square feet. "
+        narrative += "It inserts itself into the surrounding material and is permanent unless dispelled or destroyed. "
+        narrative += "The wall is difficult to break through and provides excellent cover."
+
+        caster.add_condition('wall_of_iron_created')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'thickness_inches': thickness,
+            'area_sqft': area,
+            'duration': 'Permanent'
+        }
+
+    def _spell_wall_of_stone(self, spell: Spell, caster: PlayerCharacter,
+                            targets: List[Character]) -> Dict:
+        """Wall of Stone: Creates a wall of granite rock"""
+
+        thickness = 0.25  # 1/4 inch
+        area = 20 * caster.level  # 20 sq. ft. per level
+
+        narrative = f"A wall of solid granite rock rises from the ground! "
+        narrative += f"The wall is {thickness}\" thick and covers {area} square feet. "
+        narrative += "It merges into adjoining rock surfaces and is permanent. "
+        narrative += "Only *disintegrate* or great force can destroy it."
+
+        caster.add_condition('wall_of_stone_created')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'thickness_inches': thickness,
+            'area_sqft': area,
+            'duration': 'Permanent'
+        }
+
+    # ========== LEVEL 6 SPELLS ==========
+
+    def _spell_monster_summoning_vi(self, spell: Spell, caster: PlayerCharacter,
+                                   targets: List[Character]) -> Dict:
+        """Monster Summoning VI: Summons 1 or 2 sixth level monsters"""
+
+        num_monsters = random.randint(1, 2)
+
+        narrative = f"You invoke the most powerful summoning magic! {num_monsters} sixth level monsters appear and obey your commands! "
+        narrative += f"Duration: {caster.level} rounds."
+
+        caster.add_condition('monsters_summoned_vi')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'num_monsters': num_monsters,
+            'monster_level': 6,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_death_spell(self, spell: Spell, caster: PlayerCharacter,
+                          targets: List[Character]) -> Dict:
+        """Death Spell: Instantly slays creatures with less than 2 HD or 4-80 HD of 2-8 HD creatures"""
+
+        if not targets:
+            return {
+                'narrative': "A wave of death magic ripples outward, but finds no victims!",
+                'affected': [],
+                'total_kills': 0
+            }
+
+        # Slays creatures with < 2 HD instantly, or 4-80 HD worth of 2-8 HD creatures
+        total_hd_available = random.randint(4, 80)  # 4d20
+        hd_consumed = 0
+        total_kills = 0
+        affected = []
+        immune = []
+
+        for target in targets:
+            if not target.is_alive:
+                continue
+
+            # Creatures with < 2 HD die instantly
+            if target.level < 2:
+                target.take_damage(9999)
+                affected.append(f"{target.name} (< 2 HD - SLAIN INSTANTLY!)")
+                total_kills += 1
+            # Creatures with 2-8 HD can be slain if enough HD remain
+            elif 2 <= target.level <= 8:
+                if hd_consumed + target.level <= total_hd_available:
+                    target.take_damage(9999)
+                    affected.append(f"{target.name} ({target.level} HD - SLAIN!)")
+                    hd_consumed += target.level
+                    total_kills += 1
+            # Creatures with > 8 HD are immune
+            else:
+                immune.append(target.name)
+
+        # Build narrative
+        narrative = "A wave of deathly black energy sweeps across the area!\n"
+
+        if affected:
+            narrative += '\n'.join(f"  • {entry}" for entry in affected)
+
+        if immune:
+            narrative += f"\n\n{', '.join(immune)} are too powerful to be affected!"
+
+        if total_kills > 0:
+            narrative += f"\n\n💀 {total_kills} {'creature' if total_kills == 1 else 'creatures'} slain instantly!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'total_kills': total_kills,
+            'hd_consumed': hd_consumed
+        }
+
+    def _spell_globe_of_invulnerability(self, spell: Spell, caster: PlayerCharacter,
+                                       targets: List[Character]) -> Dict:
+        """Globe of Invulnerability: Creates sphere preventing 1st-4th level spells"""
+
+        caster.add_condition('globe_of_invulnerability')
+
+        narrative = "A shimmering sphere of magical force surrounds you! "
+        narrative += "You are protected from all 1st through 4th level spells. "
+        narrative += "They cannot penetrate the globe from either direction! "
+        narrative += f"Duration: {caster.level} rounds."
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'blocks_spell_levels': [1, 2, 3, 4],
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_stone_to_flesh(self, spell: Spell, caster: PlayerCharacter,
+                             targets: List[Character]) -> Dict:
+        """Stone to Flesh: Turns stone into flesh (or reverse)"""
+
+        if not targets:
+            return {
+                'narrative': "No target to transform!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # Check if target has 'petrified' condition
+        has_petrified = hasattr(target, 'conditions') and 'petrified' in target.conditions
+
+        if has_petrified:
+            target.conditions.remove('petrified')
+            if not target.is_alive:
+                target.is_alive = True
+                target.hp_current = 1
+
+            narrative = f"Stone transforms into living flesh! {target.name} is restored from petrification! "
+            narrative += "They gasp as life returns to their body."
+        else:
+            narrative = f"You transform stone into flesh (or could reverse the process on {target.name})."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name] if has_petrified else []
+        }
+
+    def _spell_tensers_transformation(self, spell: Spell, caster: PlayerCharacter,
+                                     targets: List[Character]) -> Dict:
+        """Tenser's Transformation: Transforms caster into powerful fighter"""
+
+        caster.add_condition('tensers_transformation')
+
+        # Store original stats (in full implementation)
+        hp_bonus = caster.hp_max  # Doubles HP
+        caster.hp_current += hp_bonus
+        caster.hp_max += hp_bonus
+
+        narrative = "You undergo a startling transformation! "
+        narrative += "Your body swells with power, doubling your hit points. "
+        narrative += "Your attack rate doubles, your AC improves by 4, and you gain +2 to damage! "
+        narrative += "However, you cannot cast spells while transformed. "
+        narrative += f"Duration: {caster.level} rounds."
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'hp_doubled': hp_bonus,
+            'ac_bonus': 4,
+            'damage_bonus': 2,
+            'attack_rate': 'doubled',
+            'cannot_cast_spells': True,
+            'duration': caster.level  # rounds
+        }
+
+    # ========== LEVEL 7 SPELLS ==========
+
+    def _spell_delayed_blast_fireball(self, spell: Spell, caster: PlayerCharacter,
+                                     targets: List[Character]) -> Dict:
+        """Delayed Blast Fireball: Like Fireball but +1 damage per die, can delay up to 5 rounds"""
+
+        # Calculate damage: 1d6+1 per caster level (max 10d6+10)
+        num_dice = min(caster.level, 10)
+        total_damage = sum(random.randint(1, 6) + 1 for _ in range(num_dice))
+
+        if not targets:
+            return {
+                'narrative': f"A bead of orange flame shoots forth and can be commanded to explode (dealing {total_damage} damage) within 5 rounds!",
+                'affected': [],
+                'total_damage': total_damage,
+                'delayed': True
+            }
+
+        # For this implementation, explode immediately
+        affected = []
+        total_kills = 0
+
+        for target in targets:
+            if target.is_alive:
+                save_result = self.save_resolver.save_for_half_damage(
+                    target, total_damage, 'spell'
+                )
+
+                final_damage = save_result['final_damage']
+                saved = save_result['success']
+
+                if not target.is_alive:
+                    affected.append(f"{target.name} ({final_damage} dmg - INCINERATED!)")
+                    total_kills += 1
+                else:
+                    save_str = " (saved)" if saved else ""
+                    affected.append(f"{target.name} ({final_damage} dmg{save_str})")
+
+        narrative = f"A bead of orange flame erupts in a massive explosion dealing {total_damage} damage!\n"
+        narrative += '\n'.join(f"  • {entry}" for entry in affected)
+
+        if total_kills > 0:
+            narrative += f"\n\n🔥 {total_kills} {'enemy' if total_kills == 1 else 'enemies'} incinerated!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'total_damage': total_damage,
+            'kills': total_kills
+        }
+
+    def _spell_mass_invisibility(self, spell: Spell, caster: PlayerCharacter,
+                                targets: List[Character]) -> Dict:
+        """Mass Invisibility: Makes up to 300-400 man-sized creatures invisible"""
+
+        # In a party context, affects all party members
+        affected = []
+        max_creatures = random.randint(300, 400)  # Could affect this many
+
+        if targets:
+            for target in targets[:max_creatures]:
+                if target.is_alive:
+                    target.add_condition('invisible')
+                    affected.append(target.name)
+        else:
+            caster.add_condition('invisible')
+            affected.append(caster.name)
+
+        narrative = f"Everyone within a 3\" x 3\" area fades from sight! "
+        narrative += f"{', '.join(affected)} become invisible! "
+        narrative += "The effect persists until they attack."
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'max_creatures': max_creatures,
+            'duration': 'Until attack'
+        }
+
+    def _spell_power_word_stun(self, spell: Spell, caster: PlayerCharacter,
+                              targets: List[Character]) -> Dict:
+        """Power Word, Stun: Stuns one creature with up to 90 HP"""
+
+        if not targets or not targets[0].is_alive:
+            return {
+                'narrative': "You speak a word of power, but there is no target!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # Only affects creatures with <= 90 HP
+        if target.hp_current > 90:
+            narrative = f"You speak a word of absolute power, but {target.name} has too many hit points to be affected!"
+            affected = []
+            stunned = False
+        else:
+            # Duration depends on current HP
+            if target.hp_current <= 30:
+                duration = random.randint(4, 16)  # 2d8 rounds
+                severity = "utterly"
+            elif target.hp_current <= 60:
+                duration = random.randint(2, 8)  # 1d8 rounds
+                severity = "completely"
+            else:  # 61-90 HP
+                duration = random.randint(1, 4)  # 1d4 rounds
+                severity = ""
+
+            target.add_condition('stunned')
+            narrative = f"You speak a word of absolute power! {target.name} is {severity} stunned for {duration} rounds!"
+            affected = [target.name]
+            stunned = True
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'stunned': stunned,
+            'duration': duration if stunned else 0
+        }
+
+    def _spell_statue(self, spell: Spell, caster: PlayerCharacter,
+                     targets: List[Character]) -> Dict:
+        """Statue: Turns target into stone while still able to perceive"""
+
+        if not targets:
+            target = caster
+        else:
+            target = targets[0]
+
+        if not target.is_alive:
+            return {
+                'narrative': "Cannot turn a dead creature into a statue!",
+                'affected': []
+            }
+
+        # Saving throw if unwilling
+        if target != caster:
+            save_result = self.save_resolver.make_save(target, 'petrify_paralyze')
+            if save_result['success']:
+                return {
+                    'narrative': f"{target.name} resists the transformation!",
+                    'affected': []
+                }
+
+        target.add_condition('statue_form')
+
+        narrative = f"{target.name} transforms into solid stone! "
+        narrative += "They can still see, hear, and smell, but cannot move or act. "
+        narrative += "They are protected while in this form. "
+        narrative += f"Duration: {caster.level} hours."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'can_perceive': True,
+            'duration': caster.level  # hours
+        }
+
+    def _spell_mordenkainens_sword(self, spell: Spell, caster: PlayerCharacter,
+                                  targets: List[Character]) -> Dict:
+        """Mordenkainen's Sword: Creates magical sword that strikes as fighter"""
+
+        if not targets or not targets[0].is_alive:
+            narrative = "A shimmering sword-like plane of force materializes! "
+            narrative += f"It hovers near you, ready to strike enemies as a {caster.level // 2} level fighter. "
+            narrative += f"Duration: {caster.level} rounds."
+            return {
+                'narrative': narrative,
+                'affected': [caster.name],
+                'damage': '5-20 HP',
+                'fighter_level': caster.level // 2,
+                'duration': caster.level  # rounds
+            }
+
+        target = targets[0]
+        damage = random.randint(5, 20)  # 5d4 averages to this
+        target.take_damage(damage)
+
+        narrative = f"A glowing magical sword materializes and strikes {target.name} for {damage} damage! "
+        narrative += f"The sword fights as a {caster.level // 2} level fighter."
+
+        if not target.is_alive:
+            narrative += f" {target.name} is slain!"
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'damage': damage,
+            'fighter_level': caster.level // 2,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_resurrection(self, spell: Spell, caster: PlayerCharacter,
+                           targets: List[Character]) -> Dict:
+        """Resurrection: Restores life and complete strength to dead person"""
+
+        if not targets:
+            return {
+                'narrative': "No target to resurrect!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # Check if target is already alive
+        if target.is_alive:
+            return {
+                'narrative': f"{target.name} is already alive!",
+                'affected': []
+            }
+
+        # Constitution survival save (simplified - use petrify_paralyze)
+        save_result = self.save_resolver.make_save(target, 'petrify_paralyze')
+
+        if not save_result['success']:
+            return {
+                'narrative': f"The resurrection fails! {target.name}'s body cannot withstand the strain of returning to life.",
+                'affected': [],
+                'success': False
+            }
+
+        # Restore to life with full HP
+        target.is_alive = True
+        target.hp_current = target.hp_max
+
+        # Remove death-related conditions
+        if hasattr(target, 'conditions'):
+            death_conditions = ['dead', 'dying', 'slain']
+            for condition in death_conditions:
+                if condition in target.conditions:
+                    target.conditions.remove(condition)
+
+        narrative = f"Divine power floods through {target.name}! "
+        narrative += f"Life returns in full force - they are restored to complete health ({target.hp_max} HP)! "
+        narrative += f"They awaken as if from a long sleep, completely refreshed."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'restored_hp': target.hp_max,
+            'success': True
+        }
+
+    # ========== LEVEL 8 SPELLS ==========
+
+    def _spell_incendiary_cloud(self, spell: Spell, caster: PlayerCharacter,
+                                targets: List[Character]) -> Dict:
+        """Incendiary Cloud: Creates vapor cloud that flames on 3rd round"""
+
+        # Damage: 1/2 HP per level (full on round 3, continues rounds 4-5)
+        damage_per_round = caster.level // 2
+
+        if not targets:
+            return {
+                'narrative': f"A dense vapor cloud materializes! It will begin to flame on the 3rd round, dealing {damage_per_round} damage per round!",
+                'affected': [],
+                'damage_per_round': damage_per_round
+            }
+
+        # For this implementation, deal immediate damage
+        affected = []
+        total_kills = 0
+
+        for target in targets:
+            if target.is_alive:
+                # No save - you're in the cloud, you burn
+                target.take_damage(damage_per_round)
+
+                if not target.is_alive:
+                    affected.append(f"{target.name} ({damage_per_round} dmg - BURNED ALIVE!)")
+                    total_kills += 1
+                else:
+                    affected.append(f"{target.name} ({damage_per_round} dmg)")
+
+        narrative = f"A billowing cloud of dense vapor fills the area (10' high, 20' x 20')!\n"
+        narrative += f"The cloud bursts into flame, dealing {damage_per_round} damage per round!\n"
+        narrative += '\n'.join(f"  • {entry}" for entry in affected)
+
+        if total_kills > 0:
+            narrative += f"\n\n🔥 {total_kills} {'creature' if total_kills == 1 else 'creatures'} consumed by flames!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'damage_per_round': damage_per_round,
+            'kills': total_kills,
+            'duration': 5  # rounds
+        }
+
+    def _spell_mass_charm(self, spell: Spell, caster: PlayerCharacter,
+                         targets: List[Character]) -> Dict:
+        """Mass Charm: Charms multiple creatures (total HD not exceeding 2x caster level)"""
+
+        if not targets:
+            return {
+                'narrative': "You weave powerful enchantment magic, but there are no targets!",
+                'affected': []
+            }
+
+        max_hd = 2 * caster.level
+        hd_affected = 0
+        affected = []
+        resisted = []
+
+        for target in targets:
+            if not target.is_alive:
+                continue
+
+            # Check if we have enough HD budget
+            if hd_affected + target.level > max_hd:
+                break
+
+            # Saving throw
+            save_result = self.save_resolver.make_save(target, 'spell')
+
+            if save_result['success']:
+                resisted.append(target.name)
+            else:
+                target.add_condition('charmed')
+                affected.append(target.name)
+                hd_affected += target.level
+
+        narrative = "You weave a powerful mass enchantment!\n"
+
+        if affected:
+            narrative += f"  • Charmed ({hd_affected} HD total): {', '.join(affected)}\n"
+        if resisted:
+            narrative += f"  • Resisted: {', '.join(resisted)}"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'resisted': resisted,
+            'hd_affected': hd_affected,
+            'area': '3\" x 3\" maximum'
+        }
+
+    def _spell_bigbys_clenched_fist(self, spell: Spell, caster: PlayerCharacter,
+                                   targets: List[Character]) -> Dict:
+        """Bigby's Clenched Fist: Creates huge force hand that strikes opponent"""
+
+        if not targets or not targets[0].is_alive:
+            narrative = "A huge, disembodied fist of force materializes! "
+            narrative += "It hovers menacingly, ready to strike your enemies. "
+            narrative += f"Duration: {caster.level} rounds."
+            return {
+                'narrative': narrative,
+                'affected': [caster.name],
+                'damage_range': '1-6 to 4-24 HP',
+                'can_stun': True,
+                'duration': caster.level  # rounds
+            }
+
+        target = targets[0]
+
+        # Damage varies: 1d6 to 4d6 based on target's resistance
+        # For simplicity, use 2d12
+        damage = random.randint(2, 24)
+        target.take_damage(damage)
+
+        # Chance to stun (simplified)
+        stunned = random.randint(1, 100) <= 25
+        if stunned and target.is_alive:
+            target.add_condition('stunned')
+
+        narrative = f"A massive fist of force slams into {target.name} for {damage} damage!"
+        if stunned and target.is_alive:
+            narrative += f" {target.name} is stunned by the impact!"
+        elif not target.is_alive:
+            narrative += f" {target.name} is crushed to death!"
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'damage': damage,
+            'stunned': stunned,
+            'duration': caster.level  # rounds
+        }
+
+    def _spell_power_word_blind(self, spell: Spell, caster: PlayerCharacter,
+                               targets: List[Character]) -> Dict:
+        """Power Word, Blind: Temporarily blinds creatures (up to 100 HP total)"""
+
+        if not targets:
+            return {
+                'narrative': "You speak a word of power, but there are no targets!",
+                'affected': []
+            }
+
+        max_hp = 100
+        hp_affected = 0
+        affected = []
+
+        for target in targets:
+            if not target.is_alive:
+                continue
+
+            # Check if we can affect this target
+            if hp_affected + target.hp_current > max_hp:
+                break
+
+            # Duration depends on current HP
+            if target.hp_current <= 25:
+                duration = "2-5 turns"
+                severity = "permanently"
+            elif target.hp_current <= 50:
+                duration = "2-5 rounds"
+                severity = "temporarily"
+            else:  # 51-100 HP
+                duration = "2-5 rounds"
+                severity = "briefly"
+
+            target.add_condition('blinded')
+            affected.append(f"{target.name} ({severity} blinded)")
+            hp_affected += target.hp_current
+
+        if affected:
+            narrative = f"You speak a word of absolute power!\n"
+            narrative += '\n'.join(f"  • {entry}" for entry in affected)
+        else:
+            narrative = "You speak a word of power, but no one is affected!"
+
+        return {
+            'narrative': narrative,
+            'affected': affected,
+            'hp_affected': hp_affected
+        }
+
+    def _spell_ottos_irresistible_dance(self, spell: Spell, caster: PlayerCharacter,
+                                       targets: List[Character]) -> Dict:
+        """Otto's Irresistible Dance: Causes target to dance uncontrollably"""
+
+        if not targets or not targets[0].is_alive:
+            return {
+                'narrative': "No valid target to compel to dance!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # No saving throw - the dance is irresistible!
+        target.add_condition('dancing_uncontrollably')
+
+        narrative = f"{target.name} begins to dance! "
+        narrative += "They cannot stop, moving in wild, uncontrolled gyrations! "
+        narrative += "Their AC worsens by -4, they cannot make saving throws, and cannot use shields. "
+        narrative += "They are utterly helpless! "
+        narrative += f"Duration: {random.randint(2, 5)} rounds."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'ac_penalty': -4,
+            'saves_impossible': True,
+            'shields_useless': True,
+            'duration': random.randint(2, 5)  # rounds
+        }
+
+    # ========== LEVEL 9 SPELLS ==========
+
+    def _spell_wish(self, spell: Spell, caster: PlayerCharacter,
+                   targets: List[Character]) -> Dict:
+        """Wish: More potent version of Limited Wish, can fulfill utterance literally"""
+
+        narrative = "You speak your WISH aloud, and reality bends to accommodate it! "
+        narrative += "⚠️ BE CAREFUL - wishes are fulfilled literally. "
+        narrative += "Poorly phrased wishes can cause disaster! "
+        narrative += "\n\nThe wish takes effect, but the exact outcome depends on how it was phrased. "
+        narrative += "The Dungeon Master will interpret the wish and apply its effects."
+
+        caster.add_condition('wish_cast')
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'note': 'Wish effects are determined by the DM based on wording'
+        }
+
+    def _spell_shape_change(self, spell: Spell, caster: PlayerCharacter,
+                           targets: List[Character]) -> Dict:
+        """Shape Change: Assume form of any creature (short of demi-god) repeatedly"""
+
+        caster.add_condition('shape_changed')
+
+        narrative = "Your form becomes mutable, capable of assuming any shape! "
+        narrative += "You can transform into any creature from a wren to a hippopotamus, "
+        narrative += "gaining all physical abilities of that form (flying, swimming, strength, etc.). "
+        narrative += "You can change forms repeatedly throughout the duration. "
+        narrative += "You retain your own mind and abilities even while transformed. "
+        narrative += f"Duration: {caster.level} turns."
+
+        return {
+            'narrative': narrative,
+            'affected': [caster.name],
+            'can_change_repeatedly': True,
+            'retains_mind': True,
+            'gains_physical_abilities': True,
+            'duration': caster.level  # turns
+        }
+
+    def _spell_temporal_stasis(self, spell: Spell, caster: PlayerCharacter,
+                              targets: List[Character]) -> Dict:
+        """Temporal Stasis: Places target in suspended animation"""
+
+        if not targets or not targets[0].is_alive:
+            return {
+                'narrative': "No valid target for temporal stasis!",
+                'affected': []
+            }
+
+        target = targets[0]
+
+        # No saving throw against temporal stasis
+        target.add_condition('temporal_stasis')
+
+        narrative = f"Time stops for {target.name}! "
+        narrative += "They are placed into a state of suspended animation. "
+        narrative += "Time no longer flows for them - they do not age, breathe, or have any bodily functions. "
+        narrative += "They are completely unaware of the passage of time. "
+        narrative += "Only *Temporal Reinstatement* (the reverse of this spell) can free them. "
+        narrative += "Duration: Permanent until reversed."
+
+        return {
+            'narrative': narrative,
+            'affected': [target.name],
+            'time_stopped': True,
+            'no_aging': True,
+            'no_body_functions': True,
+            'duration': 'Permanent'
         }
