@@ -1,0 +1,1012 @@
+================================================================================
+AERTHOS - UNIMPLEMENTED SPELLS BY CLASS AND LEVEL
+================================================================================
+
+Total Spells: 333
+Implemented: 57
+Unimplemented: 277
+
+================================================================================
+
+
+================================================================================
+CLERIC
+================================================================================
+
+
+Level 1 Spells (7 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Command (enchantment)
+    Give a one-word command that the target must obey (flee, halt, drop, etc).
+
+  • Create Water (unknown)
+    Generates 4 gallons of clean water per level of the caster. **Reverse:** *Destroy Water* obliterates a like quantity of water.
+
+  • Detect Evil (divination)
+    Detects evil intentions and evil creatures.
+
+  • Purify Food & Drink (unknown)
+    Makes up to 1 cubic foot of spoiled/poisoned food or water safe to consume. **Reverse:** *Putrefy Food & Drink* spoils safe food/water.
+
+  • Remove Fear (unknown)
+    Instills courage, granting a +4 bonus to saving throws against magical fear for 1 turn. If affected by fear, grants another save with a +1/level bonus. **Reverse:** *Cause Fear* causes a victim to flee in panic.
+
+  • Resist Cold (unknown)
+    Creature touched is inured to cold, receiving a +3 bonus to saving throws and taking half (or quarter on successful save) damage from greater cold attacks (e.g., *ice storm*, dragon breath).
+
+  • Sanctuary (unknown)
+    Opponents must make a saving throw vs. magic to strike or attack the protected cleric. Cleric cannot take offensive action while protected.
+
+
+Level 2 Spells (7 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Augury (unknown)
+    Seeks to divine whether a future action (within 3 turns) will be beneficial or harmful. Base chance of 70% success + 1%/level.
+
+  • Chant (unknown)
+    Gives a +1 bonus to attack rolls, damage, and saving throws for friendly creatures within a 3" radius for as long as the cleric chants. Enemy rolls are penalized by -1.
+
+  • Detect Charm (unknown)
+    Detects if a creature is under the influence of a *charm* spell (up to 10 creatures). **Reverse:** *Obscure Charm* protects a single creature from such detection.
+
+  • Know Alignment (unknown)
+    Reveals the exact alignment of up to 10 persons. **Reverse:** *Obscure Alignment* totally obscures the alignment of a single person for 1 turn.
+
+  • Resist Fire (unknown)
+    Creature touched is toughened to withstand heat, taking half (or quarter on successful save) damage from magical fires (e.g., *fireball*, dragon breath) and gaining a +3 bonus to saving throws vs. fire attacks.
+
+  • Snake Charm (unknown)
+    Causes one or more snakes to cease activity and sway hypnotically. Total hit points of snakes affected cannot exceed the cleric's level.
+
+  • Speak With Animals (unknown)
+    Enables the cleric to communicate with any warm or cold-blooded animal (not mindless). Lasts 2 rounds per level.
+
+
+Level 3 Spells (9 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Animate Dead (unknown)
+    Creates skeletons or zombies from dead human remains to obey the cleric's commands (1 monster/level).
+
+  • Create Food & Water (unknown)
+    Creates 1 cubic foot of nourishing food and/or water per level, sustaining three human-sized creatures for a full day.
+
+  • Feign Death (unknown)
+    Puts the touched creature into a cataleptic state, appearing dead.
+
+  • Glyph of Warding (evoc.)
+    Inscribes a magical rune to guard an area (25 sq. ft. per level) which, when triggered, releases a stored effect (e.g., electrical damage, fire damage, paralyze).
+
+  • Protection from Evil 10' Radius (abjuration)
+    As Protection from Evil, but affects all within 10 feet of caster.
+
+  • Remove Curse (abjuration)
+    Removes one curse from creature or object.
+
+  • Speak With Dead (unknown)
+    Allows the cleric to ask several questions of a dead creature (body or remains must be present). Limits on questions and maximum time dead depend on cleric level.
+
+  • Tongues (unknown)
+    Enables the caster to speak the language of any creature (same as Cleric 4th Level).
+
+  • Word of Recall (unknown)
+    Instantly teleports the cleric back to his or her previously designated sanctuary, carrying additional weight (250 gp/level) in equipment, treasure, or persons.
+
+
+Level 4 Spells (6 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Detect Lie (rev.)
+    Enables the recipient to determine if truth is being spoken (lasts 1 round/level). Reverse: *Undetectable Lie* makes a lie seem reasonable.
+
+  • Divination (divination)
+    Gives information regarding an area (small woods, building, dungeon level). Success chance 60% + 1%/level, adjusted by DM for area specifics.
+
+  • Exorcise (divination)
+    Negates possession of a creature or object by an outside/supernatural force (e.g., demon, curse, charm, *magic jar*). Base 1-100% chance of success, checked each turn.
+
+  • Lower Water (rev.)
+    Causes water or similar fluid in a 1" x 1" square/level area to sink away (5% of original effect/level). Reverse: *Raise Water* causes water to return to its normal highest level + 1 foot/level.
+
+  • Speak With Plants (divination)
+    Enables the cleric to converse with any living vegetable, allowing questions about creatures, making thickets part, etc. (lasts 1 round/level).
+
+  • Sticks to Snakes (rev.)
+    Changes 1 stick/level into a snake (5% chance/level of being venomous) that attacks as commanded. Reverse: *Snakes to Sticks* changes snakes to sticks.
+
+
+Level 5 Spells (7 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Atonement (divination)
+    Removes the onus of unwilling or unknown deeds, or magical alignment change. Requires true repentance.
+
+  • Commune (divination)
+    Contacts the cleric's divinity (or agents) to request information in the form of questions answered by a simple "yes" or "no" (1 question/level).
+
+  • Dispel Evil (rev.)
+    Causes summoned/enchanted evil creatures to return to their own plane or place. Affected creatures attack the caster at -7 penalty. Reverse: *Dispel Good* against summoned/enchanted good creatures.
+
+  • Insect Plague (divination)
+    Horde of insects swarms in a 36" diameter, 6" high cloud, dealing 1 HP damage/round to creatures within, and forcing morale checks.
+
+  • Plane Shift (divination)
+    Moves the cleric (and up to 6 others linked in a circle) to another plane of existence. The specific destination depends on a small, forked metal rod component.
+
+  • Quest (enchantment)
+    Requires an affected creature to perform a service and return with proof. Failure results in -1 penalty to saving throws daily.
+
+  • True Seeing (rev.)
+    Allows the cleric to see things as they actually are in a 12" sight range, revealing secret doors, invisible things, illusions, and creature auras. Reverse: *False Seeing* causes a person to see things as they are not.
+
+
+Level 6 Spells (7 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Aerial Servant (conjuration)
+    Summons an invisible stalker to perform the cleric's bidding for a maximum of 1 day/level, primarily for finding and returning objects.
+
+  • Animate Object (divination)
+    Imbues inanimate objects (1 cubic foot/level) with mobility and a semblance of life to attack as commanded.
+
+  • Conjure Animals (divination)
+    Summons one or more mammals with total HD up to the cleric's level to attack opponents. Lasts 2 rounds/level.
+
+  • Find The Path (rev.)
+    Enables the cleric to find the shortest, most direct route to a known destination (outdoors, underground, trap, or *maze* spell). Reverse: *Lose the Path* makes the creature touched totally lost.
+
+  • Part Water (divination)
+    Causes water or similar liquid to move apart, forming a trough 3' deep by 1' wide by 2" long/level.
+
+  • Speak With Monsters (divination)
+    Allows the cleric to converse with any type of creature with communicative ability (lasts 1 melee round/level).
+
+  • Stone Tell (divination)
+    The very stones of an area (1 cubic yard of stone) speak and relate what has touched them, what is concealed, and what has transpired.
+
+
+Level 7 Spells (9 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Astral Spell (divination)
+    Projects the cleric's astral body into the Astral Plane, leaving the physical body behind in suspended animation. Allows travel to other planes.
+
+  • Control Weather (divination)
+    Allows the cleric to change the weather in an area of 4-16 square miles (takes 1 turn to cast, 1-4 turns for effect).
+
+  • Earthquake (divination)
+    Creates a local tremor in a circular area (1/2" diameter/level), causing cliffs/caves to collapse, ground to crack, and structures to sustain damage/fall.
+
+  • Gate (divination)
+    Opens an ultra-dimensional connection to a specific powerful being (demon, devil, demi-god, god, etc.), causing it to step through the portal or be attracted.
+
+  • Holy (Unholy) Word (divination)
+    Utterance has tremendous power, driving off evil (or good for *Unholy Word*) creatures from other planes, and affecting other creatures of differing alignment (killing, paralyzing, stunning, deafening) based on their HD/level.
+
+  • Restoration (rev.)
+    Raises the life energy level of the recipient creature by one, subsuming previous life energy level drain. Reverse: *Energy Drain* draws away one life energy level (requires touch attack).
+
+  • Resurrection (rev.)
+    Restores life and complete strength to a dead person (subject to Constitution survival save) dead up to 10 years/level. Reverse: *Destruction* causes the victim to be instantly dead and turned to dust.
+
+  • Symbol (conjuration)
+    Inscribes magical runes that, when triggered, affect creatures passing over/touching/reading/passing through the portal with a chosen effect (Death, Discord, Fear, Hopelessness).
+
+  • Wind Walk (divination)
+    Alters the cleric's body (and up to two others touched) to cloud-like vapors, allowing travel at up to 60" per turn (not invisible, but appear misty). ***
+
+
+================================================================================
+DRUID
+================================================================================
+
+
+Level 1 Spells (9 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Animal Friendship (unknown)
+    Charms one animal (non-semi-intelligent) to be a trusted friend and ally of the druid (subject to save). Allows druid to teach it 3 "tricks"/INT point.
+
+  • Detect Snares & Pits (unknown)
+    Detects hidden snares and pits (simple traps only underground, all traps outdoors) in a 1" path up to 4" long.
+
+  • Entangle (unknown)
+    Causes plants (*grasses, weeds, trees*) in a 4" diameter area to wrap, twist, and entwine creatures, holding them fast or slowing movement by 50% (subject to save).
+
+  • Faerie Fire (unknown)
+    Outlines an object or creature with a pale glowing light, making it visible (even if invisible) and giving a +2 penalty to opponents' AC ("to hit" bonus).
+
+  • Invisibility To Animals (unknown)
+    Makes the recipient totally undetectable by normal animals (INT under 6).
+
+  • Locate Animals (unknown)
+    Determines the direction and distance of any desired type of animal within range.
+
+  • Pass Without Trace (unknown)
+    Recipient moves through any terrain without leaving footprint or scent, making tracking impossible.
+
+  • Predict Weather (unknown)
+    Gains 100% accurate knowledge of the weather trend (sky, temperature, precipitation) for 2 hours in advance per level of the caster in a 9 square mile area.
+
+  • Shillelagh (unknown)
+    Changes a normal oaken club into a magical +1 weapon, inflicting 2-8 HP (man-sized) or 2-5 HP (larger).
+
+
+Level 2 Spells (7 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Charm Person Or Mammal (unknown)
+    Charms one person or mammal (not monster) to regard the druid as a trusted friend and ally (subject to save). Duration depends on the charmed creature's intelligence.
+
+  • Fire Trap (evoc.)
+    Traps a closable object (e.g., door, chest) to explode with fire damage (1-4 HP, half with save) when opened/touched by an unauthorized creature.
+
+  • Heat Metal (unknown)
+    Causes ferrous metal (iron, steel) in a mass of 500 gp/level to become searing hot over 7 rounds, causing damage and disability to exposed flesh. **Reverse:** *Chill Metal* causes metal to become freezing, causing damage and amputation.
+
+  • Obscurement (unknown)
+    Causes a misty vapor to arise around the druid, reducing visibility to 2' to 8' (2d4) for 4 rounds per level.
+
+  • Produce Flame (unknown)
+    Creates a bright, hot flame in the druid's palm. Lasts 2 rounds/level. Can be hurled as a missile (range 4"), igniting combustibles.
+
+  • Trip (charm)
+    Causes a stick, vine, or rope object to rise and trip creatures crossing it (subject to save). Creatures running take damage and are stunned.
+
+  • Warp Wood (unknown)
+    Permanently bends and warps wood in a 1" range/level, destroying its straightness, form, and strength.
+
+
+Level 3 Spells (10 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Call Lightning (evoc.)
+    Calls down bolts of lightning from the sky (must be a storm) that inflict 2d8+1d8/level HP damage (half with save) to creatures within a 1" radius of the strike.
+
+  • Hold Animal (charm)
+    Holds 1-4 animals rigid (mammals, birds, or reptiles, not monsters) for 2 rounds/level. Saving throw is penalized based on the number of targets.
+
+  • Plant Growth (unknown)
+    Causes normal vegetation (brush, trees, vines) in a 2" X 2" square area/level to become a dense barrier.
+
+  • Protection From Fire (unknown)
+    Grants invulnerability to normal fires and 50% damage reduction (+4 save bonus) against magical fires for 1 turn/level.
+
+  • Pyrotechnics (unknown)
+    Causes a fire source to produce either a flashing burst of fireworks (blinding creatures) or a thick stream of smoke (obscuring vision).
+
+  • Snare (charm)
+    Creates a 90% undetectable snare from a flexible object (vine, rope) that contracts to bind or strangle a creature (1-6 HP damage) when triggered.
+
+  • Stone Shape (unknown)
+    Permanently forms an existing piece of stone (3 cubic feet/level) into a desired shape (e.g., weapon, trapdoor, idol).
+
+  • Summon Insects (unknown)
+    Attracts a cloud of flying or crawling insects (70% chance of flying) that swarm and attack a target, dealing 2 HP damage/round, and forcing the victim to fend them off.
+
+  • Tree (unknown)
+    Allows the druid to assume the form of a small living tree or shrub, or a large dead tree trunk, and observe their surroundings while in the form.
+
+  • Water Breathing (unknown)
+    Allows the recipient to freely breathe underwater for 6 turns/level. **Reverse:** *Air Breathing* allows water-breathing creatures to survive in the atmosphere.
+
+
+Level 4 Spells (9 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Animal Summoning I (divination)
+    Calls up to eight animals (max 4 HD each) of whatever sort the druid names (if within range) to aid the druid.
+
+  • Call Woodland Beings (divination)
+    Summons certain woodland creatures (brownies, centaurs, dryads, pixies, satyrs, sprites, treants, unicorns) to the druid's locale to aid them (subject to save).
+
+  • Control Temperature, 10' Radius (divination)
+    Alters the temperature surrounding the druid by 9 degrees Fahrenheit per level (up or down).
+
+  • Hallucinatory Forest (rev.)
+    Creates the illusion of a perfectly natural forest in a 4" square/level area. Reverse: *Hallucinatory Clearing*.
+
+  • Hold Plant (enchantment)
+    Affects vegetable matter (e.g., green slime, treants) to cease moving, entwining, or making sound.
+
+  • Plant Door (divination)
+    Opens a magical portal through trees or other growth for the druid (and higher level druids/dryads) to enter and move from inside to another tree of the same species.
+
+  • Produce Fire (rev.)
+    Causes a common-type fire (up to 12" square) to ignite combustibles and cause 1-4 HP damage in a single round. Reverse: *Quench Fire* extinguishes a normal fire.
+
+  • Protection From Lightning (divination)
+    Grants invulnerability to normal electrical attacks and 50% damage reduction (+4 save bonus) against magical lightning/electrical attacks for 1 turn/level.
+
+  • Repel Insects (divination)
+    Creates an invisible barrier up to 10' radius that prevents normal insects from approaching.
+
+
+Level 5 Spells (9 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Animal Growth (rev.)
+    Causes animals (max 8) in a 2" square area to grow to twice their normal size, doubling hit dice and damage in combat. Reverse: *Animal Shrinkage* reduces size by half.
+
+  • Animal Summoning II (divination)
+    Calls up to six animals (max 8 HD each) or 12 animals (max 4 HD each).
+
+  • Anti-Plant Shell (divination)
+    Creates an invisible hemispherical force field (20' diameter) that prevents the entrance of any animal matter of normal (not magical) nature.
+
+  • Commune With Nature (divination)
+    Enables the druid to become one with nature in a 1/2 mile radius/level, gaining knowledge of one fact about the surrounding territory (ground, plants, water, people).
+
+  • Control Winds (divination)
+    Alters wind force in a 4"/level radius hemisphere, increasing/decreasing force by 3 mph/level (e.g., winds of 75+ mph cause devastation).
+
+  • Moonbeam (divination)
+    Summons a 1" diameter, 1" long/level column of pale, cold light that inflicts 2-12 (2d6) HP damage (half with save) to creatures within and has an effect similar to *Dispel Magic* on enchanted creatures.
+
+  • Pass Plant (divination)
+    Allows the druid to enter a tree and move from inside it to another living tree of the same species within range.
+
+  • Spike Stones (divination)
+    Permanently creates an area of jagged spikes (1" square area/level) that inflicts 2-12 (2d6) HP damage to creatures moving 1" or more per round.
+
+  • Transmute Rock to Mud (rev.)
+    Turns natural rock (2 cubic "/level) into an equal volume of mud. Reverse: *Mud to Rock* hardens normal mud into soft stone.
+
+
+Level 6 Spells (10 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Animal Summoning III (divination)
+    Calls up to four animals (max 16 HD each), eight animals (max 8 HD each), or 16 creatures (max 4 HD each).
+
+  • Anti-Animal Shell (divination)
+    Creates an invisible hemispherical force field (20' diameter) that prevents the entrance of any animal matter of normal (not magical) nature.
+
+  • Conjure Fire Elemental (rev.)
+    Summons a strong (16 HD) fire elemental to aid the druid. Reverse: *Dismiss Fire Elemental*.
+
+  • Feeblemind (enchantment)
+    Causes a victim's brain to become that of a moronic child, remaining in this state until *heal*, *restoration*, or *wish* is used.
+
+  • Fire Seeds (conjuration)
+    Creates up to four acorn missiles (2-16 HP on impact) or eight holly berry timed incendiaries (1-8 HP burst damage on command) that ignite combustibles.
+
+  • Liveoak (divination)
+    Permanently animates an acorn into a Small, mobile tree to serve as a guard or servitor.
+
+  • Transport Via Plants (divination)
+    Allows the druid to enter any large living plant and pass any distance to a living plant of the same species in a single round.
+
+  • Turn Wood (divination)
+    Pushes away all wooden objects in a 12" wide path, 2" long/level, splinters fixed objects, and drags objects (and carriers) back.
+
+  • Wall Of Thorns (conjuration)
+    Creates a barrier of very tough, pliable green tangled brush (10" cube/level) that inflicts 8 HP damage + AC to creatures breaking through.
+
+  • Weather Summoning (divination)
+    Calls forth weather commensurate with the climate and season (e.g., tornado, heat wave, blizzard). Not under the druid's control.
+
+
+Level 7 Spells (9 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Animate Rock (divination)
+    Causes a single lithic object (2 cubic feet of stone/level) to move and attack as commanded.
+
+  • Chariot Of Sustarre (evocation)
+    Summons a large flaming chariot pulled by two fiery horses for transport (24" on ground, 48" flying). Creatures within 5' take *wall of fire* damage.
+
+  • Confusion (enchantment)
+    Causes 2-8 creatures within a 4" X 4" area to become confused (act randomly, 10% wander away, 50% confused, 20% attack nearest, 20% attack druid/party).
+
+  • Conjure Earth Elemental (rev.)
+    Summons a strong (16 HD) earth elemental to aid the druid. Reverse: *Dismiss Earth Elemental*.
+
+  • Creeping Doom (conjuration)
+    Calls forth a mass of venomous, biting, and stinging arachnids, insects, and myriapods (500-1000 in number) that swarm and attack.
+
+  • Finger Of Death (enchantment)
+    Causes the victim's heart to stop, slaying the creature if it fails its saving throw.
+
+  • Fire Storm (rev.)
+    Creates a whole area (2" cube/level) shot through with sheets of roaring flame, inflicting 2-16 HP damage + 1 HP/level (half with save). Reverse: *Fire Quench* smothers a fire.
+
+  • Reincarnate (divination)
+    Brings back a dead person (dead up to 1 week) in a new, random body and race (subject to *Magic-User Reincarnation Table*).
+
+  • Transmute Metal To Wood (divination)
+    Changes one metal object (max 80 gp weight/level) into wood. Magical objects are 10% likely to be affected. ***
+
+
+================================================================================
+ILLUSIONIST
+================================================================================
+
+
+Level 1 Spells (4 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Audible Glamer (phantasm)
+    Creates a volume of sound (talking, singing, roaring, etc.) at whatever range the caster desires (up to a dragon's roar).
+
+  • Change Self (phantasm)
+    Alters the appearance of the illusionist's form, including clothing and equipment, to any generally man-shaped bipedal creature.
+
+  • Gaze Reflection (alt.)
+    Creates a mirror-like area of air that reflects back any gaze attack (e.g., basilisk, medusa) upon the gazer.
+
+  • Wall Of Fog (alt.)
+    Creates a wall of misty vapors that obscures all sight (normal or infravision) beyond 2'.
+
+
+Level 2 Spells (4 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Blindness (phantasm)
+    Causes the recipient creature to become totally blind (no cure except *dispel magic* or caster's will).
+
+  • Hypnotic Pattern (phantasm)
+    Creates a weaving, turning pattern of subtle colors that causes creatures looking at it to become fascinated and entranced (up to 24 HD/levels total).
+
+  • Improved Phantasmal Force (phantasm)
+    A phantasmal force illusion that can be maintained with minimal concentration (lasts 2 rounds after concentration ceases).
+
+  • Phantasmal Force (phantasm)
+    Creates a visual illusion of an object, creature, or force (4 square" + 1 square"/level). Creatures believe it and can suffer damage until they successfully disbelieve.
+
+
+Level 3 Spells (5 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Dispel Illusion (abj.)
+    Dispels any *phantasmal force* (with or without audible glamer) cast by a non-illusionist, and has a chance to dispel other illusionist spells.
+
+  • Illusionary Script (phantasm)
+    Creates illusionary script on paper/parchment that can only be read by the person(s) the illusionist desires (others become confused).
+
+  • Invisibility, 10' Radius (phantasm)
+    Makes the creature touched and all its gear within a 10' radius invisible.
+
+  • Paralyzation (phantasm)
+    Creates illusionary muscle slowdown that paralyzes creatures whose total HD do not exceed twice the illusionist's level.
+
+  • Spectral Force (phantasm)
+    Creates an illusion that includes sound, smell, and thermal illusions.
+
+
+Level 4 Spells (3 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Dispel Exhaustion (phantasm)
+    Gives the illusion that a touched person is fresh and well, restoring 50% of lost HP.
+
+  • Emotion (enchantment)
+    Projects a chosen emotion (Fear, Hate, Hopelessness, Rage) from the illusionist, affecting morale, attack rolls, damage, or saving throws.
+
+  • Phantasmal Killer (phantasm)
+    Creates the illusion of the victim's most fearsome imagined thing. On a successful hit, the victim dies from fright.
+
+
+Level 5 Spells (3 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Demi-Shadow Monsters (phantasm)
+    Creates quasi-real monsters (40% real) of armor class 8 with 40% of normal hit points and damage potential.
+
+  • Major Creation (alt.)
+    Creates mineral objects (same as *Minor Creation* for vegetable objects, but permanent).
+
+  • Shadow Magic (phantasm)
+    Allows the caster to cast a quasi-real M-U spell (*magic missile, fireball, lightning bolt, or cone of cold*) that deals damage (or 1 HP/level if recognized).
+
+
+Level 6 Spells (6 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Demi-Shadow Magic (phantasm)
+    Allows the caster to cast quasi-real M-U spells (*wall of fire, wall of ice, or cloudkill*) that deal more damage than *Shadow Magic*.
+
+  • Mass Suggestion (enchantment)
+    Same as M-U 3rd Level, but affects one creature per level of the illusionist.
+
+  • Permanent Illusion (phantasm)
+    Creates a lasting *spectral force* (same as *Phantasmal Force* but permanent and requires no concentration).
+
+  • Shades (phantasm)
+    Creates quasi-real monsters (60% real) of armor class 6 with 60% of normal hit points and damage potential.
+
+  • True Sight (divination)
+    Allows the illusionist to see its actual or former form, but does not allow determination of alignment.
+
+  • Veil (phantasm)
+    Instantly changes the appearance of surroundings (up to 2" X 2"/level) to fool creatures, making a filthy den look like a sumptuous room.
+
+
+Level 7 Spells (4 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Alter Reality (phantasm, conj.)
+    Similar to *Limited Wish*, allowing the illusionist to alter reality through the casting of a *phantasmal force* illusion.
+
+  • Prismatic Spray (abj., conj.)
+    Causes 7 rays of the *prismatic sphere* spell (red, orange, yellow, green, blue, indigo, violet) to spring from the caster's hand, affecting creatures with a random effect (based on d8 roll).
+
+  • Prismatic Wall (abj., conj.)
+    Creates a wall, or curtain, of scintillating colors with effects identical to the *prismatic sphere* globes, with maximum proportions 4' wide per level and 2' high per level.
+
+  • Vision (divination)
+    Allows the illusionist to call upon a power for supernatural guidance, receiving a *vision* in answer to a question (chance of success based on dice roll, intelligence, and sacrifice).
+
+
+================================================================================
+MAGIC-USER
+================================================================================
+
+
+Level 1 Spells (18 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Affect Normal Fires (unknown)
+    Causes small fires (up to 3' diameter) to reduce in size/light (half consumption) or increase in size/light (double consumption). Heat output is unchanged.
+
+  • Comprehend Languages (unknown)
+    Allows the caster to read any incomprehensible written message (not magical writing) or understand the language of a speaking creature by touch.
+
+  • Dancing Lights (unknown)
+    Creates 1-4 lights resembling torches, spheres, or a vague man-like shape, that move as the caster desires.
+
+  • Erase (unknown)
+    Removes writings (magical or mundane) from a scroll or two facing pages (50% base chance + 2%/level for magical, +4%/level for mundane).
+
+  • Feather Fall (unknown)
+    Instantly changes the rate of fall for creature(s)/objects to 2' per second (12' per segment), preventing damage on landing.
+
+  • Find Familiar (conj.)
+    Summons an abnormally intelligent animal familiar (e.g., cat, hawk, owl) to aid the magic-user.
+
+  • Friends (charm)
+    Causes the magic-user to gain a temporary increase of 2-8 points in Charisma, or a temporary lowering of 1-4 points (subject to save by creatures in the area).
+
+  • Hold Portal (unknown)
+    Magically bars a door, gate, or valve for 1 round/level. Cannot be used on *wizard locked* doors.
+
+  • Identify (unknown)
+    Reveals 1 property of a touched magical item (requires pearl/owl feather component, and Constitution check upon use).
+
+  • Jump (unknown)
+    Empowers the recipient to leap up to 30' forward, 10' backward, or straight upward.
+
+  • Mending (unknown)
+    Repairs small breaks in non-magical objects (broken ring, hole in leather sack, etc.).
+
+  • Message (unknown)
+    Whispers a message to a pointed creature that can reply in a straight line.
+
+  • Nystul's Magic Aura (phantasm)
+    Gives one item a false magical aura to fool *detect magic*.
+
+  • Push (conj.)
+    Causes an invisible force (1 foot-pound/level) to strike an object, moving small objects or causing a creature to lose its balance.
+
+  • Read Magic (divination)
+    Allows caster to read magical writings and scrolls.
+
+  • Spider Climb (unknown)
+    Enables the recipient to climb and travel on vertical surfaces or ceilings at 3" movement rate.
+
+  • Tenser's Floating Disc (evoc.)
+    Creates a 3' diameter, circular plane of null-gravity that holds 1,000 gp weight/level and follows the caster.
+
+  • Ventriloquism (phantasm)
+    Makes the caster's voice (or similar sound) appear to issue from someplace else (another creature, statue, behind a door).
+
+
+Level 2 Spells (15 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Darkness, 15' Radius (unknown)
+    Creates a total, impenetrable darkness in a 15' radius sphere.
+
+  • Detect Invisibility (unknown)
+    Clearly sees any objects or creatures that are invisible (or astral, ethereal, hidden, or out of phase).
+
+  • ESP (unknown)
+    Detects the surface thoughts of any creature in range (except undead and those with no mind). Range and number of probes increase with level.
+
+  • Fire Trap (evoc.)
+    Traps a closable object (e.g., door, chest) to explode with fire damage (1-4 HP, half with save) when opened/touched by an unauthorized creature.
+
+  • Fools Gold (unknown)
+    Temporarily changes copper coins to gold pieces, or brass items to solid gold. Chance of cold-wrought iron dispelling the dweomer (25-30% base chance).
+
+  • Forget (charm)
+    Causes 1-4 individual creatures within a 2" X 2" area to forget the events of the previous round.
+
+  • Leomund's Trap (phantasm)
+    Places a false trap illusion upon a small mechanism (lock, hinge) designed to fool dwarves and thieves (80% likely to be seen).
+
+  • Levitate (alteration)
+    Target levitates up or down at 20 feet per round.
+
+  • Magic Mouth (unknown)
+    Empowers an object (not living/intelligent) with an enchanted mouth that speaks a 25-word message when a specified event occurs.
+
+  • Misdirection (phantasm)
+    Misdirects the information from a detection-type spell (e.g., *detect magic, detect evil*) about a specific creature or item.
+
+  • Phantasmal Force (phantasm)
+    Creates a visual illusion of an object, creature, or force (4 square" + 1 square"/level). Creatures believe it and can suffer damage until they successfully disbelieve.
+
+  • Ray Of Enfeeblement (charm)
+    Weakens an opponent, reducing Strength by 25% + 2%/level (subject to save).
+
+  • Rope Trick (unknown)
+    Causes one end of a 5'-30' rope to rise into the air and anchor in an extra-dimensional space, allowing the caster and up to five others to climb to safety.
+
+  • Scare (charm)
+    Causes a creature with < 6+1 HD/levels to fall into a fit of trembling and shaking (subject to save).
+
+  • Shatter (unknown)
+    Shivers non-magical objects of crystal, glass, ceramic, or porcelain (up to 100 gp/level) into dozens of pieces.
+
+
+Level 3 Spells (18 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Blink (unknown)
+    Causes the caster's material form to "blink" out and back to the plane in a random period/direction each round. Caster is only 75% likely to perform other actions during this spell.
+
+  • Clairaudience (unknown)
+    Allows the caster to concentrate on a known locale and hear in their mind whatever noise is within a 6" radius of that locale center.
+
+  • Explosive Runes (unknown)
+    Traces mystic runes on a book/map/scroll that prevent unauthorized reading. When read, the runes detonate, dealing 12-30 (6d4+6) HP damage (no save).
+
+  • Flame Arrow (conj.)
+    Touches one arrow or crossbow bolt (quarrel) per segment, making it magical and causing +1 HP additional fire damage on a successful hit.
+
+  • Fly (alteration)
+    Target can fly at 120 feet per round with good maneuverability.
+
+  • Gust Of Wind (unknown)
+    Creates a strong puff of air (1" wide path, 1"/level long) that extinguishes small flames, fans large fires, forces back small flying creatures, and slows large flying creatures by 50%.
+
+  • Infravision (unknown)
+    Enables the recipient to see in the infrared spectrum up to 60' (lasts 12 turns + 6 turns/level).
+
+  • Invisibility, 10' Radius (phantasm)
+    Makes the creature touched and all its gear within a 10' radius invisible.
+
+  • Leomund's Tiny Hut (unknown)
+    Creates an opaque sphere of force (10' diameter, half above/half below ground) that maintains 70°F inside temperature and withstands up to 50 mph winds.
+
+  • Monster Summoning I (conj.)
+    Summons 1-4 first level monsters to attack the caster's opponents (lasts 2 rounds + 1 round/level).
+
+  • Protection From Normal Missiles (unknown)
+    Bestows total invulnerability to hurled and projected missiles (arrows, axes, darts, etc.) and reduces damage from large/magical missiles.
+
+  • Protection from Evil 10' Radius (abjuration)
+    As Protection from Evil, but affects all within 10 feet of caster.
+
+  • Pyrotechnics (unknown)
+    Causes a fire source to produce either a flashing burst of fireworks (blinding creatures) or a thick stream of smoke (obscuring vision).
+
+  • Remove Curse (abjuration)
+    Removes one curse from creature or object.
+
+  • Stone Shape (unknown)
+    Permanently forms an existing piece of stone (3 cubic feet/level) into a desired shape (e.g., weapon, trapdoor, idol).
+
+  • Suggestion (charm)
+    Influences the actions of one creature by uttering a few words suggesting a reasonable course of action (lasts 6 turns + 6 turns/level).
+
+  • Tongues (unknown)
+    Enables the caster to speak the language of any creature (same as Cleric 4th Level).
+
+  • Water Breathing (unknown)
+    Allows the recipient to freely breathe underwater for 6 turns/level. **Reverse:** *Air Breathing* allows water-breathing creatures to survive in the atmosphere.
+
+
+Level 4 Spells (14 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Charm Monster (enchantment)
+    Charms any living creature (or several of lesser level) to regard the caster as friendly (same as 1st level, but more powerful).
+
+  • Dig (evocation)
+    Excavates 125 cubic feet of earth/sand/mud per round (5' cube).
+
+  • Enchanted Weapon (rev.)
+    Turns an ordinary weapon (two small or one large) into a magical weapon (no bonuses, but hits any opponent) for 5 rounds/level.
+
+  • Extension I (divination)
+    Prolongs the duration of a previously cast 1st, 2nd, or 3rd level spell by 50%.
+
+  • Fear (phantasm)
+    Sends forth an invisible ray that causes creatures (HD 1 to 12) within its area to turn and flee in panic (base 60% chance, reduced 5%/level).
+
+  • Fire Charm (enchantment)
+    Causes a normal fire source to serve as a magical agent, with a gossamer veil of flame circling it, charming creatures observing it to remain motionless (subject to save).
+
+  • Fire Shield (evocation)
+    Immolates the caster (but no damage taken) with flames, protecting against cold-based attacks (half damage, +2 save bonus) and dealing double damage to body/hand-held weapon attackers.
+
+  • Fumble (enchantment)
+    Causes the recipient creature to suddenly become clumsy and awkward, potentially dropping held objects or weapons.
+
+  • Hallucinatory Terrain (phantasm)
+    Creates an illusion which hides the actual terrain (e.g., field looks like a swamp) in an area 1" X 1" square/level.
+
+  • Massmorph (phantasm)
+    Causes willing creatures (man-size or smaller, up to 10/level) to appear as normal trees of any sort.
+
+  • Minor Globe of Invulnerability (abj.)
+    Creates a magical sphere around the caster which prevents any 1st, 2nd, or 3rd level spells from penetrating.
+
+  • Monster Summoning II (conjuration)
+    Summons 1-6 second level monsters.
+
+  • Rary's Mnemonic Enhancer (divination)
+    Allows the magic-user to memorize (or retain the memory of) three additional spell levels (e.g., three 1st level spells, or one 3rd level spell).
+
+  • Wizard Eye (alt.)
+    Creates an invisible sensory organ that sends visual information to the caster and travels at 3" per round.
+
+
+Level 5 Spells (16 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Airy Water (divination)
+    Turns normal liquid to a less dense, breathable substance in a 2" diameter sphere/4" diameter hemisphere, allowing movement and breathing underwater.
+
+  • Bigby's Interposing Hand (evocation)
+    Creates a large, disembodied hand of force that interposes itself between the caster and opponent, taking damage as the caster.
+
+  • Chaos (enchantment)
+    Causes all creatures in a 4" X 4" area to become confused (same as 4th level, but affects all creatures).
+
+  • Conjure Elemental (divination)
+    Summons a 16 HD Air, Earth, Fire, or Water Elemental to do the caster's bidding (requires concentration, 5% chance of turning on caster).
+
+  • Contact Other Plane (divination)
+    Sends the caster's mind to another plane of existence to request information (answered with "yes/no/maybe/never"). Risk of insanity or death increases with distance.
+
+  • Distance Distortion (divination)
+    Causes an earth elemental to distort an area's dimensions (100 sq. "/level) to effectively appear half or twice the distance to those traveling over it.
+
+  • Hold Monster (enchantment)
+    Immobilizes 1-4 creatures of any type (monsters/humans) in sight and range for 1 round/level.
+
+  • Leomund's Secret Chest (alt., conj.)
+    Instantly transfers a specially crafted chest and its contents (1 cubic foot/level) to the ethereal plane, retrievable by a tiny replica.
+
+  • Magic Jar (poss.)
+    Transfers the caster's life force to a special container (gem/crystal), from which it can possess the mind and body of a victim (subject to save).
+
+  • Monster Summoning III (conjuration)
+    Summons 1-4 third level monsters.
+
+  • Mordenkainen's Faithful Hound (conjuration)
+    Summons a phantom watchdog that only the caster can see. It guards an area and attacks creatures approaching it from behind with a vicious 3-18 HP bite.
+
+  • Passwall (divination)
+    Opens a passage (5' wide, 8' high, 10' deep) through wooden, plaster, or stone walls. Lasts 6 turns + 1 turn/level.
+
+  • Telekinesis (divination)
+    Mentally moves objects or opponents (up to 250 gp weight/level) by will force, with movement increasing each round.
+
+  • Wall Of Force (evocation)
+    Creates an invisible barrier (20' square/level) that is totally impervious to all magic, spells, blows, and missiles (destroyed only by *disintegrate*).
+
+  • Wall Of Iron (evocation)
+    Creates a vertical iron wall (1/4" thick/level, 15 sq. ft./level) that inserts itself into surrounding material. Permanent unless dispelled or destroyed by force.
+
+  • Wall Of Stone (evocation)
+    Creates a wall of granite rock (1/4" thick, 20' square/level) that merges into adjoining rock surfaces. Permanent unless destroyed by *disintegrate* or force.
+
+
+Level 6 Spells (19 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Anti-Magic Shell (abj.)
+    Creates an invisible barrier (1'/level diameter sphere) that surrounds the caster and moves with them, totally impervious to all magic and spell effects (1st-5th level spells).
+
+  • Bigby's Forceful Hand (evocation)
+    Creates a large, disembodied hand of force that pushes creatures (up to 500 lbs) away or slows movement of larger creatures.
+
+  • Death Spell (conjuration)
+    Instantly and irrevocably slays creatures with less than 2 HD, or 4-80 (4d20) HD of creatures with 2-8 HD in a 1/2" square/level area.
+
+  • Enchant An Item (conjuration)
+    Prepares a non-magical item (must be finest quality) to accept a magical dweomer. Casting time is 16 hours + 8d8 hours.
+
+  • Extension III (divination)
+    Prolongs the duration of a previously cast 1st-3rd level spell to double duration, and 4th or 5th level spell by 50%.
+
+  • Geas (enchantment)
+    Places a magical command upon a creature to carry out some service or refrain from some action. Failure results in sickness and eventual death (1-4 weeks).
+
+  • Glassee (divination)
+    Makes a section of metal, stone, or wood transparent to the caster's gaze (or creates a transparent area) for 1 round/level.
+
+  • Globe Of Invulnerability (abj.)
+    Creates a magical sphere around the caster which prevents any 1st through 4th level spells from penetrating.
+
+  • Guards And Wards (evocation)
+    Defends a stronghold with various permanent effects: misty corridors, *wizard locked* doors, illusory wall, web-filled stairs, minor confusion, and other chosen magics.
+
+  • Invisible Stalker (conjuration)
+    Summons an 8 HD invisible stalker from the Elemental Plane of Air to obey the caster's commands.
+
+  • Legend Lore (divination)
+    Determines information regarding a known person, place, or thing (casting time 1 turn up to 12 weeks, depending on information known).
+
+  • Move Earth (divination)
+    Moves dirt (clay, loam, sand) and its components to collapse embankments, shift dunes, etc., over a 4" square area/turn of casting.
+
+  • Otiluke's Freezing Sphere (evocation)
+    Creates a globe of matter at absolute zero temperature that, on contact with water, freezes a 6" deep layer of ice over 100 sq. ft./level, or can be cast as a thin ray (4 HP/level damage).
+
+  • Project Image (phantasm)
+    Creates a non-material duplicate of the caster up to 1"/level distant, which performs actions (walking, speaking, spell-casting) identical to the caster. Spells originate from the image.
+
+  • Reincarnation (divination)
+    Same as Druid 7th Level (but with *Magic-User Reincarnation Table*).
+
+  • Repulsion (abj.)
+    Causes all creatures in a 1" path to move away from the caster at 3" per round.
+
+  • Spiritwrack (evocation)
+    Strong protection/punishment spell against powerful creatures of the nether planes (Demons, Devils) whose name the caster knows. Roots them to the spot and causes pain/damage unless they succeed in a series of saves.
+
+  • Stone To Flesh (rev.)
+    Turns any sort of stone (9 cubic feet/level) into flesh (restoring life if formerly living). Reverse: *Flesh to Stone* turns flesh of any sort to stone (subject to save).
+
+  • Tenser's Transformation (evocation)
+    Undergoes a startling transformation, doubling hit points and attack rate, improving AC by 4, and granting +2 damage on attacks (lasts 1 round/level).
+
+
+Level 7 Spells (17 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Bigby's Grasping Hand (evocation)
+    Creates a huge, disembodied hand of force that can hold motionless a creature or object of up to 1,000 lbs weight.
+
+  • Cacodemon (conjuration)
+    Summons a powerful Demon of type IV, V, or VI (if name is known) to serve the caster (by threat of *spiritwrack* or promise of tribute/human sacrifices).
+
+  • Charm Plants (enchantment)
+    Brings under command vegetable life forms in a 3" X 1" area/level (same as Druid 7th Level).
+
+  • Delayed Blast Fireball (evocation)
+    Same as *Fireball*, but +1 on each damage die, and can be commanded to release its blast up to 5 rounds after casting.
+
+  • Drawmij's Instant Summons (conjuration)
+    Instantly teleports one small, non-living object (max 75 gp weight) to the caster's hand upon crushing a gem component.
+
+  • Duo-Dimension (divination)
+    Causes the caster to have only two dimensions, making them invisible when turned sideways (3 rounds + 1 round/level).
+
+  • Limited Wish (conjuration)
+    Fulfills literally, but only partially or for a limited duration, the utterance of the spell caster. Will not substantially change major realities.
+
+  • Mass Invisibility (phantasm)
+    Makes up to 300-400 man-sized creatures invisible within a 3" X 3" area.
+
+  • Monster Summoning V (conjuration)
+    Summons 1-2 fifth level monsters.
+
+  • Mordenkainen's Sword (evocation)
+    Brings into being a shimmering sword-like plane of force that strikes as a fighter of half the caster's level, dealing 5-20 HP damage.
+
+  • Phase Door (alt.)
+    Creates an invisible door/passage through a wall for the caster to enter and disappear (lasts 1 usage/2 levels).
+
+  • Power Word, Stun (conjuration)
+    Stuns one creature with up to 90 HP for 1-8 rounds, with duration depending on the victim's current HP.
+
+  • Reverse Gravity (alt.)
+    Reverses gravity in a 1/2"/level range area, causing all unfixed objects and creatures to "fall" upwards.
+
+  • Simulacrum (phantasm)
+    Creates a non-material duplicate of any creature, with 51-60% of the original's HP and some knowledge/personality (formed from snow/ice).
+
+  • Statue (divination)
+    Turns the caster or another creature (and gear) into solid stone (subject to save), where they can still see/hear/smell.
+
+  • Teleport Without Error (divination)
+    Instantly transports the caster and additional weight to a well-known destination without any risk of error.
+
+  • Vanish (divination)
+    Causes an object (up to 500 gp weight/level) to vanish by placing it into the ethereal plane, potentially replaced by stone.
+
+
+Level 8 Spells (15 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Antipathy/Sympathy (enchantment)
+    Creates certain vibrations that either repel (*Antipathy*) or attract (*Sympathy*) a specific type of living, intelligent creature or character alignment in the area/item.
+
+  • Bigby's Clenched Fist (evocation)
+    Creates a huge, disembodied hand of force that strikes an opponent each round, with varying degrees of damage/stunning (1-6 HP up to 4-24 HP).
+
+  • Clone (nec.)
+    Creates a duplicate of a person, complete to the level of experience, which takes 2-8 months to grow. Dual existence of original and clone causes insanity/suicide.
+
+  • Glassteel (divination)
+    Turns crystal or glass (max 10 lbs/level) into a transparent substance with the tensile strength and unbreakability of steel.
+
+  • Incendiary Cloud (evocation)
+    Creates a dense vapor cloud (10' high, 20' long/wide) that begins to flame on the 3rd round, dealing 1/2 HP damage/level to creatures inside.
+
+  • Mass Charm (enchantment)
+    Charms a number of creatures (total HD not exceeding twice the caster's level) in a maximum 3" X 3" area.
+
+  • Maze (conjuration)
+    Traps one creature in an extra-dimensional shifting labyrinth of force planes. The creature wanders for a period dependent on its intelligence.
+
+  • Mind Blank (abj.)
+    Totally protects the recipient from all spells and devices that detect, influence, or read emotions/thoughts (e.g., *charm, ESP, geas, wish*).
+
+  • Monster Summoning VI (conjuration)
+    Summons 1 or 2 sixth level monsters.
+
+  • Otto's Irresistible Dance (enchantment)
+    Causes the recipient creature to begin dancing uncontrollably, lowering their AC by -4, making saves impossible, and negating shield use.
+
+  • Permanency (alt.)
+    Makes the duration of certain other spells (e.g., *enlarge, invisibility, wall of force, wall of fire*) permanent, at the cost of 1 Constitution point to the caster.
+
+  • Polymorph Any Object (alt.)
+    Changes one object (living or otherwise) into another, with variable duration depending on the radical difference in kingdom, class, size, etc.
+
+  • Power Word, Blind (conjuration)
+    Temporarily blinds one or more creatures (up to 100 HP total affected) for 2-5 rounds or turns, with duration based on current HP.
+
+  • Serten's Spell Immunity (abj.)
+    Confers virtual immunity and a large bonus (+5 to +9) to saving throws against certain spells (e.g., *charm, fear, hold, geas*).
+
+  • Trap The Soul (conjuration)
+    Forces a creature's life force into a special prison gem (requires gem cost 1,000 gp/HD, plus a *maze* spell enchanted onto it).
+
+
+Level 9 Spells (10 unimplemented):
+--------------------------------------------------------------------------------
+
+  • Bigby's Crushing Hand (evocation)
+    Creates a huge, disembodied hand of force that grasps and squeezes an opponent, dealing increasing damage over successive rounds.
+
+  • Imprisonment (rev.)
+    Entombes the recipient creature in a state of suspended animation in a small sphere far below the earth's surface. Reverse: *Freedom* causes the victim to reappear at the spot they were entombed.
+
+  • Meteor Swarm (evocation)
+    Launches four 2" diameter spheres or eight 1" diameter spheres that burst as *fireballs* (10-40 HP or 5-20 HP damage each) in a diamond or box pattern.
+
+  • Monster Summoning VII (conjuration)
+    Summons 1 or 2 seventh level monsters or 1 eighth level monster.
+
+  • Power Word, Kill (conjuration)
+    Instantly slays one or more creatures with up to 60 HP total.
+
+  • Prismatic Sphere (abj., conj.)
+    Conjures an opaque globe of shimmering, multi-colored spheres that surrounds the caster. Each of the seven colors (red, orange, yellow, green, blue, indigo, violet) has a different power/protection against attacks and spells.
+
+  • Shape Change (divination)
+    Allows the caster to assume the form of any creature (short of a demi-god, demon prince, etc.) and all its physical abilities, over and over (1 turn/level).
+
+  • Temporal Stasis (rev.)
+    Places the recipient creature into a state of suspended animation, where time stops for them (no aging/body functions). Reverse: *Temporal Reinstatement* removes the stasis.
+
+  • Time Stop (divination)
+    Stops the flow of time in the area of effect, allowing the caster to move and act freely while other creatures are frozen (1/2 segment/level).
+
+  • Wish (conjuration)
+    A more potent version of *Limited Wish*, which can fulfill the caster's utterance literally, but can still cause disaster if phrased poorly. ***
+
+
+================================================================================
+END OF REPORT
+================================================================================
