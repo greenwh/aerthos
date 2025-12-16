@@ -53,19 +53,29 @@ def reset_character(character_data: dict, args) -> tuple[dict, list]:
             changes.append(f"Restored {spells_restored} spent spell slot(s)")
 
     # 3. Optionally clear all memorized spells
+    # IMPORTANT: This clears the SPELLS from slots, but KEEPS the slot structure intact!
+    # Slots remain available for memorizing new spells.
+    # Empty slots do NOT have a 'spell' field - it's only added when a spell is memorized.
     if args.clear_spells and spells_memorized:
         # Count how many slots had spells
-        spells_cleared = sum(1 for slot in spells_memorized if slot.get('spell') is not None)
+        spells_cleared = sum(1 for slot in spells_memorized if 'spell' in slot and slot.get('spell') is not None)
 
-        # Clear all spell references but keep slots
+        # Clear spell references from slots, but KEEP the slots themselves
         for slot in spells_memorized:
-            slot['spell'] = None
-            slot['is_used'] = False
+            if isinstance(slot, dict):  # Ensure slot is a valid dictionary
+                # Remove the 'spell' field entirely (empty slots don't have it)
+                if 'spell' in slot:
+                    del slot['spell']
+                slot['is_used'] = False
+                # Ensure the slot has required fields
+                if 'level' not in slot:
+                    slot['level'] = 1  # Default to level 1 if missing
 
+        # Re-assign the modified slot list (slots preserved, just cleared of spells)
         character_data['spells_memorized'] = spells_memorized
 
         if spells_cleared > 0:
-            changes.append(f"Cleared {spells_cleared} memorized spell(s) from {len(spells_memorized)} slot(s)")
+            changes.append(f"Cleared {spells_cleared} memorized spell(s), {len(spells_memorized)} empty slot(s) remain")
 
     # 4. Optionally clear conditions
     conditions = character_data.get('conditions', [])

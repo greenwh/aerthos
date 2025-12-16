@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """
-Fix spell slots in existing save files and character files to match the new spell progression.
+Fix spell slots in existing save files and character files to match the character's class and level.
+
+This script intelligently adjusts spell slots by:
+- Adding new empty slots if character should have more (e.g., after leveling up)
+- Removing excess slots if character should have fewer
+- Preserving existing memorized spells where possible
+
+IMPORTANT: Empty slots have NO 'spell' field. The field is only added when a spell is memorized.
 """
 
 import json
@@ -19,66 +26,138 @@ classes_json = PROJECT_ROOT / 'aerthos' / 'data' / 'classes.json'
 with open(classes_json) as f:
     classes_data = json.load(f)
 
-def get_correct_spell_slots(char_class: str, level: int) -> list:
-    """Get the correct spell slots for a character class and level"""
+def get_correct_spell_slot_counts(char_class: str, level: int) -> dict:
+    """
+    Get the correct number of spell slots per level for a character class and level.
+
+    Returns:
+        Dict mapping spell_level -> num_slots, e.g., {1: 2, 2: 1} for a level 3 Magic-User
+        Empty dict {} if class is non-caster or has no slots at this level
+    """
     if char_class not in classes_data:
-        print(f"  Warning: Unknown class '{char_class}', no spell slots assigned")
-        return []
+        print(f"  ⚠ Warning: Unknown class '{char_class}'")
+        print(f"     Available classes: {', '.join(sorted(classes_data.keys()))}")
+        return {}
 
     class_data = classes_data[char_class]
     slot_key = f'spell_slots_level_{level}'
 
     if slot_key not in class_data:
-        # No spell slots for this level (e.g., Fighter, Thief, or caster at level 1)
-        return []
+        # No spell slots for this level (e.g., Fighter, Thief, or caster at low level)
+        return {}
 
     slots_by_level = class_data[slot_key]
 
-    # Convert array format to list of spell slot objects
-    spell_slots = []
+    # Convert array format to dict
+    slot_counts = {}
     for spell_level_idx, num_slots in enumerate(slots_by_level):
-        spell_level = spell_level_idx + 1
-        for _ in range(num_slots):
-            spell_slots.append({
-                'level': spell_level,
-                'spell': None,
-                'is_used': False
-            })
+        if num_slots > 0:
+            spell_level = spell_level_idx + 1
+            slot_counts[spell_level] = num_slots
 
-    return spell_slots
+    return slot_counts
+
+def create_empty_slot(spell_level: int) -> dict:
+    """
+    Create an empty spell slot.
+
+    IMPORTANT: Empty slots do NOT have a 'spell' field!
+    The 'spell' field is only added when a spell is memorized.
+    """
+    return {
+        'level': spell_level,
+        'is_used': False
+    }
 
 def fix_character_spell_slots(character_data: dict) -> tuple[dict, bool]:
-    """Fix spell slots for a character. Returns (fixed_character, was_changed)"""
-    char_class = character_data.get('char_class', 'Fighter')
+    """
+    Fix spell slots for a character while preserving memorized spells.
+
+    Returns (fixed_character, was_changed)
+    """
+    # Check both 'class' and 'char_class' keys (files use 'class', code uses 'char_class')
+    char_class = character_data.get('char_class') or character_data.get('class', 'Fighter')
     level = character_data.get('level', 1)
     current_slots = character_data.get('spells_memorized', [])
 
-    # Get correct spell slots
-    correct_slots = get_correct_spell_slots(char_class, level)
+    # Get correct spell slot counts per level
+    correct_slot_counts = get_correct_spell_slot_counts(char_class, level)
 
-    # Check if current slots match correct slots
-    if len(current_slots) != len(correct_slots):
-        print(f"  {character_data.get('name', 'Unknown')}: Level {level} {char_class}")
-        print(f"    Old: {len(current_slots)} slots {[s.get('level') for s in current_slots]}")
-        print(f"    New: {len(correct_slots)} slots {[s.get('level') for s in correct_slots]}")
-        character_data['spells_memorized'] = correct_slots
-        return character_data, True
-
-    # Check if slot levels are correct
-    for i, (current, correct) in enumerate(zip(current_slots, correct_slots)):
-        if current.get('level') != correct.get('level'):
+    # If no spell slots needed (Fighter, Thief, etc.), clear any existing slots
+    if not correct_slot_counts:
+        if current_slots:
             print(f"  {character_data.get('name', 'Unknown')}: Level {level} {char_class}")
-            print(f"    Slot levels mismatch at index {i}")
-            print(f"    Old: {[s.get('level') for s in current_slots]}")
-            print(f"    New: {[s.get('level') for s in correct_slots]}")
-            character_data['spells_memorized'] = correct_slots
+            print(f"    Removing all spell slots (non-caster class or no slots at this level)")
+            character_data['spells_memorized'] = []
             return character_data, True
+        return character_data, False
 
-    return character_data, False
+    # Count current slots by level
+    current_slot_counts = {}
+    for slot in current_slots:
+        spell_level = slot.get('level', 1)
+        current_slot_counts[spell_level] = current_slot_counts.get(spell_level, 0) + 1
+
+    # Check if adjustment is needed
+    needs_adjustment = current_slot_counts != correct_slot_counts
+
+    if not needs_adjustment:
+        return character_data, False
+
+    # Need to adjust slots - preserve existing spells where possible
+    print(f"  {character_data.get('name', 'Unknown')}: Level {level} {char_class}")
+    print(f"    Current slots: {current_slot_counts}")
+    print(f"    Correct slots: {correct_slot_counts}")
+
+    # Build new slot list, preserving spells where possible
+    new_slots = []
+
+    # Group current slots by spell level
+    slots_by_level = {}
+    for slot in current_slots:
+        spell_level = slot.get('level', 1)
+        if spell_level not in slots_by_level:
+            slots_by_level[spell_level] = []
+        slots_by_level[spell_level].append(slot)
+
+    # For each spell level that should exist, add the correct number of slots
+    for spell_level in sorted(correct_slot_counts.keys()):
+        num_slots_needed = correct_slot_counts[spell_level]
+        existing_slots = slots_by_level.get(spell_level, [])
+
+        # Reuse existing slots first (to preserve memorized spells)
+        for i in range(num_slots_needed):
+            if i < len(existing_slots):
+                # Reuse existing slot (preserves spell if any)
+                existing_slot = existing_slots[i]
+
+                # Clean up the slot - remove 'spell' field if it's None
+                # (empty slots should not have 'spell' field at all)
+                if 'spell' in existing_slot and existing_slot['spell'] is None:
+                    cleaned_slot = {
+                        'level': existing_slot.get('level', spell_level),
+                        'is_used': existing_slot.get('is_used', False)
+                    }
+                    new_slots.append(cleaned_slot)
+                else:
+                    # Keep as-is (has a memorized spell or is already clean)
+                    new_slots.append(existing_slot)
+            else:
+                # Add new empty slot (NO 'spell' field!)
+                new_slots.append(create_empty_slot(spell_level))
+
+    # Count preserved spells
+    spells_preserved = sum(1 for slot in new_slots if 'spell' in slot and slot['spell'] is not None)
+
+    character_data['spells_memorized'] = new_slots
+
+    print(f"    ✓ Adjusted to {len(new_slots)} slots, preserved {spells_preserved} memorized spell(s)")
+
+    return character_data, True
 
 def fix_save_file(save_path: Path) -> bool:
     """Fix spell slots in a save file. Returns True if file was modified."""
-    print(f"\nProcessing: {save_path}")
+    print(f"\nProcessing: {save_path.name}")
 
     # Load save file
     with open(save_path, 'r') as f:
@@ -94,9 +173,10 @@ def fix_save_file(save_path: Path) -> bool:
 
     if player_changed:
         # Backup original
-        backup_path = save_path.with_suffix('.json.bak')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_path = save_path.with_suffix(f'.json.{timestamp}.bak')
         shutil.copy2(save_path, backup_path)
-        print(f"  ✓ Backup created: {backup_path}")
+        print(f"  ✓ Backup created: {backup_path.name}")
 
         # Save fixed version
         save_data['player'] = player_data
@@ -110,7 +190,7 @@ def fix_save_file(save_path: Path) -> bool:
 
 def fix_character_file(char_path: Path) -> bool:
     """Fix spell slots in a character file. Returns True if file was modified."""
-    print(f"\nProcessing: {char_path}")
+    print(f"\nProcessing: {char_path.name}")
 
     # Load character file
     with open(char_path, 'r') as f:
@@ -121,9 +201,10 @@ def fix_character_file(char_path: Path) -> bool:
 
     if changed:
         # Backup original
-        backup_path = char_path.with_suffix('.json.bak')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_path = char_path.with_suffix(f'.json.{timestamp}.bak')
         shutil.copy2(char_path, backup_path)
-        print(f"  ✓ Backup created: {backup_path}")
+        print(f"  ✓ Backup created: {backup_path.name}")
 
         # Save fixed version
         with open(char_path, 'w') as f:
@@ -136,7 +217,7 @@ def fix_character_file(char_path: Path) -> bool:
 
 def fix_party_file(party_path: Path) -> bool:
     """Fix spell slots in a party file. Returns True if file was modified."""
-    print(f"\nProcessing: {party_path}")
+    print(f"\nProcessing: {party_path.name}")
 
     # Load party file
     with open(party_path, 'r') as f:
@@ -156,9 +237,10 @@ def fix_party_file(party_path: Path) -> bool:
 
     if changed:
         # Backup original
-        backup_path = party_path.with_suffix('.json.bak')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_path = party_path.with_suffix(f'.json.{timestamp}.bak')
         shutil.copy2(party_path, backup_path)
-        print(f"  ✓ Backup created: {backup_path}")
+        print(f"  ✓ Backup created: {backup_path.name}")
 
         # Save fixed version
         with open(party_path, 'w') as f:
@@ -173,6 +255,14 @@ def main():
     print("=" * 70)
     print("FIXING SPELL SLOTS IN EXISTING CHARACTERS")
     print("=" * 70)
+    print("\nThis script will:")
+    print("  • Check spell slots against character class and level")
+    print("  • Add missing slots for characters who leveled up")
+    print("  • Remove excess slots if any exist")
+    print("  • Preserve memorized spells where possible")
+    print("  • Create timestamped backups of all modified files")
+    print("\nNOTE: Empty slots do NOT have a 'spell' field.")
+    print("      The 'spell' field is only present when a spell is memorized.")
 
     # Get aerthos data directory from constants.py
     from aerthos.constants import _AERTHOS_HOME
@@ -185,8 +275,8 @@ def main():
     saves_dir = aerthos_dir / 'saves'
     if saves_dir.exists():
         print(f"\n--- Checking Save Files in {saves_dir} ---")
-        for save_file in saves_dir.glob('*.json'):
-            if save_file.suffix == '.json' and not save_file.name.endswith('.bak'):
+        for save_file in sorted(saves_dir.glob('*.json')):
+            if save_file.suffix == '.json' and not '.bak' in save_file.name:
                 files_checked += 1
                 if fix_save_file(save_file):
                     files_fixed += 1
@@ -195,8 +285,8 @@ def main():
     chars_dir = aerthos_dir / 'characters'
     if chars_dir.exists():
         print(f"\n--- Checking Character Files in {chars_dir} ---")
-        for char_file in chars_dir.glob('*.json'):
-            if char_file.suffix == '.json' and not char_file.name.endswith('.bak'):
+        for char_file in sorted(chars_dir.glob('*.json')):
+            if char_file.suffix == '.json' and not '.bak' in char_file.name:
                 files_checked += 1
                 if fix_character_file(char_file):
                     files_fixed += 1
@@ -205,8 +295,8 @@ def main():
     parties_dir = aerthos_dir / 'parties'
     if parties_dir.exists():
         print(f"\n--- Checking Party Files in {parties_dir} ---")
-        for party_file in parties_dir.glob('*.json'):
-            if party_file.suffix == '.json' and not party_file.name.endswith('.bak'):
+        for party_file in sorted(parties_dir.glob('*.json')):
+            if party_file.suffix == '.json' and not '.bak' in party_file.name:
                 files_checked += 1
                 if fix_party_file(party_file):
                     files_fixed += 1
@@ -220,7 +310,8 @@ def main():
 
     if files_fixed > 0:
         print("\n✓ Spell slots have been corrected!")
-        print("✓ Original files backed up with .bak extension")
+        print("✓ Memorized spells were preserved where possible")
+        print("✓ Original files backed up with timestamp")
         print("\nNote: If you have any active game sessions, you may need to reload them")
         print("      to see the corrected spell slots.")
     else:
