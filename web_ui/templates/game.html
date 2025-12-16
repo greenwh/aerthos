@@ -1988,8 +1988,8 @@
             const actions = [];
 
             // Determine what actions make sense for this item type
-            const equipableTypes = ['weapon', 'armor', 'shield'];
-            const usableTypes = ['potion', 'consumable', 'light', 'scroll', 'wand', 'key', 'tool'];
+            const equipableTypes = ['weapon', 'armor', 'shield', 'light'];  // Added 'light' for torches/lanterns
+            const usableTypes = ['potion', 'consumable', 'scroll', 'wand', 'key', 'tool'];  // Removed 'light'
 
             if (equipableTypes.includes(itemType)) {
                 actions.push('equip');

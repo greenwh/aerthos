@@ -223,7 +223,7 @@ class GameState:
             level_change_msg = None
 
         # Advance time
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
 
         # Get room description
         room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
@@ -427,7 +427,7 @@ class GameState:
             messages.append(self._format_monster_status())
 
         # Advance time (combat takes time)
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
         messages.extend(time_messages)
 
         return {'success': True, 'message': '\n'.join(messages)}
@@ -467,7 +467,7 @@ class GameState:
             messages.append(self._format_monster_status())
 
         # Advance time
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
         messages.extend(time_messages)
 
         return {'success': True, 'message': '\n'.join(messages)}
@@ -478,7 +478,7 @@ class GameState:
         if not self.in_combat:
             # Out of combat, just pass time
             messages = ["You wait and observe your surroundings."]
-            time_messages = self.time_tracker.advance_turn(self.player)
+            time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
             messages.extend(time_messages)
             return {'success': True, 'message': '\n'.join(messages)}
 
@@ -501,7 +501,7 @@ class GameState:
             messages.append(self._format_monster_status())
 
         # Advance time
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
         messages.extend(time_messages)
 
         return {'success': True, 'message': '\n'.join(messages)}
@@ -860,7 +860,7 @@ class GameState:
             messages.append(self._format_monster_status())
 
         # Advance time (spell casting takes time)
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
         messages.extend(time_messages)
 
         return {'success': result['success'], 'message': '\n'.join(messages)}
@@ -900,7 +900,7 @@ class GameState:
             messages.append("You don't find anything interesting.")
 
         # Advance time (searching takes time)
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
         messages.extend(time_messages)
 
         # Check quest triggers/updates when searching room (campaign mode only)
@@ -1004,7 +1004,7 @@ class GameState:
             messages = [result['narrative']]
             # Advance 48 turns (8 hours)
             for _ in range(48):
-                time_messages = self.time_tracker.advance_turn(self.player)
+                time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
                 # Only show final time message, not all 48
                 if time_messages and _ == 47:
                     messages.extend(time_messages)
@@ -1288,7 +1288,7 @@ class GameState:
         self.current_level = new_level
 
         # Advance time
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
 
         # Get room description
         room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
@@ -1340,7 +1340,7 @@ class GameState:
         self.current_level = new_level
 
         # Advance time
-        time_messages = self.time_tracker.advance_turn(self.player)
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
 
         # Get room description
         room_desc = self.current_room.on_enter(self.player.has_light(), self.player)
@@ -1600,19 +1600,23 @@ class GameState:
         # Normalize name for matching
         search_lower = item_name.lower().replace('_', ' ')
 
-        # Check for magic items (pattern: base_item_plus1, base_item_plus2, etc.)
+        # Check for magic items
+        # Supports two formats: "Sword +1" and "sword_plus1"
         import re
-        magic_pattern = r'(.+?)_plus(\d+)$'
-        magic_match = re.match(magic_pattern, item_name.lower())
+        magic_pattern_space = r'(.+?)\s*\+(\d+)'  # Matches "Sword +1", "Sword+1", "sword +1"
+        magic_pattern_underscore = r'(.+?)_plus(\d+)$'  # Matches "sword_plus1"
+
+        magic_match = re.search(magic_pattern_space, item_name) or re.match(magic_pattern_underscore, item_name.lower())
 
         if magic_match:
-            base_item = magic_match.group(1)
+            base_item = magic_match.group(1).strip().lower()  # Normalize to lowercase
             magic_bonus = int(magic_match.group(2))
 
             # Check if it's magic armor
             armor_types = ['leather', 'studded_leather', 'ring_mail', 'scale_mail',
-                          'chain_mail', 'splint_mail', 'banded_mail', 'plate_mail']
-            if base_item in armor_types:
+                          'chain_mail', 'splint_mail', 'banded_mail', 'plate_mail',
+                          'chain', 'plate', 'banded', 'splint', 'scale', 'ring', 'studded']
+            if base_item in armor_types or base_item.replace(' ', '_') in armor_types:
                 from ..systems.armor_system import ArmorSystem
                 armor_system = ArmorSystem()
                 armor = armor_system.create_armor(base_item, magic_bonus=magic_bonus)
@@ -1620,24 +1624,35 @@ class GameState:
                     return armor
 
             # Check if it's a magic weapon
-            weapon_types = ['longsword', 'long_sword', 'shortsword', 'short_sword',
-                           'dagger', 'mace', 'battle_axe', 'hand_axe', 'spear',
-                           'warhammer', 'morningstar']
-            weapon_base = base_item.replace('_', '')  # longsword or long_sword -> longsword
+            # Map common weapon names (from magic_items.json) to weapon IDs
+            weapon_name_map = {
+                'sword': 'long_sword',
+                'longsword': 'long_sword',
+                'long sword': 'long_sword',
+                'shortsword': 'short_sword',
+                'short sword': 'short_sword',
+                'dagger': 'dagger',
+                'mace': 'footmans_mace',
+                'axe': 'battle_axe',
+                'battle axe': 'battle_axe',
+                'hand axe': 'hand_axe',
+                'spear': 'spear',
+                'warhammer': 'warhammer',
+                'war hammer': 'warhammer',
+                'morningstar': 'morningstar',
+                'morning star': 'morningstar',
+                'hammer': 'warhammer',
+                'bow': 'long_bow'
+            }
 
-            if base_item in weapon_types or weapon_base in weapon_types:
+            weapon_id = weapon_name_map.get(base_item, base_item.replace(' ', '_'))
+            is_weapon = base_item in weapon_name_map or base_item.replace(' ', '_') in weapon_name_map.values()
+
+            if is_weapon:
                 # Use weapons.json data to create the weapon
                 from ..entities.player import Weapon
 
-                # Map common variants to correct weapon_id
-                weapon_id_map = {
-                    'longsword': 'long_sword',
-                    'shortsword': 'short_sword',
-                    'long sword': 'long_sword',
-                    'short sword': 'short_sword'
-                }
-                weapon_id = weapon_id_map.get(base_item, base_item)
-
+                # weapon_id already mapped above
                 # Try to load weapon stats from weapons.json
                 weapon_stats = None
                 if self.game_data and hasattr(self.game_data, 'weapons'):

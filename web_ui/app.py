@@ -1793,9 +1793,16 @@ def get_game_state():
                                 game_state.episode_runner = runner
                                 game_state.character_ids = party_result['character_ids']  # Track character IDs for saving
 
-                                # Restore dungeon state (explored rooms)
+                                # Restore dungeon state (explored rooms, items, encounters)
                                 if 'dungeon_state' in session_data:
-                                    game_state.dungeon.deserialize(session_data['dungeon_state'])
+                                    dungeon_state = session_data['dungeon_state']
+                                    room_states = dungeon_state.get('room_states', {})
+                                    for room_id, state in room_states.items():
+                                        if room_id in game_state.dungeon.rooms:
+                                            room = game_state.dungeon.rooms[room_id]
+                                            room.is_explored = state.get('is_explored', False)
+                                            room.items = state.get('items', [])
+                                            room.encounters_completed = state.get('encounters_completed', [])
 
                                 # Restore current room
                                 if session_data.get('current_room_id'):

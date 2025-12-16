@@ -1,4 +1,5 @@
 Rats use disease bite but players don't get diseased.  Check special attacks.
 
-I cannot memorize "Cure Critical Wounds" or "Cure Serious Wounds".  Apparently the parser is reading the first word "Cure" and assuming level 1 spell "Cure Light Wounds".  I think the problem is the "intelligent" parsing the partial keywords and names.
+Centipede, Giant injects toxic venom - deals poison damage!
 
+When a character get to 0 (slain in dungeon) but character is healed at the temple (Still Alive).  Not marked dead?

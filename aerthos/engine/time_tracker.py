@@ -21,12 +21,13 @@ class TimeTracker:
         self.turns_elapsed = 0
         self.total_hours = 0
 
-    def advance_turn(self, player: PlayerCharacter) -> List[str]:
+    def advance_turn(self, player: PlayerCharacter, party=None) -> List[str]:
         """
         Advance time by 1 turn (10 minutes)
 
         Args:
-            player: The player character
+            player: The player character (for single-player mode or backwards compatibility)
+            party: Optional Party object (for party-based games)
 
         Returns:
             List of event messages
@@ -35,19 +36,35 @@ class TimeTracker:
         self.turns_elapsed += 1
         messages = []
 
-        # Consume light
-        light_msg = self._consume_light(player)
-        if light_msg:
-            messages.append(light_msg)
+        # If party exists, process time for ALL party members
+        if party and hasattr(party, 'members'):
+            for member in party.members:
+                if member.is_alive:
+                    # Consume light for each living party member
+                    light_msg = self._consume_light(member)
+                    if light_msg:
+                        messages.append(f"{member.name}: {light_msg}")
+        else:
+            # Single player mode - just process the player
+            light_msg = self._consume_light(player)
+            if light_msg:
+                messages.append(light_msg)
 
         # Every TURNS_PER_HOUR turns (1 hour)
         if self.turns_elapsed % TURNS_PER_HOUR == 0:
             self.total_hours += 1
 
-            # Check hunger
-            hunger_msg = self._check_hunger(player)
-            if hunger_msg:
-                messages.append(hunger_msg)
+            # Check hunger (only for player in single mode, or all in party mode)
+            if party and hasattr(party, 'members'):
+                for member in party.members:
+                    if member.is_alive:
+                        hunger_msg = self._check_hunger(member)
+                        if hunger_msg:
+                            messages.append(f"{member.name}: {hunger_msg}")
+            else:
+                hunger_msg = self._check_hunger(player)
+                if hunger_msg:
+                    messages.append(hunger_msg)
 
         return messages
 

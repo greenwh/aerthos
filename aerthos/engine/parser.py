@@ -86,11 +86,17 @@ class CommandParser:
         if not input_text or not input_text.strip():
             return Command('invalid')
 
+        # Extract quoted strings first (preserves multi-word targets like "magic missile")
+        processed_text, quoted_strings = self._extract_quoted_strings(input_text.lower())
+
         # Tokenize
-        tokens = self._tokenize(input_text.lower())
+        tokens = self._tokenize(processed_text)
 
         if not tokens:
             return Command('invalid')
+
+        # Restore quoted strings in tokens
+        tokens = self._restore_quoted_strings(tokens, quoted_strings)
 
         # Extract verb (action)
         action = self._extract_verb(tokens)
@@ -117,6 +123,56 @@ class CommandParser:
         instrument = self._extract_instrument(tokens)
 
         return Command(action, target, modifier, instrument)
+
+    def _extract_quoted_strings(self, text: str) -> tuple[str, dict]:
+        """
+        Extract quoted strings and replace with placeholders
+
+        Args:
+            text: Input text
+
+        Returns:
+            Tuple of (processed_text, quoted_strings_dict)
+            - processed_text has placeholders like __QUOTED_0__, __QUOTED_1__
+            - quoted_strings_dict maps placeholder to original quoted content (without quotes)
+        """
+        import re
+
+        quoted_strings = {}
+        counter = 0
+
+        # Match both single and double quotes
+        # Pattern: either "..." or '...'
+        pattern = r'["\']([^"\']+)["\']'
+
+        def replace_quote(match):
+            nonlocal counter
+            placeholder = f"__QUOTED_{counter}__"
+            quoted_strings[placeholder] = match.group(1)  # Content without quotes
+            counter += 1
+            return placeholder
+
+        processed_text = re.sub(pattern, replace_quote, text)
+        return processed_text, quoted_strings
+
+    def _restore_quoted_strings(self, tokens: List[str], quoted_strings: dict) -> List[str]:
+        """
+        Restore quoted string content in place of placeholders
+
+        Args:
+            tokens: List of tokens (may contain __QUOTED_N__ placeholders)
+            quoted_strings: Dict mapping placeholders to original content
+
+        Returns:
+            List of tokens with placeholders replaced by quoted content
+        """
+        restored = []
+        for token in tokens:
+            if token in quoted_strings:
+                restored.append(quoted_strings[token])
+            else:
+                restored.append(token)
+        return restored
 
     def _tokenize(self, text: str) -> List[str]:
         """
