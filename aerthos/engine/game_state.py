@@ -1095,12 +1095,38 @@ class GameState:
 
         # Find the spell in known spells
         spell_name = command.target
+        search_lower = spell_name.lower()
         found_spell = None
 
+        # First try exact match
         for spell in self.player.spells_known:
-            if spell_name.lower() in spell.name.lower():
+            if spell.name.lower() == search_lower:
                 found_spell = spell
                 break
+
+        # Then try startswith match - collect all and choose best
+        if not found_spell:
+            matches = []
+            for spell in self.player.spells_known:
+                if spell.name.lower().startswith(search_lower):
+                    # Store (length_difference, spell_name_length, spell)
+                    length_diff = abs(len(spell.name.lower()) - len(search_lower))
+                    matches.append((length_diff, len(spell.name), spell))
+            if matches:
+                # Sort by: 1) closest length to input, 2) shortest name as tiebreaker
+                matches.sort(key=lambda x: (x[0], x[1]))
+                found_spell = matches[0][2]
+
+        # Finally try substring match - collect all and choose shortest
+        if not found_spell:
+            matches = []
+            for spell in self.player.spells_known:
+                if search_lower in spell.name.lower():
+                    matches.append(spell)
+            if matches:
+                # Sort by name length (shortest = most specific)
+                matches.sort(key=lambda s: len(s.name))
+                found_spell = matches[0]
 
         if not found_spell:
             return {'success': False, 'message': f"You don't know a spell called '{spell_name}'."}

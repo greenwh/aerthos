@@ -432,14 +432,27 @@ class PlayerCharacter(Character):
                 not slot.is_used):
                 return True
 
-        # Then try partial match (search term is in spell name)
+        # Then try startswith match - collect all and check for best
+        matches = []
+        for slot in self.spells_memorized:
+            if (slot.spell and
+                slot.spell.name.lower().startswith(search_lower) and
+                not slot.is_used):
+                matches.append(slot.spell.name)
+
+        if matches:
+            return True
+
+        # Finally try substring match (search term anywhere in spell name)
+        # Collect all matches and prefer the shortest (most specific) match
+        matches = []
         for slot in self.spells_memorized:
             if (slot.spell and
                 search_lower in slot.spell.name.lower() and
                 not slot.is_used):
-                return True
+                matches.append(slot.spell.name)
 
-        return False
+        return len(matches) > 0
 
     def use_spell_slot(self, spell_name: str) -> Optional[Spell]:
         """Use a spell slot, returns the spell if successful (supports partial matching)"""
@@ -453,13 +466,38 @@ class PlayerCharacter(Character):
                 slot.is_used = True
                 return slot.spell
 
-        # Then try partial match (search term is in spell name)
+        # Then try startswith match - collect all and choose best
+        matches = []
+        for slot in self.spells_memorized:
+            if (slot.spell and
+                slot.spell.name.lower().startswith(search_lower) and
+                not slot.is_used):
+                # Store (length_difference, spell_name_length, slot)
+                length_diff = abs(len(slot.spell.name.lower()) - len(search_lower))
+                matches.append((length_diff, len(slot.spell.name), slot))
+
+        if matches:
+            # Sort by: 1) closest length to input, 2) shortest name as tiebreaker
+            matches.sort(key=lambda x: (x[0], x[1]))
+            slot = matches[0][2]
+            slot.is_used = True
+            return slot.spell
+
+        # Finally try substring match (search term anywhere in spell name)
+        # Collect all matches and return the shortest (most specific) match
+        matches = []
         for slot in self.spells_memorized:
             if (slot.spell and
                 search_lower in slot.spell.name.lower() and
                 not slot.is_used):
-                slot.is_used = True
-                return slot.spell
+                matches.append((len(slot.spell.name), slot))
+
+        if matches:
+            # Sort by spell name length (shortest first = most specific)
+            matches.sort(key=lambda x: x[0])
+            slot = matches[0][1]
+            slot.is_used = True
+            return slot.spell
 
         return None
 
