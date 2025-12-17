@@ -241,7 +241,7 @@
         }
 
         function resumeGame(sessionId) {
-            window.location.href = `/game?session_id=${sessionId}`;
+            window.location.href = `/game?session_id=${sessionId}&campaign_id=${campaignId}`;
         }
 
         async function loadHubData() {

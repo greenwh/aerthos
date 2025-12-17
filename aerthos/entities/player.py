@@ -197,6 +197,9 @@ class Equipment:
         self.shield: Optional[Shield] = None
         self.light_source: Optional[LightSource] = None
         self.helmet: Optional[Item] = None
+        self.gauntlets: Optional[Item] = None  # For gauntlets of ogre power, etc.
+        self.ring: Optional[Item] = None  # For magic rings
+        self.cloak: Optional[Item] = None  # For cloaks, etc.
 
     def get_total_ac(self, base_ac: int = 10, dex_modifier: int = 0) -> int:
         """

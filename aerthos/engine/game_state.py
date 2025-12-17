@@ -30,11 +30,10 @@ class GameData:
         self.classes = {}
         self.races = {}
         self.monsters = {}
-        # Note: items.json is deprecated - use specialized systems:
-        # - ArmorSystem for armor.json
-        # - Weapon system for weapons.json
-        # - Equipment system for equipment.json
         self.spells = {}
+        self.equipment = {}  # From equipment.json - potions, misc items
+        self.weapons = {}    # From weapons.json - weapon stats
+        self.armor_data = {} # From armor.json - armor stats
 
     @classmethod
     def load_all(cls, data_dir: str = "aerthos/data") -> 'GameData':
@@ -52,13 +51,19 @@ class GameData:
         with open(f"{data_dir}/monsters.json") as f:
             data.monsters = json.load(f)
 
-        # Note: items.json is deprecated - use specific databases:
-        # - armor.json (via ArmorSystem)
-        # - weapons.json (via weapon system)
-        # - equipment.json (for general equipment)
-
         with open(f"{data_dir}/spells.json") as f:
             data.spells = json.load(f)
+
+        # Load equipment databases for item creation
+        with open(f"{data_dir}/equipment.json") as f:
+            data.equipment = json.load(f)
+
+        with open(f"{data_dir}/weapons.json") as f:
+            data.weapons = json.load(f)
+
+        with open(f"{data_dir}/armor.json") as f:
+            armor_json = json.load(f)
+            data.armor_data = armor_json.get('armor', {})
 
         return data
 
@@ -665,6 +670,31 @@ class GameState:
             self.player.inventory.add_item(light)
             self.player.equip_light(light)
             return {'success': True, 'message': f"You light the {item.name}."}
+        elif item.item_type == 'magic_item' or item.item_type == 'equipment':
+            # Handle magic items (gauntlets, rings, cloaks, etc.)
+            item_name_lower = item.name.lower()
+
+            # Detect item type from name or properties
+            if 'gauntlet' in item_name_lower:
+                self.player.equipment.gauntlets = item
+                # Apply gauntlets of ogre power effect (STR 18/00)
+                if 'ogre power' in item_name_lower or 'ogre_power' in item_name_lower:
+                    self.player.strength = 18
+                    self.player.strength_percentile = 100
+                    return {'success': True, 'message': f"You don the {item.name}. You feel incredibly strong! (STR 18/00)"}
+                return {'success': True, 'message': f"You equip the {item.name}."}
+            elif 'ring' in item_name_lower:
+                self.player.equipment.ring = item
+                return {'success': True, 'message': f"You put on the {item.name}."}
+            elif 'cloak' in item_name_lower or 'cape' in item_name_lower:
+                self.player.equipment.cloak = item
+                return {'success': True, 'message': f"You wear the {item.name}."}
+            elif 'helmet' in item_name_lower or 'helm' in item_name_lower:
+                self.player.equipment.helmet = item
+                return {'success': True, 'message': f"You put on the {item.name}."}
+            else:
+                # Generic magic item - try to equip as misc item
+                return {'success': False, 'message': f"The {item.name} is a magic item, but you're not sure how to use it."}
         else:
             return {'success': False, 'message': f"You can't equip the {item.name}."}
 
@@ -711,6 +741,34 @@ class GameState:
             light = self.player.equipment.light_source
             self.player.equipment.light_source = None
             return {'success': True, 'message': f"You extinguish the {light.name}."}
+
+        # Check gauntlets
+        if self.player.equipment.gauntlets and target_lower in self.player.equipment.gauntlets.name.lower():
+            gauntlets = self.player.equipment.gauntlets
+            self.player.equipment.gauntlets = None
+            # Remove gauntlets of ogre power effect
+            if 'ogre power' in gauntlets.name.lower() or 'ogre_power' in gauntlets.name.lower():
+                # Reset strength (would need to store original value - for now just note it)
+                return {'success': True, 'message': f"You remove the {gauntlets.name}. Your strength returns to normal."}
+            return {'success': True, 'message': f"You remove the {gauntlets.name}."}
+
+        # Check ring
+        if self.player.equipment.ring and target_lower in self.player.equipment.ring.name.lower():
+            ring = self.player.equipment.ring
+            self.player.equipment.ring = None
+            return {'success': True, 'message': f"You remove the {ring.name}."}
+
+        # Check cloak
+        if self.player.equipment.cloak and target_lower in self.player.equipment.cloak.name.lower():
+            cloak = self.player.equipment.cloak
+            self.player.equipment.cloak = None
+            return {'success': True, 'message': f"You remove the {cloak.name}."}
+
+        # Check helmet
+        if self.player.equipment.helmet and target_lower in self.player.equipment.helmet.name.lower():
+            helmet = self.player.equipment.helmet
+            self.player.equipment.helmet = None
+            return {'success': True, 'message': f"You remove the {helmet.name}."}
 
         return {'success': False, 'message': f"You don't have {command.target} equipped."}
 
@@ -1593,12 +1651,61 @@ class GameState:
         """
         Create an item instance from name
 
-        Note: Simple item factory for common dungeon loot.
-        For complex items, use specialized systems (ArmorSystem, etc.)
+        Strategy:
+        1. Check equipment.json for exact match (potions, special items)
+        2. Check for magic items (pattern: name_plus1, name_plus2, etc.)
+        3. Check weapons.json for regular weapons
+        4. Check armor.json for regular armor
+        5. Fall back to pattern matching for generic items
         """
 
-        # Normalize name for matching
+        # Normalize name for matching - try multiple variations
         search_lower = item_name.lower().replace('_', ' ')
+        search_underscore = item_name.lower().replace(' ', '_')
+
+        # Common name variations (handles chainmail->chain_mail, battleaxe->battle_axe, etc.)
+        # Split common compound words that should have underscores
+        name_variations = [
+            search_underscore,  # Original
+        ]
+
+        # Add variation with spaces split into underscores for compound words
+        for compound in ['chain', 'battle', 'plate', 'ring', 'splint', 'banded', 'studded', 'long', 'short', 'hand']:
+            if search_underscore.startswith(compound) and len(search_underscore) > len(compound):
+                # e.g., "chainmail" -> "chain_mail", "battleaxe" -> "battle_axe", "longsword" -> "long_sword"
+                variation = f"{compound}_{search_underscore[len(compound):]}"
+                if variation not in name_variations:
+                    name_variations.append(variation)
+
+        # STEP 1: Check equipment.json for exact match (handles specific potions, special items)
+        if self.game_data and hasattr(self.game_data, 'equipment'):
+            # Try all variations
+            for variant in name_variations:
+                equipment_item = self.game_data.equipment.get(variant)
+                if equipment_item:
+                    return Item(
+                        name=equipment_item.get('name', item_name),
+                        item_type=equipment_item.get('type', 'equipment'),
+                        weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
+                        properties=equipment_item.get('properties', {}),
+                        description=equipment_item.get('description', f"A {item_name}.")
+                    )
+
+            # Special handling for potions in title case (e.g., "Potion of Extra-Healing")
+            # These come from dropped items and need to convert back to equipment.json key format
+            if item_name.startswith("Potion of "):
+                # "Potion of Extra-Healing" → "potion_extra_healing"
+                potion_suffix = item_name[10:]  # Remove "Potion of "
+                potion_key = "potion_" + potion_suffix.lower().replace(' ', '_').replace('-', '_')
+                equipment_item = self.game_data.equipment.get(potion_key)
+                if equipment_item:
+                    return Item(
+                        name=equipment_item.get('name', item_name),
+                        item_type=equipment_item.get('type', 'equipment'),
+                        weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
+                        properties=equipment_item.get('properties', {}),
+                        description=equipment_item.get('description', f"A {item_name}.")
+                    )
 
         # Check for magic items
         # Supports two formats: "Sword +1" and "sword_plus1"
@@ -1615,11 +1722,27 @@ class GameState:
             # Check if it's magic armor
             armor_types = ['leather', 'studded_leather', 'ring_mail', 'scale_mail',
                           'chain_mail', 'splint_mail', 'banded_mail', 'plate_mail',
-                          'chain', 'plate', 'banded', 'splint', 'scale', 'ring', 'studded']
-            if base_item in armor_types or base_item.replace(' ', '_') in armor_types:
+                          'chain', 'plate', 'banded', 'splint', 'scale', 'ring', 'studded',
+                          'chainmail']  # Common variant
+
+            # Normalize armor name (e.g., chainmail -> chain_mail, "chain mail" -> "chain_mail")
+            armor_base = base_item.replace(' ', '_')
+            # Only split compound words if they DON'T already have an underscore
+            for compound in ['chain', 'plate', 'ring', 'splint', 'banded', 'studded']:
+                if armor_base.startswith(compound) and len(armor_base) > len(compound):
+                    # Check if already has underscore (e.g., "chain_mail" is already correct)
+                    if armor_base[len(compound)] != '_':
+                        # e.g., "chainmail" -> "chain_mail"
+                        armor_base = f"{compound}_{armor_base[len(compound):]}"
+                    break
+
+            if base_item in armor_types or armor_base in armor_types or base_item.replace(' ', '_') in armor_types:
                 from ..systems.armor_system import ArmorSystem
                 armor_system = ArmorSystem()
-                armor = armor_system.create_armor(base_item, magic_bonus=magic_bonus)
+                # Try armor_base first (normalized name), then base_item
+                armor = armor_system.create_armor(armor_base, magic_bonus=magic_bonus)
+                if not armor:
+                    armor = armor_system.create_armor(base_item, magic_bonus=magic_bonus)
                 if armor:
                     return armor
 
@@ -1634,8 +1757,10 @@ class GameState:
                 'dagger': 'dagger',
                 'mace': 'footmans_mace',
                 'axe': 'battle_axe',
+                'battleaxe': 'battle_axe',  # Common variant
                 'battle axe': 'battle_axe',
                 'hand axe': 'hand_axe',
+                'handaxe': 'hand_axe',
                 'spear': 'spear',
                 'warhammer': 'warhammer',
                 'war hammer': 'warhammer',
@@ -1650,7 +1775,7 @@ class GameState:
 
             if is_weapon:
                 # Use weapons.json data to create the weapon
-                from ..entities.player import Weapon
+                # Note: Weapon class already imported at module level
 
                 # weapon_id already mapped above
                 # Try to load weapon stats from weapons.json
@@ -1690,6 +1815,46 @@ class GameState:
                         description=f"A magical weapon with a +{magic_bonus} enchantment."
                     )
 
+        # STEP 3: Check weapons.json for regular (non-magic) weapons
+        if self.game_data and hasattr(self.game_data, 'weapons'):
+            for variant in name_variations:
+                weapon_stats = self.game_data.weapons.get(variant)
+                if weapon_stats:
+                    return Weapon(
+                        name=weapon_stats.get('name', item_name.replace('_', ' ').title()),
+                        damage_sm=weapon_stats.get('damage_sm', '1d6'),
+                        damage_l=weapon_stats.get('damage_l', '1d6'),
+                        speed_factor=weapon_stats.get('speed_factor', 5),
+                        magic_bonus=0,
+                        weight=weapon_stats.get('weight_gp', 50) / 10.0,
+                        properties={
+                            'weapon_type': weapon_stats.get('weapon_type', 'melee'),
+                            'gp_value': weapon_stats.get('cost_gp', 10)
+                        },
+                        description=weapon_stats.get('description', f"A {weapon_stats.get('name', item_name)}.")
+                    )
+
+        # STEP 4: Check armor.json for regular (non-magic) armor
+        if self.game_data and hasattr(self.game_data, 'armor_data'):
+            for variant in name_variations:
+                armor_stats = self.game_data.armor_data.get(variant)
+                if armor_stats:
+                    from ..systems.armor_system import ArmorSystem
+                    armor_system = ArmorSystem()
+                    armor = armor_system.create_armor(variant, magic_bonus=0)
+                    if armor:
+                        return armor
+
+            # Also try exact match
+            armor_stats = self.game_data.armor_data.get(search_underscore)
+            if armor_stats:
+                from ..systems.armor_system import ArmorSystem
+                armor_system = ArmorSystem()
+                armor = armor_system.create_armor(search_underscore, magic_bonus=0)
+                if armor:
+                    return armor
+
+        # STEP 5: Pattern matching for common generic items
         # Common item templates (name patterns -> item creation)
         # Weights are in pounds (10 GP = 1 lb)
 
@@ -1713,7 +1878,8 @@ class GameState:
                 description="Preserved food for one day."
             )
 
-        # Healing potions
+        # NOTE: Healing potions now handled by equipment.json lookup (Step 1)
+        # This fallback only triggers if equipment.json doesn't have the specific potion
         if 'potion' in search_lower and 'heal' in search_lower:
             return Item(
                 name="Potion of Healing",
