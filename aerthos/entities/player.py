@@ -9,9 +9,16 @@ from .character import Character
 # AD&D 1e Experience Point Tables
 XP_TABLES = {
     'Fighter': [0, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 750000],
+    'Ranger': [0, 2250, 4500, 10000, 20000, 40000, 90000, 150000, 225000, 325000, 650000],
+    'Paladin': [0, 2750, 5500, 12000, 24000, 45000, 95000, 175000, 350000, 700000, 1050000],
     'Cleric': [0, 1500, 3000, 6000, 13000, 27500, 55000, 110000, 225000, 450000, 675000],
+    'Druid': [0, 2000, 4000, 7500, 12500, 20000, 35000, 60000, 90000, 125000, 200000],
     'Magic-User': [0, 2500, 5000, 10000, 22500, 40000, 60000, 90000, 135000, 250000, 375000],
-    'Thief': [0, 1250, 2500, 5000, 10000, 20000, 40000, 70000, 110000, 160000, 220000]
+    'Illusionist': [0, 2250, 4500, 9000, 18000, 35000, 60000, 95000, 145000, 220000, 440000],
+    'Thief': [0, 1250, 2500, 5000, 10000, 20000, 40000, 70000, 110000, 160000, 220000],
+    'Assassin': [0, 1500, 3000, 6000, 12000, 25000, 50000, 100000, 200000, 300000, 425000],
+    'Monk': [0, 2250, 4750, 10000, 22500, 47500, 98000, 200000, 350000, 500000, 700000],
+    'Bard': [0, 2000, 4000, 8000, 16000, 25000, 40000, 60000, 85000, 110000, 150000]
 }
 
 
@@ -549,9 +556,16 @@ class PlayerCharacter(Character):
         # Roll HP increase based on class hit die
         hit_dice_map = {
             'Fighter': 'd10',
+            'Ranger': 'd8',
+            'Paladin': 'd10',
             'Cleric': 'd8',
+            'Druid': 'd8',
             'Magic-User': 'd4',
-            'Thief': 'd6'
+            'Illusionist': 'd4',
+            'Thief': 'd6',
+            'Assassin': 'd6',
+            'Monk': 'd4',
+            'Bard': 'd6'
         }
 
         hit_die = hit_dice_map.get(self.char_class, 'd6')
@@ -570,10 +584,17 @@ class PlayerCharacter(Character):
 
         # Improve THAC0
         thac0_progression = {
-            'Fighter': -1,      # Every level
-            'Cleric': -0.67,    # Every 1.5 levels (2 per 3 levels)
+            'Fighter': -1,       # Every level
+            'Ranger': -1,        # Every level
+            'Paladin': -1,       # Every level
+            'Cleric': -0.67,     # Every 1.5 levels (2 per 3 levels)
+            'Druid': -0.67,      # Every 1.5 levels (2 per 3 levels)
             'Magic-User': -0.33, # Every 3 levels
-            'Thief': -0.5       # Every 2 levels
+            'Illusionist': -0.33,# Every 3 levels
+            'Thief': -0.5,       # Every 2 levels
+            'Assassin': -0.5,    # Every 2 levels
+            'Monk': -0.5,        # Every 2 levels
+            'Bard': -0.67        # Every 1.5 levels (2 per 3 levels)
         }
 
         progression = thac0_progression.get(self.char_class, -0.5)
@@ -609,6 +630,48 @@ class PlayerCharacter(Character):
                 if skill in self.thief_skills:
                     self.thief_skills[skill] += gain
                     messages.append(f"      {skill.replace('_', ' ').title()}: +{gain}% (now {self.thief_skills[skill]}%)")
+
+        # Grant new spell slots for casters
+        spellcasting_classes = ['Cleric', 'Druid', 'Magic-User', 'Illusionist', 'Paladin', 'Ranger']
+        if self.char_class in spellcasting_classes:
+            from ..constants import DATA_DIR
+            import json
+            from pathlib import Path
+
+            # Load spell progression from level_progression.json
+            level_prog_file = Path(DATA_DIR) / 'level_progression.json'
+            if level_prog_file.exists():
+                with open(level_prog_file, 'r') as f:
+                    level_data = json.load(f)
+
+                if self.char_class in level_data and 'spell_slots' in level_data[self.char_class]:
+                    spell_slots_table = level_data[self.char_class]['spell_slots']
+
+                    # Calculate how many slots we should have at new level
+                    level_index = self.level - 1  # 0-indexed
+
+                    # Count current slots by level
+                    current_slots = {}
+                    for slot in self.spells_memorized:
+                        current_slots[slot.level] = current_slots.get(slot.level, 0) + 1
+
+                    # Add missing slots
+                    new_slots_added = []
+                    for spell_level_str, counts in spell_slots_table.items():
+                        spell_level = int(spell_level_str)
+                        if level_index < len(counts):
+                            expected_count = counts[level_index]
+                            current_count = current_slots.get(spell_level, 0)
+
+                            # Add missing slots
+                            if expected_count > current_count:
+                                slots_to_add = expected_count - current_count
+                                for _ in range(slots_to_add):
+                                    self.spells_memorized.append(SpellSlot(level=spell_level, is_used=False))
+                                    new_slots_added.append(f"L{spell_level}")
+
+                    if new_slots_added:
+                        messages.append(f"   New spell slots: {', '.join(new_slots_added)}")
 
         # Update XP needed for next level
         if self.char_class in XP_TABLES:

@@ -328,6 +328,7 @@ class CharacterRoster:
         if equipment.weapon:
             equipped['weapon'] = {
                 'name': equipment.weapon.name,
+                'type': 'weapon',
                 'damage_sm': equipment.weapon.damage_sm,
                 'damage_l': equipment.weapon.damage_l,
                 'speed_factor': equipment.weapon.speed_factor,
@@ -338,6 +339,7 @@ class CharacterRoster:
         if equipment.armor:
             equipped['armor'] = {
                 'name': equipment.armor.name,
+                'type': 'armor',
                 'ac': equipment.armor.ac,
                 'armor_type': equipment.armor.armor_type,
                 'movement_rate': equipment.armor.movement_rate,
@@ -348,6 +350,7 @@ class CharacterRoster:
         if equipment.shield:
             equipped['shield'] = {
                 'name': equipment.shield.name,
+                'type': 'shield',
                 'ac_bonus': equipment.shield.ac_bonus,
                 'magic_bonus': getattr(equipment.shield, 'magic_bonus', 0),
                 'weight': equipment.shield.weight
@@ -356,6 +359,7 @@ class CharacterRoster:
         if equipment.light_source:
             equipped['light'] = {
                 'name': equipment.light_source.name,
+                'type': 'light_source',
                 'burn_time_turns': equipment.light_source.burn_time_turns,
                 'turns_remaining': equipment.light_source.turns_remaining,
                 'weight': equipment.light_source.weight
@@ -538,12 +542,14 @@ class CharacterRoster:
                 magic_bonus=item_data.get('magic_bonus', 0)
             )
         elif item_type == 'light_source':
+            # Use defaults for backward compatibility with legacy saves
+            burn_time = item_data.get('burn_time_turns', 6)  # Default: torch (6 turns)
             return LightSource(
                 name=item_data['name'],
                 weight=item_data['weight'],
-                burn_time_turns=item_data['burn_time_turns'],
-                light_radius=30,
-                turns_remaining=item_data.get('turns_remaining', item_data['burn_time_turns'])
+                burn_time_turns=burn_time,
+                light_radius=item_data.get('light_radius', 30),
+                turns_remaining=item_data.get('turns_remaining', burn_time)
             )
         else:
             return Item(
