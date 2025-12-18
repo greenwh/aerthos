@@ -4,22 +4,28 @@ PlayerCharacter class - extends Character with inventory, spells, and XP
 
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass, field
+from pathlib import Path
+import json
 from .character import Character
 
-# AD&D 1e Experience Point Tables
-XP_TABLES = {
-    'Fighter': [0, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 750000],
-    'Ranger': [0, 2250, 4500, 10000, 20000, 40000, 90000, 150000, 225000, 325000, 650000],
-    'Paladin': [0, 2750, 5500, 12000, 24000, 45000, 95000, 175000, 350000, 700000, 1050000],
-    'Cleric': [0, 1500, 3000, 6000, 13000, 27500, 55000, 110000, 225000, 450000, 675000],
-    'Druid': [0, 2000, 4000, 7500, 12500, 20000, 35000, 60000, 90000, 125000, 200000],
-    'Magic-User': [0, 2500, 5000, 10000, 22500, 40000, 60000, 90000, 135000, 250000, 375000],
-    'Illusionist': [0, 2250, 4500, 9000, 18000, 35000, 60000, 95000, 145000, 220000, 440000],
-    'Thief': [0, 1250, 2500, 5000, 10000, 20000, 40000, 70000, 110000, 160000, 220000],
-    'Assassin': [0, 1500, 3000, 6000, 12000, 25000, 50000, 100000, 200000, 300000, 425000],
-    'Monk': [0, 2250, 4750, 10000, 22500, 47500, 98000, 200000, 350000, 500000, 700000],
-    'Bard': [0, 2000, 4000, 8000, 16000, 25000, 40000, 60000, 85000, 110000, 150000]
-}
+# Load XP tables from level_progression.json (single source of truth)
+def _load_xp_tables() -> Dict[str, List[int]]:
+    """Load XP tables from level_progression.json"""
+    from ..constants import DATA_DIR
+    level_prog_file = Path(DATA_DIR) / 'level_progression.json'
+
+    with open(level_prog_file, 'r') as f:
+        level_data = json.load(f)
+
+    xp_tables = {}
+    for class_name, class_data in level_data.items():
+        if 'xp_table' in class_data:
+            xp_tables[class_name] = class_data['xp_table']
+
+    return xp_tables
+
+# AD&D 1e Experience Point Tables (loaded from level_progression.json)
+XP_TABLES = _load_xp_tables()
 
 
 @dataclass

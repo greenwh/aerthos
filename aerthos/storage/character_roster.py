@@ -510,7 +510,7 @@ class CharacterRoster:
         character.spells_memorized = []
         for slot_data in data.get('spells_memorized', []):
             slot = SpellSlot(level=slot_data['level'], is_used=slot_data['is_used'])
-            if 'spell' in slot_data and self._is_complete_spell_data(slot_data['spell']):
+            if 'spell' in slot_data and slot_data['spell'] is not None and self._is_complete_spell_data(slot_data['spell']):
                 slot.spell = Spell(**slot_data['spell'])
             character.spells_memorized.append(slot)
 

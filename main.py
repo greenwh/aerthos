@@ -1952,6 +1952,10 @@ def run_campaign(campaign: Campaign, campaign_mgr: CampaignManager,
                 dest = destinations[ep_choice_num - 1]
                 episode_id = dest['episode_id']
 
+                # Update campaign's current episode
+                campaign.current_episode_id = episode_id
+                campaign_mgr.save_campaign(campaign)
+
                 # Load and run episode
                 run_episode(episode_id, campaign, party, campaign_mgr, game_data, display)
 

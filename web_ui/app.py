@@ -542,6 +542,10 @@ def start_episode(campaign_id, episode_id):
         # Get Party object (already has members loaded)
         party = party_result['party']
 
+        # Update campaign's current episode
+        campaign.current_episode_id = episode_id
+        campaign_mgr.save_campaign(campaign)
+
         # IDENTICAL calls as CLI: Episode.load(), EpisodeRunner()
         episode = Episode.load(episode_id)
         runner = EpisodeRunner(episode, campaign, party)
@@ -595,6 +599,10 @@ def initialize_episode_dungeon(campaign_id, episode_id):
 
         # Get Party object
         party = party_result['party']
+
+        # Update campaign's current episode
+        campaign.current_episode_id = episode_id
+        campaign_mgr.save_campaign(campaign)
 
         # Load episode and runner
         episode = Episode.load(episode_id)
