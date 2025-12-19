@@ -9,6 +9,8 @@ from flask import Flask, render_template, request, jsonify, session
 import json
 import sys
 import os
+import uuid
+import werkzeug.exceptions
 from datetime import datetime
 
 # Add parent directory to path
@@ -1556,8 +1558,8 @@ def save_campaign_checkpoint(campaign_id):
 def new_game():
     """Start a new game"""
     try:
-        data = request.json
-        session_id = data.get('session_id', 'default')
+        data = request.get_json(silent=True) or {}
+        session_id = data.get('session_id', str(uuid.uuid4())[:8])
 
         # For demo, create a simple party
         # In production, this would go through character creation
@@ -1615,6 +1617,7 @@ def new_game():
         # Return initial state
         return jsonify({
             'success': True,
+            'session_id': session_id,
             'message': f"Welcome to {dungeon.name}!",
             'state': get_game_state_json(game_state)
         })
@@ -1636,7 +1639,7 @@ def execute_command():
 
         game_state = active_games.get(session_id)
         if not game_state:
-            return jsonify({'success': False, 'error': 'No active game'})
+            return jsonify({'success': False, 'error': 'No active game'}), 404
 
         # Switch to the active character if party exists
         if hasattr(game_state, 'party') and game_state.party:
@@ -1662,10 +1665,12 @@ def execute_command():
             'active_character': active_character_index
         })
 
+    except werkzeug.exceptions.BadRequest as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
     except Exception as e:
         import traceback
         traceback.print_exc()
-        return jsonify({'success': False, 'error': str(e)})
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 @app.route('/api/exit_session', methods=['POST'])

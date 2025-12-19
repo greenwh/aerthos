@@ -230,6 +230,11 @@ def main():
             if suite.countTestCases() > 0:
                 result = run_test_suite('Web UI Tests', suite, verbosity)
                 all_results.append(result)
+
+            suite = discover_tests(str(test_dir), pattern='test_web_api.py')
+            if suite.countTestCases() > 0:
+                result = run_test_suite('Web API Tests', suite, verbosity)
+                all_results.append(result)
         except ImportError:
             print("\n\033[93mSkipping Web UI tests - Flask not installed\033[0m")
             print("Install with: pip install flask")

@@ -70,6 +70,10 @@ class TestWebAPISchema(unittest.TestCase):
         self.game_state.game_data = GameData()
         self.game_state.game_data.load_all()
 
+        # Create party with the character (required for web UI tests)
+        self.party = Party(members=[self.character])
+        self.game_state.party = self.party
+
     def test_game_state_has_required_fields(self):
         """Test that game state JSON has all required fields for web UI"""
         # Import here to avoid circular dependencies

@@ -144,10 +144,12 @@ python3 -m unittest tests.test_combat -v
 - Broken tests = broken game for users
 - Passing tests = both UIs work correctly
 
-**Current Test Status:** 504/504 tests passing (100%)
+**Current Test Status:** 593/593 tests passing (100%) [631 with web tests]
 - ✅ All unit tests passing
 - ✅ All integration tests passing
 - ✅ Multi-level dungeon tests passing
+- ✅ Campaign and quest system tests passing
+- ✅ Web UI tests passing (38 additional tests, requires Flask)
 
 **See also:**
 - `TESTING.md` - Comprehensive testing guide
@@ -243,6 +245,147 @@ python3 -m unittest tests.test_combat -v
 - Update all callers in the same commit
 - Test both UIs before committing
 - Run full test suite to catch integration issues
+
+---
+
+## ⚠️ COMMON GOTCHAS & BUG PATTERNS ⚠️
+
+**Read these BEFORE making changes to avoid repeating past mistakes:**
+
+### 1. Spell Slot Assignment (Character Creation)
+
+**Bug Pattern**: Spell slots created with wrong level or count.
+
+**Root Cause**: Loop variable shadowing in `ui/character_creation.py` - using outer loop variable when should use inner.
+
+**Prevention**: When modifying spell slot logic:
+- Verify loop variable names are distinct
+- Test with multi-level spellcasters (Magic-User level 5+)
+- Check both `spells_known` and `spells_memorized` are populated
+
+### 2. XP Persistence (Web UI)
+
+**Bug Pattern**: XP gained during gameplay doesn't save to character roster.
+
+**Root Cause**: Web UI wasn't tracking `character_ids` for roster persistence.
+
+**Fix Applied**: `web_ui/app.py` now stores `game_state.character_ids` and calls `roster.update_character()` after each command.
+
+**Prevention**: When touching character persistence:
+- Ensure character IDs are tracked in Web UI game state
+- Verify `save_party_members()` is called after state-changing commands
+
+### 3. CLI/Web UI Signature Mismatch
+
+**Bug Pattern**: One UI works, other crashes with "unexpected keyword argument".
+
+**Root Cause**: Core function signature changed but only one UI updated.
+
+**Example**: `MultiLevelGenerator.generate()` signature change broke Web UI.
+
+**Prevention**:
+```bash
+# ALWAYS search both files when changing core functions
+grep -n "function_name" main.py web_ui/app.py
+```
+
+### 4. Saving Throw Direction
+
+**Bug Pattern**: Saving throws always succeed or always fail.
+
+**AD&D 1e Rule**: Roll d20, succeed if `roll <= save value` (lower is better).
+
+**Common Mistake**: Using `>=` instead of `<=`.
+
+```python
+# CORRECT
+save_succeeds = roll <= character.saves[category]
+
+# WRONG
+save_succeeds = roll >= character.saves[category]
+```
+
+### 5. Formation Persistence
+
+**Bug Pattern**: Party formation resets after save/load.
+
+**Root Cause**: Formation stored on Party but not serialized.
+
+**Prevention**: Include `formation` in all party serialization:
+```python
+def to_dict(self):
+    return {
+        'character_ids': self.character_ids,
+        'formation': self.formation,  # REQUIRED
+        'size': self.size
+    }
+```
+
+### 6. Encounter Completion
+
+**Bug Pattern**: Defeated monsters reappear when re-entering room.
+
+**Root Cause**: Encounter completion flag not persisted.
+
+**Prevention**: After combat ends:
+```python
+encounter.triggered = True
+encounter.completed = True  # MUST set both
+```
+
+### 7. Dead Character Actions
+
+**Bug Pattern**: Dead characters can still attack/cast.
+
+**Prevention**: Check `is_alive` before ALL character actions:
+```python
+if not character.is_alive:
+    return Result.error(f"{character.name} is dead")
+```
+
+### 8. Rest Spell Restoration
+
+**Bug Pattern**: Spells don't restore after rest.
+
+**Root Cause**: `is_used` flag on spell slots not reset.
+
+**Prevention**: Explicitly reset in rest handler:
+```python
+for slot in character.spells_memorized:
+    slot.is_used = False  # MUST reset
+```
+
+### 9. Item Creation Inconsistencies
+
+**Bug Pattern**: Items behave differently in CLI vs Web UI.
+
+**Root Cause**: Different item creation patterns in each UI.
+
+**Prevention**: Always use factory methods:
+```python
+# CORRECT - Same in both UIs
+item = Item.from_dict(item_data)
+
+# WRONG - Creates inconsistencies
+item = Item(name=..., type=...)  # Different properties
+```
+
+### 10. Monster AI Special Abilities
+
+**Bug Pattern**: Monster special abilities never trigger.
+
+**Root Cause**: Ability execution fails silently.
+
+**Prevention**: Add error handling around ability execution:
+```python
+try:
+    self.execute_ability(monster, ability)
+except Exception as e:
+    logging.error(f"Ability failed: {e}")
+    self.monster_normal_attack(monster)  # Fallback
+```
+
+**📚 For complete technical documentation, see `AERTHOS_TECHNICAL_REFERENCE.md`**
 
 ---
 
@@ -780,12 +923,13 @@ cat ~/.aerthos/sessions/*.json
 - ✅ Quest system with trigger conditions and rewards
 - ✅ Reputation tracking system
 - ✅ Session management and party systems
-- ✅ Comprehensive automated test framework (541 tests)
+- ✅ Comprehensive automated test framework (593 tests, 631 with web)
 
 **Current Status:**
 - ✅ **CORE GAMEPLAY 100% COMPLETE**
 - ✅ **READY FOR RELEASE**
 - See `FINAL_STRETCH_ROADMAP.md` for completion details
+- See `AERTHOS_TECHNICAL_REFERENCE.md` for comprehensive system documentation
 
 ### Active Features
 
@@ -877,13 +1021,14 @@ aerthos-MS_Client_ID.txt          # MS client ID (gitignored)
 ### Documentation Files
 
 ```
-README.md                    # Player-facing documentation
-SETUP.md                     # Installation guide
-ROADMAP.md                   # Current development roadmap and issue tracking
-CLAUDE.md                    # This file - development guide
-ITEMS_REFERENCE.md          # Item database reference
-aerthos_tech_spec.md        # Technical specification
-aerthos_claude_code_prompt.md  # Implementation guide
+README.md                         # Player-facing documentation
+SETUP.md                          # Installation guide
+ROADMAP.md                        # Current development roadmap and issue tracking
+CLAUDE.md                         # This file - development guide
+AERTHOS_TECHNICAL_REFERENCE.md   # Comprehensive system documentation (NEW)
+ITEMS_REFERENCE.md               # Item database reference
+aerthos_tech_spec.md             # Technical specification
+aerthos_claude_code_prompt.md    # Implementation guide
 ```
 
 **Active Planning Documents:**
@@ -1211,6 +1356,11 @@ cProfile.run('start_game()')
 The file `web_ui/app.py` contains `get_game_state_json()` which returns JSON to the frontend.
 The web UI (`game.html`) JavaScript depends on this structure.
 
+**API Endpoint Response Patterns:**
+- `/api/new_game` returns: `{success, session_id, message, state}`
+- `/api/command` returns: `{success, message, state}` (200), or error (404/400)
+- All endpoints return `session_id` which is required for subsequent calls
+
 **SAFE OPERATIONS:**
 - ✅ Adding NEW fields to the JSON - web UI will ignore unknown fields
 - ✅ Adding NEW optional fields - web UI handles missing data gracefully
@@ -1314,7 +1464,7 @@ python web_ui/app.py
 ### Current State & Technical Debt
 
 **What's Working:**
-- ✅ Comprehensive test suite (504/504 tests)
+- ✅ Comprehensive test suite (593/593 tests, 631 with web)
 - ✅ Multi-level dungeon support implemented
 - ✅ Character levels 1-10 supported
 - ✅ Reputation tracking system implemented

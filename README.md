@@ -6,7 +6,7 @@ A faithful recreation of Advanced Dungeons & Dragons 1st Edition as a complete s
 
 - **Authentic AD&D 1e Mechanics**
   - THAC0 combat system with descending AC
-  - Vancian magic with spell memorization and 332 spells
+  - Vancian magic with spell memorization and 333 spells
   - 5-category saving throws
   - Thief skills with percentile rolls
   - Resource management (light sources, rations, encumbrance)
@@ -25,10 +25,10 @@ A faithful recreation of Advanced Dungeons & Dragons 1st Edition as a complete s
   - Dwarf - Tough and resilient
   - Halfling - Small and nimble
 
-- **10-Episode Campaign: "Rise of the Serpent Cult"**
+- **10-Episode Campaign: "The Serpent's Shadow"**
   - 11 hand-crafted dungeons across 5 city hubs
   - Episodes 1-10 with narrative continuity
-  - 280+ monsters with varied abilities
+  - 321 monsters with varied abilities
   - Progressive difficulty (levels 1-10)
   - 20 side quests with unique rewards
   - Underwater episodes with waterbreathing mechanics
@@ -54,12 +54,25 @@ git clone https://github.com/greenwh/aerthos.git
 cd aerthos
 
 # No additional dependencies needed - uses only Python standard library!
+
+# Optional: Install Flask for Web UI
+pip install -r requirements.txt
 ```
 
 ## How to Play
 
+### CLI (Text-Based)
+
 ```bash
 python main.py
+```
+
+### Web UI (Gold Box Style)
+
+```bash
+pip install flask
+python web_ui/app.py
+# Open http://localhost:5000 in your browser
 ```
 
 ### Basic Commands
@@ -92,15 +105,22 @@ This game recreates the feel of classic 1st Edition AD&D:
 
 ```
 aerthos/
-├── engine/          # Core game systems (combat, parser, state)
-├── entities/        # Character and monster classes
-├── systems/         # Magic, skills, saving throws
-├── world/           # Dungeon, rooms, encounters, auto-map
+├── engine/          # Core game systems (combat, parser, game state)
+├── entities/        # Character, monster, party classes
+├── systems/         # Magic, skills, saving throws, abilities
+├── world/           # Dungeon, rooms, encounters, auto-map, villages
+├── campaign/        # Episode runner, quest manager, city hubs
+├── generator/       # Procedural dungeon generation
+├── storage/         # Character roster, party manager, session manager
 ├── data/            # JSON data files (classes, monsters, items, spells)
+│   ├── episodes/    # 10 episode configurations
+│   ├── dungeons/    # 11 hand-crafted dungeons
+│   └── cities/      # 5 city hub definitions
 ├── ui/              # Display, character creation, save system
-└── tests/           # Unit tests
+└── tests/           # 38 test modules (593-631 tests)
 
-main.py              # Game entry point
+main.py              # CLI entry point
+web_ui/app.py        # Web UI entry point (Flask)
 ```
 
 ## Game Design
@@ -116,35 +136,51 @@ Aerthos follows these AD&D 1e principles:
 ## Development Status
 
 **Current Version**: 2.0 - Campaign Complete
-**Status**: ✅ **READY FOR RELEASE**
-**Test Coverage**: 541/541 tests passing (100%)
+**Status**: READY FOR RELEASE
+**Test Coverage**: 593/593 tests passing (100%) [631 with web tests]
 
-**Completed Features:**
-- ✅ Full 10-episode campaign (Episodes 1-10)
-- ✅ 11 character classes with unique abilities
-- ✅ 11 hand-crafted dungeons (15-18 rooms each)
-- ✅ 280+ monsters with varied abilities and behaviors
-- ✅ 332 spells across all caster classes
-- ✅ 20 side quests with unique rewards
-- ✅ Reputation system tracking
-- ✅ City hub system (5 cities with shops, inns, temples, guilds)
-- ✅ Complete combat, magic, and skill systems
-- ✅ Auto-mapping and navigation
-- ✅ Comprehensive save/load systems
-- ✅ CLI and Web UI interfaces
-- ✅ Full test coverage (541 automated tests)
+### Completed Features
 
-**Campaign Stats:**
-- **XP Available**: 464,305 (main story) + 15,100 (side quests) = 479,405 total
-- **Character Progression**: Level 1 → Level 9-10
-- **Gold Available**: ~27,925 gp (main story) + quest rewards
-- **Playtime**: 15-20 hours for full campaign completion
+- Full 10-episode campaign (Episodes 1-10)
+- 11 character classes with unique abilities
+- 11 hand-crafted dungeons (15-18 rooms each)
+- 321 monsters with varied abilities and behaviors
+- 333 spells across all caster classes
+- 20 side quests with unique rewards
+- Reputation system tracking
+- City hub system (5 cities with shops, inns, temples, guilds)
+- Complete combat, magic, and skill systems
+- Auto-mapping and navigation
+- Comprehensive save/load systems
+- CLI and Web UI interfaces
+- Full test coverage (593 automated tests, 631 with web tests)
 
-**Optional Future Enhancements:**
+### Campaign Statistics
+
+| Metric | Value |
+|--------|-------|
+| Total XP Available | 479,405 (main + side quests) |
+| Character Progression | Level 1 to Level 9-10 |
+| Total Gold Available | ~30,000+ gp |
+| Estimated Playtime | 15-20 hours |
+
+### Optional Future Enhancements
+
 - Reputation effects (shop discounts, faction bonuses)
 - Multiple endings for Episode 10 based on player choices
 - Additional episodes expanding the campaign
 - Wilderness/overworld map system
+
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| `README.md` | This file - player overview |
+| `CLAUDE.md` | Developer guide and rules |
+| `AERTHOS_TECHNICAL_REFERENCE.md` | Comprehensive system documentation |
+| `SETUP.md` | Installation guide |
+| `ROADMAP.md` | Development roadmap |
+| `API_REFERENCE.md` | Web API documentation |
 
 ## License
 
