@@ -53,6 +53,7 @@ class CharacterRoster:
             'hp_current': character.hp_current,
             'ac': character.ac,
             'thac0': character.thac0,
+            'thac0_progress': getattr(character, '_thac0_progress', 0.0),  # Track fractional THAC0 progress
             'gold': character.gold,  # Kept for backward compatibility
 
             # Money breakdown (new system)
@@ -450,6 +451,9 @@ class CharacterRoster:
             platinum_pieces=pp
         )
 
+        # Restore THAC0 progress (for fractional progression tracking)
+        character._thac0_progress = data.get('thac0_progress', 0.0)
+
         # Restore inventory
         for item_data in data['inventory']:
             item = self._deserialize_item(item_data)
@@ -521,22 +525,25 @@ class CharacterRoster:
 
     def _deserialize_item(self, item_data: Dict):
         """Deserialize item data into Item instance"""
-        item_type = item_data['type']
+        item_type = item_data.get('type', 'generic')
 
         if item_type == 'weapon':
+            # Use defensive defaults for backward compatibility with old save files
+            # that may have been created before Bug #1 fix (treasure conversion)
             return Weapon(
-                name=item_data['name'],
-                weight=item_data['weight'],
-                damage_sm=item_data['damage_sm'],
-                damage_l=item_data['damage_l'],
-                speed_factor=item_data['speed_factor'],
+                name=item_data.get('name', 'Unknown Weapon'),
+                weight=item_data.get('weight', 1.0),
+                damage_sm=item_data.get('damage_sm', '1d4'),  # Default to dagger damage
+                damage_l=item_data.get('damage_l', '1d4'),
+                speed_factor=item_data.get('speed_factor', 5),
                 magic_bonus=item_data.get('magic_bonus', 0)
             )
         elif item_type == 'armor':
+            # Use defensive defaults for backward compatibility
             return Armor(
-                name=item_data['name'],
-                weight=item_data['weight'],
-                ac=item_data['ac'],
+                name=item_data.get('name', 'Unknown Armor'),
+                weight=item_data.get('weight', 10.0),
+                ac=item_data.get('ac', 10),  # Default to unarmored AC
                 armor_type=item_data.get('armor_type', 'light'),
                 movement_rate=item_data.get('movement_rate', 12),
                 magic_bonus=item_data.get('magic_bonus', 0)
@@ -552,8 +559,9 @@ class CharacterRoster:
                 turns_remaining=item_data.get('turns_remaining', burn_time)
             )
         else:
+            # Generic item with defensive defaults
             return Item(
-                name=item_data['name'],
+                name=item_data.get('name', 'Unknown Item'),
                 item_type=item_type,
-                weight=item_data['weight']
+                weight=item_data.get('weight', 0.1)
             )

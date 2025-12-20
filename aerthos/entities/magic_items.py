@@ -57,9 +57,16 @@ class Potion(Item):
 
             character.hp_current -= dmg
 
+            # Check for death
+            message = f"You drink the potion and immediately feel violently ill! You take {dmg} damage from poison!"
+            if character.hp_current <= 0:
+                character.hp_current = 0
+                character.is_alive = False
+                message += " The poison has killed you!"
+
             return {
                 "success": True,
-                "message": f"You drink the potion and immediately feel violently ill! You take {dmg} damage from poison!",
+                "message": message,
                 "effects": [{"type": "damage", "amount": dmg}]
             }
 

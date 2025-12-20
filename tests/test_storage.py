@@ -553,5 +553,160 @@ class TestSessionManager(unittest.TestCase):
         self.assertFalse(session_file.exists())
 
 
+class TestTreasureConversionFix(unittest.TestCase):
+    """
+    Tests for Bug #1 (Treasure Conversion) and Bug #2 (Save/Load KeyError) fixes.
+
+    These bugs caused:
+    - Magic items from dungeons to be created as generic "Treasure" type
+    - Save/load failures due to missing weapon/armor attributes
+    """
+
+    def setUp(self):
+        """Set up test directory and roster"""
+        self.test_dir = tempfile.mkdtemp()
+        self.roster = CharacterRoster(roster_dir=self.test_dir)
+
+    def tearDown(self):
+        """Clean up"""
+        shutil.rmtree(self.test_dir)
+
+    def test_magic_weapon_creation_underscore_format(self):
+        """Test that longsword_plus_1 format creates proper Weapon object"""
+        from aerthos.engine.game_state import GameState
+        from aerthos.entities.player import Weapon
+
+        # Create minimal game state
+        class MockGameData:
+            def __init__(self):
+                base_dir = Path(__file__).parent.parent / 'aerthos' / 'data'
+                with open(base_dir / 'weapons.json') as f:
+                    self.weapons = json.load(f)
+                with open(base_dir / 'armor.json') as f:
+                    armor_data = json.load(f)
+                    self.armor_data = armor_data.get('armor', {})
+                with open(base_dir / 'equipment.json') as f:
+                    self.equipment = json.load(f)
+
+        gs = GameState.__new__(GameState)
+        gs.game_data = MockGameData()
+
+        # Test dungeon JSON format (underscore before number)
+        item = gs._create_item_from_name('longsword_plus_1')
+
+        self.assertIsInstance(item, Weapon, "longsword_plus_1 should create Weapon, not generic Item")
+        self.assertEqual(item.item_type, 'weapon')
+        self.assertIsNotNone(item.damage_sm, "Weapon should have damage_sm")
+        self.assertIsNotNone(item.damage_l, "Weapon should have damage_l")
+
+    def test_magic_armor_creation_underscore_format(self):
+        """Test that chainmail_plus_1 format creates proper Armor object"""
+        from aerthos.engine.game_state import GameState
+        from aerthos.entities.player import Armor
+
+        class MockGameData:
+            def __init__(self):
+                base_dir = Path(__file__).parent.parent / 'aerthos' / 'data'
+                with open(base_dir / 'weapons.json') as f:
+                    self.weapons = json.load(f)
+                with open(base_dir / 'armor.json') as f:
+                    armor_data = json.load(f)
+                    self.armor_data = armor_data.get('armor', {})
+                with open(base_dir / 'equipment.json') as f:
+                    self.equipment = json.load(f)
+
+        gs = GameState.__new__(GameState)
+        gs.game_data = MockGameData()
+
+        item = gs._create_item_from_name('chainmail_plus_1')
+
+        self.assertIsInstance(item, Armor, "chainmail_plus_1 should create Armor, not generic Item")
+        self.assertEqual(item.item_type, 'armor')
+        self.assertIsNotNone(item.ac, "Armor should have ac attribute")
+
+    def test_deserialize_malformed_weapon(self):
+        """Test that weapons with missing fields deserialize with defaults (Bug #2 fix)"""
+        from aerthos.entities.player import Weapon
+
+        # Simulate old save file with missing weapon attributes
+        malformed_weapon_data = {
+            'name': 'Old Broken Sword',
+            'type': 'weapon',
+            'weight': 5.0
+            # Missing: damage_sm, damage_l, speed_factor
+        }
+
+        # This should NOT raise KeyError
+        item = self.roster._deserialize_item(malformed_weapon_data)
+
+        self.assertIsInstance(item, Weapon)
+        self.assertEqual(item.name, 'Old Broken Sword')
+        self.assertEqual(item.damage_sm, '1d4')  # Default value
+        self.assertEqual(item.damage_l, '1d4')   # Default value
+
+    def test_deserialize_malformed_armor(self):
+        """Test that armor with missing fields deserializes with defaults (Bug #2 fix)"""
+        from aerthos.entities.player import Armor
+
+        malformed_armor_data = {
+            'name': 'Old Rusty Armor',
+            'type': 'armor',
+            'weight': 20.0
+            # Missing: ac
+        }
+
+        item = self.roster._deserialize_item(malformed_armor_data)
+
+        self.assertIsInstance(item, Armor)
+        self.assertEqual(item.name, 'Old Rusty Armor')
+        self.assertEqual(item.ac, 10)  # Default value
+
+    def test_full_save_load_cycle_with_magic_items(self):
+        """Test complete save/load cycle preserves magic item attributes"""
+        from aerthos.engine.game_state import GameState
+        from aerthos.entities.player import Weapon, Armor, Inventory
+
+        class MockGameData:
+            def __init__(self):
+                base_dir = Path(__file__).parent.parent / 'aerthos' / 'data'
+                with open(base_dir / 'weapons.json') as f:
+                    self.weapons = json.load(f)
+                with open(base_dir / 'armor.json') as f:
+                    armor_data = json.load(f)
+                    self.armor_data = armor_data.get('armor', {})
+                with open(base_dir / 'equipment.json') as f:
+                    self.equipment = json.load(f)
+
+        gs = GameState.__new__(GameState)
+        gs.game_data = MockGameData()
+
+        # Create magic items
+        sword = gs._create_item_from_name('longsword_plus_1')
+        armor = gs._create_item_from_name('plate_mail_plus_1')
+
+        # Serialize
+        inv = Inventory()
+        inv.add_item(sword)
+        inv.add_item(armor)
+        serialized = self.roster._serialize_inventory(inv)
+
+        # Verify serialized data has required fields
+        for item_data in serialized:
+            if item_data['type'] == 'weapon':
+                self.assertIn('damage_sm', item_data)
+                self.assertIn('damage_l', item_data)
+            elif item_data['type'] == 'armor':
+                self.assertIn('ac', item_data)
+
+        # Deserialize and verify
+        for item_data in serialized:
+            loaded_item = self.roster._deserialize_item(item_data)
+            if isinstance(loaded_item, Weapon):
+                self.assertIsNotNone(loaded_item.damage_sm)
+                self.assertIsNotNone(loaded_item.damage_l)
+            elif isinstance(loaded_item, Armor):
+                self.assertIsNotNone(loaded_item.ac)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -103,6 +103,7 @@ class GameState:
         self.active_monsters: List[Monster] = []
         self.in_combat = False
         self.current_encounter: Optional[CombatEncounter] = None
+        self.defeated_monsters: set = set()  # Track defeated monster IDs for episode completion
 
         # Game data
         self.game_data: Optional[GameData] = None
@@ -323,6 +324,10 @@ class GameState:
         # Check if target died
         if result['defender_died']:
             self.active_monsters.remove(target)
+
+            # Track defeated monster for episode completion (boss detection)
+            monster_id = target.name.lower().replace(' ', '_')
+            self.defeated_monsters.add(monster_id)
 
             # Award XP to party or player
             if hasattr(self, 'party') and self.party:
@@ -1678,14 +1683,20 @@ class GameState:
                     name_variations.append(variation)
 
         # STEP 1: Check equipment.json for exact match (handles specific potions, special items)
+        # BUT skip magic_item/weapon/armor types - those should fall through to Step 2 for proper creation
         if self.game_data and hasattr(self.game_data, 'equipment'):
             # Try all variations
             for variant in name_variations:
                 equipment_item = self.game_data.equipment.get(variant)
                 if equipment_item:
+                    item_type = equipment_item.get('type', 'equipment')
+                    # Skip magic items, weapons, and armor - they need proper class creation in Step 2
+                    # Also skip if the item name suggests it's a magic weapon/armor (+N pattern)
+                    if item_type in ('magic_item', 'weapon', 'armor') or '_plus' in variant or '+' in variant:
+                        break  # Skip Step 1, proceed to Step 2 for proper handling
                     return Item(
                         name=equipment_item.get('name', item_name),
-                        item_type=equipment_item.get('type', 'equipment'),
+                        item_type=item_type,
                         weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
                         properties=equipment_item.get('properties', {}),
                         description=equipment_item.get('description', f"A {item_name}.")
@@ -1708,10 +1719,10 @@ class GameState:
                     )
 
         # Check for magic items
-        # Supports two formats: "Sword +1" and "sword_plus1"
+        # Supports three formats: "Sword +1", "sword_plus1", and "sword_plus_1"
         import re
         magic_pattern_space = r'(.+?)\s*\+(\d+)'  # Matches "Sword +1", "Sword+1", "sword +1"
-        magic_pattern_underscore = r'(.+?)_plus(\d+)$'  # Matches "sword_plus1"
+        magic_pattern_underscore = r'(.+?)_plus_?(\d+)$'  # Matches "sword_plus1" AND "sword_plus_1"
 
         magic_match = re.search(magic_pattern_space, item_name) or re.match(magic_pattern_underscore, item_name.lower())
 

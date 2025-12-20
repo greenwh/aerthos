@@ -157,8 +157,24 @@ class ShopInterface:
             return False, "Item not found in inventory."
 
         # Calculate sell price (shop pays buy_rate * base_value)
-        base_value = item.get('cost_gp', item.get('cost', 0))
+        # Handle both Item objects (from game) and dicts (legacy)
+        if hasattr(item, 'gp_value'):
+            # Item object with gp_value attribute
+            base_value = item.gp_value
+        elif hasattr(item, 'properties') and isinstance(item.properties, dict):
+            # Item object with properties dict
+            base_value = item.properties.get('gp_value', item.properties.get('cost_gp', item.properties.get('cost', 0)))
+        elif isinstance(item, dict):
+            # Legacy dict format
+            base_value = item.get('cost_gp', item.get('cost', 0))
+        else:
+            # Fallback: estimate value from magic bonus if available
+            base_value = getattr(item, 'magic_bonus', 0) * 500 if hasattr(item, 'magic_bonus') else 10
+
         sell_price = int(base_value * self.buy_rate)
+
+        # Get item name for message
+        item_name = item.name if hasattr(item, 'name') else item.get('name', 'item') if isinstance(item, dict) else 'item'
 
         # Remove from inventory
         self.active_character.inventory.remove_item(item_id)
@@ -166,7 +182,7 @@ class ShopInterface:
         # Add gold to character
         self.active_character.add_money(gp=sell_price)
 
-        return True, f"Sold {item['name']} for {sell_price}gp."
+        return True, f"Sold {item_name} for {sell_price}gp."
 
     def list_shop_inventory(self) -> List[Dict]:
         """Get shop inventory with modified prices
