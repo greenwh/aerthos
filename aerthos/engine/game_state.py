@@ -20,6 +20,7 @@ from ..systems.skills import SkillResolver
 from ..systems.saving_throws import SavingThrowResolver
 from ..systems.monster_abilities import MonsterSpecialAbilities
 from ..systems.narrator import DMNarrator, NarrativeContext
+from ..systems.traps import TrapSystem, Trap
 from ..engine.parser import Command
 
 
@@ -98,6 +99,10 @@ class GameState:
         self.encounter_manager = EncounterManager()
         self.monster_abilities = MonsterSpecialAbilities()
         self.narrator = DMNarrator()
+        self.trap_system = TrapSystem()
+
+        # Trap state - tracks detected traps per room
+        self.detected_traps: Dict[str, List[Trap]] = {}  # room_id -> list of detected traps
 
         # Combat state
         self.active_monsters: List[Monster] = []
@@ -138,7 +143,7 @@ class GameState:
         # Commands that are blocked when character is dead
         action_commands = {
             'move', 'attack', 'defend', 'wait', 'take', 'drop', 'use',
-            'equip', 'unequip', 'cast', 'search', 'open', 'rest',
+            'equip', 'unequip', 'cast', 'search', 'disarm', 'open', 'rest',
             'memorize', 'formation', 'stairs_up', 'stairs_down'
         }
 
@@ -163,6 +168,7 @@ class GameState:
             'cast': self._handle_cast,
             'look': self._handle_look,
             'search': self._handle_search,
+            'disarm': self._handle_disarm,
             'open': self._handle_open,
             'rest': self._handle_rest,
             'inventory': self._handle_inventory,
@@ -326,7 +332,8 @@ class GameState:
             self.active_monsters.remove(target)
 
             # Track defeated monster for episode completion (boss detection)
-            monster_id = target.name.lower().replace(' ', '_')
+            # Use the original monster_id (stored in race field) for accurate tracking
+            monster_id = target.race if hasattr(target, 'race') else target.name.lower().replace(' ', '_')
             self.defeated_monsters.add(monster_id)
 
             # Award XP to party or player
@@ -375,6 +382,12 @@ class GameState:
                     treasure_msg = self._award_boss_treasure()
                     if treasure_msg:
                         messages.append(treasure_msg)
+
+                    # Check for episode completion after boss defeat
+                    if self.episode_runner:
+                        completion_msg = self._check_episode_completion()
+                        if completion_msg:
+                            messages.append(completion_msg)
 
                 self.current_encounter = None  # Clear current encounter
                 return {'success': True, 'message': '\n'.join(messages)}
@@ -617,8 +630,41 @@ class GameState:
 
         # Handle consumables
         if item.item_type == 'consumable':
-            if 'healing' in item.properties:
-                healing = DiceRoller.roll(item.properties['healing'])
+            # Check for healing potions - handle multiple data formats
+            healing_amount = None
+
+            # Format 1: properties is a dict with 'healing' key
+            if isinstance(item.properties, dict) and 'healing' in item.properties:
+                healing_amount = item.properties['healing']
+
+            # Format 2: properties is a dict with 'effect' containing heal info
+            elif isinstance(item.properties, dict) and 'effect' in item.properties:
+                effect = item.properties['effect']
+                if isinstance(effect, dict) and effect.get('type') == 'heal':
+                    healing_amount = effect.get('amount', '1d8')
+
+            # Format 3: properties is a list containing 'healing', check for effect dict
+            elif isinstance(item.properties, dict) and 'flags' in item.properties:
+                # This handles our converted list-to-dict format
+                if 'healing' in item.properties.get('flags', []):
+                    # Try to get effect from properties
+                    effect = item.properties.get('effect', {})
+                    if isinstance(effect, dict) and effect.get('type') == 'heal':
+                        healing_amount = effect.get('amount', '2d4+2')
+                    else:
+                        healing_amount = '2d4+2'  # Default healing amount
+
+            # Format 4: Detect healing potion by name if no properties
+            elif 'potion' in item.name.lower() and 'healing' in item.name.lower():
+                if 'extra' in item.name.lower():
+                    healing_amount = '3d8+3'
+                elif 'greater' in item.name.lower():
+                    healing_amount = '4d4+4'
+                else:
+                    healing_amount = '2d4+2'
+
+            if healing_amount:
+                healing = DiceRoller.roll(healing_amount)
                 self.player.heal(healing)
                 self.player.inventory.remove_item(item.name)
                 return {'success': True, 'message': f"You drink the potion and heal {healing} HP!"}
@@ -950,7 +996,12 @@ class GameState:
 
         messages = []
 
-        # Check for traps (deliberate searching can trigger them)
+        # Search for traps using proper thief skills
+        trap_messages = self._search_for_traps()
+        if trap_messages:
+            messages.extend(trap_messages)
+
+        # Check for combat encounters triggered by search
         encounter_msg = self._check_encounters('on_search')
         if encounter_msg:
             messages.append(encounter_msg)
@@ -960,7 +1011,8 @@ class GameState:
             items_list = ', '.join(self.current_room.items)
             messages.append(f"You find: {items_list}")
         else:
-            messages.append("You don't find anything interesting.")
+            if not trap_messages:
+                messages.append("You don't find anything interesting.")
 
         # Advance time (searching takes time)
         time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
@@ -982,6 +1034,176 @@ class GameState:
                 messages.extend(quest_updates)
 
         return {'success': True, 'message': '\n'.join(messages)}
+
+    def _search_for_traps(self) -> List[str]:
+        """
+        Search for traps in current room using thief skills
+
+        Returns:
+            List of messages about traps found
+        """
+        messages = []
+        room_id = self.current_room.id
+
+        # Check if room has trap encounters
+        room_encounters = self.dungeon.get_room_encounters(room_id)
+        trap_encounters = [enc for enc in room_encounters if enc.get('type') == 'trap']
+
+        if not trap_encounters:
+            return messages
+
+        # Initialize detected traps list for this room if needed
+        if room_id not in self.detected_traps:
+            self.detected_traps[room_id] = []
+
+        # Check for already-detected traps
+        already_detected = len(self.detected_traps[room_id])
+
+        for i, enc_data in enumerate(trap_encounters):
+            encounter_id = f"{room_id}_trap_{i}"
+
+            # Skip if already completed (triggered or disarmed)
+            if encounter_id in self.current_room.encounters_completed:
+                continue
+
+            # Skip if already detected
+            if any(t.trap_type == enc_data.get('trap_type', 'unknown') for t in self.detected_traps[room_id]):
+                continue
+
+            # Get thief skill if applicable
+            thief_skill = 0
+            if self.player.char_class == 'Thief' and hasattr(self.player, 'thief_skills'):
+                thief_skill = self.player.thief_skills.get('find_remove_traps', 0)
+
+            # Use trap system to search
+            search_result = self.trap_system.search_for_traps(
+                searcher_class=self.player.char_class,
+                searcher_race=self.player.race,
+                thief_skill=thief_skill,
+                trap_present=True
+            )
+
+            if search_result.found and search_result.trap:
+                # Create a trap with the room's encounter data
+                detected_trap = Trap(
+                    trap_type=enc_data.get('trap_type', 'unknown'),
+                    damage=enc_data.get('damage', '1d6'),
+                    save_type=enc_data.get('save_type', 'dexterity'),
+                    description=enc_data.get('description', 'A hidden trap'),
+                    trigger='on_enter',
+                    detected=True,
+                    disarmed=False,
+                    difficulty=enc_data.get('difficulty', 'standard')
+                )
+                self.detected_traps[room_id].append(detected_trap)
+
+                if self.player.char_class == 'Thief':
+                    messages.append(f"⚠️  Your trained eye spots a trap: {detected_trap.trap_type}!")
+                    messages.append(f"    \"{detected_trap.description}\"")
+                    messages.append("    You can attempt to DISARM it.")
+                elif self.player.race == 'Dwarf':
+                    messages.append(f"⚠️  Your dwarven senses detect stonework trap: {detected_trap.trap_type}!")
+                else:
+                    messages.append(f"⚠️  You notice something suspicious: {detected_trap.trap_type}!")
+
+        # Report previously detected traps still active
+        if already_detected > 0 and not messages:
+            active_traps = [t for t in self.detected_traps[room_id] if not t.disarmed]
+            if active_traps:
+                messages.append(f"⚠️  You've already detected {len(active_traps)} trap(s) here that need disarming.")
+
+        return messages
+
+    def _handle_disarm(self, command: Command) -> Dict:
+        """Handle disarming detected traps"""
+
+        room_id = self.current_room.id
+
+        # Check if there are any detected traps in this room
+        if room_id not in self.detected_traps or not self.detected_traps[room_id]:
+            return {'success': False, 'message': "You haven't detected any traps in this room. Try searching first."}
+
+        # Find an active (not disarmed) trap
+        active_traps = [t for t in self.detected_traps[room_id] if not t.disarmed]
+
+        if not active_traps:
+            return {'success': False, 'message': "All traps in this room have already been disarmed."}
+
+        # Get the first active trap (or specific one if named)
+        trap_to_disarm = active_traps[0]
+
+        # If a specific trap was named, try to find it
+        if command.target:
+            target_lower = command.target.lower()
+            for trap in active_traps:
+                if target_lower in trap.trap_type.lower():
+                    trap_to_disarm = trap
+                    break
+
+        # Get thief skill
+        thief_skill = 0
+        if self.player.char_class == 'Thief' and hasattr(self.player, 'thief_skills'):
+            thief_skill = self.player.thief_skills.get('find_remove_traps', 0)
+
+        # Attempt to disarm
+        result = self.trap_system.disarm_trap(
+            trap=trap_to_disarm,
+            disarmer_class=self.player.char_class,
+            thief_skill=thief_skill,
+            strength=self.player.str,
+            intelligence=self.player.int
+        )
+
+        messages = []
+
+        if result.success:
+            trap_to_disarm.disarmed = True
+            messages.append(f"🔧 {result.message}")
+
+            # Mark encounter as completed
+            room_encounters = self.dungeon.get_room_encounters(room_id)
+            for i, enc_data in enumerate(room_encounters):
+                if enc_data.get('type') == 'trap' and enc_data.get('trap_type') == trap_to_disarm.trap_type:
+                    encounter_id = f"{room_id}_trap_{i}"
+                    if encounter_id not in self.current_room.encounters_completed:
+                        self.current_room.encounters_completed.append(encounter_id)
+                    break
+
+            if result.critical_success:
+                messages.append("💡 You've learned something about this trap mechanism!")
+
+        else:
+            messages.append(f"❌ {result.message}")
+
+            if result.trap_triggered:
+                # Trap triggered on failed disarm!
+                messages.append(f"💥 The trap activates!")
+
+                # Apply damage
+                if result.damage > 0:
+                    self.player.hp_current -= result.damage
+                    messages.append(f"You take {result.damage} damage! (HP: {self.player.hp_current}/{self.player.hp_max})")
+
+                    if self.player.hp_current <= 0:
+                        self.player.hp_current = 0
+                        self.player.is_alive = False
+                        messages.append(f"\n☠️  {self.player.name} has been killed by the trap!")
+
+                # Mark trap as triggered (completed)
+                trap_to_disarm.disarmed = True  # Can't disarm again
+                room_encounters = self.dungeon.get_room_encounters(room_id)
+                for i, enc_data in enumerate(room_encounters):
+                    if enc_data.get('type') == 'trap' and enc_data.get('trap_type') == trap_to_disarm.trap_type:
+                        encounter_id = f"{room_id}_trap_{i}"
+                        if encounter_id not in self.current_room.encounters_completed:
+                            self.current_room.encounters_completed.append(encounter_id)
+                        break
+
+        # Advance time
+        time_messages = self.time_tracker.advance_turn(self.player, party=getattr(self, 'party', None))
+        messages.extend(time_messages)
+
+        return {'success': result.success, 'message': '\n'.join(messages)}
 
     def _handle_open(self, command: Command) -> Dict:
         """Handle opening locked containers"""
@@ -1224,9 +1446,10 @@ class GameState:
         if not self.current_room.exits:
             return {'success': True, 'message': "There are no obvious exits from here. You may be trapped!"}
 
-        # Build formatted list of exits
+        # Build formatted list of exits (cardinal, ordinal, and vertical)
         exits_list = []
-        for direction in ['north', 'south', 'east', 'west', 'up', 'down']:
+        for direction in ['north', 'northeast', 'east', 'southeast', 'south',
+                          'southwest', 'west', 'northwest', 'up', 'down']:
             if direction in self.current_room.exits:
                 exits_list.append(direction.capitalize())
 
@@ -1532,7 +1755,64 @@ class GameState:
                 self.current_room.encounters_completed.append(encounter.encounter_id)
                 return self._start_combat(encounter)
 
+            elif isinstance(encounter, TrapEncounter):
+                # Check if trap was detected and disarmed
+                room_id = self.current_room.id
+                if room_id in self.detected_traps:
+                    # Find matching detected trap
+                    detected = [t for t in self.detected_traps[room_id]
+                               if t.trap_type == encounter.trap_type and t.disarmed]
+                    if detected:
+                        # Trap was disarmed, skip it
+                        continue
+
+                # Trap triggers!
+                return self._trigger_trap(encounter)
+
         return None
+
+    def _trigger_trap(self, encounter: TrapEncounter) -> str:
+        """Handle a trap being triggered"""
+
+        messages = []
+        messages.append(f"\n⚠️  TRAP! {encounter.trap_type}!")
+
+        # Get trap description from encounter data
+        room_encounters = self.dungeon.get_room_encounters(self.current_room.id)
+        for enc_data in room_encounters:
+            if enc_data.get('type') == 'trap' and enc_data.get('trap_type') == encounter.trap_type:
+                messages.append(f"   {enc_data.get('description', 'A trap springs!')}")
+                break
+
+        # Roll damage
+        damage_roll = DiceRoller.roll(encounter.damage)
+
+        # Allow saving throw
+        save_type = encounter.trap_type  # Use trap type to determine save
+        save_category = 'breath'  # Default to breath weapon save for traps
+
+        # Try to save
+        save_result = self.save_resolver.make_save(self.player, save_category)
+
+        if save_result['success']:
+            damage_roll = damage_roll // 2  # Half damage on save
+            messages.append(f"   You react quickly, taking only {damage_roll} damage!")
+        else:
+            messages.append(f"   You take {damage_roll} damage!")
+
+        # Apply damage
+        self.player.hp_current -= damage_roll
+        messages.append(f"   (HP: {self.player.hp_current}/{self.player.hp_max})")
+
+        if self.player.hp_current <= 0:
+            self.player.hp_current = 0
+            self.player.is_alive = False
+            messages.append(f"\n☠️  {self.player.name} has been killed by the trap!")
+
+        # Mark encounter as completed
+        self.current_room.encounters_completed.append(encounter.encounter_id)
+
+        return '\n'.join(messages)
 
     def _start_combat(self, encounter: CombatEncounter) -> str:
         """Start a combat encounter"""
@@ -1609,6 +1889,39 @@ class GameState:
             for item_id in magic_items:
                 # Add to room items
                 self.current_room.add_item(item_id)
+
+        return '\n'.join(messages)
+
+    def _check_episode_completion(self) -> Optional[str]:
+        """Check if episode is complete after boss defeat and apply rewards"""
+
+        if not self.episode_runner:
+            return None
+
+        # Check if completion criteria are met
+        if not self.episode_runner.check_completion():
+            return None
+
+        # Complete the episode and get rewards
+        success, completion_msg = self.episode_runner.complete_episode()
+
+        if not success:
+            return None
+
+        messages = [completion_msg]
+
+        # Check for level ups after XP rewards
+        if hasattr(self, 'party') and self.party:
+            for member in self.party.members:
+                if member.is_alive:
+                    # Check if character gained a level from the XP bonus
+                    level_msg = member.check_level_up()
+                    if level_msg:
+                        messages.append(f"\n🎉 {member.name}: {level_msg}")
+        else:
+            level_msg = self.player.check_level_up()
+            if level_msg:
+                messages.append(f"\n🎉 {self.player.name}: {level_msg}")
 
         return '\n'.join(messages)
 
@@ -1694,12 +2007,18 @@ class GameState:
                     # Also skip if the item name suggests it's a magic weapon/armor (+N pattern)
                     if item_type in ('magic_item', 'weapon', 'armor') or '_plus' in variant or '+' in variant:
                         break  # Skip Step 1, proceed to Step 2 for proper handling
+                    # Get properties - ensure it's a dict (some items have list properties)
+                    props = equipment_item.get('properties', {})
+                    if isinstance(props, list):
+                        props = {'flags': props}  # Convert list to dict with flags key
+
                     return Item(
                         name=equipment_item.get('name', item_name),
                         item_type=item_type,
                         weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
-                        properties=equipment_item.get('properties', {}),
-                        description=equipment_item.get('description', f"A {item_name}.")
+                        properties=props,
+                        description=equipment_item.get('description', f"A {item_name}."),
+                        gp_value=int(equipment_item.get('cost_gp', 0))
                     )
 
             # Special handling for potions in title case (e.g., "Potion of Extra-Healing")
@@ -1710,12 +2029,18 @@ class GameState:
                 potion_key = "potion_" + potion_suffix.lower().replace(' ', '_').replace('-', '_')
                 equipment_item = self.game_data.equipment.get(potion_key)
                 if equipment_item:
+                    # Get properties - ensure it's a dict
+                    props = equipment_item.get('properties', {})
+                    if isinstance(props, list):
+                        props = {'flags': props}
+
                     return Item(
                         name=equipment_item.get('name', item_name),
                         item_type=equipment_item.get('type', 'equipment'),
                         weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
-                        properties=equipment_item.get('properties', {}),
-                        description=equipment_item.get('description', f"A {item_name}.")
+                        properties=props,
+                        description=equipment_item.get('description', f"A {item_name}."),
+                        gp_value=int(equipment_item.get('cost_gp', 0))
                     )
 
         # Check for magic items

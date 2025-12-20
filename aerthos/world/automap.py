@@ -116,12 +116,16 @@ class AutoMap:
 
         # Direction offsets (north is up = negative y)
         direction_offsets = {
-            'north': (0, -1),   # Up
-            'south': (0, 1),    # Down
-            'east': (1, 0),     # Right
-            'west': (-1, 0),    # Left
-            'up': (0, 0),       # Same position (different level)
-            'down': (0, 0)      # Same position (different level)
+            'north': (0, -1),       # Up
+            'south': (0, 1),        # Down
+            'east': (1, 0),         # Right
+            'west': (-1, 0),        # Left
+            'northeast': (1, -1),   # Up-Right (diagonal)
+            'northwest': (-1, -1),  # Up-Left (diagonal)
+            'southeast': (1, 1),    # Down-Right (diagonal)
+            'southwest': (-1, 1),   # Down-Left (diagonal)
+            'up': (0, 0),           # Same position (different level)
+            'down': (0, 0)          # Same position (different level)
         }
 
         # Assign connected rooms

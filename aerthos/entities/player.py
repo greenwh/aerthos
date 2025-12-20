@@ -544,6 +544,28 @@ class PlayerCharacter(Character):
 
         return None
 
+    def check_level_up(self) -> Optional[str]:
+        """
+        Check if character has enough XP to level up (without adding XP)
+
+        This is useful after XP is added directly (e.g., episode rewards)
+
+        Returns:
+            Level up message if leveled up, None otherwise
+        """
+        # Check if we can level up
+        if self.char_class in XP_TABLES:
+            xp_table = XP_TABLES[self.char_class]
+
+            # Find next level in table
+            if self.level < len(xp_table) - 1:
+                xp_needed = xp_table[self.level]
+
+                if self.xp >= xp_needed:
+                    return self._level_up()
+
+        return None
+
     def _level_up(self) -> str:
         """
         Level up the character

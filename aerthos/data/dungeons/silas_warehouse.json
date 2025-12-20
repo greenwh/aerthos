@@ -86,7 +86,8 @@
       "description": "Crates marked with serpent symbols contain cursed items and dark artifacts. The air feels thick with malevolent energy.",
       "light_level": "dim",
       "exits": {
-        "east": "main_warehouse"
+        "east": "main_warehouse",
+        "west": "ritual_workshop"
       },
       "items": ["cursed_amulet", "dark_scroll"],
       "encounters": [

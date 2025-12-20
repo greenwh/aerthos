@@ -33,14 +33,16 @@ class CommandParser:
         'defend': ['defend', 'parry', 'block', 'guard'],
         'wait': ['wait', 'pass', 'skip'],
         'move': ['go', 'move', 'walk', 'travel', 'head', 'n', 'north', 's', 'south',
-                 'e', 'east', 'w', 'west', 'u', 'up', 'd', 'down'],
+                 'e', 'east', 'w', 'west', 'u', 'up', 'd', 'down',
+                 'ne', 'northeast', 'nw', 'northwest', 'se', 'southeast', 'sw', 'southwest'],
         'take': ['take', 'get', 'grab', 'pick', 'pickup', 'loot'],
         'drop': ['drop', 'discard'],
         'use': ['use', 'drink', 'eat', 'read', 'apply', 'consume'],
         'equip': ['equip', 'wear', 'wield', 'don'],
         'unequip': ['unequip', 'remove', 'doff', 'unwear', 'unwield'],
         'cast': ['cast'],
-        'search': ['search'],
+        'search': ['search', 'find'],
+        'disarm': ['disarm', 'defuse', 'disable'],
         'look': ['look', 'examine', 'inspect', 'check'],
         'open': ['open', 'unlock', 'pick'],
         'rest': ['rest', 'sleep', 'camp'],
@@ -69,7 +71,12 @@ class CommandParser:
         'e': 'east', 'east': 'east',
         'w': 'west', 'west': 'west',
         'u': 'up', 'up': 'up',
-        'd': 'down', 'down': 'down'
+        'd': 'down', 'down': 'down',
+        # Ordinal directions
+        'ne': 'northeast', 'northeast': 'northeast',
+        'nw': 'northwest', 'northwest': 'northwest',
+        'se': 'southeast', 'southeast': 'southeast',
+        'sw': 'southwest', 'southwest': 'southwest'
     }
 
     def parse(self, input_text: str) -> Command:
@@ -317,8 +324,9 @@ AERTHOS - COMMAND REFERENCE
 ═══════════════════════════════════════════════════════════════
 
 MOVEMENT:
-  go <direction>    - Move in a direction (north, south, east, west, up, down)
-  n, s, e, w        - Short forms for directions
+  go <direction>    - Move in a direction (n, s, e, w, ne, nw, se, sw, up, down)
+  n, s, e, w        - Short forms for cardinal directions
+  ne, nw, se, sw    - Short forms for diagonal directions
   directions / dirs - Show available exits from current room
 
 COMBAT:
