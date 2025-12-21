@@ -2010,14 +2010,19 @@ class GameState:
                         props = equipment_item.get('properties', {})
                         if isinstance(props, list):
                             props = {'flags': props}
+                        magic_bonus = equipment_item.get('magic_bonus', 0)
+                        base_cost = equipment_item.get('cost_gp', 10)
+                        magic_value = magic_bonus * 2000 if magic_bonus > 0 else 0
                         return Weapon(
                             name=equipment_item.get('name', item_name),
                             damage_sm=equipment_item.get('damage', '1d6'),
                             damage_l=equipment_item.get('damage_l', equipment_item.get('damage', '1d6')),
                             speed_factor=equipment_item.get('speed_factor', 5),
-                            magic_bonus=equipment_item.get('magic_bonus', 0),
+                            magic_bonus=magic_bonus,
                             weight=equipment_item.get('weight_gp', 50) / 10.0,
                             properties=props,
+                            gp_value=base_cost + magic_value,
+                            xp_value=equipment_item.get('xp_value', magic_bonus * 400 if magic_bonus > 0 else 0),
                             description=equipment_item.get('description', f"A {item_name}.")
                         )
 
@@ -2025,14 +2030,18 @@ class GameState:
                     if item_type == 'armor' and equipment_item.get('ac') is not None:
                         from ..systems.armor_system import ArmorSystem
                         armor_system = ArmorSystem()
+                        magic_bonus = equipment_item.get('magic_bonus', 0)
+                        base_cost = equipment_item.get('cost_gp', 0)
+                        magic_value = magic_bonus * 1000 if magic_bonus > 0 else 0
                         # Create armor with proper stats from equipment.json
                         return Armor(
                             name=equipment_item.get('name', item_name),
                             ac=equipment_item.get('ac', 10),
                             armor_type=equipment_item.get('armor_type', 'medium'),
                             weight=equipment_item.get('weight_gp', 100) / 10.0,
-                            magic_bonus=equipment_item.get('magic_bonus', 0),
+                            magic_bonus=magic_bonus,
                             properties=equipment_item.get('properties', []),
+                            gp_value=base_cost + magic_value,
                             description=equipment_item.get('description', f"A {item_name}.")
                         )
 
@@ -2049,13 +2058,16 @@ class GameState:
                     if isinstance(props, list):
                         props = {'flags': props}  # Convert list to dict with flags key
 
+                    # Get cost - check both cost_gp and cost (some items use different naming)
+                    item_cost = equipment_item.get('cost_gp', equipment_item.get('cost', 0))
+
                     return Item(
                         name=equipment_item.get('name', item_name),
                         item_type=item_type,
                         weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
                         properties=props,
                         description=equipment_item.get('description', f"A {item_name}."),
-                        gp_value=int(equipment_item.get('cost_gp', 0))
+                        gp_value=int(item_cost) if item_cost else 0
                     )
 
             # Special handling for potions in title case (e.g., "Potion of Extra-Healing")
@@ -2071,13 +2083,16 @@ class GameState:
                     if isinstance(props, list):
                         props = {'flags': props}
 
+                    # Get cost - check both cost_gp and cost
+                    item_cost = equipment_item.get('cost_gp', equipment_item.get('cost', 0))
+
                     return Item(
                         name=equipment_item.get('name', item_name),
                         item_type=equipment_item.get('type', 'equipment'),
                         weight=equipment_item.get('weight', equipment_item.get('weight_gp', 1) / 10.0),
                         properties=props,
                         description=equipment_item.get('description', f"A {item_name}."),
-                        gp_value=int(equipment_item.get('cost_gp', 0))
+                        gp_value=int(item_cost) if item_cost else 0
                     )
 
         # Check for magic items
@@ -2177,6 +2192,8 @@ class GameState:
                 if weapon_stats:
                     # Create weapon with proper stats
                     display_name = weapon_stats.get('name', base_item.replace('_', ' ').title())
+                    base_cost = weapon_stats.get('cost_gp', 10)
+                    magic_value = magic_bonus * 2000  # +1 = 2000gp, +2 = 4000gp, etc.
                     return Weapon(
                         name=f"{display_name} +{magic_bonus}",
                         damage_sm=weapon_stats.get('damage_sm', '1d8'),
@@ -2184,14 +2201,14 @@ class GameState:
                         speed_factor=weapon_stats.get('speed_factor', 5),
                         magic_bonus=magic_bonus,
                         weight=weapon_stats.get('weight_gp', 60) / 10.0,
-                        properties={
-                            'xp_value': magic_bonus * 400,
-                            'gp_value': magic_bonus * 2000
-                        },
+                        properties={'xp_value': magic_bonus * 400},
+                        gp_value=base_cost + magic_value,
+                        xp_value=magic_bonus * 400,
                         description=f"A magical {display_name.lower()} with a +{magic_bonus} enchantment."
                     )
                 else:
                     # Fallback to generic magic weapon
+                    magic_value = magic_bonus * 2000
                     return Weapon(
                         name=f"{base_item.replace('_', ' ').title()} +{magic_bonus}",
                         damage_sm='1d8',
@@ -2199,10 +2216,9 @@ class GameState:
                         speed_factor=5,
                         magic_bonus=magic_bonus,
                         weight=6.0,
-                        properties={
-                            'xp_value': magic_bonus * 400,
-                            'gp_value': magic_bonus * 2000
-                        },
+                        properties={'xp_value': magic_bonus * 400},
+                        gp_value=magic_value,
+                        xp_value=magic_bonus * 400,
                         description=f"A magical weapon with a +{magic_bonus} enchantment."
                     )
 
@@ -2218,10 +2234,8 @@ class GameState:
                         speed_factor=weapon_stats.get('speed_factor', 5),
                         magic_bonus=0,
                         weight=weapon_stats.get('weight_gp', 50) / 10.0,
-                        properties={
-                            'weapon_type': weapon_stats.get('weapon_type', 'melee'),
-                            'gp_value': weapon_stats.get('cost_gp', 10)
-                        },
+                        properties={'weapon_type': weapon_stats.get('weapon_type', 'melee')},
+                        gp_value=weapon_stats.get('cost_gp', 10),
                         description=weapon_stats.get('description', f"A {weapon_stats.get('name', item_name)}.")
                     )
 

@@ -41,12 +41,17 @@ class ArmorSystem:
 
         data = self.armor_data[armor_id]
 
+        # Calculate gp_value: base cost + magic bonus value
+        base_cost = data.get('cost_gp', 0)
+        magic_value = magic_bonus * 1000 if magic_bonus > 0 else 0  # +1 = 1000gp, +2 = 2000gp, etc.
+
         return Armor(
             name=data['name'] + (f" +{magic_bonus}" if magic_bonus > 0 else ""),
             item_type='armor',
             weight=data['weight_gp'] / 10,  # Convert GP weight to pounds (10 GP = 1 lb)
             properties={'armor_id': armor_id},
             description=data.get('description', ''),
+            gp_value=base_cost + magic_value,
             ac=data['ac'],
             armor_type=data['armor_type'],
             movement_rate=data['movement_rate'],
@@ -70,12 +75,17 @@ class ArmorSystem:
 
         data = self.shield_data[shield_id]
 
+        # Calculate gp_value: base cost + magic bonus value
+        base_cost = data.get('cost_gp', 0)
+        magic_value = magic_bonus * 1000 if magic_bonus > 0 else 0  # +1 = 1000gp, +2 = 2000gp, etc.
+
         return Shield(
             name=data['name'] + (f" +{magic_bonus}" if magic_bonus > 0 else ""),
             item_type='shield',
             weight=data['weight_gp'] / 10,  # Convert GP weight to pounds (10 GP = 1 lb)
             properties={'shield_id': shield_id},
             description=data.get('description', ''),
+            gp_value=base_cost + magic_value,
             ac_bonus=data['ac_bonus'],
             max_attacks_blocked=data['max_attacks_blocked'],
             magic_bonus=magic_bonus,

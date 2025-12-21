@@ -240,7 +240,7 @@ class EpisodeRunner:
 
         # Apply gold bonus to party leader
         if self.episode.rewards.gold_bonus > 0:
-            self.party.members[0].gold += self.episode.rewards.gold_bonus
+            self.party.members[0].gold_pieces += self.episode.rewards.gold_bonus
 
         # Add items to party leader's inventory
         if self.episode.rewards.items and self.game_state:
@@ -374,7 +374,7 @@ class EpisodeRunner:
 
         # Award gold to party leader
         if rewards.gold > 0:
-            self.party.members[0].gold += rewards.gold
+            self.party.members[0].gold_pieces += rewards.gold
 
         # Award reputation (would integrate with reputation system)
         if rewards.reputation > 0:
