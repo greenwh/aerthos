@@ -1658,6 +1658,12 @@ def execute_command():
             if game_state.party and game_state.character_ids:
                 save_party_members(game_state.party, game_state.character_ids)
 
+        # Save campaign if episode was just completed (persists completed_episodes, unlocked_episodes, etc.)
+        if hasattr(game_state, 'episode_runner') and game_state.episode_runner:
+            if game_state.episode_runner.state.completion_acknowledged:
+                campaign_mgr = CampaignManager()
+                campaign_mgr.save_campaign(game_state.episode_runner.campaign)
+
         return jsonify({
             'success': True,
             'message': result.get('message', ''),

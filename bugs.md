@@ -19,4 +19,9 @@ Silas's Elite Bodyguard uses loyal_unto_death!
 Silas's Elite Bodyguard uses shield_wall!
 Silas's Elite Bodyguard uses loyal_unto_death!
 Bound Demon uses magic_resistance!
+Duergar (Gray Dwarf) uses enlarge!
+Duergar (Gray Dwarf) uses invisibility!
+Duergar Elite Warrior uses infravision!
+Duergar Dark Priest uses serpent_cult_powers!
+Duergar Dark Priest uses turn_undead_reversed!
 

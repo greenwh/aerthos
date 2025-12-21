@@ -2119,34 +2119,42 @@ def run_episode(episode_id: str, campaign: Campaign, party: Party,
         run_game(active_character, runner.dungeon, game_data)
 
         # 6. After dungeon, check completion
-        # For now, ask if quest was completed
-        # (In full implementation, would check completion criteria automatically)
+        # Episode may have been completed automatically in-dungeon when boss was killed
         print("\n" + "═" * 70)
         print("QUEST STATUS")
         print("═" * 70)
 
-        completed = input("\nDid you complete the quest objectives? (y/n): ").strip().lower()
+        # Check if episode was already completed in-dungeon
+        if runner.state.completion_acknowledged:
+            # Episode was completed during dungeon - just save
+            print("\n✓ Quest completed!")
+            campaign_mgr.save_campaign(campaign)
+            print("\n✓ Campaign progress saved!")
+            input("\nPress Enter to return to hub...")
+        else:
+            # Ask player if quest was completed (fallback for manual completion)
+            completed = input("\nDid you complete the quest objectives? (y/n): ").strip().lower()
 
-        if completed == 'y':
-            # Mark episode complete
-            success, completion_message = runner.complete_episode()
+            if completed == 'y':
+                # Mark episode complete
+                success, completion_message = runner.complete_episode()
 
-            if success:
-                print("\n" + completion_message)
+                if success:
+                    print("\n" + completion_message)
 
-                # Save campaign
-                campaign_mgr.save_campaign(campaign)
-                print("\n✓ Campaign progress saved!")
+                    # Save campaign
+                    campaign_mgr.save_campaign(campaign)
+                    print("\n✓ Campaign progress saved!")
+
+                else:
+                    print(f"\nError completing episode: {completion_message}")
+
+                input("\nPress Enter to return to hub...")
 
             else:
-                print(f"\nError completing episode: {completion_message}")
-
-            input("\nPress Enter to return to hub...")
-
-        else:
-            print("\nQuest incomplete. Returning to hub...")
-            print("You can retry the quest later.")
-            input("\nPress Enter to continue...")
+                print("\nQuest incomplete. Returning to hub...")
+                print("You can retry the quest later.")
+                input("\nPress Enter to continue...")
 
     except FileNotFoundError:
         print(f"\nEpisode '{episode_id}' not found!")
