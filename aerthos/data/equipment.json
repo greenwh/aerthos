@@ -1191,6 +1191,22 @@
     "weight_gp": 10,
     "description": "A small hammer for driving spikes and pitons."
   },
+  "masterwork_hammer": {
+    "name": "Masterwork Smith's Hammer",
+    "type": "tool",
+    "cost_gp": 50,
+    "weight_gp": 30,
+    "properties": ["dwarven", "masterwork", "valuable"],
+    "description": "A finely crafted dwarven smith's hammer, perfectly balanced for forge work. A prized tool of master artisans."
+  },
+  "broken_warhammer": {
+    "name": "Broken Warhammer",
+    "type": "treasure",
+    "cost_gp": 2,
+    "weight_gp": 40,
+    "properties": ["broken", "damaged"],
+    "description": "A shattered dwarven warhammer, broken in battle. The head is cracked and the shaft splintered. Only valuable as scrap metal."
+  },
   "healers_kit": {
     "name": "Healer's Kit",
     "type": "tool",
@@ -1706,6 +1722,17 @@
       "military"
     ],
     "description": "A silver badge bearing the hammer-and-anvil symbol of Ironfast's officer corps. Could be sold or returned to surviving dwarves as a token of respect."
+  },
+  "orcish_axe": {
+    "name": "Orcish Battle Axe",
+    "type": "weapon",
+    "cost_gp": 8,
+    "weight_gp": 75,
+    "damage": "1d8",
+    "damage_l": "1d8",
+    "speed_factor": 7,
+    "properties": ["orcish", "two_handed_optional"],
+    "description": "A brutal orcish battle axe with a heavy iron head and rough-hewn shaft. Crude but effective, favored by orc raiders and mercenaries."
   },
   "oil_flask": {
     "name": "Oil, Flask (1 pint)",
@@ -4252,16 +4279,85 @@
   "serpent_scale_armor": {
     "name": "Serpent Scale Armor",
     "type": "armor",
-    "description": "Armor made from actual serpent scales, enchanted for protection. AC 16 (AC 2 in AD&D). Grants resistance to poison. +2 armor.",
-    "weight": 35.0,
-    "cost": 3000
+    "ac": 4,
+    "armor_type": "medium",
+    "movement_rate": 9,
+    "weight_gp": 350,
+    "cost_gp": 3000,
+    "properties": ["serpent", "poison_resistance"],
+    "description": "Armor made from actual serpent scales, enchanted for protection. AC 4 base. Grants resistance to poison."
+  },
+  "serpent_scale_armor_plus2": {
+    "name": "Serpent Scale Armor +2",
+    "type": "armor",
+    "ac": 4,
+    "magic_bonus": 2,
+    "armor_type": "medium",
+    "movement_rate": 9,
+    "weight_gp": 350,
+    "cost_gp": 8000,
+    "properties": ["serpent", "poison_resistance", "magic"],
+    "description": "Enchanted serpent scale armor. AC 2 (base 4, +2 magic). Grants resistance to poison and immunity to serpent venom."
+  },
+  "greatsword_plus3": {
+    "name": "Greatsword +3",
+    "type": "weapon",
+    "damage": "2d6",
+    "damage_l": "2d6",
+    "speed_factor": 10,
+    "magic_bonus": 3,
+    "weight_gp": 150,
+    "cost_gp": 15000,
+    "properties": ["two_handed", "magic"],
+    "description": "A massive enchanted greatsword. +3 to attack and damage. Damage: 2d6+3."
+  },
+  "holy_avenger_longsword_plus5": {
+    "name": "Holy Avenger +5",
+    "type": "weapon",
+    "damage": "1d8",
+    "damage_l": "1d12",
+    "speed_factor": 5,
+    "magic_bonus": 5,
+    "weight_gp": 60,
+    "cost_gp": 50000,
+    "properties": ["holy", "paladin_only", "magic", "legendary"],
+    "description": "The legendary Holy Avenger! +5 longsword. In a paladin's hands: dispels magic, provides Magic Resistance 50% in 5' radius, deals +10 damage vs. chaotic evil. The ultimate weapon against the Serpent Eye cult."
+  },
+  "flaming_longsword_plus2": {
+    "name": "Flaming Longsword +2",
+    "type": "weapon",
+    "damage": "1d8",
+    "damage_l": "1d12",
+    "speed_factor": 5,
+    "magic_bonus": 2,
+    "weight_gp": 60,
+    "cost_gp": 8000,
+    "properties": ["flaming", "magic", "fire_damage"],
+    "description": "A longsword wreathed in magical flames. +2 to attack and damage, plus 1d6 fire damage on hit. The blade sheds light as a torch."
+  },
+  "sword_sharpness": {
+    "name": "Sword of Sharpness",
+    "type": "weapon",
+    "damage": "1d8",
+    "damage_l": "1d12",
+    "speed_factor": 5,
+    "magic_bonus": 3,
+    "weight_gp": 60,
+    "cost_gp": 35000,
+    "properties": ["vorpal", "magic", "legendary", "severing"],
+    "description": "A legendary blade of incredible sharpness. +3 longsword. On a natural 20, severs a limb (roll 1d6: 1-2 weapon arm, 3-4 shield arm, 5-6 head on humanoids). Against the Serpent Eye cult, the edge cuts through their dark magic like butter."
   },
   "greatsword_cursed": {
     "name": "Cursed Greatsword",
     "type": "weapon",
-    "description": "A powerful greatsword wreathed in dark energy. +2 weapon, but cursed\u2014wielder takes 1 damage per hit delivered. Damage: 2d6+2.",
-    "weight": 10.0,
-    "cost": 1500
+    "damage": "2d6",
+    "damage_l": "2d6",
+    "speed_factor": 10,
+    "magic_bonus": 2,
+    "weight_gp": 150,
+    "cost_gp": 1500,
+    "properties": ["two_handed", "cursed"],
+    "description": "A powerful greatsword wreathed in dark energy. +2 weapon, but cursed - wielder takes 1 damage per hit delivered. Damage: 2d6+2."
   },
   "champion_trophy": {
     "name": "Champion's Trophy",

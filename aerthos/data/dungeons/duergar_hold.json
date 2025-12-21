@@ -61,10 +61,11 @@
     "barracks": {
       "id": "barracks",
       "title": "Slaughter Hall",
-      "description": "The dwarven barracks. Bunks are overturned, and the floor is stained with blood. The dwarves fought desperately here.",
+      "description": "The dwarven barracks. Bunks are overturned, and the floor is stained with blood. The dwarves fought desperately here. A collapsed section of wall reveals a dangerous tunnel leading down into the mining levels.",
       "light_level": "dark",
       "exits": {
-        "east": "upper_hall"
+        "east": "upper_hall",
+        "south": "collapsed_tunnel"
       },
       "items": ["healing_potion"],
       "encounters": [],
@@ -171,10 +172,11 @@
     "wine_cellar": {
       "id": "wine_cellar",
       "title": "Ancient Wine Cellar",
-      "description": "A hidden cellar accessible only from the great hall. Racks of ancient dwarven spirits line the walls—some bottles centuries old. The duergar haven't found this place yet. Barrels of Ironfast ale and mead stand undisturbed. Among the wine racks, you spot a hidden cache of valuables the dwarves stashed for emergencies.",
+      "description": "A hidden cellar accessible only from the great hall. Racks of ancient dwarven spirits line the walls—some bottles centuries old. The duergar haven't found this place yet. Barrels of Ironfast ale and mead stand undisturbed. Among the wine racks, you spot a hidden cache of valuables the dwarves stashed for emergencies. A dusty passage behind the oldest wine racks leads deeper into the mountain.",
       "light_level": "dark",
       "exits": {
-        "up": "great_hall"
+        "up": "great_hall",
+        "north": "ancestor_hall"
       },
       "items": ["ironfast_ale", "ancient_spirits", "emergency_cache", "gold_150", "platinum_ring"],
       "encounters": [],

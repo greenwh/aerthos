@@ -1,3 +1,10 @@
+** NOT FIXED - Selling items for 50% yields 0 gold:
+This did not fix the issue.  
+RESOLVED: Items now properly track gp_value from equipment.json.
+- _create_item_from_name() now sets gp_value from cost_gp in JSON
+- Properties list converted to dict format for consistency
+- File modified: game_state.py
+
 ** Minor - special attacks have no effect:
 
 Rats use disease bite but players don't get diseased.  Check special attacks.
@@ -12,3 +19,4 @@ Silas's Elite Bodyguard uses loyal_unto_death!
 Silas's Elite Bodyguard uses shield_wall!
 Silas's Elite Bodyguard uses loyal_unto_death!
 Bound Demon uses magic_resistance!
+

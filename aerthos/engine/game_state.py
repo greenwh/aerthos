@@ -1996,17 +1996,54 @@ class GameState:
                     name_variations.append(variation)
 
         # STEP 1: Check equipment.json for exact match (handles specific potions, special items)
-        # BUT skip magic_item/weapon/armor types - those should fall through to Step 2 for proper creation
+        # Also handle weapons/armor defined in equipment.json (like ceremonial items)
         if self.game_data and hasattr(self.game_data, 'equipment'):
             # Try all variations
             for variant in name_variations:
                 equipment_item = self.game_data.equipment.get(variant)
                 if equipment_item:
                     item_type = equipment_item.get('type', 'equipment')
-                    # Skip magic items, weapons, and armor - they need proper class creation in Step 2
-                    # Also skip if the item name suggests it's a magic weapon/armor (+N pattern)
-                    if item_type in ('magic_item', 'weapon', 'armor') or '_plus' in variant or '+' in variant:
-                        break  # Skip Step 1, proceed to Step 2 for proper handling
+
+                    # Handle weapons defined in equipment.json with full stats
+                    # This includes magic weapons like flaming_longsword_plus2, greatsword_plus3
+                    if item_type == 'weapon' and equipment_item.get('damage'):
+                        props = equipment_item.get('properties', {})
+                        if isinstance(props, list):
+                            props = {'flags': props}
+                        return Weapon(
+                            name=equipment_item.get('name', item_name),
+                            damage_sm=equipment_item.get('damage', '1d6'),
+                            damage_l=equipment_item.get('damage_l', equipment_item.get('damage', '1d6')),
+                            speed_factor=equipment_item.get('speed_factor', 5),
+                            magic_bonus=equipment_item.get('magic_bonus', 0),
+                            weight=equipment_item.get('weight_gp', 50) / 10.0,
+                            properties=props,
+                            description=equipment_item.get('description', f"A {item_name}.")
+                        )
+
+                    # Handle armor defined in equipment.json with full stats
+                    if item_type == 'armor' and equipment_item.get('ac') is not None:
+                        from ..systems.armor_system import ArmorSystem
+                        armor_system = ArmorSystem()
+                        # Create armor with proper stats from equipment.json
+                        return Armor(
+                            name=equipment_item.get('name', item_name),
+                            ac=equipment_item.get('ac', 10),
+                            armor_type=equipment_item.get('armor_type', 'medium'),
+                            weight=equipment_item.get('weight_gp', 100) / 10.0,
+                            magic_bonus=equipment_item.get('magic_bonus', 0),
+                            properties=equipment_item.get('properties', []),
+                            description=equipment_item.get('description', f"A {item_name}.")
+                        )
+
+                    # Skip items with +N pattern that don't have full stats - let Step 2 handle them
+                    if '_plus' in variant or '+' in variant:
+                        break
+
+                    # Skip magic_item type - they need proper handling
+                    if item_type == 'magic_item':
+                        break
+
                     # Get properties - ensure it's a dict (some items have list properties)
                     props = equipment_item.get('properties', {})
                     if isinstance(props, list):
@@ -2055,6 +2092,24 @@ class GameState:
             base_item = magic_match.group(1).strip().lower()  # Normalize to lowercase
             magic_bonus = int(magic_match.group(2))
 
+            # Check if it's a magic shield first (shields have separate handling)
+            if 'shield' in base_item.lower():
+                from ..systems.armor_system import ArmorSystem
+                armor_system = ArmorSystem()
+                # Try common shield variants
+                shield_variants = [
+                    'shield_medium',  # Default shield type
+                    'shield_small',
+                    'shield_large',
+                    base_item.replace(' ', '_')
+                ]
+                for shield_id in shield_variants:
+                    shield = armor_system.create_shield(shield_id, magic_bonus=magic_bonus)
+                    if shield:
+                        # Update name to show magic bonus
+                        shield.name = f"Shield +{magic_bonus}"
+                        return shield
+
             # Check if it's magic armor
             armor_types = ['leather', 'studded_leather', 'ring_mail', 'scale_mail',
                           'chain_mail', 'splint_mail', 'banded_mail', 'plate_mail',
@@ -2098,11 +2153,11 @@ class GameState:
                 'hand axe': 'hand_axe',
                 'handaxe': 'hand_axe',
                 'spear': 'spear',
-                'warhammer': 'warhammer',
-                'war hammer': 'warhammer',
-                'morningstar': 'morningstar',
-                'morning star': 'morningstar',
-                'hammer': 'warhammer',
+                'warhammer': 'hammer',
+                'war hammer': 'hammer',
+                'morningstar': 'morning_star',
+                'morning star': 'morning_star',
+                'hammer': 'hammer',
                 'bow': 'long_bow'
             }
 
@@ -2189,6 +2244,60 @@ class GameState:
                 armor = armor_system.create_armor(search_underscore, magic_bonus=0)
                 if armor:
                     return armor
+
+        # STEP 4b: Check shields section in armor.json for regular (non-magic) shields
+        if 'shield' in search_lower:
+            from ..systems.armor_system import ArmorSystem
+            armor_system = ArmorSystem()
+            # Try common shield variants based on name
+            if 'small' in search_lower:
+                shield = armor_system.create_shield('shield_small', magic_bonus=0)
+            elif 'large' in search_lower:
+                shield = armor_system.create_shield('shield_large', magic_bonus=0)
+            elif 'wood' in search_lower:
+                shield = armor_system.create_shield('shield_small_wood', magic_bonus=0)
+            elif 'dwarven' in search_lower or 'dwarf' in search_lower:
+                # Dwarven shields are typically medium, sturdy shields
+                shield = armor_system.create_shield('shield_medium', magic_bonus=0)
+                if shield:
+                    shield.name = "Dwarven Shield"
+            else:
+                # Default to medium shield
+                shield = armor_system.create_shield('shield_medium', magic_bonus=0)
+            if shield:
+                return shield
+
+        # STEP 4c: Try common weapon name mappings for non-magic weapons
+        weapon_alias_map = {
+            'warhammer': 'hammer',
+            'war_hammer': 'hammer',
+            'battleaxe': 'battle_axe',
+            'battle_axe': 'battle_axe',
+            'longsword': 'long_sword',
+            'long_sword': 'long_sword',
+            'shortsword': 'short_sword',
+            'short_sword': 'short_sword',
+            'handaxe': 'hand_axe',
+            'hand_axe': 'hand_axe',
+        }
+        if self.game_data and hasattr(self.game_data, 'weapons'):
+            weapon_id = weapon_alias_map.get(search_underscore)
+            if weapon_id:
+                weapon_stats = self.game_data.weapons.get(weapon_id)
+                if weapon_stats:
+                    return Weapon(
+                        name=weapon_stats.get('name', item_name.replace('_', ' ').title()),
+                        damage_sm=weapon_stats.get('damage_sm', '1d6'),
+                        damage_l=weapon_stats.get('damage_l', '1d6'),
+                        speed_factor=weapon_stats.get('speed_factor', 5),
+                        magic_bonus=0,
+                        weight=weapon_stats.get('weight_gp', 50) / 10.0,
+                        properties={
+                            'weapon_type': weapon_stats.get('weapon_type', 'melee'),
+                            'gp_value': weapon_stats.get('cost_gp', 10)
+                        },
+                        description=weapon_stats.get('description', f"A {weapon_stats.get('name', item_name)}.")
+                    )
 
         # STEP 5: Pattern matching for common generic items
         # Common item templates (name patterns -> item creation)

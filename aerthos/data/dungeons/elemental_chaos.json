@@ -24,7 +24,7 @@
     "chaos_nexus": {
       "id": "chaos_nexus",
       "title": "Chaos Nexus",
-      "description": "The center of the pocket dimension. Four paths lead to the elemental keystones, each one pulsing with distinct energy. The Herald's voice echoes from everywhere and nowhere: 'You dare intrude upon the Prince's domain? You will be unmade!' Reality shifts here\u2014the floor is sometimes ceiling, walls sometimes vanish. A passageway to the south leads to what looks like a laboratory, while an eastern tunnel seems to lead to an armory.",
+      "description": "The center of the pocket dimension. Four paths lead to the elemental keystones, each one pulsing with distinct energy. The Herald's voice echoes from everywhere and nowhere: 'You dare intrude upon the Prince's domain? You will be unmade!' Reality shifts here\u2014the floor is sometimes ceiling, walls sometimes vanish. A passageway to the south leads to what looks like a laboratory, while an eastern tunnel seems to lead to an armory. At the nexus center, a swirling vortex leads to the Herald's Chamber. A shimmering vault entrance materializes when you've proven your worth.",
       "light_level": "variable",
       "exits": {
         "north": "fire_approach",
@@ -32,7 +32,9 @@
         "east": "elemental_armory",
         "west": "air_platforms",
         "down": "water_depths",
-        "up": "earth_caverns"
+        "up": "earth_caverns",
+        "center": "herald_chamber",
+        "in": "convergence_vault"
       },
       "items": [
         "scroll_protection_elementals",

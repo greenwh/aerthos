@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from aerthos.engine.game_state import GameState
 from aerthos.storage.character_roster import CharacterRoster
-from aerthos.entities.player import Weapon, Armor, Item, Inventory
+from aerthos.entities.player import Weapon, Armor, Item, Inventory, Shield
 
 
 @dataclass
@@ -214,15 +214,47 @@ class EpisodeWalkthroughTest:
                 message="No rooms defined in dungeon"
             )
 
-        # Validate room connections
-        orphan_rooms = []
+        # Validate room connections point to valid rooms
         missing_connections = []
-
         for room_id, room_data in rooms.items():
             exits = room_data.get("exits", {})
             for direction, target_room in exits.items():
                 if target_room not in rooms:
                     missing_connections.append(f"{room_id} -> {target_room} ({direction})")
+
+        # CRITICAL: Check all rooms are REACHABLE from start (BFS traversal)
+        start_room = self.dungeon_data.get("start_room")
+        visited = set()
+        queue = [start_room] if start_room else []
+        if start_room:
+            visited.add(start_room)
+
+        while queue:
+            current = queue.pop(0)
+            room = rooms.get(current)
+            if room:
+                for direction, target in room.get("exits", {}).items():
+                    if target not in visited and target in rooms:
+                        visited.add(target)
+                        queue.append(target)
+
+        unreachable_rooms = set(rooms.keys()) - visited
+
+        # Check for asymmetric exits (one-way passages that might trap players)
+        OPPOSITES = {
+            "north": "south", "south": "north", "east": "west", "west": "east",
+            "up": "down", "down": "up", "northeast": "southwest", "southwest": "northeast",
+            "northwest": "southeast", "southeast": "northwest"
+        }
+        asymmetric_exits = []
+        for room_id, room_data in rooms.items():
+            for direction, target in room_data.get("exits", {}).items():
+                if target in rooms:
+                    opposite = OPPOSITES.get(direction)
+                    if opposite:
+                        return_exit = rooms[target].get("exits", {}).get(opposite)
+                        if return_exit != room_id:
+                            asymmetric_exits.append(f"{room_id} -> {target} ({direction}, no return)")
 
         # Check for boss room (if boss_defeated criteria)
         criteria = self.episode_data.get("completion_criteria", {})
@@ -248,6 +280,7 @@ class EpisodeWalkthroughTest:
         details = [
             f"Dungeon: {self.dungeon_data.get('name', 'Unknown')}",
             f"Total rooms: {len(rooms)}",
+            f"Reachable rooms: {len(visited)}/{len(rooms)}",
             f"Start room: {self.dungeon_data.get('start_room', 'N/A')}",
         ]
 
@@ -259,18 +292,42 @@ class EpisodeWalkthroughTest:
                 details=details
             )
 
+        # CRITICAL: Fail if any rooms are unreachable
+        if unreachable_rooms:
+            details.append(f"UNREACHABLE: {list(unreachable_rooms)}")
+            return TestResult(
+                name="Dungeon Structure",
+                passed=False,
+                message=f"{len(unreachable_rooms)} rooms are unreachable from start!",
+                details=details
+            )
+
+        # Warn about asymmetric exits (one-way passages)
+        if asymmetric_exits:
+            details.append(f"One-way passages: {len(asymmetric_exits)}")
+            for exit_info in asymmetric_exits[:3]:  # Show first 3
+                details.append(f"  - {exit_info}")
+
         if criteria.get("type") == "boss_defeated" and not boss_room_found:
             details.append(f"WARNING: Boss '{boss_target}' not found in any encounter")
 
         return TestResult(
             name="Dungeon Structure",
             passed=True,
-            message=f"Dungeon valid with {len(rooms)} rooms",
+            message=f"Dungeon valid with {len(rooms)} rooms (all reachable)",
             details=details
         )
 
     def test_treasure_conversion(self) -> TestResult:
-        """Test 3: Verify treasure items convert to proper types (Bug #1)"""
+        """Test 3: Verify treasure items convert to proper types (Bug #1)
+
+        Enhanced to check:
+        - Magic weapons (+N) become Weapon class with damage_sm
+        - Magic armor (+N) becomes Armor class with ac
+        - Magic shields (+N) become Shield class with ac_bonus
+        - Non-magic weapons (warhammer, dwarven_shield) are properly typed
+        - Items have Web UI actionable types (weapon, armor, shield, consumable, tool, key)
+        """
         if not self.dungeon_data:
             return TestResult(
                 name="Treasure Conversion",
@@ -292,12 +349,16 @@ class EpisodeWalkthroughTest:
         gs = GameState.__new__(GameState)
         gs.game_data = MockGameData(self.data_dir)
 
-        # Collect all items from dungeon
+        # Collect all items from dungeon (items list AND treasure.magic_items)
         all_items = []
         rooms = self.dungeon_data.get("rooms", {})
         for room_id, room_data in rooms.items():
             items = room_data.get("items", [])
-            all_items.extend(items)
+            all_items.extend([(item, room_id) for item in items])
+            # Also check treasure section for magic items
+            treasure = room_data.get("treasure", {})
+            for magic_item in treasure.get("magic_items", []):
+                all_items.append((magic_item, room_id))
 
         if not all_items:
             return TestResult(
@@ -307,41 +368,91 @@ class EpisodeWalkthroughTest:
                 details=["No treasure items defined in this dungeon"]
             )
 
+        # Web UI action types
+        EQUIPABLE_TYPES = ['weapon', 'armor', 'shield', 'light']
+        USABLE_TYPES = ['potion', 'consumable', 'scroll', 'wand', 'key', 'tool']
+        ACTIONABLE_TYPES = EQUIPABLE_TYPES + USABLE_TYPES
+
         # Test each item
         failed_items = []
         weapon_items = []
         armor_items = []
+        shield_items = []
+        actionable_items = []
         other_items = []
 
-        for item_name in set(all_items):  # Unique items
-            item = gs._create_item_from_name(item_name)
+        seen = set()
+        for item_name, room_id in all_items:
+            if item_name in seen:
+                continue
+            seen.add(item_name)
 
-            # Check if magic items are properly typed
-            if '_plus_' in item_name.lower() or '+' in item_name:
-                if 'sword' in item_name.lower() or 'dagger' in item_name.lower() or \
-                   'axe' in item_name.lower() or 'mace' in item_name.lower():
-                    if not isinstance(item, Weapon):
-                        failed_items.append(f"{item_name}: Expected Weapon, got {type(item).__name__}")
-                    else:
-                        weapon_items.append(item_name)
-                        # Verify weapon has damage attributes
-                        if not hasattr(item, 'damage_sm') or not item.damage_sm:
-                            failed_items.append(f"{item_name}: Missing damage_sm")
-                elif 'mail' in item_name.lower() or 'armor' in item_name.lower():
-                    if not isinstance(item, Armor):
-                        failed_items.append(f"{item_name}: Expected Armor, got {type(item).__name__}")
-                    else:
-                        armor_items.append(item_name)
-                        if not hasattr(item, 'ac'):
-                            failed_items.append(f"{item_name}: Missing ac")
+            # Skip gold items
+            if item_name.lower().startswith('gold_'):
+                continue
+
+            try:
+                item = gs._create_item_from_name(item_name)
+            except Exception as e:
+                failed_items.append(f"{item_name}: Creation failed - {e}")
+                continue
+
+            # Determine actual type
+            if isinstance(item, Weapon):
+                item_type = 'weapon'
+                weapon_items.append(item_name)
+                if not hasattr(item, 'damage_sm') or not item.damage_sm:
+                    failed_items.append(f"{item_name}: Weapon missing damage_sm")
+            elif hasattr(item, 'ac_bonus'):  # Shield
+                item_type = 'shield'
+                shield_items.append(item_name)
+            elif isinstance(item, Armor):
+                item_type = 'armor'
+                armor_items.append(item_name)
+                if not hasattr(item, 'ac'):
+                    failed_items.append(f"{item_name}: Armor missing ac")
             else:
+                item_type = getattr(item, 'item_type', 'unknown')
                 other_items.append(item_name)
 
+            # Track actionable items
+            if item_type in ACTIONABLE_TYPES:
+                actionable_items.append((item_name, item_type))
+
+            # Check magic items are properly typed
+            if '_plus_' in item_name.lower() or '_plus' in item_name.lower() or '+' in item_name:
+                # Magic weapon check
+                weapon_keywords = ['sword', 'dagger', 'axe', 'mace', 'hammer', 'warhammer', 'waraxe', 'spear']
+                if any(kw in item_name.lower() for kw in weapon_keywords):
+                    if not isinstance(item, Weapon):
+                        failed_items.append(f"{item_name}: Magic weapon is {type(item).__name__}, not Weapon")
+                # Magic armor check
+                armor_keywords = ['mail', 'armor', 'plate', 'leather']
+                if any(kw in item_name.lower() for kw in armor_keywords):
+                    if not isinstance(item, Armor):
+                        failed_items.append(f"{item_name}: Magic armor is {type(item).__name__}, not Armor")
+                # Magic shield check
+                if 'shield' in item_name.lower():
+                    if not hasattr(item, 'ac_bonus'):
+                        failed_items.append(f"{item_name}: Magic shield missing ac_bonus")
+
+            # Check non-magic items that SHOULD be actionable
+            # (Skip items with "broken" prefix or quest/lore items)
+            if not item_name.startswith('broken_') and item_type not in ACTIONABLE_TYPES:
+                should_be_weapon = any(kw in item_name.lower() for kw in ['sword', 'dagger', 'axe', 'mace', 'warhammer', 'waraxe'])
+                should_be_shield = 'shield' in item_name.lower() and 'second_key' not in item_name.lower()
+                if should_be_weapon:
+                    failed_items.append(f"{item_name}: Should be weapon but is {item_type}")
+                elif should_be_shield:
+                    failed_items.append(f"{item_name}: Should be shield but is {item_type}")
+
         details = [
-            f"Tested {len(set(all_items))} unique items",
+            f"Tested {len(seen)} unique items",
             f"Weapons: {len(weapon_items)}",
             f"Armor: {len(armor_items)}",
-            f"Other: {len(other_items)}",
+            f"Shields: {len(shield_items)}",
+            f"Web UI actionable: {len(actionable_items)}",
+            f"Other (lore/treasure): {len(other_items)}",
         ]
 
         if failed_items:
